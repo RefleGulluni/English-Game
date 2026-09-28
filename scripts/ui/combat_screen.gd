@@ -9,6 +9,8 @@ const PANEL_DARK := Color("101925")
 const BORDER := Color("2a3b50")
 
 var state := CombatState.new()
+var run_manager := RunManager.new()
+var pending_combat_result: Dictionary = {}
 var modal: Control
 
 var stage_label: Label
@@ -41,7 +43,8 @@ func _ready() -> void:
 	state.changed.connect(_refresh)
 	state.reaction_requested.connect(_show_reaction)
 	state.battle_finished.connect(_on_battle_finished)
-	state.start_battle(0)
+	run_manager.start_run()
+	_show_run_entry()
 
 func _draw() -> void:
 	draw_rect(Rect2(Vector2.ZERO, size), BG)
@@ -57,15 +60,15 @@ func _build_interface() -> void:
 	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
 	add_child(title)
 
-	var subtitle := _make_label("COMBAT PROTOTYPE 0.1", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
+	var subtitle := _make_label("MINI RUN PROTOTYPE 0.3", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
 	add_child(subtitle)
 
 	stage_label = _make_label("", Vector2(360, 19), Vector2(560, 42), 15, INK)
 	stage_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(stage_label)
 
-	var reset := _make_button("RESTART DEMO", Vector2(1098, 20), Vector2(150, 38), Color("7d8da1"))
-	reset.pressed.connect(_restart_demo)
+	var reset := _make_button("RESTART RUN", Vector2(1098, 20), Vector2(150, 38), Color("7d8da1"))
+	reset.pressed.connect(_restart_run)
 	add_child(reset)
 
 	_build_player_panel()
@@ -77,7 +80,7 @@ func _build_interface() -> void:
 	end_turn_button.pressed.connect(_on_end_turn)
 	add_child(end_turn_button)
 
-	var footer := _make_label("Understanding creates options. Knowledge removes helplessness, not danger.", Vector2(28, 676), Vector2(820, 28), 14, Color("708197"))
+	var footer := _make_label("Every encounter leaves a cost. Every route is a decision.", Vector2(28, 676), Vector2(820, 28), 14, Color("708197"))
 	add_child(footer)
 
 func _build_player_panel() -> void:
@@ -237,15 +240,19 @@ func _refresh() -> void:
 	var modal_open := is_instance_valid(modal)
 	for skill_name in skill_buttons:
 		var button: Button = skill_buttons[skill_name]
+		var data: Dictionary = CombatContent.SKILLS[skill_name]
+		if skill_name == "DEFLECT":
+			var reaction_cost := 2 if int(state.corruption["Inattention"]) >= 60 else 1
+			button.text = "%d  DEFLECT\nREACTION ONLY" % reaction_cost
+		else:
+			button.text = "%d  %s\n%s" % [state.skill_cost(skill_name), skill_name, data["family"]]
 		button.disabled = modal_open or not state.can_use(skill_name)
 	end_turn_button.disabled = modal_open
 
 func _stage_text() -> String:
-	var parts: Array[String] = []
-	for index in range(CombatContent.BATTLES.size()):
-		var marker := "●" if index == state.battle_index else "○"
-		parts.append("%s %d" % [marker, index + 1])
-	return "     ".join(parts) + "     ·     TURN %d" % state.turn
+	return "FRACTURE · LAYER %d / 4     ·     %s     ·     TURN %d" % [
+		mini(4, run_manager.state.current_layer + 1), str(state.enemy.get("name", "ENCOUNTER")), state.turn
+	]
 
 func _show_skill_detail(skill_name: String) -> void:
 	var data: Dictionary = CombatContent.SKILLS[skill_name]
@@ -279,39 +286,136 @@ func _show_reaction(action: Dictionary, cost: int) -> void:
 
 func _on_battle_finished(victory: bool) -> void:
 	if victory:
-		if state.battle_index < CombatContent.BATTLES.size() - 1:
-			_show_modal(
-				"PATTERN UNDERSTOOD",
-				"%s is defeated. The next encounter will pressure a different kind of understanding." % state.enemy["name"],
-				[{"text": "CONTINUE TO ENCOUNTER %d" % [state.battle_index + 2], "callback": _continue_run}]
-			)
-		else:
+		pending_combat_result = run_manager.complete_combat(state)
+		if bool(pending_combat_result.get("final", false)):
+			run_manager.complete_final()
 			_show_run_summary()
+		else:
+			_show_breather()
 	else:
-		_show_modal(
-			"CONNECTION BROKEN",
-			"The encounter remains dangerous, but its pattern is no longer completely unknown.",
-			[{"text": "RETRY ENCOUNTER", "callback": _retry_battle}, {"text": "RESTART DEMO", "callback": _restart_demo}]
-		)
+		run_manager.fail_run(state)
+		_show_run_summary()
 
 func _show_run_summary() -> void:
-	var summary := "The Combat Prototype loop is complete.\n\nOBSERVE used: %d\nFocus reserved: %d\nDEFLECT reactions: %d\nBIND windows: %d\nSTABILIZE uses: %d\nThreats countered: %d" % [
-		state.metrics["observe_uses"], state.metrics["focus_reserved"], state.metrics["deflect_uses"],
-		state.metrics["bind_uses"], state.metrics["stabilize_uses"], state.metrics["intents_countered"]
+	var run := run_manager.state
+	var title := "RUN COMPLETE" if run.victory else "CONNECTION BROKEN"
+	var outcome := "Extracted safely." if run.extracted else ("The deepest pattern was understood." if run.victory else "The Fracture claimed this attempt.")
+	var summary := "%s\n\nEcho secured: %d\nNodes crossed: %d\nRelics: %s\n\nOBSERVE %d · DEFLECT %d · BIND %d · STABILIZE %d" % [
+		outcome, run.echo, run.current_layer, _relic_names(),
+		state.metrics["observe_uses"], state.metrics["deflect_uses"], state.metrics["bind_uses"], state.metrics["stabilize_uses"]
 	]
-	_show_modal("UNDERSTANDING CREATED OPTIONS", summary, [{"text": "PLAY AGAIN", "callback": _restart_demo}])
+	_show_modal(title, summary, [{"text": "BEGIN ANOTHER RUN", "callback": _restart_run}])
 
-func _continue_run() -> void:
-	state.start_battle(state.battle_index + 1)
-
-func _retry_battle() -> void:
-	state.start_battle(state.battle_index)
-
-func _restart_demo() -> void:
+func _restart_run() -> void:
 	_clear_modal()
 	state.metrics = {"observe_uses": 0, "bind_uses": 0, "stabilize_uses": 0, "deflect_uses": 0, "focus_reserved": 0, "intents_countered": 0}
 	state.exposure.clear()
-	state.start_battle(0)
+	run_manager.run_index += 1
+	run_manager.start_run()
+	pending_combat_result.clear()
+	_show_run_entry()
+
+func _show_run_entry() -> void:
+	_show_modal(
+		"FRACTURE ENTRY",
+		"A short route opens through unstable language. HP and Corruption will persist until you extract or the connection breaks.",
+		[{"text": "ENTER THE FRACTURE", "callback": _show_map}]
+	)
+
+func _show_map() -> void:
+	var run := run_manager.state
+	var lines: Array[String] = [run.condition_text(), "", "Choose the next path:"]
+	var actions: Array = []
+	for node in run_manager.available_nodes():
+		lines.append("%s · %s" % [node["title"], node["detail"]])
+		actions.append({"text": str(node["title"]), "callback": _select_node.bind(str(node["id"]))})
+	_show_modal("FRACTURE MAP · LAYER %d" % [run.current_layer + 1], "\n".join(lines), actions)
+
+func _select_node(node_id: String) -> void:
+	var node := run_manager.select_node(node_id)
+	match str(node.get("type", "")):
+		"encounter", "elite", "final":
+			state.start_battle(int(node["battle"]), run_manager.state.combat_snapshot(), bool(node.get("elite", false)))
+			_refresh()
+		"event":
+			_show_event()
+		"cache":
+			_show_cache()
+		"extract":
+			run_manager.extract()
+			_show_run_summary()
+
+func _show_event() -> void:
+	var event := run_manager.current_event
+	var actions: Array = []
+	for choice in event["choices"]:
+		actions.append({
+			"text": "%s · %s" % [choice["title"], choice["effect"]],
+			"callback": _resolve_event_choice.bind(str(choice["id"])),
+		})
+	_show_modal(str(event["title"]), "%s\n\n%s" % [event["body"], run_manager.state.condition_text()], actions)
+
+func _resolve_event_choice(choice_id: String) -> void:
+	var result := run_manager.resolve_event(choice_id)
+	_show_modal("EVENT RESOLVED", "%s\n\n%s" % [result, run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
+
+func _show_cache() -> void:
+	var actions: Array = []
+	for choice in RunContent.CACHE_CHOICES:
+		actions.append({
+			"text": "%s · %s" % [choice["title"], choice["effect"]],
+			"callback": _resolve_cache_choice.bind(str(choice["id"])),
+		})
+	_show_modal("SUPPLY CACHE", "Only one resource can be carried forward.\n\n%s" % run_manager.state.condition_text(), actions)
+
+func _resolve_cache_choice(choice_id: String) -> void:
+	var result := run_manager.resolve_cache(choice_id)
+	_show_modal("CACHE CLAIMED", "%s\n\n%s" % [result, run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
+
+func _show_breather() -> void:
+	var settlement: Dictionary = pending_combat_result["settlement"]
+	var before: Dictionary = settlement["corruption_before"]
+	var after: Dictionary = settlement["corruption_after"]
+	var body := "Victory reward: +%d Echo\nAutomatic rebuild: Armor %d → %d\nNatural dissipation: D %d→%d · O %d→%d · I %d→%d\n\n%s" % [
+		int(pending_combat_result["echo"]), int(settlement["armor_before"]), int(settlement["armor_after"]),
+		int(before["Decay"]), int(after["Decay"]), int(before["Obscurity"]), int(after["Obscurity"]),
+		int(before["Inattention"]), int(after["Inattention"]), run_manager.state.condition_text(),
+	]
+	_show_modal("BREATHER", body, [
+		{"text": "RECOVER · +6 HP (or +4 Armor at full HP)", "callback": _choose_breather.bind("recover")},
+		{"text": "STABILIZE · Dominant Corruption -12", "callback": _choose_breather.bind("stabilize")},
+		{"text": "PRESS ON · Next node reward ×1.25", "callback": _choose_breather.bind("press_on")},
+	])
+
+func _choose_breather(choice: String) -> void:
+	var result := run_manager.choose_breather(choice)
+	if bool(pending_combat_result.get("elite", false)):
+		_show_relic_reward(str(result["description"]))
+	else:
+		_show_modal("BREATHER COMPLETE", "%s\n\n%s" % [result["description"], run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
+
+func _show_relic_reward(breather_result: String) -> void:
+	var actions: Array = []
+	for relic_id in RunContent.RELICS:
+		var relic: Dictionary = RunContent.RELICS[relic_id]
+		actions.append({
+			"text": "%s · %s" % [relic["name"], relic["description"]],
+			"callback": _claim_relic.bind(str(relic_id)),
+		})
+	_show_modal("ELITE REWARD", "%s\n\nChoose one Prototype Relic." % breather_result, actions)
+
+func _claim_relic(relic_id: String) -> void:
+	run_manager.claim_relic(relic_id)
+	var relic: Dictionary = RunContent.RELICS[relic_id]
+	_show_modal("%s CLAIMED" % relic["name"], "%s\n\n%s" % [relic["description"], run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
+
+func _relic_names() -> String:
+	if run_manager.state.relics.is_empty():
+		return "None"
+	var names: Array[String] = []
+	for relic_id in run_manager.state.relics:
+		names.append(str(RunContent.RELICS[relic_id]["name"]))
+	return ", ".join(names)
 
 func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	_clear_modal()
@@ -324,20 +428,20 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	shade.mouse_filter = Control.MOUSE_FILTER_STOP
 	modal.add_child(shade)
-	var panel_height := 250.0 + maxf(0, actions.size() - 2) * 48.0
-	var card := _make_panel(Vector2(390, 215 - (panel_height - 250) * 0.5), Vector2(500, panel_height), Color("162333"), Color("49647e"))
+	var panel_height := 216.0 + actions.size() * 48.0
+	var card := _make_panel(Vector2(365, (720.0 - panel_height) * 0.5), Vector2(550, panel_height), Color("162333"), Color("49647e"))
 	modal.add_child(card)
-	var title := _make_label(title_text, Vector2(28, 24), Vector2(444, 36), 22, GOLD)
+	var title := _make_label(title_text, Vector2(28, 20), Vector2(494, 36), 22, GOLD)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	card.add_child(title)
-	var body := _make_label(body_text, Vector2(32, 72), Vector2(436, 82), 14, Color("c1ccd7"))
+	var body := _make_label(body_text, Vector2(32, 62), Vector2(486, 122), 14, Color("c1ccd7"))
 	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	body.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	card.add_child(body)
 	for index in range(actions.size()):
 		var action: Dictionary = actions[index]
-		var button := _make_button(str(action["text"]), Vector2(85, 166 + index * 48), Vector2(330, 38), GOLD if index == 0 else Color("74869a"))
+		var button := _make_button(str(action["text"]), Vector2(60, 192 + index * 48), Vector2(430, 38), GOLD if index == 0 else Color("74869a"))
 		var callback: Callable = action["callback"]
 		button.pressed.connect(func():
 			_clear_modal()
