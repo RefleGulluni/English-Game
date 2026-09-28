@@ -25,6 +25,10 @@ var action_cursor := 0
 var corruption := {"Decay": 0, "Obscurity": 0, "Inattention": 0}
 var statuses: Dictionary = {}
 var exposure: Dictionary = {}
+var relics: Array[String] = []
+var is_elite := false
+var observe_used_this_battle := false
+var quiet_mind_used_this_battle := false
 var log_lines: Array[String] = []
 var metrics := {
 	"observe_uses": 0,
@@ -35,20 +39,33 @@ var metrics := {
 	"intents_countered": 0,
 }
 
-func start_battle(index: int) -> void:
+func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false) -> void:
 	battle_index = index
 	turn = 0
-	hp = MAX_HP
-	armor = BASE_ARMOR
+	hp = int(run_snapshot.get("hp", MAX_HP))
+	armor = int(run_snapshot.get("armor", BASE_ARMOR))
 	focus = BASE_FOCUS
-	corruption = {"Decay": 0, "Obscurity": 0, "Inattention": 0}
-	statuses.clear()
+	corruption = run_snapshot.get("corruption", {"Decay": 0, "Obscurity": 0, "Inattention": 0}).duplicate(true)
+	statuses = run_snapshot.get("statuses", {}).duplicate(true)
+	relics.clear()
+	for relic in run_snapshot.get("relics", []):
+		relics.append(str(relic))
+	is_elite = elite
+	observe_used_this_battle = false
+	quiet_mind_used_this_battle = false
 	log_lines.clear()
 	action_cursor = 0
 	next_intent_penalty = 0
 	enemy = CombatContent.BATTLES[index].duplicate(true)
+	if is_elite:
+		enemy["name"] = "%s · ELITE" % enemy["name"]
+		enemy["hp"] = int(ceil(float(enemy["hp"]) * 1.25))
+		enemy["armor"] = int(ceil(float(enemy["armor"]) * 1.25))
 	enemy["max_hp"] = int(enemy["hp"])
 	enemy["max_armor"] = int(enemy["armor"])
+	if is_elite:
+		_add_corruption("Inattention", 10)
+		_update_threshold_statuses()
 	_add_log("ENCOUNTER %d · %s" % [index + 1, enemy["name"]])
 	_add_log(str(enemy["tutorial"]))
 	_begin_player_turn(0, false)
@@ -58,7 +75,16 @@ func can_use(skill_name: String) -> bool:
 		return false
 	if skill_name == "DEFLECT":
 		return false
-	return focus >= int(CombatContent.SKILLS[skill_name]["cost"])
+	return focus >= skill_cost(skill_name)
+
+func skill_cost(skill_name: String) -> int:
+	var cost := int(CombatContent.SKILLS[skill_name]["cost"])
+	if skill_name == "OBSERVE":
+		if "clear_lens" in relics and not observe_used_this_battle:
+			return 0
+		if is_elite and int(corruption["Inattention"]) >= 50:
+			cost += 1
+	return cost
 
 func use_skill(skill_name: String, restore_target: String = "") -> bool:
 	if skill_name == "DEFLECT":
@@ -70,10 +96,11 @@ func use_skill(skill_name: String, restore_target: String = "") -> bool:
 		changed.emit()
 		return false
 
-	var cost := int(CombatContent.SKILLS[skill_name]["cost"])
+	var cost := skill_cost(skill_name)
 	match skill_name:
 		"OBSERVE":
 			focus -= cost
+			observe_used_this_battle = true
 			intent_clarity = mini(2, intent_clarity + 1)
 			metrics["observe_uses"] += 1
 			_add_log("OBSERVE · Intent is now %s." % clarity_name())
@@ -83,9 +110,10 @@ func use_skill(skill_name: String, restore_target: String = "") -> bool:
 				var before := int(enemy["armor"])
 				enemy["armor"] = maxi(0, before - 8)
 				_add_log("SHATTER · %d Armor broken." % [before - int(enemy["armor"])])
-				if int(enemy["armor"]) == 0:
-					enemy["hp"] = maxi(0, int(enemy["hp"]) - 6)
-					_add_log("STRUCTURE COLLAPSE · EXPOSED. The collapse deals 6 HP.")
+			if int(enemy["armor"]) == 0:
+				var collapse_damage := 10 if "iron_script" in relics else 6
+				enemy["hp"] = maxi(0, int(enemy["hp"]) - collapse_damage)
+				_add_log("STRUCTURE COLLAPSE · EXPOSED. The collapse deals %d HP." % collapse_damage)
 			else:
 				enemy["hp"] = maxi(0, int(enemy["hp"]) - 10)
 				_add_log("SHATTER · The exposed target loses 10 HP.")
@@ -166,10 +194,10 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 		_apply_physical_damage(incoming)
 	else:
 		var family := str(action["family"])
-		corruption[family] = mini(100, int(corruption[family]) + int(action["corruption"]))
+		_add_corruption(family, int(action["corruption"]))
 		if action.has("secondary_family"):
 			var secondary := str(action["secondary_family"])
-			corruption[secondary] = mini(100, int(corruption[secondary]) + int(action["secondary_corruption"]))
+			_add_corruption(secondary, int(action["secondary_corruption"]))
 		if action.has("armor_damage"):
 			armor = maxi(0, armor - int(action["armor_damage"]))
 		if action.has("guard"):
@@ -233,6 +261,14 @@ func _apply_physical_damage(amount: int) -> void:
 	var health_damage := amount - absorbed
 	hp = maxi(0, hp - health_damage)
 	_add_log("%s · Armor absorbs %d; HP loses %d." % [intent["word"], absorbed, health_damage])
+
+func _add_corruption(family: String, amount: int) -> void:
+	var applied := amount
+	if family == "Inattention" and "quiet_mind" in relics and not quiet_mind_used_this_battle:
+		applied = maxi(0, amount - 5)
+		quiet_mind_used_this_battle = true
+		_add_log("QUIET MIND · Inattention gain reduced by 5.")
+	corruption[family] = mini(100, int(corruption[family]) + applied)
 
 func _enemy_resolution_text(action: Dictionary) -> String:
 	var result := "%s resolves" % action["word"]
