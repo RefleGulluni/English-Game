@@ -16,6 +16,11 @@ func _run() -> void:
 	var entry_card: Control = screen.modal.get_node("ModalCard")
 	var entry_body: Label = entry_card.find_child("Body", true, false)
 	_check(entry_body.get_line_count() > 1, "entry description wraps")
+	_check("language.\nHP" in entry_body.text, "entry sentences start on separate lines")
+	_check(screen._format_modal_body("High pressure. Reward: 50 Echo.") == "High pressure.\nReward: 50 Echo.", "route description separates explanation and reward")
+	var structured_text := "Reward ×1.25\nHP 32/50 · Armor 4/12\n\nChoose the next path:"
+	_check(screen._format_modal_body(structured_text) == structured_text, "numeric rows, decimal multipliers and paragraphs stay intact")
+	_check(screen._format_modal_body("第一句。第二句。") == "第一句。\n第二句。", "Chinese sentences also start on separate lines")
 	_check_bounds(screen)
 	screen._show_reaction({"word": "DUST CUT"}, 1)
 	await _settle()

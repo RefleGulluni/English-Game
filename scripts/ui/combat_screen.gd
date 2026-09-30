@@ -435,6 +435,12 @@ func _relic_names() -> String:
 		names.append(str(RunContent.RELICS[relic_id]["name"]))
 	return ", ".join(names)
 
+func _format_modal_body(text_value: String) -> String:
+	# Format prose only; preserve existing rows, paragraphs and decimal numbers.
+	var english_end := RegEx.create_from_string("([.!?])[ \\t]+(?=[A-Z0-9])")
+	var chinese_end := RegEx.create_from_string("([。！？])[ \\t]*(?=[^\\n\\r。！？])")
+	return chinese_end.sub(english_end.sub(text_value, "$1\n", true), "$1\n", true)
+
 func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	_clear_modal()
 	modal = Control.new()
@@ -455,7 +461,7 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var body := _make_label("", Vector2.ZERO, Vector2.ZERO, 14, Color("c1ccd7"))
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.text = body_text
+	body.text = _format_modal_body(body_text)
 	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var buttons: Array[Button] = []
 	for index in range(actions.size()):
