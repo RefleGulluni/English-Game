@@ -126,10 +126,14 @@ func choose_breather(choice: String) -> Dictionary:
 	return result
 
 func grant_echo(base_amount: int, source: String) -> int:
-	var awarded := int(round(float(base_amount) * active_reward_multiplier))
+	var awarded := preview_echo(base_amount)
 	echo += awarded
 	history.append("Gained %d Echo from %s." % [awarded, source])
 	return awarded
+
+func preview_echo(base_amount: int, use_next_multiplier: bool = false) -> int:
+	var multiplier := next_reward_multiplier if use_next_multiplier else active_reward_multiplier
+	return int(round(float(base_amount) * multiplier))
 
 func add_relic(relic_id: String) -> bool:
 	if relic_id in relics:

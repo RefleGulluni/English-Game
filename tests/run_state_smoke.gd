@@ -41,7 +41,9 @@ func _test_breather_and_reward_multiplier() -> void:
 	run.choose_breather("stabilize")
 	_check(run.corruption["Decay"] == 18, "Stabilize reduces dominant Corruption by 12")
 	run.choose_breather("press_on")
+	_check(run.preview_echo(30, true) == 38, "Press On preview shows the rounded next-node reward")
 	run.begin_node("reward_test")
+	_check(run.preview_echo(30) == 38, "active node preview matches the Press On settlement")
 	_check(run.grant_echo(20, "test") == 25 and run.echo == 25, "Press On multiplies the next node reward by 1.25")
 
 func _test_combat_snapshot_and_relics() -> void:

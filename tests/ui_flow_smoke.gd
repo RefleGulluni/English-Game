@@ -19,16 +19,32 @@ func _run() -> void:
 	await process_frame
 	_check(screen.run_manager.state.current_layer == 1, "Event UI advances to Layer 2")
 
+	screen.run_manager.state.next_reward_multiplier = RunState.PRESS_ON_MULTIPLIER
 	screen._select_node("supply_cache")
+	await process_frame
+	var cache_card: Control = screen.modal.get_child(1)
+	var echo_button: Button = cache_card.get_child(4)
+	_check("+30 → +38 Echo" in echo_button.text, "Cache UI previews the rounded Press On reward")
 	screen._resolve_cache_choice("echo")
 	await process_frame
-	_check(screen.run_manager.state.echo == 30, "Cache UI applies its selected reward")
+	_check(screen.run_manager.state.echo == 38, "Cache UI applies its selected Press On reward")
+
+	screen._show_map()
+	await process_frame
+	var map_card: Control = screen.modal.get_child(1)
+	var map_body: Label = map_card.get_child(1)
+	var first_route_button: Button = map_card.get_child(2)
+	_check(map_body.position.y + map_body.size.y <= first_route_button.position.y, "route details do not overlap Layer 3 buttons")
 
 	screen._select_node("neglect_wraith_elite")
 	await process_frame
 	_check(screen.state.is_elite and screen.state.enemy["name"].contains("ELITE"), "Elite route launches an Elite combat")
+	screen.state.armor = 0
+	screen.state.corruption["Inattention"] = 90
+	screen.state.statuses["CARELESS"] = 99
 	screen._on_battle_finished(true)
 	await process_frame
+	_check(screen.state.armor == 4 and screen.state.corruption["Inattention"] == 85, "post-combat HUD synchronizes settlement values while the Breather modal is open")
 	screen._choose_breather("press_on")
 	await process_frame
 	screen._claim_relic("clear_lens")

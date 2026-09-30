@@ -33,6 +33,9 @@ func _initialize() -> void:
 	state.use_skill("RESTORE", "hp")
 	_check(state.hp == 38, "RESTORE recovers 8 HP when not Withered")
 
+	_test_shatter_branches()
+	_test_inattention_feedback_and_clear_lens()
+
 	if failures.is_empty():
 		print("COMBAT_STATE_SMOKE: PASS")
 		quit(0)
@@ -41,6 +44,39 @@ func _initialize() -> void:
 			push_error(failure)
 		print("COMBAT_STATE_SMOKE: FAIL (%d)" % failures.size())
 		quit(1)
+
+func _test_shatter_branches() -> void:
+	var state := CombatState.new()
+	state.start_battle(0)
+	state.focus = 20
+	var starting_hp := int(state.enemy["hp"])
+	state.use_skill("SHATTER")
+	_check(int(state.enemy["armor"]) == 10 and int(state.enemy["hp"]) == starting_hp, "SHATTER only damages Structure while Structure remains")
+	state.use_skill("SHATTER")
+	_check(int(state.enemy["armor"]) == 2 and int(state.enemy["hp"]) == starting_hp, "repeated SHATTER does not leak HP damage through Structure")
+	state.use_skill("SHATTER")
+	_check(int(state.enemy["armor"]) == 0 and int(state.enemy["hp"]) == starting_hp - 6, "SHATTER triggers Structure Collapse exactly when Structure reaches zero")
+	state.use_skill("SHATTER")
+	_check(int(state.enemy["hp"]) == starting_hp - 16, "SHATTER deals exposed damage after Structure has collapsed")
+	var collapse_logs := 0
+	for line in state.log_lines:
+		if "STRUCTURE COLLAPSE" in line:
+			collapse_logs += 1
+	_check(collapse_logs == 1, "Structure Collapse triggers only once")
+
+func _test_inattention_feedback_and_clear_lens() -> void:
+	var state := CombatState.new()
+	state.start_battle(3, {
+		"corruption": {"Decay": 0, "Obscurity": 0, "Inattention": 95},
+		"statuses": {"CARELESS": 99},
+		"relics": ["clear_lens"],
+	})
+	_check(state.skill_cost("OBSERVE") == 0, "Clear Lens makes the first high-Inattention OBSERVE free")
+	state.use_skill("OBSERVE")
+	_check(state.skill_cost("OBSERVE") == 2, "high Inattention still applies after Clear Lens is consumed")
+	_check(state.reaction_cost() == 2, "high Inattention increases DEFLECT cost")
+	var feedback := state.active_status_text()
+	_check("CARELESS" in feedback and "OBSERVE +1 FOCUS" in feedback and "DEFLECT +1 FOCUS" in feedback, "Status HUD explains active Inattention consequences")
 
 func _check(condition: bool, description: String) -> void:
 	if not condition:

@@ -82,6 +82,9 @@ The prototype already keeps the framework's important distinctions:
 - Concept Family is combat metadata, not an absolute ontology;
 - Mastery is represented first through information and recognition (`exposure`), not permanent damage inflation;
 - Corruption is pressure, while Status is the consequence of crossing a threshold.
+- Inattention pressure is surfaced before CARELESS: Intent clarity worsens at 40, OBSERVE costs +1 at 50, DEFLECT costs +1 at 60, and CARELESS applies at 80.
+- Clear Lens makes only the first OBSERVE free; once consumed, all active Inattention cost modifiers still apply.
+- SHATTER damages Structure until its one-time collapse, then deals exposed HP damage on later uses.
 
 ## Verification
 

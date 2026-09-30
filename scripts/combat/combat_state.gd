@@ -9,6 +9,10 @@ const MAX_HP := 50
 const BASE_ARMOR := 12
 const BASE_FOCUS := 3
 const MAX_CARRY := 1
+const INATTENTION_CLARITY_THRESHOLD := 40
+const INATTENTION_OBSERVE_COST_THRESHOLD := 50
+const INATTENTION_REACTION_COST_THRESHOLD := 60
+const CARELESS_THRESHOLD := 80
 
 var battle_index := 0
 var turn := 0
@@ -27,6 +31,7 @@ var statuses: Dictionary = {}
 var exposure: Dictionary = {}
 var relics: Array[String] = []
 var is_elite := false
+var structure_collapsed := false
 var observe_used_this_battle := false
 var quiet_mind_used_this_battle := false
 var log_lines: Array[String] = []
@@ -51,6 +56,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	for relic in run_snapshot.get("relics", []):
 		relics.append(str(relic))
 	is_elite = elite
+	structure_collapsed = false
 	observe_used_this_battle = false
 	quiet_mind_used_this_battle = false
 	log_lines.clear()
@@ -65,7 +71,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	enemy["max_armor"] = int(enemy["armor"])
 	if is_elite:
 		_add_corruption("Inattention", 10)
-		_update_threshold_statuses()
+	_update_threshold_statuses()
 	_add_log("ENCOUNTER %d · %s" % [index + 1, enemy["name"]])
 	_add_log(str(enemy["tutorial"]))
 	_begin_player_turn(0, false)
@@ -82,7 +88,7 @@ func skill_cost(skill_name: String) -> int:
 	if skill_name == "OBSERVE":
 		if "clear_lens" in relics and not observe_used_this_battle:
 			return 0
-		if is_elite and int(corruption["Inattention"]) >= 50:
+		if int(corruption["Inattention"]) >= INATTENTION_OBSERVE_COST_THRESHOLD:
 			cost += 1
 	return cost
 
@@ -110,11 +116,12 @@ func use_skill(skill_name: String, restore_target: String = "") -> bool:
 				var before := int(enemy["armor"])
 				enemy["armor"] = maxi(0, before - 8)
 				_add_log("SHATTER · %d Armor broken." % [before - int(enemy["armor"])])
-			if int(enemy["armor"]) == 0:
-				var collapse_damage := 10 if "iron_script" in relics else 6
-				enemy["hp"] = maxi(0, int(enemy["hp"]) - collapse_damage)
-				_add_log("STRUCTURE COLLAPSE · EXPOSED. The collapse deals %d HP." % collapse_damage)
-			else:
+				if int(enemy["armor"]) == 0 and not structure_collapsed:
+					structure_collapsed = true
+					var collapse_damage := 10 if "iron_script" in relics else 6
+					enemy["hp"] = maxi(0, int(enemy["hp"]) - collapse_damage)
+					_add_log("STRUCTURE COLLAPSE · EXPOSED. The collapse deals %d HP." % collapse_damage)
+			elif structure_collapsed:
 				enemy["hp"] = maxi(0, int(enemy["hp"]) - 10)
 				_add_log("SHATTER · The exposed target loses 10 HP.")
 		"BIND":
@@ -174,7 +181,7 @@ func end_player_turn() -> void:
 		_begin_player_turn(carry, true)
 		return
 
-	var reaction_cost := 2 if int(corruption["Inattention"]) >= 60 else 1
+	var reaction_cost := reaction_cost()
 	if intent["kind"] == "physical" and focus >= reaction_cost:
 		reaction_requested.emit(intent, reaction_cost)
 		return
@@ -185,8 +192,7 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 	if action["kind"] == "physical":
 		var incoming := int(action["damage"])
 		if use_deflect:
-			var reaction_cost := 2 if int(corruption["Inattention"]) >= 60 else 1
-			focus -= reaction_cost
+			focus -= reaction_cost()
 			incoming = maxi(1, int(ceil(float(incoming) * 0.25)))
 			metrics["deflect_uses"] += 1
 			metrics["intents_countered"] += 1
@@ -249,7 +255,7 @@ func _base_intent_clarity(action: Dictionary) -> int:
 		clarity -= 1
 	if int(corruption["Obscurity"]) >= 30:
 		clarity -= 1
-	if int(corruption["Inattention"]) >= 40:
+	if int(corruption["Inattention"]) >= INATTENTION_CLARITY_THRESHOLD:
 		clarity -= 1
 	clarity -= next_intent_penalty
 	next_intent_penalty = 0
@@ -282,7 +288,7 @@ func _enemy_resolution_text(action: Dictionary) -> String:
 	return result + "."
 
 func _update_threshold_statuses() -> void:
-	_set_threshold_status("CARELESS", int(corruption["Inattention"]) >= 80)
+	_set_threshold_status("CARELESS", int(corruption["Inattention"]) >= CARELESS_THRESHOLD)
 	_set_threshold_status("FRAGILE", int(corruption["Decay"]) >= 60)
 
 func _set_threshold_status(status: String, active: bool) -> void:
@@ -329,12 +335,26 @@ func dominant_corruption_family() -> String:
 	return family
 
 func active_status_text() -> String:
-	if statuses.is_empty():
-		return "STABLE"
 	var names: Array[String] = []
 	for status in statuses:
 		names.append(str(status))
+	var pressure: Array[String] = []
+	var inattention := int(corruption["Inattention"])
+	if inattention >= INATTENTION_CLARITY_THRESHOLD:
+		pressure.append("INTENT -1")
+	if inattention >= INATTENTION_OBSERVE_COST_THRESHOLD:
+		pressure.append("OBSERVE +1 FOCUS")
+	if inattention >= INATTENTION_REACTION_COST_THRESHOLD:
+		pressure.append("DEFLECT +1 FOCUS")
+	if names.is_empty() and not pressure.is_empty():
+		names.append("PRESSURED")
+	names.append_array(pressure)
+	if names.is_empty():
+		return "STABLE"
 	return ", ".join(names)
+
+func reaction_cost() -> int:
+	return 2 if int(corruption["Inattention"]) >= INATTENTION_REACTION_COST_THRESHOLD else 1
 
 func _add_log(text: String) -> void:
 	log_lines.append(text)

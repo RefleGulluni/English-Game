@@ -97,7 +97,9 @@ func _build_player_panel() -> void:
 	panel.add_child(armor_label)
 	focus_label = _make_label("", Vector2(18, 132), Vector2(232, 30), 20, Color("77c9e3"))
 	panel.add_child(focus_label)
-	status_label = _make_label("", Vector2(18, 164), Vector2(232, 24), 13, MUTED)
+	status_label = _make_label("", Vector2(18, 164), Vector2(232, 30), 11, MUTED)
+	status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	status_label.size = Vector2(232, 30)
 	panel.add_child(status_label)
 
 	var rule := HSeparator.new()
@@ -242,8 +244,7 @@ func _refresh() -> void:
 		var button: Button = skill_buttons[skill_name]
 		var data: Dictionary = CombatContent.SKILLS[skill_name]
 		if skill_name == "DEFLECT":
-			var reaction_cost := 2 if int(state.corruption["Inattention"]) >= 60 else 1
-			button.text = "%d  DEFLECT\nREACTION ONLY" % reaction_cost
+			button.text = "%d  DEFLECT\nREACTION ONLY" % state.reaction_cost()
 		else:
 			button.text = "%d  %s\n%s" % [state.skill_cost(skill_name), skill_name, data["family"]]
 		button.disabled = modal_open or not state.can_use(skill_name)
@@ -287,6 +288,7 @@ func _show_reaction(action: Dictionary, cost: int) -> void:
 func _on_battle_finished(victory: bool) -> void:
 	if victory:
 		pending_combat_result = run_manager.complete_combat(state)
+		_sync_state_from_run()
 		if bool(pending_combat_result.get("final", false)):
 			run_manager.complete_final()
 			_show_run_summary()
@@ -294,6 +296,7 @@ func _on_battle_finished(victory: bool) -> void:
 			_show_breather()
 	else:
 		run_manager.fail_run(state)
+		_sync_state_from_run()
 		_show_run_summary()
 
 func _show_run_summary() -> void:
@@ -325,10 +328,18 @@ func _show_run_entry() -> void:
 func _show_map() -> void:
 	var run := run_manager.state
 	var lines: Array[String] = [run.condition_text(), "", "Choose the next path:"]
+	if run.next_reward_multiplier > 1.0:
+		lines.append("PRESS ON ACTIVE · Next Echo reward ×%.2f" % run.next_reward_multiplier)
 	var actions: Array = []
 	for node in run_manager.available_nodes():
 		lines.append("%s · %s" % [node["title"], node["detail"]])
-		actions.append({"text": str(node["title"]), "callback": _select_node.bind(str(node["id"]))})
+		var action_text := str(node["title"])
+		var base_echo := int(node.get("echo", 0))
+		if node.has("reward_multiplier"):
+			base_echo = int(round(float(base_echo) * float(node["reward_multiplier"])))
+		if base_echo > 0 and run.next_reward_multiplier > 1.0:
+			action_text += " · %d → %d ECHO" % [base_echo, run.preview_echo(base_echo, true)]
+		actions.append({"text": action_text, "callback": _select_node.bind(str(node["id"]))})
 	_show_modal("FRACTURE MAP · LAYER %d" % [run.current_layer + 1], "\n".join(lines), actions)
 
 func _select_node(node_id: String) -> void:
@@ -357,19 +368,24 @@ func _show_event() -> void:
 
 func _resolve_event_choice(choice_id: String) -> void:
 	var result := run_manager.resolve_event(choice_id)
+	_sync_state_from_run()
 	_show_modal("EVENT RESOLVED", "%s\n\n%s" % [result, run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
 
 func _show_cache() -> void:
 	var actions: Array = []
 	for choice in RunContent.CACHE_CHOICES:
+		var effect := str(choice["effect"])
+		if str(choice["id"]) == "echo" and run_manager.state.active_reward_multiplier > 1.0:
+			effect = "+30 → +%d Echo · PRESS ON" % run_manager.state.preview_echo(30)
 		actions.append({
-			"text": "%s · %s" % [choice["title"], choice["effect"]],
+			"text": "%s · %s" % [choice["title"], effect],
 			"callback": _resolve_cache_choice.bind(str(choice["id"])),
 		})
 	_show_modal("SUPPLY CACHE", "Only one resource can be carried forward.\n\n%s" % run_manager.state.condition_text(), actions)
 
 func _resolve_cache_choice(choice_id: String) -> void:
 	var result := run_manager.resolve_cache(choice_id)
+	_sync_state_from_run()
 	_show_modal("CACHE CLAIMED", "%s\n\n%s" % [result, run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
 
 func _show_breather() -> void:
@@ -389,6 +405,7 @@ func _show_breather() -> void:
 
 func _choose_breather(choice: String) -> void:
 	var result := run_manager.choose_breather(choice)
+	_sync_state_from_run()
 	if bool(pending_combat_result.get("elite", false)):
 		_show_relic_reward(str(result["description"]))
 	else:
@@ -406,6 +423,7 @@ func _show_relic_reward(breather_result: String) -> void:
 
 func _claim_relic(relic_id: String) -> void:
 	run_manager.claim_relic(relic_id)
+	_sync_state_from_run()
 	var relic: Dictionary = RunContent.RELICS[relic_id]
 	_show_modal("%s CLAIMED" % relic["name"], "%s\n\n%s" % [relic["description"], run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
 
@@ -428,20 +446,22 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	shade.mouse_filter = Control.MOUSE_FILTER_STOP
 	modal.add_child(shade)
-	var panel_height := 216.0 + actions.size() * 48.0
+	var panel_height := 302.0 + actions.size() * 48.0
 	var card := _make_panel(Vector2(365, (720.0 - panel_height) * 0.5), Vector2(550, panel_height), Color("162333"), Color("49647e"))
 	modal.add_child(card)
 	var title := _make_label(title_text, Vector2(28, 20), Vector2(494, 36), 22, GOLD)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	card.add_child(title)
-	var body := _make_label(body_text, Vector2(32, 62), Vector2(486, 122), 14, Color("c1ccd7"))
+	var body := _make_label(body_text, Vector2(32, 62), Vector2(486, 208), 14, Color("c1ccd7"))
 	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	body.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.size = Vector2(486, 208)
+	body.clip_text = true
 	card.add_child(body)
 	for index in range(actions.size()):
 		var action: Dictionary = actions[index]
-		var button := _make_button(str(action["text"]), Vector2(60, 192 + index * 48), Vector2(430, 38), GOLD if index == 0 else Color("74869a"))
+		var button := _make_button(str(action["text"]), Vector2(60, 278 + index * 48), Vector2(430, 38), GOLD if index == 0 else Color("74869a"))
 		var callback: Callable = action["callback"]
 		button.pressed.connect(func():
 			_clear_modal()
@@ -449,6 +469,13 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 		)
 		card.add_child(button)
 	_refresh()
+
+func _sync_state_from_run() -> void:
+	var run := run_manager.state
+	state.hp = run.hp
+	state.armor = run.armor
+	state.corruption = run.corruption.duplicate(true)
+	state.statuses = run.statuses.duplicate(true)
 
 func _clear_modal() -> void:
 	if is_instance_valid(modal):
