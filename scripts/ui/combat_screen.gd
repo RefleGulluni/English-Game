@@ -446,28 +446,34 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	shade.mouse_filter = Control.MOUSE_FILTER_STOP
 	modal.add_child(shade)
-	var panel_height := 302.0 + actions.size() * 48.0
-	var card := _make_panel(Vector2(365, (720.0 - panel_height) * 0.5), Vector2(550, panel_height), Color("162333"), Color("49647e"))
+	var card := preload("res://scripts/ui/adaptive_modal.gd").new()
+	card.add_theme_stylebox_override("panel", _style(Color("162333"), Color("49647e"), 10, 0, 1))
 	modal.add_child(card)
-	var title := _make_label(title_text, Vector2(28, 20), Vector2(494, 36), 22, GOLD)
+	var title := _make_label("", Vector2.ZERO, Vector2.ZERO, 22, GOLD)
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	title.text = title_text
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	card.add_child(title)
-	var body := _make_label(body_text, Vector2(32, 62), Vector2(486, 208), 14, Color("c1ccd7"))
-	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	body.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	var body := _make_label("", Vector2.ZERO, Vector2.ZERO, 14, Color("c1ccd7"))
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.size = Vector2(486, 208)
-	body.clip_text = true
-	card.add_child(body)
+	body.text = body_text
+	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	var buttons: Array[Button] = []
 	for index in range(actions.size()):
 		var action: Dictionary = actions[index]
-		var button := _make_button(str(action["text"]), Vector2(60, 278 + index * 48), Vector2(430, 38), GOLD if index == 0 else Color("74869a"))
+		var button := _make_button("", Vector2.ZERO, Vector2.ZERO, GOLD if index == 0 else Color("74869a"))
+		button.name = "Action%d" % index
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.text = str(action["text"])
+		button.custom_minimum_size.y = 38
 		var callback: Callable = action["callback"]
 		button.pressed.connect(func():
 			_clear_modal()
 			callback.call()
 		)
-		card.add_child(button)
+		buttons.append(button)
+	card.configure(title, body, buttons)
+	modal.resized.connect(func(): card.fit_to_area(modal.size))
+	card.fit_to_area(modal.size)
 	_refresh()
 
 func _sync_state_from_run() -> void:

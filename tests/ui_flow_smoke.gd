@@ -23,7 +23,7 @@ func _run() -> void:
 	screen._select_node("supply_cache")
 	await process_frame
 	var cache_card: Control = screen.modal.get_child(1)
-	var echo_button: Button = cache_card.get_child(4)
+	var echo_button: Button = cache_card.find_child("Action2", true, false)
 	_check("+30 → +38 Echo" in echo_button.text, "Cache UI previews the rounded Press On reward")
 	screen._resolve_cache_choice("echo")
 	await process_frame
@@ -32,9 +32,13 @@ func _run() -> void:
 	screen._show_map()
 	await process_frame
 	var map_card: Control = screen.modal.get_child(1)
-	var map_body: Label = map_card.get_child(1)
-	var first_route_button: Button = map_card.get_child(2)
-	_check(map_body.position.y + map_body.size.y <= first_route_button.position.y, "route details do not overlap Layer 3 buttons")
+	for frame in range(8):
+		await process_frame
+	var map_body: Label = map_card.find_child("Body", true, false)
+	var first_route_button: Button = map_card.find_child("Action0", true, false)
+	_check(map_body.get_global_rect().end.y <= first_route_button.global_position.y, "route details do not overlap Layer 3 buttons")
+	_check(map_body.size.x < map_card.size.x and map_body.get_line_count() > 1, "route text wraps within the modal width")
+	_check(absf(map_body.get_global_rect().get_center().x - map_card.get_global_rect().get_center().x) < 12, "route text is centered within the modal")
 
 	screen._select_node("neglect_wraith_elite")
 	await process_frame
