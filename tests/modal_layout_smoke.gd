@@ -17,6 +17,12 @@ func _run() -> void:
 	var entry_body: Label = entry_card.find_child("Body", true, false)
 	_check(entry_body.get_line_count() > 1, "entry description wraps")
 	_check_bounds(screen)
+	screen._show_reaction({"word": "DUST CUT"}, 1)
+	await _settle()
+	var reaction_body: Label = screen.modal.get_node("ModalCard").find_child("Body", true, false)
+	_check(reaction_body.text == "DUST CUT is moving toward you.\nSpend 1 reserved Focus to change its direction?", "reaction explanation and question start on separate lines")
+	_check(reaction_body.get_line_count() == 2, "reaction question fits on one line at default width")
+	_check_bounds(screen)
 	var long_text := "Long English description with rewards and conditions. ".repeat(100)
 	screen._show_modal("AUTOMATIC LAYOUT TEST", long_text, [
 		{"text": "A long option with a complete explanation and a reward description. ".repeat(8), "callback": screen._show_map},

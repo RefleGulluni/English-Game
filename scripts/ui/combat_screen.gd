@@ -278,7 +278,7 @@ func _show_restore_choice() -> void:
 func _show_reaction(action: Dictionary, cost: int) -> void:
 	_show_modal(
 		"REACTION WINDOW",
-		"%s is moving toward you. Spend %d reserved Focus to change its direction?" % [action["word"], cost],
+		"%s is moving toward you.\nSpend %d reserved Focus to change its direction?" % [action["word"], cost],
 		[
 			{"text": "DEFLECT  ·  %d FOCUS" % cost, "callback": func(): state.resolve_enemy_action(true)},
 			{"text": "TAKE THE HIT", "callback": func(): state.resolve_enemy_action(false)},
