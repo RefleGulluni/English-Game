@@ -43,6 +43,7 @@ func _ready() -> void:
 	state.changed.connect(_refresh)
 	state.reaction_requested.connect(_show_reaction)
 	state.battle_finished.connect(_on_battle_finished)
+	state.inattention_tier_changed.connect(_pulse_status)
 	run_manager.start_run()
 	_show_run_entry()
 
@@ -97,26 +98,35 @@ func _build_player_panel() -> void:
 	panel.add_child(armor_label)
 	focus_label = _make_label("", Vector2(18, 132), Vector2(232, 30), 20, Color("77c9e3"))
 	panel.add_child(focus_label)
-	status_label = _make_label("", Vector2(18, 164), Vector2(232, 30), 11, MUTED)
+	panel.add_child(_make_label("STATUS", Vector2(18, 164), Vector2(232, 18), 11, MUTED))
+	var status_scroll := ScrollContainer.new()
+	status_scroll.position = Vector2(18, 184)
+	status_scroll.size = Vector2(232, 70)
+	status_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	panel.add_child(status_scroll)
+	status_label = _make_label("", Vector2.ZERO, Vector2.ZERO, 11, MUTED)
 	status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	status_label.size = Vector2(232, 30)
-	panel.add_child(status_label)
+	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	status_scroll.add_child(status_label)
 
 	var rule := HSeparator.new()
-	rule.position = Vector2(18, 198)
+	rule.position = Vector2(18, 258)
 	rule.size = Vector2(232, 2)
 	panel.add_child(rule)
-	panel.add_child(_make_label("CORRUPTION", Vector2(18, 211), Vector2(220, 20), 12, MUTED))
+	panel.add_child(_make_label("CORRUPTION", Vector2(18, 270), Vector2(220, 20), 12, MUTED))
 
 	var families := ["Decay", "Obscurity", "Inattention"]
 	var colors := [Color("a98a5d"), Color("7e79bd"), Color("bd7087")]
 	for index in range(families.size()):
 		var family: String = families[index]
-		var y := 240.0 + index * 34.0
+		var y := 294.0 + index * 17.0
 		var label := _make_label("", Vector2(18, y), Vector2(150, 18), 12, INK)
 		panel.add_child(label)
 		corruption_labels[family] = label
 		var bar := _make_progress(Vector2(142, y + 3), Vector2(108, 8), colors[index])
+		# Keep the visible bar 8px tall despite the engine's theme minimum height.
+		bar.size = Vector2(108, 32)
+		bar.scale.y = 0.25
 		panel.add_child(bar)
 		corruption_bars[family] = bar
 
@@ -217,7 +227,7 @@ func _refresh() -> void:
 	hp_bar.value = state.hp
 	armor_label.text = "ARMOR   %d / %d" % [state.armor, CombatState.BASE_ARMOR]
 	focus_label.text = "FOCUS   %d" % state.focus
-	status_label.text = "STATUS   %s" % state.active_status_text()
+	status_label.text = state.active_status_text()
 	for family in corruption_labels:
 		corruption_labels[family].text = "%s  %d" % [family.to_upper(), int(state.corruption[family])]
 		corruption_bars[family].value = int(state.corruption[family])
@@ -488,6 +498,12 @@ func _sync_state_from_run() -> void:
 	state.armor = run.armor
 	state.corruption = run.corruption.duplicate(true)
 	state.statuses = run.statuses.duplicate(true)
+	state.inattention_tier = run.inattention_tier
+
+func _pulse_status(_tier_name: String) -> void:
+	var tween := create_tween()
+	status_label.modulate = GOLD
+	tween.tween_property(status_label, "modulate", Color.WHITE, 0.65)
 
 func _clear_modal() -> void:
 	if is_instance_valid(modal):

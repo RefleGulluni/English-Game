@@ -85,7 +85,7 @@ const BATTLES := [
 		"sequence": ["OVERLOOK", "RAP", "NEGLIGENCE", "RAP"],
 		"actions": [
 			{"word": "RAP", "kind": "physical", "damage": 7, "sense": "a quick, sharp blow", "partial": "A quick physical strike.", "clear": "7 Physical Damage. DEFLECT can react."},
-			{"word": "OVERLOOK", "kind": "concept", "family": "Inattention", "corruption": 14, "sense": "to fail to notice something", "partial": "A warning may be missed.", "clear": "Inattention +14. Intent clarity worsens at 40."},
+			{"word": "OVERLOOK", "kind": "concept", "family": "Inattention", "corruption": 14, "sense": "to fail to notice something", "partial": "A warning may be missed.", "clear": "Inattention +14. DISTRACTED begins at 20: Intent clarity -1."},
 			{"word": "NEGLIGENCE", "kind": "concept", "family": "Inattention", "corruption": 18, "sense": "failure to give something enough care or attention", "partial": "Your response is becoming careless.", "clear": "Inattention +18. Reactions cost 2 Focus at 60."},
 		],
 	},

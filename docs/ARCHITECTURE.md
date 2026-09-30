@@ -82,7 +82,9 @@ The prototype already keeps the framework's important distinctions:
 - Concept Family is combat metadata, not an absolute ontology;
 - Mastery is represented first through information and recognition (`exposure`), not permanent damage inflation;
 - Corruption is pressure, while Status is the consequence of crossing a threshold.
-- Inattention pressure is surfaced before CARELESS: Intent clarity worsens at 40, OBSERVE costs +1 at 50, DEFLECT costs +1 at 60, and CARELESS applies at 80.
+- Inattention v2 stores severity independently from its 0–100 value. DISTRACTED enters at 20 (Intent -1), PRESSURED at 40 (OBSERVE +1 Focus), CARELESS at 60 (DEFLECT +1 Focus), and NEGLIGENT at 80 (exact warnings unavailable; move names and Reaction controls remain). Effects accumulate without further cost increases at 80 or 100.
+- Hysteresis releases these tiers strictly below 10, 30, 50, and 70 respectively. Tier state survives combat snapshots, settlement, and Breathers; combat STABILIZE reduces Corruption by 16, while the Breather choice reduces it by 12.
+- Threshold changes log to Combat Trace and pulse the Status text without a blocking modal. Status names and modifiers each occupy their own row inside a bounded scroll area.
 - Clear Lens makes only the first OBSERVE free; once consumed, all active Inattention cost modifiers still apply.
 - SHATTER damages Structure until its one-time collapse, then deals exposed HP damage on later uses.
 
@@ -98,6 +100,8 @@ The prototype already keeps the framework's important distinctions:
 6. fixed route progression through Event, Cache, Encounter, and Exit.
 
 `tests/ui_flow_smoke.gd` instantiates the real main scene and walks through Event → Cache → Elite → Breather → Relic → Extract to verify that presentation and rules stay connected.
+
+`tests/inattention_v2_smoke.gd` checks exact entry/release boundaries, multi-tier recovery, Elite pacing, STABILIZE, warning degradation, status rows, and cross-combat hysteresis. `tests/modal_layout_smoke.gd` checks modal wrapping, sentence breaks, scrolling, and resizing.
 
 Run it with:
 

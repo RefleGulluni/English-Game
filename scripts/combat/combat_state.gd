@@ -4,15 +4,14 @@ extends RefCounted
 signal changed
 signal battle_finished(victory: bool)
 signal reaction_requested(action: Dictionary, cost: int)
+signal inattention_tier_changed(tier_name: String)
 
 const MAX_HP := 50
 const BASE_ARMOR := 12
 const BASE_FOCUS := 3
 const MAX_CARRY := 1
-const INATTENTION_CLARITY_THRESHOLD := 40
-const INATTENTION_OBSERVE_COST_THRESHOLD := 50
-const INATTENTION_REACTION_COST_THRESHOLD := 60
-const CARELESS_THRESHOLD := 80
+const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
+var inattention_tier := 0
 
 var battle_index := 0
 var turn := 0
@@ -52,6 +51,8 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	focus = BASE_FOCUS
 	corruption = run_snapshot.get("corruption", {"Decay": 0, "Obscurity": 0, "Inattention": 0}).duplicate(true)
 	statuses = run_snapshot.get("statuses", {}).duplicate(true)
+	inattention_tier = int(run_snapshot.get("inattention_tier", INATTENTION.tier_from_statuses(statuses)))
+	intent = {}
 	relics.clear()
 	for relic in run_snapshot.get("relics", []):
 		relics.append(str(relic))
@@ -88,7 +89,7 @@ func skill_cost(skill_name: String) -> int:
 	if skill_name == "OBSERVE":
 		if "clear_lens" in relics and not observe_used_this_battle:
 			return 0
-		if int(corruption["Inattention"]) >= INATTENTION_OBSERVE_COST_THRESHOLD:
+		if inattention_tier >= 2:
 			cost += 1
 	return cost
 
@@ -255,7 +256,7 @@ func _base_intent_clarity(action: Dictionary) -> int:
 		clarity -= 1
 	if int(corruption["Obscurity"]) >= 30:
 		clarity -= 1
-	if int(corruption["Inattention"]) >= INATTENTION_CLARITY_THRESHOLD:
+	if inattention_tier >= 1:
 		clarity -= 1
 	clarity -= next_intent_penalty
 	next_intent_penalty = 0
@@ -288,7 +289,15 @@ func _enemy_resolution_text(action: Dictionary) -> String:
 	return result + "."
 
 func _update_threshold_statuses() -> void:
-	_set_threshold_status("CARELESS", int(corruption["Inattention"]) >= CARELESS_THRESHOLD)
+	var previous := inattention_tier
+	inattention_tier = INATTENTION.update_tier(previous, int(corruption["Inattention"]))
+	INATTENTION.sync_statuses(statuses, inattention_tier)
+	if previous != inattention_tier:
+		var tier_name: String = INATTENTION.NAMES[inattention_tier]
+		_add_log("INATTENTION %s — %s" % ["THRESHOLD CROSSED" if inattention_tier > previous else "RECOVERED", tier_name])
+		if previous == 0 and inattention_tier > 0 and not intent.is_empty():
+			intent_clarity = maxi(0, intent_clarity - 1)
+		inattention_tier_changed.emit(tier_name)
 	_set_threshold_status("FRAGILE", int(corruption["Decay"]) >= 60)
 
 func _set_threshold_status(status: String, active: bool) -> void:
@@ -309,16 +318,22 @@ func _tick_statuses() -> void:
 		_add_log("%s fades." % status)
 
 func clarity_name() -> String:
+	if inattention_tier == 4:
+		return "DEGRADED"
 	return ["OBSCURED", "PARTIAL", "CLEAR"][intent_clarity]
 
 func intent_title() -> String:
 	if intent.is_empty():
 		return "—"
+	if inattention_tier == 4:
+		return str(intent["word"])
 	return "Something is coming…" if intent_clarity == 0 else str(intent["word"])
 
 func intent_description() -> String:
 	if intent.is_empty():
 		return ""
+	if inattention_tier == 4:
+		return "%s\n\nWARNING DEGRADED · Exact damage and effects are unavailable.\nWord sense · %s" % [intent["partial"], intent["sense"]]
 	if intent_clarity == 0:
 		return "The pattern is present, but its meaning is not yet readable."
 	if intent_clarity == 1:
@@ -335,26 +350,24 @@ func dominant_corruption_family() -> String:
 	return family
 
 func active_status_text() -> String:
-	var names: Array[String] = []
+	var names: Array[String] = [INATTENTION.NAMES[inattention_tier]]
 	for status in statuses:
-		names.append(str(status))
+		if not str(status) in INATTENTION.NAMES:
+			names.append(str(status))
 	var pressure: Array[String] = []
-	var inattention := int(corruption["Inattention"])
-	if inattention >= INATTENTION_CLARITY_THRESHOLD:
-		pressure.append("INTENT -1")
-	if inattention >= INATTENTION_OBSERVE_COST_THRESHOLD:
+	if inattention_tier >= 1:
+		pressure.append("INTENT DEGRADED" if inattention_tier == 4 else "INTENT -1")
+	if inattention_tier >= 2:
 		pressure.append("OBSERVE +1 FOCUS")
-	if inattention >= INATTENTION_REACTION_COST_THRESHOLD:
+	if inattention_tier >= 3:
 		pressure.append("DEFLECT +1 FOCUS")
-	if names.is_empty() and not pressure.is_empty():
-		names.append("PRESSURED")
+	if inattention_tier == 4:
+		pressure.append("WARNING RELIABILITY REDUCED")
 	names.append_array(pressure)
-	if names.is_empty():
-		return "STABLE"
-	return ", ".join(names)
+	return "\n".join(names)
 
 func reaction_cost() -> int:
-	return 2 if int(corruption["Inattention"]) >= INATTENTION_REACTION_COST_THRESHOLD else 1
+	return 2 if inattention_tier >= 3 else 1
 
 func _add_log(text: String) -> void:
 	log_lines.append(text)

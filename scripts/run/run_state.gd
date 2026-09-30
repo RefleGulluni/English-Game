@@ -13,9 +13,10 @@ const PRESS_ON_MULTIPLIER := 1.25
 
 const TRANSIENT_STATUSES := ["WITHERED", "EXPOSED", "STAGGERED", "BLINDED"]
 const LINGERING_THRESHOLDS := {
-	"CARELESS": {"family": "Inattention", "apply": 80, "clear": 80},
 	"FRAGILE": {"family": "Decay", "apply": 60, "clear": 60},
 }
+const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
+var inattention_tier := 0
 
 var hp := MAX_HP
 var armor := MAX_ARMOR
@@ -37,6 +38,7 @@ func reset() -> void:
 	armor = MAX_ARMOR
 	corruption = {"Decay": 0, "Obscurity": 0, "Inattention": 0}
 	statuses.clear()
+	inattention_tier = 0
 	echo = 0
 	current_layer = 0
 	current_node_id = "entry"
@@ -65,6 +67,7 @@ func combat_snapshot() -> Dictionary:
 		"armor": armor,
 		"corruption": corruption.duplicate(true),
 		"statuses": statuses.duplicate(true),
+		"inattention_tier": inattention_tier,
 		"relics": relics.duplicate(),
 	}
 
@@ -73,6 +76,7 @@ func capture_combat(combat: CombatState) -> void:
 	armor = combat.armor
 	corruption = combat.corruption.duplicate(true)
 	statuses = combat.statuses.duplicate(true)
+	inattention_tier = combat.inattention_tier
 
 func apply_post_combat() -> Dictionary:
 	var report := {
@@ -162,6 +166,8 @@ func condition_text() -> String:
 	]
 
 func _update_lingering_statuses() -> void:
+	inattention_tier = INATTENTION.update_tier(maxi(inattention_tier, INATTENTION.tier_from_statuses(statuses)), int(corruption["Inattention"]))
+	INATTENTION.sync_statuses(statuses, inattention_tier)
 	for status in LINGERING_THRESHOLDS:
 		var rule: Dictionary = LINGERING_THRESHOLDS[status]
 		var value := int(corruption[str(rule["family"])])

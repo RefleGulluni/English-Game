@@ -23,13 +23,14 @@ func _test_post_combat_rules() -> void:
 	run.hp = 31
 	run.armor = 2
 	run.corruption = {"Decay": 34, "Obscurity": 28, "Inattention": 82}
-	run.statuses = {"WITHERED": 2, "CARELESS": 99}
+	run.statuses = {"WITHERED": 2, "NEGLIGENT": 99}
+	run.inattention_tier = 4
 	var report := run.apply_post_combat()
 	_check(run.hp == 31, "HP persists after combat")
 	_check(run.armor == 6 and report["armor_after"] == 6, "Armor rebuilds by ceil(30 percent Max Armor)")
 	_check(run.corruption == {"Decay": 29, "Obscurity": 23, "Inattention": 77}, "each Corruption family dissipates by 5")
 	_check(not run.statuses.has("WITHERED"), "Transient Status clears after combat")
-	_check(not run.statuses.has("CARELESS"), "Lingering Status clears when Corruption falls below its threshold")
+	_check(run.statuses.has("NEGLIGENT") and run.inattention_tier == 4, "NEGLIGENT persists at 77 until Inattention falls below 70")
 
 func _test_breather_and_reward_multiplier() -> void:
 	var run := RunState.new()

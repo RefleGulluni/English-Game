@@ -76,7 +76,7 @@ func _test_inattention_feedback_and_clear_lens() -> void:
 	_check(state.skill_cost("OBSERVE") == 2, "high Inattention still applies after Clear Lens is consumed")
 	_check(state.reaction_cost() == 2, "high Inattention increases DEFLECT cost")
 	var feedback := state.active_status_text()
-	_check("CARELESS" in feedback and "OBSERVE +1 FOCUS" in feedback and "DEFLECT +1 FOCUS" in feedback, "Status HUD explains active Inattention consequences")
+	_check("NEGLIGENT" in feedback and "OBSERVE +1 FOCUS" in feedback and "DEFLECT +1 FOCUS" in feedback, "Status HUD explains active Inattention consequences")
 
 func _check(condition: bool, description: String) -> void:
 	if not condition:
