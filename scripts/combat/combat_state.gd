@@ -10,8 +10,10 @@ const MAX_HP := 50
 const BASE_ARMOR := 12
 const BASE_FOCUS := 3
 const MAX_CARRY := 1
+const STABILIZE_AMOUNT := 8
 const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
 var inattention_tier := 0
+var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
 
 var battle_index := 0
 var turn := 0
@@ -53,6 +55,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	statuses = run_snapshot.get("statuses", {}).duplicate(true)
 	inattention_tier = int(run_snapshot.get("inattention_tier", INATTENTION.tier_from_statuses(statuses)))
 	intent = {}
+	knowledge = run_snapshot.get("knowledge", preload("res://scripts/run/word_knowledge.gd").new())
 	relics.clear()
 	for relic in run_snapshot.get("relics", []):
 		relics.append(str(relic))
@@ -109,6 +112,8 @@ func use_skill(skill_name: String, restore_target: String = "") -> bool:
 			focus -= cost
 			observe_used_this_battle = true
 			intent_clarity = mini(2, intent_clarity + 1)
+			if str(intent.get("word", "")) == "ERODE":
+				knowledge.record_combat_context(intent_clarity == 2 and inattention_tier < 4)
 			metrics["observe_uses"] += 1
 			_add_log("OBSERVE · Intent is now %s." % clarity_name())
 		"SHATTER":
@@ -144,7 +149,7 @@ func use_skill(skill_name: String, restore_target: String = "") -> bool:
 				return false
 			focus -= cost
 			var before := int(corruption[family])
-			corruption[family] = maxi(0, before - 16)
+			corruption[family] = maxi(0, before - STABILIZE_AMOUNT)
 			metrics["stabilize_uses"] += 1
 			metrics["intents_countered"] += 1
 			_add_log("STABILIZE · %s %d → %d." % [family, before, int(corruption[family])])
@@ -214,6 +219,8 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 		if action.has("status"):
 			statuses[str(action["status"])] = int(action["duration"])
 		_add_log(_enemy_resolution_text(action))
+		if str(action["word"]) == "ERODE":
+			knowledge.record_combat_context(true)
 
 	exposure[str(action["word"])] = int(exposure.get(str(action["word"]), 0)) + 1
 	_update_threshold_statuses()
@@ -233,6 +240,9 @@ func _begin_player_turn(carry: int, keep_intent: bool) -> void:
 	focus = BASE_FOCUS + carry
 	if not keep_intent:
 		intent = _choose_intent()
+		if str(intent["word"]) == "ERODE":
+			knowledge.encounter()
+			knowledge.root_combat_seen = true
 		intent_bound_once = false
 		intent_clarity = _base_intent_clarity(intent)
 	_add_log("TURN %d · Focus %d." % [turn, focus])
@@ -252,6 +262,8 @@ func _base_intent_clarity(action: Dictionary) -> int:
 	var clarity := 1 if known > 0 else 0
 	if battle_index == 0 and action["kind"] == "physical":
 		clarity = 2
+	if str(action["word"]) == "ERODE" and knowledge.is_recognized():
+		clarity += 1
 	if "OBSCURITY" in enemy["families"]:
 		clarity -= 1
 	if int(corruption["Obscurity"]) >= 30:
@@ -334,11 +346,26 @@ func intent_description() -> String:
 		return ""
 	if inattention_tier == 4:
 		return "%s\n\nWARNING DEGRADED · Exact damage and effects are unavailable.\nWord sense · %s" % [intent["partial"], intent["sense"]]
+	var extra := knowledge_intent_hint()
 	if intent_clarity == 0:
-		return "The pattern is present, but its meaning is not yet readable."
+		return "The pattern is present, but its meaning is not yet readable." + extra
 	if intent_clarity == 1:
-		return str(intent["partial"])
-	return "%s\n\nWord sense · %s" % [intent["clear"], intent["sense"]]
+		return str(intent["partial"]) + extra
+	return "%s\n\nWord sense · %s%s" % [intent["clear"], intent["sense"], extra]
+
+func knowledge_intent_hint() -> String:
+	if intent.is_empty() or not knowledge.is_recognized():
+		return ""
+	var is_erode := str(intent["word"]) == "ERODE"
+	var structural_decay := str(intent.get("family", "")) == "Decay" and intent.has("armor_damage")
+	if not is_erode and not (structural_decay and knowledge.has_insight()):
+		return ""
+	var hint := "\n\nKNOWN WORD · ERODE · %s" % knowledge.current_state
+	if is_erode:
+		hint += "\nRecognized Concept: gradual weakening\nConcept Family: DECAY"
+	if knowledge.has_insight():
+		hint += "\nKnown Mechanism: gradual structural weakening\nLikely effect: Armor loss + Decay gain"
+	return hint
 
 func dominant_corruption_family() -> String:
 	var family := ""

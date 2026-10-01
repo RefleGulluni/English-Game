@@ -1,4 +1,4 @@
-# Mini Run Prototype 0.3 Architecture
+# Mini Run Prototype 0.4 Architecture
 
 ## Product boundary
 
@@ -14,9 +14,9 @@ This project keeps the Combat Prototype rules and places them inside the first c
 - a fixed four-layer route with meaningful path choices;
 - cross-Encounter HP, Armor, Corruption, and Status rules;
 - Breather, Event, Cache, Prototype Relic, Extract, and Run Result phases;
-- no draw pile and no mandatory language quiz.
+- no draw pile; optional single-word context and production choices.
 
-Town exploration, AI NPCs, Companions, procedural map generation, full Modifier builds, permanent Knowledge progression, the first story death, and formal art remain outside Prototype 0.3.
+Town exploration, AI NPCs, Companions, procedural map generation, full Modifier builds, permanent Knowledge progression, the first story death, and formal art remain outside Prototype 0.4. Run-local ERODE knowledge is implemented in `word_knowledge.gd` and shared through combat snapshots; it is distinct from automatic combat exposure.
 
 ## Runtime layers
 
@@ -83,7 +83,7 @@ The prototype already keeps the framework's important distinctions:
 - Mastery is represented first through information and recognition (`exposure`), not permanent damage inflation;
 - Corruption is pressure, while Status is the consequence of crossing a threshold.
 - Inattention v2 stores severity independently from its 0–100 value. DISTRACTED enters at 20 (Intent -1), PRESSURED at 40 (OBSERVE +1 Focus), CARELESS at 60 (DEFLECT +1 Focus), and NEGLIGENT at 80 (exact warnings unavailable; move names and Reaction controls remain). Effects accumulate without further cost increases at 80 or 100.
-- Hysteresis releases these tiers strictly below 10, 30, 50, and 70 respectively. Tier state survives combat snapshots, settlement, and Breathers; combat STABILIZE reduces Corruption by 16, while the Breather choice reduces it by 12.
+- Hysteresis releases these tiers strictly below 10, 30, 50, and 70 respectively. Tier state survives combat snapshots, settlement, and Breathers; combat STABILIZE reduces Corruption by 8, while the Breather choice reduces it by 12.
 - Threshold changes log to Combat Trace and pulse the Status text without a blocking modal. Status names and modifiers each occupy their own row inside a bounded scroll area.
 - Clear Lens makes only the first OBSERVE free; once consumed, all active Inattention cost modifiers still apply.
 - SHATTER damages Structure until its one-time collapse, then deals exposed HP damage on later uses.
@@ -121,4 +121,4 @@ Run it with:
 
 ## Next implementation milestone
 
-Playtest the full 15–25 minute loop and tune rewards, recovery, and route pressure. Build Prototype 0.4 can then add Modifier Words, more Relics, and Semantic Combos without changing the Run/Combat boundary.
+Playtest whether ERODE understanding produces a noticeable tactical advantage. Modifier Words, larger vocabulary, retention, and persistent progression remain deferred. See `KNOWLEDGE_LOOP.md` for the implemented evidence and presentation rules.

@@ -34,7 +34,7 @@ const SKILLS := {
 		"cost": 1,
 		"family": "SEMANTIC PROTECTION",
 		"sense": "to make something steady or less likely to change",
-		"effect": "Reduce the dominant Corruption family by 16.",
+		"effect": "Reduce the dominant Corruption family by 8.",
 		"accent": Color("68c99b"),
 	},
 	"RESTORE": {

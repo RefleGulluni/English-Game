@@ -12,6 +12,8 @@ var state := CombatState.new()
 var run_manager := RunManager.new()
 var pending_combat_result: Dictionary = {}
 var modal: Control
+var knowledge_notice: Label
+var lexicon_open := false
 
 var stage_label: Label
 var hp_label: Label
@@ -31,6 +33,7 @@ var enemy_armor_bar: ProgressBar
 var intent_badge: Label
 var intent_title: Label
 var intent_text: RichTextLabel
+var knowledge_indicator: Label
 var tutorial_label: Label
 var log_text: RichTextLabel
 var detail_label: RichTextLabel
@@ -45,6 +48,7 @@ func _ready() -> void:
 	state.battle_finished.connect(_on_battle_finished)
 	state.inattention_tier_changed.connect(_pulse_status)
 	run_manager.start_run()
+	run_manager.state.knowledge.changed.connect(_on_knowledge_changed)
 	_show_run_entry()
 
 func _draw() -> void:
@@ -61,7 +65,7 @@ func _build_interface() -> void:
 	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
 	add_child(title)
 
-	var subtitle := _make_label("MINI RUN PROTOTYPE 0.3", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
+	var subtitle := _make_label("MINI RUN PROTOTYPE 0.4", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
 	add_child(subtitle)
 
 	stage_label = _make_label("", Vector2(360, 19), Vector2(560, 42), 15, INK)
@@ -81,8 +85,13 @@ func _build_interface() -> void:
 	end_turn_button.pressed.connect(_on_end_turn)
 	add_child(end_turn_button)
 
-	var footer := _make_label("Every encounter leaves a cost. Every route is a decision.", Vector2(28, 676), Vector2(820, 28), 14, Color("708197"))
-	add_child(footer)
+	knowledge_notice = _make_label("Knowledge = Tactical Advantage", Vector2(28, 676), Vector2(780, 28), 14, Color("708197"))
+	add_child(knowledge_notice)
+	var lexicon_button := _make_button("LEXICON", Vector2(824, 670), Vector2(200, 38), GOLD)
+	lexicon_button.name = "LexiconButton"
+	lexicon_button.z_index = 101
+	lexicon_button.pressed.connect(_show_lexicon)
+	add_child(lexicon_button)
 
 func _build_player_panel() -> void:
 	var panel := _make_panel(Vector2(24, 82), Vector2(268, 352), PANEL)
@@ -157,6 +166,8 @@ func _build_enemy_panel() -> void:
 	intent_badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	intent_badge.add_theme_stylebox_override("normal", _style(Color("26384c"), Color.TRANSPARENT, 6, 5))
 	intent_panel.add_child(intent_badge)
+	knowledge_indicator = _make_label("", Vector2(132, 16), Vector2(390, 23), 11, GOLD)
+	intent_panel.add_child(knowledge_indicator)
 	intent_title = _make_label("", Vector2(16, 45), Vector2(510, 28), 20, INK)
 	intent_panel.add_child(intent_title)
 	intent_text = RichTextLabel.new()
@@ -164,7 +175,7 @@ func _build_enemy_panel() -> void:
 	intent_text.size = Vector2(510, 58)
 	intent_text.bbcode_enabled = true
 	intent_text.fit_content = false
-	intent_text.scroll_active = false
+	intent_text.scroll_active = true
 	intent_text.add_theme_font_size_override("normal_font_size", 13)
 	intent_text.add_theme_color_override("default_color", Color("b9c5d2"))
 	intent_panel.add_child(intent_text)
@@ -245,6 +256,7 @@ func _refresh() -> void:
 	intent_badge.add_theme_color_override("font_color", _clarity_color(state.intent_clarity))
 	intent_title.text = state.intent_title()
 	intent_text.text = state.intent_description()
+	knowledge_indicator.text = "KNOWN WORD · ERODE · %s" % state.knowledge.current_state if not state.knowledge_intent_hint().is_empty() else ""
 	tutorial_label.text = "TACTICAL NOTE · %s" % state.enemy["tutorial"]
 	log_text.text = "\n\n".join(state.log_lines)
 	log_text.scroll_to_line(maxi(0, state.log_lines.size() - 1))
@@ -321,6 +333,7 @@ func _show_run_summary() -> void:
 
 func _restart_run() -> void:
 	_clear_modal()
+	knowledge_notice.text = "Knowledge = Tactical Advantage"
 	state.metrics = {"observe_uses": 0, "bind_uses": 0, "stabilize_uses": 0, "deflect_uses": 0, "focus_reserved": 0, "intents_countered": 0}
 	state.exposure.clear()
 	run_manager.run_index += 1
@@ -332,11 +345,112 @@ func _show_run_entry() -> void:
 	_show_modal(
 		"FRACTURE ENTRY",
 		"A short route opens through unstable language. HP and Corruption will persist until you extract or the connection breaks.",
-		[{"text": "ENTER THE FRACTURE", "callback": _show_map}]
+		[{"text": "ENTER THE FRACTURE", "callback": _show_inscription}]
 	)
+
+func _on_knowledge_changed(message: String) -> void:
+	knowledge_notice.text = message
+	state._add_log(message)
+	if not state.enemy.is_empty():
+		_refresh()
+
+func _show_inscription() -> void:
+	var word := run_manager.state.knowledge
+	word.encounter()
+	_show_modal("ERODED INSCRIPTION", "The inscription has been eroded by years of rain.\n\nThe stone is worn smooth. Only fragments of the old letters remain.", [
+		{"text": "INFER FROM CONTEXT", "callback": _show_recognition_question},
+		{"text": "EXAMINE", "callback": _examine_inscription},
+		{"text": "IGNORE", "callback": _finish_inscription},
+	])
+
+func _examine_inscription() -> void:
+	_show_modal("EXAMINE THE INSCRIPTION", "Rain has passed over this stone for many years.\nIts edges and letters have slowly worn away.", [
+		{"text": "INFER FROM CONTEXT", "callback": _show_recognition_question},
+		{"text": "CONTINUE WITHOUT GUESSING", "callback": _finish_inscription},
+	])
+
+func _show_recognition_question() -> void:
+	_show_modal("ERODE · INFER FROM CONTEXT", "The inscription has been eroded by years of rain.\n\nWhat does eroded mean here?", [
+		{"text": "gradually wear away", "callback": _answer_recognition.bind("wear")},
+		{"text": "suddenly explode", "callback": _answer_recognition.bind("explode")},
+		{"text": "tightly connect", "callback": _answer_recognition.bind("connect")},
+	])
+
+func _answer_recognition(answer: String) -> void:
+	var correct := answer == "wear"
+	if correct:
+		run_manager.state.knowledge.recognize("inscription")
+	_show_modal("ERODE · RECOGNIZED" if correct else "ERODE · KEEP EXPLORING", "Recognition Evidence +1.\nThe stone has gradually worn away.\nLook for ERODE when you meet ROOT HUSK." if correct else "That meaning does not match the slow wear on the stone.\nNo resources are lost. You may find more evidence in combat.", [
+		{"text": "CONTINUE", "callback": _finish_inscription},
+	])
+
+func _finish_inscription() -> void:
+	run_manager.state.knowledge.inscription_completed = true
+	_show_map()
+
+func _show_lexicon() -> void:
+	if lexicon_open:
+		return
+	lexicon_open = true
+	var previous := modal
+	if is_instance_valid(previous):
+		previous.hide()
+	modal = null
+	var word := run_manager.state.knowledge
+	_show_modal("LEXICON" if word.current_state == "UNKNOWN" else "LEXICON · ERODE", "No words recorded yet.\nExplore the Fracture to discover a word." if word.current_state == "UNKNOWN" else word.entry_text(), [
+		{"text": "CLOSE LEXICON", "callback": _close_lexicon.bind(previous)},
+	])
+
+func _close_lexicon(previous: Control) -> void:
+	lexicon_open = false
+	if is_instance_valid(previous):
+		modal = previous
+		previous.show()
+	_refresh()
+
+func _show_transfer_context() -> void:
+	run_manager.state.knowledge.transfer_offered = true
+	_show_modal("ERODE · A NEW CONTEXT", "Water erodes the stone slowly.\n\nWhat is happening?", [
+		{"text": "The stone is slowly being worn away.", "callback": _answer_transfer.bind("wear")},
+		{"text": "The stone is suddenly exploding.", "callback": _answer_transfer.bind("explode")},
+		{"text": "The stone is becoming stronger.", "callback": _answer_transfer.bind("stronger")},
+		{"text": "SKIP AND CONTINUE", "callback": _show_map},
+	])
+
+func _answer_transfer(answer: String) -> void:
+	var correct := answer == "wear"
+	run_manager.state.knowledge.record_transfer(correct)
+	if correct:
+		_show_modal("ERODE · CONTEXT EVIDENCE", "Context Evidence gained.\nThe same gradual weakening appears in a new setting.\nERODE Insight predicts structural weakening in combat.", [
+			{"text": "TRY USING THE WORD", "callback": _show_production_question},
+			{"text": "CONTINUE TO MAP", "callback": _show_map},
+		])
+	else:
+		_show_modal("ERODE · KEEP EXPLORING", "This sentence describes slow wear, not an explosion or strengthening.\nYour existing knowledge is preserved. No resources are lost.", [
+			{"text": "TRY THE CONTEXT AGAIN", "callback": _show_transfer_context},
+			{"text": "CONTINUE TO MAP", "callback": _show_map},
+		])
+
+func _show_production_question() -> void:
+	_show_modal("ERODE · USE THE WORD", "The river slowly ______ the cliff.", [
+		{"text": "erodes", "callback": _answer_production.bind("erodes")},
+		{"text": "binds", "callback": _answer_production.bind("binds")},
+		{"text": "restores", "callback": _answer_production.bind("restores")},
+		{"text": "SKIP AND CONTINUE", "callback": _show_map},
+	])
+
+func _answer_production(answer: String) -> void:
+	var correct := answer == "erodes"
+	run_manager.state.knowledge.record_production(correct)
+	_show_modal("ERODE · USABLE" if correct else "ERODE · TRY ANOTHER MEANING", "Production Evidence +1.\nThe river slowly erodes the cliff.\nERODE INSIGHT unlocked: Armor loss + Decay gain can be anticipated." if correct else "The river wears the cliff away gradually.\nYour existing evidence is preserved.", [
+		{"text": "CONTINUE TO MAP" if correct else "TRY AGAIN", "callback": _show_map if correct else _show_production_question},
+	])
 
 func _show_map() -> void:
 	var run := run_manager.state
+	if run.knowledge.root_combat_seen and run.current_layer >= 1 and not run.knowledge.transfer_offered:
+		_show_transfer_context()
+		return
 	var lines: Array[String] = [run.condition_text(), "", "Choose the next path:"]
 	if run.next_reward_multiplier > 1.0:
 		lines.append("PRESS ON ACTIVE · Next Echo reward ×%.2f" % run.next_reward_multiplier)

@@ -27,7 +27,7 @@ func _initialize() -> void:
 
 	state.corruption["Inattention"] = 38
 	state.use_skill("STABILIZE")
-	_check(state.corruption["Inattention"] == 22, "STABILIZE reduces dominant Corruption by 16")
+	_check(state.corruption["Inattention"] == 30, "STABILIZE reduces dominant Corruption by 8")
 
 	state.hp = 30
 	state.use_skill("RESTORE", "hp")

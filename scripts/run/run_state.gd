@@ -17,6 +17,7 @@ const LINGERING_THRESHOLDS := {
 }
 const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
 var inattention_tier := 0
+var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
 
 var hp := MAX_HP
 var armor := MAX_ARMOR
@@ -34,6 +35,7 @@ var victory := false
 var history: Array[String] = []
 
 func reset() -> void:
+	knowledge.reset()
 	hp = MAX_HP
 	armor = MAX_ARMOR
 	corruption = {"Decay": 0, "Obscurity": 0, "Inattention": 0}
@@ -68,6 +70,7 @@ func combat_snapshot() -> Dictionary:
 		"corruption": corruption.duplicate(true),
 		"statuses": statuses.duplicate(true),
 		"inattention_tier": inattention_tier,
+		"knowledge": knowledge,
 		"relics": relics.duplicate(),
 	}
 
@@ -77,6 +80,7 @@ func capture_combat(combat: CombatState) -> void:
 	corruption = combat.corruption.duplicate(true)
 	statuses = combat.statuses.duplicate(true)
 	inattention_tier = combat.inattention_tier
+	knowledge = combat.knowledge
 
 func apply_post_combat() -> Dictionary:
 	var report := {
