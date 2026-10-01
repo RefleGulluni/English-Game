@@ -12,6 +12,9 @@ var recognition_evidence := 0
 var context_evidence := 0
 var production_evidence := 0
 var gameplay_unlocks: Array[String] = []
+var unlocked_cards: Array[String] = []
+var discovered_combos: Array[String] = []
+var enemy_records: Dictionary = {}
 var evidence_sources: Array[String] = []
 var inscription_completed := false
 var root_combat_seen := false
@@ -25,6 +28,9 @@ func reset() -> void:
 	context_evidence = 0
 	production_evidence = 0
 	gameplay_unlocks.clear()
+	unlocked_cards.clear()
+	discovered_combos.clear()
+	enemy_records.clear()
 	evidence_sources.clear()
 	inscription_completed = false
 	root_combat_seen = false
@@ -90,6 +96,8 @@ func _advance() -> void:
 			gameplay_unlocks.append("erode_insight")
 	if production_evidence > 0 and transfer_correct:
 		current_state = "USABLE"
+		if not "ERODE" in unlocked_cards:
+			unlocked_cards.append("ERODE")
 	changed.emit("ERODE — %s" % current_state if before != current_state else "ERODE — Evidence recorded")
 
 func entry_text() -> String:
@@ -98,4 +106,8 @@ func entry_text() -> String:
 		advantage = "Recognition: ERODE Intent gains +1 clarity before Corruption penalties."
 	if has_insight():
 		advantage += "\nERODE INSIGHT: gradual structural weakening.\nLikely effect: Armor loss + Decay gain."
+	if not unlocked_cards.is_empty():
+		advantage += "\nBuild Card: ERODE (USABLE)"
+	if "fractured_erosion" in discovered_combos:
+		advantage += "\nDISCOVERED COMBO — ERODE × SHATTER\nFRACTURED EROSION: duration +1; Structure tick -3."
 	return "Word: %s\nCurrent State: %s\nKnown Meaning: %s\nConcept Family: %s\n\nRecognition Evidence: %d\nContext Evidence: %d\nProduction Evidence: %d\n\nGameplay Knowledge:\n%s" % [lemma, current_state, known_meaning, concept_family, recognition_evidence, context_evidence, production_evidence, advantage]

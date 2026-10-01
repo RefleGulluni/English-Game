@@ -8,9 +8,9 @@ func _initialize() -> void:
 	_check(state.intent["word"] == "ERODE", "Root Husk opens with ERODE")
 	_check(state.intent_clarity == 0, "unknown hostile Word starts Obscured")
 
-	state.use_skill("OBSERVE")
+	preload("res://tests/mechanics_fixture.gd").play(state, "OBSERVE")
 	_check(state.intent_clarity == 1 and state.focus == 2, "OBSERVE reveals one level for 1 Focus")
-	state.use_skill("BIND")
+	preload("res://tests/mechanics_fixture.gd").play(state, "BIND")
 	state.end_player_turn()
 	_check(state.intent["word"] == "ERODE" and state.turn == 2, "BIND delays rather than deletes the intent")
 
@@ -21,16 +21,17 @@ func _initialize() -> void:
 
 	var hp_before := state.hp
 	var armor_before := state.armor
+	state.deck.hand.append(state.deck.make_card("DEFLECT"))
 	state.resolve_enemy_action(true)
 	_check(state.hp == hp_before and state.armor == armor_before - 2, "DEFLECT reduces LASH to 25 percent")
 	_check(state.focus == 4, "reserved Focus carries at most 1 into a 3 Focus turn")
 
 	state.corruption["Inattention"] = 38
-	state.use_skill("STABILIZE")
+	preload("res://tests/mechanics_fixture.gd").play(state, "STABILIZE")
 	_check(state.corruption["Inattention"] == 30, "STABILIZE reduces dominant Corruption by 8")
 
 	state.hp = 30
-	state.use_skill("RESTORE", "hp")
+	preload("res://tests/mechanics_fixture.gd").play(state, "RESTORE", "hp")
 	_check(state.hp == 38, "RESTORE recovers 8 HP when not Withered")
 
 	_test_shatter_branches()
@@ -50,13 +51,13 @@ func _test_shatter_branches() -> void:
 	state.start_battle(0)
 	state.focus = 20
 	var starting_hp := int(state.enemy["hp"])
-	state.use_skill("SHATTER")
-	_check(int(state.enemy["armor"]) == 10 and int(state.enemy["hp"]) == starting_hp, "SHATTER only damages Structure while Structure remains")
-	state.use_skill("SHATTER")
-	_check(int(state.enemy["armor"]) == 2 and int(state.enemy["hp"]) == starting_hp, "repeated SHATTER does not leak HP damage through Structure")
-	state.use_skill("SHATTER")
-	_check(int(state.enemy["armor"]) == 0 and int(state.enemy["hp"]) == starting_hp - 6, "SHATTER triggers Structure Collapse exactly when Structure reaches zero")
-	state.use_skill("SHATTER")
+	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
+	_check(int(state.enemy["structure"]) == 10 and int(state.enemy["hp"]) == starting_hp, "SHATTER only damages Structure while Structure remains")
+	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
+	_check(int(state.enemy["structure"]) == 2 and int(state.enemy["hp"]) == starting_hp, "repeated SHATTER does not leak HP damage through Structure")
+	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
+	_check(int(state.enemy["structure"]) == 0 and int(state.enemy["hp"]) == starting_hp - 6, "SHATTER triggers Structure Collapse exactly when Structure reaches zero")
+	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
 	_check(int(state.enemy["hp"]) == starting_hp - 16, "SHATTER deals exposed damage after Structure has collapsed")
 	var collapse_logs := 0
 	for line in state.log_lines:
@@ -72,7 +73,7 @@ func _test_inattention_feedback_and_clear_lens() -> void:
 		"relics": ["clear_lens"],
 	})
 	_check(state.skill_cost("OBSERVE") == 0, "Clear Lens makes the first high-Inattention OBSERVE free")
-	state.use_skill("OBSERVE")
+	preload("res://tests/mechanics_fixture.gd").play(state, "OBSERVE")
 	_check(state.skill_cost("OBSERVE") == 2, "high Inattention still applies after Clear Lens is consumed")
 	_check(state.reaction_cost() == 2, "high Inattention increases DEFLECT cost")
 	var feedback := state.active_status_text()

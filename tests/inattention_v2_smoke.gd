@@ -19,9 +19,9 @@ func _initialize() -> void:
 	for row in [[44, 2, 28, 1], [64, 3, 48, 2], [84, 4, 68, 3]]:
 		combat.start_battle(2, {"corruption": {"Decay": 0, "Obscurity": 0, "Inattention": row[0]}})
 		_check(combat.inattention_tier == row[1], "correct initial severity")
-		combat.use_skill("STABILIZE")
+		preload("res://tests/mechanics_fixture.gd").play(combat, "STABILIZE")
 		_check(combat.inattention_tier == row[1], "one -8 STABILIZE retains the tier above its release threshold")
-		combat.use_skill("STABILIZE")
+		preload("res://tests/mechanics_fixture.gd").play(combat, "STABILIZE")
 		_check(combat.corruption["Inattention"] == row[2] and combat.inattention_tier == row[3], "STABILIZE crosses release threshold")
 	combat.start_battle(0, {"corruption": {"Decay": 0, "Obscurity": 0, "Inattention": 80}})
 	combat.intent = combat.enemy["actions"][0].duplicate(true)

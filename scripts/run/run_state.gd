@@ -18,6 +18,9 @@ const LINGERING_THRESHOLDS := {
 const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
 var inattention_tier := 0
 var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
+var temporary_cards: Array[String] = []
+var deck_seed := 5050
+var anomaly_resolved := false
 
 var hp := MAX_HP
 var armor := MAX_ARMOR
@@ -36,6 +39,8 @@ var history: Array[String] = []
 
 func reset() -> void:
 	knowledge.reset()
+	temporary_cards.clear()
+	anomaly_resolved = false
 	hp = MAX_HP
 	armor = MAX_ARMOR
 	corruption = {"Decay": 0, "Obscurity": 0, "Inattention": 0}
@@ -71,6 +76,8 @@ func combat_snapshot() -> Dictionary:
 		"statuses": statuses.duplicate(true),
 		"inattention_tier": inattention_tier,
 		"knowledge": knowledge,
+		"temporary_cards": temporary_cards.duplicate(),
+		"deck_seed": deck_seed,
 		"relics": relics.duplicate(),
 	}
 

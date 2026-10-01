@@ -1,4 +1,4 @@
-# Mini Run 0.4 — ERODE Knowledge Loop
+# Mini Run 0.5 — Preserved ERODE Knowledge Loop
 
 The prototype implements only ERODE (DECAY; gradual wearing away / weakening). Knowledge is run-local, represented by a shared `word_knowledge.gd` object in RunState and CombatState snapshots. Restart Run resets evidence; node transitions, victories, defeat summaries, and Breathers do not.
 
@@ -10,7 +10,7 @@ The prototype implements only ERODE (DECAY; gradual wearing away / weakening). K
 4. Recognized ERODE gains +1 initial Intent clarity before Obscurity/Inattention penalties. Recognition displays semantic clues, not exact mechanic quantities.
 5. Combat Context Evidence requires prior recognition plus either reading ERODE's exact effects at CLEAR through OBSERVE, or experiencing its actual resolution. BIND, SHATTER, an arbitrary single skill use, and passive repetition alone do not count. The combat context is counted once per Run.
 6. A correct recognition and one context unlock UNDERSTOOD and ERODE Insight. It provides structural weakening / Armor loss + Decay gain predictions for ERODE and other Decay-Structure Intents. No combat quantities are modified.
-7. After a Root Husk encounter and its Breather, returning to the map offers the water/stone transfer context. A correct answer awards a distinct context, then offers the river/cliff production challenge. Successful transfer plus correct production advances to USABLE. Challenges can be skipped, and wrong answers never remove resources or prior evidence.
+7. In 0.5, after Root Husk and Veil Moth, returning to the map offers the water/stone transfer context. A correct answer awards a distinct context, then offers the river/cliff production challenge. Successful transfer plus correct production advances to USABLE and activates the ERODE card as a Semantic Modifier. Challenges can be skipped, and wrong answers never remove resources or prior evidence.
 
 The first-layer Event route remains available. Choosing it instead of Root Husk intentionally bypasses the full combat-learning path in that Run; it is not silently replaced by another battle.
 
@@ -22,6 +22,7 @@ The first-layer Event route remains available. Choosing it instead of Root Husk 
 - Existing OBSERVE and Corruption rules remain active. At NEGLIGENT, warning degradation hides detailed predictions as well as exact effects; knowledge does not bypass it.
 - All new modals use the shared adaptive component and sentence-break formatter. Do not create independently positioned popup text for future features.
 - Combat STABILIZE is 1 Focus / dominant Corruption -8; Breather -12 and Supply -15 remain unchanged.
+- The starter deck contains a non-playable ERODE Context Card before USABLE. Semantic use, discovered combinations and run-local Combat Codex entries are documented in `SEMANTIC_DECK.md`. None of these changes make recognition or Insight reduce incoming damage.
 
 ## Tests
 

@@ -1,10 +1,10 @@
-# Mini Run Prototype 0.4 Architecture
+# Mini Run Prototype 0.5 Architecture
 
 ## Product boundary
 
 This project keeps the Combat Prototype rules and places them inside the first complete Mini Run:
 
-- six fixed Core Word Skills;
+- six Core Action / Reaction definitions and one learned ERODE Modifier in a ten-card deck;
 - 3 Focus per turn and at most 1 carried Focus;
 - Enemy Intent with Obscured, Partial, and Clear information;
 - Physical and Conceptual pressure;
@@ -14,15 +14,18 @@ This project keeps the Combat Prototype rules and places them inside the first c
 - a fixed four-layer route with meaningful path choices;
 - cross-Encounter HP, Armor, Corruption, and Status rules;
 - Breather, Event, Cache, Prototype Relic, Extract, and Run Result phases;
-- no draw pile; optional single-word context and production choices.
+- five-card hands, opening Mulligan, Retain, discard reshuffling and Exhaust;
+- optional single-word context and production choices, Semantic Anomaly and a survival objective.
 
-Town exploration, AI NPCs, Companions, procedural map generation, full Modifier builds, permanent Knowledge progression, the first story death, and formal art remain outside Prototype 0.4. Run-local ERODE knowledge is implemented in `word_knowledge.gd` and shared through combat snapshots; it is distinct from automatic combat exposure.
+Town exploration, AI NPCs, Companions, procedural map generation, expanded Modifier libraries, permanent Knowledge progression, the first story death, and formal art remain outside Prototype 0.5. Run-local ERODE knowledge is implemented in `word_knowledge.gd` and shared through combat snapshots; it is distinct from automatic combat exposure.
 
 ## Runtime layers
 
 ```text
 combat_content.gd
   Static Word Skill, Word Sense, enemy, Concept Family, and encounter data
+        ↓ card_definitions.gd / deck_state.gd
+  Card metadata and unique-instance draw / hand / discard / exhaust state
         ↓
 combat_state.gd
   Deterministic combat rules and turn-state transitions
@@ -121,4 +124,4 @@ Run it with:
 
 ## Next implementation milestone
 
-Playtest whether ERODE understanding produces a noticeable tactical advantage. Modifier Words, larger vocabulary, retention, and persistent progression remain deferred. See `KNOWLEDGE_LOOP.md` for the implemented evidence and presentation rules.
+Playtest whether hand variation, Retain, the ERODE combination and enemy identities change decisions. Larger vocabulary and persistent progression remain deferred. See `KNOWLEDGE_LOOP.md` for evidence rules and `SEMANTIC_DECK.md` for the 0.5 mechanics and validation.

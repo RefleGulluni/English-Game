@@ -34,11 +34,14 @@ var intent_badge: Label
 var intent_title: Label
 var intent_text: RichTextLabel
 var knowledge_indicator: Label
-var tutorial_label: Label
+var tutorial_label: RichTextLabel
 var log_text: RichTextLabel
 var detail_label: RichTextLabel
 var end_turn_button: Button
 var skill_buttons: Dictionary = {}
+var hand_row: HBoxContainer
+var pile_label: Label
+var mulligan_selection: Array[int] = []
 
 func _ready() -> void:
 	set_process_unhandled_key_input(true)
@@ -47,6 +50,7 @@ func _ready() -> void:
 	state.reaction_requested.connect(_show_reaction)
 	state.battle_finished.connect(_on_battle_finished)
 	state.inattention_tier_changed.connect(_pulse_status)
+	state.combo_discovered.connect(_on_combo_discovered)
 	run_manager.start_run()
 	run_manager.state.knowledge.changed.connect(_on_knowledge_changed)
 	_show_run_entry()
@@ -65,7 +69,7 @@ func _build_interface() -> void:
 	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
 	add_child(title)
 
-	var subtitle := _make_label("MINI RUN PROTOTYPE 0.4", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
+	var subtitle := _make_label("MINI RUN PROTOTYPE 0.5", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
 	add_child(subtitle)
 
 	stage_label = _make_label("", Vector2(360, 19), Vector2(560, 42), 15, INK)
@@ -169,6 +173,8 @@ func _build_enemy_panel() -> void:
 	knowledge_indicator = _make_label("", Vector2(132, 16), Vector2(390, 23), 11, GOLD)
 	intent_panel.add_child(knowledge_indicator)
 	intent_title = _make_label("", Vector2(16, 45), Vector2(510, 28), 20, INK)
+	intent_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	intent_title.add_theme_font_size_override("font_size", 14)
 	intent_panel.add_child(intent_title)
 	intent_text = RichTextLabel.new()
 	intent_text.position = Vector2(16, 77)
@@ -180,8 +186,12 @@ func _build_enemy_panel() -> void:
 	intent_text.add_theme_color_override("default_color", Color("b9c5d2"))
 	intent_panel.add_child(intent_text)
 
-	tutorial_label = _make_label("", Vector2(22, 296), Vector2(545, 39), 12, Color("a8b9c8"))
-	tutorial_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	tutorial_label = RichTextLabel.new()
+	tutorial_label.position = Vector2(22, 290)
+	tutorial_label.size = Vector2(545, 52)
+	tutorial_label.scroll_active = true
+	tutorial_label.add_theme_font_size_override("normal_font_size", 10)
+	tutorial_label.add_theme_color_override("default_color", Color("a8b9c8"))
 	panel.add_child(tutorial_label)
 
 func _build_log_panel() -> void:
@@ -201,26 +211,21 @@ func _build_log_panel() -> void:
 func _build_skill_panel() -> void:
 	var panel := _make_panel(Vector2(24, 450), Vector2(1232, 204), Color("111b29"))
 	add_child(panel)
-	panel.add_child(_make_label("CORE WORD SKILLS", Vector2(16, 10), Vector2(220, 20), 12, MUTED))
-	panel.add_child(_make_label("Fixed knowledge · no draw pile", Vector2(900, 10), Vector2(300, 20), 11, Color("64758a")))
-
-	var order := CombatContent.skill_order()
-	for index in range(order.size()):
-		var skill_name: String = order[index]
-		var data: Dictionary = CombatContent.SKILLS[skill_name]
-		var text := "%d  %s\n%s" % [int(data["cost"]), skill_name, data["family"]]
-		if skill_name == "DEFLECT":
-			text = "1  DEFLECT\nREACTION ONLY"
-		var button := _make_button(text, Vector2(16 + index * 200, 38), Vector2(184, 98), data["accent"])
-		button.add_theme_font_size_override("font_size", 13)
-		button.tooltip_text = "%s\n\n%s" % [data["sense"], data["effect"]]
-		button.pressed.connect(_on_skill_pressed.bind(skill_name))
-		button.mouse_entered.connect(_show_skill_detail.bind(skill_name))
-		panel.add_child(button)
-		skill_buttons[skill_name] = button
+	panel.add_child(_make_label("SEMANTIC HAND", Vector2(16, 10), Vector2(220, 20), 12, MUTED))
+	pile_label = _make_label("", Vector2(350, 10), Vector2(850, 20), 11, MUTED)
+	pile_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	panel.add_child(pile_label)
+	var hand_scroll := ScrollContainer.new()
+	hand_scroll.position = Vector2(16, 36)
+	hand_scroll.size = Vector2(1200, 112)
+	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	panel.add_child(hand_scroll)
+	hand_row = HBoxContainer.new()
+	hand_row.add_theme_constant_override("separation", 10)
+	hand_scroll.add_child(hand_row)
 
 	detail_label = RichTextLabel.new()
-	detail_label.position = Vector2(16, 145)
+	detail_label.position = Vector2(16, 155)
 	detail_label.size = Vector2(1188, 42)
 	detail_label.bbcode_enabled = true
 	detail_label.scroll_active = false
@@ -249,28 +254,110 @@ func _refresh() -> void:
 	enemy_hp_label.text = "HP   %d / %d" % [int(state.enemy["hp"]), int(state.enemy["max_hp"])]
 	enemy_hp_bar.max_value = int(state.enemy["max_hp"])
 	enemy_hp_bar.value = int(state.enemy["hp"])
-	enemy_armor_label.text = "STRUCTURE   %d / %d" % [int(state.enemy["armor"]), int(state.enemy["max_armor"])]
-	enemy_armor_bar.max_value = int(state.enemy["max_armor"])
-	enemy_armor_bar.value = int(state.enemy["armor"])
+	enemy_armor_label.text = "STRUCTURE %d/%d · ARMOR %d" % [int(state.enemy["structure"]), int(state.enemy["max_structure"]), int(state.enemy["armor"])]
+	enemy_armor_bar.max_value = int(state.enemy["max_structure"])
+	enemy_armor_bar.value = int(state.enemy["structure"])
 	intent_badge.text = state.clarity_name()
 	intent_badge.add_theme_color_override("font_color", _clarity_color(state.intent_clarity))
 	intent_title.text = state.intent_title()
 	intent_text.text = state.intent_description()
 	knowledge_indicator.text = "KNOWN WORD · ERODE · %s" % state.knowledge.current_state if not state.knowledge_intent_hint().is_empty() else ""
-	tutorial_label.text = "TACTICAL NOTE · %s" % state.enemy["tutorial"]
+	tutorial_label.text = state.trait_text()
 	log_text.text = "\n\n".join(state.log_lines)
 	log_text.scroll_to_line(maxi(0, state.log_lines.size() - 1))
 
 	var modal_open := is_instance_valid(modal)
-	for skill_name in skill_buttons:
-		var button: Button = skill_buttons[skill_name]
-		var data: Dictionary = CombatContent.SKILLS[skill_name]
-		if skill_name == "DEFLECT":
-			button.text = "%d  DEFLECT\nREACTION ONLY" % state.reaction_cost()
+	_refresh_hand(modal_open)
+	end_turn_button.disabled = modal_open or state.deck.mulligan_pending or state.turn_ending or state.pending_counter or state.finished
+
+func _refresh_hand(modal_open: bool) -> void:
+	for child in hand_row.get_children():
+		hand_row.remove_child(child)
+		child.queue_free()
+	pile_label.text = "DRAW %d · DISCARD %d · EXHAUST %d · RETAIN %d/%d" % [state.deck.draw_pile.size(), state.deck.discard_pile.size(), state.deck.exhaust_pile.size(), state.deck.retained_cards.size(), state.retain_slots()]
+	for index in range(state.deck.hand.size()):
+		var card: Dictionary = state.deck.hand[index]
+		var uid := int(card["instance_id"])
+		var card_name := str(card["name"])
+		var column := VBoxContainer.new()
+		column.custom_minimum_size.x = 230
+		hand_row.add_child(column)
+		var text := "%d · %s · %d FOCUS\n%s" % [index + 1, card_name, state.card_cost(card), card["category"]]
+		if card_name == "ERODE" and state.knowledge.current_state != "USABLE":
+			text += "\nCONTEXT CARD · Study in Lexicon"
 		else:
-			button.text = "%d  %s\n%s" % [state.skill_cost(skill_name), skill_name, data["family"]]
-		button.disabled = modal_open or not state.can_use(skill_name)
-	end_turn_button.disabled = modal_open
+			var summaries := {
+				"SHATTER": "Structure -8 / exposed damage 10",
+				"OBSERVE": "Intent clarity +1",
+				"BIND": "Delay the current intent 1 turn",
+				"DEFLECT": "Reaction · physical damage -75%",
+				"STABILIZE": "Dominant Corruption -8",
+				"RESTORE": "Choose +8 HP or +4 Armor",
+				"ERODE": "Erosion 3 turns · Structure -2 / Armor -1",
+			}
+			text += "\n" + str(summaries.get(card_name, card["base_effect"]))
+			if "EXHAUST" in card["time_properties"]:
+				text += "\nECHO · EXHAUST" if bool(card.get("echo", false)) else "\nTEMPORARY · EXHAUST"
+		var button := _make_button(text, Vector2.ZERO, Vector2.ZERO, CombatContent.SKILLS[card_name]["accent"])
+		button.name = "Card%d" % uid
+		button.custom_minimum_size = Vector2(230, 72)
+		button.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.add_theme_font_size_override("font_size", 11)
+		button.tooltip_text = str(card["base_effect"])
+		button.disabled = modal_open or not state.can_use(card_name, uid)
+		button.pressed.connect(_on_card_pressed.bind(uid))
+		button.mouse_entered.connect(_show_skill_detail.bind(card_name))
+		column.add_child(button)
+		var retained := state.deck.retained_cards.has(uid)
+		var retain := _make_button("RETAIN ✓" if retained else "RETAIN", Vector2.ZERO, Vector2.ZERO, GOLD if retained else MUTED)
+		retain.custom_minimum_size.y = 24
+		retain.add_theme_font_size_override("font_size", 10)
+		retain.disabled = modal_open or state.deck.mulligan_pending or state.turn_ending or state.finished or (not retained and state.deck.retained_cards.size() >= state.retain_slots())
+		retain.pressed.connect(func():
+			state.deck.toggle_retain(uid, state.retain_slots())
+			_refresh()
+		)
+		column.add_child(retain)
+
+func _on_card_pressed(uid: int) -> void:
+	for card in state.deck.hand:
+		if int(card["instance_id"]) == uid:
+			if not state.can_use(str(card["name"]), uid):
+				return
+			if str(card["name"]) == "RESTORE":
+				_show_restore_choice(uid)
+			else:
+				state.use_card(uid)
+			return
+
+func _show_mulligan() -> void:
+	var actions: Array = [{"text": "CONFIRM · REPLACE %d CARDS" % mulligan_selection.size(), "callback": _confirm_mulligan}]
+	for card in state.deck.hand:
+		var uid := int(card["instance_id"])
+		actions.append({"text": "%s %s · %d FOCUS" % ["✓" if mulligan_selection.has(uid) else "□", card["name"], state.card_cost(card)], "callback": _toggle_mulligan.bind(uid)})
+	_show_modal("OPENING HAND", "Replace up to two cards, once per combat.\nReturned cards are shuffled back after replacements are drawn.\nRetain keeps one card for the next turn without a Focus cost.", actions)
+
+func _toggle_mulligan(uid: int) -> void:
+	if mulligan_selection.has(uid):
+		mulligan_selection.erase(uid)
+	elif mulligan_selection.size() < 2:
+		mulligan_selection.append(uid)
+	_show_mulligan()
+
+func _confirm_mulligan() -> void:
+	state.finish_mulligan(mulligan_selection)
+	mulligan_selection.clear()
+	_refresh()
+
+func _on_combo_discovered() -> void:
+	knowledge_notice.text = "COMBO DISCOVERED · ERODE + SHATTER · Recorded in Lexicon"
+	# Defer until the card and any counter-Reaction have finished resolving.
+	_show_combo_notice.call_deferred()
+
+func _show_combo_notice() -> void:
+	if not is_instance_valid(modal) and not state.finished and not state.pending_counter:
+		_show_modal("COMBO DISCOVERED", "ERODE + SHATTER.\nErosion ticks become 3 Structure damage and last one additional turn.\nThe discovery is now recorded in your Lexicon.", [{"text": "CONTINUE", "callback": _refresh}])
 
 func _stage_text() -> String:
 	return "FRACTURE · LAYER %d / 4     ·     %s     ·     TURN %d" % [
@@ -290,17 +377,25 @@ func _on_skill_pressed(skill_name: String) -> void:
 func _on_end_turn() -> void:
 	state.end_player_turn()
 
-func _show_restore_choice() -> void:
+func _show_restore_choice(uid: int = -1) -> void:
 	_show_modal("RESTORE", "Return one part of the Wordbearer to an earlier, better condition.", [
-		{"text": "RESTORE 8 HP", "callback": func(): state.use_skill("RESTORE", "hp")},
-		{"text": "RESTORE 4 ARMOR", "callback": func(): state.use_skill("RESTORE", "armor")},
-		{"text": "CANCEL", "callback": func(): pass},
+		{"text": "RESTORE 8 HP", "callback": func(): state.use_skill("RESTORE", "hp", uid)},
+		{"text": "RESTORE 4 ARMOR", "callback": func(): state.use_skill("RESTORE", "armor", uid)},
+		{"text": "CANCEL", "callback": _refresh},
 	])
 
 func _show_reaction(action: Dictionary, cost: int) -> void:
+	var body := "%s is moving toward you.\nSpend %d reserved Focus to change its direction?" % [action["word"], cost]
+	if state.battle_index == 2:
+		if state.inattention_tier == 2:
+			body = "%s incoming.\nUse DEFLECT?" % action["word"]
+		elif state.inattention_tier == 3:
+			body = "Reaction Available.\nDetails are obscured by Inattention."
+		elif state.inattention_tier >= 4:
+			body = "Reaction Available"
 	_show_modal(
 		"REACTION WINDOW",
-		"%s is moving toward you.\nSpend %d reserved Focus to change its direction?" % [action["word"], cost],
+		body,
 		[
 			{"text": "DEFLECT  ·  %d FOCUS" % cost, "callback": func(): state.resolve_enemy_action(true)},
 			{"text": "TAKE THE HIT", "callback": func(): state.resolve_enemy_action(false)},
@@ -397,7 +492,12 @@ func _show_lexicon() -> void:
 		previous.hide()
 	modal = null
 	var word := run_manager.state.knowledge
-	_show_modal("LEXICON" if word.current_state == "UNKNOWN" else "LEXICON · ERODE", "No words recorded yet.\nExplore the Fracture to discover a word." if word.current_state == "UNKNOWN" else word.entry_text(), [
+	var body := "No words recorded yet.\nExplore the Fracture to discover a word." if word.current_state == "UNKNOWN" else word.entry_text()
+	for monster in word.enemy_records:
+		body += "\n\nCOMBAT CODEX · %s\n%s" % [monster, word.enemy_records[monster]]
+	if not run_manager.state.relics.is_empty():
+		body += "\n\nRELICS · " + _relic_names()
+	_show_modal("LEXICON" if word.current_state == "UNKNOWN" else "LEXICON · ERODE", body, [
 		{"text": "CLOSE LEXICON", "callback": _close_lexicon.bind(previous)},
 	])
 
@@ -442,13 +542,13 @@ func _show_production_question() -> void:
 func _answer_production(answer: String) -> void:
 	var correct := answer == "erodes"
 	run_manager.state.knowledge.record_production(correct)
-	_show_modal("ERODE · USABLE" if correct else "ERODE · TRY ANOTHER MEANING", "Production Evidence +1.\nThe river slowly erodes the cliff.\nERODE INSIGHT unlocked: Armor loss + Decay gain can be anticipated." if correct else "The river wears the cliff away gradually.\nYour existing evidence is preserved.", [
+	_show_modal("ERODE · USABLE" if correct else "ERODE · TRY ANOTHER MEANING", "Production Evidence +1.\nThe river slowly erodes the cliff.\nERODE INSIGHT and the ERODE Semantic Modifier card are unlocked." if correct else "The river wears the cliff away gradually.\nYour existing evidence is preserved.", [
 		{"text": "CONTINUE TO MAP" if correct else "TRY AGAIN", "callback": _show_map if correct else _show_production_question},
 	])
 
 func _show_map() -> void:
 	var run := run_manager.state
-	if run.knowledge.root_combat_seen and run.current_layer >= 1 and not run.knowledge.transfer_offered:
+	if run.knowledge.root_combat_seen and run.current_layer >= 2 and not run.knowledge.transfer_offered:
 		_show_transfer_context()
 		return
 	var lines: Array[String] = [run.condition_text(), "", "Choose the next path:"]
@@ -470,8 +570,26 @@ func _select_node(node_id: String) -> void:
 	var node := run_manager.select_node(node_id)
 	match str(node.get("type", "")):
 		"encounter", "elite", "final":
-			state.start_battle(int(node["battle"]), run_manager.state.combat_snapshot(), bool(node.get("elite", false)))
+			var snapshot := run_manager.state.combat_snapshot()
+			snapshot["objective"] = str(node.get("objective", "kill"))
+			state.start_battle(int(node["battle"]), snapshot, bool(node.get("elite", false)))
+			if state.battle_index == 0:
+				if not run_manager.state.knowledge.enemy_records.has("ROOT HUSK"):
+					run_manager.state.knowledge.enemy_records["ROOT HUSK"] = "REGROWTH: after 2 turns without Structure damage, restore 6 Structure.\nA second trait is not discovered yet."
+			elif state.battle_index == 1:
+				run_manager.state.knowledge.enemy_records["VEIL MOTH"] = "FALSE INTENT: two possible actions; OBSERVE removes the false possibility.\nObscurity still reduces clarity."
+			elif state.battle_index == 2:
+				run_manager.state.knowledge.enemy_records["NEGLECT WRAITH"] = "MISSED WINDOW: Inattention makes warnings less reliable, but never removes a DEFLECT opportunity."
+			run_manager.state.temporary_cards.clear()
+			mulligan_selection.clear()
 			_refresh()
+			_show_mulligan()
+		"anomaly":
+			_show_modal("SEMANTIC ANOMALY", "A word repeats inside a distorted fragment.\nExamining it grants one temporary STABILIZE card for your next combat.\nStabilizing it lowers the dominant Corruption by 8.\nLeaving it costs nothing.", [
+				{"text": "EXAMINE · TEMPORARY CARD", "callback": _resolve_anomaly.bind("examine")},
+				{"text": "STABILIZE · CORRUPTION -8", "callback": _resolve_anomaly.bind("stabilize")},
+				{"text": "LEAVE", "callback": _resolve_anomaly.bind("leave")},
+			])
 		"event":
 			_show_event()
 		"cache":
@@ -479,6 +597,11 @@ func _select_node(node_id: String) -> void:
 		"extract":
 			run_manager.extract()
 			_show_run_summary()
+
+func _resolve_anomaly(choice: String) -> void:
+	var result := run_manager.resolve_anomaly(choice)
+	_sync_state_from_run()
+	_show_modal("ANOMALY RESOLVED", result, [{"text": "RETURN TO MAP", "callback": _show_map}])
 
 func _show_event() -> void:
 	var event := run_manager.current_event
@@ -530,7 +653,7 @@ func _show_breather() -> void:
 func _choose_breather(choice: String) -> void:
 	var result := run_manager.choose_breather(choice)
 	_sync_state_from_run()
-	if bool(pending_combat_result.get("elite", false)):
+	if bool(pending_combat_result.get("elite", false)) or state.battle_index == 0:
 		_show_relic_reward(str(result["description"]))
 	else:
 		_show_modal("BREATHER COMPLETE", "%s\n\n%s" % [result["description"], run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
@@ -538,12 +661,15 @@ func _choose_breather(choice: String) -> void:
 func _show_relic_reward(breather_result: String) -> void:
 	var actions: Array = []
 	for relic_id in RunContent.RELICS:
+		if run_manager.state.relics.has(relic_id):
+			continue
 		var relic: Dictionary = RunContent.RELICS[relic_id]
 		actions.append({
-			"text": "%s · %s" % [relic["name"], relic["description"]],
+			"text": "%s · %s · %s" % [relic["rarity"], relic["name"], relic["description"]],
+			"accent": RunContent.RARITY_COLORS[relic["rarity"]],
 			"callback": _claim_relic.bind(str(relic_id)),
 		})
-	_show_modal("ELITE REWARD", "%s\n\nChoose one Prototype Relic." % breather_result, actions)
+	_show_modal("RELIC REWARD", "%s\n\nChoose one rule-changing Relic." % breather_result, actions)
 
 func _claim_relic(relic_id: String) -> void:
 	run_manager.claim_relic(relic_id)
@@ -590,7 +716,7 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 	var buttons: Array[Button] = []
 	for index in range(actions.size()):
 		var action: Dictionary = actions[index]
-		var button := _make_button("", Vector2.ZERO, Vector2.ZERO, GOLD if index == 0 else Color("74869a"))
+		var button := _make_button("", Vector2.ZERO, Vector2.ZERO, action.get("accent", GOLD if index == 0 else Color("74869a")))
 		button.name = "Action%d" % index
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.text = str(action["text"])
@@ -599,6 +725,7 @@ func _show_modal(title_text: String, body_text: String, actions: Array) -> void:
 		button.pressed.connect(func():
 			_clear_modal()
 			callback.call()
+			_refresh()
 		)
 		buttons.append(button)
 	card.configure(title, body, buttons)
@@ -632,10 +759,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	var index := -1
-	if event.keycode >= KEY_1 and event.keycode <= KEY_6:
+	if event.keycode >= KEY_1 and event.keycode <= KEY_9:
 		index = event.keycode - KEY_1
-	if index >= 0:
-		_on_skill_pressed(CombatContent.skill_order()[index])
+	if index >= 0 and index < state.deck.hand.size():
+		_on_card_pressed(int(state.deck.hand[index]["instance_id"]))
 		get_viewport().set_input_as_handled()
 
 func _clarity_color(level: int) -> Color:

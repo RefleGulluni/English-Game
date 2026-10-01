@@ -7,11 +7,12 @@ const LAYERS := [
 		{"id": "fracture_event", "type": "event", "title": "FRACTURE EVENT", "detail": "An uncertain opportunity inside the ruins."},
 	],
 	[
+		{"id": "semantic_anomaly", "type": "anomaly", "title": "SEMANTIC ANOMALY", "detail": "A repeating phrase loses one word each time. Optional; does not consume a layer."},
 		{"id": "veil_moth", "type": "encounter", "title": "VEIL MOTH", "detail": "Obscurity pressure. Reward: 20 Echo.", "battle": 1, "echo": 20},
 		{"id": "supply_cache", "type": "cache", "title": "SUPPLY CACHE", "detail": "Choose recovery, stability, or Echo."},
 	],
 	[
-		{"id": "neglect_wraith", "type": "encounter", "title": "NEGLECT WRAITH", "detail": "A safer path through Inattention.", "battle": 2, "echo": 25},
+		{"id": "neglect_wraith", "type": "encounter", "title": "NEGLECT WRAITH · SURVIVE", "detail": "Survive 5 turns. Killing is not required.", "battle": 2, "echo": 25, "objective": "survive"},
 		{"id": "neglect_wraith_elite", "type": "elite", "title": "NEGLECT WRAITH · ELITE", "detail": "High pressure. Reward: 50 Echo + Prototype Relic.", "battle": 2, "echo": 50, "elite": true},
 	],
 	[
@@ -58,19 +59,26 @@ const CACHE_CHOICES := [
 ]
 
 const RELICS := {
+	"unfinished_sentence": {"name": "UNFINISHED SENTENCE", "rarity": "EPIC", "rule_type": "retain", "trigger": "each_turn", "description": "Retain Slot +1. Keep up to two unused cards each turn."},
+	"echo_chamber": {"name": "ECHO CHAMBER", "rarity": "LEGENDARY", "rule_type": "word_copy", "trigger": "first_usable_word_each_turn", "description": "First USABLE Word played each turn creates an Echo copy: cost +1; Exhaust after use."},
 	"clear_lens": {
+		"rarity": "RARE", "rule_type": "cost", "trigger": "first_observe_per_combat",
 		"name": "CLEAR LENS",
 		"description": "The first OBSERVE each combat costs 0 Focus.",
 	},
 	"iron_script": {
+		"rarity": "REFINED", "rule_type": "collapse", "trigger": "structure_collapse",
 		"name": "IRON SCRIPT",
 		"description": "Structure Collapse deals +4 damage.",
 	},
 	"quiet_mind": {
+		"rarity": "RARE", "rule_type": "corruption", "trigger": "first_inattention_gain_per_combat",
 		"name": "QUIET MIND",
 		"description": "The first Inattention gain each combat is reduced by 5.",
 	},
 }
+
+const RARITY_COLORS := {"COMMON": Color("d8dce2"), "RARE": Color("68c99b"), "REFINED": Color("68a8ed"), "EPIC": Color("b697e8"), "LEGENDARY": Color("ee8b5b"), "MYTHIC": Color("d76565")}
 
 static func layer_nodes(layer: int) -> Array:
 	if layer < 0 or layer >= LAYERS.size():

@@ -19,10 +19,10 @@ func _initialize() -> void:
 	combat.start_battle(0, run.combat_snapshot())
 	_check(combat.intent_clarity == 1, "Recognized ERODE gains a clarity level")
 	_check("Recognized Concept" in combat.intent_description() and not "Armor -4" in combat.intent_description(), "recognition offers meaning without exact answers")
-	combat.use_skill("BIND")
+	preload("res://tests/mechanics_fixture.gd").play(combat, "BIND")
 	_check(knowledge.current_state == "RECOGNIZED", "using an arbitrary skill does not teach the word")
 	combat.focus = 3
-	combat.use_skill("OBSERVE")
+	preload("res://tests/mechanics_fixture.gd").play(combat, "OBSERVE")
 	_check(knowledge.current_state == "UNDERSTOOD" and knowledge.has_insight(), "reading exact combat consequences links meaning and mechanism")
 	_check("Known Mechanism" in combat.intent_description(), "UNDERSTOOD grants mechanism prediction")
 	combat.armor = 12
@@ -53,8 +53,8 @@ func _initialize() -> void:
 	_check(not "Likely effect" in combat.intent_description(), "NEGLIGENT warning degradation is not bypassed by Insight")
 	combat.start_battle(0)
 	combat.corruption = {"Decay": 30, "Obscurity": 10, "Inattention": 0}
-	combat.use_skill("STABILIZE")
-	combat.use_skill("STABILIZE")
+	preload("res://tests/mechanics_fixture.gd").play(combat, "STABILIZE")
+	preload("res://tests/mechanics_fixture.gd").play(combat, "STABILIZE")
 	_check(combat.focus == 1 and combat.corruption == {"Decay": 14, "Obscurity": 10, "Inattention": 0}, "two STABILIZE uses cost 2 Focus and reduce only dominant Corruption by 16")
 	run.reset()
 	_check(run.knowledge.current_state == "UNKNOWN", "new Run resets prototype knowledge")

@@ -69,8 +69,10 @@ func _reflow() -> void:
 	var max_height := maxf(1.0, available_size.y - 48.0)
 	var fixed_height := 48.0 + 40.0 + title_label.get_combined_minimum_size().y
 	var region_budget := maxf(1.0, max_height - fixed_height)
-	var actions_height := minf(actions_box.get_combined_minimum_size().y, region_budget * 0.45)
-	var body_height := minf(body_label.get_combined_minimum_size().y, region_budget - actions_height)
+	# Short prose gives unused space to choices without per-dialogue sizing.
+	var body_height := minf(body_label.get_combined_minimum_size().y, region_budget * 0.55)
+	var actions_height := minf(actions_box.get_combined_minimum_size().y, region_budget - body_height)
+	body_height = minf(body_label.get_combined_minimum_size().y, region_budget - actions_height)
 	body_scroll.custom_minimum_size.y = maxf(1.0, body_height)
 	actions_scroll.custom_minimum_size.y = maxf(1.0, actions_height)
 	size.y = minf(max_height, fixed_height + body_height + actions_height)

@@ -59,13 +59,13 @@ func _test_combat_snapshot_and_relics() -> void:
 	combat.start_battle(2, snapshot, true)
 	_check(combat.hp == 37 and combat.armor == 6, "Combat imports persistent HP and Armor")
 	_check(combat.corruption["Decay"] == 10 and combat.corruption["Inattention"] == 5, "Elite pressure and Corruption persistence coexist")
-	_check(combat.enemy["max_hp"] == 48 and combat.enemy["max_armor"] == 10, "Elite has 25 percent HP and Structure scaling")
+	_check(combat.enemy["max_hp"] == 48 and combat.enemy["max_structure"] == 10, "Elite has 25 percent HP and Structure scaling")
 	var focus_before := combat.focus
-	combat.use_skill("OBSERVE")
+	preload("res://tests/mechanics_fixture.gd").play(combat, "OBSERVE")
 	_check(combat.focus == focus_before, "Clear Lens makes the first OBSERVE free")
-	combat.enemy["armor"] = 8
+	combat.enemy["structure"] = 8
 	var hp_before := int(combat.enemy["hp"])
-	combat.use_skill("SHATTER")
+	preload("res://tests/mechanics_fixture.gd").play(combat, "SHATTER")
 	_check(int(combat.enemy["hp"]) == hp_before - 10, "Iron Script adds 4 Structure Collapse damage")
 
 func _test_fixed_run_route() -> void:

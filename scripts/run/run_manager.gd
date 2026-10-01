@@ -14,10 +14,16 @@ func start_run() -> void:
 	selected_node.clear()
 	current_event.clear()
 	rng.seed = 4303 + run_index
+	state.deck_seed = 5050 + run_index * 101
 	changed.emit()
 
 func available_nodes() -> Array:
-	return RunContent.layer_nodes(state.current_layer)
+	var nodes := RunContent.layer_nodes(state.current_layer)
+	if state.anomaly_resolved:
+		for node in nodes.duplicate():
+			if node["id"] == "semantic_anomaly":
+				nodes.erase(node)
+	return nodes
 
 func select_node(node_id: String) -> Dictionary:
 	var node := RunContent.node_by_id(node_id)
@@ -25,11 +31,34 @@ func select_node(node_id: String) -> Dictionary:
 		push_error("Node is not available: %s" % node_id)
 		return {}
 	selected_node = node
-	state.begin_node(node_id)
+	if str(node["type"]) == "anomaly":
+		# This optional, rewardless interlude must not consume a Press On bonus.
+		state.current_node_id = node_id
+		state.history.append("Entered %s." % node_id)
+	else:
+		state.begin_node(node_id)
 	if str(node["type"]) == "event":
 		current_event = RunContent.event_for_run(run_index)
 	changed.emit()
 	return selected_node.duplicate(true)
+
+func resolve_anomaly(choice: String) -> String:
+	if state.anomaly_resolved or str(selected_node.get("id", "")) != "semantic_anomaly":
+		return "This anomaly has already passed."
+	state.anomaly_resolved = true
+	var result := "The phrase fades."
+	if choice == "examine":
+		state.temporary_cards.append("STABILIZE")
+		result = "A temporary STABILIZE card joins the next combat deck. It Exhausts after use."
+	elif choice == "stabilize":
+		var family := state.dominant_corruption_family()
+		if not family.is_empty():
+			state.corruption[family] = maxi(0, int(state.corruption[family]) - 8)
+			state.refresh_lingering_statuses()
+		result = "The dominant Corruption recedes by up to 8."
+	state.history.append("Semantic Anomaly: " + result)
+	changed.emit()
+	return result
 
 func complete_combat(combat: CombatState) -> Dictionary:
 	state.capture_combat(combat)

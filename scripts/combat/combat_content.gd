@@ -2,6 +2,7 @@ class_name CombatContent
 extends RefCounted
 
 const SKILLS := {
+	"ERODE": {"cost": 1, "family": "DECAY", "sense": "to gradually wear away or weaken something", "effect": "USABLE: Erosion for 3 turns; -2 Structure per tick, or -1 Armor without Structure. No direct HP damage.", "accent": Color("b98c60")},
 	"OBSERVE": {
 		"cost": 1,
 		"family": "PERCEPTION",
@@ -13,7 +14,7 @@ const SKILLS := {
 		"cost": 2,
 		"family": "FORCE",
 		"sense": "to break something violently into pieces",
-		"effect": "Break 8 Armor. Strike an exposed target for 10 HP.",
+		"effect": "Break 8 Structure. Strike an exposed target for 10 damage (Armor absorbs first).",
 		"accent": Color("ee8b5b"),
 	},
 	"BIND": {
@@ -53,7 +54,7 @@ const BATTLES := [
 		"families": ["DECAY"],
 		"hp": 40,
 		"armor": 18,
-		"tutorial": "Read its intent. Break Bark Armor with SHATTER, and reserve Focus when LASH is coming.",
+		"tutorial": "Read its intent. Pressure Structure before REGROWTH, and keep DEFLECT plus Focus when LASH is coming.",
 		"sequence": ["ERODE", "LASH", "WITHER", "LASH"],
 		"actions": [
 			{"word": "LASH", "kind": "physical", "damage": 8, "sense": "to strike suddenly and forcefully", "partial": "A sudden physical strike.", "clear": "8 Physical Damage. DEFLECT can react."},
