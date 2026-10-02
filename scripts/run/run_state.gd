@@ -18,6 +18,8 @@ const LINGERING_THRESHOLDS := {
 const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
 var inattention_tier := 0
 var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
+var toxic_knowledge := preload("res://scripts/run/word_knowledge.gd").new("toxic")
+var completed_detours: Array[String] = []
 var temporary_cards: Array[String] = []
 var deck_seed := 5050
 var anomaly_resolved := false
@@ -39,6 +41,8 @@ var history: Array[String] = []
 
 func reset() -> void:
 	knowledge.reset()
+	toxic_knowledge.reset()
+	completed_detours.clear()
 	temporary_cards.clear()
 	anomaly_resolved = false
 	hp = MAX_HP
@@ -76,6 +80,7 @@ func combat_snapshot() -> Dictionary:
 		"statuses": statuses.duplicate(true),
 		"inattention_tier": inattention_tier,
 		"knowledge": knowledge,
+		"toxic_knowledge": toxic_knowledge,
 		"temporary_cards": temporary_cards.duplicate(),
 		"deck_seed": deck_seed,
 		"relics": relics.duplicate(),
@@ -88,6 +93,7 @@ func capture_combat(combat: CombatState) -> void:
 	statuses = combat.statuses.duplicate(true)
 	inattention_tier = combat.inattention_tier
 	knowledge = combat.knowledge
+	toxic_knowledge = combat.toxic_knowledge
 
 func apply_post_combat() -> Dictionary:
 	var report := {

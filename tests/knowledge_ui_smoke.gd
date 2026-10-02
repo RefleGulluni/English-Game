@@ -31,6 +31,9 @@ func _run() -> void:
 	await _press(screen, 0)
 	_check(knowledge.current_state == "RECOGNIZED", "correct inference grants Recognition Evidence")
 	await _press(screen, 0)
+	# 0.6 adds TOXIC first exposure before the map.
+	await _press(screen, 0)
+	await _press(screen, 0)
 	await _press(screen, 0)
 	_check(screen.state.enemy["name"] == "ROOT HUSK" and screen.state.intent_clarity == 1, "map launches recognized ERODE combat")
 	_check("KNOWN WORD" in screen.knowledge_indicator.text, "combat explains its knowledge advantage")

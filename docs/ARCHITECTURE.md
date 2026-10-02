@@ -1,10 +1,10 @@
-# Mini Run Prototype 0.5 Architecture
+# Mini Run Prototype 0.6 Architecture
 
 ## Product boundary
 
 This project keeps the Combat Prototype rules and places them inside the first complete Mini Run:
 
-- six Core Action / Reaction definitions and one learned ERODE Modifier in a ten-card deck;
+- seven Core Action / Reaction definitions and two learned Modifiers in a twelve-card deck;
 - 3 Focus per turn and at most 1 carried Focus;
 - Enemy Intent with Obscured, Partial, and Clear information;
 - Physical and Conceptual pressure;
@@ -15,9 +15,9 @@ This project keeps the Combat Prototype rules and places them inside the first c
 - cross-Encounter HP, Armor, Corruption, and Status rules;
 - Breather, Event, Cache, Prototype Relic, Extract, and Run Result phases;
 - five-card hands, opening Mulligan, Retain, discard reshuffling and Exhaust;
-- optional single-word context and production choices, Semantic Anomaly and a survival objective.
+- independent ERODE / TOXIC learning, Semantic Anomaly, optional ecology encounters and a survival objective.
 
-Town exploration, AI NPCs, Companions, procedural map generation, expanded Modifier libraries, permanent Knowledge progression, the first story death, and formal art remain outside Prototype 0.5. Run-local ERODE knowledge is implemented in `word_knowledge.gd` and shared through combat snapshots; it is distinct from automatic combat exposure.
+Town exploration, AI NPCs, Companions, procedural map generation, expanded Modifier libraries, permanent Knowledge progression, the first story death, and formal art remain outside Prototype 0.6. Run-local ERODE and TOXIC knowledge use separate instances of `word_knowledge.gd`, shared through combat snapshots; knowledge is distinct from automatic combat exposure.
 
 ## Runtime layers
 
@@ -29,6 +29,8 @@ combat_content.gd
         ↓
 combat_state.gd
   Deterministic combat rules and turn-state transitions
+        ↔ semantic_effects.gd
+  Separate enemy/player timed effects, refresh rules, durations and sources
         ↕ combat snapshot/result
 run_content.gd
   Fixed route, Event, Cache, and Prototype Relic definitions
@@ -89,7 +91,7 @@ The prototype already keeps the framework's important distinctions:
 - Hysteresis releases these tiers strictly below 10, 30, 50, and 70 respectively. Tier state survives combat snapshots, settlement, and Breathers; combat STABILIZE reduces Corruption by 8, while the Breather choice reduces it by 12.
 - Threshold changes log to Combat Trace and pulse the Status text without a blocking modal. Status names and modifiers each occupy their own row inside a bounded scroll area.
 - Clear Lens makes only the first OBSERVE free; once consumed, all active Inattention cost modifiers still apply.
-- SHATTER damages Structure until its one-time collapse, then deals exposed HP damage on later uses.
+- Structure and Armor are separate. Each positive-to-zero Structure transition applies EXPOSED, not HP damage. STRIKE is the principal direct-damage action; SHATTER primarily breaks Structure. See `COMBAT_ECOLOGY.md` for timing and approved numerical rules.
 
 ## Verification
 
@@ -124,4 +126,4 @@ Run it with:
 
 ## Next implementation milestone
 
-Playtest whether hand variation, Retain, the ERODE combination and enemy identities change decisions. Larger vocabulary and persistent progression remain deferred. See `KNOWLEDGE_LOOP.md` for evidence rules and `SEMANTIC_DECK.md` for the 0.5 mechanics and validation.
+Playtest whether the Break / Kill / Weaken / Bypass choices, enemy ecology and Retain restrictions change decisions. Larger vocabulary and persistent progression remain deferred. See `KNOWLEDGE_LOOP.md` for evidence rules and `COMBAT_ECOLOGY.md` for current mechanics and validation; `SEMANTIC_DECK.md` preserves historical 0.5 notes.

@@ -15,9 +15,30 @@ const STABILIZE_AMOUNT := 8
 const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
 var inattention_tier := 0
 var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
+var toxic_knowledge := preload("res://scripts/run/word_knowledge.gd").new("toxic")
+var enemy_effects := preload("res://scripts/combat/semantic_effects.gd").new()
+var player_effects := preload("res://scripts/combat/semantic_effects.gd").new()
+var toxic_played_this_turn := false
+var fractured_this_turn := false
+var dispersed := false
+var latest_combo := ""
+var resolving_end_effects := false
+var end_applied_effects: Array[String] = []
 var deck := preload("res://scripts/combat/deck_state.gd").new()
-var erosion_turns := 0
-var erosion_tick := 2
+var erosion_turns: int:
+	get:
+		return enemy_effects.duration("EROSION")
+	set(value):
+		if value <= 0:
+			enemy_effects.active.erase("EROSION")
+		else:
+			enemy_effects.apply("EROSION", value, erosion_tick, "ERODE")
+var erosion_tick: int:
+	get:
+		return enemy_effects.potency("EROSION") if enemy_effects.has("EROSION") else 2
+	set(value):
+		if enemy_effects.has("EROSION"):
+			enemy_effects.active["EROSION"]["potency"] = value
 var erode_played_this_turn := false
 var echo_used_this_turn := false
 var structure_damaged_this_turn := false
@@ -74,6 +95,12 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	objective = str(run_snapshot.get("objective", "kill"))
 	erosion_turns = 0
 	erosion_tick = 2
+	enemy_effects.clear()
+	player_effects.clear()
+	dispersed = false
+	latest_combo = ""
+	resolving_end_effects = false
+	end_applied_effects.clear()
 	consecutive_shatter_turns = 0
 	no_structure_damage_turns = 0
 	splinter_revealed = false
@@ -85,6 +112,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	inattention_tier = int(run_snapshot.get("inattention_tier", INATTENTION.tier_from_statuses(statuses)))
 	intent = {}
 	knowledge = run_snapshot.get("knowledge", preload("res://scripts/run/word_knowledge.gd").new())
+	toxic_knowledge = run_snapshot.get("toxic_knowledge", preload("res://scripts/run/word_knowledge.gd").new("toxic"))
 	relics.clear()
 	for relic in run_snapshot.get("relics", []):
 		relics.append(str(relic))
@@ -96,15 +124,24 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	action_cursor = 0
 	next_intent_penalty = 0
 	enemy = CombatContent.BATTLES[index].duplicate(true)
+	# Migrate the original material profiles; new ecology profiles are explicit.
+	if not enemy.has("structure"):
+		enemy["structure"] = int(enemy["armor"])
+		enemy["armor"] = 0
+		enemy["max_armor"] = 12
+	enemy["has_structure"] = bool(enemy.get("has_structure", true))
+	enemy["toxic_resistance"] = float(enemy.get("toxic_resistance", 0.0))
+	enemy["toxic_immune"] = bool(enemy.get("toxic_immune", false))
+	enemy["phase_state"] = "NORMAL"
+	enemy["enemy_id"] = str(enemy.get("enemy_id", str(enemy["name"]).to_lower().replace(" ", "_")))
 	if is_elite:
 		enemy["name"] = "%s · ELITE" % enemy["name"]
 		enemy["hp"] = int(ceil(float(enemy["hp"]) * 1.25))
-		enemy["armor"] = int(ceil(float(enemy["armor"]) * 1.25))
+		enemy["structure"] = int(ceil(float(enemy["structure"]) * 1.25))
+		if index == 5:
+			enemy["toxic_immune"] = true
 	enemy["max_hp"] = int(enemy["hp"])
-	enemy["structure"] = int(enemy["armor"])
 	enemy["max_structure"] = int(enemy["structure"])
-	enemy["armor"] = 0
-	enemy["max_armor"] = 12
 	deck.reset(int(run_snapshot.get("deck_seed", 5050)) + index * 97, run_snapshot.get("temporary_cards", []))
 	if is_elite:
 		_add_corruption("Inattention", 10)
@@ -114,18 +151,32 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	_begin_player_turn(0, false)
 
 func can_use(skill_name: String, instance_id: int = -1) -> bool:
+	return disabled_reason(skill_name, instance_id).is_empty()
+
+func disabled_reason(skill_name: String, instance_id: int = -1) -> String:
 	if enemy.is_empty() or finished or turn_ending or pending_counter or deck.mulligan_pending:
-		return false
+		return "CONFIRM OPENING HAND" if deck.mulligan_pending else ("ENCOUNTER COMPLETE" if finished else "RESOLVE CURRENT DECISION")
 	if skill_name == "DEFLECT":
-		return false
-	if skill_name == "ERODE" and knowledge.current_state != "USABLE":
-		return false
+		return "REACTION ONLY"
+	if skill_name in ["ERODE", "TOXIC"] and word_for(skill_name).current_state != "USABLE":
+		return "REQUIRES USABLE"
+	if dispersed and skill_name not in ["RESTORE", "STABILIZE"]:
+		return "TARGET DISPERSED"
 	if skill_name == "BIND" and intent_bound_once:
-		return false
+		return "CURRENT INTENT ALREADY BOUND"
 	if skill_name == "STABILIZE" and dominant_corruption_family().is_empty():
-		return false
+		return "NO ACTIVE CORRUPTION"
+	if skill_name == "TOXIC" and (bool(enemy["toxic_immune"]) or float(enemy["toxic_resistance"]) >= 1.0):
+		return "TARGET IMMUNE"
+	if skill_name == "ERODE" and int(enemy["structure"]) <= 0 and int(enemy["armor"]) <= 0:
+		return "NO VALID STRUCTURE TARGET"
 	var card := deck.find_card(skill_name, instance_id)
-	return not card.is_empty() and focus >= card_cost(card)
+	if card.is_empty():
+		return "NOT IN HAND"
+	return "NOT ENOUGH FOCUS" if focus < card_cost(card) else ""
+
+func word_for(card_name: String):
+	return toxic_knowledge if card_name == "TOXIC" else knowledge
 
 func card_cost(card: Dictionary) -> int:
 	var base := reaction_cost() if str(card["card_id"]) == "DEFLECT" else skill_cost(str(card["card_id"]))
@@ -173,6 +224,10 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			focus -= cost
 			observe_used_this_battle = true
 			intent_clarity = mini(2, intent_clarity + 1)
+			if str(enemy["phase_state"]) == "FADED":
+				enemy_effects.apply("REVEALED", 1, 0, "OBSERVE")
+				enemy["phase_state"] = "REVEALED"
+				_add_log("REVEALED · 1 turn. Direct Action effectiveness restored; Toxic Resistance remains.")
 			if not false_intent.is_empty() and not false_removed:
 				false_removed = true
 				_add_log("OBSERVE · False possibility removed.")
@@ -186,22 +241,45 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			if int(enemy["structure"]) > 0:
 				_damage_structure(8, true)
 			else:
-				_damage_enemy_hp(10)
-				_add_log("SHATTER · Exposed damage 10 (Armor may absorb it).")
-			if erode_played_this_turn and erosion_turns > 0:
-				erosion_turns += 1
-				erosion_tick = 3
+				var before_armor := int(enemy["armor"])
+				var armor_chip := mini(2, before_armor)
+				enemy["armor"] = maxi(0, before_armor - 2)
+				_damage_enemy_hp(3)
+				_add_log("%s · Armor chipped %d; direct damage 3 (remaining Armor absorbs)." % ["INCORPOREAL · SHATTER finds no structure" if not bool(enemy["has_structure"]) else "SHATTER", armor_chip])
+			if erode_played_this_turn and erosion_turns > 0 and not fractured_this_turn:
+				enemy_effects.apply("EROSION", erosion_turns + 1, 3, "FRACTURED EROSION", "REPLACE")
+				fractured_this_turn = true
 				_add_log("SEMANTIC RESONANCE — FRACTURED EROSION · Duration +1; Structure tick -3.")
-				if not "fractured_erosion" in knowledge.discovered_combos:
-					knowledge.discovered_combos.append("fractured_erosion")
-					combo_discovered.emit()
+				_discover_combo("fractured_erosion", knowledge)
+		"STRIKE":
+			focus -= cost
+			var damage := 8 + (2 if enemy_effects.has("EXPOSED") else 0)
+			if str(enemy["phase_state"]) == "FADED":
+				damage = int(damage / 2)
+				_add_log("FADED · STRIKE effectiveness -50%.")
+			var penetration := 3 if erode_played_this_turn else 0
+			var ignored := mini(penetration, int(enemy["armor"]))
+			_damage_enemy_hp(damage, penetration)
+			_add_log("STRIKE · %d direct damage; %d Armor ignored." % [damage, ignored])
+			# The hit reads EXPOSED before its own structural side effect.
+			if int(enemy["structure"]) > 0:
+				_damage_structure(2, false)
+			if erode_played_this_turn:
+				_discover_combo("weakened_opening", knowledge)
+				_add_log("WEAKENED OPENING · Armor penetration, not extra damage.")
+			if toxic_played_this_turn:
+				_apply_poison()
+				_discover_combo("venomous_strike", toxic_knowledge)
+				_add_log("VENOMOUS STRIKE · Normal Strike plus POISONED refresh.")
 		"ERODE":
 			focus -= cost
-			if erosion_turns <= 0:
-				erosion_tick = 2
-			erosion_turns = maxi(erosion_turns, 3)
+			enemy_effects.apply("EROSION", 3, 2, "ERODE")
 			erode_played_this_turn = true
 			_add_log("ERODE · Gradual weakening applied for %d turns." % erosion_turns)
+		"TOXIC":
+			focus -= cost
+			toxic_played_this_turn = true
+			_apply_poison()
 		"BIND":
 			if intent_bound_once:
 				_add_log("This intent has already been bound. Restriction cannot become a permanent stun.")
@@ -239,10 +317,10 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 				_add_log("RESTORE · Rebuilt 4 Armor.")
 
 	deck.consume(card)
-	if skill_name == "ERODE" and "echo_chamber" in relics and not echo_used_this_turn and not bool(card["echo"]):
+	if skill_name in ["ERODE", "TOXIC"] and "echo_chamber" in relics and not echo_used_this_turn and not bool(card["echo"]):
 		echo_used_this_turn = true
-		deck.hand.append(deck.make_card("ERODE", 1, true))
-		_add_log("ECHO CHAMBER · Temporary ERODE copy (+1 Focus, EXHAUST).")
+		deck.hand.append(deck.make_card(skill_name, 1, true))
+		_add_log("ECHO CHAMBER · Temporary %s copy (+1 Focus, EXHAUST)." % skill_name)
 	if skill_name == "SHATTER" and battle_index == 0 and consecutive_shatter_turns >= 2:
 		consecutive_shatter_turns = 0
 		splinter_revealed = true
@@ -255,9 +333,8 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 		else:
 			resolve_enemy_action(false)
 		return true
-	if int(enemy["hp"]) <= 0 and objective == "kill":
-		_finish_battle(true)
-		return true
+	if int(enemy["hp"]) <= 0:
+		_enemy_defeated()
 	changed.emit()
 	return true
 
@@ -267,7 +344,8 @@ func end_player_turn() -> void:
 	turn_ending = true
 	deck.end_turn(true)
 	if objective == "survive" and int(enemy["hp"]) <= 0:
-		_add_log("The enemy is defeated. Hold the position until the survival objective completes.")
+		_enemy_defeated()
+		_add_log("DISPERSED · Enemy action cancelled. Objective continues.")
 		_finish_round(false)
 		return
 	if delayed_this_turn:
@@ -318,6 +396,9 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 			metrics["intents_countered"] += 1
 			_add_log("DEFLECT · The strike changes course. Damage reduced to %d." % incoming)
 		_apply_physical_damage(incoming)
+		if action.has("physical_corruption"):
+			_add_corruption(str(action["family"]), int(action["physical_corruption"]))
+			_add_log("%s · %s +%d." % [action["word"], action["family"], action["physical_corruption"]])
 	else:
 		var family := str(action["family"])
 		_add_corruption(family, int(action["corruption"]))
@@ -327,7 +408,11 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 		if action.has("armor_damage"):
 			armor = maxi(0, armor - int(action["armor_damage"]))
 		if action.has("guard"):
+			var guard_before := int(enemy["armor"])
 			enemy["armor"] = mini(int(enemy["max_armor"]), int(enemy["armor"]) + int(action["guard"]))
+			_add_log("%s · Armor %d → %d." % [action["word"], guard_before, enemy["armor"]])
+		if action.has("poison"):
+			player_effects.apply("POISONED", int(action["poison"]), 3, "TOXIC LEAK")
 		if action.has("obscure"):
 			next_intent_penalty += int(action["obscure"])
 		if action.has("status"):
@@ -345,13 +430,24 @@ func can_react() -> bool:
 
 func _finish_round(keep_intent: bool) -> void:
 	deck.end_turn(false)
+	resolving_end_effects = true
+	end_applied_effects.clear()
 	if erosion_turns > 0:
 		if int(enemy["structure"]) > 0:
 			_damage_structure(erosion_tick, false)
 		else:
 			enemy["armor"] = maxi(0, int(enemy["armor"]) - 1)
 			_add_log("EROSION · Armor -1; no HP damage.")
-		erosion_turns -= 1
+	if enemy_effects.has("POISONED") and not dispersed:
+		var poison_damage := poison_tick_damage()
+		enemy["hp"] = maxi(0, int(enemy["hp"]) - poison_damage)
+		_add_log("%s · HP -%d; Structure / Armor bypassed." % ["TOXIC RESISTED" if poison_damage < 3 else "POISONED", poison_damage])
+		if int(enemy["hp"]) <= 0 and objective == "survive":
+			_enemy_defeated()
+	if player_effects.has("POISONED"):
+		hp = maxi(0, hp - player_effects.potency("POISONED"))
+		_add_log("TOXIC CONSEQUENCE · POISONED bypasses your Armor. HP -3.")
+		toxic_knowledge.record_combat_context(true)
 	if battle_index == 0:
 		consecutive_shatter_turns = consecutive_shatter_turns + 1 if shatter_played_this_turn else 0
 		no_structure_damage_turns = 0 if structure_damaged_this_turn else no_structure_damage_turns + 1
@@ -361,8 +457,14 @@ func _finish_round(keep_intent: bool) -> void:
 			no_structure_damage_turns = 0
 			_add_log("REGROWTH — Structure restored +%d." % (int(enemy["structure"]) - before))
 	completed_rounds += 1
+	resolving_end_effects = false
 	if hp <= 0:
 		_finish_battle(false)
+		return
+	if finished:
+		return
+	if int(enemy["hp"]) <= 0 and objective == "kill":
+		_finish_battle(true)
 		return
 	if objective == "survive" and completed_rounds >= 5:
 		_add_log("SURVIVE 5 TURNS — Objective complete.")
@@ -372,6 +474,8 @@ func _finish_round(keep_intent: bool) -> void:
 	if carry > 0:
 		metrics["focus_reserved"] += 1
 	_tick_statuses()
+	enemy_effects.tick_durations(end_applied_effects)
+	player_effects.tick_durations()
 	_begin_player_turn(carry, keep_intent)
 
 func _finish_battle(victory: bool) -> void:
@@ -383,31 +487,84 @@ func _finish_battle(victory: bool) -> void:
 	changed.emit()
 	battle_finished.emit(victory)
 
-func _damage_enemy_hp(amount: int) -> void:
-	var absorbed := mini(int(enemy["armor"]), amount)
+func _damage_enemy_hp(amount: int, penetration: int = 0) -> void:
+	var ignored := mini(int(enemy["armor"]), penetration)
+	var absorbed := mini(maxi(0, int(enemy["armor"]) - ignored), amount)
 	enemy["armor"] = int(enemy["armor"]) - absorbed
 	enemy["hp"] = maxi(0, int(enemy["hp"]) - (amount - absorbed))
 
-func _damage_structure(amount: int, collapse_damage: bool) -> void:
+func poison_tick_damage() -> int:
+	if bool(enemy["toxic_immune"]):
+		return 0
+	return maxi(0, int(ceil(3.0 * (1.0 - float(enemy["toxic_resistance"])))))
+
+func _apply_poison() -> void:
+	if bool(enemy["toxic_immune"]) or float(enemy["toxic_resistance"]) >= 1.0:
+		_add_log("TARGET IMMUNE · TOXIC has no effect.")
+		return
+	enemy_effects.apply("POISONED", 3, 3, "TOXIC")
+	_add_log("POISONED · 3 turns, REFRESH not STACK; no immediate HP damage.")
+	if poison_tick_damage() < 3:
+		_add_log("TOXIC RESISTED · Poison damage reduced to %d." % poison_tick_damage())
+
+func _discover_combo(combo_id: String, word) -> void:
+	if combo_id in word.discovered_combos:
+		return
+	word.discovered_combos.append(combo_id)
+	latest_combo = combo_id
+	combo_discovered.emit()
+
+func _enemy_defeated() -> void:
+	if objective == "survive":
+		if not dispersed:
+			dispersed = true
+			enemy["phase_state"] = "DISPERSED"
+			_add_log("NEGLECT WRAITH — DISPERSED. Reforms next turn. Objective continues.")
+	else:
+		_finish_battle(true)
+
+func retain_disabled_reason(card: Dictionary) -> String:
+	if finished or turn_ending or pending_counter:
+		return "RESOLVE CURRENT DECISION"
+	if deck.mulligan_pending:
+		return "CONFIRM OPENING HAND"
+	if bool(card.get("retained_last_turn", false)):
+		return "CANNOT RETAIN CONSECUTIVELY"
+	if not int(card["instance_id"]) in deck.retained_cards and deck.retained_cards.size() >= retain_slots():
+		return "RETAIN LIMIT REACHED"
+	return ""
+
+func _damage_structure(amount: int, _collapse_damage: bool) -> void:
 	var before := int(enemy["structure"])
 	enemy["structure"] = maxi(0, before - amount)
 	structure_damaged_this_turn = structure_damaged_this_turn or before > int(enemy["structure"])
 	_add_log("STRUCTURE PRESSURE · -%d Structure." % (before - int(enemy["structure"])))
-	if int(enemy["structure"]) == 0 and not structure_collapsed:
+	if before > 0 and int(enemy["structure"]) == 0:
 		structure_collapsed = true
-		var damage := (10 if "iron_script" in relics else 6) if collapse_damage else 0
-		_damage_enemy_hp(damage)
-		_add_log("STRUCTURE COLLAPSE · EXPOSED; %d HP damage." % damage)
+		enemy_effects.apply("EXPOSED", 3 if "iron_script" in relics else 2, 0, "STRUCTURE COLLAPSE")
+		if resolving_end_effects:
+			end_applied_effects.append("EXPOSED")
+		_add_log("STRUCTURE COLLAPSE · EXPOSED %d turns. No HP damage; Armor remains." % enemy_effects.duration("EXPOSED"))
 
 func _begin_player_turn(carry: int, keep_intent: bool) -> void:
 	turn += 1
 	turn_ending = false
 	erode_played_this_turn = false
+	toxic_played_this_turn = false
+	fractured_this_turn = false
 	echo_used_this_turn = false
 	shatter_played_this_turn = false
 	structure_damaged_this_turn = false
-	deck.retained_cards.clear()
-	deck.draw_to(5)
+	deck.begin_turn()
+	if dispersed:
+		enemy["hp"] = int(enemy["max_hp"])
+		dispersed = false
+		_add_log("NEGLECT WRAITH — REFORMED · HP restored to full. Objective continues.")
+	if battle_index == 5:
+		enemy["phase_state"] = "FADED" if turn % 2 == 0 else "NORMAL"
+		_add_log("PHASE SHIFT · %s." % enemy["phase_state"])
+	else:
+		enemy["phase_state"] = "NORMAL"
 	focus = BASE_FOCUS + carry
 	if not keep_intent:
 		intent = _choose_intent()
@@ -445,6 +602,8 @@ func _base_intent_clarity(action: Dictionary) -> int:
 	if battle_index == 0 and action["kind"] == "physical":
 		clarity = 2
 	if str(action["word"]) == "ERODE" and knowledge.is_recognized():
+		clarity += 1
+	if action.has("poison") and toxic_knowledge.is_recognized():
 		clarity += 1
 	if "OBSCURITY" in enemy["families"]:
 		clarity -= 1
@@ -540,6 +699,11 @@ func intent_description() -> String:
 	return "%s\n\nWord sense · %s%s" % [intent["clear"], intent["sense"], extra]
 
 func knowledge_intent_hint() -> String:
+	if intent.has("poison") and toxic_knowledge.is_recognized():
+		var toxic_hint := "\n\nKNOWN WORD · TOXIC · %s\nRecognized Concept: harmful / poisonous" % toxic_knowledge.current_state
+		if toxic_knowledge.has_insight():
+			toxic_hint += "\nKnown Mechanism: delayed HP damage bypasses Armor."
+		return toxic_hint
 	if intent.is_empty() or not knowledge.is_recognized():
 		return ""
 	var is_erode := str(intent["word"]) == "ERODE"
@@ -577,6 +741,7 @@ func active_status_text() -> String:
 	if inattention_tier == 4:
 		pressure.append("WARNING RELIABILITY REDUCED")
 	names.append_array(pressure)
+	names.append_array(player_effects.rows())
 	return "\n".join(names)
 
 func reaction_cost() -> int:
@@ -597,10 +762,23 @@ func trait_text() -> String:
 			text = "TRAIT — FALSE INTENT: odd turns show two possibilities. OBSERVE eliminates the false one."
 		2:
 			text = "TRAIT — MISSED WINDOW: Inattention degrades Reaction information, not the opportunity itself."
+		4:
+			text = "TRAIT — SEALED PLATING: Collapse leaves Armor intact.\nTRAIT — REINFORCE: every third action, Armor +4 (max 18).\nTOXIC RESISTANCE · 0%"
+		5:
+			text = "TRAIT — INCORPOREAL: Structure NONE; SHATTER only 3 damage.\nTRAIT — PHASE SHIFT: even turns FADED; OBSERVE reveals."
 		_:
 			text = str(enemy.get("tutorial", ""))
 	if objective == "survive":
 		text += "\nOBJECTIVE — SURVIVE 5 TURNS: %d / 5 complete." % completed_rounds
 	if erosion_turns > 0:
-		text += "\nEROSION: %d turns; -%d Structure / -1 Armor." % [erosion_turns, erosion_tick]
+		text += "\nEROSION · %d turns; -%d Structure / -1 Armor." % [erosion_turns, erosion_tick]
+	if enemy_effects.has("EXPOSED"):
+		text += "\nEXPOSED · %d turns · STRIKE +2 direct damage." % enemy_effects.duration("EXPOSED")
+	if enemy_effects.has("POISONED"):
+		text += "\nPOISONED · %d turns · HP -%d per tick." % [enemy_effects.duration("POISONED"), poison_tick_damage()]
+	if battle_index == 5:
+		text += "\n%s%s" % [enemy["phase_state"], " · 1 turn" if enemy_effects.has("REVEALED") else ""]
+		text += "\nTOXIC IMMUNE" if bool(enemy["toxic_immune"]) else "\nHIGH TOXIC RESISTANCE · 75%"
+	if dispersed:
+		text += "\nDISPERSED · Reforms next turn. Objective continues."
 	return text

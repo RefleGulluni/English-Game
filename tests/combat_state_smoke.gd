@@ -56,9 +56,9 @@ func _test_shatter_branches() -> void:
 	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
 	_check(int(state.enemy["structure"]) == 2 and int(state.enemy["hp"]) == starting_hp, "repeated SHATTER does not leak HP damage through Structure")
 	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
-	_check(int(state.enemy["structure"]) == 0 and int(state.enemy["hp"]) == starting_hp - 6, "SHATTER triggers Structure Collapse exactly when Structure reaches zero")
+	_check(int(state.enemy["structure"]) == 0 and int(state.enemy["hp"]) == starting_hp and state.enemy_effects.duration("EXPOSED") == 2, "Structure Collapse applies EXPOSED without HP damage")
 	preload("res://tests/mechanics_fixture.gd").play(state, "SHATTER")
-	_check(int(state.enemy["hp"]) == starting_hp - 16, "SHATTER deals exposed damage after Structure has collapsed")
+	_check(int(state.enemy["hp"]) == starting_hp - 3, "SHATTER remains weak direct damage after Structure has collapsed")
 	var collapse_logs := 0
 	for line in state.log_lines:
 		if "STRUCTURE COLLAPSE" in line:

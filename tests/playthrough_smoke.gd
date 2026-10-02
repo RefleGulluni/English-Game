@@ -25,7 +25,7 @@ func _initialize() -> void:
 			if combat.finished:
 				break
 			var reserve := combat.reaction_cost() if combat.can_react() and combat.intent.kind == "physical" else 0
-			for action in ["OBSERVE", "RESTORE", "STABILIZE", "ERODE", "SHATTER", "BIND"]:
+			for action in ["OBSERVE", "RESTORE", "STABILIZE", "ERODE", "STRIKE", "SHATTER", "BIND"]:
 				for card in combat.deck.hand.duplicate():
 					if card.name != action or not combat.can_use(action, int(card.instance_id)):
 						continue
@@ -47,7 +47,7 @@ func _initialize() -> void:
 			if combat.finished:
 				break
 			for card in combat.deck.hand:
-				if card.name == "SHATTER" or card.name == "DEFLECT" or card.name == "ERODE" and word.current_state == "USABLE":
+				if card.name == "STRIKE" or card.name == "DEFLECT" or card.name == "ERODE" and word.current_state == "USABLE":
 					combat.deck.toggle_retain(int(card.instance_id), combat.retain_slots())
 			combat.end_player_turn()
 			if combat.turn_ending:
@@ -61,7 +61,7 @@ func _initialize() -> void:
 		if node_id == "root_husk":
 			manager.claim_relic("clear_lens")
 			manager.select_node("semantic_anomaly")
-			manager.resolve_anomaly("examine")
+			manager.resolve_anomaly("erode")
 		elif node_id == "veil_moth":
 			word.record_transfer(true)
 			word.record_production(true)

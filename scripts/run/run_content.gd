@@ -5,9 +5,11 @@ const LAYERS := [
 	[
 		{"id": "root_husk", "type": "encounter", "title": "ROOT HUSK", "detail": "Known physical and Decay pressure.", "battle": 0, "echo": 20},
 		{"id": "fracture_event", "type": "event", "title": "FRACTURE EVENT", "detail": "An uncertain opportunity inside the ruins."},
+		{"id": "iron_shell", "type": "encounter", "title": "IRON SHELL · ECOLOGY TEST", "detail": "Optional fixed test branch: plating and poisonous leakage. Does not consume a layer.", "battle": 4, "echo": 15, "detour": true},
 	],
 	[
 		{"id": "semantic_anomaly", "type": "anomaly", "title": "SEMANTIC ANOMALY", "detail": "A repeating phrase loses one word each time. Optional; does not consume a layer."},
+		{"id": "ghost", "type": "encounter", "title": "GHOST · ECOLOGY TEST", "detail": "Optional fixed test branch: no Structure, shifting phase, high Toxic Resistance. Does not consume a layer.", "battle": 5, "echo": 15, "detour": true},
 		{"id": "veil_moth", "type": "encounter", "title": "VEIL MOTH", "detail": "Obscurity pressure. Reward: 20 Echo.", "battle": 1, "echo": 20},
 		{"id": "supply_cache", "type": "cache", "title": "SUPPLY CACHE", "detail": "Choose recovery, stability, or Echo."},
 	],
@@ -59,7 +61,7 @@ const CACHE_CHOICES := [
 ]
 
 const RELICS := {
-	"unfinished_sentence": {"name": "UNFINISHED SENTENCE", "rarity": "EPIC", "rule_type": "retain", "trigger": "each_turn", "description": "Retain Slot +1. Keep up to two unused cards each turn."},
+	"unfinished_sentence": {"name": "UNFINISHED SENTENCE", "rarity": "EPIC", "rule_type": "retain", "trigger": "each_turn", "description": "Retain Slot +1. Keep up to two unused cards; never retain the same instance consecutively."},
 	"echo_chamber": {"name": "ECHO CHAMBER", "rarity": "LEGENDARY", "rule_type": "word_copy", "trigger": "first_usable_word_each_turn", "description": "First USABLE Word played each turn creates an Echo copy: cost +1; Exhaust after use."},
 	"clear_lens": {
 		"rarity": "RARE", "rule_type": "cost", "trigger": "first_observe_per_combat",
@@ -69,7 +71,7 @@ const RELICS := {
 	"iron_script": {
 		"rarity": "REFINED", "rule_type": "collapse", "trigger": "structure_collapse",
 		"name": "IRON SCRIPT",
-		"description": "Structure Collapse deals +4 damage.",
+		"description": "Structure Collapse applies EXPOSED for one additional turn. No Collapse HP damage.",
 	},
 	"quiet_mind": {
 		"rarity": "RARE", "rule_type": "corruption", "trigger": "first_inattention_gain_per_combat",

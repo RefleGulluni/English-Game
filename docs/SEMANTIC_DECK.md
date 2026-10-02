@@ -1,5 +1,7 @@
 # Mini Run 0.5 — Implementation Notes
 
+Historical 0.5 behavior, not the current rules specification. Mini Run 0.6 changes starter composition, Collapse, SHATTER damage, Erosion refresh, Retain restrictions, Wraith reformation and Anomaly answers. See `COMBAT_ECOLOGY.md` for the implemented overrides.
+
 ## Deck and timing
 
 Each combat starts a fresh ten-card starter deck, plus any next-combat temporary reward. Cards have stable definition IDs and unique instance IDs. Draw five; opening Mulligan replaces zero to two cards once, drawing replacements before returned cards are shuffled back. No card is guaranteed by hand manipulation.

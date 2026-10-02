@@ -42,6 +42,7 @@ var skill_buttons: Dictionary = {}
 var hand_row: HBoxContainer
 var pile_label: Label
 var mulligan_selection: Array[int] = []
+var toxic_training_in_combat := false
 
 func _ready() -> void:
 	set_process_unhandled_key_input(true)
@@ -53,6 +54,7 @@ func _ready() -> void:
 	state.combo_discovered.connect(_on_combo_discovered)
 	run_manager.start_run()
 	run_manager.state.knowledge.changed.connect(_on_knowledge_changed)
+	run_manager.state.toxic_knowledge.changed.connect(_on_knowledge_changed)
 	_show_run_entry()
 
 func _draw() -> void:
@@ -69,7 +71,7 @@ func _build_interface() -> void:
 	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
 	add_child(title)
 
-	var subtitle := _make_label("MINI RUN PROTOTYPE 0.5", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
+	var subtitle := _make_label("MINI RUN PROTOTYPE 0.6", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
 	add_child(subtitle)
 
 	stage_label = _make_label("", Vector2(360, 19), Vector2(560, 42), 15, INK)
@@ -254,14 +256,18 @@ func _refresh() -> void:
 	enemy_hp_label.text = "HP   %d / %d" % [int(state.enemy["hp"]), int(state.enemy["max_hp"])]
 	enemy_hp_bar.max_value = int(state.enemy["max_hp"])
 	enemy_hp_bar.value = int(state.enemy["hp"])
-	enemy_armor_label.text = "STRUCTURE %d/%d · ARMOR %d" % [int(state.enemy["structure"]), int(state.enemy["max_structure"]), int(state.enemy["armor"])]
-	enemy_armor_bar.max_value = int(state.enemy["max_structure"])
+	enemy_armor_label.text = ("STRUCTURE %d/%d" % [int(state.enemy["structure"]), int(state.enemy["max_structure"])] if bool(state.enemy["has_structure"]) else "STRUCTURE NONE") + " · ARMOR %d/%d" % [int(state.enemy["armor"]), int(state.enemy["max_armor"])]
+	enemy_armor_label.add_theme_font_size_override("font_size", 11)
+	# A zero-width range renders as full in Godot; no-Structure targets have no bar.
+	enemy_armor_bar.visible = bool(state.enemy["has_structure"])
+	enemy_armor_bar.max_value = maxi(1, int(state.enemy["max_structure"]))
 	enemy_armor_bar.value = int(state.enemy["structure"])
 	intent_badge.text = state.clarity_name()
 	intent_badge.add_theme_color_override("font_color", _clarity_color(state.intent_clarity))
 	intent_title.text = state.intent_title()
 	intent_text.text = state.intent_description()
-	knowledge_indicator.text = "KNOWN WORD · ERODE · %s" % state.knowledge.current_state if not state.knowledge_intent_hint().is_empty() else ""
+	var known_word = state.toxic_knowledge if state.intent.has("poison") else state.knowledge
+	knowledge_indicator.text = "KNOWN WORD · %s · %s" % [known_word.lemma, known_word.current_state] if not state.knowledge_intent_hint().is_empty() else ""
 	tutorial_label.text = state.trait_text()
 	log_text.text = "\n\n".join(state.log_lines)
 	log_text.scroll_to_line(maxi(0, state.log_lines.size() - 1))
@@ -283,11 +289,13 @@ func _refresh_hand(modal_open: bool) -> void:
 		column.custom_minimum_size.x = 230
 		hand_row.add_child(column)
 		var text := "%d · %s · %d FOCUS\n%s" % [index + 1, card_name, state.card_cost(card), card["category"]]
-		if card_name == "ERODE" and state.knowledge.current_state != "USABLE":
+		if card_name in ["ERODE", "TOXIC"] and state.word_for(card_name).current_state != "USABLE":
 			text += "\nCONTEXT CARD · Study in Lexicon"
 		else:
 			var summaries := {
-				"SHATTER": "Structure -8 / exposed damage 10",
+				"SHATTER": "BREAK · Structure -8 / low direct 3",
+				"STRIKE": "KILL · Direct 8 / Structure -2",
+				"TOXIC": "BYPASS · Poison HP -3 × 3 turns",
 				"OBSERVE": "Intent clarity +1",
 				"BIND": "Delay the current intent 1 turn",
 				"DEFLECT": "Reaction · physical damage -75%",
@@ -298,22 +306,29 @@ func _refresh_hand(modal_open: bool) -> void:
 			text += "\n" + str(summaries.get(card_name, card["base_effect"]))
 			if "EXHAUST" in card["time_properties"]:
 				text += "\nECHO · EXHAUST" if bool(card.get("echo", false)) else "\nTEMPORARY · EXHAUST"
+		var reason := "DIALOG OPEN" if modal_open else state.disabled_reason(card_name, uid)
+		if not reason.is_empty():
+			text += "\n" + reason
 		var button := _make_button(text, Vector2.ZERO, Vector2.ZERO, CombatContent.SKILLS[card_name]["accent"])
 		button.name = "Card%d" % uid
 		button.custom_minimum_size = Vector2(230, 72)
 		button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.add_theme_font_size_override("font_size", 11)
-		button.tooltip_text = str(card["base_effect"])
-		button.disabled = modal_open or not state.can_use(card_name, uid)
+		button.add_theme_color_override("font_disabled_color", Color("97a6b8"))
+		button.tooltip_text = str(card["base_effect"]) + ("\n" + reason if not reason.is_empty() else "")
+		button.disabled = not reason.is_empty()
 		button.pressed.connect(_on_card_pressed.bind(uid))
 		button.mouse_entered.connect(_show_skill_detail.bind(card_name))
 		column.add_child(button)
 		var retained := state.deck.retained_cards.has(uid)
-		var retain := _make_button("RETAIN ✓" if retained else "RETAIN", Vector2.ZERO, Vector2.ZERO, GOLD if retained else MUTED)
+		var retain_reason := "DIALOG OPEN" if modal_open else state.retain_disabled_reason(card)
+		var retain := _make_button(retain_reason if not retain_reason.is_empty() else ("RETAIN ✓" if retained else "RETAIN"), Vector2.ZERO, Vector2.ZERO, GOLD if retained else MUTED)
 		retain.custom_minimum_size.y = 24
-		retain.add_theme_font_size_override("font_size", 10)
-		retain.disabled = modal_open or state.deck.mulligan_pending or state.turn_ending or state.finished or (not retained and state.deck.retained_cards.size() >= state.retain_slots())
+		retain.add_theme_font_size_override("font_size", 9)
+		retain.add_theme_color_override("font_disabled_color", Color("97a6b8"))
+		retain.tooltip_text = retain_reason
+		retain.disabled = not retain_reason.is_empty()
 		retain.pressed.connect(func():
 			state.deck.toggle_retain(uid, state.retain_slots())
 			_refresh()
@@ -336,7 +351,7 @@ func _show_mulligan() -> void:
 	for card in state.deck.hand:
 		var uid := int(card["instance_id"])
 		actions.append({"text": "%s %s · %d FOCUS" % ["✓" if mulligan_selection.has(uid) else "□", card["name"], state.card_cost(card)], "callback": _toggle_mulligan.bind(uid)})
-	_show_modal("OPENING HAND", "Replace up to two cards, once per combat.\nReturned cards are shuffled back after replacements are drawn.\nRetain keeps one card for the next turn without a Focus cost.", actions)
+	_show_modal("OPENING HAND", "Replace up to two cards, once per combat.\nReturned cards are shuffled back after replacements are drawn.\nRetain keeps one card for the next turn without a Focus cost.\nThe same instance cannot be retained on consecutive turns.", actions)
 
 func _toggle_mulligan(uid: int) -> void:
 	if mulligan_selection.has(uid):
@@ -351,13 +366,14 @@ func _confirm_mulligan() -> void:
 	_refresh()
 
 func _on_combo_discovered() -> void:
-	knowledge_notice.text = "COMBO DISCOVERED · ERODE + SHATTER · Recorded in Lexicon"
+	knowledge_notice.text = "COMBO DISCOVERED · %s · Recorded in Lexicon" % state.latest_combo.replace("_", " ").to_upper()
 	# Defer until the card and any counter-Reaction have finished resolving.
 	_show_combo_notice.call_deferred()
 
 func _show_combo_notice() -> void:
 	if not is_instance_valid(modal) and not state.finished and not state.pending_counter:
-		_show_modal("COMBO DISCOVERED", "ERODE + SHATTER.\nErosion ticks become 3 Structure damage and last one additional turn.\nThe discovery is now recorded in your Lexicon.", [{"text": "CONTINUE", "callback": _refresh}])
+		var descriptions := {"fractured_erosion": "ERODE × SHATTER.\nErosion ticks become 3 Structure damage and last one additional turn.", "weakened_opening": "ERODE × STRIKE.\nThis STRIKE ignores up to 3 Armor without adding damage.", "venomous_strike": "TOXIC × STRIKE.\nNormal Strike also refreshes POISONED for 3 turns."}
+		_show_modal("SEMANTIC RESONANCE DISCOVERED", str(descriptions.get(state.latest_combo, state.latest_combo)) + "\nRecorded in your Lexicon.", [{"text": "CONTINUE", "callback": _refresh}])
 
 func _stage_text() -> String:
 	return "FRACTURE · LAYER %d / 4     ·     %s     ·     TURN %d" % [
@@ -448,6 +464,12 @@ func _on_knowledge_changed(message: String) -> void:
 	state._add_log(message)
 	if not state.enemy.is_empty():
 		_refresh()
+	if message.begins_with("TOXIC") and run_manager.state.toxic_knowledge.current_state == "UNDERSTOOD" and not run_manager.state.toxic_knowledge.transfer_offered:
+		_offer_toxic_training.call_deferred()
+
+func _offer_toxic_training() -> void:
+	if not is_instance_valid(modal) and not state.finished and state.battle_index == 4:
+		_show_toxic_transfer()
 
 func _show_inscription() -> void:
 	var word := run_manager.state.knowledge
@@ -481,7 +503,87 @@ func _answer_recognition(answer: String) -> void:
 
 func _finish_inscription() -> void:
 	run_manager.state.knowledge.inscription_completed = true
+	if not run_manager.state.toxic_knowledge.inscription_completed:
+		_show_toxic_exposure()
+	else:
+		_show_map()
+
+func _show_toxic_exposure() -> void:
+	run_manager.state.toxic_knowledge.encounter()
+	_show_modal("TOXIC · FIRST EXPOSURE", "A cracked vial carries a warning: TOXIC.\nA drop touches a leaf, which slowly sickens.\nWhat does toxic mean in this context?", [
+		{"text": "harmful or poisonous", "callback": _answer_toxic_recognition.bind("harmful")},
+		{"text": "protective and healing", "callback": _answer_toxic_recognition.bind("healing")},
+		{"text": "tightly tied together", "callback": _answer_toxic_recognition.bind("tied")},
+		{"text": "LEAVE AND KEEP EXPLORING", "callback": _finish_toxic_exposure},
+	])
+
+func _answer_toxic_recognition(answer: String) -> void:
+	var correct := answer == "harmful"
+	if correct:
+		run_manager.state.toxic_knowledge.recognize("cracked_vial")
+	_show_modal("TOXIC · RECOGNIZED" if correct else "TOXIC · KEEP EXPLORING", "Recognition Evidence +1.\nThe substance is harmful or poisonous.\nThe Iron Shell test branch contains a real TOXIC consequence to observe." if correct else "That meaning does not explain the sick leaf.\nNo resources are lost.", [
+		{"text": "CONTINUE" if correct else "TRY AGAIN", "callback": _finish_toxic_exposure if correct else _show_toxic_exposure},
+		{"text": "LEAVE", "callback": _finish_toxic_exposure},
+	])
+
+func _finish_toxic_exposure() -> void:
+	run_manager.state.toxic_knowledge.inscription_completed = true
 	_show_map()
+
+func _show_toxic_transfer() -> void:
+	toxic_training_in_combat = state.battle_index == 4 and not state.finished and not "iron_shell" in run_manager.state.completed_detours
+	run_manager.state.toxic_knowledge.transfer_offered = true
+	_show_modal("TOXIC · A NEW CONTEXT", "The contaminated water is toxic to fish.\nWhat does toxic describe here?", [
+		{"text": "It is harmful or poisonous to the fish.", "callback": _answer_toxic_transfer.bind("harmful")},
+		{"text": "It makes the fish stronger.", "callback": _answer_toxic_transfer.bind("stronger")},
+		{"text": "SKIP AND CONTINUE", "callback": _resume_toxic_training},
+	])
+
+func _answer_toxic_transfer(answer: String) -> void:
+	var correct := answer == "harmful"
+	run_manager.state.toxic_knowledge.record_transfer(correct)
+	if correct:
+		_show_toxic_production()
+	else:
+		_show_modal("TOXIC · KEEP EXPLORING", "The water causes harm rather than strengthening the fish.\nYour evidence is preserved.", [{"text": "TRY AGAIN", "callback": _show_toxic_transfer}, {"text": "CONTINUE", "callback": _resume_toxic_training}])
+
+func _show_toxic_production() -> void:
+	_show_modal("TOXIC · USE THE WORD", "The fumes are _____ and can poison living things.", [
+		{"text": "toxic", "callback": _answer_toxic_production.bind("toxic")},
+		{"text": "stable", "callback": _answer_toxic_production.bind("stable")},
+		{"text": "restored", "callback": _answer_toxic_production.bind("restored")},
+		{"text": "SKIP AND CONTINUE", "callback": _resume_toxic_training},
+	])
+
+func _answer_toxic_production(answer: String) -> void:
+	var correct := answer == "toxic"
+	run_manager.state.toxic_knowledge.record_production(correct)
+	_show_modal("TOXIC · USABLE" if correct else "TOXIC · TRY AGAIN", "Production Evidence +1.\nTOXIC is now a usable Semantic Modifier.\nPOISONED bypasses Structure and Armor, but some enemies resist it." if correct else "Choose the word for something harmful or poisonous.", [{"text": "CONTINUE" if correct else "TRY AGAIN", "callback": _resume_toxic_training if correct else _show_toxic_production}])
+
+func _resume_toxic_training() -> void:
+	if toxic_training_in_combat:
+		toxic_training_in_combat = false
+		_refresh()
+	else:
+		_show_map()
+
+func _show_semantic_anomaly() -> void:
+	var word := run_manager.state.knowledge
+	var body := "A phrase repeats in the Fracture.\nRain will _____ the stone over many winters.\nAgain: Rain will _____ the stone over many winters.\nWhich concept is disappearing from the phrase?"
+	if word.is_recognized():
+		body += "\nKnown concept: gradual weakening."
+	if word.has_insight():
+		body += "\nKnown mechanism: repeated exposure wears away material, rather than binding or restoring it."
+	var actions: Array = [
+		{"text": "ERODE", "callback": _resolve_anomaly.bind("erode")},
+		{"text": "BIND", "callback": _resolve_anomaly.bind("bind")},
+		{"text": "RESTORE", "callback": _resolve_anomaly.bind("restore")},
+	]
+	if word.current_state == "USABLE":
+		actions.append({"text": "ANCHOR THE MISSING CONCEPT", "callback": _resolve_anomaly.bind("anchor")})
+	actions.append({"text": "LEAVE SAFELY", "callback": _resolve_anomaly.bind("leave")})
+	body += "\nCorrect meaning: a temporary card. Wrong meaning: Obscurity +8. Leave: no cost."
+	_show_modal("REPEATING PHRASE ANOMALY", body, actions)
 
 func _show_lexicon() -> void:
 	if lexicon_open:
@@ -493,11 +595,14 @@ func _show_lexicon() -> void:
 	modal = null
 	var word := run_manager.state.knowledge
 	var body := "No words recorded yet.\nExplore the Fracture to discover a word." if word.current_state == "UNKNOWN" else word.entry_text()
+	var toxic := run_manager.state.toxic_knowledge
+	if toxic.current_state != "UNKNOWN":
+		body += "\n\n" + toxic.entry_text()
 	for monster in word.enemy_records:
 		body += "\n\nCOMBAT CODEX · %s\n%s" % [monster, word.enemy_records[monster]]
 	if not run_manager.state.relics.is_empty():
 		body += "\n\nRELICS · " + _relic_names()
-	_show_modal("LEXICON" if word.current_state == "UNKNOWN" else "LEXICON · ERODE", body, [
+	_show_modal("LEXICON · WORDS & COMBAT CODEX", body, [
 		{"text": "CLOSE LEXICON", "callback": _close_lexicon.bind(previous)},
 	])
 
@@ -548,6 +653,9 @@ func _answer_production(answer: String) -> void:
 
 func _show_map() -> void:
 	var run := run_manager.state
+	if run.toxic_knowledge.current_state == "UNDERSTOOD" and not run.toxic_knowledge.transfer_offered:
+		_show_toxic_transfer()
+		return
 	if run.knowledge.root_combat_seen and run.current_layer >= 2 and not run.knowledge.transfer_offered:
 		_show_transfer_context()
 		return
@@ -580,16 +688,14 @@ func _select_node(node_id: String) -> void:
 				run_manager.state.knowledge.enemy_records["VEIL MOTH"] = "FALSE INTENT: two possible actions; OBSERVE removes the false possibility.\nObscurity still reduces clarity."
 			elif state.battle_index == 2:
 				run_manager.state.knowledge.enemy_records["NEGLECT WRAITH"] = "MISSED WINDOW: Inattention makes warnings less reliable, but never removes a DEFLECT opportunity."
+			elif state.battle_index in [4, 5]:
+				run_manager.state.knowledge.enemy_records[str(state.enemy["name"])] = str(state.enemy["tutorial"])
 			run_manager.state.temporary_cards.clear()
 			mulligan_selection.clear()
 			_refresh()
 			_show_mulligan()
 		"anomaly":
-			_show_modal("SEMANTIC ANOMALY", "A word repeats inside a distorted fragment.\nExamining it grants one temporary STABILIZE card for your next combat.\nStabilizing it lowers the dominant Corruption by 8.\nLeaving it costs nothing.", [
-				{"text": "EXAMINE · TEMPORARY CARD", "callback": _resolve_anomaly.bind("examine")},
-				{"text": "STABILIZE · CORRUPTION -8", "callback": _resolve_anomaly.bind("stabilize")},
-				{"text": "LEAVE", "callback": _resolve_anomaly.bind("leave")},
-			])
+			_show_semantic_anomaly()
 		"event":
 			_show_event()
 		"cache":

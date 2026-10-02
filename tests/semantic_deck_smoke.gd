@@ -36,13 +36,13 @@ func _round(combat: CombatState) -> void:
 func _test_deck() -> void:
 	var deck := DECK.new()
 	deck.reset(5)
-	_check(deck.hand.size() == 5 and deck.draw_pile.size() == 5, "starter draws five from ten")
+	_check(deck.hand.size() == 5 and deck.draw_pile.size() == 7, "starter draws five from twelve")
 	var counts := {}
 	var ids := {}
 	for card in deck.hand + deck.draw_pile:
 		counts[card.name] = int(counts.get(card.name, 0)) + 1
 		ids[card.instance_id] = true
-	_check(ids.size() == 10 and counts == {"SHATTER": 2, "OBSERVE": 2, "BIND": 2, "STABILIZE": 1, "DEFLECT": 1, "RESTORE": 1, "ERODE": 1}, "exact starter composition and unique instances")
+	_check(ids.size() == 12 and counts == {"SHATTER": 1, "STRIKE": 2, "OBSERVE": 2, "BIND": 2, "STABILIZE": 1, "DEFLECT": 1, "RESTORE": 1, "ERODE": 1, "TOXIC": 1}, "exact ecology starter composition and unique instances")
 	var original := deck.hand.duplicate()
 	var three: Array[int] = [original[0].instance_id, original[1].instance_id, original[2].instance_id]
 	_check(not deck.mulligan(three) and deck.hand == original, "three-card mulligan is atomic and rejected")
@@ -61,7 +61,7 @@ func _test_deck() -> void:
 	deck.draw_to(5)
 	deck.end_turn(false)
 	deck.draw_to(5)
-	_check(deck.hand.size() == 5 and deck.hand.size() + deck.draw_pile.size() + deck.discard_pile.size() == 10, "discard reshuffles without losses or duplication")
+	_check(deck.hand.size() == 5 and deck.hand.size() + deck.draw_pile.size() + deck.discard_pile.size() == 12, "discard reshuffles without losses or duplication")
 	var combat := CombatState.new()
 	combat.start_battle(0)
 	_check(not combat.use_card(int(combat.deck.hand[0].instance_id)), "cannot play before opening hand confirmation")
@@ -195,7 +195,7 @@ func _test_relics_and_anomaly() -> void:
 	manager.state.current_layer = 1
 	manager.state.next_reward_multiplier = 1.25
 	manager.select_node("semantic_anomaly")
-	manager.resolve_anomaly("examine")
+	manager.resolve_anomaly("erode")
 	_check(manager.state.next_reward_multiplier == 1.25, "optional anomaly preserves Press On for the next rewarding node")
 	_check(manager.state.current_layer == 1 and manager.state.temporary_cards == ["STABILIZE"], "anomaly grants temporary card without consuming route layer")
 	var anomaly_found := false
@@ -203,7 +203,7 @@ func _test_relics_and_anomaly() -> void:
 		anomaly_found = anomaly_found or node.id == "semantic_anomaly"
 	_check(not anomaly_found, "resolved anomaly cannot be farmed")
 	combat.start_battle(1, manager.state.combat_snapshot())
-	_check(combat.deck.hand.size() + combat.deck.draw_pile.size() == 11, "anomaly card joins next battle deck")
+	_check(combat.deck.hand.size() + combat.deck.draw_pile.size() == 13, "anomaly card joins next battle deck")
 	manager.state.knowledge.enemy_records["ROOT HUSK"] = "revealed"
 	manager.state.knowledge.discovered_combos.append("fractured_erosion")
 	manager.start_run()

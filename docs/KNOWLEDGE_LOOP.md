@@ -1,6 +1,10 @@
-# Mini Run 0.5 — Preserved ERODE Knowledge Loop
+# Mini Run 0.6 — ERODE and TOXIC Knowledge Loops
 
-The prototype implements only ERODE (DECAY; gradual wearing away / weakening). Knowledge is run-local, represented by a shared `word_knowledge.gd` object in RunState and CombatState snapshots. Restart Run resets evidence; node transitions, victories, defeat summaries, and Breathers do not.
+The prototype implements ERODE (DECAY; gradual wearing away / weakening) and TOXIC (DECAY; harmful / poisonous). Knowledge is run-local, represented by independent shared `word_knowledge.gd` objects in RunState and CombatState snapshots. Restart Run resets evidence; node transitions, victories, defeat summaries, and Breathers do not.
+
+## TOXIC path
+
+After the inscription, the cracked vial introduces TOXIC and a meaning inference. Correct inference grants RECOGNIZED; poison-bearing intents then gain the information benefit. Iron Shell's TOXIC LEAK applies an actual player POISONED effect; the end-round HP consequence provides context evidence, not merely seeing text or clicking the card. Recognized TOXIC then becomes UNDERSTOOD. Transfer (contaminated water / fish) and production (toxic fumes) can occur during combat so successful learning makes TOXIC usable against Iron Shell itself. Resuming preserves the encounter, hand and Focus. Post-combat map presentation also supports the understood learning interlude. Skipping exercises leaves the corresponding knowledge gate closed; wrong exercise answers do not remove resources. The Lexicon lists both words and their own evidence.
 
 ## Playable path
 
@@ -22,7 +26,7 @@ The first-layer Event route remains available. Choosing it instead of Root Husk 
 - Existing OBSERVE and Corruption rules remain active. At NEGLIGENT, warning degradation hides detailed predictions as well as exact effects; knowledge does not bypass it.
 - All new modals use the shared adaptive component and sentence-break formatter. Do not create independently positioned popup text for future features.
 - Combat STABILIZE is 1 Focus / dominant Corruption -8; Breather -12 and Supply -15 remain unchanged.
-- The starter deck contains a non-playable ERODE Context Card before USABLE. Semantic use, discovered combinations and run-local Combat Codex entries are documented in `SEMANTIC_DECK.md`. None of these changes make recognition or Insight reduce incoming damage.
+- The starter deck contains non-playable ERODE and TOXIC Context Cards before USABLE. Semantic use, discovered combinations and run-local Combat Codex entries are documented in `COMBAT_ECOLOGY.md`. None of these changes make recognition or Insight reduce incoming damage.
 
 ## Tests
 

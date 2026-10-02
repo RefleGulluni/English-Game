@@ -66,12 +66,12 @@ func _test_combat_snapshot_and_relics() -> void:
 	combat.enemy["structure"] = 8
 	var hp_before := int(combat.enemy["hp"])
 	preload("res://tests/mechanics_fixture.gd").play(combat, "SHATTER")
-	_check(int(combat.enemy["hp"]) == hp_before - 10, "Iron Script adds 4 Structure Collapse damage")
+	_check(int(combat.enemy["hp"]) == hp_before and combat.enemy_effects.duration("EXPOSED") == 3, "Iron Script extends EXPOSED without collapse damage")
 
 func _test_fixed_run_route() -> void:
 	var manager := RunManager.new()
 	manager.start_run()
-	_check(manager.available_nodes().size() == 2, "Layer 1 exposes two route choices")
+	_check(manager.available_nodes().size() == 3, "Layer 1 exposes original routes plus a fixed Iron Shell test branch")
 	manager.select_node("fracture_event")
 	manager.resolve_event("leave")
 	_check(manager.state.current_layer == 1, "Event completion advances the route")

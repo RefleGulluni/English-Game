@@ -21,6 +21,11 @@ var root_combat_seen := false
 var transfer_offered := false
 var transfer_correct := false
 
+func _init(id: String = "erode") -> void:
+	word_id = id
+	lemma = id.to_upper()
+	concept_family = "TOXICITY" if id == "toxic" else "DECAY"
+
 func reset() -> void:
 	current_state = "UNKNOWN"
 	known_meaning = "Not yet inferred"
@@ -40,18 +45,18 @@ func reset() -> void:
 func encounter() -> void:
 	if current_state == "UNKNOWN":
 		current_state = "ENCOUNTERED"
-		changed.emit("NEW WORD ENCOUNTERED — ERODE")
+		changed.emit("NEW WORD ENCOUNTERED — %s" % lemma)
 
 func recognize(source: String) -> void:
 	encounter()
 	if not _add_source("recognition:" + source):
 		return
 	recognition_evidence += 1
-	known_meaning = "gradual wearing away / weakening"
+	known_meaning = "harmful / poisonous" if word_id == "toxic" else "gradual wearing away / weakening"
 	_advance()
 
 func record_combat_context(observed_exact_effects: bool) -> void:
-	root_combat_seen = true
+	root_combat_seen = word_id == "erode"
 	encounter()
 	if not is_recognized() or not observed_exact_effects or not _add_source("context:combat"):
 		return
@@ -61,16 +66,16 @@ func record_combat_context(observed_exact_effects: bool) -> void:
 func record_transfer(correct: bool) -> void:
 	if not correct:
 		return
-	recognize("water_stone")
+	recognize("water_stone" if word_id == "erode" else "toxic_water")
 	transfer_correct = true
-	if _add_source("context:water_stone"):
+	if _add_source("context:water_stone" if word_id == "erode" else "context:toxic_water"):
 		context_evidence += 1
 	_advance()
 
 func record_production(correct: bool) -> void:
 	if not correct or not transfer_correct or STATES.find(current_state) < 3:
 		return
-	if _add_source("production:river_cliff"):
+	if _add_source("production:river_cliff" if word_id == "erode" else "production:toxic_usage"):
 		production_evidence += 1
 	_advance()
 
@@ -78,7 +83,7 @@ func is_recognized() -> bool:
 	return STATES.find(current_state) >= 2
 
 func has_insight() -> bool:
-	return "erode_insight" in gameplay_unlocks
+	return word_id + "_insight" in gameplay_unlocks
 
 func _add_source(source: String) -> bool:
 	if source in evidence_sources:
@@ -93,14 +98,25 @@ func _advance() -> void:
 	if recognition_evidence > 0 and context_evidence > 0:
 		current_state = "UNDERSTOOD"
 		if not has_insight():
-			gameplay_unlocks.append("erode_insight")
+			gameplay_unlocks.append(word_id + "_insight")
 	if production_evidence > 0 and transfer_correct:
 		current_state = "USABLE"
-		if not "ERODE" in unlocked_cards:
-			unlocked_cards.append("ERODE")
-	changed.emit("ERODE — %s" % current_state if before != current_state else "ERODE — Evidence recorded")
+		if not lemma in unlocked_cards:
+			unlocked_cards.append(lemma)
+	changed.emit("%s — %s" % [lemma, current_state] if before != current_state else "%s — Evidence recorded" % lemma)
 
 func entry_text() -> String:
+	if word_id == "toxic":
+		var info := "More context is needed before this Word can be used."
+		if is_recognized():
+			info = "Known concept: harmful / poisonous."
+		if has_insight():
+			info += "\nPOISONED: delayed HP damage bypasses Structure and Armor."
+		if current_state == "USABLE":
+			info += "\nBuild Card: TOXIC · 1 Focus · POISONED 3 turns, HP -3 at round end."
+		if "venomous_strike" in discovered_combos:
+			info += "\nDISCOVERED COMBO — TOXIC × STRIKE\nVENOMOUS STRIKE: normal Strike plus refreshed POISONED."
+		return "Word: TOXIC\nCurrent State: %s\nKnown Meaning: %s\nRecognition Evidence: %d\nContext Evidence: %d\nProduction Evidence: %d\n\n%s" % [current_state, known_meaning, recognition_evidence, context_evidence, production_evidence, info]
 	var advantage := "More understanding may reveal how ERODE behaves in combat."
 	if is_recognized():
 		advantage = "Recognition: ERODE Intent gains +1 clarity before Corruption penalties."
@@ -110,4 +126,6 @@ func entry_text() -> String:
 		advantage += "\nBuild Card: ERODE (USABLE)"
 	if "fractured_erosion" in discovered_combos:
 		advantage += "\nDISCOVERED COMBO — ERODE × SHATTER\nFRACTURED EROSION: duration +1; Structure tick -3."
+	if "weakened_opening" in discovered_combos:
+		advantage += "\nDISCOVERED COMBO — ERODE × STRIKE\nWEAKENED OPENING: this STRIKE ignores up to 3 Armor, without adding damage."
 	return "Word: %s\nCurrent State: %s\nKnown Meaning: %s\nConcept Family: %s\n\nRecognition Evidence: %d\nContext Evidence: %d\nProduction Evidence: %d\n\nGameplay Knowledge:\n%s" % [lemma, current_state, known_meaning, concept_family, recognition_evidence, context_evidence, production_evidence, advantage]

@@ -19,10 +19,17 @@ func start_run() -> void:
 
 func available_nodes() -> Array:
 	var nodes := RunContent.layer_nodes(state.current_layer)
+	if state.current_layer == 2:
+		# Keep the ecology tests reachable after ERODE's full learning loop.
+		for node_id in ["iron_shell", "ghost"]:
+			nodes.append(RunContent.node_by_id(node_id))
 	if state.anomaly_resolved:
 		for node in nodes.duplicate():
 			if node["id"] == "semantic_anomaly":
 				nodes.erase(node)
+	for node in nodes.duplicate():
+		if str(node["id"]) in state.completed_detours:
+			nodes.erase(node)
 	return nodes
 
 func select_node(node_id: String) -> Dictionary:
@@ -45,17 +52,25 @@ func select_node(node_id: String) -> Dictionary:
 func resolve_anomaly(choice: String) -> String:
 	if state.anomaly_resolved or str(selected_node.get("id", "")) != "semantic_anomaly":
 		return "This anomaly has already passed."
+	if choice == "anchor" and state.knowledge.current_state != "USABLE":
+		return "REQUIRES USABLE · The hidden option is unavailable."
+	if not choice in ["erode", "bind", "restore", "anchor", "leave"]:
+		return "Choose a meaning before receiving a reward."
 	state.anomaly_resolved = true
 	var result := "The phrase fades."
-	if choice == "examine":
+	if choice == "erode":
 		state.temporary_cards.append("STABILIZE")
-		result = "A temporary STABILIZE card joins the next combat deck. It Exhausts after use."
-	elif choice == "stabilize":
+		result = "Correct: ERODE means gradual wearing away. A temporary STABILIZE joins the next combat deck (EXHAUST after use)."
+	elif choice == "anchor":
 		var family := state.dominant_corruption_family()
 		if not family.is_empty():
 			state.corruption[family] = maxi(0, int(state.corruption[family]) - 8)
 			state.refresh_lingering_statuses()
-		result = "The dominant Corruption recedes by up to 8."
+		result = "You anchor the missing concept. Dominant Corruption recedes by up to 8."
+	elif choice in ["bind", "restore"]:
+		state.corruption["Obscurity"] = mini(100, int(state.corruption["Obscurity"]) + 8)
+		state.refresh_lingering_statuses()
+		result = "The concept does not fit this context. Obscurity +8."
 	state.history.append("Semantic Anomaly: " + result)
 	changed.emit()
 	return result
@@ -67,7 +82,11 @@ func complete_combat(combat: CombatState) -> Dictionary:
 		base_echo = int(round(float(base_echo) * float(selected_node["reward_multiplier"])))
 	var awarded := state.grant_echo(base_echo, str(selected_node["title"]))
 	var settlement := state.apply_post_combat()
-	state.finish_node()
+	if bool(selected_node.get("detour", false)):
+		state.completed_detours.append(str(selected_node["id"]))
+		state.active_reward_multiplier = 1.0
+	else:
+		state.finish_node()
 	changed.emit()
 	return {"echo": awarded, "settlement": settlement, "elite": bool(selected_node.get("elite", false)), "final": str(selected_node["type"]) == "final"}
 

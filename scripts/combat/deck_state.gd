@@ -24,6 +24,8 @@ func reset(seed_value: int, temporary_cards: Array = []) -> void:
 	for card_id in temporary_cards:
 		var card := make_card(str(card_id))
 		card["time_properties"].append("EXHAUST")
+		card["temporary"] = true
+		card["exhaust_on_use"] = true
 		draw_pile.append(card)
 	_shuffle(draw_pile)
 	draw_to(5)
@@ -36,6 +38,8 @@ func make_card(card_id: String, cost_bonus: int = 0, echo_copy: bool = false) ->
 	card["echo"] = echo_copy
 	if echo_copy:
 		card["time_properties"].append("EXHAUST")
+		card["temporary"] = true
+		card["exhaust_on_use"] = true
 	return card
 
 func _shuffle(pile: Array[Dictionary]) -> void:
@@ -53,7 +57,9 @@ func draw_to(target: int) -> void:
 			draw_pile.append_array(discard_pile)
 			discard_pile.clear()
 			_shuffle(draw_pile)
-		hand.append(draw_pile.pop_back())
+		var card: Dictionary = draw_pile.pop_back()
+		card["retained_last_turn"] = false
+		hand.append(card)
 
 func find_card(card_id: String, instance_id: int = -1) -> Dictionary:
 	for card in hand:
@@ -77,6 +83,8 @@ func toggle_retain(instance_id: int, slots: int) -> bool:
 			if instance_id in retained_cards:
 				retained_cards.erase(instance_id)
 				return true
+			if bool(card.get("retained_last_turn", false)):
+				return false
 			if retained_cards.size() < slots:
 				retained_cards.append(instance_id)
 				return true
@@ -90,6 +98,13 @@ func end_turn(keep_reactions: bool = true) -> void:
 			continue
 		hand.erase(card)
 		discard_pile.append(card)
+
+func begin_turn() -> void:
+	# Mark only instances that survived in hand. Redrawing resets eligibility.
+	for card in hand:
+		card["retained_last_turn"] = int(card["instance_id"]) in retained_cards
+	retained_cards.clear()
+	draw_to(5)
 
 func mulligan(ids: Array[int]) -> bool:
 	if not mulligan_pending or mulligan_used or ids.size() > 2:
