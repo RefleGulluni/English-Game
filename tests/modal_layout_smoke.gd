@@ -11,6 +11,7 @@ func _settle() -> void:
 
 func _run() -> void:
 	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	screen.set_meta("legacy_run", true)
 	root.add_child(screen)
 	await _settle()
 	var entry_card: Control = screen.modal.get_node("ModalCard")

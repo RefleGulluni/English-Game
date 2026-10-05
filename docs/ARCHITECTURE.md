@@ -1,4 +1,10 @@
-# Mini Run Prototype 0.6 Architecture
+# Mini Run Prototype 0.7 Architecture
+
+The normal entry now launches Cemetery. `cemetery_content.gd` defines native enemy/event/relic pools; `cemetery_director.gd` caches seeded six-layer choices using learning, rhythm and repetition weights. `RunManager.start_cemetery_run(seed)` enables this route while `start_run()` preserves the historical 0.6 fixture for regression tests. The screen's `legacy_run` metadata is test-only; ordinary play uses Cemetery.
+
+`cemetery_words.gd` holds lemma/inflection and compatible target data. `cemetery_knowledge.gd` extends the existing evidence object without inventing new combat cards. Separate shared instances live in `RunState.target_knowledge` and combat snapshots. `cemetery_enemies.gd` adds profiles to the existing CombatState machinery: Bone Remains, Mourning, hidden intent, Boss phases and encounter-local Grave Pressure. Relic base effects and Cemetery-only resonance remain in the same rules layer.
+
+See `CEMETERY_0_7.md` for current boundaries, integration numbers, QA and reproducibility. The following inherited 0.6 architecture remains applicable; its four-layer route is historical, not the default 0.7 flow.
 
 ## Product boundary
 

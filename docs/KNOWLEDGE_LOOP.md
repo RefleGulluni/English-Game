@@ -1,4 +1,10 @@
-# Mini Run 0.6 — ERODE and TOXIC Knowledge Loops
+# Mini Run 0.7 — Target Words and Preserved Modifier Loops
+
+Cemetery uses four core targets and one supported elastic word. Each has independent recognition/context/production sources and run-local state, using a subclass of the same evidence model. World scenes support explicit inference, contextual judgment and actual sentence completion. Enemy entry offers recognition only; observed/resolved combat consequences provide context separately. Missing learning receives weighted support and late-layer scene opportunities, never automatic USABLE. Ordinary inflections resolve to one lemma; derivations are not automatically merged.
+
+The new targets grant information and scene understanding, not unspecified skill cards. UNDERSTOOD MOURN interprets Boss sorrow as pressure; other understood targets describe their relevant mechanism. Their evidence and states appear in Lexicon and Run Summary. See `CEMETERY_0_7.md` for the Director and event/monster carriers.
+
+The inherited ERODE/TOXIC model below is preserved. In Cemetery, Grave Skeleton carries actual ERODE and poison-dust consequences so these two learned combat cards remain reachable without placing Root Husk or Iron Shell in the native pool. TOXIC's remaining exercises can occur during that combat; ERODE uses the existing post-map transfer/production interlude after contextual understanding.
 
 The prototype implements ERODE (DECAY; gradual wearing away / weakening) and TOXIC (DECAY; harmful / poisonous). Knowledge is run-local, represented by independent shared `word_knowledge.gd` objects in RunState and CombatState snapshots. Restart Run resets evidence; node transitions, victories, defeat summaries, and Breathers do not.
 

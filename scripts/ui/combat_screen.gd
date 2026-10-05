@@ -43,6 +43,12 @@ var hand_row: HBoxContainer
 var pile_label: Label
 var mulligan_selection: Array[int] = []
 var toxic_training_in_combat := false
+var lesson_words: Array[String] = []
+var lesson_is_combat := false
+var lesson_source := ""
+var dev_previous: Control
+var dev_open := false
+const CEMETERY_WORDS := preload("res://scripts/run/cemetery_words.gd")
 
 func _ready() -> void:
 	set_process_unhandled_key_input(true)
@@ -52,9 +58,13 @@ func _ready() -> void:
 	state.battle_finished.connect(_on_battle_finished)
 	state.inattention_tier_changed.connect(_pulse_status)
 	state.combo_discovered.connect(_on_combo_discovered)
-	run_manager.start_run()
+	if bool(get_meta("legacy_run", false)):
+		run_manager.start_run()
+	else:
+		run_manager.start_cemetery_run()
 	run_manager.state.knowledge.changed.connect(_on_knowledge_changed)
 	run_manager.state.toxic_knowledge.changed.connect(_on_knowledge_changed)
+	_connect_target_words()
 	_show_run_entry()
 
 func _draw() -> void:
@@ -71,7 +81,7 @@ func _build_interface() -> void:
 	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
 	add_child(title)
 
-	var subtitle := _make_label("MINI RUN PROTOTYPE 0.6", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
+	var subtitle := _make_label("MINI RUN PROTOTYPE 0.7", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
 	add_child(subtitle)
 
 	stage_label = _make_label("", Vector2(360, 19), Vector2(560, 42), 15, INK)
@@ -81,6 +91,12 @@ func _build_interface() -> void:
 	var reset := _make_button("RESTART RUN", Vector2(1098, 20), Vector2(150, 38), Color("7d8da1"))
 	reset.pressed.connect(_restart_run)
 	add_child(reset)
+	if OS.has_feature("editor") or OS.is_debug_build():
+		var dev_button := _make_button("DEV", Vector2(1028, 20), Vector2(60, 38), MUTED)
+		dev_button.name = "DevButton"
+		dev_button.z_index = 102
+		dev_button.pressed.connect(_show_dev_panel)
+		add_child(dev_button)
 
 	_build_player_panel()
 	_build_enemy_panel()
@@ -237,8 +253,12 @@ func _build_skill_panel() -> void:
 	_show_skill_detail("OBSERVE")
 
 func _refresh() -> void:
-	if state.enemy.is_empty():
-		return
+	var lexicon_button := get_node_or_null("LexiconButton") as Button
+	if is_instance_valid(lexicon_button):
+		lexicon_button.visible = not dev_open
+	var dev_button := get_node_or_null("DevButton") as Button
+	if is_instance_valid(dev_button):
+		dev_button.disabled = lexicon_open
 	stage_label.text = _stage_text()
 	hp_label.text = "HP   %d / %d" % [state.hp, CombatState.MAX_HP]
 	hp_bar.max_value = CombatState.MAX_HP
@@ -249,6 +269,9 @@ func _refresh() -> void:
 	for family in corruption_labels:
 		corruption_labels[family].text = "%s  %d" % [family.to_upper(), int(state.corruption[family])]
 		corruption_bars[family].value = int(state.corruption[family])
+	if state.enemy.is_empty():
+		end_turn_button.disabled = true
+		return
 
 	enemy_name.text = str(state.enemy["name"])
 	enemy_subtitle.text = str(state.enemy["subtitle"])
@@ -262,11 +285,19 @@ func _refresh() -> void:
 	enemy_armor_bar.visible = bool(state.enemy["has_structure"])
 	enemy_armor_bar.max_value = maxi(1, int(state.enemy["max_structure"]))
 	enemy_armor_bar.value = int(state.enemy["structure"])
+	if state.bone_remains:
+		enemy_armor_label.text = "BONE REMAINS · INTEGRITY %d/10" % state.remains_hp
+		enemy_armor_bar.visible = true
+		enemy_armor_bar.max_value = 10
+		enemy_armor_bar.value = state.remains_hp
 	intent_badge.text = state.clarity_name()
 	intent_badge.add_theme_color_override("font_color", _clarity_color(state.intent_clarity))
 	intent_title.text = state.intent_title()
 	intent_text.text = state.intent_description()
 	var known_word = state.toxic_knowledge if state.intent.has("poison") else state.knowledge
+	var intent_lemma := CEMETERY_WORDS.lemma(str(state.intent.get("word", "")))
+	if state.target_knowledge.has(intent_lemma):
+		known_word = state.target_knowledge[intent_lemma]
 	knowledge_indicator.text = "KNOWN WORD · %s · %s" % [known_word.lemma, known_word.current_state] if not state.knowledge_intent_hint().is_empty() else ""
 	tutorial_label.text = state.trait_text()
 	log_text.text = "\n\n".join(state.log_lines)
@@ -290,7 +321,7 @@ func _refresh_hand(modal_open: bool) -> void:
 		hand_row.add_child(column)
 		var text := "%d · %s · %d FOCUS\n%s" % [index + 1, card_name, state.card_cost(card), card["category"]]
 		if card_name in ["ERODE", "TOXIC"] and state.word_for(card_name).current_state != "USABLE":
-			text += "\nCONTEXT CARD · Study in Lexicon"
+			text += "\nCONTEXT CARD · Learn in world contexts"
 		else:
 			var summaries := {
 				"SHATTER": "BREAK · Structure -8 / low direct 3",
@@ -303,6 +334,11 @@ func _refresh_hand(modal_open: bool) -> void:
 				"RESTORE": "Choose +8 HP or +4 Armor",
 				"ERODE": "Erosion 3 turns · Structure -2 / Armor -1",
 			}
+			if state.bone_remains:
+				var bonus := 2 if "ossuary_key" in state.relics else 0
+				summaries["SHATTER"] = "REMAINS · Integrity -%d" % (8 + bonus)
+				summaries["STRIKE"] = "REMAINS · Integrity -%d" % (3 + bonus)
+				summaries["BIND"] = "REASSEMBLY · Countdown +1, once"
 			text += "\n" + str(summaries.get(card_name, card["base_effect"]))
 			if "EXHAUST" in card["time_properties"]:
 				text += "\nECHO · EXHAUST" if bool(card.get("echo", false)) else "\nTEMPORARY · EXHAUST"
@@ -376,6 +412,8 @@ func _show_combo_notice() -> void:
 		_show_modal("SEMANTIC RESONANCE DISCOVERED", str(descriptions.get(state.latest_combo, state.latest_combo)) + "\nRecorded in your Lexicon.", [{"text": "CONTINUE", "callback": _refresh}])
 
 func _stage_text() -> String:
+	if run_manager.cemetery:
+		return "CEMETERY · LAYER %d / 6 · %s · TURN %d" % [mini(6, run_manager.state.current_layer + 1), state.enemy.get("name", "CHOOSE A PATH"), state.turn]
 	return "FRACTURE · LAYER %d / 4     ·     %s     ·     TURN %d" % [
 		mini(4, run_manager.state.current_layer + 1), str(state.enemy.get("name", "ENCOUNTER")), state.turn
 	]
@@ -440,6 +478,19 @@ func _show_run_summary() -> void:
 		outcome, run.echo, run.current_layer, _relic_names(),
 		state.metrics["observe_uses"], state.metrics["deflect_uses"], state.metrics["bind_uses"], state.metrics["stabilize_uses"]
 	]
+	if run_manager.cemetery:
+		title = "BIOME CLEAR" if run.victory else "CONNECTION BROKEN"
+		summary = "CEMETERY · Seed %d\nBoss Result: %s\nEcho: %d\nRelics: %s\nBuild tendencies: %s\n\nTarget Words:" % [run.seed_value, "DEFEATED" if run.victory else "NOT DEFEATED", run.echo, _relic_names(), _build_tendencies()]
+		var usable: Array[String] = []
+		for word in run.target_knowledge.values():
+			summary += "\n%s · %s" % [word.lemma, word.current_state]
+			if word.current_state == "USABLE":
+				usable.append(word.lemma)
+		for word in [run.knowledge, run.toxic_knowledge]:
+			if word.current_state == "USABLE":
+				usable.append(word.lemma)
+		summary += "\nNew USABLE Words: " + (", ".join(usable) if not usable.is_empty() else "NONE")
+		summary += "\nThe world forgets. You do not.\nPrototype Lexicon resets next run."
 	_show_modal(title, summary, [{"text": "BEGIN ANOTHER RUN", "callback": _restart_run}])
 
 func _restart_run() -> void:
@@ -448,11 +499,22 @@ func _restart_run() -> void:
 	state.metrics = {"observe_uses": 0, "bind_uses": 0, "stabilize_uses": 0, "deflect_uses": 0, "focus_reserved": 0, "intents_countered": 0}
 	state.exposure.clear()
 	run_manager.run_index += 1
-	run_manager.start_run()
+	if bool(get_meta("legacy_run", false)):
+		run_manager.start_run()
+	else:
+		run_manager.start_cemetery_run()
+	state = _new_connected_combat()
+	_sync_state_from_run()
+	mulligan_selection.clear()
+	toxic_training_in_combat = false
+	_connect_target_words()
 	pending_combat_result.clear()
 	_show_run_entry()
 
 func _show_run_entry() -> void:
+	if run_manager.cemetery:
+		_show_modal("CEMETERY ENTRY", "Seed %d\nSix layers. Ghosts conceal, Skeletons reassemble, Wraiths linger.\nGrave Pressure starts at zero each encounter and rises every round.\nTargets: %s\n\nThe world forgets. You do not." % [run_manager.state.seed_value, ", ".join(run_manager.state.target_knowledge.keys())], [{"text": "ENTER CEMETERY", "callback": _show_inscription}])
+		return
 	_show_modal(
 		"FRACTURE ENTRY",
 		"A short route opens through unstable language. HP and Corruption will persist until you extract or the connection breaks.",
@@ -468,7 +530,7 @@ func _on_knowledge_changed(message: String) -> void:
 		_offer_toxic_training.call_deferred()
 
 func _offer_toxic_training() -> void:
-	if not is_instance_valid(modal) and not state.finished and state.battle_index == 4:
+	if not dev_open and not is_instance_valid(modal) and not state.finished and state.battle_index in [4, 7] and run_manager.state.toxic_knowledge.current_state == "UNDERSTOOD" and not run_manager.state.toxic_knowledge.transfer_offered:
 		_show_toxic_transfer()
 
 func _show_inscription() -> void:
@@ -531,7 +593,7 @@ func _finish_toxic_exposure() -> void:
 	_show_map()
 
 func _show_toxic_transfer() -> void:
-	toxic_training_in_combat = state.battle_index == 4 and not state.finished and not "iron_shell" in run_manager.state.completed_detours
+	toxic_training_in_combat = state.battle_index in [4, 7] and not state.finished and not state.enemy.is_empty()
 	run_manager.state.toxic_knowledge.transfer_offered = true
 	_show_modal("TOXIC · A NEW CONTEXT", "The contaminated water is toxic to fish.\nWhat does toxic describe here?", [
 		{"text": "It is harmful or poisonous to the fish.", "callback": _answer_toxic_transfer.bind("harmful")},
@@ -586,7 +648,7 @@ func _show_semantic_anomaly() -> void:
 	_show_modal("REPEATING PHRASE ANOMALY", body, actions)
 
 func _show_lexicon() -> void:
-	if lexicon_open:
+	if lexicon_open or dev_open:
 		return
 	lexicon_open = true
 	var previous := modal
@@ -598,6 +660,8 @@ func _show_lexicon() -> void:
 	var toxic := run_manager.state.toxic_knowledge
 	if toxic.current_state != "UNKNOWN":
 		body += "\n\n" + toxic.entry_text()
+	for target in run_manager.state.target_knowledge.values():
+		body += "\n\n" + target.entry_text()
 	for monster in word.enemy_records:
 		body += "\n\nCOMBAT CODEX · %s\n%s" % [monster, word.enemy_records[monster]]
 	if not run_manager.state.relics.is_empty():
@@ -672,10 +736,14 @@ func _show_map() -> void:
 		if base_echo > 0 and run.next_reward_multiplier > 1.0:
 			action_text += " · %d → %d ECHO" % [base_echo, run.preview_echo(base_echo, true)]
 		actions.append({"text": action_text, "callback": _select_node.bind(str(node["id"]))})
-	_show_modal("FRACTURE MAP · LAYER %d" % [run.current_layer + 1], "\n".join(lines), actions)
+	if run_manager.cemetery:
+		lines.push_front("CEMETERY · Seed %d\nTargets: %s" % [run.seed_value, ", ".join(run.target_knowledge.keys())])
+	_show_modal(("CEMETERY MAP" if run_manager.cemetery else "FRACTURE MAP") + " · LAYER %d" % [run.current_layer + 1], "\n".join(lines), actions)
 
 func _select_node(node_id: String) -> void:
 	var node := run_manager.select_node(node_id)
+	if node.is_empty():
+		return
 	match str(node.get("type", "")):
 		"encounter", "elite", "final":
 			var snapshot := run_manager.state.combat_snapshot()
@@ -693,11 +761,21 @@ func _select_node(node_id: String) -> void:
 			run_manager.state.temporary_cards.clear()
 			mulligan_selection.clear()
 			_refresh()
-			_show_mulligan()
+			if run_manager.cemetery:
+				_begin_cemetery_lessons(node, true)
+			else:
+				_show_mulligan()
 		"anomaly":
 			_show_semantic_anomaly()
 		"event":
-			_show_event()
+			if run_manager.cemetery:
+				_begin_cemetery_lessons(node, false)
+			else:
+				_show_event()
+		"rest":
+			_show_cemetery_rest()
+		"relic":
+			_show_relic_reward("You found a preserved Relic.")
 		"cache":
 			_show_cache()
 		"extract":
@@ -759,14 +837,15 @@ func _show_breather() -> void:
 func _choose_breather(choice: String) -> void:
 	var result := run_manager.choose_breather(choice)
 	_sync_state_from_run()
-	if bool(pending_combat_result.get("elite", false)) or state.battle_index == 0:
+	if bool(pending_combat_result.get("elite", false)) or (state.battle_index == 0 and not run_manager.cemetery):
 		_show_relic_reward(str(result["description"]))
 	else:
 		_show_modal("BREATHER COMPLETE", "%s\n\n%s" % [result["description"], run_manager.state.condition_text()], [{"text": "RETURN TO MAP", "callback": _show_map}])
 
 func _show_relic_reward(breather_result: String) -> void:
 	var actions: Array = []
-	for relic_id in RunContent.RELICS:
+	var pool: Array = run_manager.offer_relics() if run_manager.cemetery else RunContent.RELICS.keys()
+	for relic_id in pool:
 		if run_manager.state.relics.has(relic_id):
 			continue
 		var relic: Dictionary = RunContent.RELICS[relic_id]
@@ -775,9 +854,16 @@ func _show_relic_reward(breather_result: String) -> void:
 			"accent": RunContent.RARITY_COLORS[relic["rarity"]],
 			"callback": _claim_relic.bind(str(relic_id)),
 		})
+	if run_manager.cemetery:
+		actions.append({"text": "SKIP RELIC", "callback": _claim_relic.bind("")})
 	_show_modal("RELIC REWARD", "%s\n\nChoose one rule-changing Relic." % breather_result, actions)
 
 func _claim_relic(relic_id: String) -> void:
+	if run_manager.cemetery:
+		run_manager.finish_relic_choice(relic_id)
+		_sync_state_from_run()
+		_show_map()
+		return
 	run_manager.claim_relic(relic_id)
 	_sync_state_from_run()
 	var relic: Dictionary = RunContent.RELICS[relic_id]
@@ -858,6 +944,10 @@ func _clear_modal() -> void:
 	modal = null
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if event.pressed and not event.echo and event.keycode == KEY_F2 and (OS.has_feature("editor") or OS.is_debug_build()):
+		_show_dev_panel()
+		get_viewport().set_input_as_handled()
+		return
 	if not event.pressed or event.echo or is_instance_valid(modal):
 		return
 	if event.keycode == KEY_SPACE:
@@ -930,3 +1020,268 @@ func _style(color: Color, border: Color, radius: int, margin: int = 0, width: in
 	style.content_margin_top = margin
 	style.content_margin_bottom = margin
 	return style
+
+func _connect_target_words() -> void:
+	for word in run_manager.state.target_knowledge.values():
+		if not word.changed.is_connected(_on_knowledge_changed):
+			word.changed.connect(_on_knowledge_changed)
+
+func _begin_cemetery_lessons(node: Dictionary, combat: bool) -> void:
+	lesson_words.clear()
+	lesson_source = str(node.id)
+	lesson_is_combat = combat
+	for id in node.get("words", []):
+		if run_manager.state.target_knowledge.has(id):
+			lesson_words.append(str(id))
+	_show_cemetery_lesson_menu()
+
+func _show_cemetery_lesson_menu() -> void:
+	var actions: Array = []
+	var body := "Read the scene, infer a meaning, connect its consequence, then use the word.\nWrong answers never remove resources. You may leave without learning."
+	if lesson_is_combat:
+		body = "Before the encounter, infer the word from the scene. Combat consequences provide separate context; this does not grant it automatically."
+	for id in lesson_words:
+		var word = run_manager.state.target_knowledge[id]
+		word.encounter()
+		if word.current_state == "USABLE" or (lesson_is_combat and word.is_recognized()):
+			continue
+		actions.append({"text": "%s · %s" % [id, word.current_state], "callback": _show_cemetery_exercise.bind(id)})
+	if lesson_is_combat and actions.is_empty():
+		_show_mulligan()
+		return
+	actions.append({"text": "CONTINUE TO COMBAT" if lesson_is_combat else "LEAVE THIS EVENT", "callback": _finish_cemetery_lesson})
+	_show_modal(str(run_manager.selected_node.get("title", "CEMETERY CONTEXT")), body, actions)
+
+func _show_cemetery_exercise(id: String) -> void:
+	var word = run_manager.state.target_knowledge[id]
+	var data: Array = CEMETERY_WORDS.DATA[id]
+	var stage := "recognition" if not word.is_recognized() else ("context" if word.current_state == "RECOGNIZED" else "production")
+	var prompt := str(data[1]) + "\nWhat does %s mean here?" % id
+	var correct := str(data[0])
+	var options: Array[String] = [correct, "restore physical health immediately", "tie a moving object in place"]
+	if stage == "context":
+		prompt = "%s\nA second context: %s\nWhich relationship fits the word?" % [data[1], data[2]]
+		correct = str(data[2])
+		options = [correct, "This word always causes direct HP damage.", "The effect has no relationship to the scene."]
+	elif stage == "production":
+		prompt = str(data[3]) + "\nChoose the word that completes this new use."
+		correct = id
+		options = [id, "STRIKE", "RESTORE"]
+	var rng := RandomNumberGenerator.new()
+	rng.seed = run_manager.state.seed_value + id.hash() + stage.hash() + lesson_source.hash()
+	for index in range(options.size() - 1, 0, -1):
+		var other := rng.randi_range(0, index)
+		var value := options[index]
+		options[index] = options[other]
+		options[other] = value
+	var actions: Array = []
+	for option in options:
+		actions.append({"text": option, "callback": _answer_cemetery_exercise.bind(id, stage, option == correct)})
+	actions.append({"text": "SKIP THIS EXERCISE", "callback": _show_cemetery_lesson_menu})
+	_show_modal("%s · %s" % [id, stage.to_upper()], prompt, actions)
+
+func _answer_cemetery_exercise(id: String, stage: String, correct: bool) -> void:
+	if not correct:
+		_show_modal("TRY ANOTHER MEANING", "This choice does not fit the scene.\nNo resources or previous evidence were lost.", [{"text": "TRY AGAIN", "callback": _show_cemetery_exercise.bind(id)}, {"text": "RETURN TO SCENE", "callback": _show_cemetery_lesson_menu}])
+		return
+	var word = run_manager.state.target_knowledge[id]
+	match stage:
+		"recognition": word.recognize(lesson_source)
+		"context": word.context(lesson_source)
+		"production": word.produce(lesson_source, true)
+	if lesson_is_combat or word.current_state == "USABLE":
+		_show_cemetery_lesson_menu()
+	else:
+		_show_cemetery_exercise(id)
+
+func _finish_cemetery_lesson() -> void:
+	if lesson_is_combat:
+		_show_mulligan()
+	else:
+		run_manager.finish_learning_event()
+		_show_map()
+
+func _show_cemetery_rest() -> void:
+	_show_modal("SHELTERED GRAVE", "A quiet shelter, not a forced campfire.\nChoose recovery, stability, or keep moving.", [{"text": "RECOVER · +6 HP / +4 Armor if full", "callback": _resolve_cemetery_rest.bind("recover")}, {"text": "STABILIZE · Dominant Corruption -12", "callback": _resolve_cemetery_rest.bind("stabilize")}, {"text": "PRESS ON · Next reward ×1.25", "callback": _resolve_cemetery_rest.bind("press_on")}])
+
+func _resolve_cemetery_rest(choice: String) -> void:
+	run_manager.rest(choice)
+	_sync_state_from_run()
+	_show_map()
+
+func _build_tendencies() -> String:
+	var tags: Array[String] = []
+	for id in run_manager.state.relics:
+		var tag := str({"clear_lens": "INFORMATION", "mourner_thread": "INFORMATION", "iron_script": "BREAK", "venom_vessel": "TOXIC", "ossuary_key": "PERSISTENCE", "pale_candle": "CONTROL / SURVIVAL", "echo_chamber": "RULE-BENDING", "unfinished_sentence": "RETAIN"}.get(id, "CONTROL"))
+		if tag not in tags:
+			tags.append(tag)
+	return ", ".join(tags) if not tags.is_empty() else "NO RELIC BUILD YET"
+
+func _show_dev_panel() -> void:
+	if lexicon_open or not (OS.has_feature("editor") or OS.is_debug_build()):
+		return
+	if not dev_open:
+		dev_open = true
+		dev_previous = modal
+		if is_instance_valid(dev_previous):
+			dev_previous.hide()
+		modal = null
+	var actions: Array = []
+	for field in ["Seed", "Layer", "Targets", "Word State", "Relic", "HP", "Focus", "Corruption", "Grave Pressure"]:
+		actions.append({"text": "SET " + field.to_upper(), "callback": _show_dev_input.bind(field)})
+	for pair in [["Ghost", 5], ["Veil Ghost", 6], ["Grave Skeleton", 7], ["Neglect Wraith", 2], ["Mourning Wraith", 8], ["Boss", 9], ["Root Husk (0.6)", 0], ["Iron Shell (0.6)", 4]]:
+		actions.append({"text": "ENTER " + str(pair[0]).to_upper() + " TEST", "callback": _dev_enter_enemy.bind(int(pair[1]))})
+	actions.append({"text": "TRIGGER SPECIFIC EVENT", "callback": _show_dev_input.bind("Event")})
+	actions.append({"text": "RESET MINIRUN LEXICON", "callback": _dev_reset_lexicon})
+	actions.append({"text": "INSPECT CURRENT WEIGHTS", "callback": _show_weight_inspector})
+	actions.append({"text": "CLOSE DEV PANEL", "callback": _close_dev_panel})
+	_show_modal("DEV PANEL · QA ONLY", "Seed %d · Layer %d\nInputs change this test run only. Seed restarts the run.\nF2 opens this panel. Release exports hide it." % [run_manager.state.seed_value, run_manager.state.current_layer + 1], actions)
+
+func _close_dev_panel() -> void:
+	dev_open = false
+	if is_instance_valid(dev_previous):
+		modal = dev_previous
+		modal.show()
+	dev_previous = null
+	_refresh()
+
+func _dev_abandon_previous() -> void:
+	if is_instance_valid(dev_previous):
+		dev_previous.queue_free()
+	dev_previous = null
+	dev_open = false
+	lexicon_open = false
+
+func _show_dev_input(field: String) -> void:
+	var hints := {"Seed": "Integer; starts a new reproducible run.", "Layer": "1–6; invalidates cached map choices.", "Targets": "MOURN,LINGER,CONCEAL,REASSEMBLE,REMAINS (choose any compatible fifth word).", "Word State": "MOURN,UNDERSTOOD (or RECOGNIZED / USABLE / UNKNOWN).", "Relic": "Relic ID: clear_lens / unfinished_sentence / iron_script / venom_vessel / mourner_thread / ossuary_key / pale_candle / echo_chamber.", "HP": "0–50; zero ends an active combat as defeat.", "Focus": "0–4; active combat only.", "Corruption": "Obscurity,40 (Decay / Inattention also supported).", "Grave Pressure": "0–100; active combat only.", "Event": "mourning_stone / hidden_epitaph / scattered_bones / lingering_bell / grave_inscription / caretaker_note / withered_flowers."}
+	var input := LineEdit.new()
+	input.name = "DevInput"
+	input.placeholder_text = "Enter test value"
+	input.custom_minimum_size.y = 36
+	_show_modal("DEV · " + field.to_upper(), str(hints[field]), [{"text": "APPLY", "callback": func():
+		var valid := _dev_apply(field, input.text)
+		if not valid:
+			_show_modal("INVALID DEV VALUE", "No change was applied. Check the range, word, or identifier.", [{"text": "TRY AGAIN", "callback": _show_dev_input.bind(field)}])
+		elif field not in ["Seed", "Layer", "Targets", "Event"]:
+			_show_dev_panel()
+	}, {"text": "BACK", "callback": _show_dev_panel}])
+	var card = modal.find_child("ModalCard", true, false)
+	card.actions_box.add_child(input)
+	card.actions_box.move_child(input, 0)
+	input.minimum_size_changed.connect(card._queue_layout)
+	card._queue_layout()
+	input.grab_focus()
+
+func _dev_apply(field: String, raw: String) -> bool:
+	var value := raw.strip_edges()
+	var parts := value.split(",", false)
+	if field in ["Seed", "Layer", "HP", "Focus", "Grave Pressure"] and not value.is_valid_int():
+		return false
+	var number := int(value)
+	match field:
+		"Seed":
+			if number < 0: return false
+			_dev_abandon_previous()
+			run_manager.start_cemetery_run(number)
+			state = _new_connected_combat()
+			_connect_target_words()
+			_show_run_entry()
+		"Layer":
+			if number < 1 or number > 6: return false
+			_dev_abandon_previous()
+			run_manager.state.current_layer = number - 1
+			run_manager.state.completed = false
+			run_manager.state.victory = false
+			run_manager.state.extracted = false
+			run_manager.director.cache.clear()
+			_show_map()
+		"Targets":
+			var ids: Array = []
+			for part in parts: ids.append(part.strip_edges().to_upper())
+			if not run_manager.set_targets(ids): return false
+			_connect_target_words()
+			state.target_knowledge = run_manager.state.target_knowledge
+			_dev_abandon_previous()
+			_show_map()
+		"Word State":
+			if parts.size() != 2: return false
+			var id := CEMETERY_WORDS.lemma(parts[0].strip_edges())
+			var target := parts[1].strip_edges().to_upper()
+			if run_manager.state.target_knowledge.has(id):
+				if not run_manager.state.target_knowledge[id].dev_set_state(target): return false
+			elif id in ["ERODE", "TOXIC"]:
+				if target not in ["UNKNOWN", "RECOGNIZED", "UNDERSTOOD", "USABLE"]: return false
+				var word = run_manager.state.knowledge if id == "ERODE" else run_manager.state.toxic_knowledge
+				word.reset()
+				if target != "UNKNOWN": word.recognize("dev")
+				if target in ["UNDERSTOOD", "USABLE"]: word.record_combat_context(true)
+				if target == "USABLE":
+					word.record_transfer(true)
+					word.record_production(true)
+			else: return false
+		"Relic":
+			if value not in RunContent.RELICS: return false
+			run_manager.state.add_relic(value)
+			state.relics.assign(run_manager.state.relics)
+		"HP":
+			if number < 0 or number > 50: return false
+			run_manager.state.hp = number
+			state.hp = number
+			if number == 0 and not state.enemy.is_empty() and not state.finished: state._finish_battle(false)
+		"Focus":
+			if number < 0 or number > 4 or state.enemy.is_empty(): return false
+			state.focus = number
+		"Corruption":
+			if parts.size() != 2 or parts[0] not in run_manager.state.corruption or not parts[1].is_valid_int(): return false
+			var amount := int(parts[1])
+			if amount < 0 or amount > 100: return false
+			run_manager.state.corruption[parts[0]] = amount
+			run_manager.state.refresh_lingering_statuses()
+			state.corruption[parts[0]] = amount
+			state._update_threshold_statuses()
+		"Grave Pressure":
+			if number < 0 or number > 100 or state.enemy.is_empty(): return false
+			state.grave_pressure = number
+		"Event":
+			var node := preload("res://scripts/run/cemetery_content.gd").node(value)
+			if node.get("type", "") != "event": return false
+			_dev_abandon_previous()
+			run_manager.selected_node = node
+			run_manager.state.begin_node(value)
+			_begin_cemetery_lessons(node, false)
+		_: return false
+	run_manager.state.history.append("DEV: %s = %s" % [field, value])
+	_refresh()
+	return true
+
+func _new_connected_combat() -> CombatState:
+	var combat := CombatState.new()
+	combat.changed.connect(_refresh)
+	combat.reaction_requested.connect(_show_reaction)
+	combat.battle_finished.connect(_on_battle_finished)
+	combat.inattention_tier_changed.connect(_pulse_status)
+	combat.combo_discovered.connect(_on_combo_discovered)
+	return combat
+
+func _dev_enter_enemy(index: int) -> void:
+	_dev_abandon_previous()
+	run_manager.selected_node = {"id": "dev_test", "type": "encounter", "title": "DEV ENCOUNTER", "echo": 0, "detour": true}
+	var snapshot := run_manager.state.combat_snapshot()
+	snapshot.objective = "survive" if index == 2 else "kill"
+	state.start_battle(index, snapshot)
+	_show_mulligan()
+
+func _dev_reset_lexicon() -> void:
+	run_manager.state.knowledge.reset()
+	run_manager.state.toxic_knowledge.reset()
+	for word in run_manager.state.target_knowledge.values(): word.reset()
+	_show_dev_panel()
+
+func _show_weight_inspector() -> void:
+	var choices := run_manager.available_nodes()
+	var lines: Array[String] = ["Final = Base × Biome × Layer × Learning × Rhythm × Repetition", "Seed %d · Layer %d" % [run_manager.state.seed_value, run_manager.state.current_layer + 1], "Frozen generation weights; future layers use updated evidence.", "CURRENT CHOICES / CONSTRAINTS:"]
+	for node in choices:
+		lines.append("%s · %s" % [node.title, "LEARNING GUARANTEE" if bool(node.get("guarantee", false)) else ("FIXED BOSS" if node.type == "final" else "WEIGHTED / RHYTHM CONSTRAINT")])
+	for row in run_manager.director.weights:
+		lines.append("%s\nBase %.2f × Biome %.2f × Layer %.2f × Learning %.2f × Rhythm %.2f × Repetition %.2f = Final %.2f" % [row.id, row.base_weight, row.biome_modifier, row.layer_modifier, row.learning_modifier, row.rhythm_modifier, row.repetition_modifier, row.final_weight])
+	_show_modal("WEIGHT INSPECTOR", "\n\n".join(lines), [{"text": "BACK TO DEV", "callback": _show_dev_panel}])

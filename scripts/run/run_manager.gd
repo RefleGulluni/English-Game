@@ -8,8 +8,84 @@ var selected_node: Dictionary = {}
 var current_event: Dictionary = {}
 var run_index := 0
 var rng := RandomNumberGenerator.new()
+var cemetery := false
+var director := preload("res://scripts/run/cemetery_director.gd").new()
+const CEMETERY := preload("res://scripts/run/cemetery_content.gd")
+const WORDS := preload("res://scripts/run/cemetery_words.gd")
+var reward_offer: Array[String] = []
+
+func start_cemetery_run(seed_override: int = -1) -> void:
+	start_run()
+	cemetery = true
+	var chosen_seed := seed_override
+	if chosen_seed < 0:
+		chosen_seed = int(Time.get_unix_time_from_system()) ^ int(Time.get_ticks_usec())
+	state.seed_value = chosen_seed
+	state.biome_id = "cemetery"
+	state.deck_seed = chosen_seed
+	rng.seed = chosen_seed
+	director.reset(chosen_seed)
+	reward_offer.clear()
+	var targets: Array = WORDS.CORE.duplicate()
+	var elastic_pool: Array = []
+	for id in WORDS.ELASTIC:
+		# Native tags and an actual scene/enemy carrier are prerequisites.
+		var carried := CEMETERY.POOL.any(func(entry): return id in entry.words and not bool(entry.get("production", false)))
+		if carried:
+			elastic_pool.append({"id": id, "final_weight": 1.0 if id in ["HAUNT", "HOLLOW"] else 2.0})
+	targets.append(director.pick(elastic_pool, rng).id)
+	set_targets(targets)
+	state.history[0] = "Entered Cemetery · Seed %d." % chosen_seed
+	changed.emit()
+
+func set_targets(ids: Array) -> bool:
+	if ids.size() != 5 or ids.slice(0, 4) != WORDS.CORE or ids[4] not in WORDS.ELASTIC:
+		return false
+	state.target_knowledge.clear()
+	for id in ids:
+		var word = WORDS.word(str(id))
+		word.is_elastic_slot = id not in WORDS.CORE
+		state.target_knowledge[id] = word
+	director.cache.clear()
+	return true
+
+func cemetery_finish_node() -> void:
+	state.recent_node_types.append(str(selected_node.get("type", "event")))
+	state.recent_content.append(str(selected_node.get("id", "")))
+	state.finish_node()
+
+func finish_learning_event() -> void:
+	if cemetery and selected_node.get("type", "") == "event" and state.current_node_id != "settled":
+		state.grant_echo(8, str(selected_node.title))
+		cemetery_finish_node()
+		state.current_node_id = "settled"
+		changed.emit()
+
+func rest(choice: String) -> Dictionary:
+	var result := state.choose_breather(choice)
+	cemetery_finish_node()
+	changed.emit()
+	return result
+
+func offer_relics() -> Array[String]:
+	if reward_offer.is_empty():
+		reward_offer = director.reward_choices(state)
+	return reward_offer.duplicate()
+
+func finish_relic_choice(id: String) -> bool:
+	if not id.is_empty() and id not in reward_offer:
+		return false
+	if not id.is_empty():
+		state.add_relic(id)
+	if selected_node.get("type", "") == "relic" and state.current_node_id != "settled":
+		cemetery_finish_node()
+		state.current_node_id = "settled"
+	reward_offer.clear()
+	changed.emit()
+	return true
 
 func start_run() -> void:
+	cemetery = false
 	state.reset()
 	selected_node.clear()
 	current_event.clear()
@@ -18,6 +94,8 @@ func start_run() -> void:
 	changed.emit()
 
 func available_nodes() -> Array:
+	if cemetery:
+		return [] if state.completed else director.generate(state)
 	var nodes := RunContent.layer_nodes(state.current_layer)
 	if state.current_layer == 2:
 		# Keep the ecology tests reachable after ERODE's full learning loop.
@@ -34,6 +112,10 @@ func available_nodes() -> Array:
 
 func select_node(node_id: String) -> Dictionary:
 	var node := RunContent.node_by_id(node_id)
+	if cemetery:
+		for candidate in available_nodes():
+			if candidate.id == node_id:
+				node = candidate.duplicate(true)
 	if node.is_empty() or node_id not in _available_node_ids():
 		push_error("Node is not available: %s" % node_id)
 		return {}
@@ -45,7 +127,7 @@ func select_node(node_id: String) -> Dictionary:
 	else:
 		state.begin_node(node_id)
 	if str(node["type"]) == "event":
-		current_event = RunContent.event_for_run(run_index)
+		current_event = node.duplicate(true) if cemetery else RunContent.event_for_run(run_index)
 	changed.emit()
 	return selected_node.duplicate(true)
 
@@ -85,6 +167,8 @@ func complete_combat(combat: CombatState) -> Dictionary:
 	if bool(selected_node.get("detour", false)):
 		state.completed_detours.append(str(selected_node["id"]))
 		state.active_reward_multiplier = 1.0
+	elif cemetery:
+		cemetery_finish_node()
 	else:
 		state.finish_node()
 	changed.emit()
@@ -164,7 +248,7 @@ func extract() -> void:
 func complete_final() -> void:
 	state.completed = true
 	state.victory = true
-	state.history.append("The Fracture's final pattern was understood.")
+	state.history.append("BIOME CLEAR · The Mourning Keeper defeated." if cemetery else "The Fracture's final pattern was understood.")
 	changed.emit()
 
 func fail_run(combat: CombatState) -> void:

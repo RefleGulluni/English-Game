@@ -8,6 +8,7 @@ func _initialize() -> void:
 func _run() -> void:
 	var scene := load("res://scenes/main.tscn") as PackedScene
 	var screen := scene.instantiate()
+	screen.set_meta("legacy_run", true)
 	root.add_child(screen)
 	await process_frame
 	_check(is_instance_valid(screen.modal), "Run opens at the Fracture Entry modal")

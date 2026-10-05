@@ -15,6 +15,7 @@ func _check(condition: bool, message: String) -> void:
 
 func _run() -> void:
 	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	screen.set_meta("legacy_run", true)
 	root.add_child(screen)
 	await _settle()
 	screen._finish_inscription()

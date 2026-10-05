@@ -20,6 +20,11 @@ var inattention_tier := 0
 var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
 var toxic_knowledge := preload("res://scripts/run/word_knowledge.gd").new("toxic")
 var completed_detours: Array[String] = []
+var biome_id := ""
+var seed_value := 0
+var target_knowledge: Dictionary = {}
+var recent_node_types: Array[String] = []
+var recent_content: Array[String] = []
 var temporary_cards: Array[String] = []
 var deck_seed := 5050
 var anomaly_resolved := false
@@ -42,6 +47,12 @@ var history: Array[String] = []
 func reset() -> void:
 	knowledge.reset()
 	toxic_knowledge.reset()
+	for word in target_knowledge.values():
+		word.reset()
+	target_knowledge.clear()
+	recent_node_types.clear()
+	recent_content.clear()
+	biome_id = ""
 	completed_detours.clear()
 	temporary_cards.clear()
 	anomaly_resolved = false
@@ -82,8 +93,9 @@ func combat_snapshot() -> Dictionary:
 		"knowledge": knowledge,
 		"toxic_knowledge": toxic_knowledge,
 		"temporary_cards": temporary_cards.duplicate(),
-		"deck_seed": deck_seed,
+		"deck_seed": deck_seed + (current_layer * 15485863 if biome_id == "cemetery" else 0),
 		"relics": relics.duplicate(),
+		"biome_id": biome_id, "target_knowledge": target_knowledge,
 	}
 
 func capture_combat(combat: CombatState) -> void:

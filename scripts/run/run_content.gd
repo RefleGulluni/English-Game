@@ -61,6 +61,10 @@ const CACHE_CHOICES := [
 ]
 
 const RELICS := {
+	"venom_vessel": {"name": "VENOM VESSEL", "rarity": "RARE", "rule_type": "poison", "trigger": "first_poison", "description": "First POISONED application each combat: duration +1 turn."},
+	"mourner_thread": {"name": "MOURNER'S THREAD", "rarity": "EPIC", "rule_type": "reveal", "trigger": "first_hidden_reveal", "description": "First successful hidden-intent reveal each combat: next Semantic Modifier -1 Focus. Cemetery: Grave Pressure -1."},
+	"ossuary_key": {"name": "OSSUARY KEY", "rarity": "RARE", "rule_type": "remains", "trigger": "remains_damage", "description": "Remains handling +2 damage. Cemetery: first prevented REASSEMBLE reduces Grave Pressure by 1."},
+	"pale_candle": {"name": "PALE CANDLE", "rarity": "RARE", "rule_type": "corruption", "trigger": "first_obscurity", "description": "First Obscurity gain each combat -4. Cemetery: first Awakened entry reduces dominant Corruption by 3."},
 	"unfinished_sentence": {"name": "UNFINISHED SENTENCE", "rarity": "EPIC", "rule_type": "retain", "trigger": "each_turn", "description": "Retain Slot +1. Keep up to two unused cards; never retain the same instance consecutively."},
 	"echo_chamber": {"name": "ECHO CHAMBER", "rarity": "LEGENDARY", "rule_type": "word_copy", "trigger": "first_usable_word_each_turn", "description": "First USABLE Word played each turn creates an Echo copy: cost +1; Exhaust after use."},
 	"clear_lens": {
@@ -70,7 +74,7 @@ const RELICS := {
 	},
 	"iron_script": {
 		"rarity": "REFINED", "rule_type": "collapse", "trigger": "structure_collapse",
-		"name": "IRON SCRIPT",
+		"name": "REFINED IRON SCRIPT",
 		"description": "Structure Collapse applies EXPOSED for one additional turn. No Collapse HP damage.",
 	},
 	"quiet_mind": {

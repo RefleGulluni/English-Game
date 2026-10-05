@@ -85,13 +85,49 @@ var metrics := {
 	"intents_countered": 0,
 }
 
+var biome_id := ""
+var target_knowledge: Dictionary = {}
+var grave_pressure := 0
+var grave_obscurity_used := false
+var awakened_seen := false
+var mourning := 0
+var boss_phase := 1
+var hidden_revealed := false
+var bone_remains := false
+var remains_hp := 0
+var reassembly_countdown := 0
+var remains_bound := false
+var venom_used := false
+var thread_used := false
+var modifier_discount := false
+var ossuary_used := false
+var candle_used := false
+
 func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false) -> void:
 	battle_index = index
 	turn = 0
 	finished = false
 	turn_ending = false
+	delayed_this_turn = false
 	pending_counter = false
 	completed_rounds = 0
+	biome_id = str(run_snapshot.get("biome_id", ""))
+	target_knowledge = run_snapshot.get("target_knowledge", {})
+	grave_pressure = 0
+	grave_obscurity_used = false
+	awakened_seen = false
+	mourning = 0
+	boss_phase = 1
+	hidden_revealed = false
+	bone_remains = false
+	remains_hp = 0
+	reassembly_countdown = 0
+	remains_bound = false
+	venom_used = false
+	thread_used = false
+	modifier_discount = false
+	ossuary_used = false
+	candle_used = false
 	objective = str(run_snapshot.get("objective", "kill"))
 	erosion_turns = 0
 	erosion_tick = 2
@@ -123,7 +159,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	log_lines.clear()
 	action_cursor = 0
 	next_intent_penalty = 0
-	enemy = CombatContent.BATTLES[index].duplicate(true)
+	enemy = CombatContent.BATTLES[index].duplicate(true) if index < 6 else preload("res://scripts/combat/cemetery_enemies.gd").profiles()[index - 6].duplicate(true)
 	# Migrate the original material profiles; new ecology profiles are explicit.
 	if not enemy.has("structure"):
 		enemy["structure"] = int(enemy["armor"])
@@ -158,6 +194,10 @@ func disabled_reason(skill_name: String, instance_id: int = -1) -> String:
 		return "CONFIRM OPENING HAND" if deck.mulligan_pending else ("ENCOUNTER COMPLETE" if finished else "RESOLVE CURRENT DECISION")
 	if skill_name == "DEFLECT":
 		return "REACTION ONLY"
+	if bone_remains and skill_name not in ["STRIKE", "SHATTER", "BIND", "OBSERVE", "RESTORE", "STABILIZE"]:
+		return "HANDLE BONE REMAINS"
+	if bone_remains and skill_name == "BIND" and remains_bound:
+		return "REASSEMBLY ALREADY DELAYED"
 	if skill_name in ["ERODE", "TOXIC"] and word_for(skill_name).current_state != "USABLE":
 		return "REQUIRES USABLE"
 	if dispersed and skill_name not in ["RESTORE", "STABILIZE"]:
@@ -180,7 +220,7 @@ func word_for(card_name: String):
 
 func card_cost(card: Dictionary) -> int:
 	var base := reaction_cost() if str(card["card_id"]) == "DEFLECT" else skill_cost(str(card["card_id"]))
-	return base + int(card.get("cost_bonus", 0))
+	return maxi(0, base + int(card.get("cost_bonus", 0)) - (1 if modifier_discount and str(card.card_id) in ["ERODE", "TOXIC"] else 0))
 
 func retain_slots() -> int:
 	return 2 if "unfinished_sentence" in relics else 1
@@ -219,11 +259,31 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 
 	var card := deck.find_card(skill_name, instance_id)
 	var cost := card_cost(card)
+	if bone_remains and skill_name in ["STRIKE", "SHATTER", "BIND"]:
+		focus -= cost
+		deck.consume(card)
+		if skill_name == "BIND":
+			reassembly_countdown += 1
+			remains_bound = true
+			_add_log("BIND · Reassembly countdown +1, once per Remains phase.")
+		else:
+			remains_hp = maxi(0, remains_hp - (8 if skill_name == "SHATTER" else 3) - (2 if "ossuary_key" in relics else 0))
+			_add_log("%s · BONE REMAINS %d/10." % [skill_name, remains_hp])
+			if remains_hp == 0:
+				if "ossuary_key" in relics and not ossuary_used:
+					ossuary_used = true
+					if biome_id == "cemetery":
+						grave_pressure = maxi(0, grave_pressure - 1)
+				_record_target_context("REASSEMBLE", "prevented_reassembly")
+				_finish_battle(true)
+		changed.emit()
+		return true
 	match skill_name:
 		"OBSERVE":
 			focus -= cost
 			observe_used_this_battle = true
 			intent_clarity = mini(2, intent_clarity + 1)
+			_cemetery_observe()
 			if str(enemy["phase_state"]) == "FADED":
 				enemy_effects.apply("REVEALED", 1, 0, "OBSERVE")
 				enemy["phase_state"] = "REVEALED"
@@ -317,6 +377,9 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 				_add_log("RESTORE · Rebuilt 4 Armor.")
 
 	deck.consume(card)
+	if skill_name in ["ERODE", "TOXIC"]:
+		modifier_discount = false
+	_check_boss_phase()
 	if skill_name in ["ERODE", "TOXIC"] and "echo_chamber" in relics and not echo_used_this_turn and not bool(card["echo"]):
 		echo_used_this_turn = true
 		deck.hand.append(deck.make_card(skill_name, 1, true))
@@ -343,6 +406,10 @@ func end_player_turn() -> void:
 		return
 	turn_ending = true
 	deck.end_turn(true)
+	if bone_remains:
+		_add_log("BONE REMAINS · No enemy attack; countdown continues.")
+		_finish_round(false)
+		return
 	if objective == "survive" and int(enemy["hp"]) <= 0:
 		_enemy_defeated()
 		_add_log("DISPERSED · Enemy action cancelled. Objective continues.")
@@ -389,6 +456,9 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 	var action := intent
 	if action["kind"] == "physical":
 		var incoming := int(action["damage"])
+		if battle_index == 9 and boss_phase == 2 and grave_pressure >= 5:
+			incoming += 2
+			_add_log("AWAKENED KEEPER · High Pressure strengthens the strike by 2.")
 		if use_deflect:
 			focus -= reaction_cost()
 			incoming = maxi(1, int(ceil(float(incoming) * 0.25)))
@@ -422,6 +492,7 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 			knowledge.record_combat_context(true)
 
 	exposure[str(action["word"])] = int(exposure.get(str(action["word"]), 0)) + 1
+	_record_target_context(str(action["word"]), "intent:" + str(action["word"]))
 	_update_threshold_statuses()
 	_finish_round(false)
 
@@ -438,7 +509,7 @@ func _finish_round(keep_intent: bool) -> void:
 		else:
 			enemy["armor"] = maxi(0, int(enemy["armor"]) - 1)
 			_add_log("EROSION · Armor -1; no HP damage.")
-	if enemy_effects.has("POISONED") and not dispersed:
+	if enemy_effects.has("POISONED") and not dispersed and not bone_remains:
 		var poison_damage := poison_tick_damage()
 		enemy["hp"] = maxi(0, int(enemy["hp"]) - poison_damage)
 		_add_log("%s · HP -%d; Structure / Armor bypassed." % ["TOXIC RESISTED" if poison_damage < 3 else "POISONED", poison_damage])
@@ -457,15 +528,35 @@ func _finish_round(keep_intent: bool) -> void:
 			no_structure_damage_turns = 0
 			_add_log("REGROWTH — Structure restored +%d." % (int(enemy["structure"]) - before))
 	completed_rounds += 1
+	if biome_id == "cemetery":
+		grave_pressure += 2 if battle_index == 9 and boss_phase == 2 else 1
+	if bone_remains:
+		reassembly_countdown -= 1
+		if reassembly_countdown <= 0:
+			bone_remains = false
+			enemy["hp"] = int(ceil(float(enemy.max_hp) * 0.5))
+			enemy["structure"] = int(ceil(float(enemy.max_structure) * 0.5))
+			enemy_effects.clear()
+			_record_target_context("REASSEMBLE", "actual_reassembly")
+			_add_log("REASSEMBLE · Skeleton returns at half HP / Structure.")
+	if battle_index in [8, 9] and not bone_remains:
+		mourning += 1
+		if mourning >= 3:
+			_add_corruption("Obscurity", 2)
+			if biome_id == "cemetery":
+				grave_pressure += 1
+			_record_target_context("MOURN", "mourning_pressure")
+	_check_boss_phase()
 	resolving_end_effects = false
 	if hp <= 0:
 		_finish_battle(false)
 		return
 	if finished:
 		return
-	if int(enemy["hp"]) <= 0 and objective == "kill":
-		_finish_battle(true)
-		return
+	if int(enemy["hp"]) <= 0 and objective == "kill" and not bone_remains:
+		_enemy_defeated()
+		if finished:
+			return
 	if objective == "survive" and completed_rounds >= 5:
 		_add_log("SURVIVE 5 TURNS — Objective complete.")
 		_finish_battle(true)
@@ -482,6 +573,12 @@ func _finish_battle(victory: bool) -> void:
 	if finished:
 		return
 	finished = true
+	if victory:
+		for surface in enemy.get("words", []):
+			_record_target_context(str(surface), "completed:" + str(enemy.enemy_id))
+		if battle_index == 2 and objective == "survive":
+			_record_target_context("LINGER", "completed_vigil")
+	grave_pressure = 0
 	turn_ending = false
 	_add_log("%s · %s" % [enemy.get("name", "ENCOUNTER"), "Victory" if victory else "Connection broken"])
 	changed.emit()
@@ -502,8 +599,10 @@ func _apply_poison() -> void:
 	if bool(enemy["toxic_immune"]) or float(enemy["toxic_resistance"]) >= 1.0:
 		_add_log("TARGET IMMUNE · TOXIC has no effect.")
 		return
-	enemy_effects.apply("POISONED", 3, 3, "TOXIC")
-	_add_log("POISONED · 3 turns, REFRESH not STACK; no immediate HP damage.")
+	var duration := 4 if "venom_vessel" in relics and not venom_used else 3
+	venom_used = true
+	enemy_effects.apply("POISONED", duration, 3, "TOXIC")
+	_add_log("POISONED · %d turns, REFRESH not STACK; no immediate HP damage." % duration)
 	if poison_tick_damage() < 3:
 		_add_log("TOXIC RESISTED · Poison damage reduced to %d." % poison_tick_damage())
 
@@ -515,7 +614,20 @@ func _discover_combo(combo_id: String, word) -> void:
 	combo_discovered.emit()
 
 func _enemy_defeated() -> void:
-	if objective == "survive":
+	if battle_index == 7:
+		if not bone_remains:
+			bone_remains = true
+			remains_hp = 10
+			reassembly_countdown = 2
+			remains_bound = false
+			intent_bound_once = false
+			delayed_this_turn = false
+			enemy_effects.clear()
+			intent = {"word": "REASSEMBLE", "kind": "concept", "family": "Obscurity", "corruption": 0, "sense": "put separated bones together again", "partial": "The bones begin moving.", "clear": "Remains reassemble after two completed rounds. SHATTER 8 / STRIKE 3; BIND delays once."}
+			intent_clarity = 2
+			_add_log("BONE REMAINS · 10 integrity · REASSEMBLE in 2 turns. Not Victory.")
+			_record_target_context("REASSEMBLE", "bone_remains")
+	elif objective == "survive":
 		if not dispersed:
 			dispersed = true
 			enemy["phase_state"] = "DISPERSED"
@@ -549,34 +661,52 @@ func _damage_structure(amount: int, _collapse_damage: bool) -> void:
 func _begin_player_turn(carry: int, keep_intent: bool) -> void:
 	turn += 1
 	turn_ending = false
+	delayed_this_turn = false
 	erode_played_this_turn = false
 	toxic_played_this_turn = false
 	fractured_this_turn = false
 	echo_used_this_turn = false
 	shatter_played_this_turn = false
 	structure_damaged_this_turn = false
+	grave_obscurity_used = false
+	if biome_id == "cemetery" and grave_pressure >= 5:
+		if not awakened_seen:
+			awakened_seen = true
+			if "pale_candle" in relics:
+				var reduced := dominant_corruption_family()
+				if not reduced.is_empty():
+					corruption[reduced] = maxi(0, int(corruption[reduced]) - 3)
+				_add_log("PALE CANDLE · Cemetery Resonance: dominant Corruption -3.")
+		var dominant := dominant_corruption_family()
+		_add_corruption("Obscurity" if dominant.is_empty() else dominant, 3)
+		_update_threshold_statuses()
+		_add_log("AWAKENED CEMETERY · Dominant Corruption +3.")
 	deck.begin_turn()
 	if dispersed:
 		enemy["hp"] = int(enemy["max_hp"])
 		dispersed = false
 		_add_log("NEGLECT WRAITH — REFORMED · HP restored to full. Objective continues.")
-	if battle_index == 5:
+	if battle_index in [5, 6]:
 		enemy["phase_state"] = "FADED" if turn % 2 == 0 else "NORMAL"
 		_add_log("PHASE SHIFT · %s." % enemy["phase_state"])
 	else:
 		enemy["phase_state"] = "NORMAL"
 	focus = BASE_FOCUS + carry
-	if not keep_intent:
+	if not keep_intent and not bone_remains:
 		intent = _choose_intent()
 		if str(intent["word"]) == "ERODE":
 			knowledge.encounter()
 			knowledge.root_combat_seen = true
 		intent_bound_once = false
 		intent_clarity = _base_intent_clarity(intent)
+		hidden_revealed = false
+		var surface := preload("res://scripts/run/cemetery_words.gd").lemma(str(intent.word))
+		if target_knowledge.has(surface):
+			target_knowledge[surface].encounter()
 		false_intent = {}
 		false_removed = false
 		intent_options.clear()
-		if battle_index == 1 and turn % 2 == 1:
+		if (battle_index == 1 and turn % 2 == 1) or battle_index == 6:
 			for action in enemy["actions"]:
 				if action["word"] != intent["word"]:
 					false_intent = action.duplicate(true)
@@ -624,6 +754,15 @@ func _apply_physical_damage(amount: int) -> void:
 
 func _add_corruption(family: String, amount: int) -> void:
 	var applied := amount
+	if amount > 0 and family == "Obscurity":
+		if biome_id == "cemetery" and grave_pressure >= 3 and not grave_obscurity_used:
+			grave_obscurity_used = true
+			applied += 2
+			_add_log("RESTLESS GROUND · First Obscurity gain +2.")
+		if "pale_candle" in relics and not candle_used:
+			candle_used = true
+			applied = maxi(0, applied - 4)
+			_add_log("PALE CANDLE · First Obscurity gain -4.")
 	if family == "Inattention" and "quiet_mind" in relics and not quiet_mind_used_this_battle:
 		applied = maxi(0, amount - 5)
 		quiet_mind_used_this_battle = true
@@ -687,18 +826,33 @@ func intent_title() -> String:
 func intent_description() -> String:
 	if intent.is_empty():
 		return ""
+	if bool(intent.get("hidden", false)) and not hidden_revealed:
+		if inattention_tier < 4 and target_knowledge.has("MOURN") and target_knowledge.MOURN.has_insight() and bool(intent.get("mourning", false)):
+			return "MOURNING · Grave Pressure will intensify. OBSERVE reveals the hidden intent."
+		return "UNKNOWN SORROW · Intent hidden. OBSERVE can reveal it."
 	if not false_intent.is_empty() and not false_removed:
 		return "FALSE INTENT · One possibility is real.\nOBSERVE removes the false possibility.\n%s" % ("High Obscurity further reduces reliable detail." if int(corruption["Obscurity"]) >= 30 else "The moth conceals which one will resolve.")
 	if inattention_tier == 4:
 		return "%s\n\nWARNING DEGRADED · Exact damage and effects are unavailable.\nWord sense · %s" % [intent["partial"], intent["sense"]]
 	var extra := knowledge_intent_hint()
+	if bone_remains:
+		var bonus := 2 if "ossuary_key" in relics else 0
+		return "BONE REMAINS · Integrity %d/10.\nReassembles in %d completed rounds.\nSHATTER -%d / STRIKE -%d integrity; BIND delays once.%s" % [remains_hp, reassembly_countdown, 8 + bonus, 3 + bonus, extra]
 	if intent_clarity == 0:
 		return "The pattern is present, but its meaning is not yet readable." + extra
 	if intent_clarity == 1:
 		return str(intent["partial"]) + extra
+	if battle_index == 9 and boss_phase == 2 and intent.kind == "physical":
+		return "%d Physical Damage. DEFLECT can answer.%s" % [int(intent.damage) + (2 if grave_pressure >= 5 else 0), extra]
 	return "%s\n\nWord sense · %s%s" % [intent["clear"], intent["sense"], extra]
 
 func knowledge_intent_hint() -> String:
+	var surface := preload("res://scripts/run/cemetery_words.gd").lemma(str(intent.get("word", "")))
+	if target_knowledge.has(surface) and target_knowledge[surface].is_recognized():
+		var hint := "\nKNOWN WORD · %s · %s\n%s" % [surface, target_knowledge[surface].current_state, target_knowledge[surface].known_meaning]
+		if target_knowledge[surface].has_insight():
+			hint += "\nKnown Mechanism: " + str(preload("res://scripts/run/cemetery_words.gd").DATA[surface][4])
+		return hint
 	if intent.has("poison") and toxic_knowledge.is_recognized():
 		var toxic_hint := "\n\nKNOWN WORD · TOXIC · %s\nRecognized Concept: harmful / poisonous" % toxic_knowledge.current_state
 		if toxic_knowledge.has_insight():
@@ -776,9 +930,53 @@ func trait_text() -> String:
 		text += "\nEXPOSED · %d turns · STRIKE +2 direct damage." % enemy_effects.duration("EXPOSED")
 	if enemy_effects.has("POISONED"):
 		text += "\nPOISONED · %d turns · HP -%d per tick." % [enemy_effects.duration("POISONED"), poison_tick_damage()]
-	if battle_index == 5:
+	if battle_index in [5, 6]:
 		text += "\n%s%s" % [enemy["phase_state"], " · 1 turn" if enemy_effects.has("REVEALED") else ""]
 		text += "\nTOXIC IMMUNE" if bool(enemy["toxic_immune"]) else "\nHIGH TOXIC RESISTANCE · 75%"
 	if dispersed:
 		text += "\nDISPERSED · Reforms next turn. Objective continues."
+	if biome_id == "cemetery":
+		text += "\nGRAVE PRESSURE · %d · %s" % [grave_pressure, "QUIET GRAVES" if grave_pressure < 3 else ("RESTLESS GROUND" if grave_pressure < 5 else "AWAKENED CEMETERY")]
+	if battle_index in [8, 9]:
+		text += "\nMOURNING · %d · at 3+: Obscurity +2 / Pressure +1 each round. OBSERVE -2." % mourning
+	if battle_index == 9:
+		text += "\nPHASE %d · %s" % [boss_phase, "VEILED MOURNING" if boss_phase == 1 else "GRAVE AWAKENING · Pressure +2 per round"]
+	if bone_remains:
+		text += "\nBONE REMAINS · %d/10 · REASSEMBLE in %d turns." % [remains_hp, reassembly_countdown]
 	return text
+
+func _record_target_context(surface: String, source: String) -> void:
+	var canonical := preload("res://scripts/run/cemetery_words.gd").lemma(surface)
+	if target_knowledge.has(canonical):
+		target_knowledge[canonical].context("combat:" + source)
+
+func _cemetery_observe() -> void:
+	var revealed := (bool(intent.get("hidden", false)) and not hidden_revealed) or (not false_intent.is_empty() and not false_removed)
+	if revealed:
+		hidden_revealed = true
+		if "mourner_thread" in relics and not thread_used:
+			thread_used = true
+			modifier_discount = true
+			if biome_id == "cemetery":
+				grave_pressure = maxi(0, grave_pressure - 1)
+			_add_log("MOURNER'S THREAD · Next Modifier -1 Focus; Cemetery Pressure -1.")
+		_record_target_context("CONCEAL", "reveal")
+	if battle_index in [8, 9]:
+		mourning = maxi(0, mourning - 2)
+		_add_log("OBSERVE · MOURNING -2.")
+		_record_target_context("MOURN", "observe_mourning")
+	if intent_clarity == 2:
+		_record_target_context(str(intent.word), "observe:" + str(intent.word))
+
+func _check_boss_phase() -> void:
+	if battle_index == 9 and boss_phase == 1 and int(enemy.hp) * 2 <= int(enemy.max_hp):
+		boss_phase = 2
+		mourning += 1
+		_add_log("GRAVE AWAKENING · Phase 2. Grave Pressure now grows +2 per round.")
+		for action in enemy.actions:
+			if action.kind == "physical":
+				action.damage = 7
+				action.clear = "7 Physical Damage. DEFLECT can answer."
+		if not intent.is_empty() and intent.kind == "physical":
+			intent.damage = 7
+			intent.clear = "7 Physical Damage. DEFLECT can answer."

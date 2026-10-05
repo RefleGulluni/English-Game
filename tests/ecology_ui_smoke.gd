@@ -20,6 +20,7 @@ func _press(screen: Control, index: int = 0) -> void:
 
 func _run() -> void:
 	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	screen.set_meta("legacy_run", true)
 	root.add_child(screen)
 	await _settle()
 	# Real dialogs: ERODE inference, TOXIC first exposure and context recognition.
