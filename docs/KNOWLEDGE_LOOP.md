@@ -1,4 +1,10 @@
-# Mini Run 0.7 — Target Words and Preserved Modifier Loops
+# Mini Run 0.8 — Persistent, Spaced Knowledge
+
+Production play now separates ambient appearance, valid primary context and deliberate application. `learning_schedule.gd` owns persistent earned stages, familiarity, errors, weak-layer diagnostics, stability, active pool, cooldown and pending evidence. A world encounter offers one question, not a chain; correct or incorrect answers close that opportunity. Wrong answers get authored natural correction and never lose resources. Combat context is recorded in the trace without independent learning popups. Winning alone is not evidence of understanding every printed enemy word.
+
+ERODE/TOXIC retain their USABLE combat-card gates, with staged learning in native Cemetery scenes. Familiarity affects readable Lexicon contrast, never the earned stage. All ordinary restart/end-run behavior preserves knowledge and scheduling; DEV reset is isolated in a non-saving sandbox. See `PACING_0_8.md` for exact spacing, persistence and QA. The following sections are retained historical 0.7/0.6 fixtures, not the current production flow.
+
+## Historical 0.7 target loops
 
 Cemetery uses four core targets and one supported elastic word. Each has independent recognition/context/production sources and run-local state, using a subclass of the same evidence model. World scenes support explicit inference, contextual judgment and actual sentence completion. Enemy entry offers recognition only; observed/resolved combat consequences provide context separately. Missing learning receives weighted support and late-layer scene opportunities, never automatic USABLE. Ordinary inflections resolve to one lemma; derivations are not automatically merged.
 

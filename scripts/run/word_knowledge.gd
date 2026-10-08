@@ -20,6 +20,12 @@ var inscription_completed := false
 var root_combat_seen := false
 var transfer_offered := false
 var transfer_correct := false
+var _schedule_ref: WeakRef
+var schedule:
+	get:
+		return _schedule_ref.get_ref() if _schedule_ref != null else null
+	set(value):
+		_schedule_ref = weakref(value) if value != null else null
 
 func _init(id: String = "erode") -> void:
 	word_id = id
@@ -43,11 +49,17 @@ func reset() -> void:
 	transfer_correct = false
 
 func encounter() -> void:
+	if schedule != null:
+		schedule.ambient(lemma)
+		return
 	if current_state == "UNKNOWN":
 		current_state = "ENCOUNTERED"
 		changed.emit("NEW WORD ENCOUNTERED — %s" % lemma)
 
 func recognize(source: String) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "recognition", true, source)
+		return
 	encounter()
 	if not _add_source("recognition:" + source):
 		return
@@ -56,6 +68,9 @@ func recognize(source: String) -> void:
 	_advance()
 
 func record_combat_context(observed_exact_effects: bool) -> void:
+	if schedule != null:
+		if observed_exact_effects: schedule.evidence(lemma, "context", true, "combat:effect")
+		return
 	root_combat_seen = word_id == "erode"
 	encounter()
 	if not is_recognized() or not observed_exact_effects or not _add_source("context:combat"):
@@ -63,7 +78,16 @@ func record_combat_context(observed_exact_effects: bool) -> void:
 	context_evidence += 1
 	_advance()
 
+func context(source: String, correct: bool = true) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "context", correct, source)
+	elif correct:
+		record_combat_context(true)
+
 func record_transfer(correct: bool) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "context", correct, "world:transfer")
+		return
 	if not correct:
 		return
 	recognize("water_stone" if word_id == "erode" else "toxic_water")
@@ -73,6 +97,9 @@ func record_transfer(correct: bool) -> void:
 	_advance()
 
 func record_production(correct: bool) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "production", correct, "world:production")
+		return
 	if not correct or not transfer_correct or STATES.find(current_state) < 3:
 		return
 	if _add_source("production:river_cliff" if word_id == "erode" else "production:toxic_usage"):

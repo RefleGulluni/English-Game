@@ -28,6 +28,10 @@ var recent_content: Array[String] = []
 var temporary_cards: Array[String] = []
 var deck_seed := 5050
 var anomaly_resolved := false
+var learning_schedule
+var pacing := false
+var prepared_armor := 0
+var initial_usable_words: Array[String] = []
 
 var hp := MAX_HP
 var armor := MAX_ARMOR
@@ -45,6 +49,10 @@ var victory := false
 var history: Array[String] = []
 
 func reset() -> void:
+	learning_schedule = null
+	pacing = false
+	prepared_armor = 0
+	initial_usable_words.clear()
 	knowledge.reset()
 	toxic_knowledge.reset()
 	for word in target_knowledge.values():
@@ -96,6 +104,7 @@ func combat_snapshot() -> Dictionary:
 		"deck_seed": deck_seed + (current_layer * 15485863 if biome_id == "cemetery" else 0),
 		"relics": relics.duplicate(),
 		"biome_id": biome_id, "target_knowledge": target_knowledge,
+		"pacing": pacing, "prepared_armor": prepared_armor,
 	}
 
 func capture_combat(combat: CombatState) -> void:

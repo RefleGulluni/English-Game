@@ -1,4 +1,10 @@
-# Mini Run Prototype 0.7 Architecture
+# Mini Run Prototype 0.8 Architecture
+
+The default route uses `pacing_director.gd` and a persistent `learning_schedule.gd`. `pacing_config.gd` separates fixed constraints from QA balance settings; `learning_encounters.gd` authors sense-bound evidence, error categories, world-context answers and corrective variants. Functional tags control map legality, not a single node type. Encounter begin/complete boundaries bind exactly one primary focus, deduplicate ambient exposure, cap stage gain, update scheduling/history, and save locally. Word objects weakly reference their schedule, avoiding reference cycles.
+
+`RunManager.start_cemetery_run(seed, true)` is the production 0.8 path. Its default save is local Godot `user://`; tests explicitly isolate disk access. `start_cemetery_run(seed, false)` and screen metadata `legacy_cemetery` preserve 0.7 fixtures. `start_run()` and `legacy_run` preserve 0.6 fixtures. These are regression-only switches, not ordinary entry alternatives. The historical architecture below describes those fixtures; superseding 0.8 behavior is detailed in `PACING_0_8.md`.
+
+## Historical 0.7 architecture
 
 The normal entry now launches Cemetery. `cemetery_content.gd` defines native enemy/event/relic pools; `cemetery_director.gd` caches seeded six-layer choices using learning, rhythm and repetition weights. `RunManager.start_cemetery_run(seed)` enables this route while `start_run()` preserves the historical 0.6 fixture for regression tests. The screen's `legacy_run` metadata is test-only; ordinary play uses Cemetery.
 

@@ -15,8 +15,8 @@ func _initialize() -> void:
 	for seed_value in range(240):
 		var first := RunManager.new()
 		var second := RunManager.new()
-		first.start_cemetery_run(seed_value)
-		second.start_cemetery_run(seed_value)
+		first.start_cemetery_run(seed_value, false)
+		second.start_cemetery_run(seed_value, false)
 		check(first.state.target_knowledge.keys() == second.state.target_knowledge.keys(), "same seed reproduces target words")
 		check(first.state.target_knowledge.keys().slice(0, 4) == WORDS.CORE, "four core words fixed")
 		var elastic: String = first.state.target_knowledge.keys()[4]
@@ -51,7 +51,7 @@ func _initialize() -> void:
 	check(elastic_seen.size() == 8, "all eight supported elastic words are reachable")
 	for history in [["encounter", "elite"], ["event", "rest"]]:
 		var manager := RunManager.new()
-		manager.start_cemetery_run(731)
+		manager.start_cemetery_run(731, false)
 		manager.state.current_layer = 2
 		manager.state.recent_node_types.assign(history)
 		manager.state.recent_content.assign(["grave_skeleton", "hidden_epitaph"])
@@ -65,7 +65,7 @@ func _initialize() -> void:
 			check(is_equal_approx(expected, row.final_weight), "weight inspector exposes actual product")
 			if row.id == "grave_skeleton": check(row.repetition_modifier < 1, "recent content repetition penalized")
 	var manager := RunManager.new()
-	manager.start_cemetery_run(123)
+	manager.start_cemetery_run(123, false)
 	for word in manager.state.target_knowledge.values():
 		word.recognize("world")
 		word.context("world")
@@ -77,13 +77,13 @@ func _initialize() -> void:
 		check(manager.state.target_knowledge[id].current_state == "UNDERSTOOD", "wrong production never unlocks")
 		manager.state.target_knowledge[id].produce("actual_use", true)
 		check(manager.state.target_knowledge[id].current_state == "USABLE", "correct production completes loop")
-	manager.start_cemetery_run(123)
+	manager.start_cemetery_run(123, false)
 	check(manager.state.target_knowledge.MOURN.current_state == "UNKNOWN", "new run resets Lexicon")
 	check(WORDS.lemma("mourning") == "MOURN" and WORDS.lemma("reassembled") == "REASSEMBLE" and WORDS.lemma("eroded") == "ERODE", "ordinary inflections share lemma")
 	check(WORDS.lemma("erosion") == "EROSION", "derivations are not silently merged")
 	var seen: Dictionary = {}
 	for value in range(80):
-		manager.start_cemetery_run(value)
+		manager.start_cemetery_run(value, false)
 		var offer := manager.offer_relics()
 		check(offer.size() == 3 and offer == manager.offer_relics(), "stable three-choice reward")
 		for id in offer: seen[id] = true

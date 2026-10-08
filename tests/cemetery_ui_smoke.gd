@@ -33,6 +33,7 @@ func press_text(screen: Control, text: String) -> void:
 
 func _run() -> void:
 	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	screen.set_meta("legacy_cemetery", true)
 	root.add_child(screen)
 	await settle()
 	check(screen.run_manager.cemetery and screen.modal.find_child("Title", true, false).text == "CEMETERY ENTRY", "actual main scene launches Cemetery 0.7")

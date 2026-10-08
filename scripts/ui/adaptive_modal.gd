@@ -3,6 +3,7 @@ extends Panel
 # The two scroll regions isolate text minimum sizes from the card width.
 var title_label: Label
 var body_label: Label
+var body_content: Control
 var body_scroll: ScrollContainer
 var actions_scroll: ScrollContainer
 var actions_box: VBoxContainer
@@ -26,6 +27,7 @@ func configure(title: Label, body: Label, buttons: Array[Button]) -> void:
 	body_scroll = _scroll_region("BodyScroll")
 	layout_box.add_child(body_scroll)
 	body_label = body
+	body_content = body
 	body_label.name = "Body"
 	body_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	body_scroll.add_child(body_label)
@@ -70,9 +72,9 @@ func _reflow() -> void:
 	var fixed_height := 48.0 + 40.0 + title_label.get_combined_minimum_size().y
 	var region_budget := maxf(1.0, max_height - fixed_height)
 	# Short prose gives unused space to choices without per-dialogue sizing.
-	var body_height := minf(body_label.get_combined_minimum_size().y, region_budget * 0.55)
+	var body_height := minf(body_content.get_combined_minimum_size().y, region_budget * 0.55)
 	var actions_height := minf(actions_box.get_combined_minimum_size().y, region_budget - body_height)
-	body_height = minf(body_label.get_combined_minimum_size().y, region_budget - actions_height)
+	body_height = minf(body_content.get_combined_minimum_size().y, region_budget - actions_height)
 	body_scroll.custom_minimum_size.y = maxf(1.0, body_height)
 	actions_scroll.custom_minimum_size.y = maxf(1.0, actions_height)
 	size.y = minf(max_height, fixed_height + body_height + actions_height)

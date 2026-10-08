@@ -1,0 +1,54 @@
+# Mini Run 0.8 — Pacing & Director Update
+
+Implementation source: the read-only Obsidian `English_Game_Mini_Run_0.8_制作设计规格.md`. Default play remains the six-layer Cemetery, with inherited 0.6 combat and 0.7 monsters/relics. No new biome, four undefined playable word cards, multi-enemy subsystem or formal art was added.
+
+## Fixed rules and boundary decisions
+
+- Layers 1–5 offer three distinct world nodes, with no more than two of one category; Layer 6 is the fixed Boss. Elite is distinct from ordinary Combat, as in the specification's allowed Combat/Elite/Combat example.
+- Functional tags drive risk, recovery, Elite and major-learning decisions. Any three actually completed ordinary Encounters contain Risk. After two non-risk Encounters every route is genuine risk, with ordinary combat alternatives, never Elite-only choices.
+- To keep Layer 5 Recovery genuinely selectable, Layer 4 requires risk when Layer 3 was non-risk. This lookahead prevents conflicting hard constraints rather than disabling the guaranteed recovery afterward. DEV jumping into impossible histories is not a normal route.
+- Layer 5 always includes RECOVERY, overriding the recovery-streak cap. Otherwise Recovery and Elite weights drop after one and are blocked after two consecutive selections. Automatic post-combat Armor/Corruption settlement is preserved; the old extra free HP/Press On Breather decision is not used in 0.8.
+- One Encounter has one primary learning focus at most. Other words are ambient or diagnostic pending context. Recognition, understanding and production require separate encounters; an ordinary encounter awards at most one earned stage. UNKNOWN → ENCOUNTERED is exposure, not an earned major stage.
+- The two-Encounter spacing clock advances only on completed Encounters, not on round count, map opening, Lexicon viewing, Breather, or Run reset. Completion starts cooldown at two; after two intervening complete Encounters the next encounter may select that sense. Recovery/Relic/retreated Mystery still consume one layer and count as complete Encounters.
+- A skipped offered opportunity uses that encounter's spacing/streak slot, so skipping cannot reroll a word into the next encounter. An interrupted Run does not advance the completed-Encounter clock. An answered opportunity saves earned progress and reserves its cooldown immediately; completion sets the final clock anchor.
+- The second consecutive major opportunity has an actual probabilistic gate (QA baseline 25%), not just a uniform weight multiplier that cancels during sampling. The third is blocked. Ambient-only encounters break the major streak.
+- Combat never opens recognition/transfer/production questions. Eligible recognized primary words can earn context from actual observed/resolved consequences. Victory alone no longer awards context for every enemy label. Secondary/wrong-layer context is saved as pending diagnostic scheduling need, never converted automatically into earned stages.
+
+## Learning model
+
+The small authored Cemetery catalog contains twelve native target senses plus ERODE/TOXIC. Ordinary inflections reuse the same sense; unrelated derivations are not merged. It is not a 20k-word random draw. New senses must exist in the authored native catalog, have a carrier in the current scene, need learning, be in the active pool, pass the prototype learner-level/usefulness/difficulty gates, pass cooldown/streak, and fit the required evidence mode. Semantic families additionally penalize repeating the recent focus family during weighted selection. Unrelated words such as MICROWAVE cannot enter through frequency alone. Prototype learner level starts at one; there is no separate RPG player-level progression subsystem.
+
+The pool's QA default is six, configurable within five to eight. Stable mastered senses move to background; low stability, accumulated difficulty, pending context, low familiarity and elapsed revisit age increase reactivation need. While new senses exist, two pool slots protect discovery from being permanently crowded out by old words. Exhausting this finite catalog naturally leaves review rather than fabricating unrelated new words.
+
+Balanced centers on 60% New / 40% Review; performance adjusts this target within a bounded nonzero range. Adaptive, More Discovery and More Review change overall preference. Eligible new/review group weights are normalized separately, so group size does not accidentally override the intended ratio. Local semantic eligibility can still leave only one valid group. Seed reproduction requires the same saved knowledge/schedule, preference and decisions, not merely the same Seed number.
+
+Familiarity is separate from earned stages, with once-per-Encounter ambient gains and slow absence decay. Knowledge never regresses with time. Lexicon uses readable grey-to-bright contrast, without blur or numerical familiarity disclosure. DEV can inspect the hidden values. Recognition/context/production errors remain separate cumulative counts; repairable weakness is tracked separately so success does not delete error history. Errors raise review opportunity, not game penalties. Hint use is recorded and reduces confidence gain for assisted answers. Encounters spent at each stage and success/failure streaks are retained.
+
+World interactions contain sense ID, evidence/error type, prerequisite/target stage, correct answer, scene compatibility and authored corrective context. Recognition asks a scene meaning; context answers describe the actual world scene rather than claiming unseen combat consequences; production completes a new sentence. Each sense has two corrective variants with recent reuse avoidance. One answer closes the opportunity. The player may leave or ask a caretaker hint; no forced retry and no resource cost for a wrong answer.
+
+## Recovery and Dangerous Mystery
+
+`pacing_config.gd` labels all undefined values as provisional QA baselines. Current recovery choices are REST +10 HP, CALM -15 dominant Corruption only, REPAIR +6 Armor, or PREPARE +3 HP with +2 starting Armor in the next combat only (up to the existing Armor cap). None restores every resource. Recovery weighting uses HP/Armor deficit, dominant Corruption and recent Risk/Elite pressure. Grave Pressure is encounter-local and has reset before ordinary map decisions, so it is not persisted as a fake map pressure value.
+
+Black Mist Well adds one small native Dangerous Mystery to exercise the risk system. Its warning explicitly states that the initial probe burns skin. Entry executes HP -2 / Echo +12; retreat afterward still counts as risk because real loss occurred. Deeper exploration executes Obscurity +8 / Echo +20, then optional Mourning Wraith combat for another 35 Echo on victory. Probe depths settle once; shallow probing cannot be repeated for free rewards. At HP 1–2 the first burn can end the Run. Learning errors never cause these losses: they belong to clearly signposted exploration choices. The Well uses ambient language, not an additional major quiz.
+
+## Persistence and DEV safety
+
+`user://learning_schedule_0_8.json` stores schema version, completed-Encounter clock, earned word fields, familiarity/difficulty/stability, error/weakness profiles, cooldown anchors, success/failure history, active-pool state, preference, pending context and learning timeline. Completion, answers and pace changes save. Writes stage a temporary JSON and atomically rename it. The first previous state is kept as `.previous`; later overwritten states receive uniquely named `.backup.*` files, never overwriting the first recovery copy. These are deliberate recoverable save backups, not temporary QA files.
+
+Save restore validates types and ranges before applying data. Invalid saves remain untouched, show an entry warning and disable writes rather than silently replacing player knowledge with an empty Lexicon. This is a local prototype save, not cloud sync, full in-progress Run saving or account migration.
+
+F2/DEV provides Seed, resources, word state and test entries. Read-only inspectors do not change the save. DEV mutations/reset switch to a non-saving sandbox for the remaining app session; relaunch restores the real saved Lexicon. QA suites use no player save, and disk tests use a caller-provided temporary directory. Seed reproduction in DEV retains knowledge; reset the sandbox Lexicon explicitly when comparing fresh-state Seeds.
+
+Timeline shows up to eight recent complete run Encounters with layer, selected route, functional tags and primary focus. Map Inspector shows learning/recovery/Elite streaks, non-risk tail, Safety Pressure and pre-Boss override reasoning. Learning Inspector exposes pool, preference, weak layer, familiarity, difficulty, stability, age, cooldown, revisit, error counts, hints and stage-encounter history. Weight Inspector displays frozen actual decision snapshots, blocked reasons, opportunity-gate probability and eligible-group normalization.
+
+## QA mapping
+
+- `pacing_learning_smoke.gd`: QA01–07, QA15, QA17–20; stage cap, completed spacing, weighted revisit, JSON/disk/restart continuity, three independent errors, correction metadata, true second-opportunity probability, decay without regression, pool exit/reactivation, bounded modes and semantic rejection. Optional disk test also checks retained backups and invalid-save read-only protection.
+- `pacing_map_smoke.gd`: QA07–14; 240 deterministic Seeds with adversarial safe-first decisions, all selectable paths for six representative Seeds, three distinct candidates/category limit, risk floor, pre-Boss Recovery, selective repair, prepare's real combat effect and layered Mystery consequences.
+- `pacing_combat_smoke.gd`: QA04/15/16; real reveal/no-structure/Remains context, no victory-only progression, diagnostic secondary context and legacy modifier integration.
+- `pacing_ui_smoke.gd`: actual buttons for entry/map/preference/world exercises, non-punitive one-answer correction, readable familiarity Lexicon, inspectors, Combat boundary, persistent restart, visual stale-enemy/hand cleanup and DEV save isolation. Optional graphical run saves engine viewport PNGs for manual layout review.
+- `pacing_playthrough_smoke.gd`: eight complete six-layer routes using legally drawn cards, normal HP/Focus, actual world evidence and selective recovery. No synthetic cards or resource injections in these playthroughs.
+- Eighteen historical smoke suites remain explicitly isolated in their 0.6/0.7 fixtures, checking inherited combat, inattention, cards, Retain, reactions, relics and adaptive layouts. Their old all-core learning/reset expectations are historical, not applied to 0.8.
+
+Automated correctness and successful routes do not prove balance or enjoyment. Familiarity curves, priority formulas, learning density, risk mix, recovery numbers and mode ratios remain playtest-tunable rather than declared final balance.

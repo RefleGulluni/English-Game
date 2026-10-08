@@ -49,6 +49,7 @@ var lesson_source := ""
 var dev_previous: Control
 var dev_open := false
 const CEMETERY_WORDS := preload("res://scripts/run/cemetery_words.gd")
+var current_learning_exercise: Dictionary = {}
 
 func _ready() -> void:
 	set_process_unhandled_key_input(true)
@@ -61,7 +62,8 @@ func _ready() -> void:
 	if bool(get_meta("legacy_run", false)):
 		run_manager.start_run()
 	else:
-		run_manager.start_cemetery_run()
+		if bool(get_meta("qa_no_save", false)): run_manager.persistence_path = ""
+		run_manager.start_cemetery_run(-1, not bool(get_meta("legacy_cemetery", false)))
 	run_manager.state.knowledge.changed.connect(_on_knowledge_changed)
 	run_manager.state.toxic_knowledge.changed.connect(_on_knowledge_changed)
 	_connect_target_words()
@@ -81,7 +83,7 @@ func _build_interface() -> void:
 	title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.4))
 	add_child(title)
 
-	var subtitle := _make_label("MINI RUN PROTOTYPE 0.7", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
+	var subtitle := _make_label("MINI RUN PROTOTYPE 0.8", Vector2(28, 48), Vector2(280, 22), 12, MUTED)
 	add_child(subtitle)
 
 	stage_label = _make_label("", Vector2(360, 19), Vector2(560, 42), 15, INK)
@@ -270,6 +272,20 @@ func _refresh() -> void:
 		corruption_labels[family].text = "%s  %d" % [family.to_upper(), int(state.corruption[family])]
 		corruption_bars[family].value = int(state.corruption[family])
 	if state.enemy.is_empty():
+		enemy_name.text = "CHOOSE A PATH"
+		enemy_subtitle.text = ""
+		enemy_family.text = ""
+		enemy_hp_label.text = ""
+		enemy_hp_bar.value = 0
+		enemy_armor_label.text = ""
+		enemy_armor_bar.visible = false
+		intent_badge.text = ""
+		intent_title.text = ""
+		intent_text.text = ""
+		knowledge_indicator.text = ""
+		tutorial_label.text = ""
+		log_text.text = ""
+		_refresh_hand(true)
 		end_turn_button.disabled = true
 		return
 
@@ -403,6 +419,7 @@ func _confirm_mulligan() -> void:
 
 func _on_combo_discovered() -> void:
 	knowledge_notice.text = "COMBO DISCOVERED · %s · Recorded in Lexicon" % state.latest_combo.replace("_", " ").to_upper()
+	if run_manager.pacing: return
 	# Defer until the card and any counter-Reaction have finished resolving.
 	_show_combo_notice.call_deferred()
 
@@ -484,13 +501,16 @@ func _show_run_summary() -> void:
 		var usable: Array[String] = []
 		for word in run.target_knowledge.values():
 			summary += "\n%s · %s" % [word.lemma, word.current_state]
-			if word.current_state == "USABLE":
+			if word.current_state == "USABLE" and (not run_manager.pacing or word.lemma not in run.initial_usable_words):
 				usable.append(word.lemma)
 		for word in [run.knowledge, run.toxic_knowledge]:
-			if word.current_state == "USABLE":
+			if not run_manager.pacing and word.current_state == "USABLE":
 				usable.append(word.lemma)
 		summary += "\nNew USABLE Words: " + (", ".join(usable) if not usable.is_empty() else "NONE")
-		summary += "\nThe world forgets. You do not.\nPrototype Lexicon resets next run."
+		summary += "\nThe world forgets. You do not.\n" + ("Learning schedule and knowledge continue next run." if run_manager.pacing else "Prototype Lexicon resets next run.")
+		if run_manager.pacing:
+			summary += "\n" + run_manager.learning.save_error
+			if run_manager.dev_sandbox: summary += "\nDEV SANDBOX: test knowledge is not saved to your real Lexicon."
 	_show_modal(title, summary, [{"text": "BEGIN ANOTHER RUN", "callback": _restart_run}])
 
 func _restart_run() -> void:
@@ -502,7 +522,7 @@ func _restart_run() -> void:
 	if bool(get_meta("legacy_run", false)):
 		run_manager.start_run()
 	else:
-		run_manager.start_cemetery_run()
+		run_manager.start_cemetery_run(-1, not bool(get_meta("legacy_cemetery", false)))
 	state = _new_connected_combat()
 	_sync_state_from_run()
 	mulligan_selection.clear()
@@ -513,6 +533,9 @@ func _restart_run() -> void:
 
 func _show_run_entry() -> void:
 	if run_manager.cemetery:
+		if run_manager.pacing:
+			_show_modal("CEMETERY ENTRY", "Mini Run 0.8 · Seed %d\nSix layers. Ghosts conceal, Skeletons reassemble, Wraiths linger.\nKnowledge and review timing persist between runs.\nLearning pace: %s\n%s\n%s" % [run_manager.state.seed_value, run_manager.learning.pace, run_manager.learning.load_notice, "DEV sandbox — real Lexicon is protected." if run_manager.dev_sandbox else "The world forgets. You do not."], [{"text": "ENTER CEMETERY", "callback": _show_map}, {"text": "LEARNING PACE", "callback": _show_learning_pace}])
+			return
 		_show_modal("CEMETERY ENTRY", "Seed %d\nSix layers. Ghosts conceal, Skeletons reassemble, Wraiths linger.\nGrave Pressure starts at zero each encounter and rises every round.\nTargets: %s\n\nThe world forgets. You do not." % [run_manager.state.seed_value, ", ".join(run_manager.state.target_knowledge.keys())], [{"text": "ENTER CEMETERY", "callback": _show_inscription}])
 		return
 	_show_modal(
@@ -526,10 +549,11 @@ func _on_knowledge_changed(message: String) -> void:
 	state._add_log(message)
 	if not state.enemy.is_empty():
 		_refresh()
-	if message.begins_with("TOXIC") and run_manager.state.toxic_knowledge.current_state == "UNDERSTOOD" and not run_manager.state.toxic_knowledge.transfer_offered:
+	if not run_manager.pacing and message.begins_with("TOXIC") and run_manager.state.toxic_knowledge.current_state == "UNDERSTOOD" and not run_manager.state.toxic_knowledge.transfer_offered:
 		_offer_toxic_training.call_deferred()
 
 func _offer_toxic_training() -> void:
+	if run_manager.pacing: return
 	if not dev_open and not is_instance_valid(modal) and not state.finished and state.battle_index in [4, 7] and run_manager.state.toxic_knowledge.current_state == "UNDERSTOOD" and not run_manager.state.toxic_knowledge.transfer_offered:
 		_show_toxic_transfer()
 
@@ -660,7 +684,9 @@ func _show_lexicon() -> void:
 	var toxic := run_manager.state.toxic_knowledge
 	if toxic.current_state != "UNKNOWN":
 		body += "\n\n" + toxic.entry_text()
+	if run_manager.pacing: body = "Knowledge is earned. Familiarity can fade, but earned knowledge stays.\nWords always remain readable."
 	for target in run_manager.state.target_knowledge.values():
+		if run_manager.pacing: continue
 		body += "\n\n" + target.entry_text()
 	for monster in word.enemy_records:
 		body += "\n\nCOMBAT CODEX · %s\n%s" % [monster, word.enemy_records[monster]]
@@ -669,6 +695,8 @@ func _show_lexicon() -> void:
 	_show_modal("LEXICON · WORDS & COMBAT CODEX", body, [
 		{"text": "CLOSE LEXICON", "callback": _close_lexicon.bind(previous)},
 	])
+	if run_manager.pacing:
+		_add_familiarity_lexicon()
 
 func _close_lexicon(previous: Control) -> void:
 	lexicon_open = false
@@ -717,10 +745,10 @@ func _answer_production(answer: String) -> void:
 
 func _show_map() -> void:
 	var run := run_manager.state
-	if run.toxic_knowledge.current_state == "UNDERSTOOD" and not run.toxic_knowledge.transfer_offered:
+	if not run_manager.pacing and run.toxic_knowledge.current_state == "UNDERSTOOD" and not run.toxic_knowledge.transfer_offered:
 		_show_toxic_transfer()
 		return
-	if run.knowledge.root_combat_seen and run.current_layer >= 2 and not run.knowledge.transfer_offered:
+	if not run_manager.pacing and run.knowledge.root_combat_seen and run.current_layer >= 2 and not run.knowledge.transfer_offered:
 		_show_transfer_context()
 		return
 	var lines: Array[String] = [run.condition_text(), "", "Choose the next path:"]
@@ -737,18 +765,25 @@ func _show_map() -> void:
 			action_text += " · %d → %d ECHO" % [base_echo, run.preview_echo(base_echo, true)]
 		actions.append({"text": action_text, "callback": _select_node.bind(str(node["id"]))})
 	if run_manager.cemetery:
-		lines.push_front("CEMETERY · Seed %d\nTargets: %s" % [run.seed_value, ", ".join(run.target_knowledge.keys())])
+		lines.push_front("CEMETERY · Seed %d\n%s: %s" % [run.seed_value, "Active words" if run_manager.pacing else "Targets", ", ".join(run_manager.learning.active_pool if run_manager.pacing else run.target_knowledge.keys())])
+	if run_manager.pacing:
+		if not run_manager.learning.save_error.is_empty(): lines.append(run_manager.learning.save_error)
+		actions.append({"text": "LEARNING PACE · " + run_manager.learning.pace, "callback": _show_learning_pace})
 	_show_modal(("CEMETERY MAP" if run_manager.cemetery else "FRACTURE MAP") + " · LAYER %d" % [run.current_layer + 1], "\n".join(lines), actions)
 
 func _select_node(node_id: String) -> void:
 	var node := run_manager.select_node(node_id)
 	if node.is_empty():
 		return
+	if run_manager.pacing and "RECOVERY" in node.get("tags", []):
+		_show_cemetery_rest()
+		return
 	match str(node.get("type", "")):
 		"encounter", "elite", "final":
 			var snapshot := run_manager.state.combat_snapshot()
 			snapshot["objective"] = str(node.get("objective", "kill"))
 			state.start_battle(int(node["battle"]), snapshot, bool(node.get("elite", false)))
+			run_manager.state.prepared_armor = 0
 			if state.battle_index == 0:
 				if not run_manager.state.knowledge.enemy_records.has("ROOT HUSK"):
 					run_manager.state.knowledge.enemy_records["ROOT HUSK"] = "REGROWTH: after 2 turns without Structure damage, restore 6 Structure.\nA second trait is not discovered yet."
@@ -761,19 +796,28 @@ func _select_node(node_id: String) -> void:
 			run_manager.state.temporary_cards.clear()
 			mulligan_selection.clear()
 			_refresh()
-			if run_manager.cemetery:
+			if run_manager.pacing:
+				_show_mulligan()
+			elif run_manager.cemetery:
 				_begin_cemetery_lessons(node, true)
 			else:
 				_show_mulligan()
 		"anomaly":
 			_show_semantic_anomaly()
 		"event":
-			if run_manager.cemetery:
+			if run_manager.pacing:
+				_show_world_encounter()
+			elif run_manager.cemetery:
 				_begin_cemetery_lessons(node, false)
 			else:
 				_show_event()
 		"rest":
 			_show_cemetery_rest()
+		"mystery":
+			var description := run_manager.mystery_probe(1)
+			_sync_state_from_run()
+			if run_manager.state.completed: _show_run_summary()
+			else: _show_mystery(description)
 		"relic":
 			_show_relic_reward("You found a preserved Relic.")
 		"cache":
@@ -828,6 +872,9 @@ func _show_breather() -> void:
 		int(before["Decay"]), int(after["Decay"]), int(before["Obscurity"]), int(after["Obscurity"]),
 		int(before["Inattention"]), int(after["Inattention"]), run_manager.state.condition_text(),
 	]
+	if run_manager.pacing:
+		_show_modal("BREATHER", body, [{"text": "CONTINUE", "callback": _finish_pacing_breather}])
+		return
 	_show_modal("BREATHER", body, [
 		{"text": "RECOVER · +6 HP (or +4 Armor at full HP)", "callback": _choose_breather.bind("recover")},
 		{"text": "STABILIZE · Dominant Corruption -12", "callback": _choose_breather.bind("stabilize")},
@@ -1027,6 +1074,10 @@ func _connect_target_words() -> void:
 			word.changed.connect(_on_knowledge_changed)
 
 func _begin_cemetery_lessons(node: Dictionary, combat: bool) -> void:
+	if run_manager.pacing:
+		if combat: _show_mulligan()
+		else: _show_world_encounter()
+		return
 	lesson_words.clear()
 	lesson_source = str(node.id)
 	lesson_is_combat = combat
@@ -1102,6 +1153,10 @@ func _finish_cemetery_lesson() -> void:
 		_show_map()
 
 func _show_cemetery_rest() -> void:
+	if run_manager.pacing:
+		var qa = preload("res://scripts/run/pacing_config.gd").QA
+		_show_modal("SHELTERED GRAVE", "A quiet shelter before you continue.\nChoose one repair direction. Values are provisional playtest settings.\n" + run_manager.state.condition_text(), [{"text": "REST · HP +%d" % qa.rest_hp, "callback": _resolve_cemetery_rest.bind("rest")}, {"text": "CALM · Dominant Corruption -%d" % qa.calm_corruption, "callback": _resolve_cemetery_rest.bind("calm")}, {"text": "REPAIR · Armor +%d" % qa.repair_armor, "callback": _resolve_cemetery_rest.bind("repair")}, {"text": "PREPARE · HP +%d / next battle Armor +%d" % [qa.prepare_hp, qa.prepare_armor], "callback": _resolve_cemetery_rest.bind("prepare")}])
+		return
 	_show_modal("SHELTERED GRAVE", "A quiet shelter, not a forced campfire.\nChoose recovery, stability, or keep moving.", [{"text": "RECOVER · +6 HP / +4 Armor if full", "callback": _resolve_cemetery_rest.bind("recover")}, {"text": "STABILIZE · Dominant Corruption -12", "callback": _resolve_cemetery_rest.bind("stabilize")}, {"text": "PRESS ON · Next reward ×1.25", "callback": _resolve_cemetery_rest.bind("press_on")}])
 
 func _resolve_cemetery_rest(choice: String) -> void:
@@ -1134,8 +1189,11 @@ func _show_dev_panel() -> void:
 	actions.append({"text": "TRIGGER SPECIFIC EVENT", "callback": _show_dev_input.bind("Event")})
 	actions.append({"text": "RESET MINIRUN LEXICON", "callback": _dev_reset_lexicon})
 	actions.append({"text": "INSPECT CURRENT WEIGHTS", "callback": _show_weight_inspector})
+	if run_manager.pacing:
+		actions.append({"text": "DIRECTOR TIMELINE / MAP INSPECTOR", "callback": _show_map_inspector})
+		actions.append({"text": "LEARNING INSPECTOR", "callback": _show_learning_inspector})
 	actions.append({"text": "CLOSE DEV PANEL", "callback": _close_dev_panel})
-	_show_modal("DEV PANEL · QA ONLY", "Seed %d · Layer %d\nInputs change this test run only. Seed restarts the run.\nF2 opens this panel. Release exports hide it." % [run_manager.state.seed_value, run_manager.state.current_layer + 1], actions)
+	_show_modal("DEV PANEL · QA ONLY", "Seed %d · Layer %d\nInputs change this test run only. Seed restarts the run.\nF2 opens this panel. Release exports hide it.\n0.8 mutations enter a non-saving sandbox. Relaunch the game to restore your real Lexicon." % [run_manager.state.seed_value, run_manager.state.current_layer + 1], actions)
 
 func _close_dev_panel() -> void:
 	dev_open = false
@@ -1178,11 +1236,13 @@ func _dev_apply(field: String, raw: String) -> bool:
 	if field in ["Seed", "Layer", "HP", "Focus", "Grave Pressure"] and not value.is_valid_int():
 		return false
 	var number := int(value)
+	# Validate first below where possible; sandbox activation only isolates persistence.
+	if run_manager.pacing: run_manager.enter_dev_sandbox()
 	match field:
 		"Seed":
 			if number < 0: return false
 			_dev_abandon_previous()
-			run_manager.start_cemetery_run(number)
+			run_manager.start_cemetery_run(number, not bool(get_meta("legacy_cemetery", false)))
 			state = _new_connected_combat()
 			_connect_target_words()
 			_show_run_entry()
@@ -1207,7 +1267,20 @@ func _dev_apply(field: String, raw: String) -> bool:
 			if parts.size() != 2: return false
 			var id := CEMETERY_WORDS.lemma(parts[0].strip_edges())
 			var target := parts[1].strip_edges().to_upper()
-			if run_manager.state.target_knowledge.has(id):
+			if run_manager.pacing and id in ["ERODE", "TOXIC"]:
+				if target not in ["UNKNOWN", "ENCOUNTERED", "RECOGNIZED", "UNDERSTOOD", "USABLE"]: return false
+				var word = run_manager.learning.words[id]
+				word.reset()
+				word.current_state = target
+				if target in ["RECOGNIZED", "UNDERSTOOD", "USABLE"]: word.recognition_evidence = 1
+				if target in ["UNDERSTOOD", "USABLE"]:
+					word.context_evidence = 1
+					word.gameplay_unlocks.append(word.word_id + "_insight")
+				if target == "USABLE":
+					word.production_evidence = 1
+					word.transfer_correct = true
+					word.unlocked_cards.append(id)
+			elif run_manager.state.target_knowledge.has(id):
 				if not run_manager.state.target_knowledge[id].dev_set_state(target): return false
 			elif id in ["ERODE", "TOXIC"]:
 				if target not in ["UNKNOWN", "RECOGNIZED", "UNDERSTOOD", "USABLE"]: return false
@@ -1248,6 +1321,11 @@ func _dev_apply(field: String, raw: String) -> bool:
 			_dev_abandon_previous()
 			run_manager.selected_node = node
 			run_manager.state.begin_node(value)
+			if run_manager.pacing:
+				node = run_manager.director.annotate(node)
+				run_manager.director.attach_learning(node, run_manager.rng)
+				run_manager.selected_node = node
+				run_manager.learning.begin(node, run_manager.state.current_layer + 1)
 			_begin_cemetery_lessons(node, false)
 		_: return false
 	run_manager.state.history.append("DEV: %s = %s" % [field, value])
@@ -1264,6 +1342,7 @@ func _new_connected_combat() -> CombatState:
 	return combat
 
 func _dev_enter_enemy(index: int) -> void:
+	if run_manager.pacing: run_manager.enter_dev_sandbox()
 	_dev_abandon_previous()
 	run_manager.selected_node = {"id": "dev_test", "type": "encounter", "title": "DEV ENCOUNTER", "echo": 0, "detour": true}
 	var snapshot := run_manager.state.combat_snapshot()
@@ -1272,16 +1351,180 @@ func _dev_enter_enemy(index: int) -> void:
 	_show_mulligan()
 
 func _dev_reset_lexicon() -> void:
+	if run_manager.pacing:
+		run_manager.enter_dev_sandbox()
+		var fresh := preload("res://scripts/run/learning_schedule.gd").new()
+		fresh.save_path = ""
+		fresh.setup()
+		run_manager.learning = fresh
+		run_manager.director.learning = fresh
+		run_manager.director.cache.clear()
+		run_manager.state.learning_schedule = fresh
+		run_manager.state.target_knowledge = fresh.words
+		run_manager.state.knowledge = fresh.words.ERODE
+		run_manager.state.toxic_knowledge = fresh.words.TOXIC
+		state.knowledge = fresh.words.ERODE
+		state.toxic_knowledge = fresh.words.TOXIC
+		state.target_knowledge = fresh.words
+		_connect_target_words()
+		_show_dev_panel()
+		return
 	run_manager.state.knowledge.reset()
 	run_manager.state.toxic_knowledge.reset()
 	for word in run_manager.state.target_knowledge.values(): word.reset()
 	_show_dev_panel()
 
 func _show_weight_inspector() -> void:
+	if run_manager.pacing:
+		_show_pacing_weights()
+		return
 	var choices := run_manager.available_nodes()
 	var lines: Array[String] = ["Final = Base × Biome × Layer × Learning × Rhythm × Repetition", "Seed %d · Layer %d" % [run_manager.state.seed_value, run_manager.state.current_layer + 1], "Frozen generation weights; future layers use updated evidence.", "CURRENT CHOICES / CONSTRAINTS:"]
 	for node in choices:
 		lines.append("%s · %s" % [node.title, "LEARNING GUARANTEE" if bool(node.get("guarantee", false)) else ("FIXED BOSS" if node.type == "final" else "WEIGHTED / RHYTHM CONSTRAINT")])
 	for row in run_manager.director.weights:
 		lines.append("%s\nBase %.2f × Biome %.2f × Layer %.2f × Learning %.2f × Rhythm %.2f × Repetition %.2f = Final %.2f" % [row.id, row.base_weight, row.biome_modifier, row.layer_modifier, row.learning_modifier, row.rhythm_modifier, row.repetition_modifier, row.final_weight])
+	_show_modal("WEIGHT INSPECTOR", "\n\n".join(lines), [{"text": "BACK TO DEV", "callback": _show_dev_panel}])
+
+func _show_world_encounter() -> void:
+	var node := run_manager.selected_node
+	var id := str(node.get("primary", ""))
+	var lines: Array[String] = []
+	var scene_words: Array = node.get("words", []).duplicate()
+	if not id.is_empty():
+		scene_words.erase(id)
+		scene_words.push_front(id)
+	for word_id in scene_words.slice(0, 3):
+		if word_id in CEMETERY_WORDS.DATA: lines.append(str(CEMETERY_WORDS.DATA[word_id][1]))
+		elif word_id in preload("res://scripts/run/learning_encounters.gd").EXTRA: lines.append(str(preload("res://scripts/run/learning_encounters.gd").EXTRA[word_id][1]))
+	var actions: Array = []
+	if not id.is_empty() and not bool(run_manager.learning.encounter.get("answered", false)):
+		actions.append({"text": "EXAMINE THE SCENE", "callback": _show_world_exercise})
+	actions.append({"text": "CONTINUE ALONG THE PATH", "callback": _finish_world_encounter})
+	_show_modal(str(node.title), "\n".join(lines), actions)
+
+func _show_world_exercise() -> void:
+	var node := run_manager.selected_node
+	var id := str(node.get("primary", ""))
+	if id.is_empty() or bool(run_manager.learning.encounter.get("answered", false)):
+		_show_world_encounter()
+		return
+	current_learning_exercise = preload("res://scripts/run/learning_encounters.gd").exercise(id, node, run_manager.learning)
+	var options: Array = current_learning_exercise.options.duplicate()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = run_manager.state.seed_value + run_manager.learning.clock * 331 + id.hash()
+	for index in range(options.size() - 1, 0, -1):
+		var other := rng.randi_range(0, index)
+		var value = options[index]
+		options[index] = options[other]
+		options[other] = value
+	var actions: Array = []
+	for option in options:
+		actions.append({"text": str(option), "callback": _answer_world_exercise.bind(str(option))})
+	actions.append({"text": "ASK THE CARETAKER FOR A HINT", "callback": _world_hint})
+	actions.append({"text": "CONTINUE WITHOUT ANSWERING", "callback": _finish_world_encounter})
+	_show_modal(str(node.title), str(current_learning_exercise.prompt), actions)
+
+func _world_hint() -> void:
+	var id: String = run_manager.selected_node.primary
+	run_manager.learning.records[id].hints = int(run_manager.learning.records[id].hints) + 1
+	run_manager.learning.encounter["hint_used"] = true
+	# Hint reveals context but does not award evidence. Player may answer once or leave.
+	_show_modal("THE CARETAKER", str(current_learning_exercise.correctiveLine), [{"text": "RETURN TO THE SCENE", "callback": _show_world_exercise}, {"text": "CONTINUE", "callback": _finish_world_encounter}])
+
+func _answer_world_exercise(answer: String) -> void:
+	var id: String = run_manager.selected_node.primary
+	var exercise := current_learning_exercise
+	var correct := answer == str(exercise.correctAnswer)
+	run_manager.learning.evidence(id, str(exercise.evidenceType), correct, str(exercise.id))
+	run_manager.learning.records[id].corrective_history.append({"variant": exercise.variant, "clock": run_manager.learning.clock})
+	if run_manager.learning.records[id].corrective_history.size() > 12: run_manager.learning.records[id].corrective_history.pop_front()
+	# One answer closes this encounter's opportunity, regardless of correctness.
+	_show_modal(str(run_manager.selected_node.title), str(exercise.correctiveLine) + "\nThe path continues. Your knowledge and resources are preserved.", [{"text": "CONTINUE", "callback": _finish_world_encounter}])
+
+func _finish_world_encounter() -> void:
+	run_manager.finish_world()
+	_sync_state_from_run()
+	_show_map()
+
+func _finish_pacing_breather() -> void:
+	if bool(pending_combat_result.get("elite", false)):
+		_show_relic_reward("An Elite guarded these relics.")
+	else: _show_map()
+
+func _show_mystery(description: String) -> void:
+	var depth := int(run_manager.selected_node.get("depth", 1))
+	var actions: Array = [{"text": "LEAVE THE WELL", "callback": _leave_mystery}]
+	if depth == 1: actions.append({"text": "DESCEND · Obscurity +8 / gain 20 Echo", "callback": _deepen_mystery.bind(2)})
+	if depth == 2: actions.append({"text": "ENTER THE DEPTHS · Mourning Wraith combat / gain 35 Echo on victory", "callback": _deepen_mystery.bind(3)})
+	_show_modal("BLACK MIST WELL", description + "\nDeeper mist moves like a living shadow. Retreat is now possible; deeper rewards carry greater risk.", actions)
+
+func _leave_mystery() -> void:
+	run_manager.leave_mystery()
+	_sync_state_from_run()
+	_show_map()
+
+func _deepen_mystery(depth: int) -> void:
+	var description := run_manager.mystery_probe(depth)
+	_sync_state_from_run()
+	if depth == 3:
+		var node := run_manager.selected_node
+		state.start_battle(int(node.battle), run_manager.state.combat_snapshot())
+		run_manager.state.prepared_armor = 0
+		_refresh()
+		_show_mulligan()
+	else: _show_mystery(description)
+
+func _show_learning_pace() -> void:
+	var actions: Array = []
+	for mode in ["Adaptive", "More Discovery", "Balanced", "More Review"]:
+		actions.append({"text": mode, "callback": _set_learning_pace.bind(mode)})
+	_show_modal("LEARNING PACE", "Choose your overall preference.\nThe Director still controls spacing, scene compatibility and local timing.\nBalanced starts near 60% New / 40% Review; performance adjusts the mix.", actions)
+
+func _set_learning_pace(mode: String) -> void:
+	run_manager.learning.set_pace(mode)
+	run_manager.director.cache.clear()
+	if run_manager.state.current_node_id == "entry": _show_run_entry()
+	else: _show_map()
+
+func _add_familiarity_lexicon() -> void:
+	var card = modal.find_child("ModalCard", true, false)
+	var body: Label = modal.find_child("Body", true, false)
+	var region: ScrollContainer = body.get_parent()
+	region.remove_child(body)
+	var rows := VBoxContainer.new()
+	rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rows.add_theme_constant_override("separation", 18)
+	region.add_child(rows)
+	rows.add_child(body)
+	for id in run_manager.learning.words:
+		var word = run_manager.learning.words[id]
+		var familiar: float = float(run_manager.learning.records[id].familiarity) / 100.0
+		var tint := Color("adb9c7").lerp(INK, familiar)
+		var label := _make_label(word.entry_text(), Vector2.ZERO, Vector2.ZERO, 14, tint)
+		label.name = "Lexicon_" + str(id)
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		rows.add_child(label)
+	card.body_content = rows
+	rows.minimum_size_changed.connect(card._queue_layout)
+	card._queue_layout()
+
+func _show_learning_inspector() -> void:
+	_show_modal("LEARNING INSPECTOR · QA", run_manager.learning.inspector(), [{"text": "BACK TO DEV", "callback": _show_dev_panel}])
+
+func _show_map_inspector() -> void:
+	run_manager.available_nodes()
+	_show_modal("DIRECTOR TIMELINE / MAP INSPECTOR", run_manager.director.inspector(), [{"text": "BACK TO DEV", "callback": _show_dev_panel}])
+
+func _show_pacing_weights() -> void:
+	var choices := run_manager.available_nodes()
+	var lines: Array[String] = ["Node Final = Base × Safety × Streak × Repetition (or 0 if blocked).\nWord Final = Revisit × New/Review × Learning Streak, gated by scene/pool/cooldown.\nFrozen decision snapshots, not live recomputed guesses."]
+	for node in choices:
+		lines.append("OFFERED: %s · %s\nPrimary %s · Mode %s · Major Opportunity gate %.0f%%\nTags %s" % [node.title, node.get("constraint", "FIXED BOSS"), node.primary, node.learning_mode, float(node.learning_offer_chance) * 100, ", ".join(node.tags)])
+		for row in node.word_weights:
+			lines.append("%s · Scene %.1f · Pool %s · Cooldown %d\nRevisit %.2f × Variety %.2f × New/Review %.2f × Streak %.2f / Eligible Group %.2f = %.3f\nCatalog: min level %d · Usefulness %.2f · Difficulty %.2f\nPersonal Difficulty %.2f · Weak %s · Eligible %s" % [row.id, row.scene, str(row.pool), row.cooldown, row.revisit, row.variety, row.new_review, row.streak, row.group_total, row.final, row.catalog.min_level, row.catalog.usefulness, row.catalog.difficulty, row.difficulty, row.weak, str(row.eligible)])
+	for row in run_manager.director.weights:
+		lines.append("NODE %s\nBase %.2f × Safety %.2f × Streak %.2f × Repeat %.2f = %.3f\nBlocked: %s" % [row.id, row.base_weight, row.adaptive_modifier, row.rhythm_modifier, row.repetition_modifier, row.final_weight, ", ".join(row.blocked)])
 	_show_modal("WEIGHT INSPECTOR", "\n\n".join(lines), [{"text": "BACK TO DEV", "callback": _show_dev_panel}])

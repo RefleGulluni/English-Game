@@ -9,7 +9,7 @@ func check(value: bool, message: String) -> void:
 
 func combat(index: int, relics: Array = [], biome: String = "cemetery") -> CombatState:
 	var run := RunManager.new()
-	run.start_cemetery_run(123)
+	run.start_cemetery_run(123, false)
 	var snapshot := run.state.combat_snapshot()
 	snapshot.relics = relics
 	snapshot.biome_id = biome

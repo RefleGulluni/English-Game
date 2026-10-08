@@ -7,7 +7,7 @@ func _initialize() -> void:
 	var successful := 0
 	for seed_value in [7, 70, 707, 1707, 42, 4303, 999, 12345]:
 		var manager := RunManager.new()
-		manager.start_cemetery_run(seed_value)
+		manager.start_cemetery_run(seed_value, false)
 		manager.state.knowledge.recognize("inscription")
 		manager.state.toxic_knowledge.recognize("cracked_vial")
 		var route: Array[String] = []

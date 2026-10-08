@@ -87,6 +87,7 @@ var metrics := {
 
 var biome_id := ""
 var target_knowledge: Dictionary = {}
+var pacing := false
 var grave_pressure := 0
 var grave_obscurity_used := false
 var awakened_seen := false
@@ -113,6 +114,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	completed_rounds = 0
 	biome_id = str(run_snapshot.get("biome_id", ""))
 	target_knowledge = run_snapshot.get("target_knowledge", {})
+	pacing = bool(run_snapshot.get("pacing", false))
 	grave_pressure = 0
 	grave_obscurity_used = false
 	awakened_seen = false
@@ -148,6 +150,8 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	inattention_tier = int(run_snapshot.get("inattention_tier", INATTENTION.tier_from_statuses(statuses)))
 	intent = {}
 	knowledge = run_snapshot.get("knowledge", preload("res://scripts/run/word_knowledge.gd").new())
+	if bool(run_snapshot.get("pacing", false)):
+		armor = mini(BASE_ARMOR, armor + int(run_snapshot.get("prepared_armor", 0)))
 	toxic_knowledge = run_snapshot.get("toxic_knowledge", preload("res://scripts/run/word_knowledge.gd").new("toxic"))
 	relics.clear()
 	for relic in run_snapshot.get("relics", []):
@@ -268,6 +272,7 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			_add_log("BIND · Reassembly countdown +1, once per Remains phase.")
 		else:
 			remains_hp = maxi(0, remains_hp - (8 if skill_name == "SHATTER" else 3) - (2 if "ossuary_key" in relics else 0))
+			if pacing: _record_target_context("SCATTER", "struck_remains")
 			_add_log("%s · BONE REMAINS %d/10." % [skill_name, remains_hp])
 			if remains_hp == 0:
 				if "ossuary_key" in relics and not ossuary_used:
@@ -301,6 +306,7 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			if int(enemy["structure"]) > 0:
 				_damage_structure(8, true)
 			else:
+				if pacing and not bool(enemy["has_structure"]): _record_target_context("HOLLOW", "no_material_structure")
 				var before_armor := int(enemy["armor"])
 				var armor_chip := mini(2, before_armor)
 				enemy["armor"] = maxi(0, before_armor - 2)
@@ -627,6 +633,7 @@ func _enemy_defeated() -> void:
 			intent_clarity = 2
 			_add_log("BONE REMAINS · 10 integrity · REASSEMBLE in 2 turns. Not Victory.")
 			_record_target_context("REASSEMBLE", "bone_remains")
+			if pacing: _record_target_context("REMAINS", "body_remains")
 	elif objective == "survive":
 		if not dispersed:
 			dispersed = true
@@ -946,11 +953,15 @@ func trait_text() -> String:
 	return text
 
 func _record_target_context(surface: String, source: String) -> void:
+	# Winning is not evidence of having understood every word printed on the enemy.
+	if pacing and source.begins_with("completed:"): return
 	var canonical := preload("res://scripts/run/cemetery_words.gd").lemma(surface)
 	if target_knowledge.has(canonical):
 		target_knowledge[canonical].context("combat:" + source)
 
 func _cemetery_observe() -> void:
+	if pacing and not bool(enemy.get("has_structure", true)):
+		_record_target_context("HOLLOW", "observed_empty_structure")
 	var revealed := (bool(intent.get("hidden", false)) and not hidden_revealed) or (not false_intent.is_empty() and not false_removed)
 	if revealed:
 		hidden_revealed = true

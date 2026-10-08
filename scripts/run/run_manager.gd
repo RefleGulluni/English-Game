@@ -13,10 +13,21 @@ var director := preload("res://scripts/run/cemetery_director.gd").new()
 const CEMETERY := preload("res://scripts/run/cemetery_content.gd")
 const WORDS := preload("res://scripts/run/cemetery_words.gd")
 var reward_offer: Array[String] = []
+var pacing := false
+var learning
+var persistence_path := "user://learning_schedule_0_8.json"
+var dev_sandbox := false
 
-func start_cemetery_run(seed_override: int = -1) -> void:
+func start_cemetery_run(seed_override: int = -1, use_pacing: bool = true) -> void:
+	# Never reset persistent word objects through RunState.reset(). Detach them first.
+	if learning != null:
+		state.knowledge = preload("res://scripts/run/word_knowledge.gd").new()
+		state.toxic_knowledge = preload("res://scripts/run/word_knowledge.gd").new("toxic")
+		state.target_knowledge = {}
 	start_run()
 	cemetery = true
+	pacing = use_pacing
+	state.pacing = pacing
 	var chosen_seed := seed_override
 	if chosen_seed < 0:
 		chosen_seed = int(Time.get_unix_time_from_system()) ^ int(Time.get_ticks_usec())
@@ -24,8 +35,29 @@ func start_cemetery_run(seed_override: int = -1) -> void:
 	state.biome_id = "cemetery"
 	state.deck_seed = chosen_seed
 	rng.seed = chosen_seed
+	if pacing:
+		if learning == null:
+			learning = preload("res://scripts/run/learning_schedule.gd").new()
+			learning.save_path = persistence_path
+			learning.setup()
+			learning.load_saved()
+		learning.encounter.clear()
+		state.learning_schedule = learning
+		state.target_knowledge = learning.words
+		state.knowledge = learning.words.ERODE
+		state.toxic_knowledge = learning.words.TOXIC
+		for id in learning.words:
+			if learning.words[id].current_state == "USABLE": state.initial_usable_words.append(str(id))
+		director = preload("res://scripts/run/pacing_director.gd").new()
+		director.learning = learning
+	else:
+		director = preload("res://scripts/run/cemetery_director.gd").new()
 	director.reset(chosen_seed)
 	reward_offer.clear()
+	if pacing:
+		state.history[0] = "Entered Cemetery · Seed %d." % chosen_seed
+		changed.emit()
+		return
 	var targets: Array = WORDS.CORE.duplicate()
 	var elastic_pool: Array = []
 	for id in WORDS.ELASTIC:
@@ -39,6 +71,15 @@ func start_cemetery_run(seed_override: int = -1) -> void:
 	changed.emit()
 
 func set_targets(ids: Array) -> bool:
+	if pacing:
+		if ids.size() < 5 or ids.size() > 8 or not ids.all(func(id): return learning.words.has(id)): return false
+		var unique := {}
+		for id in ids: unique[id] = true
+		if unique.size() != ids.size(): return false
+		learning.pool_override.assign(ids)
+		learning.active_pool.assign(ids)
+		director.cache.clear()
+		return true
 	if ids.size() != 5 or ids.slice(0, 4) != WORDS.CORE or ids[4] not in WORDS.ELASTIC:
 		return false
 	state.target_knowledge.clear()
@@ -50,6 +91,9 @@ func set_targets(ids: Array) -> bool:
 	return true
 
 func cemetery_finish_node() -> void:
+	if pacing:
+		director.complete(selected_node, state.current_layer + 1)
+		learning.complete()
 	state.recent_node_types.append(str(selected_node.get("type", "event")))
 	state.recent_content.append(str(selected_node.get("id", "")))
 	state.finish_node()
@@ -62,8 +106,11 @@ func finish_learning_event() -> void:
 		changed.emit()
 
 func rest(choice: String) -> Dictionary:
-	var result := state.choose_breather(choice)
+	if state.current_node_id == "settled": return {}
+	var result := selective_recovery(choice) if pacing else state.choose_breather(choice)
+	if result.is_empty(): return {}
 	cemetery_finish_node()
+	state.current_node_id = "settled"
 	changed.emit()
 	return result
 
@@ -86,6 +133,7 @@ func finish_relic_choice(id: String) -> bool:
 
 func start_run() -> void:
 	cemetery = false
+	pacing = false
 	state.reset()
 	selected_node.clear()
 	current_event.clear()
@@ -126,6 +174,8 @@ func select_node(node_id: String) -> Dictionary:
 		state.history.append("Entered %s." % node_id)
 	else:
 		state.begin_node(node_id)
+	if pacing:
+		learning.begin(node, state.current_layer + 1)
 	if str(node["type"]) == "event":
 		current_event = node.duplicate(true) if cemetery else RunContent.event_for_run(run_index)
 	changed.emit()
@@ -256,6 +306,7 @@ func fail_run(combat: CombatState) -> void:
 	state.completed = true
 	state.victory = false
 	state.extracted = false
+	if pacing: cemetery_finish_node()
 	state.history.append("Connection broken inside %s." % str(selected_node.get("title", "the Fracture")))
 	changed.emit()
 
@@ -264,3 +315,76 @@ func _available_node_ids() -> Array[String]:
 	for node in available_nodes():
 		ids.append(str(node["id"]))
 	return ids
+
+func selective_recovery(choice: String) -> Dictionary:
+	var qa = preload("res://scripts/run/pacing_config.gd").QA
+	var message := ""
+	match choice:
+		"rest":
+			var before := state.hp
+			state.hp = mini(RunState.MAX_HP, state.hp + int(qa.rest_hp))
+			message = "HP %d → %d" % [before, state.hp]
+		"repair":
+			var before := state.armor
+			state.armor = mini(RunState.MAX_ARMOR, state.armor + int(qa.repair_armor))
+			message = "Armor %d → %d" % [before, state.armor]
+		"calm":
+			var family := state.dominant_corruption_family()
+			if family.is_empty(): message = "No active Corruption."
+			else:
+				var before := int(state.corruption[family])
+				state.corruption[family] = maxi(0, before - int(qa.calm_corruption))
+				state.refresh_lingering_statuses()
+				message = "%s %d → %d" % [family, before, state.corruption[family]]
+		"prepare":
+			state.hp = mini(RunState.MAX_HP, state.hp + int(qa.prepare_hp))
+			state.prepared_armor = int(qa.prepare_armor)
+			message = "HP +%d (up to max). Next combat gains %d starting Armor, up to the Armor cap." % [qa.prepare_hp, qa.prepare_armor]
+		_: return {}
+	state.history.append("Selective Recovery: " + message)
+	return {"choice": choice, "description": message}
+
+func enter_dev_sandbox() -> void:
+	if not pacing or dev_sandbox: return
+	dev_sandbox = true
+	# QA mutations and reset must not overwrite the player's real persistent lexicon.
+	learning.save_path = ""
+
+func finish_world() -> void:
+	if state.current_node_id == "settled": return
+	state.grant_echo(int(selected_node.get("echo", 8)), str(selected_node.title))
+	cemetery_finish_node()
+	state.current_node_id = "settled"
+	changed.emit()
+
+func mystery_probe(depth: int) -> String:
+	if selected_node.get("type", "") != "mystery": return ""
+	var reached := int(selected_node.get("depth", 0))
+	if depth != reached + 1 or depth > 3: return ""
+	selected_node.depth = depth
+	match depth:
+		1:
+			state.hp = maxi(0, state.hp - 2)
+			state.grant_echo(12, "Black Mist Well probe")
+		2:
+			state.corruption.Obscurity = mini(100, int(state.corruption.Obscurity) + 8)
+			state.refresh_lingering_statuses()
+			state.grant_echo(20, "Black Mist Well depths")
+		3:
+			selected_node.battle = 8
+			selected_node.echo = 35
+			selected_node.type = "encounter"
+			if "COMBAT" not in selected_node.tags: selected_node.tags.append("COMBAT")
+			if not learning.encounter.is_empty() and "COMBAT" not in learning.encounter.tags: learning.encounter.tags.append("COMBAT")
+	if state.hp == 0:
+		state.completed = true
+		state.victory = false
+		cemetery_finish_node()
+		state.current_node_id = "settled"
+	return ["", "The mist burns your skin. HP -2. You retrieve 12 Echo.", "The darkness obscures your senses. Obscurity +8. You retrieve 20 Echo.", "A Mourning Wraith rises from the well. Defeat it for 35 more Echo."][depth]
+
+func leave_mystery() -> void:
+	if state.current_node_id == "settled": return
+	cemetery_finish_node()
+	state.current_node_id = "settled"
+	changed.emit()

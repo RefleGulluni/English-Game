@@ -11,6 +11,9 @@ func _init(id: String = "MOURN") -> void:
 	concept_family = "CEMETERY"
 
 func recognize(source: String) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "recognition", true, source)
+		return
 	encounter()
 	if _add_source("recognition:" + source):
 		recognition_evidence += 1
@@ -18,12 +21,18 @@ func recognize(source: String) -> void:
 		_advance()
 
 func context(source: String, correct: bool = true) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "context", correct, source)
+		return
 	encounter()
 	if correct and is_recognized() and _add_source("context:" + source):
 		context_evidence += 1
 		_advance()
 
 func produce(source: String, correct: bool) -> void:
+	if schedule != null:
+		schedule.evidence(lemma, "production", correct, source)
+		return
 	if correct and current_state in ["UNDERSTOOD", "USABLE"] and _add_source("production:" + source):
 		production_evidence += 1
 		transfer_correct = true
@@ -43,8 +52,11 @@ func _advance() -> void:
 func dev_set_state(value: String) -> bool:
 	if value not in STATES:
 		return false
+	var previous_schedule = schedule
+	schedule = null
 	reset()
 	if value == "UNKNOWN":
+		schedule = previous_schedule
 		return true
 	encounter()
 	if STATES.find(value) >= 2:
@@ -53,6 +65,7 @@ func dev_set_state(value: String) -> bool:
 		context("dev")
 	if value == "USABLE":
 		produce("dev", true)
+	schedule = previous_schedule
 	return true
 
 func entry_text() -> String:
@@ -61,4 +74,6 @@ func entry_text() -> String:
 		info = "Known meaning: " + known_meaning
 	if has_insight():
 		info += "\nKnowledge: " + str(WORDS.DATA[lemma][4])
-	return "Word: %s\nCurrent State: %s\nRecognition Evidence: %d\nContext Evidence: %d\nProduction Evidence: %d\nTarget: %s\n%s" % [lemma, current_state, recognition_evidence, context_evidence, production_evidence, "ELASTIC" if is_elastic_slot else "CORE", info]
+	var focus := "ELASTIC" if is_elastic_slot else "CORE"
+	if schedule != null: focus = "ACTIVE" if lemma in schedule.active_pool else "BACKGROUND"
+	return "Word: %s\nCurrent State: %s\nRecognition Evidence: %d\nContext Evidence: %d\nProduction Evidence: %d\nTarget: %s\n%s" % [lemma, current_state, recognition_evidence, context_evidence, production_evidence, focus, info]
