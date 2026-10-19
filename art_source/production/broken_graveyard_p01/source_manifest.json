@@ -1,0 +1,435 @@
+{
+  "schema": "english-game.production-preparation.v1",
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "scope": "Broken Graveyard only",
+  "approved_direction": "Round02 accepted by user",
+  "program_dependency": "c202492",
+  "integration_baseline": "7b08127",
+  "art_preparation_base": "4175f70",
+  "branch": "feature/mini-run-0.9-art",
+  "sources": {
+    "images": "OpenAI built-in image_gen",
+    "image_model_version": null,
+    "image_seed": null,
+    "references": [
+      {
+        "path": "art_source/concepts/broken_graveyard/round_02/scene_baseline_v2.png",
+        "sha256": "1bb2c029737a63985291c9437509ff733dfa587dda4f8f49cfadd7e4113ba605"
+      },
+      {
+        "path": "art_source/concepts/broken_graveyard/round_02/grave_skeleton_bone_remains_v2.png",
+        "sha256": "21b131c8c4f1b3c724eb6a70e1471de8d5215fc82b74da633ff3c810bc26cf2b"
+      },
+      {
+        "path": "art_source/concepts/broken_graveyard/round_02/word_sigils_clasp_v2.png",
+        "sha256": "18e0feca840298954f5c88d34fc4343958d40b1e8a08e90821ae6d588a9329ed"
+      },
+      {
+        "path": "art_source/concepts/broken_graveyard/round_02/loot_scale_v2.png",
+        "sha256": "80138efacd873766b74acc3b6c6140b285bd19d4fc34366fb7f317e29bd63ac5"
+      }
+    ],
+    "audio": "original deterministic NumPy synthesis, seed9019; no sampled recordings",
+    "font": {
+      "name": "Cormorant Garamond",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "art/ui/fonts/OFL.txt",
+      "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond"
+    },
+    "generated_asset_commercial_terms": "account-specific external distribution terms not yet verified; no claim of exclusivity"
+  },
+  "runtime_files": [
+    {
+      "path": "art/characters/chr_player_visual.tscn",
+      "bytes": 185,
+      "sha256": "031a967b62c1e73ceaf78253b7d9e0b42b05f5d4cb79bb07f3b12f43c3af906e"
+    },
+    {
+      "path": "art/characters/lexicon_clasp.gd",
+      "bytes": 860,
+      "sha256": "8d4f9abb572d3bebaaf7596e493791e767d9ebefe17d20301eecaf2d8dddd6a5"
+    },
+    {
+      "path": "art/characters/lexicon_clasp.tscn",
+      "bytes": 181,
+      "sha256": "83719e68a9147abdc33b90a043886b70a2bf16445f214005e2b08051b7a5423a"
+    },
+    {
+      "path": "art/characters/textures/lexicon_clasp_quiet.png",
+      "bytes": 258890,
+      "sha256": "e5a01d29d1fa6d67e7dec1ba1b85685b3c2234ccac892bc303c37aa2d1ca3f83"
+    },
+    {
+      "path": "art/characters/textures/wordbearer_base.png",
+      "bytes": 125373,
+      "sha256": "dc13e7ebdfe43d5ad9fd5e35994a1cff0f52e0e3f39c3522412e9397b5b03a4d"
+    },
+    {
+      "path": "art/characters/wordbearer_visual.gd",
+      "bytes": 1030,
+      "sha256": "2c4ebfbb875fe8507e4eb1b21ed12265a8355658abb57286998ea98f477d1166"
+    },
+    {
+      "path": "art/enemies/enm_skeleton_visual.tscn",
+      "bytes": 187,
+      "sha256": "dfe8f845519478a301242e1fe656b96420f42a3435d5c137c45875ae1a04527c"
+    },
+    {
+      "path": "art/enemies/skeleton_cutout.gd",
+      "bytes": 5993,
+      "sha256": "7454095c6be4e1aa8ec2a5891a4d2fc5409a0f22118e5026878b03386f37bb04"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/burial_cord.png",
+      "bytes": 172148,
+      "sha256": "4d126edc7af6d8bb1d8b32b1904112207b6191c8449d025bdc89647f67c04bbc"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/foot_l.png",
+      "bytes": 167099,
+      "sha256": "237340ab86ef36ea4a20d620f7c9b918135c43a7d8b301e95516dc7f30871d45"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/foot_r.png",
+      "bytes": 166140,
+      "sha256": "896b843b785f2c986587e22c7a50ada9fb16e9753bef84ea0f1988a728beb22f"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/forearm_l.png",
+      "bytes": 105316,
+      "sha256": "f516337ce1a873fb4c63483ad03661261cdc201a0b00ee19a253fe5cd74c7178"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/forearm_r.png",
+      "bytes": 102347,
+      "sha256": "9dd9e72730ad5ebe40b8cae231f9ae42c0ff49a1e9310371b989525f6310f345"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/hand_l.png",
+      "bytes": 156736,
+      "sha256": "95c4621f5f9de8e091a321d60d12505eecf11d57c5bf83fb54df0df9971b3900"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/hand_r.png",
+      "bytes": 154890,
+      "sha256": "05252e3bd3b1a97ba08091b3921ee9591caf645dfac4901e8f48c9697b1918a8"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/hip_cloth.png",
+      "bytes": 252495,
+      "sha256": "bf8cdbf5ca3157f043b0b0fd4091a0773c8c7dadff346568665023a0cc78fe96"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/nails.png",
+      "bytes": 153482,
+      "sha256": "035469c6e5f2b5b612756aec67b8c7364673f33399fbb0d4a33f903a012e2ae5"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/pelvis.png",
+      "bytes": 254512,
+      "sha256": "f10a677fa7120abe60b1e5866488a9ece0d0e7efd88212fc86aadf3881f3d0c8"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/ribcage.png",
+      "bytes": 294986,
+      "sha256": "ccd93e7664690848e356a42733917265c7dcc3717ec217517e176ec250ae2953"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/shin_l.png",
+      "bytes": 100041,
+      "sha256": "bfdfcda982bdbab7f7ff186b0473a2e3bf988f1835408ccd9225ef819fcec61e"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/shin_r.png",
+      "bytes": 95938,
+      "sha256": "127e57bd59b7cc9b1d74e71d49990a60c77bd2d65aa9c2613e3261da5b39fe4d"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/shoulder_cloth.png",
+      "bytes": 193992,
+      "sha256": "ed6186afeed75f4fb94688e6884e001e5613af0533022649367f5fb8c30e516f"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/skull.png",
+      "bytes": 252616,
+      "sha256": "c8cf9c7d6214ce3317c13cab54c6886cb1429d8d2f863082381dc237b4c16fab"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/thigh_l.png",
+      "bytes": 92331,
+      "sha256": "6b0705dcd7c48b21e7e1987968f8b8628cd36b3c8cf1954c0f75703137f09b7a"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/thigh_r.png",
+      "bytes": 89692,
+      "sha256": "53a3c322cef02daefffc6e04a7c2379b4c0ee614bbe8b1dbeecbbf0502ab124d"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/upper_arm_l.png",
+      "bytes": 99774,
+      "sha256": "b0c8a4f09ef2286f236270fcddef38da57ac9ef4402d9acf6f966abb2a7d328b"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/upper_arm_r.png",
+      "bytes": 99708,
+      "sha256": "6c2d39deead694d58417591d3988d69f3dd68a3b2572da1d2466d8c05c39e84a"
+    },
+    {
+      "path": "art/enemies/skeleton_parts/weapon.png",
+      "bytes": 104948,
+      "sha256": "a31734a55469356d0f920d76d57079f9577a169eb84022dd1536981e0098c798"
+    },
+    {
+      "path": "art/environments/env_broken_graveyard_visual.tscn",
+      "bytes": 10127,
+      "sha256": "2325cbab15fed01a7ae425c06f78009dac4b7c12c39ed1b5e60e61c9726d4f39"
+    },
+    {
+      "path": "art/environments/fog.gdshader",
+      "bytes": 401,
+      "sha256": "a456f05eac9d672aac3834f271b22f046aed3f88d3391eab659eabaab31e47e7"
+    },
+    {
+      "path": "art/environments/modules/bracken.tscn",
+      "bytes": 188,
+      "sha256": "cb7d5b93c35305f4fa9cf1df8cb7c94643d2ac494f27836cffb5ac104ed1d2b1"
+    },
+    {
+      "path": "art/environments/modules/fence.tscn",
+      "bytes": 184,
+      "sha256": "ede5bcd6431bbaf7782352419de50f2cf313e5cd5b0b00d9969675dc3994c918"
+    },
+    {
+      "path": "art/environments/modules/fence_post.tscn",
+      "bytes": 194,
+      "sha256": "2140561e5ba121fd0bc1fb681d2b75e08ecd901438d6d47fca9f5a68ee0ff1e1"
+    },
+    {
+      "path": "art/environments/modules/fence_rail.tscn",
+      "bytes": 194,
+      "sha256": "24cd69e8a40e78c44889e8c9a27b355ea406b0a93b9b82b529a23c0f49cf54be"
+    },
+    {
+      "path": "art/environments/modules/grave_a.tscn",
+      "bytes": 188,
+      "sha256": "3486ba7e2b5b6dc90d0090ffaf9e82c6ec72e066ee3532804252a9a9d3fd3bc9"
+    },
+    {
+      "path": "art/environments/modules/grave_b.tscn",
+      "bytes": 188,
+      "sha256": "7829f3ad226ad8b0335143bf05cc73a59ec7f38a4bd9aeae242d022072239cf7"
+    },
+    {
+      "path": "art/environments/modules/rubble.tscn",
+      "bytes": 186,
+      "sha256": "ed68c2d10ff5f8bc88f0ea4ce4892110f9ea2b07d0895438c4efed441f8693b5"
+    },
+    {
+      "path": "art/environments/modules/wall.tscn",
+      "bytes": 182,
+      "sha256": "7a4fdc84241f903d2331060ef7923ca26a6aca3ccc696d8b0b671453bfebd5cb"
+    },
+    {
+      "path": "art/environments/occlusion.gd",
+      "bytes": 556,
+      "sha256": "1eaf4a308a5bd6f802e4371ef478d6e5b37532b11decfbf056d4d50918a9295e"
+    },
+    {
+      "path": "art/environments/textures/bracken.png",
+      "bytes": 227773,
+      "sha256": "5f3cdfd7edfc59bb70807bcee0e5c8e2924386e0c7fd8f00aa9ad7600508905e"
+    },
+    {
+      "path": "art/environments/textures/fence.png",
+      "bytes": 118493,
+      "sha256": "db8fd93bc70fc51d99aa307334ba4d919f3893762f663d7813d801ca1db98f81"
+    },
+    {
+      "path": "art/environments/textures/fence_post.png",
+      "bytes": 126174,
+      "sha256": "1051d6730ba24f0e9ded81b6fc1d267863ad8771a3f137d54c9b1f93bc5dec28"
+    },
+    {
+      "path": "art/environments/textures/fence_rail.png",
+      "bytes": 3551,
+      "sha256": "4c86561469326d7beadf3de613ccca295316528847ab2a5f285933c54a4f3ed1"
+    },
+    {
+      "path": "art/environments/textures/grave_a.png",
+      "bytes": 278676,
+      "sha256": "362aa5572768d82f91eb02d5f316ef0c2d03661f718e89c6893a5996b8c64b06"
+    },
+    {
+      "path": "art/environments/textures/grave_b.png",
+      "bytes": 313415,
+      "sha256": "3eda0267867a8c7c16b572355cf9bb323f5da255c11313dc2a823b6f32eb5fd5"
+    },
+    {
+      "path": "art/environments/textures/ground.png",
+      "bytes": 3310213,
+      "sha256": "7941c69397cdfc01630567777cb78092e0cfbe99692766bc1c558682bb40026a"
+    },
+    {
+      "path": "art/environments/textures/rubble.png",
+      "bytes": 192995,
+      "sha256": "f5cbc3a2becb82f0addd47448074e91b45ddbbc9ab8cc2cbc50f513722a12c05"
+    },
+    {
+      "path": "art/environments/textures/wall.png",
+      "bytes": 101204,
+      "sha256": "278df6d22840d30d7fea7843fe5576e142683eaefb2e31eb1e90cc735d7ec5f6"
+    },
+    {
+      "path": "art/loot/chisel_visual.gd",
+      "bytes": 638,
+      "sha256": "7128b1f743fc7efe193f569a57481ae1f16092dcb23c85901c1c13c07680ab9f"
+    },
+    {
+      "path": "art/loot/loot_attention.gd",
+      "bytes": 186,
+      "sha256": "ea57e7f4b2481f5d35db93737bcef90fd38817654733ca7682260d92d212314c"
+    },
+    {
+      "path": "art/loot/loot_highlight_visual.tscn",
+      "bytes": 179,
+      "sha256": "7111a217e2029607fadedf8ba0d40b9e4fac628a4cd429f9e54f28018b834551"
+    },
+    {
+      "path": "art/loot/loot_weathered_chisel_visual.tscn",
+      "bytes": 173,
+      "sha256": "2745041b7d13d2e6efd314f1e9f8bc07ca8f57abc05bbe6bc99f6642bd831430"
+    },
+    {
+      "path": "art/loot/textures/weathered_chisel.png",
+      "bytes": 125234,
+      "sha256": "16999e037171cd09a094a26e409bdb34d8ae91cfb96a2bbde08fe151d71802c9"
+    },
+    {
+      "path": "art/previews/art_contract_smoke.gd",
+      "bytes": 2752,
+      "sha256": "373ef74162cd69b8d6238fc8f1719ec1bded31f713d44300e68a030df8d96d98"
+    },
+    {
+      "path": "art/previews/capture_preparation.gd",
+      "bytes": 4878,
+      "sha256": "1446c42998e43a093c13ebee4342127a9d0bfa7fc31582769e5c578966b96d3d"
+    },
+    {
+      "path": "art/previews/production_review.gd",
+      "bytes": 7710,
+      "sha256": "c3d82c2b32ce03d0a1d868d5896c925b88d5e153e783e3b4892188ec78f09535"
+    },
+    {
+      "path": "art/previews/production_review.tscn",
+      "bytes": 301,
+      "sha256": "70157eda076f3bf59d05ab504851ddfc4fd27fc51a3f10c468157bf653636b90"
+    },
+    {
+      "path": "art/ui/combat_hud_theme.tres",
+      "bytes": 1198,
+      "sha256": "484b645ae21bf2376fa497ec3aadee4b29be1ace3c851630ed5077a3c7b8f6b7"
+    },
+    {
+      "path": "art/ui/fonts/CormorantGaramond.ttf",
+      "bytes": 1195560,
+      "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0"
+    },
+    {
+      "path": "art/ui/word_sigil.gd",
+      "bytes": 5558,
+      "sha256": "a3a8a3149c39bd64918e7d7c2e2416a36f025dde7834b2167169b92a0d89f5ee"
+    },
+    {
+      "path": "art/ui/word_sigil.tscn",
+      "bytes": 227,
+      "sha256": "dd3a33638c6471845f62485d22e82ed97a8e19c9283c480965ad43b390bf4721"
+    },
+    {
+      "path": "art/vfx/cemetery_effect.gd",
+      "bytes": 2601,
+      "sha256": "0dc9ddbf748bd31718ca256cf1a656c26c4f064fecd1ba2813fabfb198cc8ae1"
+    },
+    {
+      "path": "art/vfx/cemetery_presentation.tscn",
+      "bytes": 1267,
+      "sha256": "9279e33b5042d9bd12e0054cbbada4d68ac065ae01b92e92695fb2d8bb120707"
+    },
+    {
+      "path": "art/vfx/echo_absorb.tscn",
+      "bytes": 196,
+      "sha256": "e43250cea05fa06f1a9e1da77136ba266f9178c590f5e0f6e5d4bd92d3d1801f"
+    },
+    {
+      "path": "art/vfx/loot_glint.tscn",
+      "bytes": 195,
+      "sha256": "21d27e05cb01209c80ad04d3b0f18e5dbc51cc3ec71aacb38ed729e31b4d5363"
+    },
+    {
+      "path": "art/vfx/reassembly_tension.tscn",
+      "bytes": 206,
+      "sha256": "19e82ee956519addf4ab702fd78f43fb79f8bbc400bb82711468f5b634468683"
+    },
+    {
+      "path": "art/vfx/word_invocation.tscn",
+      "bytes": 200,
+      "sha256": "4eb26396fa9b5c7980428e053194606a35b0c677ea95f6488ac49d44bd557b1c"
+    },
+    {
+      "path": "audio/enemies/bone_reassembly_tension.wav",
+      "bytes": 91244,
+      "sha256": "5a19515e956c7c1a2687f6c8e10952fc74925081248f9f3e624b8eb41bb207a3"
+    },
+    {
+      "path": "audio/enemies/bone_scatter.wav",
+      "bytes": 81644,
+      "sha256": "9404c588bb0d63ddc2622fafac0f4c8e2c74d366bf4a12b94bdc09d1bb1ee5a1"
+    },
+    {
+      "path": "audio/enemies/skeleton_collapse.wav",
+      "bytes": 105644,
+      "sha256": "adc440a853ce33f8fc78780dc42c0b60fa9b51e3eac4fa3ed88ba6c7adbe6652"
+    },
+    {
+      "path": "audio/loot/echo_absorb.wav",
+      "bytes": 63404,
+      "sha256": "8c6a8bf1dda5fe264eff125150063231b63be52891eb6e6588846e1a93088542"
+    },
+    {
+      "path": "audio/loot/pickup.wav",
+      "bytes": 33644,
+      "sha256": "1aec1f8a39509b8d1181e4547fe62611aecd13ef1e50a43b689e17f913f573c5"
+    },
+    {
+      "path": "audio/loot/special_loot_clink.wav",
+      "bytes": 55722,
+      "sha256": "ebd6c6b26da4b7f1353293fa45416f722fa5c5c07f96ceb83d64729da4d2da7f"
+    },
+    {
+      "path": "audio/words/erode_invoke.wav",
+      "bytes": 81644,
+      "sha256": "eda4321e48af356ec8802dfb9a4c026605e884c8be5faac00aeda698b4bcb8ff"
+    },
+    {
+      "path": "audio/words/observe_invoke.wav",
+      "bytes": 52844,
+      "sha256": "0c96d7f9473e2744da2b98fb662660f703e7f732afa244fb6dfb161356f34f24"
+    },
+    {
+      "path": "audio/words/shatter_invoke.wav",
+      "bytes": 62444,
+      "sha256": "59b75f071926d19351f92cf1c1d39eb9c9266e09638210bbe497bd3075ff13b5"
+    }
+  ],
+  "editable_sources": [
+    "editable/skeleton_standing.ora",
+    "editable/skeleton_remains.ora",
+    "editable/broken_graveyard_layers.ora"
+  ],
+  "pending": [
+    "formal HUD Sigil factory binding by code team",
+    "human audio audition",
+    "final art/collision/camera/loot readability joint acceptance"
+  ],
+  "github_pushed": false
+}
