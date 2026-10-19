@@ -6,7 +6,7 @@ func _initialize() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
-	var scene := load("res://scenes/main.tscn") as PackedScene
+	var scene := load("res://scenes/ui/legacy_combat.tscn") as PackedScene
 	var screen := scene.instantiate()
 	screen.set_meta("legacy_run", true)
 	root.add_child(screen)

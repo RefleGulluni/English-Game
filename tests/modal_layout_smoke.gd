@@ -10,7 +10,7 @@ func _settle() -> void:
 		await process_frame
 
 func _run() -> void:
-	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	var screen := (load("res://scenes/ui/legacy_combat.tscn") as PackedScene).instantiate()
 	screen.set_meta("legacy_run", true)
 	root.add_child(screen)
 	await _settle()

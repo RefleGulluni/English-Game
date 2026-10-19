@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/combat/skeleton_logic.gd" id="1"]
+[ext_resource type="Resource" path="res://data/enemies/enemy_grave_skeleton.tres" id="2"]
+[ext_resource type="PackedScene" path="res://art/enemies/enm_skeleton_visual.tscn" id="3"]
+[sub_resource type="CircleShape2D" id="1_shape"]
+radius = 28.0
+[node name="GraveSkeleton" type="Node2D"]
+[node name="Logic" type="Node" parent="."]
+script = ExtResource("1")
+data = ExtResource("2")
+[node name="VisualRoot" type="Node2D" parent="."]
+[node name="GraveSkeletonVisual" parent="VisualRoot" instance=ExtResource("3")]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("1_shape")
+[node name="VFXRoot" type="Node2D" parent="."]
+[node name="AudioRoot" type="Node2D" parent="."]
+[node name="LootAnchor" type="Marker2D" parent="."]
+position = Vector2(0, 26)
