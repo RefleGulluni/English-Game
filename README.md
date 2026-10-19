@@ -1,6 +1,16 @@
 # English Game
 
-Godot 4 project for **Mini Run Prototype 0.8 — Pacing & Director Update**.
+Godot 4 project. Current entry: **0.9 Milestone 01 — Broken Graveyard Vertical Slice**, not the entire 0.9 release.
+
+Run the project, move with WASD/arrows, approach the gate and press **E** to ENTER. Approach the Skeleton, confirm the opening hand, then use the existing Word Actions/Retain/Reaction system. First collapse gives 15 automatic Echo and rolls a real world object. Bone Remains have 10 Integrity and reassemble after **3 completed rounds**; clearing them grants another 5 Echo and restores movement. Walk to a dropped object and press **E** to PICK UP. **L** opens the permission-safe Lexicon; **Tab** opens the Run Bag. **R** replays after victory/defeat. **F2** offers forced-drop acceptance mode and ordinary 10% mode.
+
+First-delivery debug acceptance mode intentionally forces Weathered Chisel; ordinary mode uses 10%. Chisel is collected into Run State only, with no invented combat effect. All art and sound remain placeholders/empty hooks. The old 0.8 screen is preserved at `scenes/ui/legacy_combat.tscn` for regression, not used as the new combat page. This slice stays in one moving 2D world throughout combat.
+
+See [`docs/BROKEN_GRAVEYARD_M01.md`](docs/BROKEN_GRAVEYARD_M01.md) for delivery scope, temporary values, known limitations and QA, and [`docs/ART_CODE_CONTRACT_0_9.md`](docs/ART_CODE_CONTRACT_0_9.md) for art ownership and integration slots. Until this slice is accepted, do not expand to the other six Cemetery scenes, Keeper or prologue.
+
+## Historical 0.8 systems retained
+
+**Mini Run Prototype 0.8 — Pacing & Director Update** remains available in its legacy scene and tests.
 
 The design documents in the Obsidian `English Game` folder are read-only references. Runtime code, scenes, tests, and game assets live here.
 
@@ -55,7 +65,7 @@ Current Director rules, persistence, interpretation decisions and QA mapping are
 
 ## Verify
 
-Run all twenty-three smoke suites (stop the running game first):
+Run all twenty-seven smoke suites (stop the running game first; the new slice suites cover real movement and drawn-card combat):
 
 ```sh
 for test in tests/*_smoke.gd; do
@@ -64,6 +74,8 @@ done
 ```
 
 Each suite must print its PASS marker without script/runtime errors. Automated correctness is not a guarantee of balanced or enjoyable play.
+
+Local note: the user's separately installed Godot AI plugin can emit shutdown resource warnings even for the historical 0.8 scene. This is documented in the M01 report and is not hidden or patched by the gameplay test runner.
 
 ```sh
 /Applications/Godot.app/Contents/MacOS/Godot \

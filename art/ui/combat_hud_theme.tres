@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.045, 0.075, 0.09, 0.96)
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+
+[resource]
+default_font_size = 14
+Label/colors/font_color = Color(0.886, 0.906, 0.866, 1)
+PanelContainer/styles/panel = SubResource("panel")

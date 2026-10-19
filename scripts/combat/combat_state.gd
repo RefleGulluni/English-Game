@@ -6,6 +6,10 @@ signal battle_finished(victory: bool)
 signal reaction_requested(action: Dictionary, cost: int)
 signal inattention_tier_changed(tier_name: String)
 signal combo_discovered
+signal enemy_collapsed
+signal enemy_reassembled
+signal round_resolution_started
+signal round_completed
 
 const MAX_HP := 50
 const BASE_ARMOR := 12
@@ -103,6 +107,8 @@ var thread_used := false
 var modifier_discount := false
 var ossuary_used := false
 var candle_used := false
+var reassembly_rounds := 2 # Historical 0.7/0.8 fixture; 0.9 EnemyData supplies 3.
+var remains_integrity := 10
 
 func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false) -> void:
 	battle_index = index
@@ -115,6 +121,8 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	biome_id = str(run_snapshot.get("biome_id", ""))
 	target_knowledge = run_snapshot.get("target_knowledge", {})
 	pacing = bool(run_snapshot.get("pacing", false))
+	reassembly_rounds = maxi(1, int(run_snapshot.get("reassembly_rounds", 2)))
+	remains_integrity = maxi(1, int(run_snapshot.get("remains_integrity", 10)))
 	grave_pressure = 0
 	grave_obscurity_used = false
 	awakened_seen = false
@@ -164,6 +172,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	action_cursor = 0
 	next_intent_penalty = 0
 	enemy = CombatContent.BATTLES[index].duplicate(true) if index < 6 else preload("res://scripts/combat/cemetery_enemies.gd").profiles()[index - 6].duplicate(true)
+	if run_snapshot.has("enemy_profile"): enemy = run_snapshot.enemy_profile.duplicate(true)
 	# Migrate the original material profiles; new ecology profiles are explicit.
 	if not enemy.has("structure"):
 		enemy["structure"] = int(enemy["armor"])
@@ -506,6 +515,7 @@ func can_react() -> bool:
 	return not deck.find_card("DEFLECT").is_empty() and focus >= reaction_cost()
 
 func _finish_round(keep_intent: bool) -> void:
+	round_resolution_started.emit()
 	deck.end_turn(false)
 	resolving_end_effects = true
 	end_applied_effects.clear()
@@ -545,6 +555,7 @@ func _finish_round(keep_intent: bool) -> void:
 			enemy_effects.clear()
 			_record_target_context("REASSEMBLE", "actual_reassembly")
 			_add_log("REASSEMBLE · Skeleton returns at half HP / Structure.")
+			enemy_reassembled.emit()
 	if battle_index in [8, 9] and not bone_remains:
 		mourning += 1
 		if mourning >= 3:
@@ -574,6 +585,7 @@ func _finish_round(keep_intent: bool) -> void:
 	enemy_effects.tick_durations(end_applied_effects)
 	player_effects.tick_durations()
 	_begin_player_turn(carry, keep_intent)
+	round_completed.emit()
 
 func _finish_battle(victory: bool) -> void:
 	if finished:
@@ -623,17 +635,18 @@ func _enemy_defeated() -> void:
 	if battle_index == 7:
 		if not bone_remains:
 			bone_remains = true
-			remains_hp = 10
-			reassembly_countdown = 2
+			remains_hp = remains_integrity
+			reassembly_countdown = reassembly_rounds
 			remains_bound = false
 			intent_bound_once = false
 			delayed_this_turn = false
 			enemy_effects.clear()
-			intent = {"word": "REASSEMBLE", "kind": "concept", "family": "Obscurity", "corruption": 0, "sense": "put separated bones together again", "partial": "The bones begin moving.", "clear": "Remains reassemble after two completed rounds. SHATTER 8 / STRIKE 3; BIND delays once."}
+			intent = {"word": "REASSEMBLE", "kind": "concept", "family": "Obscurity", "corruption": 0, "sense": "put separated bones together again", "partial": "The bones begin moving.", "clear": "Remains reassemble after %d completed rounds. SHATTER 8 / STRIKE 3; BIND delays once." % reassembly_rounds}
 			intent_clarity = 2
-			_add_log("BONE REMAINS · 10 integrity · REASSEMBLE in 2 turns. Not Victory.")
+			_add_log("BONE REMAINS · %d integrity · REASSEMBLE in %d completed rounds. Not Victory." % [remains_integrity, reassembly_rounds])
 			_record_target_context("REASSEMBLE", "bone_remains")
 			if pacing: _record_target_context("REMAINS", "body_remains")
+			enemy_collapsed.emit()
 	elif objective == "survive":
 		if not dispersed:
 			dispersed = true

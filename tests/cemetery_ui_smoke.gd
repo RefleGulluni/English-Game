@@ -32,7 +32,7 @@ func press_text(screen: Control, text: String) -> void:
 	check(false, "exercise choice exists: " + text)
 
 func _run() -> void:
-	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	var screen := (load("res://scenes/ui/legacy_combat.tscn") as PackedScene).instantiate()
 	screen.set_meta("legacy_cemetery", true)
 	root.add_child(screen)
 	await settle()

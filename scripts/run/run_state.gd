@@ -47,6 +47,9 @@ var completed := false
 var extracted := false
 var victory := false
 var history: Array[String] = []
+var world_inventory: Dictionary = {}
+var collected_loot_ids: Dictionary = {}
+var world_reward_ledger: Dictionary = {}
 
 func reset() -> void:
 	learning_schedule = null
@@ -79,6 +82,9 @@ func reset() -> void:
 	extracted = false
 	victory = false
 	history.clear()
+	world_inventory.clear()
+	collected_loot_ids.clear()
+	world_reward_ledger.clear()
 	history.append("Entered the Fracture.")
 
 func begin_node(node_id: String) -> void:
@@ -86,6 +92,21 @@ func begin_node(node_id: String) -> void:
 	active_reward_multiplier = next_reward_multiplier
 	next_reward_multiplier = 1.0
 	history.append("Entered %s." % node_id)
+
+func grant_world_echo_once(reward_id: String, amount: int) -> bool:
+	if amount <= 0 or world_reward_ledger.has(reward_id): return false
+	world_reward_ledger[reward_id] = amount
+	echo += amount
+	history.append("World Echo +%d · %s" % [amount, reward_id])
+	return true
+
+func claim_world_loot(instance_id: String, item_id: String) -> bool:
+	if instance_id.is_empty() or item_id.is_empty() or collected_loot_ids.has(instance_id): return false
+	collected_loot_ids[instance_id] = item_id
+	world_inventory[item_id] = int(world_inventory.get(item_id, 0)) + 1
+	if item_id.begins_with("relic.") and item_id not in relics: relics.append(item_id)
+	history.append("PICK UP · " + item_id)
+	return true
 
 func finish_node() -> void:
 	current_layer += 1

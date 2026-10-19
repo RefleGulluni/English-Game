@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3]
+[ext_resource type="Script" path="res://scripts/world/broken_graveyard.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/GraveSkeleton.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://art/environments/env_broken_graveyard_visual.tscn" id="4"]
+[ext_resource type="Script" path="res://scripts/world/world_interactable.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/systems/gameplay_events.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/combat/slice_turn_controller.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/world/interaction_system.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/loot/slice_reward_controller.gd" id="9"]
+[ext_resource type="Resource" path="res://data/loot/loot_weathered_chisel.tres" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/ui/CombatHUD.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://art/vfx/cemetery_presentation.tscn" id="12"]
+[sub_resource type="RectangleShape2D" id="gate_shape"]
+size = Vector2(20, 120)
+[sub_resource type="RectangleShape2D" id="horizontal"]
+size = Vector2(1900, 20)
+[sub_resource type="RectangleShape2D" id="vertical"]
+size = Vector2(20, 1100)
+[sub_resource type="RectangleShape2D" id="fence_north"]
+size = Vector2(20, 440)
+[sub_resource type="RectangleShape2D" id="fence_south"]
+size = Vector2(20, 540)
+[sub_resource type="RectangleShape2D" id="grave"]
+size = Vector2(42, 60)
+[node name="BrokenGraveyard" type="Node2D"]
+script = ExtResource("1")
+[node name="VisualRoot" type="Node2D" parent="."]
+[node name="EnvironmentVisual" parent="VisualRoot" instance=ExtResource("4")]
+[node name="CollisionRoot" type="StaticBody2D" parent="."]
+collision_mask = 2
+[node name="North" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(950, 10)
+shape = SubResource("horizontal")
+[node name="South" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(950, 1090)
+shape = SubResource("horizontal")
+[node name="West" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(10, 550)
+shape = SubResource("vertical")
+[node name="East" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1890, 550)
+shape = SubResource("vertical")
+[node name="FenceNorth" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(480, 220)
+shape = SubResource("fence_north")
+[node name="FenceSouth" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(480, 830)
+shape = SubResource("fence_south")
+[node name="Grave_0_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(631, 370)
+shape = SubResource("grave")
+[node name="Grave_0_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(631, 680)
+shape = SubResource("grave")
+[node name="Grave_1_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(801, 370)
+shape = SubResource("grave")
+[node name="Grave_1_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(801, 680)
+shape = SubResource("grave")
+[node name="Grave_2_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(971, 370)
+shape = SubResource("grave")
+[node name="Grave_2_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(971, 680)
+shape = SubResource("grave")
+[node name="Grave_3_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1141, 370)
+shape = SubResource("grave")
+[node name="Grave_3_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1141, 680)
+shape = SubResource("grave")
+[node name="Grave_4_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1311, 370)
+shape = SubResource("grave")
+[node name="Grave_4_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1311, 680)
+shape = SubResource("grave")
+[node name="Grave_5_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1481, 370)
+shape = SubResource("grave")
+[node name="Grave_5_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1481, 680)
+shape = SubResource("grave")
+[node name="Grave_6_340" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1651, 370)
+shape = SubResource("grave")
+[node name="Grave_6_650" type="CollisionShape2D" parent="CollisionRoot"]
+position = Vector2(1651, 680)
+shape = SubResource("grave")
+[node name="Gate" type="StaticBody2D" parent="."]
+position = Vector2(480, 500)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate"]
+shape = SubResource("gate_shape")
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(220, 500)
+[node name="GraveSkeleton" parent="." instance=ExtResource("3")]
+position = Vector2(1060, 500)
+[node name="Entrance" type="Node2D" parent="."]
+position = Vector2(420, 500)
+script = ExtResource("5")
+[node name="Exit" type="Node2D" parent="."]
+position = Vector2(1700, 500)
+script = ExtResource("5")
+action = &"LEAVE"
+display_name = "Broken Graveyard"
+[node name="WorldLoot" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1900
+limit_bottom = 1100
+[node name="Systems" type="Node" parent="."]
+[node name="Events" type="Node" parent="Systems"]
+script = ExtResource("6")
+[node name="TurnController" type="Node" parent="Systems"]
+script = ExtResource("7")
+[node name="InteractionSystem" type="Node" parent="Systems"]
+script = ExtResource("8")
+[node name="RewardController" type="Node" parent="Systems"]
+script = ExtResource("9")
+chisel = ExtResource("10")
+[node name="PresentationRouter" parent="." instance=ExtResource("12")]
+[node name="CombatHUD" parent="." instance=ExtResource("11")]

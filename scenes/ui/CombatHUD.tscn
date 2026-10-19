@@ -1,0 +1,6 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/ui/slice_combat_hud.gd" id="1"]
+[ext_resource type="Theme" path="res://art/ui/combat_hud_theme.tres" id="2"]
+[node name="CombatHUD" type="CanvasLayer"]
+script = ExtResource("1")
+hud_theme = ExtResource("2")

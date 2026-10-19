@@ -28,7 +28,7 @@ func capture(screen: Control, name: String) -> void:
 	check(screen.get_viewport().get_texture().get_image().save_png(directory.path_join(name + ".png")) == OK, "rendered capture succeeds")
 
 func _run() -> void:
-	var screen := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	var screen := (load("res://scenes/ui/legacy_combat.tscn") as PackedScene).instantiate()
 	screen.set_meta("qa_no_save", true)
 	root.add_child(screen)
 	await settle()
