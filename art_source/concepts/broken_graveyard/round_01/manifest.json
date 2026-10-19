@@ -1,0 +1,54 @@
+{
+  "schema": "english-game.art-concept-round.v1",
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "scope": "Broken Graveyard style exploration only",
+  "approval": "pending",
+  "branch": "feature/mini-run-0.9-art",
+  "base_commit": "ebee97f471b0d9dd39df56f90a7ee17125f734f8",
+  "generator": "OpenAI built-in image_gen",
+  "generator_model_version": null,
+  "seed": null,
+  "third_party_asset_inputs": [],
+  "commercial_terms_verification": "pending before external distribution or upload",
+  "reference": {
+    "snapshot": "reference_visual_bible.md",
+    "sha256": "06fdaaea93a72292d96e6fa37047b9659bd5a030c89f05ca24b68b4c31ce9e5a"
+  },
+  "assets": [
+    {
+      "id": "A",
+      "image": "candidate_a.png",
+      "prompt": "candidate_a.prompt.txt",
+      "references": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "125d9a3ff33347b04a23750db26b5d98bf470ceff61160f20455a754c66650cf"
+    },
+    {
+      "id": "B-v1",
+      "image": "candidate_b_v1.png",
+      "prompt": "candidate_b.reference.prompt.txt",
+      "references": ["candidate_a.png"],
+      "status": "historical candidate; retained",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7a9703ef748a03867fe93284c8b050b847869f99cfbd3d283fcf212b05391cbc"
+    },
+    {
+      "id": "B-v2",
+      "image": "candidate_b_v2.png",
+      "prompt": "candidate_b_v2.prompt.txt",
+      "references": ["candidate_b_v1.png"],
+      "status": "recommended for user review; not approved",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "e24f7d9335b0724eb2fd28ad8b9341f604b85e726e16fe68fa25fa28023d03b8"
+    }
+  ],
+  "runtime_exports": [],
+  "layered_editable_art_files": [],
+  "godot_validation": "not performed; concept only",
+  "audio_files": [],
+  "github_pushed": false
+}
