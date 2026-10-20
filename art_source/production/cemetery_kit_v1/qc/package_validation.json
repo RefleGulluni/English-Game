@@ -1,0 +1,1237 @@
+{
+  "runtime_pngs": 101,
+  "runtime_rgba_pngs": 94,
+  "ui_pngs": 27,
+  "images": [
+    {
+      "file": "art/cemetery_kit_v1/foreground/branch_left.png",
+      "size": [
+        454,
+        327
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/foreground/branch_right.png",
+      "size": [
+        454,
+        374
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/foreground/close_grave_edge.png",
+      "size": [
+        454,
+        115
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/foreground/fence_foreground.png",
+      "size": [
+        454,
+        229
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/foreground/fog_edge.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        140
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/belt_pouch.png",
+      "size": [
+        454,
+        243
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/boot_l.png",
+      "size": [
+        207,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/boot_r.png",
+      "size": [
+        356,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/clasp.png",
+      "size": [
+        454,
+        381
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/cloak.png",
+      "size": [
+        454,
+        399
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/cloak_back.png",
+      "size": [
+        454,
+        392
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/coat_back.png",
+      "size": [
+        373,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/coat_back_view.png",
+      "size": [
+        448,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/coat_front.png",
+      "size": [
+        393,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/forearm_l.png",
+      "size": [
+        370,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/forearm_r.png",
+      "size": [
+        394,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/hand_l.png",
+      "size": [
+        386,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/hand_r.png",
+      "size": [
+        377,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/head.png",
+      "size": [
+        425,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/head_back.png",
+      "size": [
+        413,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/shin_l.png",
+      "size": [
+        203,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/shin_r.png",
+      "size": [
+        194,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/thigh_l.png",
+      "size": [
+        318,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/thigh_r.png",
+      "size": [
+        325,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/torso.png",
+      "size": [
+        397,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/torso_back.png",
+      "size": [
+        454,
+        381
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/upper_arm_l.png",
+      "size": [
+        329,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/upper_arm_r.png",
+      "size": [
+        340,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/player/parts/weapon.png",
+      "size": [
+        96,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/bone_cluster.png",
+      "size": [
+        454,
+        349
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/dead_weeds.png",
+      "size": [
+        454,
+        397
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/funeral_cloth.png",
+      "size": [
+        454,
+        376
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grass_tuft.png",
+      "size": [
+        454,
+        430
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_01.png",
+      "size": [
+        295,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_02.png",
+      "size": [
+        415,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_03.png",
+      "size": [
+        235,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_04.png",
+      "size": [
+        332,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_05.png",
+      "size": [
+        349,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_06.png",
+      "size": [
+        361,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_07.png",
+      "size": [
+        312,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/grave_08.png",
+      "size": [
+        372,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/long_bones.png",
+      "size": [
+        454,
+        370
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/stone_chips.png",
+      "size": [
+        454,
+        291
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/stone_pieces.png",
+      "size": [
+        454,
+        339
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/tree_a.png",
+      "size": [
+        394,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/tree_b.png",
+      "size": [
+        434,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/props/urn_fragments.png",
+      "size": [
+        454,
+        379
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/cemetery_gate.png",
+      "size": [
+        454,
+        198
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/fence_broken.png",
+      "size": [
+        454,
+        171
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/fence_post.png",
+      "size": [
+        43,
+        178
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/fence_straight.png",
+      "size": [
+        454,
+        178
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/fence_y.png",
+      "size": [
+        240,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/fence_y_broken.png",
+      "size": [
+        261,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/gate_base.png",
+      "size": [
+        454,
+        142
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/gate_y.png",
+      "size": [
+        258,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/wall_collapsed.png",
+      "size": [
+        454,
+        162
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/wall_corner.png",
+      "size": [
+        454,
+        297
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/wall_end_pier.png",
+      "size": [
+        340,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/wall_low.png",
+      "size": [
+        454,
+        179
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/structures/wall_straight.png",
+      "size": [
+        454,
+        183
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/broken_stone_path.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/cracked_graveyard_floor.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/mossy_stone.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/muddy_ground.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/puddle_damp_edge.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/terrain_atlas.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/terrain_edges.png",
+      "size": [
+        4096,
+        1280
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/terrain/wet_stone_path.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_disabled.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        135
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_echo_copy.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_exhausted.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        139
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_hovered.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        247
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_idle.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_invoking.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_retained.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_selected.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/erode_used.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        120
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_disabled.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        157
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_echo_copy.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        230
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_exhausted.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        162
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_hovered.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        248
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_idle.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_invoking.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        232
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_retained.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_selected.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        228
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/observe_used.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        142
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_disabled.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        122
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_echo_copy.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        234
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_exhausted.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        127
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_hovered.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_idle.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        234
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_invoking.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        234
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_retained.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        234
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_selected.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        234
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/ui/shatter_used.png",
+      "size": [
+        440,
+        248
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        107
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/vfx/bone_splinters.png",
+      "size": [
+        401,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/vfx/cord_tension.png",
+      "size": [
+        454,
+        211
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/vfx/dust.png",
+      "size": [
+        453,
+        416
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/vfx/echo_fragment.png",
+      "size": [
+        268,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/vfx/loot_reflection.png",
+      "size": [
+        421,
+        454
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "art/cemetery_kit_v1/vfx/sigil_fragments.png",
+      "size": [
+        454,
+        443
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "editable_layers": [
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/player_rig_parts.ora",
+      "layers": 24,
+      "bytes": 6242556
+    },
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/cemetery_props.ora",
+      "layers": 18,
+      "bytes": 5629284
+    },
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/foreground_layers.ora",
+      "layers": 5,
+      "bytes": 1219685
+    },
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/skeleton_rig_parts.ora",
+      "layers": 20,
+      "bytes": 4529302
+    },
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/vfx_sources.ora",
+      "layers": 6,
+      "bytes": 924393
+    },
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/terrain_materials.ora",
+      "layers": 6,
+      "bytes": 1795021
+    },
+    {
+      "file": "art_source/production/cemetery_kit_v1/editable/wall_structures.ora",
+      "layers": 13,
+      "bytes": 2133906
+    }
+  ],
+  "largest_source_bytes": 6242556,
+  "source_policy": "AI raw atlas+prompt and derived PNG preserved. ORA layers are actual separated assets, not original brushstroke history. No LFS rules changed."
+}

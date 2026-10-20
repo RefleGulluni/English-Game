@@ -1,0 +1,122 @@
+{
+  "generation_mode": "built-in image_gen; no external API runner",
+  "sources": [
+    {
+      "id": "player_parts",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-c344bd30-34dd-4a31-9159-cbe861785df6.png",
+      "raw": "raw/player_parts.png",
+      "prompt": "raw/player_parts.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved Wordbearer / cemetery Visual Target"
+    },
+    {
+      "id": "terrain",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-9a5b860f-28ff-42b3-a6fc-06c281bd298b.png",
+      "raw": "raw/terrain.png",
+      "prompt": "raw/terrain.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "graves",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-7681668b-a55a-497b-b9dd-2c82453f1bf0.png",
+      "raw": "raw/graves.png",
+      "prompt": "raw/graves.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "walls",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-fa5cad4f-bf9b-4d0f-947a-1c915fd8867c.png",
+      "raw": "raw/walls.png",
+      "prompt": "raw/walls.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "fences",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-60c29f23-c4f6-4aad-84ce-f881a8ce75e1.png",
+      "raw": "raw/fences.png",
+      "prompt": "raw/fences.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "tree_a",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-85260115-68e9-4ce8-ba47-69e6652acaf7.png",
+      "raw": "raw/tree_a.png",
+      "prompt": "raw/tree_a.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "tree_b",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-13f04fd6-05f7-4ae4-91c7-36f04298f3d3.png",
+      "raw": "raw/tree_b.png",
+      "prompt": "raw/tree_b.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "dressing",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-01127c88-541e-4719-a61e-2fa7530d37ac.png",
+      "raw": "raw/dressing.png",
+      "prompt": "raw/dressing.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "foreground",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-8a368ca8-4d97-471f-a620-ff8f379d3565.png",
+      "raw": "raw/foreground.png",
+      "prompt": "raw/foreground.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "vfx",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-cc1c4305-de48-42ab-87e9-f6fe5ec280c6.png",
+      "raw": "raw/vfx.png",
+      "prompt": "raw/vfx.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "fog",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-2cd02dba-1d62-47c7-90df-576a9c602422.png",
+      "raw": "raw/fog.png",
+      "prompt": "raw/fog.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "player_back",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-1ed0914c-2b2b-418f-8ceb-1dc2d559a2a2.png",
+      "raw": "raw/player_back.png",
+      "prompt": "raw/player_back.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved Wordbearer / cemetery Visual Target"
+    },
+    {
+      "id": "fences_y",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-9fe7d479-c85b-4634-8c15-4396b4d02f64.png",
+      "raw": "raw/fences_y.png",
+      "prompt": "raw/fences_y.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    },
+    {
+      "id": "branches",
+      "original_generated_path": "/Users/mac/.codex/generated_images/01a15382-4fca-7522-98c2-c24a99e7eed8/exec-0160b53e-db36-418b-b174-15a10b6d7948.png",
+      "raw": "raw/branches.png",
+      "prompt": "raw/branches.prompt.txt",
+      "generator": "built-in image_gen",
+      "references": "approved cemetery Visual Target; branches also uses foreground raw as extraction correction reference"
+    }
+  ],
+  "raw_output_policy": "Original generated images retained in Codex generated_images; complete copies and manually written prompts in this production source folder.",
+  "reference_ownership": "Project-approved source images supplied/generated in this project; no third-party game sprites or commercial art packs.",
+  "editable_policy": "OpenRaster contains independent whole-asset raster layers. Original image generation has no brushstroke PSD history; raw atlases, original prompts, crops metadata and full resolution PNGs preserved.",
+  "license_notes": "Use under applicable image generation service terms. No claim of exclusive copyright or third-party asset license implied. Existing Cormorant Garamond font and OFL retained at art/ui/fonts/OFL.txt. Procedural runtime geometry is limited to precise UI/VFX and native contact shadows, not substitute character/map paintings.",
+  "lfs": "Largest new source measured under 7 MB; no PSD/video/raw-audio heavy storage introduced; no repository-wide LFS or gitignore rules changed."
+}
