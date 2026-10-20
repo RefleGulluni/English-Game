@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/structures/wall_collapsed.png" id="1"]
+[node name="wall_collapsed" type="Node2D"]
+metadata/kit_id = "wall_collapsed"
+metadata/role = "Structure"
+metadata/display_size = Vector2(256.0000, 91.3480)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -45.6740)
+scale = Vector2(0.56387665, 0.56387665)
+texture_filter = 4
+texture = ExtResource("1")
+[node name="SocketA" type="Marker2D" parent="."]
+position = Vector2(-122.8800, -2.0000)
+[node name="SocketB" type="Marker2D" parent="."]
+position = Vector2(122.8800, -27.4044)

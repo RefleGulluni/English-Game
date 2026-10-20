@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/foreground/branch_left.png" id="1"]
+[node name="branch_left" type="Node2D"]
+metadata/kit_id = "branch_left"
+metadata/role = "Foreground"
+metadata/display_size = Vector2(208.2569, 150.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -75.0000)
+scale = Vector2(0.45871560, 0.45871560)
+texture_filter = 4
+texture = ExtResource("1")
+modulate = Color(0.38, 0.42, 0.43, 0.96)

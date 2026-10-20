@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/props/bone_cluster.png" id="1"]
+[node name="bone_cluster" type="Node2D"]
+metadata/kit_id = "bone_cluster"
+metadata/role = "Prop"
+metadata/display_size = Vector2(28.6189, 22.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -11.0000)
+scale = Vector2(0.06303725, 0.06303725)
+texture_filter = 4
+texture = ExtResource("1")

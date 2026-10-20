@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/foreground/fence_foreground.png" id="1"]
+[node name="fence_foreground" type="Node2D"]
+metadata/kit_id = "fence_foreground"
+metadata/role = "Foreground"
+metadata/display_size = Vector2(247.8166, 125.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -62.5000)
+scale = Vector2(0.54585153, 0.54585153)
+texture_filter = 4
+texture = ExtResource("1")
+modulate = Color(0.38, 0.42, 0.43, 0.96)

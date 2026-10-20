@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/structures/fence_y.png" id="1"]
+[node name="fence_y" type="Node2D"]
+metadata/kit_id = "fence_y"
+metadata/role = "Structure"
+metadata/display_size = Vector2(58.1498, 110.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -55.0000)
+scale = Vector2(0.24229075, 0.24229075)
+texture_filter = 4
+texture = ExtResource("1")
+[node name="SocketA" type="Marker2D" parent="."]
+position = Vector2(-21.5154, 0.0000)
+[node name="SocketB" type="Marker2D" parent="."]
+position = Vector2(22.0969, -60.5000)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/props/funeral_cloth.png" id="1"]
+[node name="funeral_cloth" type="Node2D"]
+metadata/kit_id = "funeral_cloth"
+metadata/role = "Prop"
+metadata/display_size = Vector2(20.5266, 17.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -8.5000)
+scale = Vector2(0.04521277, 0.04521277)
+texture_filter = 4
+texture = ExtResource("1")

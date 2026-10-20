@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/structures/gate_y.png" id="1"]
+[node name="gate_y" type="Node2D"]
+metadata/kit_id = "gate_y"
+metadata/role = "Structure"
+metadata/display_size = Vector2(73.8767, 130.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -65.0000)
+scale = Vector2(0.28634361, 0.28634361)
+texture_filter = 4
+texture = ExtResource("1")
+[node name="SocketA" type="Marker2D" parent="."]
+position = Vector2(-27.3344, 0.0000)
+[node name="SocketB" type="Marker2D" parent="."]
+position = Vector2(28.0731, -71.5000)

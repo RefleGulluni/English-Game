@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/structures/wall_low.png" id="1"]
+[node name="wall_low" type="Node2D"]
+metadata/kit_id = "wall_low"
+metadata/role = "Structure"
+metadata/display_size = Vector2(256.0000, 100.9339)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -50.4670)
+scale = Vector2(0.56387665, 0.56387665)
+texture_filter = 4
+texture = ExtResource("1")
+[node name="SocketA" type="Marker2D" parent="."]
+position = Vector2(-125.4400, 0.0000)
+[node name="SocketB" type="Marker2D" parent="."]
+position = Vector2(125.4400, -44.4109)

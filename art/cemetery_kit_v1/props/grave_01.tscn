@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/props/grave_01.png" id="1"]
+[node name="grave_01" type="Node2D"]
+metadata/kit_id = "grave_01"
+metadata/role = "Prop"
+metadata/display_size = Vector2(66.2775, 102.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -51.0000)
+scale = Vector2(0.22466960, 0.22466960)
+texture_filter = 4
+texture = ExtResource("1")
