@@ -1,0 +1,603 @@
+[
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/player_rig_parts.ora",
+    "layers": 24,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "head",
+        "source_png": "art/cemetery_kit_v1/player/parts/head.png",
+        "x": 23,
+        "y": 12
+      },
+      {
+        "layer": "torso",
+        "source_png": "art/cemetery_kit_v1/player/parts/torso.png",
+        "x": 418,
+        "y": 12
+      },
+      {
+        "layer": "upper_arm_l",
+        "source_png": "art/cemetery_kit_v1/player/parts/upper_arm_l.png",
+        "x": 829,
+        "y": 12
+      },
+      {
+        "layer": "upper_arm_r",
+        "source_png": "art/cemetery_kit_v1/player/parts/upper_arm_r.png",
+        "x": 1209,
+        "y": 12
+      },
+      {
+        "layer": "forearm_l",
+        "source_png": "art/cemetery_kit_v1/player/parts/forearm_l.png",
+        "x": 1581,
+        "y": 12
+      },
+      {
+        "layer": "forearm_r",
+        "source_png": "art/cemetery_kit_v1/player/parts/forearm_r.png",
+        "x": 1956,
+        "y": 12
+      },
+      {
+        "layer": "hand_l",
+        "source_png": "art/cemetery_kit_v1/player/parts/hand_l.png",
+        "x": 39,
+        "y": 396
+      },
+      {
+        "layer": "hand_r",
+        "source_png": "art/cemetery_kit_v1/player/parts/hand_r.png",
+        "x": 426,
+        "y": 396
+      },
+      {
+        "layer": "thigh_l",
+        "source_png": "art/cemetery_kit_v1/player/parts/thigh_l.png",
+        "x": 834,
+        "y": 396
+      },
+      {
+        "layer": "thigh_r",
+        "source_png": "art/cemetery_kit_v1/player/parts/thigh_r.png",
+        "x": 1215,
+        "y": 396
+      },
+      {
+        "layer": "shin_l",
+        "source_png": "art/cemetery_kit_v1/player/parts/shin_l.png",
+        "x": 1647,
+        "y": 396
+      },
+      {
+        "layer": "shin_r",
+        "source_png": "art/cemetery_kit_v1/player/parts/shin_r.png",
+        "x": 2035,
+        "y": 396
+      },
+      {
+        "layer": "boot_l",
+        "source_png": "art/cemetery_kit_v1/player/parts/boot_l.png",
+        "x": 110,
+        "y": 780
+      },
+      {
+        "layer": "boot_r",
+        "source_png": "art/cemetery_kit_v1/player/parts/boot_r.png",
+        "x": 435,
+        "y": 780
+      },
+      {
+        "layer": "weapon",
+        "source_png": "art/cemetery_kit_v1/player/parts/weapon.png",
+        "x": 922,
+        "y": 780
+      },
+      {
+        "layer": "coat_front",
+        "source_png": "art/cemetery_kit_v1/player/parts/coat_front.png",
+        "x": 1188,
+        "y": 780
+      },
+      {
+        "layer": "coat_back",
+        "source_png": "art/cemetery_kit_v1/player/parts/coat_back.png",
+        "x": 1580,
+        "y": 780
+      },
+      {
+        "layer": "cloak",
+        "source_png": "art/cemetery_kit_v1/player/parts/cloak.png",
+        "x": 1932,
+        "y": 802
+      },
+      {
+        "layer": "belt_pouch",
+        "source_png": "art/cemetery_kit_v1/player/parts/belt_pouch.png",
+        "x": 12,
+        "y": 1247
+      },
+      {
+        "layer": "clasp",
+        "source_png": "art/cemetery_kit_v1/player/parts/clasp.png",
+        "x": 396,
+        "y": 1193
+      },
+      {
+        "layer": "head_back",
+        "source_png": "art/cemetery_kit_v1/player/parts/head_back.png",
+        "x": 796,
+        "y": 1164
+      },
+      {
+        "layer": "torso_back",
+        "source_png": "art/cemetery_kit_v1/player/parts/torso_back.png",
+        "x": 1164,
+        "y": 1193
+      },
+      {
+        "layer": "cloak_back",
+        "source_png": "art/cemetery_kit_v1/player/parts/cloak_back.png",
+        "x": 1548,
+        "y": 1188
+      },
+      {
+        "layer": "coat_back_view",
+        "source_png": "art/cemetery_kit_v1/player/parts/coat_back_view.png",
+        "x": 1934,
+        "y": 1164
+      }
+    ]
+  },
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/cemetery_props.ora",
+    "layers": 18,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "grave_01",
+        "source_png": "art/cemetery_kit_v1/props/grave_01.png",
+        "x": 75,
+        "y": 12
+      },
+      {
+        "layer": "grave_02",
+        "source_png": "art/cemetery_kit_v1/props/grave_02.png",
+        "x": 411,
+        "y": 12
+      },
+      {
+        "layer": "grave_03",
+        "source_png": "art/cemetery_kit_v1/props/grave_03.png",
+        "x": 867,
+        "y": 12
+      },
+      {
+        "layer": "grave_04",
+        "source_png": "art/cemetery_kit_v1/props/grave_04.png",
+        "x": 1212,
+        "y": 12
+      },
+      {
+        "layer": "grave_05",
+        "source_png": "art/cemetery_kit_v1/props/grave_05.png",
+        "x": 53,
+        "y": 396
+      },
+      {
+        "layer": "grave_06",
+        "source_png": "art/cemetery_kit_v1/props/grave_06.png",
+        "x": 433,
+        "y": 396
+      },
+      {
+        "layer": "grave_07",
+        "source_png": "art/cemetery_kit_v1/props/grave_07.png",
+        "x": 836,
+        "y": 396
+      },
+      {
+        "layer": "grave_08",
+        "source_png": "art/cemetery_kit_v1/props/grave_08.png",
+        "x": 1196,
+        "y": 396
+      },
+      {
+        "layer": "tree_a",
+        "source_png": "art/cemetery_kit_v1/props/tree_a.png",
+        "x": 36,
+        "y": 780
+      },
+      {
+        "layer": "tree_b",
+        "source_png": "art/cemetery_kit_v1/props/tree_b.png",
+        "x": 404,
+        "y": 780
+      },
+      {
+        "layer": "stone_pieces",
+        "source_png": "art/cemetery_kit_v1/props/stone_pieces.png",
+        "x": 780,
+        "y": 825
+      },
+      {
+        "layer": "long_bones",
+        "source_png": "art/cemetery_kit_v1/props/long_bones.png",
+        "x": 1164,
+        "y": 813
+      },
+      {
+        "layer": "funeral_cloth",
+        "source_png": "art/cemetery_kit_v1/props/funeral_cloth.png",
+        "x": 12,
+        "y": 1195
+      },
+      {
+        "layer": "dead_weeds",
+        "source_png": "art/cemetery_kit_v1/props/dead_weeds.png",
+        "x": 396,
+        "y": 1186
+      },
+      {
+        "layer": "bone_cluster",
+        "source_png": "art/cemetery_kit_v1/props/bone_cluster.png",
+        "x": 780,
+        "y": 1205
+      },
+      {
+        "layer": "stone_chips",
+        "source_png": "art/cemetery_kit_v1/props/stone_chips.png",
+        "x": 1164,
+        "y": 1228
+      },
+      {
+        "layer": "urn_fragments",
+        "source_png": "art/cemetery_kit_v1/props/urn_fragments.png",
+        "x": 12,
+        "y": 1577
+      },
+      {
+        "layer": "grass_tuft",
+        "source_png": "art/cemetery_kit_v1/props/grass_tuft.png",
+        "x": 396,
+        "y": 1557
+      }
+    ]
+  },
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/wall_structures.ora",
+    "layers": 13,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "wall_straight",
+        "source_png": "art/cemetery_kit_v1/structures/wall_straight.png",
+        "x": 12,
+        "y": 119
+      },
+      {
+        "layer": "wall_corner",
+        "source_png": "art/cemetery_kit_v1/structures/wall_corner.png",
+        "x": 396,
+        "y": 74
+      },
+      {
+        "layer": "wall_collapsed",
+        "source_png": "art/cemetery_kit_v1/structures/wall_collapsed.png",
+        "x": 780,
+        "y": 128
+      },
+      {
+        "layer": "wall_low",
+        "source_png": "art/cemetery_kit_v1/structures/wall_low.png",
+        "x": 12,
+        "y": 505
+      },
+      {
+        "layer": "gate_base",
+        "source_png": "art/cemetery_kit_v1/structures/gate_base.png",
+        "x": 396,
+        "y": 519
+      },
+      {
+        "layer": "wall_end_pier",
+        "source_png": "art/cemetery_kit_v1/structures/wall_end_pier.png",
+        "x": 825,
+        "y": 396
+      },
+      {
+        "layer": "fence_straight",
+        "source_png": "art/cemetery_kit_v1/structures/fence_straight.png",
+        "x": 12,
+        "y": 889
+      },
+      {
+        "layer": "fence_broken",
+        "source_png": "art/cemetery_kit_v1/structures/fence_broken.png",
+        "x": 396,
+        "y": 892
+      },
+      {
+        "layer": "cemetery_gate",
+        "source_png": "art/cemetery_kit_v1/structures/cemetery_gate.png",
+        "x": 780,
+        "y": 881
+      },
+      {
+        "layer": "fence_y",
+        "source_png": "art/cemetery_kit_v1/structures/fence_y.png",
+        "x": 97,
+        "y": 1164
+      },
+      {
+        "layer": "fence_y_broken",
+        "source_png": "art/cemetery_kit_v1/structures/fence_y_broken.png",
+        "x": 472,
+        "y": 1164
+      },
+      {
+        "layer": "gate_y",
+        "source_png": "art/cemetery_kit_v1/structures/gate_y.png",
+        "x": 857,
+        "y": 1164
+      },
+      {
+        "layer": "fence_post",
+        "source_png": "art/cemetery_kit_v1/structures/fence_post.png",
+        "x": 170,
+        "y": 1639
+      }
+    ]
+  },
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/foreground_layers.ora",
+    "layers": 5,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "close_grave_edge",
+        "source_png": "art/cemetery_kit_v1/foreground/close_grave_edge.png",
+        "x": 29,
+        "y": 134
+      },
+      {
+        "layer": "fence_foreground",
+        "source_png": "art/cemetery_kit_v1/foreground/fence_foreground.png",
+        "x": 541,
+        "y": 77
+      },
+      {
+        "layer": "branch_left",
+        "source_png": "art/cemetery_kit_v1/foreground/branch_left.png",
+        "x": 1053,
+        "y": 28
+      },
+      {
+        "layer": "branch_right",
+        "source_png": "art/cemetery_kit_v1/foreground/branch_right.png",
+        "x": 37,
+        "y": 396
+      },
+      {
+        "layer": "fog_edge",
+        "source_png": "art/cemetery_kit_v1/foreground/fog_edge.png",
+        "x": 524,
+        "y": 438
+      }
+    ]
+  },
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/vfx_sources.ora",
+    "layers": 6,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "echo_fragment",
+        "source_png": "art/cemetery_kit_v1/vfx/echo_fragment.png",
+        "x": 85,
+        "y": 12
+      },
+      {
+        "layer": "loot_reflection",
+        "source_png": "art/cemetery_kit_v1/vfx/loot_reflection.png",
+        "x": 409,
+        "y": 12
+      },
+      {
+        "layer": "dust",
+        "source_png": "art/cemetery_kit_v1/vfx/dust.png",
+        "x": 780,
+        "y": 26
+      },
+      {
+        "layer": "bone_splinters",
+        "source_png": "art/cemetery_kit_v1/vfx/bone_splinters.png",
+        "x": 33,
+        "y": 396
+      },
+      {
+        "layer": "cord_tension",
+        "source_png": "art/cemetery_kit_v1/vfx/cord_tension.png",
+        "x": 396,
+        "y": 492
+      },
+      {
+        "layer": "sigil_fragments",
+        "source_png": "art/cemetery_kit_v1/vfx/sigil_fragments.png",
+        "x": 780,
+        "y": 400
+      }
+    ]
+  },
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/terrain_materials.ora",
+    "layers": 6,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "wet_stone_path",
+        "source_png": "art/cemetery_kit_v1/terrain/wet_stone_path.png",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "layer": "broken_stone_path",
+        "source_png": "art/cemetery_kit_v1/terrain/broken_stone_path.png",
+        "x": 268,
+        "y": 12
+      },
+      {
+        "layer": "muddy_ground",
+        "source_png": "art/cemetery_kit_v1/terrain/muddy_ground.png",
+        "x": 524,
+        "y": 12
+      },
+      {
+        "layer": "mossy_stone",
+        "source_png": "art/cemetery_kit_v1/terrain/mossy_stone.png",
+        "x": 12,
+        "y": 268
+      },
+      {
+        "layer": "cracked_graveyard_floor",
+        "source_png": "art/cemetery_kit_v1/terrain/cracked_graveyard_floor.png",
+        "x": 268,
+        "y": 268
+      },
+      {
+        "layer": "puddle_damp_edge",
+        "source_png": "art/cemetery_kit_v1/terrain/puddle_damp_edge.png",
+        "x": 524,
+        "y": 268
+      }
+    ]
+  },
+  {
+    "file": "art_source/production/cemetery_kit_v1/editable/skeleton_rig_parts.ora",
+    "layers": 20,
+    "meaning": "one separate whole editable asset per layer; original full-resolution PNG and generated raw atlas preserved separately",
+    "layer_sources": [
+      {
+        "layer": "burial_cord",
+        "source_png": "art/enemies/skeleton_parts/burial_cord.png",
+        "x": 20,
+        "y": 12
+      },
+      {
+        "layer": "foot_l",
+        "source_png": "art/enemies/skeleton_parts/foot_l.png",
+        "x": 457,
+        "y": 12
+      },
+      {
+        "layer": "foot_r",
+        "source_png": "art/enemies/skeleton_parts/foot_r.png",
+        "x": 841,
+        "y": 12
+      },
+      {
+        "layer": "forearm_l",
+        "source_png": "art/enemies/skeleton_parts/forearm_l.png",
+        "x": 1272,
+        "y": 12
+      },
+      {
+        "layer": "forearm_r",
+        "source_png": "art/enemies/skeleton_parts/forearm_r.png",
+        "x": 1660,
+        "y": 12
+      },
+      {
+        "layer": "hand_l",
+        "source_png": "art/enemies/skeleton_parts/hand_l.png",
+        "x": 76,
+        "y": 396
+      },
+      {
+        "layer": "hand_r",
+        "source_png": "art/enemies/skeleton_parts/hand_r.png",
+        "x": 460,
+        "y": 396
+      },
+      {
+        "layer": "hip_cloth",
+        "source_png": "art/enemies/skeleton_parts/hip_cloth.png",
+        "x": 811,
+        "y": 396
+      },
+      {
+        "layer": "nails",
+        "source_png": "art/enemies/skeleton_parts/nails.png",
+        "x": 1164,
+        "y": 399
+      },
+      {
+        "layer": "pelvis",
+        "source_png": "art/enemies/skeleton_parts/pelvis.png",
+        "x": 1548,
+        "y": 434
+      },
+      {
+        "layer": "ribcage",
+        "source_png": "art/enemies/skeleton_parts/ribcage.png",
+        "x": 26,
+        "y": 780
+      },
+      {
+        "layer": "shin_l",
+        "source_png": "art/enemies/skeleton_parts/shin_l.png",
+        "x": 514,
+        "y": 780
+      },
+      {
+        "layer": "shin_r",
+        "source_png": "art/enemies/skeleton_parts/shin_r.png",
+        "x": 901,
+        "y": 780
+      },
+      {
+        "layer": "shoulder_cloth",
+        "source_png": "art/enemies/skeleton_parts/shoulder_cloth.png",
+        "x": 1202,
+        "y": 780
+      },
+      {
+        "layer": "skull",
+        "source_png": "art/enemies/skeleton_parts/skull.png",
+        "x": 1568,
+        "y": 780
+      },
+      {
+        "layer": "thigh_l",
+        "source_png": "art/enemies/skeleton_parts/thigh_l.png",
+        "x": 132,
+        "y": 1164
+      },
+      {
+        "layer": "thigh_r",
+        "source_png": "art/enemies/skeleton_parts/thigh_r.png",
+        "x": 517,
+        "y": 1164
+      },
+      {
+        "layer": "upper_arm_l",
+        "source_png": "art/enemies/skeleton_parts/upper_arm_l.png",
+        "x": 888,
+        "y": 1164
+      },
+      {
+        "layer": "upper_arm_r",
+        "source_png": "art/enemies/skeleton_parts/upper_arm_r.png",
+        "x": 1275,
+        "y": 1164
+      },
+      {
+        "layer": "weapon",
+        "source_png": "art/enemies/skeleton_parts/weapon.png",
+        "x": 1584,
+        "y": 1164
+      }
+    ]
+  }
+]
