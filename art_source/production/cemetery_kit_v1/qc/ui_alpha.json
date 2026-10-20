@@ -1,0 +1,245 @@
+[
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_disabled.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_echo_copy.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_exhausted.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_hovered.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_idle.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_invoking.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_retained.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_selected.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/erode_used.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_disabled.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_echo_copy.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_exhausted.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_hovered.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_idle.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_invoking.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_retained.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_selected.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/observe_used.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_disabled.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_echo_copy.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_exhausted.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_hovered.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_idle.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_invoking.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_retained.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_selected.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  },
+  {
+    "file": "art/cemetery_kit_v1/ui/shatter_used.png",
+    "pixels": [
+      440,
+      248
+    ],
+    "source": "Godot transparent SubViewport actual Control; unpremultiplied once",
+    "focus_cost": "not baked; native control owns geometry chambers"
+  }
+]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://art/cemetery_kit_v1/vfx/source_burst.gd" id="1"]
+[node name="DustBurst" type="Node2D"]
+script = ExtResource("1")
+kind = "dust"

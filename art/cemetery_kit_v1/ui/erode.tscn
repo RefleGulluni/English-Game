@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="PackedScene" path="res://art/ui/word_sigil.tscn" id="1"]
+[node name="erode" instance=ExtResource("1")]
+word_id = "ERODE"

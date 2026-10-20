@@ -10,21 +10,21 @@ func _run() -> void:
 	world.set_meta("qa_no_save",true)
 	root.add_child(world)
 	for i in range(4): await process_frame
-	var visual := world.get_node("GraveSkeleton/VisualRoot/GraveSkeletonVisual")
+	var visual := world.skeleton.get_node("VisualRoot/GraveSkeletonVisual")
 	check(visual.nodes.size()==20,"twenty independent skeleton parts")
 	var baseline_echo: int = world.manager.state.echo
 	visual.present({"mode":"remains","integrity":10,"reassemble_in":3})
-	await create_timer(0.7).timeout
+	await create_timer(0.95).timeout
 	check(visual.mode=="remains" and not visual.moving,"collapse reaches the remains pose")
 	check(world.manager.state.echo==baseline_echo,"presentation snapshot cannot grant Echo")
-	check(world.get_node("WorldLoot").get_child_count()==0,"presentation snapshot cannot spawn loot")
+	check(world.rewards.loot_parent.get_child_count()==0,"presentation snapshot cannot spawn loot")
 	visual.present({"mode":"standing"})
-	await create_timer(0.9).timeout
+	await create_timer(1.25).timeout
 	check(visual.mode=="standing" and not visual.moving,"reassembly reaches original standing pose")
 	visual.present({"mode":"cleared"})
 	await create_timer(0.65).timeout
 	check(not visual.rope.visible,"cleared pose releases all tension links")
-	check(world.get_node("GraveSkeleton/Hitbox")!=null and world.get_node("GraveSkeleton/LootAnchor")!=null,"logic-owned nodes preserved")
+	check(world.skeleton.get_node("Hitbox")!=null and world.skeleton.get_node("LootAnchor")!=null,"logic-owned nodes preserved")
 	var sigil := preload("res://art/ui/word_sigil.tscn").instantiate()
 	root.add_child(sigil)
 	for word in ["OBSERVE","SHATTER","ERODE"]:
@@ -33,13 +33,15 @@ func _run() -> void:
 			check(sigil.visual_state==state and sigil.word_id==word,"sigil accepts "+word+"/"+state)
 	sigil.set_presentation({"word_id":"OBSERVE","state":"SELECTED","enabled":false})
 	check(sigil.visual_state=="DISABLED","business availability overrides selected presentation")
-	var clasp: Node2D = world.get_node("Player/VisualRoot/PlayerVisual").clasp
+	var clasp: Node2D = world.player.get_node("VisualRoot/PlayerVisual").clasp
 	world.events.publish(&"word_sigil_invoked",{"word_id":"OBSERVE","instance_id":42})
 	await create_timer(0.15).timeout
 	check(clasp.strength>0.1,"invocation reaches player clasp after deferred event binding")
 	await create_timer(1.7).timeout
 	check(clasp.strength==0.0,"clasp returns to quiet")
-	check(world.get_node("PresentationRouter/VFXRoot").get_child_count()==0,"short effects release themselves")
+	var router: Node = world.get_node_or_null("VFXLayer/PresentationRouter")
+	if router == null: router = world.get_node("PresentationRouter")
+	check(router.get_node("VFXRoot").get_child_count()==0,"short effects release themselves")
 	check(world.manager.state.echo==baseline_echo,"word VFX cannot mutate rewards")
 	world.queue_free()
 	sigil.queue_free()

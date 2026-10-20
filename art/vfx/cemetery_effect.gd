@@ -16,10 +16,17 @@ func play_event(_id: StringName, payload: Dictionary) -> void:
 		lifetime = 1.65
 	elif effect_kind == "word":
 		lifetime = 0.62
-		# The current Word payload has no position; anchor presentation to the player.
-		var world := get_parent().get_parent().get_parent()
-		var actor := world.get_node_or_null("Player") as Node2D
-		if actor != null: global_position = actor.global_position
+		# Read-only world position survives presentation layer reparenting.
+		if payload.has("position"):
+			global_position = Vector2(payload["position"])
+		else:
+			var actor := get_tree().get_first_node_in_group("world_player") as Node2D
+			if actor == null:
+				var ancestor := get_parent()
+				while ancestor != null and actor == null:
+					actor = ancestor.get_node_or_null("Player") as Node2D
+					ancestor = ancestor.get_parent()
+			if actor != null: global_position = actor.global_position
 		word = str(payload.get("word_id","")).to_upper()
 		var names := {"OBSERVE":"observe_invoke","SHATTER":"shatter_invoke","ERODE":"erode_invoke"}
 		if names.has(word): _sound("res://audio/words/"+str(names[word])+".wav")
