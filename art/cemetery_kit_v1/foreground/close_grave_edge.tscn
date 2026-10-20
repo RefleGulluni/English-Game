@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/foreground/close_grave_edge.png" id="1"]
+[node name="close_grave_edge" type="Node2D"]
+metadata/kit_id = "close_grave_edge"
+metadata/role = "Foreground"
+metadata/display_size = Vector2(248.7130, 63.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -31.5000)
+scale = Vector2(0.54782609, 0.54782609)
+texture_filter = 4
+texture = ExtResource("1")
+modulate = Color(0.38, 0.42, 0.43, 0.96)

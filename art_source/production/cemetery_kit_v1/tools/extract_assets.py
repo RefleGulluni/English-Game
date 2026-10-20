@@ -61,6 +61,13 @@ def process(job):
     a[:,:,3][affected]*=np.clip(1-(spill[affected]-18)/55,0,1)
     a[:,:,2][affected]=np.minimum(a[:,:,2][affected],a[:,:,1][affected]+9)
     a[:,:,0][affected]=np.minimum(a[:,:,0][affected],a[:,:,1][affected]*1.3+10)
+    if job['folder']=='vfx' and name in ['echo_fragment','loot_reflection','dust','sigil_fragments']:
+        # Recover neutral pale foreground from magenta-composited semi-transparent paint.
+        # This is chroma-matte decontamination, not replacement illustration.
+        opacity=np.clip(1-(np.minimum(a[:,:,0],a[:,:,2])-a[:,:,1])/255,0.02,1)
+        luminance=np.clip(a[:,:,1]/opacity,0,255)
+        a[:,:,3]*=opacity
+        a[:,:,0]=luminance; a[:,:,1]=luminance*.99; a[:,:,2]=luminance*.95
     im=Image.fromarray(np.clip(a,0,255).astype('uint8'));im=im.crop(im.getbbox())
     padded=Image.new('RGBA',(im.width+4,im.height+4));padded.alpha_composite(im,(2,2))
     target=OUT/job['folder']/f'{name}.png';target.parent.mkdir(parents=True,exist_ok=True);padded.save(target)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/props/grass_tuft.png" id="1"]
+[node name="grass_tuft" type="Node2D"]
+metadata/kit_id = "grass_tuft"
+metadata/role = "Prop"
+metadata/display_size = Vector2(23.2279, 22.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -11.0000)
+scale = Vector2(0.05116279, 0.05116279)
+texture_filter = 4
+texture = ExtResource("1")

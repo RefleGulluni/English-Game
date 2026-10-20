@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/props/urn_fragments.png" id="1"]
+[node name="urn_fragments" type="Node2D"]
+metadata/kit_id = "urn_fragments"
+metadata/role = "Prop"
+metadata/display_size = Vector2(26.3536, 22.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -11.0000)
+scale = Vector2(0.05804749, 0.05804749)
+texture_filter = 4
+texture = ExtResource("1")

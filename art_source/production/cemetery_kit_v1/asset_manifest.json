@@ -1,0 +1,1882 @@
+[
+  {
+    "name": "grave_01",
+    "raw": "graves",
+    "box": [
+      0,
+      0,
+      418,
+      470
+    ],
+    "folder": "props",
+    "world_height": 102,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      295,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_01.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_01.tscn",
+    "display_size": [
+      66.27753303964758,
+      102.0
+    ],
+    "uniform_scale": 0.22466960352422907
+  },
+  {
+    "name": "grave_02",
+    "raw": "graves",
+    "box": [
+      418,
+      0,
+      836,
+      470
+    ],
+    "folder": "props",
+    "world_height": 75,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      415,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_02.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_02.tscn",
+    "display_size": [
+      68.55726872246696,
+      75.0
+    ],
+    "uniform_scale": 0.16519823788546256
+  },
+  {
+    "name": "grave_03",
+    "raw": "graves",
+    "box": [
+      836,
+      0,
+      1254,
+      470
+    ],
+    "folder": "props",
+    "world_height": 113,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      235,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_03.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_03.tscn",
+    "display_size": [
+      58.491189427312776,
+      113.0
+    ],
+    "uniform_scale": 0.2488986784140969
+  },
+  {
+    "name": "grave_04",
+    "raw": "graves",
+    "box": [
+      1254,
+      0,
+      1672,
+      470
+    ],
+    "folder": "props",
+    "world_height": 91,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      332,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_04.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_04.tscn",
+    "display_size": [
+      66.54625550660793,
+      91.0
+    ],
+    "uniform_scale": 0.20044052863436124
+  },
+  {
+    "name": "grave_05",
+    "raw": "graves",
+    "box": [
+      0,
+      470,
+      418,
+      941
+    ],
+    "folder": "props",
+    "world_height": 85,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      349,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_05.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_05.tscn",
+    "display_size": [
+      65.34140969162996,
+      85.0
+    ],
+    "uniform_scale": 0.18722466960352424
+  },
+  {
+    "name": "grave_06",
+    "raw": "graves",
+    "box": [
+      418,
+      470,
+      836,
+      941
+    ],
+    "folder": "props",
+    "world_height": 93,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      361,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_06.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_06.tscn",
+    "display_size": [
+      73.94933920704847,
+      93.0
+    ],
+    "uniform_scale": 0.20484581497797358
+  },
+  {
+    "name": "grave_07",
+    "raw": "graves",
+    "box": [
+      836,
+      470,
+      1254,
+      941
+    ],
+    "folder": "props",
+    "world_height": 94,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      312,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_07.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_07.tscn",
+    "display_size": [
+      64.59911894273128,
+      94.0
+    ],
+    "uniform_scale": 0.20704845814977973
+  },
+  {
+    "name": "grave_08",
+    "raw": "graves",
+    "box": [
+      1254,
+      470,
+      1672,
+      941
+    ],
+    "folder": "props",
+    "world_height": 61,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      372,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/grave_08.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grave_08.tscn",
+    "display_size": [
+      49.982378854625544,
+      60.99999999999999
+    ],
+    "uniform_scale": 0.1343612334801762
+  },
+  {
+    "name": "wall_straight",
+    "raw": "walls",
+    "box": [
+      0,
+      0,
+      870,
+      386
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 256,
+    "ok": true,
+    "pixels": [
+      454,
+      183
+    ],
+    "file": "art/cemetery_kit_v1/structures/wall_straight.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -125.44,
+      0
+    ],
+    "socket_b": [
+      125.44,
+      -38.180088105726874
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/wall_straight.tscn",
+    "display_size": [
+      256.0,
+      103.18942731277534
+    ],
+    "uniform_scale": 0.5638766519823789
+  },
+  {
+    "name": "wall_corner",
+    "raw": "walls",
+    "box": [
+      870,
+      0,
+      1536,
+      386
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 200,
+    "ok": true,
+    "pixels": [
+      454,
+      297
+    ],
+    "file": "art/cemetery_kit_v1/structures/wall_corner.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -94.0,
+      -11.77533039647577
+    ],
+    "socket_b": [
+      94.0,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/wall_corner.tscn",
+    "display_size": [
+      200.0,
+      130.83700440528634
+    ],
+    "uniform_scale": 0.44052863436123346
+  },
+  {
+    "name": "wall_collapsed",
+    "raw": "walls",
+    "box": [
+      0,
+      386,
+      865,
+      687
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 256,
+    "ok": true,
+    "pixels": [
+      454,
+      162
+    ],
+    "file": "art/cemetery_kit_v1/structures/wall_collapsed.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -122.88,
+      -2
+    ],
+    "socket_b": [
+      122.88,
+      -27.404405286343614
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/wall_collapsed.tscn",
+    "display_size": [
+      256.0,
+      91.34801762114539
+    ],
+    "uniform_scale": 0.5638766519823789
+  },
+  {
+    "name": "wall_low",
+    "raw": "walls",
+    "box": [
+      865,
+      386,
+      1536,
+      687
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 256,
+    "ok": true,
+    "pixels": [
+      454,
+      179
+    ],
+    "file": "art/cemetery_kit_v1/structures/wall_low.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -125.44,
+      0
+    ],
+    "socket_b": [
+      125.44,
+      -44.41092511013216
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/wall_low.tscn",
+    "display_size": [
+      256.0,
+      100.93392070484582
+    ],
+    "uniform_scale": 0.5638766519823789
+  },
+  {
+    "name": "gate_base",
+    "raw": "walls",
+    "box": [
+      0,
+      687,
+      880,
+      1024
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 256,
+    "ok": true,
+    "pixels": [
+      454,
+      142
+    ],
+    "file": "art/cemetery_kit_v1/structures/gate_base.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -87.04,
+      0
+    ],
+    "socket_b": [
+      87.04,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/gate_base.tscn",
+    "display_size": [
+      256.0,
+      80.07048458149781
+    ],
+    "uniform_scale": 0.5638766519823789
+  },
+  {
+    "name": "wall_end_pier",
+    "raw": "walls",
+    "box": [
+      880,
+      687,
+      1536,
+      1024
+    ],
+    "folder": "structures",
+    "world_height": 96,
+    "role": "Structure",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      340,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/structures/wall_end_pier.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -28.757709251101325,
+      0
+    ],
+    "socket_b": [
+      28.757709251101325,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/wall_end_pier.tscn",
+    "display_size": [
+      71.89427312775331,
+      96.0
+    ],
+    "uniform_scale": 0.21145374449339208
+  },
+  {
+    "name": "fence_straight",
+    "raw": "fences",
+    "box": [
+      0,
+      0,
+      1671,
+      300
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 192,
+    "ok": true,
+    "pixels": [
+      454,
+      178
+    ],
+    "file": "art/cemetery_kit_v1/structures/fence_straight.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -86.4,
+      0
+    ],
+    "socket_b": [
+      86.4,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/fence_straight.tscn",
+    "display_size": [
+      192.0,
+      75.27753303964758
+    ],
+    "uniform_scale": 0.42290748898678415
+  },
+  {
+    "name": "fence_broken",
+    "raw": "fences",
+    "box": [
+      0,
+      300,
+      1671,
+      570
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 192,
+    "ok": true,
+    "pixels": [
+      454,
+      171
+    ],
+    "file": "art/cemetery_kit_v1/structures/fence_broken.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -86.4,
+      0
+    ],
+    "socket_b": [
+      86.4,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/fence_broken.tscn",
+    "display_size": [
+      192.0,
+      72.31718061674009
+    ],
+    "uniform_scale": 0.42290748898678415
+  },
+  {
+    "name": "cemetery_gate",
+    "raw": "fences",
+    "box": [
+      0,
+      570,
+      1671,
+      941
+    ],
+    "folder": "structures",
+    "world_height": null,
+    "role": "Structure",
+    "world_width": 228,
+    "ok": true,
+    "pixels": [
+      454,
+      198
+    ],
+    "file": "art/cemetery_kit_v1/structures/cemetery_gate.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -100.32000000000001,
+      0
+    ],
+    "socket_b": [
+      100.32000000000001,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/cemetery_gate.tscn",
+    "display_size": [
+      228.0,
+      99.43612334801763
+    ],
+    "uniform_scale": 0.5022026431718062
+  },
+  {
+    "name": "tree_a",
+    "raw": "tree_a",
+    "box": null,
+    "folder": "props",
+    "world_height": 270,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      394,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/tree_a.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/tree_a.tscn",
+    "display_size": [
+      234.31718061674007,
+      270.0
+    ],
+    "uniform_scale": 0.5947136563876652
+  },
+  {
+    "name": "tree_b",
+    "raw": "tree_b",
+    "box": null,
+    "folder": "props",
+    "world_height": 235,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      434,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/props/tree_b.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/tree_b.tscn",
+    "display_size": [
+      224.64757709251103,
+      235.0
+    ],
+    "uniform_scale": 0.5176211453744494
+  },
+  {
+    "name": "head",
+    "raw": "player_parts",
+    "box": [
+      0,
+      0,
+      280,
+      300
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      425,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/head.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "torso",
+    "raw": "player_parts",
+    "box": [
+      280,
+      0,
+      560,
+      300
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      397,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/torso.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "upper_arm_l",
+    "raw": "player_parts",
+    "box": [
+      560,
+      0,
+      840,
+      300
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      329,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/upper_arm_l.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "upper_arm_r",
+    "raw": "player_parts",
+    "box": [
+      840,
+      0,
+      1122,
+      300
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      340,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/upper_arm_r.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "forearm_l",
+    "raw": "player_parts",
+    "box": [
+      0,
+      300,
+      280,
+      535
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      370,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/forearm_l.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "forearm_r",
+    "raw": "player_parts",
+    "box": [
+      280,
+      300,
+      560,
+      535
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      394,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/forearm_r.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "hand_l",
+    "raw": "player_parts",
+    "box": [
+      560,
+      300,
+      840,
+      535
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      386,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/hand_l.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "hand_r",
+    "raw": "player_parts",
+    "box": [
+      840,
+      300,
+      1122,
+      535
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      377,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/hand_r.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "thigh_l",
+    "raw": "player_parts",
+    "box": [
+      0,
+      535,
+      280,
+      795
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      318,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/thigh_l.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "thigh_r",
+    "raw": "player_parts",
+    "box": [
+      280,
+      535,
+      560,
+      795
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      325,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/thigh_r.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "shin_l",
+    "raw": "player_parts",
+    "box": [
+      560,
+      535,
+      840,
+      795
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      203,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/shin_l.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "shin_r",
+    "raw": "player_parts",
+    "box": [
+      840,
+      535,
+      1122,
+      795
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      194,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/shin_r.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "boot_l",
+    "raw": "player_parts",
+    "box": [
+      0,
+      795,
+      280,
+      1065
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      207,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/boot_l.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "boot_r",
+    "raw": "player_parts",
+    "box": [
+      280,
+      795,
+      560,
+      1065
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      356,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/boot_r.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "weapon",
+    "raw": "player_parts",
+    "box": [
+      560,
+      790,
+      840,
+      1158
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      96,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/weapon.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "coat_front",
+    "raw": "player_parts",
+    "box": [
+      840,
+      790,
+      1122,
+      1112
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      393,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/coat_front.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "coat_back",
+    "raw": "player_parts",
+    "box": [
+      0,
+      1065,
+      280,
+      1402
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      373,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/coat_back.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "cloak",
+    "raw": "player_parts",
+    "box": [
+      280,
+      1100,
+      600,
+      1402
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      399
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/cloak.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "belt_pouch",
+    "raw": "player_parts",
+    "box": [
+      600,
+      1160,
+      875,
+      1360
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      243
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/belt_pouch.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "clasp",
+    "raw": "player_parts",
+    "box": [
+      910,
+      1145,
+      1110,
+      1320
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      381
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/clasp.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "head_back",
+    "raw": "player_back",
+    "box": [
+      0,
+      0,
+      640,
+      560
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      413,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/head_back.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "torso_back",
+    "raw": "player_back",
+    "box": [
+      640,
+      0,
+      1287,
+      565
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      381
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/torso_back.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "cloak_back",
+    "raw": "player_back",
+    "box": [
+      0,
+      565,
+      663,
+      1222
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      392
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/cloak_back.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "coat_back_view",
+    "raw": "player_back",
+    "box": [
+      663,
+      565,
+      1287,
+      1222
+    ],
+    "folder": "player/parts",
+    "world_height": null,
+    "role": "Character Rig",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      448,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/player/parts/coat_back_view.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "fence_y",
+    "raw": "fences_y",
+    "box": [
+      0,
+      0,
+      724,
+      724
+    ],
+    "folder": "structures",
+    "world_height": 110,
+    "role": "Structure",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      240,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/structures/fence_y.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -21.515418502202643,
+      0
+    ],
+    "socket_b": [
+      22.09691629955947,
+      -60.50000000000001
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/fence_y.tscn",
+    "display_size": [
+      58.14977973568282,
+      110.0
+    ],
+    "uniform_scale": 0.2422907488986784
+  },
+  {
+    "name": "fence_y_broken",
+    "raw": "fences_y",
+    "box": [
+      724,
+      0,
+      1448,
+      724
+    ],
+    "folder": "structures",
+    "world_height": 110,
+    "role": "Structure",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      261,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/structures/fence_y_broken.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -23.398017621145375,
+      0
+    ],
+    "socket_b": [
+      24.030396475770925,
+      -60.50000000000001
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/fence_y_broken.tscn",
+    "display_size": [
+      63.23788546255506,
+      110.0
+    ],
+    "uniform_scale": 0.2422907488986784
+  },
+  {
+    "name": "gate_y",
+    "raw": "fences_y",
+    "box": [
+      1448,
+      0,
+      2172,
+      724
+    ],
+    "folder": "structures",
+    "world_height": 130,
+    "role": "Structure",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      258,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/structures/gate_y.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "socket_a": [
+      -27.334361233480177,
+      0
+    ],
+    "socket_b": [
+      28.073127753303968,
+      -71.5
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/gate_y.tscn",
+    "display_size": [
+      73.87665198237886,
+      130.0
+    ],
+    "uniform_scale": 0.28634361233480177
+  },
+  {
+    "name": "stone_pieces",
+    "raw": "dressing",
+    "box": [
+      0,
+      0,
+      444,
+      444
+    ],
+    "folder": "props",
+    "world_height": 24,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      339
+    ],
+    "file": "art/cemetery_kit_v1/props/stone_pieces.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/stone_pieces.tscn",
+    "display_size": [
+      32.14159292035398,
+      24.0
+    ],
+    "uniform_scale": 0.07079646017699115
+  },
+  {
+    "name": "long_bones",
+    "raw": "dressing",
+    "box": [
+      444,
+      0,
+      887,
+      444
+    ],
+    "folder": "props",
+    "world_height": 13,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      370
+    ],
+    "file": "art/cemetery_kit_v1/props/long_bones.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/long_bones.tscn",
+    "display_size": [
+      15.951351351351352,
+      13.0
+    ],
+    "uniform_scale": 0.03513513513513514
+  },
+  {
+    "name": "funeral_cloth",
+    "raw": "dressing",
+    "box": [
+      887,
+      0,
+      1330,
+      444
+    ],
+    "folder": "props",
+    "world_height": 17,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      376
+    ],
+    "file": "art/cemetery_kit_v1/props/funeral_cloth.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/funeral_cloth.tscn",
+    "display_size": [
+      20.52659574468085,
+      17.0
+    ],
+    "uniform_scale": 0.04521276595744681
+  },
+  {
+    "name": "dead_weeds",
+    "raw": "dressing",
+    "box": [
+      1330,
+      0,
+      1774,
+      444
+    ],
+    "folder": "props",
+    "world_height": 38,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      397
+    ],
+    "file": "art/cemetery_kit_v1/props/dead_weeds.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/dead_weeds.tscn",
+    "display_size": [
+      43.455919395466,
+      38.0
+    ],
+    "uniform_scale": 0.09571788413098237
+  },
+  {
+    "name": "bone_cluster",
+    "raw": "dressing",
+    "box": [
+      0,
+      444,
+      444,
+      887
+    ],
+    "folder": "props",
+    "world_height": 22,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      349
+    ],
+    "file": "art/cemetery_kit_v1/props/bone_cluster.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/bone_cluster.tscn",
+    "display_size": [
+      28.6189111747851,
+      22.0
+    ],
+    "uniform_scale": 0.06303724928366762
+  },
+  {
+    "name": "stone_chips",
+    "raw": "dressing",
+    "box": [
+      444,
+      444,
+      887,
+      887
+    ],
+    "folder": "props",
+    "world_height": 12,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      291
+    ],
+    "file": "art/cemetery_kit_v1/props/stone_chips.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/stone_chips.tscn",
+    "display_size": [
+      18.721649484536083,
+      12.0
+    ],
+    "uniform_scale": 0.041237113402061855
+  },
+  {
+    "name": "urn_fragments",
+    "raw": "dressing",
+    "box": [
+      887,
+      444,
+      1330,
+      887
+    ],
+    "folder": "props",
+    "world_height": 22,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      379
+    ],
+    "file": "art/cemetery_kit_v1/props/urn_fragments.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/urn_fragments.tscn",
+    "display_size": [
+      26.353562005277045,
+      22.0
+    ],
+    "uniform_scale": 0.05804749340369393
+  },
+  {
+    "name": "grass_tuft",
+    "raw": "dressing",
+    "box": [
+      1330,
+      444,
+      1774,
+      887
+    ],
+    "folder": "props",
+    "world_height": 22,
+    "role": "Prop",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      430
+    ],
+    "file": "art/cemetery_kit_v1/props/grass_tuft.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/props/grass_tuft.tscn",
+    "display_size": [
+      23.227906976744187,
+      22.0
+    ],
+    "uniform_scale": 0.05116279069767442
+  },
+  {
+    "name": "close_grave_edge",
+    "raw": "foreground",
+    "box": [
+      887,
+      0,
+      1774,
+      443
+    ],
+    "folder": "foreground",
+    "world_height": 63,
+    "role": "Foreground",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      115
+    ],
+    "file": "art/cemetery_kit_v1/foreground/close_grave_edge.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/foreground/close_grave_edge.tscn",
+    "display_size": [
+      248.71304347826086,
+      62.99999999999999
+    ],
+    "uniform_scale": 0.5478260869565217
+  },
+  {
+    "name": "fence_foreground",
+    "raw": "foreground",
+    "box": [
+      0,
+      460,
+      887,
+      887
+    ],
+    "folder": "foreground",
+    "world_height": 125,
+    "role": "Foreground",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      229
+    ],
+    "file": "art/cemetery_kit_v1/foreground/fence_foreground.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/foreground/fence_foreground.tscn",
+    "display_size": [
+      247.8165938864629,
+      125.00000000000001
+    ],
+    "uniform_scale": 0.5458515283842795
+  },
+  {
+    "name": "branch_left",
+    "raw": "branches",
+    "box": [
+      0,
+      0,
+      887,
+      887
+    ],
+    "folder": "foreground",
+    "world_height": 150,
+    "role": "Foreground",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      327
+    ],
+    "file": "art/cemetery_kit_v1/foreground/branch_left.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/foreground/branch_left.tscn",
+    "display_size": [
+      208.25688073394497,
+      150.0
+    ],
+    "uniform_scale": 0.45871559633027525
+  },
+  {
+    "name": "branch_right",
+    "raw": "branches",
+    "box": [
+      887,
+      0,
+      1774,
+      887
+    ],
+    "folder": "foreground",
+    "world_height": 150,
+    "role": "Foreground",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      374
+    ],
+    "file": "art/cemetery_kit_v1/foreground/branch_right.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "scene": "art/cemetery_kit_v1/foreground/branch_right.tscn",
+    "display_size": [
+      182.0855614973262,
+      150.0
+    ],
+    "uniform_scale": 0.40106951871657753
+  },
+  {
+    "name": "echo_fragment",
+    "raw": "vfx",
+    "box": [
+      0,
+      0,
+      512,
+      512
+    ],
+    "folder": "vfx",
+    "world_height": 5,
+    "role": "VFX",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      268,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/vfx/echo_fragment.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "loot_reflection",
+    "raw": "vfx",
+    "box": [
+      512,
+      0,
+      1024,
+      512
+    ],
+    "folder": "vfx",
+    "world_height": 4,
+    "role": "VFX",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      421,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/vfx/loot_reflection.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "dust",
+    "raw": "vfx",
+    "box": [
+      1024,
+      0,
+      1536,
+      512
+    ],
+    "folder": "vfx",
+    "world_height": 30,
+    "role": "VFX",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      453,
+      416
+    ],
+    "file": "art/cemetery_kit_v1/vfx/dust.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "bone_splinters",
+    "raw": "vfx",
+    "box": [
+      0,
+      512,
+      512,
+      1024
+    ],
+    "folder": "vfx",
+    "world_height": 5,
+    "role": "VFX",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      401,
+      454
+    ],
+    "file": "art/cemetery_kit_v1/vfx/bone_splinters.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "cord_tension",
+    "raw": "vfx",
+    "box": [
+      512,
+      512,
+      1024,
+      1024
+    ],
+    "folder": "vfx",
+    "world_height": 30,
+    "role": "VFX",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      211
+    ],
+    "file": "art/cemetery_kit_v1/vfx/cord_tension.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "sigil_fragments",
+    "raw": "vfx",
+    "box": [
+      1024,
+      512,
+      1536,
+      1024
+    ],
+    "folder": "vfx",
+    "world_height": 22,
+    "role": "VFX",
+    "world_width": null,
+    "ok": true,
+    "pixels": [
+      454,
+      443
+    ],
+    "file": "art/cemetery_kit_v1/vfx/sigil_fragments.png",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "fence_post",
+    "file": "art/cemetery_kit_v1/structures/fence_post.png",
+    "folder": "structures",
+    "world_height": 74,
+    "world_width": null,
+    "role": "Structure",
+    "ok": true,
+    "pixels": [
+      43,
+      178
+    ],
+    "derived_from": "fence_straight.png left intact post crop",
+    "socket_a": [
+      -7.150561797752809,
+      0
+    ],
+    "socket_b": [
+      7.150561797752809,
+      0
+    ],
+    "connection_note": "Art-grounding sockets, projected/oblique; align sockets then inspect joints. Not a promise of orthogonal world collision. Never rotate sprite 90deg to create Y fence.",
+    "scene": "art/cemetery_kit_v1/structures/fence_post.tscn",
+    "display_size": [
+      17.876404494382022,
+      74.0
+    ],
+    "uniform_scale": 0.4157303370786517
+  },
+  {
+    "name": "fog_edge",
+    "file": "art/cemetery_kit_v1/foreground/fog_edge.png",
+    "role": "VFX",
+    "folder": "foreground",
+    "ok": true,
+    "pixels": [
+      1672,
+      941
+    ],
+    "world_height": 160,
+    "transparent": true
+  }
+]

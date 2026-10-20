@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/props/long_bones.png" id="1"]
+[node name="long_bones" type="Node2D"]
+metadata/kit_id = "long_bones"
+metadata/role = "Prop"
+metadata/display_size = Vector2(15.9514, 13.0000)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -6.5000)
+scale = Vector2(0.03513514, 0.03513514)
+texture_filter = 4
+texture = ExtResource("1")

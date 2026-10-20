@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/structures/wall_straight.png" id="1"]
+[node name="wall_straight" type="Node2D"]
+metadata/kit_id = "wall_straight"
+metadata/role = "Structure"
+metadata/display_size = Vector2(256.0000, 103.1894)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -51.5947)
+scale = Vector2(0.56387665, 0.56387665)
+texture_filter = 4
+texture = ExtResource("1")
+[node name="SocketA" type="Marker2D" parent="."]
+position = Vector2(-125.4400, 0.0000)
+[node name="SocketB" type="Marker2D" parent="."]
+position = Vector2(125.4400, -38.1801)

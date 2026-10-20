@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Texture2D" path="res://art/cemetery_kit_v1/structures/fence_straight.png" id="1"]
+[node name="fence_straight" type="Node2D"]
+metadata/kit_id = "fence_straight"
+metadata/role = "Structure"
+metadata/display_size = Vector2(192.0000, 75.2775)
+metadata/contact_origin = "bottom_center"
+metadata/collision_owner = "program"
+[node name="Artwork" type="Sprite2D" parent="."]
+position = Vector2(0, -37.6388)
+scale = Vector2(0.42290749, 0.42290749)
+texture_filter = 4
+texture = ExtResource("1")
+[node name="SocketA" type="Marker2D" parent="."]
+position = Vector2(-86.4000, 0.0000)
+[node name="SocketB" type="Marker2D" parent="."]
+position = Vector2(86.4000, 0.0000)
