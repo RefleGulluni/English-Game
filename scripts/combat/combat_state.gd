@@ -8,6 +8,7 @@ signal inattention_tier_changed(tier_name: String)
 signal combo_discovered
 signal enemy_collapsed
 signal enemy_reassembled
+signal enemy_action_started(action: Dictionary)
 signal round_resolution_started
 signal round_completed
 
@@ -469,6 +470,8 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 			changed.emit()
 		return
 	var action := intent
+	# Read-only presentation notification. No animation wait or rule changes.
+	enemy_action_started.emit(action.duplicate(true))
 	if action["kind"] == "physical":
 		var incoming := int(action["damage"])
 		if battle_index == 9 and boss_phase == 2 and grave_pressure >= 5:

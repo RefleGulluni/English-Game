@@ -47,7 +47,7 @@ func _fight(world: Node) -> void:
 				world._invoke(int(card.instance_id), "hp" if action == "RESTORE" else "")
 				if before_echo == 0 and world.manager.state.echo == 15:
 					check(c.bone_remains and c.reassembly_countdown == 3 and world.player.input_locked, "collapse grants 15 Echo before final defeat; world stays locked")
-					check(world.get_node("WorldLoot").get_child_count() == 1 and world.manager.state.world_inventory.is_empty(), "special reward is a world object, not instant inventory")
+					check(world.get_node("LootLayer/WorldLoot").get_child_count() == 1 and world.manager.state.world_inventory.is_empty(), "special reward is a world object, not instant inventory")
 					await capture(world, "remains_loot")
 				if c.finished: break
 			if c.finished: break
@@ -67,7 +67,7 @@ func _run() -> void:
 	await wait_frames()
 	check(world.turns.phase == TURNS.Phase.EXPLORATION and not world.player.input_locked, "main scene starts in free exploration")
 	world.events.publish(&"enemy_collapsed", {"enemy_id": "enemy.grave_skeleton", "position": Vector2.ZERO})
-	check(world.manager.state.echo == 0 and world.get_node("WorldLoot").get_child_count() == 0, "presentation event alone cannot award gameplay rewards")
+	check(world.manager.state.echo == 0 and world.get_node("LootLayer/WorldLoot").get_child_count() == 0, "presentation event alone cannot award gameplay rewards")
 	check(not world.hud.combat_panel.visible and not world.hud.survival.text.contains("FOCUS"), "exploration HUD has no Focus/card wall")
 	await capture(world, "approach")
 	Input.action_press("world_right")
@@ -104,9 +104,9 @@ func _run() -> void:
 	check(world.turns.phase == TURNS.Phase.EXPLORATION and not world.player.input_locked and not world.hud.combat_panel.visible, "camera/HUD/input restore without a scene switch or forced pickup")
 	check(world.manager.state.echo == 20 and world.rewards.roller.roll_history.size() == 1, "15+5 Echo, exactly one special roll even with potential reassembly")
 	world.rewards.collapsed(world.skeleton.get_node("Logic"))
-	check(world.manager.state.echo == 20 and world.rewards.roller.roll_history.size() == 1 and world.get_node("WorldLoot").get_child_count() == 1, "replayed collapse event cannot farm Echo or special rolls")
+	check(world.manager.state.echo == 20 and world.rewards.roller.roll_history.size() == 1 and world.get_node("LootLayer/WorldLoot").get_child_count() == 1, "replayed collapse event cannot farm Echo or special rolls")
 	check(world.manager.state.world_inventory.is_empty(), "loot is not automatically absorbed")
-	var loot: Node2D = world.get_node("WorldLoot").get_child(0)
+	var loot: Node2D = world.get_node("LootLayer/WorldLoot").get_child(0)
 	check(not loot.can_interact(world.player), "far-away pickup denied")
 	Input.action_press("world_right")
 	for frame in range(150):
@@ -131,11 +131,11 @@ func _run() -> void:
 	var effect_scene := PackedScene.new()
 	effect_scene.pack(effect_node)
 	effect_node.free()
-	world.get_node("PresentationRouter").vfx_cues["observe_started"] = effect_scene
+	world.get_node("VFXLayer/PresentationRouter").vfx_cues["observe_started"] = effect_scene
 	world.events.publish(&"observe_started", {"position": world.skeleton.global_position})
-	check(world.get_node("PresentationRouter/VFXRoot").get_child_count() == 1 and world.manager.state.echo == 20, "art can plug a VFX scene into events without modifying gameplay")
+	check(world.get_node("VFXLayer/PresentationRouter/VFXRoot").get_child_count() == 1 and world.manager.state.echo == 20, "art can plug a VFX scene into events without modifying gameplay")
 	# Presentation can be removed without changing rewards or combat ownership.
-	world.get_node("PresentationRouter").queue_free()
+	world.get_node("VFXLayer/PresentationRouter").queue_free()
 	world.skeleton.get_node("VisualRoot").queue_free()
 	await wait_frames()
 	check(world.manager.state.echo == 20 and world.manager.state.world_inventory.size() == 1, "presentation removal does not erase gameplay state")

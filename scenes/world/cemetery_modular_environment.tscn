@@ -1,0 +1,757 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://scripts/world/cemetery_terrain.gd" id="1"]
+[ext_resource type="TileSet" path="res://art/cemetery_kit_v1/terrain/cemetery_tileset.tres" id="1_r6hio"]
+[ext_resource type="PackedScene" path="res://scenes/world/cemetery_lighting.tscn" id="2"]
+[ext_resource type="Shader" path="res://scripts/presentation/world_mist.gdshader" id="3"]
+[ext_resource type="Script" path="res://scripts/world/cemetery_prop.gd" id="3_aq0sl"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/structures/wall_straight.tscn" id="4_ijxm3"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/structures/fence_y.tscn" id="5_74kxe"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/structures/fence_post.tscn" id="6_uryxc"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/structures/wall_low.tscn" id="7_13k6n"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/structures/wall_collapsed.tscn" id="8_etyo4"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_01.tscn" id="9_pdsp4"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_02.tscn" id="10_wbi4p"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_03.tscn" id="11_c1ao2"]
+[ext_resource type="Script" path="res://scripts/presentation/world_atmosphere.gd" id="12_aq0sl"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_04.tscn" id="12_kmn7b"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_05.tscn" id="13_ucftb"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_06.tscn" id="14_yt8ly"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_07.tscn" id="15_53t0m"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/grave_08.tscn" id="16_kwkek"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/tree_a.tscn" id="17_6tgkr"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/tree_b.tscn" id="18_gkf4p"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/stone_chips.tscn" id="19_clf7q"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/bone_cluster.tscn" id="20_xvlqe"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/long_bones.tscn" id="21_fjpfi"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/funeral_cloth.tscn" id="22_a41d7"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/props/dead_weeds.tscn" id="23_jwssv"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/foreground/fence_foreground.tscn" id="24_60n1s"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/foreground/branch_left.tscn" id="25_v5i1k"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1hvf6"]
+a = Vector2(480, 440)
+b = Vector2(523.6123, 379.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cyb1a"]
+a = Vector2(523.6123, 379.5)
+b = Vector2(567.2246, 319)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_n8qr2"]
+a = Vector2(567.2246, 319)
+b = Vector2(610.8369, 258.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mblf6"]
+a = Vector2(610.8369, 258.5)
+b = Vector2(654.4492, 198)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_47ewy"]
+a = Vector2(654.4492, 198)
+b = Vector2(698.0615, 137.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_umfo5"]
+a = Vector2(698.0615, 137.5)
+b = Vector2(741.6738, 77)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oayxm"]
+a = Vector2(741.6738, 77)
+b = Vector2(785.28613, 16.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0rs2n"]
+a = Vector2(785.28613, 16.5)
+b = Vector2(828.89844, -44)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_remkm"]
+a = Vector2(828.89844, -44)
+b = Vector2(872.51074, -104.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cof5t"]
+a = Vector2(480, 560)
+b = Vector2(436.3877, 620.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vu5ty"]
+a = Vector2(436.3877, 620.5)
+b = Vector2(392.7754, 681)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x5gei"]
+a = Vector2(392.7754, 681)
+b = Vector2(349.1631, 741.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qlvo0"]
+a = Vector2(349.1631, 741.5)
+b = Vector2(305.55078, 802)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hqvfc"]
+a = Vector2(305.55078, 802)
+b = Vector2(261.93848, 862.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_najwr"]
+a = Vector2(261.93848, 862.5)
+b = Vector2(218.32619, 923)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_maam7"]
+a = Vector2(218.32619, 923)
+b = Vector2(174.71388, 983.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jjyed"]
+a = Vector2(174.71388, 983.5)
+b = Vector2(131.10158, 1044)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dx0l8"]
+a = Vector2(131.10158, 1044)
+b = Vector2(87.48927, 1104.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x3bdy"]
+a = Vector2(87.48927, 1104.5)
+b = Vector2(43.876972, 1165)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hk5rk"]
+a = Vector2(43.876972, 1165)
+b = Vector2(0.26467133, 1225.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kar8v"]
+size = Vector2(28, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4iwn"]
+size = Vector2(30, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usa7v"]
+size = Vector2(125, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bovvg"]
+size = Vector2(110, 20)
+
+[sub_resource type="ShaderMaterial" id="fog"]
+shader = ExtResource("3")
+shader_parameter/density = 0.055
+
+[node name="CemeteryModularEnvironment" type="Node2D" unique_id=1030005240]
+y_sort_enabled = true
+
+[node name="GroundTileMap" type="TileMapLayer" parent="." unique_id=877887209]
+modulate = Color(0.78, 0.81, 0.83, 1)
+z_index = -20
+position = Vector2(64, 64)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAAAAEAAAACAAAAAAABAAEAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAAEAAEAAAACAAAAAAAFAAEAAAACAAAAAAAGAAEAAAACAAAAAAAHAAEAAAACAAAAAAAIAAEAAAACAAAAAAAJAAEAAAACAAAAAAAKAAEAAAACAAAAAAALAAEAAAACAAAAAAAMAAEAAAACAAAAAAANAAEAAAACAAAAAAAOAAEAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAAEAAIAAAACAAAAAAAFAAIAAAACAAAAAAAGAAIAAAACAAAAAAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAACAAAAAAAKAAIAAAACAAAAAAALAAIAAAACAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAOAAIAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAAEAAMAAAACAAAAAAAFAAMAAAACAAAAAAAGAAMAAAACAAAAAAAHAAMAAAACAAAAAAAIAAMAAAACAAAAAAAJAAMAAAACAAAAAAAKAAMAAAACAAAAAAALAAMAAAACAAAAAAAMAAMAAAACAAAAAAANAAMAAAACAAAAAAAOAAMAAAACAAAAAAAAAAQAAAACAAAAAAABAAQAAAACAAAAAAACAAQAAAACAAAAAAADAAQAAAACAAAAAAAEAAQAAAACAAAAAAAFAAQAAAACAAAAAAAGAAQAAAACAAAAAAAHAAQAAAACAAAAAAAIAAQAAAACAAAAAAAJAAQAAAACAAAAAAAKAAQAAAACAAAAAAALAAQAAAACAAAAAAAMAAQAAAACAAAAAAANAAQAAAACAAAAAAAOAAQAAAACAAAAAAAAAAUAAAACAAAAAAABAAUAAAACAAAAAAACAAUAAAACAAAAAAADAAUAAAACAAAAAAAEAAUAAAACAAAAAAAFAAUAAAACAAAAAAAGAAUAAAACAAAAAAAHAAUAAAACAAAAAAAIAAUAAAACAAAAAAAJAAUAAAACAAAAAAAKAAUAAAACAAAAAAALAAUAAAACAAAAAAAMAAUAAAACAAAAAAANAAUAAAACAAAAAAAOAAUAAAACAAAAAAAAAAYAAAACAAAAAAABAAYAAAACAAAAAAACAAYAAAACAAAAAAADAAYAAAACAAAAAAAEAAYAAAACAAAAAAAFAAYAAAACAAAAAAAGAAYAAAACAAAAAAAHAAYAAAACAAAAAAAIAAYAAAACAAAAAAAJAAYAAAACAAAAAAAKAAYAAAACAAAAAAALAAYAAAACAAAAAAAMAAYAAAACAAAAAAANAAYAAAACAAAAAAAOAAYAAAACAAAAAAAAAAcAAAACAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAAAAAgAAAACAAAAAAABAAgAAAACAAAAAAACAAgAAAACAAAAAAADAAgAAAACAAAAAAAEAAgAAAACAAAAAAAFAAgAAAACAAAAAAAGAAgAAAACAAAAAAAHAAgAAAACAAAAAAAIAAgAAAACAAAAAAAJAAgAAAACAAAAAAAKAAgAAAACAAAAAAALAAgAAAACAAAAAAAMAAgAAAACAAAAAAANAAgAAAACAAAAAAAOAAgAAAACAAAAAAA=")
+tile_set = ExtResource("1_r6hio")
+script = ExtResource("1")
+terrain_names = PackedStringArray("wet_stone", "broken_stone", "mud", "moss", "cracked", "puddle_edge")
+
+[node name="GroundBlendLayer" type="TileMapLayer" parent="." unique_id=2005653756]
+modulate = Color(0.78, 0.81, 0.83, 1)
+z_index = -19
+position = Vector2(64, 64)
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAEAAIAAQANAAIAAAAFAAIAAQAFAAIAAAAGAAIAAQAFAAIAAAAHAAIAAQAFAAIAAAAIAAIAAQAFAAIAAAAJAAIAAQAFAAIAAAAKAAIAAQAFAAIAAAALAAIAAQAFAAIAAAAMAAIAAQAFAAIAAAANAAIAAQAFAAIAAAAOAAIAAQAHAAIAAAAAAAMAAQAJAAAAAAABAAMAAQABAAAAAAACAAMAAQABAAAAAAADAAMAAQABAAAAAAAEAAMAAQABAAAAAAAFAAMAAQADAAAAAAAGAAMAAQAJAAEAAAAHAAMAAQAFAAEAAAAIAAMAAQAHAAEAAAAJAAMAAQANAAAAAAAKAAMAAQABAAAAAAALAAMAAQABAAAAAAAMAAMAAQABAAAAAAANAAMAAQABAAAAAAAOAAMAAQADAAAAAAAAAAQAAQAMAAAAAAABAAQAAQAEAAAAAAACAAQAAQAEAAAAAAADAAQAAQAEAAAAAAAEAAQAAQAEAAAAAAAFAAQAAQAGAAAAAAAGAAQAAQAOAAEAAAAHAAQAAQANAAMAAAAIAAQAAQAFAAMAAAAJAAQAAQAHAAMAAAAKAAQAAQAMAAAAAAALAAQAAQAEAAAAAAAMAAQAAQAEAAAAAAANAAQAAQAEAAAAAAAOAAQAAQAGAAAAAAAEAAUAAQAPAAIAAAAFAAUAAQANAAQAAAAGAAUAAQAHAAQAAAAHAAUAAQANAAIAAAAIAAUAAQAFAAIAAAAJAAUAAQAHAAIAAAAKAAUAAQANAAQAAAALAAUAAQAHAAQAAAAMAAUAAQANAAIAAAANAAUAAQAFAAIAAAAOAAUAAQAHAAIAAAA=")
+tile_set = ExtResource("1_r6hio")
+script = ExtResource("1")
+terrain_names = PackedStringArray("wet_stone", "broken_stone", "moss", "cracked", "puddle_edge")
+atlas_material_axis = 1
+
+[node name="StructureLayer" type="Node2D" parent="." unique_id=624434420]
+y_sort_enabled = true
+
+[node name="Wall_90_0" type="Node2D" parent="StructureLayer" unique_id=1126606797]
+position = Vector2(128, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_1" type="Node2D" parent="StructureLayer" unique_id=1014625474]
+position = Vector2(381, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_2" type="Node2D" parent="StructureLayer" unique_id=1941499619]
+position = Vector2(634, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_3" type="Node2D" parent="StructureLayer" unique_id=1328390188]
+position = Vector2(887, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_4" type="Node2D" parent="StructureLayer" unique_id=1891389029]
+position = Vector2(1140, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_5" type="Node2D" parent="StructureLayer" unique_id=1390492121]
+position = Vector2(1393, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_6" type="Node2D" parent="StructureLayer" unique_id=1097026233]
+position = Vector2(1646, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_90_7" type="Node2D" parent="StructureLayer" unique_id=1005712473]
+position = Vector2(1899, 90)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_0" type="Node2D" parent="StructureLayer" unique_id=1356030842]
+position = Vector2(128, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_1" type="Node2D" parent="StructureLayer" unique_id=941764571]
+position = Vector2(381, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_2" type="Node2D" parent="StructureLayer" unique_id=1794581817]
+position = Vector2(634, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_3" type="Node2D" parent="StructureLayer" unique_id=1720517358]
+position = Vector2(887, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_4" type="Node2D" parent="StructureLayer" unique_id=1420107440]
+position = Vector2(1140, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_5" type="Node2D" parent="StructureLayer" unique_id=1603021134]
+position = Vector2(1393, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_6" type="Node2D" parent="StructureLayer" unique_id=2087495322]
+position = Vector2(1646, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="Wall_1100_7" type="Node2D" parent="StructureLayer" unique_id=1409454880]
+position = Vector2(1899, 1100)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("4_ijxm3")
+world_height = 103.1894
+occlusion_width = 122.88
+metadata/kit_module = "wall_straight"
+
+[node name="StructureFootprints" type="StaticBody2D" parent="StructureLayer" unique_id=1910195711]
+collision_mask = 2
+
+[node name="Fence_N_0" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=400883124]
+shape = SubResource("SegmentShape2D_1hvf6")
+
+[node name="Fence_N_1" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=361106861]
+shape = SubResource("SegmentShape2D_cyb1a")
+
+[node name="Fence_N_2" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1498968969]
+shape = SubResource("SegmentShape2D_n8qr2")
+
+[node name="Fence_N_3" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=749270322]
+shape = SubResource("SegmentShape2D_mblf6")
+
+[node name="Fence_N_4" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1475999737]
+shape = SubResource("SegmentShape2D_47ewy")
+
+[node name="Fence_N_5" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=410005622]
+shape = SubResource("SegmentShape2D_umfo5")
+
+[node name="Fence_N_6" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1563324768]
+shape = SubResource("SegmentShape2D_oayxm")
+
+[node name="Fence_N_7" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=87702215]
+shape = SubResource("SegmentShape2D_0rs2n")
+
+[node name="Fence_N_8" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1157468232]
+shape = SubResource("SegmentShape2D_remkm")
+
+[node name="Fence_S_0" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1382609917]
+shape = SubResource("SegmentShape2D_cof5t")
+
+[node name="Fence_S_1" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=461422292]
+shape = SubResource("SegmentShape2D_vu5ty")
+
+[node name="Fence_S_2" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=257436803]
+shape = SubResource("SegmentShape2D_x5gei")
+
+[node name="Fence_S_3" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1531782271]
+shape = SubResource("SegmentShape2D_qlvo0")
+
+[node name="Fence_S_4" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=858895278]
+shape = SubResource("SegmentShape2D_hqvfc")
+
+[node name="Fence_S_5" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=121297093]
+shape = SubResource("SegmentShape2D_najwr")
+
+[node name="Fence_S_6" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=753151038]
+shape = SubResource("SegmentShape2D_maam7")
+
+[node name="Fence_S_7" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=136698245]
+shape = SubResource("SegmentShape2D_jjyed")
+
+[node name="Fence_S_8" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=335943045]
+shape = SubResource("SegmentShape2D_dx0l8")
+
+[node name="Fence_S_9" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=217350701]
+shape = SubResource("SegmentShape2D_x3bdy")
+
+[node name="Fence_S_10" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=682705819]
+shape = SubResource("SegmentShape2D_hk5rk")
+
+[node name="@CollisionShape2D@2" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=821735857]
+position = Vector2(750, 820)
+shape = SubResource("RectangleShape2D_kar8v")
+
+[node name="@CollisionShape2D@3" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=335433433]
+position = Vector2(1510, 230)
+shape = SubResource("RectangleShape2D_o4iwn")
+
+[node name="@CollisionShape2D@4" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=921048332]
+position = Vector2(1360, 910)
+shape = SubResource("RectangleShape2D_usa7v")
+
+[node name="@CollisionShape2D@5" type="CollisionShape2D" parent="StructureLayer/StructureFootprints" unique_id=1507798346]
+position = Vector2(1600, 940)
+shape = SubResource("RectangleShape2D_bovvg")
+
+[node name="Fence_N_0" type="Node2D" parent="StructureLayer" unique_id=1175982995]
+position = Vector2(501.5154, 440)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_1" type="Node2D" parent="StructureLayer" unique_id=279787498]
+position = Vector2(545.1277, 379.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_2" type="Node2D" parent="StructureLayer" unique_id=1147676465]
+position = Vector2(588.74, 319)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_3" type="Node2D" parent="StructureLayer" unique_id=1070578788]
+position = Vector2(632.3523, 258.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_4" type="Node2D" parent="StructureLayer" unique_id=1989363355]
+position = Vector2(675.9646, 198)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_5" type="Node2D" parent="StructureLayer" unique_id=1529274975]
+position = Vector2(719.5769, 137.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_6" type="Node2D" parent="StructureLayer" unique_id=633643048]
+position = Vector2(763.1892, 77)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_7" type="Node2D" parent="StructureLayer" unique_id=396774711]
+position = Vector2(806.8015, 16.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_N_8" type="Node2D" parent="StructureLayer" unique_id=1916737601]
+position = Vector2(850.4138, -44)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_0" type="Node2D" parent="StructureLayer" unique_id=1086551458]
+position = Vector2(457.9031, 620.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_1" type="Node2D" parent="StructureLayer" unique_id=939964924]
+position = Vector2(414.2908, 681)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_2" type="Node2D" parent="StructureLayer" unique_id=1300852028]
+position = Vector2(370.6785, 741.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_3" type="Node2D" parent="StructureLayer" unique_id=1587012714]
+position = Vector2(327.0662, 802)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_4" type="Node2D" parent="StructureLayer" unique_id=1847879163]
+position = Vector2(283.4539, 862.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_5" type="Node2D" parent="StructureLayer" unique_id=1379716840]
+position = Vector2(239.84158, 923)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_6" type="Node2D" parent="StructureLayer" unique_id=682200900]
+position = Vector2(196.22928, 983.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_7" type="Node2D" parent="StructureLayer" unique_id=980742284]
+position = Vector2(152.61697, 1044)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_8" type="Node2D" parent="StructureLayer" unique_id=759492865]
+position = Vector2(109.00468, 1104.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_9" type="Node2D" parent="StructureLayer" unique_id=515547699]
+position = Vector2(65.39237, 1165)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="Fence_S_10" type="Node2D" parent="StructureLayer" unique_id=1570856015]
+position = Vector2(21.780071, 1225.5)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("5_74kxe")
+world_height = 110.0
+occlusion_width = 27.911903686523438
+metadata/kit_module = "fence_y"
+
+[node name="GatePost440" type="Node2D" parent="StructureLayer" unique_id=432604566]
+position = Vector2(480, 440)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("6_uryxc")
+world_height = 74.0
+occlusion_width = 24.0
+metadata/kit_module = "fence_post"
+
+[node name="GatePost560" type="Node2D" parent="StructureLayer" unique_id=1821387071]
+position = Vector2(480, 560)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("6_uryxc")
+world_height = 74.0
+occlusion_width = 24.0
+metadata/kit_module = "fence_post"
+
+[node name="BrokenLowWall" type="Node2D" parent="StructureLayer" unique_id=992085690]
+position = Vector2(1360, 910)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("7_13k6n")
+world_height = 100.9339
+occlusion_width = 122.88
+metadata/kit_module = "wall_low"
+
+[node name="CollapsedWall" type="Node2D" parent="StructureLayer" unique_id=35201244]
+position = Vector2(1600, 940)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("8_etyo4")
+world_height = 91.348
+occlusion_width = 122.88
+metadata/kit_module = "wall_collapsed"
+
+[node name="PropLayer" type="Node2D" parent="." unique_id=1500624228]
+y_sort_enabled = true
+
+[node name="Headstone_0_370" type="Node2D" parent="PropLayer" unique_id=501778221]
+position = Vector2(631, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("9_pdsp4")
+world_height = 102.0
+occlusion_width = 31.8131982421875
+metadata/kit_module = "grave_01"
+
+[node name="Headstone_0_680" type="Node2D" parent="PropLayer" unique_id=451134064]
+position = Vector2(631, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("10_wbi4p")
+world_height = 75.0
+occlusion_width = 32.90750244140625
+metadata/kit_module = "grave_02"
+
+[node name="Headstone_1_370" type="Node2D" parent="PropLayer" unique_id=1344904502]
+position = Vector2(801, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("11_c1ao2")
+world_height = 113.0
+occlusion_width = 28.075775756835938
+metadata/kit_module = "grave_03"
+
+[node name="Headstone_1_680" type="Node2D" parent="PropLayer" unique_id=649343036]
+position = Vector2(801, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("12_kmn7b")
+world_height = 91.0
+occlusion_width = 31.942225341796874
+metadata/kit_module = "grave_04"
+
+[node name="Headstone_2_370" type="Node2D" parent="PropLayer" unique_id=510343447]
+position = Vector2(971, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("13_ucftb")
+world_height = 85.0
+occlusion_width = 31.3638720703125
+metadata/kit_module = "grave_05"
+
+[node name="Headstone_2_680" type="Node2D" parent="PropLayer" unique_id=319887511]
+position = Vector2(971, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("14_yt8ly")
+world_height = 93.0
+occlusion_width = 35.495665283203124
+metadata/kit_module = "grave_06"
+
+[node name="Headstone_3_370" type="Node2D" parent="PropLayer" unique_id=231472296]
+position = Vector2(1141, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("15_53t0m")
+world_height = 94.0
+occlusion_width = 31.007567138671874
+metadata/kit_module = "grave_07"
+
+[node name="Headstone_3_680" type="Node2D" parent="PropLayer" unique_id=1861406589]
+position = Vector2(1141, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("16_kwkek")
+world_height = 61.0
+occlusion_width = 24.0
+metadata/kit_module = "grave_08"
+
+[node name="Headstone_4_370" type="Node2D" parent="PropLayer" unique_id=2053705852]
+position = Vector2(1311, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("9_pdsp4")
+world_height = 102.0
+occlusion_width = 31.8131982421875
+metadata/kit_module = "grave_01"
+
+[node name="Headstone_4_680" type="Node2D" parent="PropLayer" unique_id=1467922367]
+position = Vector2(1311, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("10_wbi4p")
+world_height = 75.0
+occlusion_width = 32.90750244140625
+metadata/kit_module = "grave_02"
+
+[node name="Headstone_5_370" type="Node2D" parent="PropLayer" unique_id=1947493975]
+position = Vector2(1481, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("11_c1ao2")
+world_height = 113.0
+occlusion_width = 28.075775756835938
+metadata/kit_module = "grave_03"
+
+[node name="Headstone_5_680" type="Node2D" parent="PropLayer" unique_id=1910102505]
+position = Vector2(1481, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("12_kmn7b")
+world_height = 91.0
+occlusion_width = 31.942225341796874
+metadata/kit_module = "grave_04"
+
+[node name="Headstone_6_370" type="Node2D" parent="PropLayer" unique_id=946909985]
+position = Vector2(1651, 370)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("13_ucftb")
+world_height = 85.0
+occlusion_width = 31.3638720703125
+metadata/kit_module = "grave_05"
+
+[node name="Headstone_6_680" type="Node2D" parent="PropLayer" unique_id=1379727658]
+position = Vector2(1651, 680)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("14_yt8ly")
+world_height = 93.0
+occlusion_width = 35.495665283203124
+metadata/kit_module = "grave_06"
+
+[node name="TreeWest" type="Node2D" parent="PropLayer" unique_id=1492941242]
+position = Vector2(750, 820)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("17_6tgkr")
+world_height = 270.0
+occlusion_width = 112.472255859375
+metadata/kit_module = "tree_a"
+
+[node name="TreeEast" type="Node2D" parent="PropLayer" unique_id=1251273108]
+position = Vector2(1510, 230)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("18_gkf4p")
+world_height = 235.0
+occlusion_width = 107.83084716796874
+metadata/kit_module = "tree_b"
+
+[node name="StoneChips" type="Node2D" parent="PropLayer" unique_id=1214830914]
+position = Vector2(1230, 790)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("19_clf7q")
+world_height = 12.0
+occlusion_width = 24.0
+metadata/kit_module = "stone_chips"
+
+[node name="BoneCluster" type="Node2D" parent="PropLayer" unique_id=791398342]
+position = Vector2(980, 810)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("20_xvlqe")
+world_height = 22.0
+occlusion_width = 24.0
+metadata/kit_module = "bone_cluster"
+
+[node name="LongBones" type="Node2D" parent="PropLayer" unique_id=331668249]
+position = Vector2(1170, 780)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("21_fjpfi")
+world_height = 13.0
+occlusion_width = 24.0
+metadata/kit_module = "long_bones"
+
+[node name="FuneralCloth" type="Node2D" parent="PropLayer" unique_id=1767372373]
+position = Vector2(1640, 840)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("22_a41d7")
+world_height = 17.0
+occlusion_width = 24.0
+metadata/kit_module = "funeral_cloth"
+
+[node name="DeadWeeds" type="Node2D" parent="PropLayer" unique_id=55434237]
+position = Vector2(600, 850)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("23_jwssv")
+world_height = 38.0
+occlusion_width = 24.0
+metadata/kit_module = "dead_weeds"
+
+[node name="ForegroundLayer" type="Node2D" parent="." unique_id=1242284360]
+z_index = 5
+
+[node name="ApproachRail" type="Node2D" parent="ForegroundLayer" unique_id=109300648]
+z_index = 5
+position = Vector2(700, 535)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("24_60n1s")
+world_height = 125.0
+foreground = true
+occlusion_width = 118.95197021484374
+metadata/kit_module = "fence_foreground"
+
+[node name="OverhangingBranch" type="Node2D" parent="ForegroundLayer" unique_id=1874632110]
+z_index = 5
+position = Vector2(800, 510)
+script = ExtResource("3_aq0sl")
+visual_scene = ExtResource("25_v5i1k")
+world_height = 150.0
+foreground = true
+occlusion_width = 99.963310546875
+metadata/kit_module = "branch_left"
+
+[node name="FogLayer" type="Node2D" parent="." unique_id=141100796]
+z_index = 20
+
+[node name="LowMist" type="Polygon2D" parent="FogLayer" unique_id=96355819]
+material = SubResource("fog")
+polygon = PackedVector2Array(0, 0, 1900, 0, 1900, 1100, 0, 1100)
+uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+
+[node name="LightingLayer" type="Node2D" parent="." unique_id=1611231887 instance=ExtResource("2")]
+script = ExtResource("12_aq0sl")

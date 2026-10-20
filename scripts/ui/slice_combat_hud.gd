@@ -9,6 +9,7 @@ signal overlay_changed(open: bool)
 signal restart_requested
 signal force_drop_changed(value: bool)
 @export var hud_theme: Theme
+@export var word_sigil_scene: PackedScene
 
 var ui_root: Control
 var survival: Label
@@ -41,6 +42,15 @@ func _ready() -> void:
 	ui_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(ui_root)
+	# Text must stay readable over any modular terrain/art replacement.
+	var header := Panel.new()
+	header.position = Vector2(12, 8)
+	header.size = Vector2(770, 94)
+	header.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var header_style := StyleBoxFlat.new()
+	header_style.bg_color = Color(0.025, 0.04, 0.04, 0.84)
+	header.add_theme_stylebox_override("panel", header_style)
+	ui_root.add_child(header)
 	var top := VBoxContainer.new()
 	top.position = Vector2(24, 16)
 	top.size = Vector2(1160, 100)
@@ -53,6 +63,8 @@ func _ready() -> void:
 	top.add_child(label("WASD / ARROWS move · E interact · L Lexicon · TAB Run Bag · F2 QA", 14))
 	prompt = label("", 20)
 	prompt.name = "InteractionPrompt"
+	prompt.add_theme_constant_override("outline_size", 5)
+	prompt.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.02, 0.9))
 	prompt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ui_root.add_child(prompt)
 	prompt.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
@@ -60,6 +72,8 @@ func _ready() -> void:
 	prompt.offset_bottom = -58
 	toast = label("", 16)
 	toast.name = "RewardToast"
+	toast.add_theme_constant_override("outline_size", 4)
+	toast.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.02, 0.9))
 	toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ui_root.add_child(toast)
 	toast.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
@@ -71,7 +85,7 @@ func _ready() -> void:
 	combat_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
 	combat_panel.offset_left = 16
 	combat_panel.offset_right = -16
-	combat_panel.offset_top = -368
+	combat_panel.offset_top = -430 if word_sigil_scene != null else -368
 	combat_panel.offset_bottom = -16
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.045, 0.075, 0.09, 0.96)
@@ -169,12 +183,22 @@ func refresh() -> void:
 		cards.add_child(column)
 		var uid := int(card.instance_id)
 		var reason := combat.disabled_reason(str(card.name), uid)
-		var use_button := button("%s · %d FOCUS\n%s" % [card.name, combat.card_cost(card), "REPLACE" if combat.deck.mulligan_pending and uid in selected_mulligan else ("CLICK TO REPLACE (MAX 2)" if combat.deck.mulligan_pending else reason)], func(): _press_card(uid))
-		use_button.name = "Sigil_%d" % uid
-		use_button.custom_minimum_size.y = 56
-		use_button.disabled = overlay_open or (not reason.is_empty() and not combat.deck.mulligan_pending)
-		use_button.mouse_entered.connect(func(): show_card_detail(card))
-		column.add_child(use_button)
+		if word_sigil_scene != null and card.name in ["OBSERVE", "SHATTER", "ERODE"]:
+			var sigil := word_sigil_scene.instantiate() as Control
+			column.add_child(sigil)
+			sigil.name = "Sigil_%d" % uid
+			var state := "RETAINED" if uid in combat.deck.retained_cards else "IDLE"
+			if combat.deck.mulligan_pending and uid in selected_mulligan: state = "SELECTED"
+			sigil.set_presentation({"word_id": card.name, "instance_id": uid, "focus_cost": combat.card_cost(card), "state": state, "enabled": not overlay_open and (reason.is_empty() or combat.deck.mulligan_pending), "reason": "Click to replace (max 2)" if combat.deck.mulligan_pending else reason})
+			sigil.invocation_requested.connect(_press_card)
+			sigil.mouse_entered.connect(func(): show_card_detail(card))
+		else:
+			var use_button := button("%s · %d FOCUS\n%s" % [card.name, combat.card_cost(card), "REPLACE" if combat.deck.mulligan_pending and uid in selected_mulligan else ("CLICK TO REPLACE (MAX 2)" if combat.deck.mulligan_pending else reason)], func(): _press_card(uid))
+			use_button.name = "Sigil_%d" % uid
+			use_button.custom_minimum_size.y = 118 if word_sigil_scene != null else 56
+			use_button.disabled = overlay_open or (not reason.is_empty() and not combat.deck.mulligan_pending)
+			use_button.mouse_entered.connect(func(): show_card_detail(card))
+			column.add_child(use_button)
 		var retain := button("RETAINED" if uid in combat.deck.retained_cards else "RETAIN", func(): retain_requested.emit(uid))
 		retain.name = "Retain_%d" % uid
 		retain.disabled = overlay_open or not combat.retain_disabled_reason(card).is_empty()

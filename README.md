@@ -1,12 +1,14 @@
 # English Game
 
-Godot 4 project. Current entry: **0.9 Milestone 01 — Broken Graveyard Vertical Slice**, not the entire 0.9 release.
+Godot 4 project. Current entry: **0.9 — Broken Graveyard Modular 2.5D Rebuild**, not the entire 0.9 release.
 
 Run the project, move with WASD/arrows, approach the gate and press **E** to ENTER. Approach the Skeleton, confirm the opening hand, then use the existing Word Actions/Retain/Reaction system. First collapse gives 15 automatic Echo and rolls a real world object. Bone Remains have 10 Integrity and reassemble after **3 completed rounds**; clearing them grants another 5 Echo and restores movement. Walk to a dropped object and press **E** to PICK UP. **L** opens the permission-safe Lexicon; **Tab** opens the Run Bag. **R** replays after victory/defeat. **F2** offers forced-drop acceptance mode and ordinary 10% mode.
 
-First-delivery debug acceptance mode intentionally forces Weathered Chisel; ordinary mode uses 10%. Chisel is collected into Run State only, with no invented combat effect. All art and sound remain placeholders/empty hooks. The old 0.8 screen is preserved at `scenes/ui/legacy_combat.tscn` for regression, not used as the new combat page. This slice stays in one moving 2D world throughout combat.
+Debug acceptance mode intentionally forces Weathered Chisel; ordinary mode uses 10%. Chisel is collected into Run State only, with no invented combat effect. Runtime terrain uses editable TileMap layers, free-placed props, foot-pivot sorting, independent foreground/fog/lighting, and separate character visual scenes. The old whole-ground painting is reference-only. Art/audio are first-pass production assets, not a claim of final polish. The old 0.8 screen is preserved at `scenes/ui/legacy_combat.tscn` for regression, not used as the new combat page. This slice stays in one moving 2D world throughout combat.
 
-See [`docs/BROKEN_GRAVEYARD_M01.md`](docs/BROKEN_GRAVEYARD_M01.md) for delivery scope, temporary values, known limitations and QA, and [`docs/ART_CODE_CONTRACT_0_9.md`](docs/ART_CODE_CONTRACT_0_9.md) for art ownership and integration slots. Until this slice is accepted, do not expand to the other six Cemetery scenes, Keeper or prologue.
+See [`docs/MODULAR_2_5D_CONTRACT.md`](docs/MODULAR_2_5D_CONTRACT.md) for the current layer, animation and event contracts. [`docs/BROKEN_GRAVEYARD_M01.md`](docs/BROKEN_GRAVEYARD_M01.md) is the historical first logic delivery, and [`docs/ART_CODE_CONTRACT_0_9.md`](docs/ART_CODE_CONTRACT_0_9.md) retains gameplay/art ownership rules. Until this slice is accepted, do not expand to the other six Cemetery scenes, Keeper or prologue.
+
+Current rebuild delivery and limitations: [`docs/BROKEN_GRAVEYARD_MODULAR_REBUILD.md`](docs/BROKEN_GRAVEYARD_MODULAR_REBUILD.md).
 
 ## Historical 0.8 systems retained
 

@@ -2,7 +2,7 @@
 [ext_resource type="Script" path="res://scripts/world/broken_graveyard.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/GraveSkeleton.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://art/environments/env_broken_graveyard_visual.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/world/cemetery_modular_environment.tscn" id="4"]
 [ext_resource type="Script" path="res://scripts/world/world_interactable.gd" id="5"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay_events.gd" id="6"]
 [ext_resource type="Script" path="res://scripts/combat/slice_turn_controller.gd" id="7"]
@@ -24,13 +24,20 @@ size = Vector2(20, 540)
 [sub_resource type="RectangleShape2D" id="grave"]
 size = Vector2(42, 60)
 [node name="BrokenGraveyard" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1")
-[node name="VisualRoot" type="Node2D" parent="."]
-[node name="EnvironmentVisual" parent="VisualRoot" instance=ExtResource("4")]
+[node name="Environment" parent="." instance=ExtResource("4")]
+y_sort_enabled = true
+[node name="CharacterLayer" type="Node2D" parent="."]
+y_sort_enabled = true
+[node name="LootLayer" type="Node2D" parent="."]
+y_sort_enabled = true
+[node name="VFXLayer" type="Node2D" parent="."]
+z_index = 10
 [node name="CollisionRoot" type="StaticBody2D" parent="."]
 collision_mask = 2
 [node name="North" type="CollisionShape2D" parent="CollisionRoot"]
-position = Vector2(950, 10)
+position = Vector2(950, 110)
 shape = SubResource("horizontal")
 [node name="South" type="CollisionShape2D" parent="CollisionRoot"]
 position = Vector2(950, 1090)
@@ -42,9 +49,11 @@ shape = SubResource("vertical")
 position = Vector2(1890, 550)
 shape = SubResource("vertical")
 [node name="FenceNorth" type="CollisionShape2D" parent="CollisionRoot"]
+disabled = true
 position = Vector2(480, 220)
 shape = SubResource("fence_north")
 [node name="FenceSouth" type="CollisionShape2D" parent="CollisionRoot"]
+disabled = true
 position = Vector2(480, 830)
 shape = SubResource("fence_south")
 [node name="Grave_0_340" type="CollisionShape2D" parent="CollisionRoot"]
@@ -93,9 +102,9 @@ shape = SubResource("grave")
 position = Vector2(480, 500)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gate"]
 shape = SubResource("gate_shape")
-[node name="Player" parent="." instance=ExtResource("2")]
+[node name="Player" parent="CharacterLayer" instance=ExtResource("2")]
 position = Vector2(220, 500)
-[node name="GraveSkeleton" parent="." instance=ExtResource("3")]
+[node name="GraveSkeleton" parent="CharacterLayer" instance=ExtResource("3")]
 position = Vector2(1060, 500)
 [node name="Entrance" type="Node2D" parent="."]
 position = Vector2(420, 500)
@@ -105,7 +114,8 @@ position = Vector2(1700, 500)
 script = ExtResource("5")
 action = &"LEAVE"
 display_name = "Broken Graveyard"
-[node name="WorldLoot" type="Node2D" parent="."]
+[node name="WorldLoot" type="Node2D" parent="LootLayer"]
+y_sort_enabled = true
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
@@ -121,5 +131,5 @@ script = ExtResource("8")
 [node name="RewardController" type="Node" parent="Systems"]
 script = ExtResource("9")
 chisel = ExtResource("10")
-[node name="PresentationRouter" parent="." instance=ExtResource("12")]
+[node name="PresentationRouter" parent="VFXLayer" instance=ExtResource("12")]
 [node name="CombatHUD" parent="." instance=ExtResource("11")]
