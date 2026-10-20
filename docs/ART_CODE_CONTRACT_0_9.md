@@ -1,5 +1,7 @@
 # 0.9 M01 · 程序 / 美术接入契约
 
+> Modular 2.5D 重构补充：运行地图由 `scenes/world/cemetery_modular_environment.tscn` 的真实 TileMapLayer 和独立物件构成。旧 `env_broken_graveyard_visual.tscn` / ground.png 保留作历史参考，不再整图铺为地图主体。详细新契约见 `MODULAR_2_5D_CONTRACT.md`。
+
 **Gameplay owns state. Art owns presentation. One Godot project is the integration center.**
 
 本仓库的程序分支与美术分支可以使用独立 worktree，隔离文件写入；它们仍是同一 Git 项目，不是重新制作两套不同工程。不要两组同时覆盖同一份工作目录。程序不会擅自导入美术分支尚待验收的概念图。

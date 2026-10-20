@@ -63,7 +63,7 @@ func _run() -> void:
 	world.combat.enemy.hp = 1
 	world.combat.focus = 20
 	FIXTURE.play(world.combat, "STRIKE")
-	check(world.manager.state.echo == 15 and world.get_node("WorldLoot").get_child_count() == 0, "no-drop mode still commits Echo, creates no fake loot object")
+	check(world.manager.state.echo == 15 and world.get_node("LootLayer/WorldLoot").get_child_count() == 0, "no-drop mode still commits Echo, creates no fake loot object")
 	FIXTURE.play(world.combat, "SHATTER")
 	FIXTURE.play(world.combat, "SHATTER")
 	await create_timer(0.8).timeout

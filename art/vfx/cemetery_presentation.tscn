@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" path="res://art/vfx/word_invocation.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://art/vfx/reassembly_tension.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://art/vfx/loot_glint.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/vfx/bone_scatter.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://art/cemetery_kit_v1/vfx/dust_burst.tscn" id="11"]
 [node name="CemeteryPresentation" type="Node2D"]
 script = ExtResource("1")
 audio_cues = {"enemy_collapsed": ExtResource("2"), "enemy_reassembled": ExtResource("3"), "special_loot_spawned": ExtResource("4"), "loot_picked_up": ExtResource("5")}
-vfx_cues = {"echo_spawned": ExtResource("6"), "word_sigil_invoked": ExtResource("7"), "enemy_reassembled": ExtResource("8")}
+vfx_cues = {"echo_spawned": ExtResource("6"), "word_sigil_invoked": ExtResource("7"), "enemy_reassembled": ExtResource("8"), "enemy_collapsed": ExtResource("10"), "enemy_exposed": ExtResource("11")}
 [node name="VFXRoot" type="Node2D" parent="."]
 [node name="AudioRoot" type="Node2D" parent="."]

@@ -9,6 +9,8 @@ func check(value: bool, message: String) -> void:
 
 func _initialize() -> void:
 	var c := CombatState.new()
+	var attack_notifications: Array = []
+	c.enemy_action_started.connect(func(action): attack_notifications.append(action))
 	c.start_battle(7, {"enemy_profile": DATA.profile(), "reassembly_rounds": DATA.reassembly_rounds, "remains_integrity": DATA.remains_integrity})
 	c.finish_mulligan()
 	c.enemy.hp = 1 # Unit fixture: isolate the transition, not a claimed legal playthrough.
@@ -20,6 +22,7 @@ func _initialize() -> void:
 		check(c.bone_remains and c.reassembly_countdown == left, "no early reassembly")
 	c.end_player_turn()
 	check(not c.bone_remains and c.completed_rounds == rounds + 3 and c.enemy.hp == 12 and c.enemy.structure == 6, "third complete round restores half HP and Structure")
+	check(attack_notifications.is_empty(), "Bone Remains rounds never request a fake attack animation")
 	c.enemy.hp = 1
 	c.focus = 20
 	FIXTURE.play(c, "STRIKE")
@@ -30,6 +33,16 @@ func _initialize() -> void:
 	check(c.remains_hp == 7, "STRIKE deals three Integrity")
 	FIXTURE.play(c, "SHATTER")
 	check(c.finished and c.hp > 0 and c.remains_hp == 0, "SHATTER deals eight Integrity and clears encounter")
+	var bound := CombatState.new()
+	bound.start_battle(7, {"enemy_profile": DATA.profile()})
+	bound.finish_mulligan()
+	bound.enemy_action_started.connect(func(action): attack_notifications.append(action))
+	FIXTURE.play(bound, "BIND")
+	bound.end_player_turn()
+	check(attack_notifications.is_empty(), "BIND-skipped action never requests a fake attack")
+	bound.end_player_turn()
+	if bound.turn_ending: bound.resolve_enemy_action(false)
+	check(attack_notifications.size() == 1, "a genuinely resolved enemy action emits exactly one animation cue")
 	var state := RunState.new()
 	check(state.grant_world_echo_once("enemy:first", 15) and not state.grant_world_echo_once("enemy:first", 15) and state.echo == 15, "disperse Echo ledger prevents repeat farming")
 	check(state.claim_world_loot("drop:1", "relic.weathered_chisel") and not state.claim_world_loot("drop:1", "relic.weathered_chisel"), "same object cannot be collected twice")

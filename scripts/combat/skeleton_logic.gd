@@ -26,8 +26,9 @@ func sync() -> void:
 	if not previous.is_empty():
 		if int(current.hp) < int(previous.hp): events.publish(&"enemy_damaged", {"enemy_id": data.id, "component": "hp", "amount": int(previous.hp) - int(current.hp)})
 		if int(current.integrity) < int(previous.integrity): events.publish(&"enemy_damaged", {"enemy_id": data.id, "component": "integrity", "amount": int(previous.integrity) - int(current.integrity)})
+		if int(current.structure) < int(previous.structure): events.publish(&"enemy_damaged", {"enemy_id": data.id, "component": "structure", "amount": int(previous.structure) - int(current.structure)})
 		if current.structure != previous.structure: events.publish(&"enemy_structure_changed", {"enemy_id": data.id, "value": current.structure})
-		if int(previous.structure) > 0 and int(current.structure) == 0: events.publish(&"enemy_exposed", {"enemy_id": data.id})
+		if int(previous.structure) > 0 and int(current.structure) == 0: events.publish(&"enemy_exposed", {"enemy_id": data.id, "position": get_parent().global_position + Vector2(0, -65)})
 	previous = current
 	# Presentation receives a semantic snapshot. It cannot change the combat model.
 	for child in get_parent().get_node("VisualRoot").get_children():

@@ -12,8 +12,10 @@ var encounter_cleared := false
 var event_trace: Array[Dictionary] = []
 var camera_tween: Tween
 var previous_corruption: Dictionary = {}
-@onready var player = $Player
-@onready var skeleton = $GraveSkeleton
+@onready var player = $CharacterLayer/Player
+@onready var skeleton = $CharacterLayer/GraveSkeleton
+@onready var loot_layer = $LootLayer/WorldLoot
+@onready var presentation = $VFXLayer/PresentationRouter
 @onready var events = $Systems/Events
 @onready var turns = $Systems/TurnController
 @onready var interactions = $Systems/InteractionSystem
@@ -38,8 +40,8 @@ func _ready() -> void:
 	$Exit.enabled = false
 	events.occurred.connect(_on_event)
 	rewards.qa_force_drop = qa_force_chisel
-	rewards.bind(manager.state, events, player, $WorldLoot, interactions)
-	$PresentationRouter.bind(events)
+	rewards.bind(manager.state, events, player, loot_layer, interactions)
+	presentation.bind(events)
 	hud.bind(manager.state, combat)
 	hud.action_requested.connect(_invoke)
 	hud.retain_requested.connect(_retain)
@@ -53,11 +55,13 @@ func _ready() -> void:
 	hud.restart_requested.connect(restart)
 	combat.battle_finished.connect(_battle_finished)
 	combat.changed.connect(_combat_changed)
+	combat.enemy_action_started.connect(func(action):
+		events.publish(&"enemy_attack_started", {"enemy_id": "enemy.grave_skeleton", "position": skeleton.global_position, "action": action.word, "kind": action.kind}))
 	for word in manager.learning.words.values():
 		word.changed.connect(_word_changed.bind(word.lemma))
 	camera.position = player.position + Vector2(0, 60)
 	hud.refresh()
-	hud.announce("Walk east to the gate. Press E when ENTER appears. Geometric placeholder art.")
+	hud.announce("Walk east to the gate. Press E when ENTER appears.")
 	if not manager.learning.load_notice.is_empty():
 		hud.show_overlay("KNOWLEDGE SAVE WARNING", manager.learning.load_notice, [])
 
@@ -76,7 +80,7 @@ func _enter_graveyard(_action: StringName) -> void:
 	$Entrance.enabled = false
 	$Gate/CollisionShape2D.set_deferred("disabled", true)
 	manager.state.current_node_id = "scene.cemetery.broken_graveyard"
-	hud.place_label.text = "ENGLISH GAME 0.9 · BROKEN GRAVEYARD · PLACEHOLDER ART"
+	hud.place_label.text = "ENGLISH GAME 0.9 · BROKEN GRAVEYARD"
 	events.publish(&"scene_entered", {"scene_id": manager.state.current_node_id})
 	hud.announce("A Grave Skeleton guards the path. Approach to engage.")
 
@@ -105,6 +109,9 @@ func start_encounter() -> void:
 	encounter_started = true
 	turns.set_phase(TURNS.Phase.COMBAT_ENTER)
 	_update_lock()
+	player.face_direction(skeleton.global_position - player.global_position)
+	for visual in skeleton.get_node("VisualRoot").get_children():
+		if visual.has_method("present_motion"): visual.present_motion(Vector2.ZERO, player.global_position - skeleton.global_position)
 	var data: Resource = skeleton.get_node("Logic").data
 	var node := {"id": "broken_graveyard_skeleton", "title": "GRAVE SKELETON", "type": "encounter", "words": ["REASSEMBLE", "REMAINS", "SCATTER", "ERODE", "TOXIC"], "tags": ["RISK", "COMBAT"], "biome": "cemetery", "primary": ""}
 	node.primary = manager.learning.choose_target(node, manager.rng, 0)
@@ -133,10 +140,10 @@ func _invoke(uid: int, restore_target: String) -> void:
 	for candidate in combat.deck.hand:
 		if int(candidate.instance_id) == uid: card = candidate; break
 	if card.is_empty(): return
-	events.publish(&"word_sigil_selected", {"word_id": card.name, "instance_id": uid})
+	events.publish(&"word_sigil_selected", {"word_id": card.name, "instance_id": uid, "position": player.global_position})
 	if card.name == "OBSERVE": events.publish(&"observe_started", {"word_id": "OBSERVE"})
 	if turns.invoke(uid, restore_target):
-		events.publish(&"word_sigil_invoked", {"word_id": card.name, "instance_id": uid})
+		events.publish(&"word_sigil_invoked", {"word_id": card.name, "instance_id": uid, "position": player.global_position})
 		if card.name == "OBSERVE": events.publish(&"observe_resolved", {"clarity": combat.clarity_name()})
 		if card in combat.deck.exhaust_pile: events.publish(&"word_sigil_exhausted", {"word_id": card.name, "instance_id": uid})
 		hud.refresh()
@@ -174,7 +181,7 @@ func _battle_finished(victory: bool) -> void:
 		turns.set_phase(TURNS.Phase.EXPLORATION)
 		_update_lock()
 		events.publish(&"combat_ended", {"victory": true})
-		hud.announce("Remains cleared. Walk to any glint and press E to PICK UP. Pickup is optional." if $WorldLoot.get_children().any(func(loot): return loot.visible) else "Remains cleared. You can explore freely again.")
+		hud.announce("Remains cleared. Walk to any glint and press E to PICK UP. Pickup is optional." if loot_layer.get_children().any(func(loot): return loot.visible) else "Remains cleared. You can explore freely again.")
 		if not manager.learning.save_error.is_empty(): hud.show_overlay("KNOWLEDGE SAVE WARNING", manager.learning.save_error, []))
 
 func _on_event(event_id: StringName, payload: Dictionary) -> void:
