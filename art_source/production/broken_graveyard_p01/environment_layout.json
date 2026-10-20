@@ -1,0 +1,730 @@
+{
+  "world": [
+    1900,
+    1100
+  ],
+  "collision_owner": "scenes/world/world_broken_graveyard.tscn",
+  "collision_changed": false,
+  "placements": [
+    {
+      "name": "Foundation",
+      "texture": "ground",
+      "position": [
+        0,
+        0
+      ],
+      "display": [
+        1900,
+        1100
+      ],
+      "parent": "BackgroundGround",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "NorthWall0",
+      "texture": "wall",
+      "position": [
+        140,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall0",
+      "texture": "wall",
+      "position": [
+        140,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "NorthWall1",
+      "texture": "wall",
+      "position": [
+        425,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall1",
+      "texture": "wall",
+      "position": [
+        425,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "NorthWall2",
+      "texture": "wall",
+      "position": [
+        710,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall2",
+      "texture": "wall",
+      "position": [
+        710,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "NorthWall3",
+      "texture": "wall",
+      "position": [
+        995,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall3",
+      "texture": "wall",
+      "position": [
+        995,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "NorthWall4",
+      "texture": "wall",
+      "position": [
+        1280,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall4",
+      "texture": "wall",
+      "position": [
+        1280,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "NorthWall5",
+      "texture": "wall",
+      "position": [
+        1565,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall5",
+      "texture": "wall",
+      "position": [
+        1565,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "NorthWall6",
+      "texture": "wall",
+      "position": [
+        1850,
+        34
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "SouthWall6",
+      "texture": "wall",
+      "position": [
+        1850,
+        1088
+      ],
+      "display": [
+        300,
+        92
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_0_0",
+      "texture": "grave_a",
+      "position": [
+        631,
+        357.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_0_1",
+      "texture": "grave_b",
+      "position": [
+        631,
+        676.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_1_0",
+      "texture": "grave_b",
+      "position": [
+        801,
+        366.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_1_1",
+      "texture": "grave_a",
+      "position": [
+        801,
+        667.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_2_0",
+      "texture": "grave_a",
+      "position": [
+        971,
+        357.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_2_1",
+      "texture": "grave_b",
+      "position": [
+        971,
+        676.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_3_0",
+      "texture": "grave_b",
+      "position": [
+        1141,
+        366.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_3_1",
+      "texture": "grave_a",
+      "position": [
+        1141,
+        667.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_4_0",
+      "texture": "grave_a",
+      "position": [
+        1311,
+        357.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_4_1",
+      "texture": "grave_b",
+      "position": [
+        1311,
+        676.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_5_0",
+      "texture": "grave_b",
+      "position": [
+        1481,
+        366.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_5_1",
+      "texture": "grave_a",
+      "position": [
+        1481,
+        667.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "Headstone_6_0",
+      "texture": "grave_a",
+      "position": [
+        1651,
+        357.0
+      ],
+      "display": [
+        71,
+        86
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "Headstone_6_1",
+      "texture": "grave_b",
+      "position": [
+        1651,
+        676.5
+      ],
+      "display": [
+        70,
+        67
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "FencePost0",
+      "texture": "fence_post",
+      "position": [
+        480,
+        48
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FencePost1",
+      "texture": "fence_post",
+      "position": [
+        480,
+        188
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FencePost2",
+      "texture": "fence_post",
+      "position": [
+        480,
+        338
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FencePost3",
+      "texture": "fence_post",
+      "position": [
+        480,
+        583
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FencePost4",
+      "texture": "fence_post",
+      "position": [
+        480,
+        723
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FencePost5",
+      "texture": "fence_post",
+      "position": [
+        480,
+        868
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FencePost6",
+      "texture": "fence_post",
+      "position": [
+        480,
+        1008
+      ],
+      "display": [
+        18,
+        64
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FenceRail0",
+      "texture": "fence_rail",
+      "position": [
+        480,
+        130.0
+      ],
+      "display": [
+        6,
+        140
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FenceRail1",
+      "texture": "fence_rail",
+      "position": [
+        480,
+        275.0
+      ],
+      "display": [
+        6,
+        150
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FenceRail2",
+      "texture": "fence_rail",
+      "position": [
+        480,
+        665.0
+      ],
+      "display": [
+        6,
+        140
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FenceRail3",
+      "texture": "fence_rail",
+      "position": [
+        480,
+        807.5
+      ],
+      "display": [
+        6,
+        145
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "FenceRail4",
+      "texture": "fence_rail",
+      "position": [
+        480,
+        950.0
+      ],
+      "display": [
+        6,
+        140
+      ],
+      "parent": "Midground",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "DeadBracken0",
+      "texture": "bracken",
+      "position": [
+        140,
+        100
+      ],
+      "display": [
+        95,
+        69
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "DeadBracken1",
+      "texture": "bracken",
+      "position": [
+        1750,
+        130
+      ],
+      "display": [
+        95,
+        69
+      ],
+      "parent": "Backdrop",
+      "occlusionClass": "ground_or_backdrop",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "unchanged"
+    },
+    {
+      "name": "DeadBracken2",
+      "texture": "bracken",
+      "position": [
+        180,
+        980
+      ],
+      "display": [
+        95,
+        69
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    },
+    {
+      "name": "DeadBracken3",
+      "texture": "bracken",
+      "position": [
+        1770,
+        1000
+      ],
+      "display": [
+        95,
+        69
+      ],
+      "parent": "Foreground",
+      "occlusionClass": "foreground_fade",
+      "actorSafeArea": "avoid central walk strip y440..560",
+      "occupantPolicy": "fade when player behind"
+    }
+  ]
+}

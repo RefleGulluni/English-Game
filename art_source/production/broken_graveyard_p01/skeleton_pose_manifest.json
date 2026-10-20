@@ -1,0 +1,486 @@
+{
+  "remains": {
+    "burial_cord": {
+      "position": [
+        -3.0,
+        -7.0
+      ],
+      "rotation": -0.8,
+      "scale": [
+        0.0531177818775177,
+        0.0380616784095764
+      ],
+      "texture": "art/enemies/skeleton_parts/burial_cord.png"
+    },
+    "foot_l": {
+      "position": [
+        -39.0,
+        -5.0
+      ],
+      "rotation": -0.8,
+      "scale": [
+        0.0599999986588955,
+        0.0190308392047882
+      ],
+      "texture": "art/enemies/skeleton_parts/foot_l.png"
+    },
+    "foot_r": {
+      "position": [
+        -10.0,
+        -18.0
+      ],
+      "rotation": -0.32,
+      "scale": [
+        0.0599999986588955,
+        0.0190308392047882
+      ],
+      "texture": "art/enemies/skeleton_parts/foot_r.png"
+    },
+    "forearm_l": {
+      "position": [
+        8.0,
+        -19.0
+      ],
+      "rotation": 1.12,
+      "scale": [
+        0.0555555559694767,
+        0.0396475791931152
+      ],
+      "texture": "art/enemies/skeleton_parts/forearm_l.png"
+    },
+    "forearm_r": {
+      "position": [
+        37.0,
+        -32.0
+      ],
+      "rotation": 1.6,
+      "scale": [
+        0.0581395365297794,
+        0.0396475791931152
+      ],
+      "texture": "art/enemies/skeleton_parts/forearm_r.png"
+    },
+    "hand_l": {
+      "position": [
+        -15.0,
+        -16.0
+      ],
+      "rotation": -0.8,
+      "scale": [
+        0.0410958901047707,
+        0.0269603542983532
+      ],
+      "texture": "art/enemies/skeleton_parts/hand_l.png"
+    },
+    "hand_r": {
+      "position": [
+        14.0,
+        -29.0
+      ],
+      "rotation": -0.32,
+      "scale": [
+        0.0410958901047707,
+        0.0269603542983532
+      ],
+      "texture": "art/enemies/skeleton_parts/hand_r.png"
+    },
+    "hip_cloth": {
+      "position": [
+        -9.0,
+        -26.0
+      ],
+      "rotation": 0.64,
+      "scale": [
+        0.0882352963089943,
+        0.0507488995790482
+      ],
+      "texture": "art/enemies/skeleton_parts/hip_cloth.png"
+    },
+    "nails": {
+      "position": [
+        26.0,
+        -20.0
+      ],
+      "rotation": -0.32,
+      "scale": [
+        0.0132158594205976,
+        0.0112751675769687
+      ],
+      "texture": "art/enemies/skeleton_parts/nails.png"
+    },
+    "pelvis": {
+      "position": [
+        -27.0,
+        -25.0
+      ],
+      "rotation": -0.8,
+      "scale": [
+        0.0638766512274742,
+        0.044369749724865
+      ],
+      "texture": "art/enemies/skeleton_parts/pelvis.png"
+    },
+    "ribcage": {
+      "position": [
+        0.0,
+        -17.0
+      ],
+      "rotation": -0.32,
+      "scale": [
+        0.0837320610880852,
+        0.0634361207485199
+      ],
+      "texture": "art/enemies/skeleton_parts/ribcage.png"
+    },
+    "shin_l": {
+      "position": [
+        19.0,
+        -31.0
+      ],
+      "rotation": 0.16,
+      "scale": [
+        0.0709677413105965,
+        0.0444052889943123
+      ],
+      "texture": "art/enemies/skeleton_parts/shin_l.png"
+    },
+    "shin_r": {
+      "position": [
+        -33.0,
+        -15.0
+      ],
+      "rotation": 0.64,
+      "scale": [
+        0.0743243247270584,
+        0.0444052889943123
+      ],
+      "texture": "art/enemies/skeleton_parts/shin_r.png"
+    },
+    "shoulder_cloth": {
+      "position": [
+        20.0,
+        -10.0
+      ],
+      "rotation": 1.12,
+      "scale": [
+        0.050420168787241,
+        0.0507488995790482
+      ],
+      "texture": "art/enemies/skeleton_parts/shoulder_cloth.png"
+    },
+    "skull": {
+      "position": [
+        32.0,
+        -5.0
+      ],
+      "rotation": 1.6,
+      "scale": [
+        0.0545905716717243,
+        0.0428193844854832
+      ],
+      "texture": "art/enemies/skeleton_parts/skull.png"
+    },
+    "thigh_l": {
+      "position": [
+        -4.0,
+        -28.0
+      ],
+      "rotation": 1.12,
+      "scale": [
+        0.0799999982118607,
+        0.0444052889943123
+      ],
+      "texture": "art/enemies/skeleton_parts/thigh_l.png"
+    },
+    "thigh_r": {
+      "position": [
+        25.0,
+        -12.0
+      ],
+      "rotation": 1.6,
+      "scale": [
+        0.0810810774564743,
+        0.0444052889943123
+      ],
+      "texture": "art/enemies/skeleton_parts/thigh_r.png"
+    },
+    "upper_arm_l": {
+      "position": [
+        31.0,
+        -22.0
+      ],
+      "rotation": 0.16,
+      "scale": [
+        0.0555555559694767,
+        0.0428193844854832
+      ],
+      "texture": "art/enemies/skeleton_parts/upper_arm_l.png"
+    },
+    "upper_arm_r": {
+      "position": [
+        -21.0,
+        -6.0
+      ],
+      "rotation": 0.64,
+      "scale": [
+        0.0574712641537189,
+        0.0428193844854832
+      ],
+      "texture": "art/enemies/skeleton_parts/upper_arm_r.png"
+    },
+    "weapon": {
+      "position": [
+        -24.0,
+        9.0
+      ],
+      "rotation": 0.16,
+      "scale": [
+        0.0498614944517612,
+        0.103311263024807
+      ],
+      "texture": "art/enemies/skeleton_parts/weapon.png"
+    }
+  },
+  "standing": {
+    "burial_cord": {
+      "position": [
+        0.0,
+        -78.0
+      ],
+      "rotation": 0.0,
+      "scale": [
+        0.0531177818775177,
+        0.0528634376823902
+      ],
+      "texture": "art/enemies/skeleton_parts/burial_cord.png"
+    },
+    "foot_l": {
+      "position": [
+        -15.0,
+        -3.0
+      ],
+      "rotation": -0.100000001490116,
+      "scale": [
+        0.0599999986588955,
+        0.0264317188411951
+      ],
+      "texture": "art/enemies/skeleton_parts/foot_l.png"
+    },
+    "foot_r": {
+      "position": [
+        15.0,
+        -3.0
+      ],
+      "rotation": 0.100000001490116,
+      "scale": [
+        0.0599999986588955,
+        0.0264317188411951
+      ],
+      "texture": "art/enemies/skeleton_parts/foot_r.png"
+    },
+    "forearm_l": {
+      "position": [
+        -27.0,
+        -63.0
+      ],
+      "rotation": 0.170000001788139,
+      "scale": [
+        0.0555555559694767,
+        0.0550660789012909
+      ],
+      "texture": "art/enemies/skeleton_parts/forearm_l.png"
+    },
+    "forearm_r": {
+      "position": [
+        28.0,
+        -63.0
+      ],
+      "rotation": -0.319999992847443,
+      "scale": [
+        0.0581395365297794,
+        0.0550660789012909
+      ],
+      "texture": "art/enemies/skeleton_parts/forearm_r.png"
+    },
+    "hand_l": {
+      "position": [
+        -31.0,
+        -45.0
+      ],
+      "rotation": 0.129999995231628,
+      "scale": [
+        0.0410958901047707,
+        0.0374449342489243
+      ],
+      "texture": "art/enemies/skeleton_parts/hand_l.png"
+    },
+    "hand_r": {
+      "position": [
+        34.0,
+        -45.0
+      ],
+      "rotation": -0.300000011920929,
+      "scale": [
+        0.0410958901047707,
+        0.0374449342489243
+      ],
+      "texture": "art/enemies/skeleton_parts/hand_r.png"
+    },
+    "hip_cloth": {
+      "position": [
+        0.0,
+        -51.0
+      ],
+      "rotation": 0.0,
+      "scale": [
+        0.0882352963089943,
+        0.0704845786094666
+      ],
+      "texture": "art/enemies/skeleton_parts/hip_cloth.png"
+    },
+    "nails": {
+      "position": [
+        12.0,
+        -58.0
+      ],
+      "rotation": 0.200000002980232,
+      "scale": [
+        0.0132158594205976,
+        0.0156599543988705
+      ],
+      "texture": "art/enemies/skeleton_parts/nails.png"
+    },
+    "pelvis": {
+      "position": [
+        0.0,
+        -57.0
+      ],
+      "rotation": 0.0399999991059303,
+      "scale": [
+        0.0638766512274742,
+        0.0616246499121189
+      ],
+      "texture": "art/enemies/skeleton_parts/pelvis.png"
+    },
+    "ribcage": {
+      "position": [
+        0.0,
+        -83.0
+      ],
+      "rotation": -0.0399999991059303,
+      "scale": [
+        0.0837320610880852,
+        0.0881057232618332
+      ],
+      "texture": "art/enemies/skeleton_parts/ribcage.png"
+    },
+    "shin_l": {
+      "position": [
+        -13.0,
+        -20.0
+      ],
+      "rotation": 0.0799999982118607,
+      "scale": [
+        0.0709677413105965,
+        0.0616740100085735
+      ],
+      "texture": "art/enemies/skeleton_parts/shin_l.png"
+    },
+    "shin_r": {
+      "position": [
+        13.0,
+        -20.0
+      ],
+      "rotation": -0.0799999982118607,
+      "scale": [
+        0.0743243247270584,
+        0.0616740100085735
+      ],
+      "texture": "art/enemies/skeleton_parts/shin_r.png"
+    },
+    "shoulder_cloth": {
+      "position": [
+        -16.0,
+        -78.0
+      ],
+      "rotation": 0.100000001490116,
+      "scale": [
+        0.050420168787241,
+        0.0704845786094666
+      ],
+      "texture": "art/enemies/skeleton_parts/shoulder_cloth.png"
+    },
+    "skull": {
+      "position": [
+        2.0,
+        -112.0
+      ],
+      "rotation": 0.150000005960464,
+      "scale": [
+        0.0545905716717243,
+        0.0594713650643826
+      ],
+      "texture": "art/enemies/skeleton_parts/skull.png"
+    },
+    "thigh_l": {
+      "position": [
+        -9.0,
+        -43.0
+      ],
+      "rotation": 0.159999996423721,
+      "scale": [
+        0.0799999982118607,
+        0.0616740100085735
+      ],
+      "texture": "art/enemies/skeleton_parts/thigh_l.png"
+    },
+    "thigh_r": {
+      "position": [
+        9.0,
+        -43.0
+      ],
+      "rotation": -0.159999996423721,
+      "scale": [
+        0.0810810774564743,
+        0.0616740100085735
+      ],
+      "texture": "art/enemies/skeleton_parts/thigh_r.png"
+    },
+    "upper_arm_l": {
+      "position": [
+        -21.0,
+        -85.0
+      ],
+      "rotation": 0.219999998807907,
+      "scale": [
+        0.0555555559694767,
+        0.0594713650643826
+      ],
+      "texture": "art/enemies/skeleton_parts/upper_arm_l.png"
+    },
+    "upper_arm_r": {
+      "position": [
+        21.0,
+        -85.0
+      ],
+      "rotation": -0.25,
+      "scale": [
+        0.0574712641537189,
+        0.0594713650643826
+      ],
+      "texture": "art/enemies/skeleton_parts/upper_arm_r.png"
+    },
+    "weapon": {
+      "position": [
+        -43.0,
+        -39.0
+      ],
+      "rotation": -0.479999989271164,
+      "scale": [
+        0.0498614944517612,
+        0.143487855792046
+      ],
+      "texture": "art/enemies/skeleton_parts/weapon.png"
+    }
+  }
+}

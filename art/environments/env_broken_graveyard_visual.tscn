@@ -1,5 +1,257 @@
-[gd_scene load_steps=2 format=3]
-[ext_resource type="Script" path="res://scripts/presentation/placeholder_visual.gd" id="1"]
+[gd_scene load_steps=12 format=3]
+[ext_resource type="Texture2D" path="res://art/environments/textures/ground.png" id="1"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/grave_a.png" id="2"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/grave_b.png" id="3"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/bracken.png" id="4"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/rubble.png" id="5"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/wall.png" id="6"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/fence_post.png" id="7"]
+[ext_resource type="Texture2D" path="res://art/environments/textures/fence_rail.png" id="8"]
+[ext_resource type="Script" path="res://art/environments/occlusion.gd" id="9"]
+[ext_resource type="Shader" path="res://art/environments/fog.gdshader" id="10"]
+[sub_resource type="ShaderMaterial" id="fog"]
+shader = ExtResource("10")
+shader_parameter/strength = 0.07
 [node name="BrokenGraveyardVisual" type="Node2D"]
-script = ExtResource("1")
-kind = "environment"
+texture_filter = 4
+script = ExtResource("9")
+[node name="BackgroundGround" type="Node2D" parent="."]
+z_index = -20
+[node name="Backdrop" type="Node2D" parent="."]
+z_index = -10
+[node name="Midground" type="Node2D" parent="."]
+z_index = -4
+[node name="Foreground" type="Node2D" parent="."]
+z_index = 4
+[node name="Atmosphere" type="Node2D" parent="."]
+z_index = 5
+[node name="Foundation" type="Sprite2D" parent="BackgroundGround"]
+position = Vector2(0, 0)
+scale = Vector2(1.1522134627046694, 1.1530398322851152)
+rotation = 0
+texture = ExtResource("1")
+centered = false
+[node name="NorthWall0" type="Sprite2D" parent="Backdrop"]
+position = Vector2(140, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall0" type="Sprite2D" parent="Foreground"]
+position = Vector2(140, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="NorthWall1" type="Sprite2D" parent="Backdrop"]
+position = Vector2(425, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall1" type="Sprite2D" parent="Foreground"]
+position = Vector2(425, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="NorthWall2" type="Sprite2D" parent="Backdrop"]
+position = Vector2(710, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall2" type="Sprite2D" parent="Foreground"]
+position = Vector2(710, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="NorthWall3" type="Sprite2D" parent="Backdrop"]
+position = Vector2(995, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall3" type="Sprite2D" parent="Foreground"]
+position = Vector2(995, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="NorthWall4" type="Sprite2D" parent="Backdrop"]
+position = Vector2(1280, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall4" type="Sprite2D" parent="Foreground"]
+position = Vector2(1280, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="NorthWall5" type="Sprite2D" parent="Backdrop"]
+position = Vector2(1565, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall5" type="Sprite2D" parent="Foreground"]
+position = Vector2(1565, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="NorthWall6" type="Sprite2D" parent="Backdrop"]
+position = Vector2(1850, 34)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="SouthWall6" type="Sprite2D" parent="Foreground"]
+position = Vector2(1850, 1088)
+scale = Vector2(0.6666666666666666, 0.6715328467153284)
+rotation = 0
+texture = ExtResource("6")
+[node name="Headstone_0_0" type="Sprite2D" parent="Midground"]
+position = Vector2(631, 357.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_0_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(631, 676.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="Headstone_1_0" type="Sprite2D" parent="Midground"]
+position = Vector2(801, 366.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="Headstone_1_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(801, 667.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_2_0" type="Sprite2D" parent="Midground"]
+position = Vector2(971, 357.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_2_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(971, 676.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="Headstone_3_0" type="Sprite2D" parent="Midground"]
+position = Vector2(1141, 366.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="Headstone_3_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(1141, 667.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_4_0" type="Sprite2D" parent="Midground"]
+position = Vector2(1311, 357.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_4_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(1311, 676.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="Headstone_5_0" type="Sprite2D" parent="Midground"]
+position = Vector2(1481, 366.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="Headstone_5_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(1481, 667.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_6_0" type="Sprite2D" parent="Midground"]
+position = Vector2(1651, 357.0)
+scale = Vector2(0.19086021505376344, 0.19111111111111112)
+rotation = 0
+texture = ExtResource("2")
+[node name="Headstone_6_1" type="Sprite2D" parent="Foreground"]
+position = Vector2(1651, 676.5)
+scale = Vector2(0.15555555555555556, 0.1550925925925926)
+rotation = 0
+texture = ExtResource("3")
+[node name="FencePost0" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 48)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FencePost1" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 188)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FencePost2" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 338)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FencePost3" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 583)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FencePost4" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 723)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FencePost5" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 868)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FencePost6" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 1008)
+scale = Vector2(0.11538461538461539, 0.12030075187969924)
+rotation = 0
+texture = ExtResource("7")
+[node name="FenceRail0" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 130.0)
+scale = Vector2(0.08695652173913043, 6.086956521739131)
+rotation = 0
+texture = ExtResource("8")
+[node name="FenceRail1" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 275.0)
+scale = Vector2(0.08695652173913043, 6.521739130434782)
+rotation = 0
+texture = ExtResource("8")
+[node name="FenceRail2" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 665.0)
+scale = Vector2(0.08695652173913043, 6.086956521739131)
+rotation = 0
+texture = ExtResource("8")
+[node name="FenceRail3" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 807.5)
+scale = Vector2(0.08695652173913043, 6.304347826086956)
+rotation = 0
+texture = ExtResource("8")
+[node name="FenceRail4" type="Sprite2D" parent="Midground"]
+position = Vector2(480, 950.0)
+scale = Vector2(0.08695652173913043, 6.086956521739131)
+rotation = 0
+texture = ExtResource("8")
+[node name="DeadBracken0" type="Sprite2D" parent="Backdrop"]
+position = Vector2(140, 100)
+scale = Vector2(0.2111111111111111, 0.21100917431192662)
+rotation = 0
+texture = ExtResource("4")
+[node name="DeadBracken1" type="Sprite2D" parent="Backdrop"]
+position = Vector2(1750, 130)
+scale = Vector2(0.2111111111111111, 0.21100917431192662)
+rotation = 0
+texture = ExtResource("4")
+[node name="DeadBracken2" type="Sprite2D" parent="Foreground"]
+position = Vector2(180, 980)
+scale = Vector2(0.2111111111111111, 0.21100917431192662)
+rotation = 0
+texture = ExtResource("4")
+[node name="DeadBracken3" type="Sprite2D" parent="Foreground"]
+position = Vector2(1770, 1000)
+scale = Vector2(0.2111111111111111, 0.21100917431192662)
+rotation = 0
+texture = ExtResource("4")
+[node name="Fog" type="Polygon2D" parent="Atmosphere"]
+material = SubResource("fog")
+polygon = PackedVector2Array(0, 0, 1900, 0, 1900, 1100, 0, 1100)
+uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)

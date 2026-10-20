@@ -1,5 +1,4 @@
 [gd_scene load_steps=2 format=3]
-[ext_resource type="Script" path="res://scripts/presentation/placeholder_visual.gd" id="1"]
+[ext_resource type="Script" path="res://art/loot/loot_attention.gd" id="1"]
 [node name="HighlightVisual" type="Node2D"]
 script = ExtResource("1")
-kind = "highlight"

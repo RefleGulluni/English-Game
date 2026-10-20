@@ -1,0 +1,281 @@
+[
+  {
+    "file": "art/enemies/skeleton_parts/shin_r.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 26528,
+    "source_width": 144,
+    "source_height": 450,
+    "export_width": 148,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/skull.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 61655,
+    "source_width": 399,
+    "source_height": 450,
+    "export_width": 403,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/thigh_r.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 31415,
+    "source_width": 144,
+    "source_height": 450,
+    "export_width": 148,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/hand_l.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 77167,
+    "source_width": 288,
+    "source_height": 450,
+    "export_width": 292,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/ribcage.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 70164,
+    "source_width": 414,
+    "source_height": 450,
+    "export_width": 418,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/burial_cord.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 135493,
+    "source_width": 429,
+    "source_height": 450,
+    "export_width": 433,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/forearm_l.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 41332,
+    "source_width": 176,
+    "source_height": 450,
+    "export_width": 180,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/upper_arm_l.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 43138,
+    "source_width": 176,
+    "source_height": 450,
+    "export_width": 180,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/foot_l.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 71174,
+    "source_width": 296,
+    "source_height": 450,
+    "export_width": 300,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/weapon.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 129026,
+    "source_width": 357,
+    "source_height": 450,
+    "export_width": 361,
+    "export_height": 453
+  },
+  {
+    "file": "art/enemies/skeleton_parts/forearm_r.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 38274,
+    "source_width": 168,
+    "source_height": 450,
+    "export_width": 172,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/upper_arm_r.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 40225,
+    "source_width": 170,
+    "source_height": 450,
+    "export_width": 174,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/foot_r.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 71950,
+    "source_width": 296,
+    "source_height": 450,
+    "export_width": 300,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/shoulder_cloth.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 91070,
+    "source_width": 353,
+    "source_height": 450,
+    "export_width": 357,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/shin_l.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 28441,
+    "source_width": 151,
+    "source_height": 450,
+    "export_width": 155,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/pelvis.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 57950,
+    "source_width": 450,
+    "source_height": 353,
+    "export_width": 454,
+    "export_height": 357
+  },
+  {
+    "file": "art/enemies/skeleton_parts/hip_cloth.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 69301,
+    "source_width": 370,
+    "source_height": 450,
+    "export_width": 374,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/nails.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 143912,
+    "source_width": 450,
+    "source_height": 443,
+    "export_width": 454,
+    "export_height": 447
+  },
+  {
+    "file": "art/enemies/skeleton_parts/thigh_l.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 31439,
+    "source_width": 146,
+    "source_height": 450,
+    "export_width": 150,
+    "export_height": 454
+  },
+  {
+    "file": "art/enemies/skeleton_parts/hand_r.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 78511,
+    "source_width": 288,
+    "source_height": 450,
+    "export_width": 292,
+    "export_height": 454
+  },
+  {
+    "file": "art/environments/textures/fence.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 66277,
+    "source_width": 450,
+    "source_height": 237,
+    "export_width": 454,
+    "export_height": 241
+  },
+  {
+    "file": "art/environments/textures/fence_post.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 25236,
+    "source_width": 156,
+    "source_height": 532,
+    "export_width": 159,
+    "export_height": 535
+  },
+  {
+    "file": "art/environments/textures/fence_rail.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 384,
+    "source_width": 69,
+    "source_height": 23,
+    "export_width": 73,
+    "export_height": 27
+  },
+  {
+    "file": "art/environments/textures/grave_a.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 78415,
+    "source_width": 372,
+    "source_height": 450,
+    "export_width": 376,
+    "export_height": 454
+  },
+  {
+    "file": "art/environments/textures/wall.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 28240,
+    "source_width": 450,
+    "source_height": 137,
+    "export_width": 454,
+    "export_height": 141
+  },
+  {
+    "file": "art/environments/textures/grave_b.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 86657,
+    "source_width": 450,
+    "source_height": 432,
+    "export_width": 453,
+    "export_height": 436
+  },
+  {
+    "file": "art/environments/textures/rubble.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 64341,
+    "source_width": 450,
+    "source_height": 273,
+    "export_width": 454,
+    "export_height": 277
+  },
+  {
+    "file": "art/environments/textures/bracken.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 84847,
+    "source_width": 450,
+    "source_height": 327,
+    "export_width": 454,
+    "export_height": 331
+  },
+  {
+    "file": "art/loot/textures/weathered_chisel.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 122567,
+    "source_width": 450,
+    "source_height": 357,
+    "export_width": 454,
+    "export_height": 361
+  },
+  {
+    "file": "art/characters/textures/lexicon_clasp_quiet.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 52746,
+    "source_width": 450,
+    "source_height": 315,
+    "export_width": 454,
+    "export_height": 319
+  },
+  {
+    "file": "art/characters/textures/wordbearer_base.png",
+    "spill_pixels": 0,
+    "transparent_pixels": 52652,
+    "source_width": 219,
+    "source_height": 450,
+    "export_width": 223,
+    "export_height": 454
+  }
+]

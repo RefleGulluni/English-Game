@@ -1,0 +1,202 @@
+[
+  {
+    "name": "skull",
+    "source": "skeleton_parts.png",
+    "box": [
+      0,
+      0,
+      280,
+      285
+    ]
+  },
+  {
+    "name": "ribcage",
+    "source": "skeleton_parts.png",
+    "box": [
+      280,
+      0,
+      560,
+      285
+    ]
+  },
+  {
+    "name": "pelvis",
+    "source": "skeleton_parts.png",
+    "box": [
+      560,
+      0,
+      840,
+      285
+    ]
+  },
+  {
+    "name": "weapon",
+    "source": "skeleton_parts.png",
+    "box": [
+      840,
+      0,
+      1122,
+      285
+    ]
+  },
+  {
+    "name": "upper_arm_l",
+    "source": "skeleton_parts.png",
+    "box": [
+      0,
+      285,
+      280,
+      540
+    ]
+  },
+  {
+    "name": "upper_arm_r",
+    "source": "skeleton_parts.png",
+    "box": [
+      280,
+      285,
+      560,
+      540
+    ]
+  },
+  {
+    "name": "forearm_l",
+    "source": "skeleton_parts.png",
+    "box": [
+      560,
+      285,
+      840,
+      540
+    ]
+  },
+  {
+    "name": "forearm_r",
+    "source": "skeleton_parts.png",
+    "box": [
+      840,
+      285,
+      1122,
+      540
+    ]
+  },
+  {
+    "name": "thigh_l",
+    "source": "skeleton_parts.png",
+    "box": [
+      0,
+      540,
+      280,
+      823
+    ]
+  },
+  {
+    "name": "thigh_r",
+    "source": "skeleton_parts.png",
+    "box": [
+      280,
+      540,
+      560,
+      823
+    ]
+  },
+  {
+    "name": "shin_l",
+    "source": "skeleton_parts.png",
+    "box": [
+      560,
+      540,
+      840,
+      823
+    ]
+  },
+  {
+    "name": "shin_r",
+    "source": "skeleton_parts.png",
+    "box": [
+      840,
+      540,
+      1122,
+      823
+    ]
+  },
+  {
+    "name": "hand_l",
+    "source": "skeleton_parts.png",
+    "box": [
+      0,
+      823,
+      280,
+      1075
+    ]
+  },
+  {
+    "name": "hand_r",
+    "source": "skeleton_parts.png",
+    "box": [
+      280,
+      823,
+      560,
+      1075
+    ]
+  },
+  {
+    "name": "foot_l",
+    "source": "skeleton_parts.png",
+    "box": [
+      560,
+      823,
+      840,
+      1075
+    ]
+  },
+  {
+    "name": "foot_r",
+    "source": "skeleton_parts.png",
+    "box": [
+      840,
+      823,
+      1122,
+      1075
+    ]
+  },
+  {
+    "name": "shoulder_cloth",
+    "source": "skeleton_parts.png",
+    "box": [
+      0,
+      1075,
+      280,
+      1402
+    ]
+  },
+  {
+    "name": "hip_cloth",
+    "source": "skeleton_parts.png",
+    "box": [
+      280,
+      1075,
+      560,
+      1402
+    ]
+  },
+  {
+    "name": "burial_cord",
+    "source": "skeleton_parts.png",
+    "box": [
+      560,
+      1075,
+      840,
+      1402
+    ]
+  },
+  {
+    "name": "nails",
+    "source": "skeleton_parts.png",
+    "box": [
+      840,
+      1075,
+      1122,
+      1402
+    ]
+  }
+]

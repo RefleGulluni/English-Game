@@ -1,0 +1,92 @@
+{
+  "schema": "english-game.art-concept-round.v1",
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "scope": "Broken Graveyard round02 refinements only",
+  "branch": "feature/mini-run-0.9-art",
+  "parent_commit": "c29f7b7",
+  "art_direction": "Round01 third image B-v2 approved as main direction; layout from second image; selected wet/worn materials from first",
+  "revision_approval": "pending",
+  "generator": "OpenAI built-in image_gen",
+  "model_version": null,
+  "seed": null,
+  "third_party_inputs": [],
+  "commercial_terms_verification": "not yet verified for external upload",
+  "layered_editable_art_files": [],
+  "runtime_exports": [],
+  "godot_validation": "not performed; concept review only",
+  "assets": [
+    {
+      "file": "scene_v1.png",
+      "prompt": "scene.prompt.txt",
+      "references": [
+        "../round_01/candidate_a.png",
+        "../round_01/candidate_b_v1.png",
+        "../round_01/candidate_b_v2.png"
+      ],
+      "status": "historical",
+      "width": 1672,
+      "height": 941,
+      "sha256": "e52c94201fc14b6116225d63f8028afe3417983d97008198e325279ecb47be7d"
+    },
+    {
+      "file": "grave_skeleton_bone_remains_v2.png",
+      "prompt": "skeleton.prompt.txt",
+      "references": [
+        "../round_01/candidate_b_v2.png"
+      ],
+      "status": "review",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "21b131c8c4f1b3c724eb6a70e1471de8d5215fc82b74da633ff3c810bc26cf2b"
+    },
+    {
+      "file": "word_sigils_clasp_v2.png",
+      "prompt": "sigils.prompt.txt",
+      "references": [
+        "../round_01/candidate_b_v2.png"
+      ],
+      "status": "review",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "18e0feca840298954f5c88d34fc4343958d40b1e8a08e90821ae6d588a9329ed"
+    },
+    {
+      "file": "loot_scale_v1.png",
+      "prompt": "loot.prompt.txt",
+      "references": [
+        "scene_v1.png",
+        "grave_skeleton_bone_remains_v2.png"
+      ],
+      "status": "historical; chisel oversized",
+      "width": 1672,
+      "height": 941,
+      "sha256": "b32431a62f01f52ad57c75d6c597ba44d414109d0d1348726bcb29aaae62e64e"
+    },
+    {
+      "file": "loot_scale_v2.png",
+      "prompt": "loot_v2.prompt.txt",
+      "references": [
+        "loot_scale_v1.png"
+      ],
+      "status": "review",
+      "width": 1672,
+      "height": 941,
+      "sha256": "80138efacd873766b74acc3b6c6140b285bd19d4fc34366fb7f317e29bd63ac5"
+    },
+    {
+      "file": "scene_baseline_v2.png",
+      "prompt": "scene_v2.prompt.txt",
+      "references": [
+        "scene_v1.png",
+        "../round_01/candidate_b_v2.png",
+        "grave_skeleton_bone_remains_v2.png",
+        "word_sigils_clasp_v2.png"
+      ],
+      "status": "review",
+      "width": 1672,
+      "height": 941,
+      "sha256": "1bb2c029737a63985291c9437509ff733dfa587dda4f8f49cfadd7e4113ba605"
+    }
+  ]
+}
