@@ -10,7 +10,7 @@ func _run() -> void:
 	world.set_meta("qa_no_save",true)
 	root.add_child(world)
 	for i in range(4): await process_frame
-	var visual := world.skeleton.get_node("VisualRoot/GraveSkeletonVisual")
+	var visual: Node2D = world.skeleton.get_node("VisualRoot/GraveSkeletonVisual")
 	check(visual.nodes.size()==20,"twenty independent skeleton parts")
 	var baseline_echo: int = world.manager.state.echo
 	visual.present({"mode":"remains","integrity":10,"reassemble_in":3})
