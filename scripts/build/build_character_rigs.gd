@@ -4,6 +4,7 @@ const CONTROLLER := preload("res://scripts/presentation/cutout_rig.gd")
 const PLAYER_PARTS := "res://art/cemetery_kit_v1/player/parts/"
 var rig_bones: Dictionary = {}
 var reference: Dictionary = {}
+var building_kind := "player"
 
 func _initialize() -> void:
 	build.call_deferred()
@@ -21,6 +22,7 @@ func build() -> void:
 				quit(1)
 				return
 	for kind in kinds:
+		building_kind = kind
 		rig_bones.clear()
 		var actor := Node2D.new()
 		actor.name = "PlayerVisual" if kind == "player" else "GraveSkeletonVisual"
@@ -42,12 +44,19 @@ func build() -> void:
 		var facing := Node2D.new()
 		facing.name = "FacingRoot"
 		actor.add_child(facing)
+		var content := facing
+		if kind == "skeleton":
+			content = Node2D.new()
+			content.name = "MotionRoot"
+			facing.add_child(content)
+			actor.remove_child(shadow)
+			content.add_child(shadow)
 		var skeleton := Skeleton2D.new()
 		skeleton.name = "Rig"
-		facing.add_child(skeleton)
+		content.add_child(skeleton)
 		var anchor := _bone(skeleton, "Root", Vector2.ZERO)
 		if kind == "player": _player(anchor)
-		else: _skeleton(anchor, actor, facing)
+		else: _skeleton(anchor, actor, content)
 		var animator := AnimationPlayer.new()
 		animator.name = "AnimationPlayer"
 		actor.add_child(animator)
@@ -158,14 +167,21 @@ func _skeleton(anchor: Bone2D, actor: Node2D, facing: Node2D) -> void:
 	var order := ["foot_l", "foot_r", "shin_l", "shin_r", "thigh_l", "thigh_r", "pelvis", "ribcage", "upper_arm_l", "upper_arm_r", "forearm_l", "forearm_r", "hand_l", "hand_r", "weapon", "hip_cloth", "shoulder_cloth", "skull", "burial_cord", "nails"]
 	for key in order:
 		var pose: Dictionary = reference.standing[key]
-		var bone := _bone(anchor, key, Vector2(pose.position[0], pose.position[1]))
-		bone.rotation = pose.rotation
+		var holder: Node = rig_bones.hand_l if key == "weapon" else anchor
+		var bone := _bone(holder, key, Vector2(-1, -1) if key == "weapon" else Vector2(pose.position[0], pose.position[1]))
+		bone.rotation = 1.0 if key == "weapon" else pose.rotation
 		bone.rest = bone.transform
 		rig_bones[key] = bone
 		var sprite := Sprite2D.new()
 		sprite.name = "BoneArt"
 		sprite.texture = load("res://" + str(pose.texture))
 		sprite.scale = Vector2(pose.scale[0], pose.scale[1])
+		if key == "weapon":
+			# The raster's hilt, not its canvas center, stays attached to the palm.
+			sprite.centered = false
+			sprite.offset = -sprite.texture.get_size() * Vector2(0.18, 0.16)
+			sprite.scale = Vector2.ONE * (48.0 / sprite.texture.get_height())
+			bone.set_meta("grip_uv", Vector2(0.18, 0.16))
 		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 		sprite.set_meta("part_id", key)
 		bone.add_child(sprite)
@@ -201,14 +217,28 @@ func _base_pose(duration: float) -> Animation:
 		_track(animation, _path(key, "position"), [0, duration], [bone.position, bone.position])
 		_track(animation, _path(key, "rotation"), [0, duration], [bone.rotation, bone.rotation])
 		_track(animation, _path(key, "scale"), [0, duration], [Vector2.ONE, Vector2.ONE])
-	_track(animation, "FacingRoot:position", [0, duration], [Vector2.ZERO, Vector2.ZERO])
+		_track(animation, _path(key, "skew"), [0, duration], [0.0, 0.0])
+	_track(animation, _motion_path(), [0, duration], [Vector2.ZERO, Vector2.ZERO])
 	_track(animation, "FacingRoot:modulate", [0, duration], [Color.WHITE, Color.WHITE])
-	_track(animation, "ContactShadow:scale", [0, duration], [Vector2(54, 15) / 128.0, Vector2(54, 15) / 128.0])
+	_track(animation, _shadow_path() + ":scale", [0, duration], [Vector2(54, 15) / 128.0, Vector2(54, 15) / 128.0])
+	_track(animation, _shadow_path() + ":position", [0, duration], [Vector2(0, 1), Vector2(0, 1)])
 	return animation
+
+func _motion_path() -> String:
+	return "FacingRoot/MotionRoot:position" if building_kind == "skeleton" else "FacingRoot:position"
+
+func _shadow_path() -> String:
+	return "FacingRoot/MotionRoot/ContactShadow" if building_kind == "skeleton" else "ContactShadow"
 
 func _rotation(animation: Animation, key: String, times: Array, offsets: Array) -> void:
 	var base: float = rig_bones[key].rotation
 	_track(animation, _path(key, "rotation"), times, offsets.map(func(value): return base + float(value)))
+
+func _fallen_weapon_transform() -> Transform2D:
+	var hand: Dictionary = reference.remains.hand_l
+	var parent := Transform2D(float(hand.rotation), Vector2(hand.position[0], hand.position[1])).scaled_local(Vector2(1, 0.72))
+	# After collapse the sword lies loose across the pile, rather than remaining in a grip.
+	return parent.affine_inverse() * Transform2D(-0.92, Vector2(-35, 5))
 
 func _animation(kind: String, action: String) -> Animation:
 	var duration := 2.4 if action == "idle" else (0.8 if action == "walk" else 0.18)
@@ -241,6 +271,13 @@ func _animation(kind: String, action: String) -> Animation:
 		for key in rig_bones:
 			var standing: Dictionary = reference.standing[key]
 			var fallen: Dictionary = reference.remains[key]
+			var target_skew := 0.0
+			if key == "weapon":
+				var loose := _fallen_weapon_transform()
+				var grip: Bone2D = rig_bones.weapon
+				standing = {"position": [grip.position.x, grip.position.y], "rotation": grip.rotation, "scale": [1.0, 1.0]}
+				fallen = {"position": [loose.origin.x, loose.origin.y], "rotation": loose.get_rotation(), "scale": [loose.get_scale().x, loose.get_scale().y]}
+				target_skew = loose.get_skew()
 			var a := Vector2(standing.position[0], standing.position[1])
 			var b := Vector2(fallen.position[0], fallen.position[1])
 			var flattened := Vector2(float(fallen.scale[0]) / float(standing.scale[0]), float(fallen.scale[1]) / float(standing.scale[1]))
@@ -248,27 +285,31 @@ func _animation(kind: String, action: String) -> Animation:
 				_track(animation, _path(key, "position"), [0, 0.50, duration], [a, b + Vector2(0, -2), b])
 				_track(animation, _path(key, "rotation"), [0, duration], [standing.rotation, fallen.rotation])
 				_track(animation, _path(key, "scale"), [0, duration], [Vector2.ONE, flattened])
+				_track(animation, _path(key, "skew"), [0, duration], [0.0, target_skew])
 			elif action == "reassembly":
 				var delay := 0.0 if key == "pelvis" else (0.24 if key == "skull" else 0.12)
 				_track(animation, _path(key, "position"), [0, delay + 0.01, duration * 0.84, duration], [b, b, a + Vector2(0, -1.0), a])
 				_track(animation, _path(key, "rotation"), [0, delay + 0.01, duration], [fallen.rotation, fallen.rotation, standing.rotation])
 				_track(animation, _path(key, "scale"), [0, duration], [flattened, Vector2.ONE])
+				_track(animation, _path(key, "skew"), [0, duration], [target_skew, 0.0])
 			else:
 				_track(animation, _path(key, "position"), [0, duration], [b, b])
 				_track(animation, _path(key, "rotation"), [0, duration], [fallen.rotation, fallen.rotation])
 				_track(animation, _path(key, "scale"), [0, duration], [flattened, flattened])
+				_track(animation, _path(key, "skew"), [0, duration], [target_skew, target_skew])
 				if key == "skull" and action == "remains": _track(animation, _path(key, "position"), [0, 1.1, 1.25, 1.5, duration], [b, b, b + Vector2(-0.65, -0.25), b, b])
 		var small := Vector2(54, 15) / 128.0
 		var spread := Vector2(84, 13) / 128.0
-		_track(animation, "ContactShadow:scale", [0, duration], [spread if action != "collapse" else small, small if action == "reassembly" else spread])
+		_track(animation, _shadow_path() + ":scale", [0, duration], [spread if action != "collapse" else small, small if action == "reassembly" else spread])
 	elif action == "attack":
-		_track(animation, "FacingRoot:position", [0, 0.18, 0.34, duration], [Vector2.ZERO, Vector2(-3, 0), Vector2(-22, 0), Vector2.ZERO])
-		_rotation(animation, "weapon", [0, 0.18, 0.34, duration], [0, 0.45, -0.9, 0])
+		_track(animation, _motion_path(), [0, 0.18, 0.34, duration], [Vector2.ZERO, Vector2(-8, 0), Vector2(-70, 0), Vector2.ZERO])
+		_rotation(animation, "weapon", [0, 0.18, 0.34, duration], [0, -0.4, 1.1, 0])
+		_rotation(animation, "hand_l", [0, 0.18, 0.34, duration], [0, 0.08, -0.16, 0])
 		_rotation(animation, "forearm_l", [0, 0.18, 0.34, duration], [0, 0.18, -0.45, 0])
 		_rotation(animation, "ribcage", [0, 0.24, 0.38, duration], [0, 0.05, -0.12, 0])
 		_rotation(animation, "pelvis", [0, 0.12, 0.30, duration], [0, -0.08, -0.12, 0])
 	elif action == "hit":
-		_track(animation, "FacingRoot:position", [0, 0.07, duration], [Vector2.ZERO, Vector2(5, -1), Vector2.ZERO])
+		_track(animation, _motion_path(), [0, 0.07, duration], [Vector2.ZERO, Vector2(5, -1), Vector2.ZERO])
 		_track(animation, "FacingRoot:modulate", [0, 0.04, duration], [Color.WHITE, Color(1.0, 0.65, 0.48), Color.WHITE])
 		_rotation(animation, "skull", [0, 0.09, duration], [0, 0.18, 0])
 	else:

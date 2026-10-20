@@ -19,7 +19,7 @@ var view_sprites: Array[Sprite2D] = []
 func _ready() -> void:
 	rest = get_meta("reference_standing", {})
 	fallen = get_meta("reference_remains", {})
-	rope = get_node_or_null("FacingRoot/TensionLinks") as Line2D
+	rope = find_child("TensionLinks", true, false) as Line2D
 	clasp = find_child("LexiconClasp", true, false) as Node2D
 	for item in find_children("*", "Sprite2D", true, false):
 		if item.has_meta("part_id"):
@@ -94,10 +94,9 @@ func _finished(clip: StringName) -> void:
 
 func _process(_delta: float) -> void:
 	if actor_kind != "skeleton": return
-	var rope := get_node_or_null("FacingRoot/TensionLinks") as Line2D
 	if rope == null: return
 	rope.visible = mode != "cleared"
 	var points := PackedVector2Array()
 	for key in ["upper_arm_l", "ribcage", "pelvis", "thigh_r"]:
-		if nodes.has(key): points.append(facing_root.to_local(nodes[key].global_position))
+		if nodes.has(key): points.append(rope.to_local(nodes[key].global_position))
 	rope.points = points

@@ -50,13 +50,22 @@ func _run() -> void:
 		var visual: Node = actor.get_node("VisualRoot").get_child(0)
 		var animator := visual.find_child("AnimationPlayer", true, false) as AnimationPlayer
 		check(visual.find_child("Rig", true, false) is Skeleton2D and visual.find_children("*", "Bone2D", true, false).size() >= 20, "real Skeleton2D/Bone2D rig, not an empty animation wrapper")
-		check(visual.get_node("ContactShadow") is Sprite2D, "actor has a separate contact shadow")
+		check(visual.find_child("ContactShadow", true, false) is Sprite2D, "actor has a separate contact shadow")
 		check(animator != null, "actor uses a real AnimationPlayer")
 		if animator != null:
 			var actions: Array = ["idle", "walk", "turn"] if actor == world.player else ["idle", "walk", "attack", "hit", "collapse", "remains", "reassembly"]
 			for action in actions:
 				check(animator.has_animation(action) and animator.get_animation(action).get_track_count() > 0, "authored animation tracks: " + action)
 	var player_visual: Node = world.player.get_node("VisualRoot").get_child(0)
+	var enemy_visual: Node = world.skeleton.get_node("VisualRoot").get_child(0)
+	var weapon: Bone2D = enemy_visual.find_child("weapon", true, false)
+	check(weapon != null and weapon.get_parent().name == "hand_l", "weapon grip is genuinely parented to the holding hand bone")
+	var enemy_animator: AnimationPlayer = enemy_visual.get_node("AnimationPlayer")
+	enemy_animator.play("attack")
+	for sample in [0.0, 0.18, 0.34, 0.58]:
+		enemy_animator.seek(sample, true)
+		check(weapon.global_position.distance_to(weapon.get_parent().global_position) < 2, "weapon remains attached throughout the attack")
+	enemy_visual.present_motion(Vector2.ZERO, Vector2.LEFT)
 	check(player_visual.has_method("present_motion"), "player consumes semantic motion, not gameplay state")
 	var before: Vector2 = world.player.position
 	Input.action_press("world_right")

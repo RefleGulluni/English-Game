@@ -22,11 +22,19 @@ func mark(label: String) -> void:
 	print("CAPTURE · %.2f · %s" % [elapsed, label])
 
 func _run() -> void:
+	root.always_on_top = true
+	root.grab_focus()
 	set_meta("slice_qa_no_save", true)
 	set_meta("slice_force_drop", true)
 	world = load("res://scenes/main.tscn").instantiate()
 	root.add_child(world)
 	current_scene = world
+	# Warm the real window/texture pipeline before timed input; macOS may defer hidden draws.
+	if DisplayServer.get_name() != "headless":
+		paused = true
+		for warmup in range(3): await RenderingServer.frame_post_draw
+		paused = false
+	elapsed = 0.0
 	await pause(0.2)
 	world.events.occurred.connect(func(id, _payload):
 		if id in [&"enemy_attack_started", &"enemy_collapsed", &"enemy_reassembled", &"echo_spawned", &"echo_absorbed", &"special_loot_spawned", &"loot_picked_up"]: mark(String(id)))
