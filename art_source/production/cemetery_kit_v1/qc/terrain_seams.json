@@ -1,0 +1,26 @@
+[
+  {
+    "material": "wet_stone_path",
+    "opposite_edge_mean_delta": 0.0
+  },
+  {
+    "material": "broken_stone_path",
+    "opposite_edge_mean_delta": 0.0
+  },
+  {
+    "material": "muddy_ground",
+    "opposite_edge_mean_delta": 0.0
+  },
+  {
+    "material": "mossy_stone",
+    "opposite_edge_mean_delta": 0.0
+  },
+  {
+    "material": "cracked_graveyard_floor",
+    "opposite_edge_mean_delta": 0.0
+  },
+  {
+    "material": "puddle_damp_edge",
+    "opposite_edge_mean_delta": 0.0
+  }
+]

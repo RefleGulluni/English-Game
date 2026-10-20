@@ -1,0 +1,75 @@
+{
+  "world_tile_size": 128,
+  "tile_size": 256,
+  "tilemap_scale": 0.5,
+  "base_source_id": 0,
+  "base_materials": {
+    "wet_stone_path": {
+      "atlas_x": 0,
+      "variant_y": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "broken_stone_path": {
+      "atlas_x": 1,
+      "variant_y": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "muddy_ground": {
+      "atlas_x": 2,
+      "variant_y": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "mossy_stone": {
+      "atlas_x": 3,
+      "variant_y": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "cracked_graveyard_floor": {
+      "atlas_x": 4,
+      "variant_y": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "puddle_damp_edge": {
+      "atlas_x": 5,
+      "variant_y": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "edges_source_id": 1,
+  "edge_rows": [
+    "wet_stone_path",
+    "broken_stone_path",
+    "mossy_stone",
+    "cracked_graveyard_floor",
+    "puddle_damp_edge"
+  ],
+  "edge_atlas_x": "mask bits N=1 E=2 S=4 W=8; set bit if adjoining cell is muddy/outside this material",
+  "edge_usage": "Underlay muddy source0 (2,variant); overlay source1 (mask,material_row). Same origin and scale. No built-in terrain/autotile metadata; explicit mapping drives placement.",
+  "variant_policy": "Offset variants preserve light direction. Seamless SAME variant; different phase variants need blended overlays, never butt-join arbitrary phase variants.",
+  "collision": "none; program owns collision",
+  "source": "image_gen terrain.png; deterministic crop/periodic boundary correction only"
+}
