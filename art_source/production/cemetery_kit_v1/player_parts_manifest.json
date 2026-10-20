@@ -1,0 +1,639 @@
+{
+  "actor_height": 118,
+  "contact_origin": [
+    0,
+    0
+  ],
+  "back_mapping": {
+    "head": "head_back",
+    "torso": "torso_back",
+    "cloak": "cloak_back",
+    "coat_back": "coat_back_view"
+  },
+  "parts": [
+    {
+      "name": "head",
+      "raw": "player_parts",
+      "box": [
+        0,
+        0,
+        280,
+        300
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        425,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/head.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 23,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "torso",
+      "raw": "player_parts",
+      "box": [
+        280,
+        0,
+        560,
+        300
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        397,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/torso.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 39,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "upper_arm_l",
+      "raw": "player_parts",
+      "box": [
+        560,
+        0,
+        840,
+        300
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        329,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/upper_arm_l.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 23,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "upper_arm_r",
+      "raw": "player_parts",
+      "box": [
+        840,
+        0,
+        1122,
+        300
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        340,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/upper_arm_r.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 23,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "forearm_l",
+      "raw": "player_parts",
+      "box": [
+        0,
+        300,
+        280,
+        535
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        370,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/forearm_l.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 20,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "forearm_r",
+      "raw": "player_parts",
+      "box": [
+        280,
+        300,
+        560,
+        535
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        394,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/forearm_r.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 20,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "hand_l",
+      "raw": "player_parts",
+      "box": [
+        560,
+        300,
+        840,
+        535
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        386,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/hand_l.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 12,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "hand_r",
+      "raw": "player_parts",
+      "box": [
+        840,
+        300,
+        1122,
+        535
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        377,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/hand_r.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 12,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "thigh_l",
+      "raw": "player_parts",
+      "box": [
+        0,
+        535,
+        280,
+        795
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        318,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/thigh_l.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 23,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "thigh_r",
+      "raw": "player_parts",
+      "box": [
+        280,
+        535,
+        560,
+        795
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        325,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/thigh_r.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 23,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "shin_l",
+      "raw": "player_parts",
+      "box": [
+        560,
+        535,
+        840,
+        795
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        203,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/shin_l.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 22,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "shin_r",
+      "raw": "player_parts",
+      "box": [
+        840,
+        535,
+        1122,
+        795
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        194,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/shin_r.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 22,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "boot_l",
+      "raw": "player_parts",
+      "box": [
+        0,
+        795,
+        280,
+        1065
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        207,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/boot_l.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 19,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "boot_r",
+      "raw": "player_parts",
+      "box": [
+        280,
+        795,
+        560,
+        1065
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        356,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/boot_r.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 19,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "weapon",
+      "raw": "player_parts",
+      "box": [
+        560,
+        790,
+        840,
+        1158
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        96,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/weapon.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 56,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "coat_front",
+      "raw": "player_parts",
+      "box": [
+        840,
+        790,
+        1122,
+        1112
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        393,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/coat_front.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 45,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "coat_back",
+      "raw": "player_parts",
+      "box": [
+        0,
+        1065,
+        280,
+        1402
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        373,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/coat_back.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 47,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "cloak",
+      "raw": "player_parts",
+      "box": [
+        280,
+        1100,
+        600,
+        1402
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        454,
+        399
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/cloak.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 29,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "belt_pouch",
+      "raw": "player_parts",
+      "box": [
+        600,
+        1160,
+        875,
+        1360
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        454,
+        243
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/belt_pouch.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 13,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "clasp",
+      "raw": "player_parts",
+      "box": [
+        910,
+        1145,
+        1110,
+        1320
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        454,
+        381
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/clasp.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 4,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "head_back",
+      "raw": "player_back",
+      "box": [
+        0,
+        0,
+        640,
+        560
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        413,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/head_back.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 23,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "torso_back",
+      "raw": "player_back",
+      "box": [
+        640,
+        0,
+        1287,
+        565
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        454,
+        381
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/torso_back.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 39,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "cloak_back",
+      "raw": "player_back",
+      "box": [
+        0,
+        565,
+        663,
+        1222
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        454,
+        392
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/cloak_back.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 29,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    },
+    {
+      "name": "coat_back_view",
+      "raw": "player_back",
+      "box": [
+        663,
+        565,
+        1287,
+        1222
+      ],
+      "folder": "player/parts",
+      "world_height": null,
+      "role": "Character Rig",
+      "world_width": null,
+      "ok": true,
+      "pixels": [
+        448,
+        454
+      ],
+      "file": "art/cemetery_kit_v1/player/parts/coat_back_view.png",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "suggested_logical_height": 47,
+      "scale_policy": "Uniform fit to logical height; cap hands about8px wide, torso about35px wide; overlap joints. Front/back torso differ aspect; fit same anatomical envelope."
+    }
+  ]
+}
