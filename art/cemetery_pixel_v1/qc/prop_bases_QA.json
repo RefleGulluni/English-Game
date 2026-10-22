@@ -1,0 +1,261 @@
+{
+  "passed": true,
+  "failures": [],
+  "assets": [
+    {
+      "file": "props/dead_tree_01_base.png",
+      "size": [
+        288,
+        224
+      ],
+      "visible_colors": 61,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        72,
+        153,
+        228,
+        223
+      ],
+      "origin": [
+        144,
+        224
+      ],
+      "off_palette_colors": [],
+      "sha256": "eb0d60f90b57ce68e344673dcb6710d6646fa81897689a8db88bb8f41621579d"
+    },
+    {
+      "file": "props/tombstone_upright_01_base.png",
+      "size": [
+        96,
+        77
+      ],
+      "visible_colors": 47,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        8,
+        50,
+        75,
+        77
+      ],
+      "origin": [
+        48,
+        77
+      ],
+      "off_palette_colors": [],
+      "sha256": "ff2065e35c2beea6c4ad89c7c685b83cfb01ecc9b3fff0929f67b4f98ef269c8"
+    },
+    {
+      "file": "props/tombstone_tilted_01_base.png",
+      "size": [
+        104,
+        76
+      ],
+      "visible_colors": 60,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        13,
+        44,
+        87,
+        76
+      ],
+      "origin": [
+        52,
+        76
+      ],
+      "off_palette_colors": [],
+      "sha256": "957ed969c2e19d3d77f7cdefef669d2eb3b65e7fb701f429d7a40ebd2e5becd7"
+    },
+    {
+      "file": "props/tombstone_fragment_01_base.png",
+      "size": [
+        96,
+        48
+      ],
+      "visible_colors": 45,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        17,
+        8,
+        87,
+        48
+      ],
+      "origin": [
+        48,
+        48
+      ],
+      "off_palette_colors": [],
+      "sha256": "3450fac3fad8d5558ed38421b08ae6fa15515c2fc8ad381ccc7ab5196aff5637"
+    },
+    {
+      "file": "props/open_grave_01_base.png",
+      "size": [
+        176,
+        80
+      ],
+      "visible_colors": 53,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        38,
+        14,
+        162,
+        80
+      ],
+      "origin": [
+        88,
+        80
+      ],
+      "off_palette_colors": [],
+      "sha256": "2d23bb2ca5b4592b49bfd48d7021886f24d2e924594a573e0b39c929ce8d1cd1"
+    },
+    {
+      "file": "decals/dead_grass_01.png",
+      "size": [
+        20,
+        10
+      ],
+      "visible_colors": 23,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        18,
+        10
+      ],
+      "origin": [
+        10,
+        10
+      ],
+      "off_palette_colors": [],
+      "sha256": "effdea080e468476e85e886f2d87ef17c01117500fe0c90df593bdc2ea45a3bb"
+    },
+    {
+      "file": "decals/dead_grass_02.png",
+      "size": [
+        28,
+        14
+      ],
+      "visible_colors": 28,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        3,
+        0,
+        24,
+        14
+      ],
+      "origin": [
+        14,
+        14
+      ],
+      "off_palette_colors": [],
+      "sha256": "7b1c43705798dd5c29aff9bcad0f53f554ba06ae6982f887db2a4fc116b1081c"
+    },
+    {
+      "file": "decals/dead_grass_03.png",
+      "size": [
+        36,
+        18
+      ],
+      "visible_colors": 33,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        2,
+        0,
+        34,
+        18
+      ],
+      "origin": [
+        18,
+        18
+      ],
+      "off_palette_colors": [],
+      "sha256": "7d9c4922719abda1b0cd56f93b8e0078bab73f119730b320623c6952441bbcc3"
+    },
+    {
+      "file": "decals/dead_grass_04.png",
+      "size": [
+        48,
+        24
+      ],
+      "visible_colors": 35,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        3,
+        0,
+        45,
+        24
+      ],
+      "origin": [
+        24,
+        24
+      ],
+      "off_palette_colors": [],
+      "sha256": "b918a35f5e8e8570adc440c2f6660a7db6939203f8d312338c0e42b85523bd94"
+    },
+    {
+      "file": "props/dead_tree_01.png",
+      "size": [
+        288,
+        224
+      ],
+      "visible_colors": 56,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "bbox": [
+        30,
+        1,
+        269,
+        178
+      ],
+      "origin": [
+        144,
+        224
+      ],
+      "off_palette_colors": [],
+      "sha256": "749c0cbe066975f05e80adadb3bab2540e5506b2ac7857ede3acf4615b1f389c"
+    }
+  ],
+  "new_base_count": 5,
+  "new_dead_grass_count": 4,
+  "shared_palette_size": 64,
+  "actual_visible_color_union": 62,
+  "tree_original_pixels_lost_or_recolored": 65,
+  "tree_intentionally_buried_tip_pixels": 65,
+  "tree_unintended_pixel_changes": 0,
+  "tree_base_overlap_pixels": 1221,
+  "tree_canvas_and_origin_preserved": true,
+  "existing_files_changed": [
+    "props/NOTES.md",
+    "props/dead_tree_01.png"
+  ],
+  "backup": "/Users/mac/Documents/GitHub/English-Game/art_source/backups/cemetery_ground_bases_20261022_212052",
+  "engine_validation": "not performed; art-only delivery to Claude"
+}

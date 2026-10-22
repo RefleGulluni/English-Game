@@ -1,0 +1,72 @@
+{
+  "purpose": "QA only; no Godot assembly",
+  "canvas": [
+    960,
+    540
+  ],
+  "props": [
+    {
+      "file": "props/dead_tree_01.png",
+      "bottom_center": [
+        180,
+        236
+      ]
+    },
+    {
+      "file": "props/tombstone_upright_01.png",
+      "bottom_center": [
+        95,
+        451
+      ]
+    },
+    {
+      "file": "props/tombstone_upright_01.png",
+      "bottom_center": [
+        218,
+        499
+      ]
+    },
+    {
+      "file": "props/tombstone_upright_01.png",
+      "bottom_center": [
+        335,
+        178
+      ]
+    },
+    {
+      "file": "props/tombstone_upright_01.png",
+      "bottom_center": [
+        590,
+        98
+      ]
+    },
+    {
+      "file": "props/tombstone_tilted_01.png",
+      "bottom_center": [
+        899,
+        278
+      ]
+    },
+    {
+      "file": "props/tombstone_fragment_01.png",
+      "bottom_center": [
+        642,
+        128
+      ]
+    },
+    {
+      "file": "props/open_grave_01.png",
+      "bottom_center": [
+        803,
+        330
+      ]
+    }
+  ],
+  "player_reference": {
+    "file": "../pixel_test/size_96/player_idle_01.png",
+    "bottom_center": [
+      338,
+      408
+    ]
+  }
+}

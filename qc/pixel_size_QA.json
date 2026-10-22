@@ -1,0 +1,468 @@
+{
+  "visible_palette_colors": 47,
+  "shared_rgba_states": 48,
+  "palette_rgb": [
+    [
+      2,
+      0,
+      2
+    ],
+    [
+      5,
+      4,
+      4
+    ],
+    [
+      13,
+      9,
+      8
+    ],
+    [
+      24,
+      19,
+      17
+    ],
+    [
+      34,
+      23,
+      18
+    ],
+    [
+      38,
+      31,
+      24
+    ],
+    [
+      43,
+      36,
+      28
+    ],
+    [
+      46,
+      42,
+      34
+    ],
+    [
+      55,
+      41,
+      26
+    ],
+    [
+      55,
+      47,
+      33
+    ],
+    [
+      64,
+      49,
+      31
+    ],
+    [
+      61,
+      55,
+      46
+    ],
+    [
+      71,
+      57,
+      26
+    ],
+    [
+      74,
+      57,
+      46
+    ],
+    [
+      74,
+      64,
+      49
+    ],
+    [
+      76,
+      69,
+      60
+    ],
+    [
+      91,
+      67,
+      45
+    ],
+    [
+      79,
+      75,
+      72
+    ],
+    [
+      89,
+      78,
+      56
+    ],
+    [
+      105,
+      79,
+      49
+    ],
+    [
+      95,
+      86,
+      72
+    ],
+    [
+      104,
+      87,
+      58
+    ],
+    [
+      118,
+      87,
+      59
+    ],
+    [
+      103,
+      95,
+      88
+    ],
+    [
+      113,
+      96,
+      73
+    ],
+    [
+      110,
+      102,
+      95
+    ],
+    [
+      114,
+      106,
+      100
+    ],
+    [
+      130,
+      109,
+      82
+    ],
+    [
+      145,
+      106,
+      70
+    ],
+    [
+      123,
+      111,
+      96
+    ],
+    [
+      117,
+      112,
+      108
+    ],
+    [
+      148,
+      119,
+      80
+    ],
+    [
+      125,
+      122,
+      121
+    ],
+    [
+      128,
+      123,
+      119
+    ],
+    [
+      128,
+      125,
+      124
+    ],
+    [
+      128,
+      126,
+      124
+    ],
+    [
+      133,
+      126,
+      123
+    ],
+    [
+      129,
+      127,
+      126
+    ],
+    [
+      135,
+      130,
+      128
+    ],
+    [
+      148,
+      133,
+      115
+    ],
+    [
+      168,
+      134,
+      102
+    ],
+    [
+      164,
+      149,
+      134
+    ],
+    [
+      186,
+      155,
+      125
+    ],
+    [
+      179,
+      169,
+      158
+    ],
+    [
+      195,
+      170,
+      145
+    ],
+    [
+      205,
+      189,
+      172
+    ],
+    [
+      238,
+      235,
+      226
+    ]
+  ],
+  "files": [
+    {
+      "file": "art/pixel_test/size_64/player_idle_01.png",
+      "canvas": [
+        38,
+        64
+      ],
+      "visible_bbox": [
+        2,
+        0,
+        35,
+        64
+      ],
+      "visible_height": 64,
+      "opaque_rgb_colors": 43,
+      "rgba_states": 44,
+      "origin": [
+        19,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_sha256": "6c159f141aaa059255144674f66db0d116206381f755a0f87ee18d1114efd039",
+      "source": "source/player_64_src.png"
+    },
+    {
+      "file": "art/pixel_test/size_64/tombstone_01.png",
+      "canvas": [
+        34,
+        51
+      ],
+      "visible_bbox": [
+        2,
+        0,
+        32,
+        51
+      ],
+      "visible_height": 51,
+      "opaque_rgb_colors": 45,
+      "rgba_states": 46,
+      "origin": [
+        17,
+        51
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_sha256": "6c159f141aaa059255144674f66db0d116206381f755a0f87ee18d1114efd039",
+      "source": "source/tombstone_64_src.png"
+    },
+    {
+      "file": "art/pixel_test/size_96/player_idle_01.png",
+      "canvas": [
+        58,
+        96
+      ],
+      "visible_bbox": [
+        4,
+        0,
+        56,
+        96
+      ],
+      "visible_height": 96,
+      "opaque_rgb_colors": 46,
+      "rgba_states": 47,
+      "origin": [
+        29,
+        96
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_sha256": "6c159f141aaa059255144674f66db0d116206381f755a0f87ee18d1114efd039",
+      "source": "source/player_96_src.png"
+    },
+    {
+      "file": "art/pixel_test/size_96/tombstone_01.png",
+      "canvas": [
+        48,
+        77
+      ],
+      "visible_bbox": [
+        2,
+        0,
+        46,
+        77
+      ],
+      "visible_height": 77,
+      "opaque_rgb_colors": 44,
+      "rgba_states": 45,
+      "origin": [
+        24,
+        77
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_sha256": "6c159f141aaa059255144674f66db0d116206381f755a0f87ee18d1114efd039",
+      "source": "source/tombstone_96_src.png"
+    },
+    {
+      "file": "art/pixel_test/size_128/player_idle_01.png",
+      "canvas": [
+        78,
+        128
+      ],
+      "visible_bbox": [
+        2,
+        0,
+        73,
+        128
+      ],
+      "visible_height": 128,
+      "opaque_rgb_colors": 46,
+      "rgba_states": 47,
+      "origin": [
+        39,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_sha256": "6c159f141aaa059255144674f66db0d116206381f755a0f87ee18d1114efd039",
+      "source": "source/player_128_src.png"
+    },
+    {
+      "file": "art/pixel_test/size_128/tombstone_01.png",
+      "canvas": [
+        58,
+        102
+      ],
+      "visible_bbox": [
+        2,
+        0,
+        56,
+        102
+      ],
+      "visible_height": 102,
+      "opaque_rgb_colors": 44,
+      "rgba_states": 45,
+      "origin": [
+        29,
+        102
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_sha256": "6c159f141aaa059255144674f66db0d116206381f755a0f87ee18d1114efd039",
+      "source": "source/tombstone_128_src.png"
+    }
+  ],
+  "preview_size": [
+    1968,
+    656
+  ],
+  "preview_nearest_neighbor_scale": 4,
+  "preview_patches": [
+    {
+      "file": "size_64/player_idle_01.png",
+      "preview_box": [
+        168,
+        344,
+        320,
+        600
+      ],
+      "scale": 4
+    },
+    {
+      "file": "size_64/tombstone_01.png",
+      "preview_box": [
+        352,
+        396,
+        488,
+        600
+      ],
+      "scale": 4
+    },
+    {
+      "file": "size_96/player_idle_01.png",
+      "preview_box": [
+        756,
+        216,
+        988,
+        600
+      ],
+      "scale": 4
+    },
+    {
+      "file": "size_96/tombstone_01.png",
+      "preview_box": [
+        1020,
+        292,
+        1212,
+        600
+      ],
+      "scale": 4
+    },
+    {
+      "file": "size_128/player_idle_01.png",
+      "preview_box": [
+        1352,
+        88,
+        1664,
+        600
+      ],
+      "scale": 4
+    },
+    {
+      "file": "size_128/tombstone_01.png",
+      "preview_box": [
+        1696,
+        192,
+        1928,
+        600
+      ],
+      "scale": 4
+    }
+  ],
+  "foot_origin_definition": "center of lowest 15% contact-band x envelope; y=canvas bottom boundary",
+  "generation": "six independent image_gen pixel-art sources; deterministic native-grid, chroma-key, palette and anchor export"
+}

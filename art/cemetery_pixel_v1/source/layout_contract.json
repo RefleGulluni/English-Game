@@ -1,0 +1,6 @@
+{
+  "guides": "Temporary layout guides were used only for image generation, then moved to Trash after validation.",
+  "walk_anchor": {"rows": 2, "cols": 3, "cell_width": 384, "cell_height": 384, "subject_height_ratio": 0.66, "feet_ratio": 0.85, "master": "art/pixel_test/size_96/player_idle_01.png"},
+  "compact_pack": {"rows": 4, "cols": 4, "cell_width": 256, "cell_height": 256},
+  "terrain_mask": {"rows": 8, "cols": 4, "cell_size": 128, "blocks": ["mud_grass_16", "mud_puddle_16"], "bits": "8*TL+4*TR+2*BL+BR", "layout_only": true}
+}

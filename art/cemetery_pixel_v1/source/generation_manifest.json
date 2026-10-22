@@ -1,0 +1,52 @@
+{
+  "target": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-c58662e0-f4d9-402d-94e7-146500456822.png",
+    "prompt": "target_prompt",
+    "method": "built-in image_gen"
+  },
+  "plate": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-1251399a-58e8-41d7-9587-99b7c03a2ccc.png",
+    "prompt": "plate_prompt",
+    "method": "built-in image_gen"
+  },
+  "tree": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-c2e9fa4a-d1d0-46dd-ace1-c04d2e7a6364.png",
+    "prompt": "tree_prompt",
+    "method": "built-in image_gen"
+  },
+  "walk": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-763c4668-3a32-45e5-a220-e30a764c2685.png",
+    "prompt": "walk_prompt",
+    "method": "built-in image_gen"
+  },
+  "terrain": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-be79919e-4aeb-4ef4-8c94-8b2483782ebc.png",
+    "prompt": "terrain_prompt",
+    "method": "built-in image_gen"
+  },
+  "compact": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-21bb3ece-8b3a-4f33-a09b-21eff1ea4784.png",
+    "prompt": "compact_prompt",
+    "method": "built-in image_gen"
+  },
+  "tilted": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-7ba4bf22-c992-467f-94f4-1da22bca244d.png",
+    "prompt": "tilted_prompt",
+    "method": "built-in image_gen"
+  },
+  "fragment": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-d391647d-c96b-4f1f-a0f3-8a3516c885ec.png",
+    "prompt": "fragment_prompt",
+    "method": "built-in image_gen"
+  },
+  "grave": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-8d74c625-180e-4ae6-817e-723f5eecca01.png",
+    "prompt": "grave_prompt",
+    "method": "built-in image_gen"
+  },
+  "bases": {
+    "raw_path": "/Users/mac/.codex/generated_images/01a16384-fa27-7bd1-84ee-f840e2f6df63/exec-dd481be9-cdf8-4835-8761-16c125554734.png",
+    "prompt": "bases_prompt",
+    "method": "built-in image_gen"
+  }
+}

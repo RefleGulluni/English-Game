@@ -1,0 +1,141 @@
+{
+  "shared_native_scale": 0.2909090909090909,
+  "canvas": [
+    80,
+    96
+  ],
+  "origin": [
+    40,
+    96
+  ],
+  "fps": 8.333333,
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        151,
+        96,
+        353,
+        426
+      ],
+      "source_to_native_scale": 0.2909090909090909,
+      "paste": [
+        9,
+        0
+      ],
+      "bbox": [
+        9,
+        0,
+        68,
+        96
+      ],
+      "hand_redrawn_pixels": 0
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        152,
+        101,
+        355,
+        427
+      ],
+      "source_to_native_scale": 0.2909090909090909,
+      "paste": [
+        10,
+        1
+      ],
+      "bbox": [
+        10,
+        1,
+        69,
+        96
+      ],
+      "hand_redrawn_pixels": 0
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        154,
+        98,
+        353,
+        426
+      ],
+      "source_to_native_scale": 0.2909090909090909,
+      "paste": [
+        10,
+        1
+      ],
+      "bbox": [
+        10,
+        1,
+        68,
+        96
+      ],
+      "hand_redrawn_pixels": 0
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        153,
+        90,
+        358,
+        414
+      ],
+      "source_to_native_scale": 0.2909090909090909,
+      "paste": [
+        10,
+        2
+      ],
+      "bbox": [
+        10,
+        2,
+        70,
+        96
+      ],
+      "hand_redrawn_pixels": 0
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        156,
+        90,
+        353,
+        416
+      ],
+      "source_to_native_scale": 0.2909090909090909,
+      "paste": [
+        11,
+        1
+      ],
+      "bbox": [
+        11,
+        1,
+        68,
+        96
+      ],
+      "hand_redrawn_pixels": 0
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        153,
+        90,
+        357,
+        414
+      ],
+      "source_to_native_scale": 0.2909090909090909,
+      "paste": [
+        10,
+        2
+      ],
+      "bbox": [
+        10,
+        2,
+        69,
+        96
+      ],
+      "hand_redrawn_pixels": 0
+    }
+  ],
+  "pixel_redraw_performed": false
+}

@@ -1,0 +1,70 @@
+GIMP Palette
+Name: English Game Cemetery v1 - 64 visible colors
+Columns: 8
+# Entries 1-47 preserved exactly from art/pixel_test/shared_palette.gpl.
+# Entries 48-64: Cemetery cool neutrals, blue-gray water, olive moss.
+# Alpha is separate and strictly binary. No cyan sigil extension in this batch.
+  2   0   2  Global_01
+  5   4   4  Global_02
+ 13   9   8  Global_03
+ 24  19  17  Global_04
+ 34  23  18  Global_05
+ 38  31  24  Global_06
+ 43  36  28  Global_07
+ 46  42  34  Global_08
+ 55  41  26  Global_09
+ 55  47  33  Global_10
+ 64  49  31  Global_11
+ 61  55  46  Global_12
+ 71  57  26  Global_13
+ 74  57  46  Global_14
+ 74  64  49  Global_15
+ 76  69  60  Global_16
+ 91  67  45  Global_17
+ 79  75  72  Global_18
+ 89  78  56  Global_19
+105  79  49  Global_20
+ 95  86  72  Global_21
+104  87  58  Global_22
+118  87  59  Global_23
+103  95  88  Global_24
+113  96  73  Global_25
+110 102  95  Global_26
+114 106 100  Global_27
+130 109  82  Global_28
+145 106  70  Global_29
+123 111  96  Global_30
+117 112 108  Global_31
+148 119  80  Global_32
+125 122 121  Global_33
+128 123 119  Global_34
+128 125 124  Global_35
+128 126 124  Global_36
+133 126 123  Global_37
+129 127 126  Global_38
+135 130 128  Global_39
+148 133 115  Global_40
+168 134 102  Global_41
+164 149 134  Global_42
+186 155 125  Global_43
+179 169 158  Global_44
+195 170 145  Global_45
+205 189 172  Global_46
+238 235 226  Global_47
+ 29  34  39  Cold_Deep
+ 37  42  47  Cold_Dark
+ 44  48  51  Cold_Charcoal
+ 50  53  55  Cold_Mud
+ 55  58  61  Cold_Neutral
+ 61  65  70  Slate_Shadow
+ 68  74  82  Slate_Mid
+ 77  85  95  Puddle_Main
+ 87  96 106  Puddle_Light
+ 99 108 116  Puddle_Glint
+ 47  49  32  Moss_Deep
+ 60  62  39  Moss_Shadow
+ 74  75  45  Moss_Mid
+ 88  87  51  Moss_Light
+101  98  59  Moss_Dry
+ 42  51  62  Puddle_Deep
+ 54  64  77  Puddle_Shadow

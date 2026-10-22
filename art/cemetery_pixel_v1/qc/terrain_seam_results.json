@@ -1,0 +1,32 @@
+{
+  "corner_bit_order": [
+    "top_left_8",
+    "top_right_4",
+    "bottom_left_2",
+    "bottom_right_1"
+  ],
+  "index_formula": "8*TL+4*TR+2*BL+BR; cell=(index%4,index//4)",
+  "atlas_size": [
+    128,
+    128
+  ],
+  "tile_size": [
+    32,
+    32
+  ],
+  "seam_tests": [
+    {
+      "atlas": "mud_grass_dualgrid.png",
+      "horizontal_legal_pairs": 64,
+      "vertical_legal_pairs": 64,
+      "edge_mismatch_pairs": 0
+    },
+    {
+      "atlas": "mud_puddle_dualgrid.png",
+      "horizontal_legal_pairs": 64,
+      "vertical_legal_pairs": 64,
+      "edge_mismatch_pairs": 0
+    }
+  ],
+  "base_edge_failures": 0
+}

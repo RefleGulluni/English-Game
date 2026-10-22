@@ -1,0 +1,1150 @@
+{
+  "technical_pixel_checks_passed": true,
+  "failures": [],
+  "visible_palette_entries": 64,
+  "actual_union_visible_colors": 64,
+  "png_assets_checked": 45,
+  "assets": [
+    {
+      "file": "terrain/grass_base_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 11,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 58.599,
+      "sha256": "9a11a5aa5eb60f2417338c0ac83593ac0b9fe1a9132ad1d87191272438a0ff95"
+    },
+    {
+      "file": "terrain/grass_base_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 10,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 57.864,
+      "sha256": "39fb9a455c7658b02b60edbeb8f67586eaf8e9fd0b0f8480557e1d987b99d5e5"
+    },
+    {
+      "file": "terrain/grass_base_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 13,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 58.018,
+      "sha256": "8e97f9bb902b01797f3b89960026bf0bfd94835c194e25ce8aca8c7e14fca8f7"
+    },
+    {
+      "file": "terrain/grass_base_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 12,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 57.704,
+      "sha256": "bcda640f47ebf6c69013e3c939d95ff5e31fa3b8b7941e508216df5660815eb7"
+    },
+    {
+      "file": "terrain/mud_base_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 6,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 49.948,
+      "sha256": "e306213c0c66cd43b202f4138d06f212ea4834c4b1724abc599376052c894138"
+    },
+    {
+      "file": "terrain/mud_base_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 6,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 49.955,
+      "sha256": "e57904e2e2d32b083a43920acf9482001b69325c62f685d246671bbf68bb97e8"
+    },
+    {
+      "file": "terrain/mud_base_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 7,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 49.899,
+      "sha256": "6e0708aa35af59ae17e9060c281e37da19ff48a45f89533e084e210b82724c50"
+    },
+    {
+      "file": "terrain/mud_base_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 5,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 49.74,
+      "sha256": "0c4181c429986814f2223438b78e420e2c3aa66b426d2583de585090b2553fa4"
+    },
+    {
+      "file": "terrain/mud_grass_dualgrid.png",
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "visible_colors": 15,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 54.24,
+      "sha256": "b5aebacf6fa74d6d6394fc066bed7024282e50d77382e56a03cd6b104d3dfc54"
+    },
+    {
+      "file": "terrain/mud_puddle_dualgrid.png",
+      "size": [
+        128,
+        128
+      ],
+      "bbox": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "visible_colors": 8,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 61.259,
+      "sha256": "937b6fe929618208d5c135c896d9b8afa564d2b8f49882dd1d936b1f6c37fb17"
+    },
+    {
+      "file": "terrain/puddle_base_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 2,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 73.407,
+      "sha256": "cab515ff4d398789374aff5610d4333150a9777720cb5f2424a86e987e3d75de"
+    },
+    {
+      "file": "terrain/puddle_base_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 2,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 73.354,
+      "sha256": "3c896d2277801cd47ec128ff532329ec470ad0c42492864dab027093b738fc7f"
+    },
+    {
+      "file": "terrain/puddle_base_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 2,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 73.396,
+      "sha256": "826732c5f647957066627669a8b2c2fafd5578db8d8586f8ae790dcec9f59f49"
+    },
+    {
+      "file": "terrain/puddle_base_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "bbox": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "visible_colors": 2,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 73.386,
+      "sha256": "9e912b148f319c08a61b757e7c4d9e6fce7bdd4ab36ce1ebfb2f4fc2b5afbd93"
+    },
+    {
+      "file": "decals/gravel_01.png",
+      "size": [
+        20,
+        12
+      ],
+      "bbox": [
+        2,
+        0,
+        18,
+        12
+      ],
+      "visible_colors": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 76.801,
+      "sha256": "f3cebb5cfbff917d416147cafd05ac619768603d38a9d7f3f159ceaf20668e45"
+    },
+    {
+      "file": "decals/gravel_02.png",
+      "size": [
+        26,
+        19
+      ],
+      "bbox": [
+        2,
+        0,
+        24,
+        19
+      ],
+      "visible_colors": 32,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 74.755,
+      "sha256": "1a703d50ec2f23758224edacf74b4e277c7e3e16c12ead5142f794870cafb080"
+    },
+    {
+      "file": "decals/gravel_03.png",
+      "size": [
+        18,
+        9
+      ],
+      "bbox": [
+        2,
+        0,
+        16,
+        9
+      ],
+      "visible_colors": 21,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 75.104,
+      "sha256": "faecd89c2246b361b86fb0a37d9183c0ff98fc6301940d7793782cc3fb31effa"
+    },
+    {
+      "file": "decals/ground_crack_01.png",
+      "size": [
+        32,
+        18
+      ],
+      "bbox": [
+        2,
+        0,
+        28,
+        17
+      ],
+      "visible_colors": 4,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 44.371,
+      "sha256": "f5ce991eaac70d598049714cef5a61b72147d26a626e248766d0f3dda0279943"
+    },
+    {
+      "file": "decals/leaves_01.png",
+      "size": [
+        24,
+        20
+      ],
+      "bbox": [
+        2,
+        0,
+        21,
+        20
+      ],
+      "visible_colors": 21,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 65.555,
+      "sha256": "296c264fc66117d0c7ff4fd90c6986e75987548f69eedea9e048c4fadf6babcd"
+    },
+    {
+      "file": "decals/leaves_02.png",
+      "size": [
+        24,
+        17
+      ],
+      "bbox": [
+        2,
+        0,
+        22,
+        17
+      ],
+      "visible_colors": 29,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 63.786,
+      "sha256": "ef04e0ed98bda1edaca7d8c2f7a9f64445882cde1a381b5200ee389df03b55e4"
+    },
+    {
+      "file": "decals/moss_01.png",
+      "size": [
+        28,
+        15
+      ],
+      "bbox": [
+        2,
+        0,
+        26,
+        15
+      ],
+      "visible_colors": 5,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 75.434,
+      "sha256": "73d742dc9e41dbc823dc0a7e28b2107f01ecd91cea1a51d2df63fa1faa934c45"
+    },
+    {
+      "file": "decals/moss_02.png",
+      "size": [
+        32,
+        17
+      ],
+      "bbox": [
+        2,
+        0,
+        29,
+        17
+      ],
+      "visible_colors": 5,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 71.231,
+      "sha256": "5cca3e35d80aed2bded566e2276905d55ed1fa3eb8e5dd6f9e9458c2a3d01eaf"
+    },
+    {
+      "file": "path/old_slab_01.png",
+      "size": [
+        34,
+        24
+      ],
+      "bbox": [
+        2,
+        0,
+        32,
+        24
+      ],
+      "visible_colors": 49,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 104.828,
+      "sha256": "b016ad62c751735c309a4c0afc8ceca647742c2909938b9829e5a25f0a0df19a"
+    },
+    {
+      "file": "path/old_slab_02.png",
+      "size": [
+        40,
+        25
+      ],
+      "bbox": [
+        2,
+        0,
+        38,
+        25
+      ],
+      "visible_colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 100.574,
+      "sha256": "8903c6b14d210340254bd2993ebb832e1bb630c3e00f067f62cdb6c55679346b"
+    },
+    {
+      "file": "path/old_slab_03.png",
+      "size": [
+        34,
+        25
+      ],
+      "bbox": [
+        2,
+        0,
+        32,
+        25
+      ],
+      "visible_colors": 48,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 107.485,
+      "sha256": "e2a5019b3b895a70b9482689120f71a46f2df240543d2c68932689ebd8c80dcf"
+    },
+    {
+      "file": "path/old_slab_04.png",
+      "size": [
+        32,
+        21
+      ],
+      "bbox": [
+        2,
+        0,
+        30,
+        21
+      ],
+      "visible_colors": 46,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 101.449,
+      "sha256": "c22534c2dd0dcaa990a1fe2113b8797b3500cc57006ea89305158081dd5f95d4"
+    },
+    {
+      "file": "path/old_slab_05.png",
+      "size": [
+        36,
+        27
+      ],
+      "bbox": [
+        2,
+        0,
+        34,
+        27
+      ],
+      "visible_colors": 47,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 103.559,
+      "sha256": "64490a9b4960845512b797d7860b16851ba2e5c3570bc117268b240aa9fb4007"
+    },
+    {
+      "file": "path/old_slab_06.png",
+      "size": [
+        34,
+        27
+      ],
+      "bbox": [
+        2,
+        0,
+        32,
+        27
+      ],
+      "visible_colors": 45,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 98.509,
+      "sha256": "70baf01dd8f22ed8886a706ceeaafdbf4bbc99bab9d8c55f3d7b581fd690bb6f"
+    },
+    {
+      "file": "path/old_slab_07.png",
+      "size": [
+        40,
+        26
+      ],
+      "bbox": [
+        2,
+        0,
+        38,
+        26
+      ],
+      "visible_colors": 50,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 98.455,
+      "sha256": "6b1cf812cdbe4a96d6ef989b44c7bdce043a194b128b45b1a4d77acf5c534305"
+    },
+    {
+      "file": "path/old_slab_08.png",
+      "size": [
+        24,
+        19
+      ],
+      "bbox": [
+        2,
+        0,
+        22,
+        19
+      ],
+      "visible_colors": 45,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 97.0,
+      "sha256": "ce363fe9b23324e8adc3e7e79060cf198b1f766d91b7409c5045be58faae8607"
+    },
+    {
+      "file": "props/dead_tree_01.png",
+      "size": [
+        288,
+        224
+      ],
+      "bbox": [
+        30,
+        1,
+        269,
+        224
+      ],
+      "visible_colors": 57,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 75.509,
+      "sha256": "9351499335e74f392e9376d72160da2bfcd3367d410b86d1a383432786db8687"
+    },
+    {
+      "file": "props/open_grave_01.png",
+      "size": [
+        128,
+        72
+      ],
+      "bbox": [
+        30,
+        0,
+        126,
+        72
+      ],
+      "visible_colors": 49,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 77.983,
+      "sha256": "348b27648b6089253c3e343a0fe3921fd93350f4a45ef851824aad961c295449"
+    },
+    {
+      "file": "props/tombstone_fragment_01.png",
+      "size": [
+        64,
+        35
+      ],
+      "bbox": [
+        13,
+        0,
+        61,
+        35
+      ],
+      "visible_colors": 46,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 117.712,
+      "sha256": "585021f57c4dc91e8a56f247ab719d1a284080af03a0e7bc5fedd53257698009"
+    },
+    {
+      "file": "props/tombstone_tilted_01.png",
+      "size": [
+        72,
+        76
+      ],
+      "bbox": [
+        2,
+        0,
+        54,
+        76
+      ],
+      "visible_colors": 41,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 106.979,
+      "sha256": "6033ffcb6b6e37126bfc35403e320f2acb295bb5104716608919213f80d89c39"
+    },
+    {
+      "file": "props/tombstone_upright_01.png",
+      "size": [
+        72,
+        77
+      ],
+      "bbox": [
+        3,
+        0,
+        47,
+        77
+      ],
+      "visible_colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 99.448,
+      "sha256": "94e0125b21e72f01931f6a892121176607767f37cb1be62025423abad6e38fd9"
+    },
+    {
+      "file": "player_anim/walk_side_01.png",
+      "size": [
+        80,
+        96
+      ],
+      "bbox": [
+        9,
+        0,
+        68,
+        96
+      ],
+      "visible_colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 82.512,
+      "sha256": "53035dc1d22c454c1deeb7bc22a819e67b5d3e11d86e590d0258c5f4d29f9b47"
+    },
+    {
+      "file": "player_anim/walk_side_02.png",
+      "size": [
+        80,
+        96
+      ],
+      "bbox": [
+        10,
+        1,
+        69,
+        96
+      ],
+      "visible_colors": 43,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 83.289,
+      "sha256": "e635b56dbc83715927dff1244ed9ce0f2c3458e193380e1af3e053146be1f86f"
+    },
+    {
+      "file": "player_anim/walk_side_03.png",
+      "size": [
+        80,
+        96
+      ],
+      "bbox": [
+        10,
+        1,
+        68,
+        96
+      ],
+      "visible_colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 82.592,
+      "sha256": "14f7057324310d0f6b4dd666846def2404a4f2c6d40efe8ee226d52b79582e9a"
+    },
+    {
+      "file": "player_anim/walk_side_04.png",
+      "size": [
+        80,
+        96
+      ],
+      "bbox": [
+        10,
+        2,
+        70,
+        96
+      ],
+      "visible_colors": 46,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 82.492,
+      "sha256": "a60703904da95622ded4761150ed431879b8aabbaf8ef0ed49f406c6a60cc236"
+    },
+    {
+      "file": "player_anim/walk_side_05.png",
+      "size": [
+        80,
+        96
+      ],
+      "bbox": [
+        11,
+        1,
+        68,
+        96
+      ],
+      "visible_colors": 43,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 81.138,
+      "sha256": "6b86cc76e03e81e3279241edda164d493cbf0c0b784ad21334c16255cd68cf67"
+    },
+    {
+      "file": "player_anim/walk_side_06.png",
+      "size": [
+        80,
+        96
+      ],
+      "bbox": [
+        10,
+        2,
+        69,
+        96
+      ],
+      "visible_colors": 43,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 82.433,
+      "sha256": "675a13003c222dc8ece9e8f4fa1f265e3b071a6f44532b43a1a76796e44d6821"
+    },
+    {
+      "file": "player_anim/walk_side_strip.png",
+      "size": [
+        480,
+        96
+      ],
+      "bbox": [
+        9,
+        0,
+        469,
+        96
+      ],
+      "visible_colors": 46,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 82.413,
+      "sha256": "e68debe08f6c6cdb36da5a226c304352b609f4d68ef11e8d1fd82b68fcae6428"
+    },
+    {
+      "file": "plates/ground_plate_960x540.png",
+      "size": [
+        960,
+        540
+      ],
+      "bbox": [
+        0,
+        0,
+        960,
+        540
+      ],
+      "visible_colors": 64,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 70.329,
+      "sha256": "fbbb1fc900dbb3ea4ccb0cc593c74d48172691ee2a0699df2287dbe7ad4605ae"
+    },
+    {
+      "file": "source/visual_target_960x540.png",
+      "size": [
+        960,
+        540
+      ],
+      "bbox": [
+        0,
+        0,
+        960,
+        540
+      ],
+      "visible_colors": 64,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 71.479,
+      "sha256": "4f2d9443d6d29a017286c42b0e810c636567cba342247e08bc66995b85893d35"
+    },
+    {
+      "file": "source/visual_target_generated_reference.png",
+      "size": [
+        960,
+        540
+      ],
+      "bbox": [
+        0,
+        0,
+        960,
+        540
+      ],
+      "visible_colors": 64,
+      "alpha_values": [
+        255
+      ],
+      "off_palette_colors": [],
+      "mean_visible_luma": 70.701,
+      "sha256": "28ce52adbb170b5cddc0e9c7c90921716f906d533b6b30a0cd86bb13808c659d"
+    }
+  ],
+  "walk": {
+    "frames": [
+      {
+        "file": "player_anim/walk_side_01.png",
+        "size": [
+          80,
+          96
+        ],
+        "bbox": [
+          9,
+          0,
+          68,
+          96
+        ],
+        "visible_colors": 44,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "off_palette_colors": [],
+        "mean_visible_luma": 82.512,
+        "sha256": "53035dc1d22c454c1deeb7bc22a819e67b5d3e11d86e590d0258c5f4d29f9b47"
+      },
+      {
+        "file": "player_anim/walk_side_02.png",
+        "size": [
+          80,
+          96
+        ],
+        "bbox": [
+          10,
+          1,
+          69,
+          96
+        ],
+        "visible_colors": 43,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "off_palette_colors": [],
+        "mean_visible_luma": 83.289,
+        "sha256": "e635b56dbc83715927dff1244ed9ce0f2c3458e193380e1af3e053146be1f86f"
+      },
+      {
+        "file": "player_anim/walk_side_03.png",
+        "size": [
+          80,
+          96
+        ],
+        "bbox": [
+          10,
+          1,
+          68,
+          96
+        ],
+        "visible_colors": 44,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "off_palette_colors": [],
+        "mean_visible_luma": 82.592,
+        "sha256": "14f7057324310d0f6b4dd666846def2404a4f2c6d40efe8ee226d52b79582e9a"
+      },
+      {
+        "file": "player_anim/walk_side_04.png",
+        "size": [
+          80,
+          96
+        ],
+        "bbox": [
+          10,
+          2,
+          70,
+          96
+        ],
+        "visible_colors": 46,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "off_palette_colors": [],
+        "mean_visible_luma": 82.492,
+        "sha256": "a60703904da95622ded4761150ed431879b8aabbaf8ef0ed49f406c6a60cc236"
+      },
+      {
+        "file": "player_anim/walk_side_05.png",
+        "size": [
+          80,
+          96
+        ],
+        "bbox": [
+          11,
+          1,
+          68,
+          96
+        ],
+        "visible_colors": 43,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "off_palette_colors": [],
+        "mean_visible_luma": 81.138,
+        "sha256": "6b86cc76e03e81e3279241edda164d493cbf0c0b784ad21334c16255cd68cf67"
+      },
+      {
+        "file": "player_anim/walk_side_06.png",
+        "size": [
+          80,
+          96
+        ],
+        "bbox": [
+          10,
+          2,
+          69,
+          96
+        ],
+        "visible_colors": 43,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "off_palette_colors": [],
+        "mean_visible_luma": 82.433,
+        "sha256": "675a13003c222dc8ece9e8f4fa1f265e3b071a6f44532b43a1a76796e44d6821"
+      }
+    ],
+    "gif": {
+      "size": [
+        320,
+        384
+      ],
+      "frames": 6,
+      "durations_ms": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "transparency_binary": true
+    }
+  },
+  "seams": {
+    "corner_bit_order": [
+      "top_left_8",
+      "top_right_4",
+      "bottom_left_2",
+      "bottom_right_1"
+    ],
+    "index_formula": "8*TL+4*TR+2*BL+BR; cell=(index%4,index//4)",
+    "atlas_size": [
+      128,
+      128
+    ],
+    "tile_size": [
+      32,
+      32
+    ],
+    "seam_tests": [
+      {
+        "atlas": "mud_grass_dualgrid.png",
+        "horizontal_legal_pairs": 64,
+        "vertical_legal_pairs": 64,
+        "edge_mismatch_pairs": 0
+      },
+      {
+        "atlas": "mud_puddle_dualgrid.png",
+        "horizontal_legal_pairs": 64,
+        "vertical_legal_pairs": 64,
+        "edge_mismatch_pairs": 0
+      }
+    ],
+    "base_edge_failures": 0
+  },
+  "base_cross_variants": {
+    "mud": {
+      "legal_pairs_per_axis": 16,
+      "mismatch_pairs": 0,
+      "luma_means": [
+        49.948,
+        49.955,
+        49.899,
+        49.74
+      ]
+    },
+    "grass": {
+      "legal_pairs_per_axis": 16,
+      "mismatch_pairs": 0,
+      "luma_means": [
+        58.599,
+        57.864,
+        58.018,
+        57.704
+      ]
+    },
+    "puddle": {
+      "legal_pairs_per_axis": 16,
+      "mismatch_pairs": 0,
+      "luma_means": [
+        73.407,
+        73.354,
+        73.396,
+        73.386
+      ]
+    }
+  },
+  "reference_files_checked": 33,
+  "reference_files_changed": [],
+  "engine_validation": "not performed; Claude owns Godot validation"
+}

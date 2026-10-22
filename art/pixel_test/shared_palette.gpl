@@ -1,0 +1,51 @@
+GIMP Palette
+Name: English Game pixel size test shared
+Columns: 8
+# 47 visible colors; transparent PNG index 0 is separate.
+  2   0   2  Color_01
+  5   4   4  Color_02
+ 13   9   8  Color_03
+ 24  19  17  Color_04
+ 34  23  18  Color_05
+ 38  31  24  Color_06
+ 43  36  28  Color_07
+ 46  42  34  Color_08
+ 55  41  26  Color_09
+ 55  47  33  Color_10
+ 64  49  31  Color_11
+ 61  55  46  Color_12
+ 71  57  26  Color_13
+ 74  57  46  Color_14
+ 74  64  49  Color_15
+ 76  69  60  Color_16
+ 91  67  45  Color_17
+ 79  75  72  Color_18
+ 89  78  56  Color_19
+105  79  49  Color_20
+ 95  86  72  Color_21
+104  87  58  Color_22
+118  87  59  Color_23
+103  95  88  Color_24
+113  96  73  Color_25
+110 102  95  Color_26
+114 106 100  Color_27
+130 109  82  Color_28
+145 106  70  Color_29
+123 111  96  Color_30
+117 112 108  Color_31
+148 119  80  Color_32
+125 122 121  Color_33
+128 123 119  Color_34
+128 125 124  Color_35
+128 126 124  Color_36
+133 126 123  Color_37
+129 127 126  Color_38
+135 130 128  Color_39
+148 133 115  Color_40
+168 134 102  Color_41
+164 149 134  Color_42
+186 155 125  Color_43
+179 169 158  Color_44
+195 170 145  Color_45
+205 189 172  Color_46
+238 235 226  Color_47

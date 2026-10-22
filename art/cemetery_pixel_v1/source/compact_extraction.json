@@ -1,0 +1,130 @@
+[
+  {
+    "file": "decals/gravel_01.png",
+    "source_cell": 0,
+    "native_size": [
+      20,
+      12
+    ]
+  },
+  {
+    "file": "decals/gravel_02.png",
+    "source_cell": 1,
+    "native_size": [
+      26,
+      19
+    ]
+  },
+  {
+    "file": "decals/gravel_03.png",
+    "source_cell": 2,
+    "native_size": [
+      18,
+      9
+    ]
+  },
+  {
+    "file": "decals/leaves_01.png",
+    "source_cell": 3,
+    "native_size": [
+      24,
+      20
+    ]
+  },
+  {
+    "file": "decals/leaves_02.png",
+    "source_cell": 4,
+    "native_size": [
+      24,
+      17
+    ]
+  },
+  {
+    "file": "decals/ground_crack_01.png",
+    "source_cell": 5,
+    "native_size": [
+      32,
+      18
+    ]
+  },
+  {
+    "file": "decals/moss_01.png",
+    "source_cell": 6,
+    "native_size": [
+      28,
+      15
+    ]
+  },
+  {
+    "file": "decals/moss_02.png",
+    "source_cell": 7,
+    "native_size": [
+      32,
+      17
+    ]
+  },
+  {
+    "file": "path/old_slab_01.png",
+    "source_cell": 8,
+    "native_size": [
+      34,
+      24
+    ]
+  },
+  {
+    "file": "path/old_slab_02.png",
+    "source_cell": 9,
+    "native_size": [
+      40,
+      25
+    ]
+  },
+  {
+    "file": "path/old_slab_03.png",
+    "source_cell": 10,
+    "native_size": [
+      34,
+      25
+    ]
+  },
+  {
+    "file": "path/old_slab_04.png",
+    "source_cell": 11,
+    "native_size": [
+      32,
+      21
+    ]
+  },
+  {
+    "file": "path/old_slab_05.png",
+    "source_cell": 12,
+    "native_size": [
+      36,
+      27
+    ]
+  },
+  {
+    "file": "path/old_slab_06.png",
+    "source_cell": 13,
+    "native_size": [
+      34,
+      27
+    ]
+  },
+  {
+    "file": "path/old_slab_07.png",
+    "source_cell": 14,
+    "native_size": [
+      40,
+      26
+    ]
+  },
+  {
+    "file": "path/old_slab_08.png",
+    "source_cell": 15,
+    "native_size": [
+      24,
+      19
+    ]
+  }
+]

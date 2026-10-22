@@ -1,0 +1,214 @@
+{
+  "preview": [
+    640,
+    640
+  ],
+  "earth_display_size": [
+    640,
+    640
+  ],
+  "earth_native_size": [
+    1024,
+    1024
+  ],
+  "hero_height": 160,
+  "hero_foot": [
+    310,
+    432
+  ],
+  "earth_width_in_hero_heights": 4,
+  "slabs": [
+    {
+      "asset": "path_slab_01.png",
+      "center": [
+        407,
+        25
+      ],
+      "rotation": -12
+    },
+    {
+      "asset": "path_slab_05.png",
+      "center": [
+        470,
+        36
+      ],
+      "rotation": -4
+    },
+    {
+      "asset": "path_slab_02.png",
+      "center": [
+        388,
+        90
+      ],
+      "rotation": 7
+    },
+    {
+      "asset": "path_slab_03.png",
+      "center": [
+        358,
+        156
+      ],
+      "rotation": -4
+    },
+    {
+      "asset": "path_slab_04.png",
+      "center": [
+        437,
+        167
+      ],
+      "rotation": -8
+    },
+    {
+      "asset": "path_slab_05.png",
+      "center": [
+        337,
+        209
+      ],
+      "rotation": 13
+    },
+    {
+      "asset": "path_slab_02.png",
+      "center": [
+        400,
+        220
+      ],
+      "rotation": 4
+    },
+    {
+      "asset": "path_slab_05.png",
+      "center": [
+        381,
+        289
+      ],
+      "rotation": 0
+    },
+    {
+      "asset": "path_slab_04.png",
+      "center": [
+        280,
+        332
+      ],
+      "rotation": 4
+    },
+    {
+      "asset": "path_slab_03.png",
+      "center": [
+        359,
+        343
+      ],
+      "rotation": -11
+    },
+    {
+      "asset": "path_slab_02.png",
+      "center": [
+        268,
+        402
+      ],
+      "rotation": 0
+    },
+    {
+      "asset": "path_slab_05.png",
+      "center": [
+        243,
+        456
+      ],
+      "rotation": -11
+    },
+    {
+      "asset": "path_slab_01.png",
+      "center": [
+        314,
+        467
+      ],
+      "rotation": -5
+    },
+    {
+      "asset": "path_slab_02.png",
+      "center": [
+        296,
+        538
+      ],
+      "rotation": -12
+    },
+    {
+      "asset": "path_slab_09.png",
+      "center": [
+        198,
+        584
+      ],
+      "rotation": -5
+    },
+    {
+      "asset": "path_slab_03.png",
+      "center": [
+        261,
+        595
+      ],
+      "rotation": 7
+    },
+    {
+      "asset": "path_slab_07.png",
+      "center": [
+        393,
+        103
+      ],
+      "rotation": -18
+    },
+    {
+      "asset": "path_slab_06.png",
+      "center": [
+        369,
+        168
+      ],
+      "rotation": 16
+    },
+    {
+      "asset": "path_slab_08.png",
+      "center": [
+        360,
+        277
+      ],
+      "rotation": -5
+    },
+    {
+      "asset": "path_slab_07.png",
+      "center": [
+        296,
+        339
+      ],
+      "rotation": 20
+    },
+    {
+      "asset": "path_slab_06.png",
+      "center": [
+        319,
+        397
+      ],
+      "rotation": -12
+    },
+    {
+      "asset": "path_slab_07.png",
+      "center": [
+        222,
+        520
+      ],
+      "rotation": 9
+    },
+    {
+      "asset": "path_slab_08.png",
+      "center": [
+        248,
+        583
+      ],
+      "rotation": -8
+    },
+    {
+      "asset": "path_slab_06.png",
+      "center": [
+        263,
+        235
+      ],
+      "rotation": 20
+    }
+  ]
+}

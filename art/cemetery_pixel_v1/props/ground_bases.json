@@ -1,0 +1,239 @@
+{
+  "assets": [
+    {
+      "file": "props/dead_tree_01_base.png",
+      "paired_prop": "props/dead_tree_01.png",
+      "canvas": [
+        288,
+        224
+      ],
+      "origin": [
+        144,
+        224
+      ],
+      "prop_origin": [
+        144,
+        224
+      ],
+      "world_origin": [
+        0,
+        0
+      ],
+      "soil_native_size": [
+        156,
+        72
+      ],
+      "soil_paste": [
+        72,
+        152
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "props/tombstone_upright_01_base.png",
+      "paired_prop": "props/tombstone_upright_01.png",
+      "canvas": [
+        96,
+        77
+      ],
+      "origin": [
+        48,
+        77
+      ],
+      "prop_origin": [
+        36,
+        77
+      ],
+      "world_origin": [
+        0,
+        0
+      ],
+      "soil_native_size": [
+        68,
+        28
+      ],
+      "soil_paste": [
+        7,
+        49
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "props/tombstone_tilted_01_base.png",
+      "paired_prop": "props/tombstone_tilted_01.png",
+      "canvas": [
+        104,
+        76
+      ],
+      "origin": [
+        52,
+        76
+      ],
+      "prop_origin": [
+        36,
+        76
+      ],
+      "world_origin": [
+        0,
+        0
+      ],
+      "soil_native_size": [
+        76,
+        32
+      ],
+      "soil_paste": [
+        12,
+        44
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "props/tombstone_fragment_01_base.png",
+      "paired_prop": "props/tombstone_fragment_01.png",
+      "canvas": [
+        96,
+        48
+      ],
+      "origin": [
+        48,
+        48
+      ],
+      "prop_origin": [
+        32,
+        35
+      ],
+      "world_origin": [
+        0,
+        0
+      ],
+      "soil_native_size": [
+        70,
+        40
+      ],
+      "soil_paste": [
+        17,
+        8
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "props/open_grave_01_base.png",
+      "paired_prop": "props/open_grave_01.png",
+      "canvas": [
+        176,
+        80
+      ],
+      "origin": [
+        88,
+        80
+      ],
+      "prop_origin": [
+        64,
+        72
+      ],
+      "world_origin": [
+        0,
+        0
+      ],
+      "soil_native_size": [
+        124,
+        66
+      ],
+      "soil_paste": [
+        38,
+        14
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "decals/dead_grass_01.png",
+      "canvas": [
+        20,
+        10
+      ],
+      "origin": [
+        10,
+        10
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "decals/dead_grass_02.png",
+      "canvas": [
+        28,
+        14
+      ],
+      "origin": [
+        14,
+        14
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "decals/dead_grass_03.png",
+      "canvas": [
+        36,
+        18
+      ],
+      "origin": [
+        18,
+        18
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    },
+    {
+      "file": "decals/dead_grass_04.png",
+      "canvas": [
+        48,
+        24
+      ],
+      "origin": [
+        24,
+        24
+      ],
+      "render_layer": "ground_decal_above_plate_below_all_actors",
+      "y_sort": false,
+      "collision": false
+    }
+  ],
+  "tree_root_transfer": {
+    "source_backup": "/Users/mac/Documents/GitHub/English-Game/art_source/backups/cemetery_ground_bases_20261022_212052/props/dead_tree_01.png",
+    "base_root_rows": [
+      160,
+      224
+    ],
+    "high_kept_rows": [
+      0,
+      178
+    ],
+    "shared_overlap_rows": [
+      160,
+      178
+    ],
+    "buried_root_tip_rows": [
+      214,
+      224
+    ],
+    "canvas_unchanged": [
+      288,
+      224
+    ],
+    "source_pixels_redrawn": 0
+  }
+}

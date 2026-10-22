@@ -1,0 +1,107 @@
+[
+  {
+    "file": "dead_tree_01.png",
+    "canvas": [
+      288,
+      224
+    ],
+    "origin": [
+      144,
+      224
+    ],
+    "footprint_cells": [
+      2,
+      1
+    ],
+    "collision_rect_draft": [
+      -32,
+      -28,
+      64,
+      28
+    ]
+  },
+  {
+    "file": "tombstone_upright_01.png",
+    "canvas": [
+      72,
+      77
+    ],
+    "origin": [
+      36,
+      77
+    ],
+    "footprint_cells": [
+      2,
+      1
+    ],
+    "collision_rect_draft": [
+      -32,
+      -15,
+      44,
+      15
+    ]
+  },
+  {
+    "file": "tombstone_tilted_01.png",
+    "canvas": [
+      72,
+      76
+    ],
+    "origin": [
+      36,
+      76
+    ],
+    "footprint_cells": [
+      2,
+      1
+    ],
+    "collision_rect_draft": [
+      -32,
+      -18,
+      48,
+      18
+    ]
+  },
+  {
+    "file": "tombstone_fragment_01.png",
+    "canvas": [
+      64,
+      35
+    ],
+    "origin": [
+      32,
+      35
+    ],
+    "footprint_cells": [
+      2,
+      1
+    ],
+    "collision_rect_draft": [
+      -24,
+      -28,
+      48,
+      28
+    ]
+  },
+  {
+    "file": "open_grave_01.png",
+    "canvas": [
+      128,
+      72
+    ],
+    "origin": [
+      64,
+      72
+    ],
+    "footprint_cells": [
+      3,
+      2
+    ],
+    "collision_rect_draft": [
+      -40,
+      -64,
+      96,
+      64
+    ]
+  }
+]
