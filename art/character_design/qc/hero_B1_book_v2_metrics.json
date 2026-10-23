@@ -20,14 +20,14 @@
   "cyan_bbox": [
     43,
     43,
-    47,
-    46
+    48,
+    47
   ],
   "alpha_values": [
     0,
     255
   ],
-  "changed_pixels_vs_B1": 93,
+  "changed_pixels_vs_B1": 91,
   "changed_region": [
     41,
     37,
@@ -41,5 +41,23 @@
     56
   ],
   "original_files_unchanged": true,
-  "lexicon_book_sheet_unchanged": true
+  "lexicon_book_sheet_unchanged": true,
+  "glyph_grid": [
+    "..#..",
+    ".#.#.",
+    ".#.#.",
+    "##.##"
+  ],
+  "glyph_size": [
+    5,
+    4
+  ],
+  "glyph_bottom_gap": {
+    "coordinate": [
+      45,
+      46
+    ],
+    "width": 1
+  },
+  "method": "image_gen book asset, native palette cleanup; glyph resampled separately using coverage to preserve one-pixel base gap"
 }

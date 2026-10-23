@@ -61,7 +61,11 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   设想：锚点上的符号补上缺的那条边，靠近时三角完整 = 锚定。**用户要求先看美术成果，暂不写入 World Bible。**
   角色设计组已交付 `lexicon_book_sheet.png`（放大版书封、翻开的星图书页、四阶段小样）——**质量很好，保留**；
   但 `hero_B1_book.png` 上的 7×7 小符号有问题：塞进了完整外圈，读成发光圆徽章/笑脸，看不出书的形状，青蓝 26 px 太亮。
-  已给出修改要求（小尺寸去掉外圈、先画出书的形状、青蓝 8～12 px，示意 `art/character_design/reference/micro_symbol_fix_claude.png`），等待用户转给角色设计组，交付 `hero_B1_book_v2.png`。
+  v2 画成了“∧”，不合格。**用户最终选定主角身上的小符号：7×6 尖三角（暗青 #248B9B）+ 中心亮点（#A4EDEF）**，
+  精确设定图 `art/character_design/reference/lexicon_micro_symbol_FINAL_spec.png`（像素文件 `lexicon_micro_book_FINAL_9x11.png`），已交角色设计组做 `hero_B1_book_v3.png`。
+  **大尺寸书封（lexicon_book_sheet.png、高清插画）保持原设计：圆环 + 三角 + 三个节点 + 中心点**；用户明确不要求大小两版完全一样，小版是大版的“缩写”。
+- **主角高清参考图**：`art/character_design/reference/hero_B1_concept_hires.png`（1024×1536，AI 原图，复制自 Codex 的临时生成目录）。
+  作为主角“长什么样”的标准：用于四方向设定图、对话立绘基础、动画走样检查。它是 AI 伪像素插画，不是游戏内素材。
 - `art/cemetery_kit_v2/` 与 `scenes/prototypes/terrain_v2/`、`scripts/prototypes/terrain_v2/` 是已废弃的 Stone/Mud Dual-Grid 研发记录，不进入正式生产。
 - [docs/MODULAR_2_5D_CONTRACT.md](docs/MODULAR_2_5D_CONTRACT.md) 等运行时文档写于 v3 之前；其中的美术相关约定若与 v3 冲突，以 v3 为准，并在修改代码前与用户确认。
 
