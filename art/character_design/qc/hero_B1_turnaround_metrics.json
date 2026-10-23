@@ -1,0 +1,153 @@
+{
+  "front": {
+    "canvas": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      67,
+      96
+    ],
+    "visible_height": 96,
+    "visible_colors": 48,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 16,
+    "origin": [
+      48,
+      96
+    ]
+  },
+  "back": {
+    "canvas": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      69,
+      96
+    ],
+    "visible_height": 96,
+    "visible_colors": 43,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 0,
+    "origin": [
+      48,
+      96
+    ],
+    "feet_envelope_center_x": 47.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-8cb3ea9a-c357-428c-894c-03103595a1d4.png",
+    "source_bbox": [
+      233,
+      54,
+      821,
+      1429
+    ],
+    "resampled_subject_size": [
+      41,
+      96
+    ]
+  },
+  "left": {
+    "canvas": [
+      96,
+      96
+    ],
+    "bbox": [
+      36,
+      0,
+      66,
+      96
+    ],
+    "visible_height": 96,
+    "visible_colors": 43,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 0,
+    "origin": [
+      48,
+      96
+    ],
+    "feet_envelope_center_x": 48.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-f86d42e3-be40-41b8-8b50-505a1767ca01.png",
+    "source_bbox": [
+      322,
+      45,
+      773,
+      1482
+    ],
+    "resampled_subject_size": [
+      30,
+      96
+    ]
+  },
+  "right": {
+    "canvas": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      60,
+      96
+    ],
+    "visible_height": 96,
+    "visible_colors": 46,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 0,
+    "origin": [
+      48,
+      96
+    ],
+    "feet_envelope_center_x": 48.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-a7d82bd1-2767-404c-83df-1434bb797209.png",
+    "source_bbox": [
+      250,
+      72,
+      712,
+      1471
+    ],
+    "resampled_subject_size": [
+      32,
+      96
+    ]
+  },
+  "checks": {
+    "front_byte_identical": true,
+    "no_mirroring": true,
+    "palette_membership": true,
+    "existing_files_unchanged": true,
+    "sheet_order": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ],
+    "sheet_size": [
+      384,
+      96
+    ],
+    "preview_size": [
+      3072,
+      768
+    ],
+    "anatomical_lantern_hand": "right",
+    "anatomical_satchel_hip": "left",
+    "strap": "right shoulder to left hip"
+  }
+}

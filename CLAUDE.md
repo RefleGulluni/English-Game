@@ -33,9 +33,9 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   当前 `project.godot` 仍是 1280×720 视口；改成 960×540 原生 + 整数缩放前需征得用户同意。
 - 仍待定：正式调色板、描边强度、Camera zoom、地面瓦片尺寸（预计 32 px 左右）。
 
-## 当前进度（2026-10-22）
+## 当前进度（2026-10-23）
 
-- 这几天的决定与 Godot 实现细节汇总在 [docs/PIXEL_V3_VALIDATION.md](docs/PIXEL_V3_VALIDATION.md)。
+- 像素美术方向的决定与 Godot 实现细节：[docs/PIXEL_V3_VALIDATION.md](docs/PIXEL_V3_VALIDATION.md)。主角与 Lexicon：[docs/HERO_DESIGN.md](docs/HERO_DESIGN.md)。
 
 - 美术方向已换代到 v3。**Pixel Validation Room** 原型：[scenes/prototypes/pixel_room/pixel_room.tscn](scenes/prototypes/pixel_room/pixel_room.tscn)（SubViewport 原生分辨率 + 整数缩放 + Y-Sort + 碰撞 + 接触阴影 + 语言层；按键切换尺寸、分辨率、语言风格，F 全屏）。地面目前是程序生成的占位。
   用户不熟悉 Godot 编辑器操作：需要看效果时，直接用 `Godot --path . <scene>` 在后台为用户启动窗口，并提醒先点击画面、按 F 全屏。
@@ -48,39 +48,29 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   - 枯树碰撞是覆盖树根的椭圆（用户指定范围）。
   - 用户不喜欢角色描边（代码保留，默认关闭，O 键切换）。
   - 已知问题：横向伸展很宽的物体（如低矮的树枝）与角色处于同一深度时，前后关系难以分辨。可考虑的美术规则：树枝长在角色头顶以上（离地约 100 px 以上）。
-- **主角重新设计（2026-10-23 起，由新开的 Codex 角色设计组负责，交付在 `art/character_design/`）**：
-  旧主角（兜帽斗篷 + 长剑）被判定为太像通用暗黑剑士、缺少 Lexicon、太中世纪，不再作为定稿。
-  主角为**男性**。A/B/C/D 四个方向中用户选定 **B（记录世界的旅人：长外套、挎包、提灯）**。
-  B1～B3 细化变体已交付。**2026-10-23 用户拍板：主角定为 B1**（翻领、胸前浅色衬衫、书挂在腰前）。
-  **定稿素材就是原版 `art/character_design/hero_B1.png`，书上的青蓝小印记也保持原样，不再修改**（用户明确要求）。
-  `hero_B1_book.png` / `_v2` / `_v3` / `_v4` 都是符号试验稿，不使用。
-  之后的顺序：选定变体 → 四方向设定图（turnaround）→ 动画帧。**主角定稿前不要生产动画。**
-- **Lexicon = 主角腰间的实体书（2026-10-23 用户提出，已写入 World Bible 第 6、8.1、12.1、36 节）**：
-  游戏里打开的 Lexicon 界面就是主角翻开的这本书；锚点共鸣的对象是这本书；书页四种状态对应四个学习阶段（空白 → 铅笔 → 墨水 → 青蓝发光）。
-  设计边界：锚定只是“为什么理解能留下来”的解释，**学会的单词不会因死亡或未到锚点而丢失**。
-- **书封符号**：用户初步选定 Claude 的方案 A（`art/character_design/reference/lexicon_symbol_mockup_claude.png`）——
-  三角形三个节点 = Concept / Language / Reality，**底边中间断开** = Fracture，外圈 = Lexicon，中心点 = 主角。
-  设想：锚点上的符号补上缺的那条边，靠近时三角完整 = 锚定。**用户要求先看美术成果，暂不写入 World Bible。**
-  角色设计组已交付 `lexicon_book_sheet.png`（放大版书封、翻开的星图书页、四阶段小样）——**质量很好，保留**；
-  但 `hero_B1_book.png` 上的 7×7 小符号有问题：塞进了完整外圈，读成发光圆徽章/笑脸，看不出书的形状，青蓝 26 px 太亮。
-  v2 画成了“∧”，不合格。v3（7×6 尖三角 + 中心亮点）逐像素合格，但 v3 的书是整齐矩形 + 黑边框，**用户觉得像贴上去的牌子、突兀**。
-  **当前方案（2026-10-23）：保留原版 `hero_B1.png` 那本自然画在外套里的书，只把书上的青蓝图案换成
-  “断底三角 + 三个角亮点”（7×6，线条 #46CAD5、角点 #A4EDEF，无中心点、无外圈）**。
-  角色设计组交付的 `hero_B1_book_v4.png` 与规格逐像素一致，但**用户最终决定直接用原版 B1、符号不改**（2026-10-23）。
-  符号含义已写入 World Bible §8.1“书封符号”。下一步：以 `hero_B1.png` 为标准做四方向设定图（turnaround）。
-  经验：修改像素角色时只改最少的像素，不要单独画一块新东西贴上去。
-  **大尺寸书封（lexicon_book_sheet.png、高清插画）保持原设计：圆环 + 三角 + 三个节点 + 中心点**；用户明确不要求大小两版完全一样，小版是大版的“缩写”。
-- **主角高清参考图**：`art/character_design/reference/hero_B1_concept_hires.png`（1024×1536，AI 原图，复制自 Codex 的临时生成目录）。
-  作为主角“长什么样”的标准：用于四方向设定图、对话立绘基础、动画走样检查。它是 AI 伪像素插画，不是游戏内素材。
-- **Lexicon 高清参考图**（同一批 AI 原图，用作 Lexicon 界面与单词卡片的设计参考，不是游戏内素材）：
-  `reference/lexicon_cover_concept_hires.png`（书封）、`reference/lexicon_open_pages_concept_hires.png`（翻开的星图书页）、
-  `reference/lexicon_learning_stages_concept_hires.png`（四种学习阶段：空白 → 铅笔 → 墨水 → 青蓝）。游戏内原生像素版本在 `lexicon_book_sheet.png`。
+- **主角已定稿（2026-10-23）**：B1，记录世界的男性旅人。决定过程、文件清单、已知问题与待办见 [docs/HERO_DESIGN.md](docs/HERO_DESIGN.md)。
+  - **标准图就是原版 `art/character_design/hero_B1.png`，一个像素都不改**（包括书上的青蓝小印记）。`hero_B1_book*.png`（v1～v4）都是废稿。
+  - 四方向：`hero_B1_front/back/left/right.png` + `hero_B1_turnaround.png`，已接受。右侧偏弱（偏驼、提灯看不清），做动画时顺手修。
+  - 高清参考：`reference/hero_B1_concept_hires.png`（检查走样用，不是游戏素材）。
+  - 旧主角素材（`art/cemetery_pixel_v1/player_anim/` 等）作废。**下一步：主角动画。**
+- **Lexicon = 主角腰间的实体书**（World Bible 第 6、8.1、12.1、36 节）：打开的界面就是翻开的书，书页四种状态对应四个学习阶段。
+  **学会的单词永远不会丢失**。书封符号：三个节点 = Concept/Language/Reality，底边断开 = Fracture，外圈 = Lexicon，中心点 = 主角（已写入 World Bible §8.1）。
+  大书封用完整符号（`lexicon_book_sheet.png` 质量很好，保留）；角色身上的小印记是它的“缩写”，不要求一样。
 - `art/cemetery_kit_v2/` 与 `scenes/prototypes/terrain_v2/`、`scripts/prototypes/terrain_v2/` 是已废弃的 Stone/Mud Dual-Grid 研发记录，不进入正式生产。
 - [docs/MODULAR_2_5D_CONTRACT.md](docs/MODULAR_2_5D_CONTRACT.md) 等运行时文档写于 v3 之前；其中的美术相关约定若与 v3 冲突，以 v3 为准，并在修改代码前与用户确认。
+
+## 接下来可以做的事（2026-10-23 交接时）
+
+1. **主角动画**：待机 → 四方向行走 → 翻书（打开 Lexicon）→ 战斗动作。先给角色设计组写需求，交付后放进 graveyard_room 实机验收（顺手修右侧图）。
+2. **Lexicon 界面**设计（书页星图、单词卡片、四个学习阶段的显示）。
+3. 其他验证场景：Abandoned Station、Eleanor's Shop。
+4. 接手正式游戏代码：先读 README 与 `docs/` 运行时文档，出一份现状报告；把 `project.godot` 改为 960×540 原生 + 整数缩放（需用户同意）。
+5. 未定设想：锚点上的符号带着缺失的底边，靠近时三角补全 = 锚定。
 
 ## 团队分工（2026-10-22 起）
 
 - **Claude**：全部程序（Godot 代码、场景、原型与正式游戏）；参与部分方向决定；为美术组撰写素材需求与提示词，并在 Godot 中验收素材。
+- **Codex 角色设计组**（2026-10-23 新开）：主角与角色设计，交付到 `art/character_design/`。
 - **Codex 美术组**：按需求生成素材，交付到 `art/` 并附 `qc/*_QA.md`。
 - **Codex 方向组**：维护 Obsidian 中的设计文档（World Bible、Art Direction Bible 等）。文档修改建议写成可直接转发给方向组的文字。
 - 用户在三方之间转达消息。给某一组的文字要明确标注“发给谁”。
