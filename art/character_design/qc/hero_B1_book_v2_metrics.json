@@ -1,0 +1,45 @@
+{
+  "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-638f0a64-c9f7-4030-9dd0-4f104ce80fd6.png",
+  "prompt": "English Game miniature LEXICON BOOK prop only, no person. Make a clearly identifiable SMALL HANGING WORN NOTEBOOK, not medallion. TRUE NATIVE PIXEL ART designed at9pixels WIDE x13pixels TALL including2pixel hanging loop, book body about9x11, show enlarged nearest-neighbor with large perfectly crisp square pixel clusters. Slight three-quarter perspective: almost front-facing dark desaturated charcoal-brown LEATHER COVER, a narrow pale bone PAGE BLOCK on RIGHT side showing thickness, a dark spine on left, worn top/bottom corners, one or two tiny scuff pixels, small brown leather belt loop rises from top to suspend at waist. Cover distinctly DARKER AND GRAYER than brown overcoat. Background GENUINE TRANSPARENT, no floor, no shadow, no aura, no halo. On cover center ONLY a TINY CYAN UPRIGHT TRIANGLE WITH A BROKEN BOTTOM EDGE, NO CIRCLE whatsoever, NO OUTER RING, no badge, no page-bracket glyph, no large glowing area. At actual native size only8-12 cyan pixels total: one top vertex, two sloping sides leading to two lower corners, two separate bottom segments with a visible1pixel DARK GAP between. Glyph roughly5pixels wide by4pixels high; center dot optional but prefer OMIT to keep open space. Three corner pixels can be pale cyan, other edges subdued cyan. Palette restricted leather grays/browns, bone page edge, language only #248B9B #46CAD5 #A4EDEF. Preserve book shape first, symbol secondary. The whole cover must not become cyan. Mature rough material, not flat clean icon, not cute, not photoreal, no tiny high-res noise, no antialiasing, no smooth shading. Whole book with loop fully in frame, generous transparent margins. Reference comparison middle character shows intended book scale and simple broken triangle only; improve depth and wear, don't copy its flat rectangle.",
+  "book_patch": {
+    "size": [
+      9,
+      13
+    ],
+    "includes_hanging_loop": true,
+    "position": [
+      41,
+      37
+    ]
+  },
+  "hero_canvas": [
+    96,
+    96
+  ],
+  "cyan_pixels": 9,
+  "cyan_bbox": [
+    43,
+    43,
+    47,
+    46
+  ],
+  "alpha_values": [
+    0,
+    255
+  ],
+  "changed_pixels_vs_B1": 93,
+  "changed_region": [
+    41,
+    37,
+    50,
+    50
+  ],
+  "waist_crop": [
+    34,
+    32,
+    58,
+    56
+  ],
+  "original_files_unchanged": true,
+  "lexicon_book_sheet_unchanged": true
+}

@@ -1,0 +1,453 @@
+{
+  "closed": {
+    "size": [
+      128,
+      128
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 522,
+    "visible_colors": 41
+  },
+  "open": {
+    "size": [
+      256,
+      128
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 327,
+    "visible_colors": 42
+  },
+  "stages": [
+    {
+      "size": [
+        96,
+        40
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "visible_colors": 25
+    },
+    {
+      "size": [
+        96,
+        40
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "visible_colors": 24
+    },
+    {
+      "size": [
+        96,
+        40
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "visible_colors": 18
+    },
+    {
+      "size": [
+        96,
+        40
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 500,
+      "visible_colors": 25
+    }
+  ],
+  "hero": {
+    "size": [
+      96,
+      96
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 26,
+    "visible_colors": 46
+  },
+  "sheet": {
+    "size": [
+      448,
+      304
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "cyan_pixels": 1349,
+    "visible_colors": 51
+  },
+  "hero_changed_pixels": 46,
+  "hero_changed_region": [
+    42,
+    40,
+    49,
+    47
+  ],
+  "micro_stamp": [
+    [
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ]
+    ],
+    [
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        164,
+        237,
+        239,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ]
+    ],
+    [
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ]
+    ],
+    [
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        164,
+        237,
+        239,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ]
+    ],
+    [
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ]
+    ],
+    [
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        164,
+        237,
+        239,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        70,
+        202,
+        213,
+        255
+      ],
+      [
+        164,
+        237,
+        239,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ]
+    ],
+    [
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        36,
+        139,
+        155,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ],
+      [
+        38,
+        31,
+        24,
+        255
+      ]
+    ]
+  ],
+  "raw_sources": {
+    "closed": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-84fde3a0-3220-42b2-b97c-fc2bb0a6a26c.png",
+    "open": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-31165170-3462-4089-bf77-2cd6d97ba3a2.png",
+    "stages": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-3d2c046e-0ea1-4db0-98b2-9f4c83bb1e03.png",
+    "micro": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-41384854-830b-4c7c-868e-8eae3f8ea9f7.png",
+    "hero_edit": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-32533ba5-33c4-4493-8fb1-92c51799e40a.png",
+    "micro_final": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-42f5774e-5c6c-4633-96ae-4439eb7d9b98.png"
+  },
+  "palette_extensions": [
+    [
+      36,
+      139,
+      155
+    ],
+    [
+      70,
+      202,
+      213
+    ],
+    [
+      164,
+      237,
+      239
+    ]
+  ],
+  "micro_checks": {
+    "triangle_three_corner_nodes": "PASS",
+    "bottom_center_gap": "PASS",
+    "center_dot": "PASS",
+    "subdued_outer_ring": "PASS",
+    "authored_grid": [
+      7,
+      7
+    ],
+    "method": "image-generated stamp; per-color coverage resampling; no procedural geometry"
+  }
+}

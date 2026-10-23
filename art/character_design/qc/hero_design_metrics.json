@@ -1,0 +1,121 @@
+{
+  "palette_extension_lexicon_only": [
+    [
+      36,
+      139,
+      155
+    ],
+    [
+      70,
+      202,
+      213
+    ],
+    [
+      164,
+      237,
+      239
+    ]
+  ],
+  "designs": {
+    "A": {
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        26,
+        0,
+        64,
+        96
+      ],
+      "visible_height": 96,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_colors": 42,
+      "cyan_pixels": 4,
+      "feet_envelope_center_x": 47.5,
+      "origin": [
+        48,
+        96
+      ],
+      "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-7a8323ea-e472-48d5-a557-ea5e08d564d8.png"
+    },
+    "B": {
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        28,
+        0,
+        65,
+        96
+      ],
+      "visible_height": 96,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_colors": 38,
+      "cyan_pixels": 4,
+      "feet_envelope_center_x": 48.0,
+      "origin": [
+        48,
+        96
+      ],
+      "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-af2c8e6c-60d1-4584-9418-29db340aca40.png"
+    },
+    "C": {
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        36,
+        0,
+        73,
+        96
+      ],
+      "visible_height": 96,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_colors": 38,
+      "cyan_pixels": 9,
+      "feet_envelope_center_x": 48.5,
+      "origin": [
+        48,
+        96
+      ],
+      "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-952d64a4-439b-4e52-bc88-55fd7edae83d.png"
+    },
+    "D": {
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        27,
+        0,
+        65,
+        96
+      ],
+      "visible_height": 96,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_colors": 33,
+      "cyan_pixels": 14,
+      "feet_envelope_center_x": 48.0,
+      "origin": [
+        48,
+        96
+      ],
+      "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-0783a444-9ad8-4eab-b20e-65b4785d9159.png"
+    }
+  }
+}

@@ -48,6 +48,20 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   - 枯树碰撞是覆盖树根的椭圆（用户指定范围）。
   - 用户不喜欢角色描边（代码保留，默认关闭，O 键切换）。
   - 已知问题：横向伸展很宽的物体（如低矮的树枝）与角色处于同一深度时，前后关系难以分辨。可考虑的美术规则：树枝长在角色头顶以上（离地约 100 px 以上）。
+- **主角重新设计（2026-10-23 起，由新开的 Codex 角色设计组负责，交付在 `art/character_design/`）**：
+  旧主角（兜帽斗篷 + 长剑）被判定为太像通用暗黑剑士、缺少 Lexicon、太中世纪，不再作为定稿。
+  主角为**男性**。A/B/C/D 四个方向中用户选定 **B（记录世界的旅人：长外套、挎包、提灯）**。
+  B1～B3 细化变体已交付，Claude 与用户都倾向 **B1**（翻领、胸前浅色衬衫、书挂在腰前；用户尚未最终拍板）。
+  之后的顺序：选定变体 → 四方向设定图（turnaround）→ 动画帧。**主角定稿前不要生产动画。**
+- **Lexicon = 主角腰间的实体书（2026-10-23 用户提出，已写入 World Bible 第 6、8.1、12.1、36 节）**：
+  游戏里打开的 Lexicon 界面就是主角翻开的这本书；锚点共鸣的对象是这本书；书页四种状态对应四个学习阶段（空白 → 铅笔 → 墨水 → 青蓝发光）。
+  设计边界：锚定只是“为什么理解能留下来”的解释，**学会的单词不会因死亡或未到锚点而丢失**。
+- **书封符号**：用户初步选定 Claude 的方案 A（`art/character_design/reference/lexicon_symbol_mockup_claude.png`）——
+  三角形三个节点 = Concept / Language / Reality，**底边中间断开** = Fracture，外圈 = Lexicon，中心点 = 主角。
+  设想：锚点上的符号补上缺的那条边，靠近时三角完整 = 锚定。**用户要求先看美术成果，暂不写入 World Bible。**
+  角色设计组已交付 `lexicon_book_sheet.png`（放大版书封、翻开的星图书页、四阶段小样）——**质量很好，保留**；
+  但 `hero_B1_book.png` 上的 7×7 小符号有问题：塞进了完整外圈，读成发光圆徽章/笑脸，看不出书的形状，青蓝 26 px 太亮。
+  已给出修改要求（小尺寸去掉外圈、先画出书的形状、青蓝 8～12 px，示意 `art/character_design/reference/micro_symbol_fix_claude.png`），等待用户转给角色设计组，交付 `hero_B1_book_v2.png`。
 - `art/cemetery_kit_v2/` 与 `scenes/prototypes/terrain_v2/`、`scripts/prototypes/terrain_v2/` 是已废弃的 Stone/Mud Dual-Grid 研发记录，不进入正式生产。
 - [docs/MODULAR_2_5D_CONTRACT.md](docs/MODULAR_2_5D_CONTRACT.md) 等运行时文档写于 v3 之前；其中的美术相关约定若与 v3 冲突，以 v3 为准，并在修改代码前与用户确认。
 

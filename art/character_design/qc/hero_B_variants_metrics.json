@@ -1,0 +1,156 @@
+{
+  "B1": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      67,
+      96
+    ],
+    "visible_height": 96,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "visible_colors": 48,
+    "cyan_pixels": 16,
+    "cyan_bbox": [
+      43,
+      40,
+      48,
+      47
+    ],
+    "upper_torso_pale_pixels_luma_ge_145": 60,
+    "origin": [
+      48,
+      96
+    ],
+    "feet_envelope_center_x": 48.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-d6969d3d-89be-4682-b9e2-90b89dad00c1.png"
+  },
+  "B2": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      65,
+      96
+    ],
+    "visible_height": 96,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "visible_colors": 43,
+    "cyan_pixels": 13,
+    "cyan_bbox": [
+      58,
+      46,
+      61,
+      51
+    ],
+    "upper_torso_pale_pixels_luma_ge_145": 51,
+    "origin": [
+      48,
+      96
+    ],
+    "feet_envelope_center_x": 47.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-3271ce7e-1b54-40bf-86d4-257e81328a9e.png"
+  },
+  "B3": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      66,
+      96
+    ],
+    "visible_height": 96,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "visible_colors": 43,
+    "cyan_pixels": 13,
+    "cyan_bbox": [
+      43,
+      46,
+      47,
+      51
+    ],
+    "upper_torso_pale_pixels_luma_ge_145": 40,
+    "origin": [
+      48,
+      96
+    ],
+    "feet_envelope_center_x": 48.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-66129f0f-ffe7-482b-901a-ecc9f2eed40d.png"
+  },
+  "B_original": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      0,
+      65,
+      96
+    ],
+    "visible_height": 96,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "visible_colors": 38,
+    "cyan_pixels": 4,
+    "cyan_bbox": [
+      58,
+      44,
+      61,
+      47
+    ],
+    "upper_torso_pale_pixels_luma_ge_145": 14,
+    "origin": [
+      48,
+      96
+    ]
+  },
+  "checks": {
+    "palette_membership": "PASS",
+    "existing_deliverables_unchanged": "PASS",
+    "compare_scale": 4,
+    "compare_order": [
+      "B original",
+      "B1",
+      "B2",
+      "B3"
+    ],
+    "palette_extension": [
+      [
+        36,
+        139,
+        155
+      ],
+      [
+        70,
+        202,
+        213
+      ],
+      [
+        164,
+        237,
+        239
+      ]
+    ]
+  }
+}
