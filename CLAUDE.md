@@ -66,6 +66,9 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   **大尺寸书封（lexicon_book_sheet.png、高清插画）保持原设计：圆环 + 三角 + 三个节点 + 中心点**；用户明确不要求大小两版完全一样，小版是大版的“缩写”。
 - **主角高清参考图**：`art/character_design/reference/hero_B1_concept_hires.png`（1024×1536，AI 原图，复制自 Codex 的临时生成目录）。
   作为主角“长什么样”的标准：用于四方向设定图、对话立绘基础、动画走样检查。它是 AI 伪像素插画，不是游戏内素材。
+- **Lexicon 高清参考图**（同一批 AI 原图，用作 Lexicon 界面与单词卡片的设计参考，不是游戏内素材）：
+  `reference/lexicon_cover_concept_hires.png`（书封）、`reference/lexicon_open_pages_concept_hires.png`（翻开的星图书页）、
+  `reference/lexicon_learning_stages_concept_hires.png`（四种学习阶段：空白 → 铅笔 → 墨水 → 青蓝）。游戏内原生像素版本在 `lexicon_book_sheet.png`。
 - `art/cemetery_kit_v2/` 与 `scenes/prototypes/terrain_v2/`、`scripts/prototypes/terrain_v2/` 是已废弃的 Stone/Mud Dual-Grid 研发记录，不进入正式生产。
 - [docs/MODULAR_2_5D_CONTRACT.md](docs/MODULAR_2_5D_CONTRACT.md) 等运行时文档写于 v3 之前；其中的美术相关约定若与 v3 冲突，以 v3 为准，并在修改代码前与用户确认。
 
