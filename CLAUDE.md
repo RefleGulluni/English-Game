@@ -61,8 +61,11 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   设想：锚点上的符号补上缺的那条边，靠近时三角完整 = 锚定。**用户要求先看美术成果，暂不写入 World Bible。**
   角色设计组已交付 `lexicon_book_sheet.png`（放大版书封、翻开的星图书页、四阶段小样）——**质量很好，保留**；
   但 `hero_B1_book.png` 上的 7×7 小符号有问题：塞进了完整外圈，读成发光圆徽章/笑脸，看不出书的形状，青蓝 26 px 太亮。
-  v2 画成了“∧”，不合格。**用户最终选定主角身上的小符号：7×6 尖三角（暗青 #248B9B）+ 中心亮点（#A4EDEF）**，
-  精确设定图 `art/character_design/reference/lexicon_micro_symbol_FINAL_spec.png`（像素文件 `lexicon_micro_book_FINAL_9x11.png`），已交角色设计组做 `hero_B1_book_v3.png`。
+  v2 画成了“∧”，不合格。v3（7×6 尖三角 + 中心亮点）逐像素合格，但 v3 的书是整齐矩形 + 黑边框，**用户觉得像贴上去的牌子、突兀**。
+  **当前方案（2026-10-23）：保留原版 `hero_B1.png` 那本自然画在外套里的书，只把书上的青蓝图案换成
+  “断底三角 + 三个角亮点”（7×6，线条 #46CAD5、角点 #A4EDEF，无中心点、无外圈）**。
+  Claude 已在原版 B1 上直接改好示意 `art/character_design/reference/hero_B1_organic_7x6_bright_mock.png`，已交角色设计组整理为 `hero_B1_book_v4.png`。
+  经验：修改像素角色时只改最少的像素，不要单独画一块新东西贴上去。
   **大尺寸书封（lexicon_book_sheet.png、高清插画）保持原设计：圆环 + 三角 + 三个节点 + 中心点**；用户明确不要求大小两版完全一样，小版是大版的“缩写”。
 - **主角高清参考图**：`art/character_design/reference/hero_B1_concept_hires.png`（1024×1536，AI 原图，复制自 Codex 的临时生成目录）。
   作为主角“长什么样”的标准：用于四方向设定图、对话立绘基础、动画走样检查。它是 AI 伪像素插画，不是游戏内素材。

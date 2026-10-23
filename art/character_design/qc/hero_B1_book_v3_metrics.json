@@ -1,0 +1,151 @@
+{
+  "hero_size": [
+    96,
+    96
+  ],
+  "book_size": [
+    9,
+    11
+  ],
+  "book_position": [
+    40,
+    37
+  ],
+  "symbol_size": [
+    7,
+    6
+  ],
+  "symbol_position_in_book_zero_based": [
+    1,
+    2
+  ],
+  "symbol_position_in_hero": [
+    41,
+    39
+  ],
+  "actual_rows": [
+    "...T...",
+    "..T.T..",
+    "..T.T..",
+    ".T.D.T.",
+    ".T...T.",
+    "TTTTTTT"
+  ],
+  "actual_rgb_hex_rows": [
+    [
+      "#40311F",
+      "#40311F",
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#40311F",
+      "#40311F"
+    ],
+    [
+      "#40311F",
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#40311F"
+    ],
+    [
+      "#40311F",
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#40311F"
+    ],
+    [
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#A4EDEF",
+      "#40311F",
+      "#248B9B",
+      "#40311F"
+    ],
+    [
+      "#40311F",
+      "#248B9B",
+      "#40311F",
+      "#40311F",
+      "#40311F",
+      "#248B9B",
+      "#40311F"
+    ],
+    [
+      "#248B9B",
+      "#248B9B",
+      "#248B9B",
+      "#248B9B",
+      "#248B9B",
+      "#248B9B",
+      "#248B9B"
+    ]
+  ],
+  "T_pixels": 16,
+  "D_pixels": 1,
+  "total_cyan_pixels": 17,
+  "no_other_cyan": true,
+  "changed_pixels_vs_B1": 95,
+  "change_restricted_to_book": true,
+  "alpha_values": [
+    0,
+    255
+  ],
+  "waist_crop": [
+    34,
+    32,
+    58,
+    56
+  ],
+  "physical_palette_mapping_only": true,
+  "original_hashes": {
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/lexicon_book_sheet.png": "0b6a8d9f4a07a1332fb189edc4a74972b5b2cf0c08ea33fc2d4456e7012c5b19",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B1_book.png": "3614b0107b062d713b859b0bae2c5d56ee4cc4abf7eebca83c74bc0befb697df",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/.DS_Store": "09971f0455ad91337aaaaf8a0d5c065c22d59f534062bb00e716a20b89161816",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B2.png": "fb7649b6afdfaef79a42622c2fc82184df044fd29b0bdfbcab79cb8fc3c6d41b",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B3.png": "c5fea47dd252d7f074eee2fea2d6af1ea3877b6ddace323fab708295ae46659c",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B1.png": "428e16c810d76ba6b9b6e23f366fcbd2b38a4909ecb60681c199116419dd2559",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_D.png": "70a5802f57844ef1b37bfba076f5c580b49168385d65261f8c367d1bd58be783",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_A.png": "ac37b27f5b024704631e69c9617810adca54e3f34612b0cba4aa1879af806836",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_C.png": "2dfb93bea62055a0d8f81e6221fca4e2f2c5c0a5f6ea619952df3ccf151e70d1",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B1_book_v2.png": "314fb3adec5cc1b50a66e7fcdc785f9ec046ea503a9599c78c6e1b98cae57c59",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B.png": "19bee6c65c8089cc6b9f8cce3b3721f71e12c5faeee82781408378c2ef27156c",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B_variants_silhouette.png": "834440d5fd829e4d8b51740daa33aa7e1c5276136d3914392bb7b46956e623d6",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B1_book_8x.png": "de0750f4ed74c41d4f8b8b2467099c33a337482321ff1fdfc1eb687b453c145c",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B_variants_compare.png": "5a85e6fd495bc8a660450bcc700f8f494600462cd653a6836dd9aeb5f87ae3f4",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_design_prompts.json": "8e389b34bd8b98d2a319033bb56c1d2d060b320c9a9d28d5232263d20919ee74",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B1_book_v2_metrics.json": "bf3fe2f589cbc0a857cc47d1f53669439e4066d18718251e1817a3be4e9578b7",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/lexicon_book_prompts.json": "ea340f8dbfd703a61afe3c44e78f9c5d7285b6a66ca5dd662c6ff86b5e658530",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B1_book_v2_waist_16x.png": "c18f3d007eec6fb2003bb012da4f21c578935d580e5f9603d07e43a187c42b6a",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_design_QA.md": "467f4ef6b79dd35e23910d81e2e347c207fa82647486de1ec94702230fda75f2",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B_variants_prompts.json": "b0d8b0bb1d5ee3f0ebef40587eccc65794ad03c4b4e8caa420d90a0cccdec0bf",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_design_metrics.json": "e038ab8bdb92b94b0dcb94b183518c5265e80a6ca329224751228d173922fea9",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/lexicon_book_sheet_4x.png": "e9ba2210b7f598e09625459a536d4e74977e25743288ec415579d344c215fd88",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_design_compare.png": "00790f311d6ff7c7e053483869c16a66dee42c7d29e99ccbaacbcf9d92ce5829",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B1_book_v2_QA.md": "e3105eefde81380a398a9e48f9e44669dcd93c0022cfe46406859624e92148ff",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B1_book_v2_8x.png": "eeb7e21f972c41ebfe031afd91e74f1bb17b436a60ee0c0c06da1404605b6969",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B_variants_QA.md": "797c6ecef784504871f44234f32a11d85ca9d1093ffc61f826b1bd67ba8a6acb",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/lexicon_book_QA.md": "d1162900190e6c9c1e8e1c1b82f42d9a065a2da8d852da50e0b2681380d85b9b",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_design_silhouette.png": "da72e2bdabb771c571078cbf66dfb465c9fa6e938b7662fc0324025c600e19fe",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/hero_B_variants_metrics.json": "bc52b48658ba27793ef023922878a6a7a91aa5b648ba760d61a07636802db849",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/qc/lexicon_book_metrics.json": "a6984f7e58016a3983ce1828b0908b1f52822aa2408b11ee127d1518471fef07",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/hero_B1_book_spec_claude.png": "e249b5064d9f4ed3e32b9b26125bb60d4f2861dd257ea3f0013847db5e4eb0d8",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_book_micro_9x11_claude.png": "cc76c96afa4f8c27178235dea42f136f9a261e302783708b40ff2326e54bb233",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_cover_concept_hires.png": "b36ee55ce6e3940db09842ef361c6521061a26f14f3f67e31434e29328387282",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_open_pages_concept_hires.png": "440e427c5114c8ffdb48aafa3c89689d9be6b9153034394fac189bc02d77c980",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/hero_B1_book_FINAL_mock.png": "afac314b47cca4c18ee8f7fb2bafa3b6b864cbdc91d1c4674e6a59f56b555568",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_learning_stages_concept_hires.png": "6f00e72febe5518a922f2181078da710f6242627135b890e81911f93377c7cc9",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_symbol_mockup_claude.png": "4cc7c94c24e9392d79028c88cf46e8061aba4794ee1256ee6333df2d501c5ee1",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_micro_symbol_spec_claude.png": "947ad290fe7bde173be4f58e4b675b9ab511151e8b49ceab276bab19af7c86fe",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/hero_B1_concept_hires.png": "60814d32142a50c234473bef078be07bdc0b2d045e3949601a224c7535410e0e",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_micro_book_FINAL_9x11.png": "db8ee55b78078dcda4b8d3b7e4bc5c9511b5c34cc95bdfd1f7786ab4af493ec8",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/micro_symbol_fix_claude.png": "d9faf68a6548b3da8a559c0e2665c953bf8cc6c8fca5f20f3b6bab559fc29404",
+    "/Users/mac/Documents/GitHub/English-Game/art/character_design/reference/lexicon_micro_symbol_FINAL_spec.png": "02b46f3da0999fd3380570da99238da46f7f2c0d9379bfd6e0809c2c67eeee57"
+  }
+}
