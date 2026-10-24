@@ -7,10 +7,11 @@ extends Node
 ##   Plate  — the AI ground decoration plate (flat only)
 ##   Target — the whole-scene visual target (reference; props hidden because they are baked in)
 ##
-## Keys: WASD / arrows move · T ground mode · G grounding · L language · O player outline · F fullscreen · H help
+## Keys: WASD / arrows move · Tab Lexicon · T ground mode · G grounding · L language · O player outline · F fullscreen · H help
 ## Capture mode: Godot --path . res://scenes/prototypes/graveyard_room/graveyard_room.tscn -- --capture=<abs dir>
 
 const LanguageSigil := preload("res://scripts/prototypes/pixel_room/language_sigil.gd")
+const LexiconOverlay := preload("res://scripts/prototypes/graveyard_room/lexicon_overlay.gd")
 
 const ART := "res://art/cemetery_pixel_v1/"
 const HERO := "res://art/character_design/" # B1 four-direction still poses
@@ -80,6 +81,7 @@ var _light: PointLight2D
 var _lang_vp: SubViewport
 var _lang_screen: TextureRect
 var _sigil: Control
+var _lexicon: Control # grey-box open book
 var _hud: Label
 var _scale := 2
 var _rng := RandomNumberGenerator.new()
@@ -157,6 +159,9 @@ func _ready() -> void:
 	_sigil.radius = 30.0
 	_lang_vp.add_child(_sigil)
 
+	_lexicon = LexiconOverlay.new()
+	add_child(_lexicon)
+
 	_hud = Label.new()
 	_hud.add_theme_color_override("font_color", Color(0.85, 0.85, 0.82))
 	_hud.add_theme_color_override("font_outline_color", Color.BLACK)
@@ -171,6 +176,10 @@ func _physics_process(_delta: float) -> void:
 	var dir := Vector2(
 		float(Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT)) - float(Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT)),
 		float(Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP)))
+	if _lexicon.is_open:
+		# Placeholder for the open-book animation: the hero stops and faces the camera.
+		dir = Vector2.ZERO
+		_facing = "front"
 	_player.velocity = dir.normalized() * WALK_SPEED
 	_player.move_and_slide()
 	# Face the dominant direction and keep it when stopping. Walk where a strip exists, else the still pose.
@@ -243,13 +252,17 @@ func _apply() -> void:
 	for s in _shadows:
 		s.visible = grounding
 	_sigil.visible = show_language
+	_lexicon.position = Vector2.ZERO
+	_lexicon.size = window
+	_lexicon.screen_rect = Rect2(_screen.position, _screen.size)
+	_lexicon.pixel = _scale
 	(_player_sprite.material as ShaderMaterial).set_shader_parameter("enabled", outline)
 
 	var ui := window.y / 720.0
 	_hud.position = Vector2(12, 8) * ui
 	_hud.add_theme_font_size_override("font_size", int(16 * ui))
 	_hud.add_theme_constant_override("outline_size", int(4 * ui))
-	_hud.text = "Ground: %s   (x%d)   Grounding %s   Language %s   Outline %s\nWASD move · T ground mode · G grounding · L language · O outline · F fullscreen · H hide" % [
+	_hud.text = "Ground: %s   (x%d)   Grounding %s   Language %s   Outline %s\nWASD move · Tab Lexicon · T ground mode · G grounding · L language · O outline · F fullscreen · H hide" % [
 		MODES[mode], _scale, "ON" if grounding else "OFF", "ON" if show_language else "OFF", "ON" if outline else "OFF"]
 
 
@@ -594,6 +607,19 @@ func _capture() -> void:
 			_player_sprite.frame = i % _player_sprite.sprite_frames.get_frame_count(walk)
 			await _shot("%s/%s_%02d.png" % [dir, walk, i])
 			_player.position += step
+	# Lexicon: half open, fully open at both book sizes.
+	_player.position = PLAYER_START
+	_player_sprite.animation = "front"
+	_lexicon.is_open = true
+	_lexicon.set_process(false)
+	for scale in [2, 3]:
+		_lexicon.book_scale = scale
+		_lexicon._t = 0.5
+		_lexicon.queue_redraw()
+		await _shot("%s/lexicon_half_x%d.png" % [dir, scale])
+		_lexicon._t = 1.0
+		_lexicon.queue_redraw()
+		await _shot("%s/lexicon_open_x%d.png" % [dir, scale])
 	get_tree().quit()
 
 
