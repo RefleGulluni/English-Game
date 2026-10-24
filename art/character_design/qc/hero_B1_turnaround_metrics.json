@@ -100,11 +100,11 @@
     "bbox": [
       28,
       0,
-      60,
+      66,
       96
     ],
     "visible_height": 96,
-    "visible_colors": 46,
+    "visible_colors": 33,
     "alpha_values": [
       0,
       255
@@ -114,24 +114,110 @@
       48,
       96
     ],
-    "feet_envelope_center_x": 48.5,
-    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-a7d82bd1-2767-404c-83df-1434bb797209.png",
+    "feet_envelope_center_x": 47.5,
+    "raw_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c63a5666-5497-4b4d-91ea-8f86943eff8e.png",
     "source_bbox": [
-      250,
-      72,
-      712,
-      1471
+      387,
+      51,
+      849,
+      1230
     ],
     "resampled_subject_size": [
-      32,
+      38,
       96
+    ],
+    "lantern_bbox": [
+      59,
+      44,
+      66,
+      61
+    ],
+    "lantern_size": [
+      7,
+      17
+    ],
+    "lantern_body_gap_by_row": [
+      {
+        "y": 49,
+        "gap": 4
+      },
+      {
+        "y": 50,
+        "gap": 4
+      },
+      {
+        "y": 51,
+        "gap": 5
+      },
+      {
+        "y": 52,
+        "gap": 3
+      },
+      {
+        "y": 53,
+        "gap": 3
+      },
+      {
+        "y": 54,
+        "gap": 3
+      },
+      {
+        "y": 55,
+        "gap": 3
+      },
+      {
+        "y": 56,
+        "gap": 3
+      },
+      {
+        "y": 57,
+        "gap": 4
+      },
+      {
+        "y": 58,
+        "gap": 3
+      },
+      {
+        "y": 59,
+        "gap": 2
+      },
+      {
+        "y": 60,
+        "gap": 3
+      }
+    ],
+    "lantern_min_gap": 2,
+    "lantern_max_gap": 5,
+    "lantern_palette_from_front_bbox": [
+      29,
+      55,
+      37,
+      69
+    ],
+    "lantern_palette_all_from_front_sample": true,
+    "lantern_open_handle_transparent_pixels": [
+      [
+        60,
+        46
+      ],
+      [
+        61,
+        46
+      ],
+      [
+        63,
+        46
+      ],
+      [
+        64,
+        46
+      ]
     ]
   },
   "checks": {
     "front_byte_identical": true,
     "no_mirroring": true,
     "palette_membership": true,
-    "existing_files_unchanged": true,
     "sheet_order": [
       "front",
       "back",
@@ -148,6 +234,29 @@
     ],
     "anatomical_lantern_hand": "right",
     "anatomical_satchel_hip": "left",
-    "strap": "right shoulder to left hip"
+    "strap": "right shoulder to left hip",
+    "passed_views_unchanged": true,
+    "first_three_sheet_cells_unchanged": true,
+    "first_three_preview_cells_unchanged": true,
+    "unrelated_existing_files_unchanged": true
+  },
+  "right_only_rework": {
+    "backup": "/Users/mac/.codex/backups/English-Game/right_turnaround_before_rework_20261023_171843",
+    "changed_files": [
+      "hero_B1_right.png",
+      "hero_B1_turnaround.png",
+      "qc/hero_B1_turnaround_8x.png",
+      "qc/hero_B1_turnaround_QA.md",
+      "qc/hero_B1_turnaround_metrics.json",
+      "qc/hero_B1_turnaround_prompts.json"
+    ],
+    "approved_views_byte_unchanged": [
+      "hero_B1_front.png",
+      "hero_B1_back.png",
+      "hero_B1_left.png"
+    ],
+    "lantern_body_gap_min": 2,
+    "lantern_body_gap_max": 5,
+    "standing_pose": "upright right profile;near right forearm slightly forward to clear coat"
   }
 }

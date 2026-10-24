@@ -13,6 +13,7 @@ extends Node
 const LanguageSigil := preload("res://scripts/prototypes/pixel_room/language_sigil.gd")
 
 const ART := "res://art/cemetery_pixel_v1/"
+const HERO := "res://art/character_design/" # B1 four-direction still poses
 const NATIVE := Vector2i(960, 540)
 const CELL := 32
 const GRID := Vector2i(30, 17) # logic cells; display cells sit half a cell offset
@@ -57,7 +58,7 @@ const FADE_ALPHA := 0.45 # whole tall prop (upright part + its ground base) when
 const PATH := [Vector2(10, 528), Vector2(150, 452), Vector2(300, 345), Vector2(380, 232),
 	Vector2(470, 140), Vector2(620, 72), Vector2(760, 58), Vector2(880, 12)]
 
-var mode := 0
+var mode := 1 # ground plate: the chosen production approach
 var grounding := true
 var show_language := true
 var outline := false # user preferred no outline (2026-10-22); O toggles it for comparison
@@ -171,13 +172,11 @@ func _physics_process(_delta: float) -> void:
 		float(Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP)))
 	_player.velocity = dir.normalized() * WALK_SPEED
 	_player.move_and_slide()
-	if dir == Vector2.ZERO:
-		_player_sprite.stop()
-		_player_sprite.frame = 0
-	else:
-		_player_sprite.play("walk")
-		if dir.x != 0.0:
-			_player_sprite.flip_h = dir.x < 0.0
+	# Still poses only (no walk frames yet): face the dominant direction, keep it when stopping.
+	if dir.x != 0.0 and (dir.y == 0.0 or absf(dir.x) >= absf(dir.y)):
+		_player_sprite.animation = "right" if dir.x > 0.0 else "left"
+	elif dir.y != 0.0:
+		_player_sprite.animation = "front" if dir.y > 0.0 else "back"
 
 
 func _process(delta: float) -> void:
@@ -405,14 +404,13 @@ func _make_player() -> CharacterBody2D:
 	var body := CharacterBody2D.new()
 	body.add_child(_shadow(36, Vector2.ZERO))
 	var frames := SpriteFrames.new()
-	frames.add_animation("walk")
-	frames.set_animation_speed("walk", 1000.0 / 120.0)
-	for i in range(1, 7):
-		frames.add_frame("walk", _tex("player_anim/walk_side_%02d" % i))
+	for facing in ["front", "back", "left", "right"]:
+		frames.add_animation(facing)
+		frames.add_frame(facing, ImageTexture.create_from_image(_img_at(HERO + "hero_B1_%s.png" % facing)))
 	_player_sprite = AnimatedSprite2D.new()
 	_player_sprite.sprite_frames = frames
-	_player_sprite.animation = "walk"
-	_player_sprite.offset = Vector2(0, -48) # 80x96 frames, feet at bottom centre
+	_player_sprite.animation = "front"
+	_player_sprite.offset = Vector2(0, -48) # 96x96 frames, feet at bottom centre
 	var outline_mat := ShaderMaterial.new()
 	outline_mat.shader = Shader.new()
 	outline_mat.shader.code = OUTLINE_SHADER
@@ -517,8 +515,12 @@ func _shadow(width: int, offset: Vector2) -> Sprite2D:
 # --- Loading & capture -------------------------------------------------------------------
 
 func _img(path: String) -> Image:
+	return _img_at(ART + path + ".png")
+
+
+func _img_at(res_path: String) -> Image:
 	# Loaded straight from the PNG so the prototype does not depend on editor import.
-	var img := Image.load_from_file(ProjectSettings.globalize_path(ART + path + ".png"))
+	var img := Image.load_from_file(ProjectSettings.globalize_path(res_path))
 	img.convert(Image.FORMAT_RGBA8)
 	return img
 
@@ -543,6 +545,14 @@ func _capture() -> void:
 	grounding = false
 	_apply()
 	await _shot("%s/mode0_no_grounding.png" % dir)
+	# Hero B1 in open ground on the chosen plate, one shot per facing.
+	mode = 1
+	grounding = true
+	_apply()
+	_player.position = PLAYER_START
+	for facing in ["front", "back", "left", "right"]:
+		_player_sprite.animation = facing
+		await _shot("%s/hero_%s.png" % [dir, facing])
 	get_tree().quit()
 
 
