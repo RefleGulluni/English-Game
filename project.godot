@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.7")
 [autoload]
 
 godot_mcp_runtime="*res://addons/godot-mcp/runtime_bridge.gd"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
@@ -28,7 +29,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-mcp/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-mcp/plugin.cfg", "res://addons/godot_ai/plugin.cfg")
 
 [rendering]
 
