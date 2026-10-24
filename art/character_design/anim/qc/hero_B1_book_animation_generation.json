@@ -1,0 +1,2279 @@
+{
+  "scope": "front_book_open_and_read_only",
+  "raw": {
+    "raw": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-d22fb4ec-320e-4c7b-8b5a-48125af4750f.png",
+    "shared_scale": 0.25,
+    "frames": [
+      {
+        "frame": 1,
+        "source_bbox": [
+          180,
+          64,
+          338,
+          448
+        ],
+        "xy": [
+          29,
+          0
+        ]
+      },
+      {
+        "frame": 2,
+        "source_bbox": [
+          180,
+          64,
+          336,
+          448
+        ],
+        "xy": [
+          29,
+          0
+        ]
+      },
+      {
+        "frame": 3,
+        "source_bbox": [
+          180,
+          64,
+          335,
+          448
+        ],
+        "xy": [
+          29,
+          0
+        ]
+      },
+      {
+        "frame": 4,
+        "source_bbox": [
+          180,
+          64,
+          335,
+          448
+        ],
+        "xy": [
+          29,
+          0
+        ]
+      },
+      {
+        "frame": 5,
+        "source_bbox": [
+          180,
+          64,
+          336,
+          448
+        ],
+        "xy": [
+          29,
+          0
+        ]
+      },
+      {
+        "frame": 6,
+        "source_bbox": [
+          180,
+          64,
+          335,
+          448
+        ],
+        "xy": [
+          29,
+          0
+        ]
+      }
+    ]
+  },
+  "method": "built-in image_gen complete6pose2row3col sequence using straight-front master;single shared native scale;registered moving left-arm/book/occlusion regions with original held right hand and frozen lower garment;reference material palette and segment-tone QC;reading derives by continuous1px whole-upper-body breathing from finalopenframe",
+  "head_method": "opening1..4 exact sourcehead rows0..19;opening5..6 sourcehead reused with1px down-gaze rowmap7..13<-6..12;read uses that identical down-gaze head translated0/1px with shoulders",
+  "head_row_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "cover_symbol": "source native16points retained on fully visible closed front cover;13points visible midlift withthumbocclusion;none whencovered bygrip or backcovers/spine face viewer",
+  "open_to_read_RGBA_sha256": "bc604d54614c3d0ec4326e277eec036c6dc4b1169782cbbee22208de3140fc5f",
+  "existing_files_modified": false,
+  "existing_QA_not_appended": "latest user explicitly forbids modifying any existing file;new standalone book QA supplied",
+  "material_palettes": {
+    "coat": [
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        4,
+        4
+      ],
+      [
+        13,
+        9,
+        8
+      ],
+      [
+        24,
+        19,
+        17
+      ],
+      [
+        34,
+        23,
+        18
+      ],
+      [
+        38,
+        31,
+        24
+      ],
+      [
+        43,
+        36,
+        28
+      ],
+      [
+        44,
+        48,
+        51
+      ],
+      [
+        46,
+        42,
+        34
+      ],
+      [
+        50,
+        53,
+        55
+      ],
+      [
+        55,
+        41,
+        26
+      ],
+      [
+        55,
+        58,
+        61
+      ],
+      [
+        61,
+        55,
+        46
+      ],
+      [
+        64,
+        49,
+        31
+      ],
+      [
+        71,
+        57,
+        26
+      ],
+      [
+        74,
+        57,
+        46
+      ],
+      [
+        74,
+        64,
+        49
+      ],
+      [
+        76,
+        69,
+        60
+      ],
+      [
+        79,
+        75,
+        72
+      ],
+      [
+        89,
+        78,
+        56
+      ],
+      [
+        91,
+        67,
+        45
+      ],
+      [
+        95,
+        86,
+        72
+      ],
+      [
+        103,
+        95,
+        88
+      ],
+      [
+        104,
+        87,
+        58
+      ],
+      [
+        105,
+        79,
+        49
+      ],
+      [
+        118,
+        87,
+        59
+      ],
+      [
+        130,
+        109,
+        82
+      ],
+      [
+        145,
+        106,
+        70
+      ],
+      [
+        148,
+        119,
+        80
+      ],
+      [
+        168,
+        134,
+        102
+      ],
+      [
+        186,
+        155,
+        125
+      ]
+    ],
+    "linen": [
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        4,
+        4
+      ],
+      [
+        13,
+        9,
+        8
+      ],
+      [
+        24,
+        19,
+        17
+      ],
+      [
+        34,
+        23,
+        18
+      ],
+      [
+        38,
+        31,
+        24
+      ],
+      [
+        43,
+        36,
+        28
+      ],
+      [
+        44,
+        48,
+        51
+      ],
+      [
+        46,
+        42,
+        34
+      ],
+      [
+        50,
+        53,
+        55
+      ],
+      [
+        55,
+        41,
+        26
+      ],
+      [
+        55,
+        47,
+        33
+      ],
+      [
+        55,
+        58,
+        61
+      ],
+      [
+        61,
+        55,
+        46
+      ],
+      [
+        61,
+        65,
+        70
+      ],
+      [
+        64,
+        49,
+        31
+      ],
+      [
+        74,
+        57,
+        46
+      ],
+      [
+        74,
+        64,
+        49
+      ],
+      [
+        76,
+        69,
+        60
+      ],
+      [
+        79,
+        75,
+        72
+      ],
+      [
+        89,
+        78,
+        56
+      ],
+      [
+        95,
+        86,
+        72
+      ],
+      [
+        103,
+        95,
+        88
+      ],
+      [
+        110,
+        102,
+        95
+      ],
+      [
+        113,
+        96,
+        73
+      ],
+      [
+        186,
+        155,
+        125
+      ],
+      [
+        195,
+        170,
+        145
+      ],
+      [
+        205,
+        189,
+        172
+      ],
+      [
+        238,
+        235,
+        226
+      ]
+    ],
+    "skin": [
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        4,
+        4
+      ],
+      [
+        13,
+        9,
+        8
+      ],
+      [
+        24,
+        19,
+        17
+      ],
+      [
+        34,
+        23,
+        18
+      ],
+      [
+        55,
+        41,
+        26
+      ],
+      [
+        71,
+        57,
+        26
+      ],
+      [
+        91,
+        67,
+        45
+      ],
+      [
+        105,
+        79,
+        49
+      ],
+      [
+        113,
+        96,
+        73
+      ],
+      [
+        118,
+        87,
+        59
+      ],
+      [
+        130,
+        109,
+        82
+      ],
+      [
+        145,
+        106,
+        70
+      ],
+      [
+        148,
+        119,
+        80
+      ],
+      [
+        168,
+        134,
+        102
+      ],
+      [
+        186,
+        155,
+        125
+      ],
+      [
+        195,
+        170,
+        145
+      ],
+      [
+        205,
+        189,
+        172
+      ]
+    ],
+    "satchel": [
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        4,
+        4
+      ],
+      [
+        13,
+        9,
+        8
+      ],
+      [
+        24,
+        19,
+        17
+      ],
+      [
+        34,
+        23,
+        18
+      ],
+      [
+        38,
+        31,
+        24
+      ],
+      [
+        43,
+        36,
+        28
+      ],
+      [
+        46,
+        42,
+        34
+      ],
+      [
+        50,
+        53,
+        55
+      ],
+      [
+        55,
+        41,
+        26
+      ],
+      [
+        55,
+        58,
+        61
+      ],
+      [
+        61,
+        55,
+        46
+      ],
+      [
+        64,
+        49,
+        31
+      ],
+      [
+        71,
+        57,
+        26
+      ],
+      [
+        74,
+        57,
+        46
+      ],
+      [
+        74,
+        64,
+        49
+      ],
+      [
+        79,
+        75,
+        72
+      ],
+      [
+        89,
+        78,
+        56
+      ],
+      [
+        91,
+        67,
+        45
+      ],
+      [
+        95,
+        86,
+        72
+      ],
+      [
+        104,
+        87,
+        58
+      ],
+      [
+        105,
+        79,
+        49
+      ],
+      [
+        113,
+        96,
+        73
+      ],
+      [
+        118,
+        87,
+        59
+      ],
+      [
+        130,
+        109,
+        82
+      ],
+      [
+        145,
+        106,
+        70
+      ],
+      [
+        148,
+        119,
+        80
+      ],
+      [
+        168,
+        134,
+        102
+      ],
+      [
+        186,
+        155,
+        125
+      ],
+      [
+        195,
+        170,
+        145
+      ],
+      [
+        205,
+        189,
+        172
+      ],
+      [
+        238,
+        235,
+        226
+      ]
+    ],
+    "book": [
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        4,
+        4
+      ],
+      [
+        13,
+        9,
+        8
+      ],
+      [
+        24,
+        19,
+        17
+      ],
+      [
+        34,
+        23,
+        18
+      ],
+      [
+        38,
+        31,
+        24
+      ],
+      [
+        43,
+        36,
+        28
+      ],
+      [
+        46,
+        42,
+        34
+      ],
+      [
+        50,
+        53,
+        55
+      ],
+      [
+        55,
+        41,
+        26
+      ],
+      [
+        55,
+        58,
+        61
+      ],
+      [
+        61,
+        55,
+        46
+      ],
+      [
+        64,
+        49,
+        31
+      ],
+      [
+        71,
+        57,
+        26
+      ],
+      [
+        74,
+        57,
+        46
+      ],
+      [
+        74,
+        64,
+        49
+      ],
+      [
+        76,
+        69,
+        60
+      ],
+      [
+        79,
+        75,
+        72
+      ],
+      [
+        89,
+        78,
+        56
+      ],
+      [
+        91,
+        67,
+        45
+      ],
+      [
+        95,
+        86,
+        72
+      ],
+      [
+        105,
+        79,
+        49
+      ],
+      [
+        118,
+        87,
+        59
+      ],
+      [
+        145,
+        106,
+        70
+      ],
+      [
+        148,
+        119,
+        80
+      ],
+      [
+        186,
+        155,
+        125
+      ]
+    ],
+    "paper": [
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        4,
+        4
+      ],
+      [
+        13,
+        9,
+        8
+      ],
+      [
+        24,
+        19,
+        17
+      ],
+      [
+        34,
+        23,
+        18
+      ],
+      [
+        55,
+        41,
+        26
+      ],
+      [
+        71,
+        57,
+        26
+      ],
+      [
+        91,
+        67,
+        45
+      ],
+      [
+        104,
+        87,
+        58
+      ],
+      [
+        105,
+        79,
+        49
+      ],
+      [
+        113,
+        96,
+        73
+      ],
+      [
+        118,
+        87,
+        59
+      ],
+      [
+        130,
+        109,
+        82
+      ],
+      [
+        145,
+        106,
+        70
+      ],
+      [
+        148,
+        119,
+        80
+      ],
+      [
+        168,
+        134,
+        102
+      ],
+      [
+        186,
+        155,
+        125
+      ],
+      [
+        205,
+        189,
+        172
+      ],
+      [
+        238,
+        235,
+        226
+      ]
+    ]
+  },
+  "brightness_reference": [
+    {
+      "mean": 88.1534189189189,
+      "highlight_percent": 8.783783783783784,
+      "opaque": 296
+    },
+    {
+      "mean": 79.48170429447853,
+      "highlight_percent": 3.6809815950920246,
+      "opaque": 815
+    },
+    {
+      "mean": 72.19533004231312,
+      "highlight_percent": 2.8208744710860367,
+      "opaque": 709
+    },
+    {
+      "mean": 66.88861601085482,
+      "highlight_percent": 0.0,
+      "opaque": 737
+    }
+  ],
+  "all_metrics": {
+    "open": {
+      "action": "book_open_front",
+      "status": "awaiting_user_and_Claude_in_game_acceptance",
+      "master": "art/character_design/hero_B1_front_straight.png",
+      "frame_count": 6,
+      "frame_size": [
+        96,
+        96
+      ],
+      "sheet_size": [
+        576,
+        96
+      ],
+      "frame_duration_ms": 70,
+      "duration_ms": 420,
+      "loop": false,
+      "anchor": [
+        48,
+        96
+      ],
+      "master_RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+      "first_frame_RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+      "reference_brightness": [
+        {
+          "mean": 88.1534189189189,
+          "highlight_percent": 8.783783783783784,
+          "opaque": 296
+        },
+        {
+          "mean": 79.48170429447853,
+          "highlight_percent": 3.6809815950920246,
+          "opaque": 815
+        },
+        {
+          "mean": 72.19533004231312,
+          "highlight_percent": 2.8208744710860367,
+          "opaque": 709
+        },
+        {
+          "mean": 66.88861601085482,
+          "highlight_percent": 0.0,
+          "opaque": 737
+        }
+      ],
+      "fixed_garment_definition": "y>=50 except x61..70,y50..54(original left arm reveal) and x27..36,y50..66(right held hand/lantern);all full rows67..95 unchanged",
+      "frames": [
+        {
+          "frame": 1,
+          "visible_cyan_pixels": 16,
+          "cyan_points": [
+            [
+              47,
+              40
+            ],
+            [
+              45,
+              41
+            ],
+            [
+              46,
+              41
+            ],
+            [
+              45,
+              42
+            ],
+            [
+              46,
+              42
+            ],
+            [
+              43,
+              43
+            ],
+            [
+              44,
+              43
+            ],
+            [
+              46,
+              43
+            ],
+            [
+              43,
+              44
+            ],
+            [
+              44,
+              44
+            ],
+            [
+              46,
+              44
+            ],
+            [
+              43,
+              45
+            ],
+            [
+              46,
+              45
+            ],
+            [
+              47,
+              45
+            ],
+            [
+              43,
+              46
+            ],
+            [
+              46,
+              46
+            ]
+          ],
+          "head_mode": "original",
+          "head_bob": 0,
+          "fixed_garment_diff_pixels": 0,
+          "left_arm_background_exception": [
+            61,
+            50,
+            71,
+            55
+          ],
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 0,
+          "cyan_count": 16,
+          "cyan_pixels": [
+            [
+              47,
+              40,
+              36,
+              139,
+              155
+            ],
+            [
+              45,
+              41,
+              164,
+              237,
+              239
+            ],
+            [
+              46,
+              41,
+              70,
+              202,
+              213
+            ],
+            [
+              45,
+              42,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              42,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              43,
+              36,
+              139,
+              155
+            ],
+            [
+              44,
+              43,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              43,
+              36,
+              139,
+              155
+            ],
+            [
+              43,
+              44,
+              164,
+              237,
+              239
+            ],
+            [
+              44,
+              44,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              44,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              45,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              45,
+              164,
+              237,
+              239
+            ],
+            [
+              47,
+              45,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              46,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              46,
+              70,
+              202,
+              213
+            ]
+          ],
+          "brightness": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque": 296
+            },
+            {
+              "mean": 79.48170429447853,
+              "highlight_percent": 3.6809815950920246,
+              "opaque": 815
+            },
+            {
+              "mean": 72.19533004231312,
+              "highlight_percent": 2.8208744710860367,
+              "opaque": 709
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 2,
+          "visible_cyan_pixels": 0,
+          "cyan_points": [],
+          "head_mode": "original",
+          "head_bob": 0,
+          "fixed_garment_diff_pixels": 0,
+          "left_arm_background_exception": [
+            61,
+            50,
+            71,
+            55
+          ],
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "RGBA_sha256": "37fd31a9d41ae5a393e0683ff397c1f3404e4095bc18eb4f629a720b8dc66721",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 24,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque": 296
+            },
+            {
+              "mean": 80.19138136645964,
+              "highlight_percent": 4.968944099378882,
+              "opaque": 805
+            },
+            {
+              "mean": 71.51075613275613,
+              "highlight_percent": 2.4531024531024532,
+              "opaque": 693
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.0,
+            0.7096770719811047,
+            -0.6845739095569883,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 3,
+          "visible_cyan_pixels": 13,
+          "cyan_points": [
+            [
+              47,
+              32
+            ],
+            [
+              45,
+              33
+            ],
+            [
+              46,
+              33
+            ],
+            [
+              45,
+              34
+            ],
+            [
+              46,
+              34
+            ],
+            [
+              43,
+              35
+            ],
+            [
+              44,
+              35
+            ],
+            [
+              46,
+              35
+            ],
+            [
+              43,
+              36
+            ],
+            [
+              44,
+              36
+            ],
+            [
+              46,
+              36
+            ],
+            [
+              43,
+              37
+            ],
+            [
+              43,
+              38
+            ]
+          ],
+          "head_mode": "original",
+          "head_bob": 0,
+          "fixed_garment_diff_pixels": 0,
+          "left_arm_background_exception": [
+            61,
+            50,
+            71,
+            55
+          ],
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "RGBA_sha256": "9bcba51d7473dadeb7c167fffb9d359684d976718a230c74503405952c4c4b1a",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 22,
+          "cyan_count": 13,
+          "cyan_pixels": [
+            [
+              47,
+              32,
+              36,
+              139,
+              155
+            ],
+            [
+              45,
+              33,
+              164,
+              237,
+              239
+            ],
+            [
+              46,
+              33,
+              70,
+              202,
+              213
+            ],
+            [
+              45,
+              34,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              34,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              35,
+              36,
+              139,
+              155
+            ],
+            [
+              44,
+              35,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              35,
+              36,
+              139,
+              155
+            ],
+            [
+              43,
+              36,
+              164,
+              237,
+              239
+            ],
+            [
+              44,
+              36,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              36,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              37,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              38,
+              70,
+              202,
+              213
+            ]
+          ],
+          "brightness": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque": 296
+            },
+            {
+              "mean": 79.66841082410824,
+              "highlight_percent": 3.936039360393604,
+              "opaque": 813
+            },
+            {
+              "mean": 71.23131168831169,
+              "highlight_percent": 2.7417027417027415,
+              "opaque": 693
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.0,
+            0.1867065296297028,
+            -0.9640183540014249,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 4,
+          "visible_cyan_pixels": 16,
+          "cyan_points": [
+            [
+              47,
+              27
+            ],
+            [
+              45,
+              28
+            ],
+            [
+              46,
+              28
+            ],
+            [
+              45,
+              29
+            ],
+            [
+              46,
+              29
+            ],
+            [
+              43,
+              30
+            ],
+            [
+              44,
+              30
+            ],
+            [
+              46,
+              30
+            ],
+            [
+              43,
+              31
+            ],
+            [
+              44,
+              31
+            ],
+            [
+              46,
+              31
+            ],
+            [
+              43,
+              32
+            ],
+            [
+              46,
+              32
+            ],
+            [
+              47,
+              32
+            ],
+            [
+              43,
+              33
+            ],
+            [
+              46,
+              33
+            ]
+          ],
+          "head_mode": "original",
+          "head_bob": 0,
+          "fixed_garment_diff_pixels": 0,
+          "left_arm_background_exception": [
+            61,
+            50,
+            71,
+            55
+          ],
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "RGBA_sha256": "8d3b8d8d2d523ba40d44d9530b0444b2dc57daba3f4678cba3a1929eaa226b95",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 22,
+          "cyan_count": 16,
+          "cyan_pixels": [
+            [
+              47,
+              27,
+              36,
+              139,
+              155
+            ],
+            [
+              45,
+              28,
+              164,
+              237,
+              239
+            ],
+            [
+              46,
+              28,
+              70,
+              202,
+              213
+            ],
+            [
+              45,
+              29,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              29,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              30,
+              36,
+              139,
+              155
+            ],
+            [
+              44,
+              30,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              30,
+              36,
+              139,
+              155
+            ],
+            [
+              43,
+              31,
+              164,
+              237,
+              239
+            ],
+            [
+              44,
+              31,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              31,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              32,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              32,
+              164,
+              237,
+              239
+            ],
+            [
+              47,
+              32,
+              70,
+              202,
+              213
+            ],
+            [
+              43,
+              33,
+              70,
+              202,
+              213
+            ],
+            [
+              46,
+              33,
+              70,
+              202,
+              213
+            ]
+          ],
+          "brightness": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque": 296
+            },
+            {
+              "mean": 78.72354691358025,
+              "highlight_percent": 3.3333333333333335,
+              "opaque": 810
+            },
+            {
+              "mean": 71.32065656565656,
+              "highlight_percent": 2.7417027417027415,
+              "opaque": 693
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.0,
+            -0.7581573808982824,
+            -0.8746734766565538,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 5,
+          "visible_cyan_pixels": 0,
+          "cyan_points": [],
+          "head_mode": "source_pixel_1px_downward_gaze",
+          "head_bob": 0,
+          "fixed_garment_diff_pixels": 0,
+          "left_arm_background_exception": [
+            61,
+            50,
+            71,
+            55
+          ],
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "RGBA_sha256": "d34c2aabf15d871f67f7ebade193e7c24466bf640bd16fbc059c312d304df6d5",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 24,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.767948630137,
+              "highlight_percent": 8.904109589041095,
+              "opaque": 292
+            },
+            {
+              "mean": 78.79111815920398,
+              "highlight_percent": 4.477611940298507,
+              "opaque": 804
+            },
+            {
+              "mean": 71.34185858585857,
+              "highlight_percent": 2.7417027417027415,
+              "opaque": 693
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.614529711218097,
+            -0.6905861352745575,
+            -0.8534714564545425,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 6,
+          "visible_cyan_pixels": 0,
+          "cyan_points": [],
+          "head_mode": "source_pixel_1px_downward_gaze",
+          "head_bob": 0,
+          "fixed_garment_diff_pixels": 0,
+          "left_arm_background_exception": [
+            61,
+            50,
+            71,
+            55
+          ],
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "RGBA_sha256": "bc604d54614c3d0ec4326e277eec036c6dc4b1169782cbbee22208de3140fc5f",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 20,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.767948630137,
+              "highlight_percent": 8.904109589041095,
+              "opaque": 292
+            },
+            {
+              "mean": 78.7582887236679,
+              "highlight_percent": 4.584882280049566,
+              "opaque": 807
+            },
+            {
+              "mean": 71.37265656565657,
+              "highlight_percent": 2.7417027417027415,
+              "opaque": 693
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.614529711218097,
+            -0.72341557081063,
+            -0.8226734766565471,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        }
+      ]
+    },
+    "read": {
+      "action": "book_read_front",
+      "status": "awaiting_user_and_Claude_in_game_acceptance",
+      "master": "art/character_design/hero_B1_front_straight.png",
+      "frame_count": 4,
+      "frame_size": [
+        96,
+        96
+      ],
+      "sheet_size": [
+        384,
+        96
+      ],
+      "frame_duration_ms": 500,
+      "duration_ms": 2000,
+      "loop": true,
+      "anchor": [
+        48,
+        96
+      ],
+      "master_RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+      "first_frame_RGBA_sha256": "bc604d54614c3d0ec4326e277eec036c6dc4b1169782cbbee22208de3140fc5f",
+      "reference_brightness": [
+        {
+          "mean": 88.1534189189189,
+          "highlight_percent": 8.783783783783784,
+          "opaque": 296
+        },
+        {
+          "mean": 79.48170429447853,
+          "highlight_percent": 3.6809815950920246,
+          "opaque": 815
+        },
+        {
+          "mean": 72.19533004231312,
+          "highlight_percent": 2.8208744710860367,
+          "opaque": 709
+        },
+        {
+          "mean": 66.88861601085482,
+          "highlight_percent": 0.0,
+          "opaque": 737
+        }
+      ],
+      "fixed_garment_definition": "y>=50 except x61..70,y50..54(original left arm reveal) and x27..36,y50..66(right held hand/lantern);all full rows67..95 unchanged",
+      "frames": [
+        {
+          "frame": 1,
+          "breath_dy": 0,
+          "lamp_phase": 0,
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "lower_garment_diff_pixels": 0,
+          "after": [
+            {
+              "mean": 88.767948630137,
+              "highlight_percent": 8.904109589041095
+            },
+            {
+              "mean": 78.7582887236679,
+              "highlight_percent": 4.584882280049566
+            },
+            {
+              "mean": 71.37265656565657,
+              "highlight_percent": 2.7417027417027415
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0
+            }
+          ],
+          "delta": [
+            0.614529711218097,
+            -0.72341557081063,
+            -0.8226734766565471,
+            0.0
+          ],
+          "RGBA_sha256": "bc604d54614c3d0ec4326e277eec036c6dc4b1169782cbbee22208de3140fc5f",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 0,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 20,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.767948630137,
+              "highlight_percent": 8.904109589041095,
+              "opaque": 292
+            },
+            {
+              "mean": 78.7582887236679,
+              "highlight_percent": 4.584882280049566,
+              "opaque": 807
+            },
+            {
+              "mean": 71.37265656565657,
+              "highlight_percent": 2.7417027417027415,
+              "opaque": 693
+            },
+            {
+              "mean": 66.88861601085482,
+              "highlight_percent": 0.0,
+              "opaque": 737
+            }
+          ],
+          "brightness_delta": [
+            0.614529711218097,
+            -0.72341557081063,
+            -0.8226734766565471,
+            0.0
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 2,
+          "breath_dy": 1,
+          "lamp_phase": 0,
+          "H": [
+            32,
+            54
+          ],
+          "G": [
+            32,
+            55
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "lower_garment_diff_pixels": 0,
+          "after": [
+            {
+              "mean": 88.00425378787878,
+              "highlight_percent": 9.090909090909092
+            },
+            {
+              "mean": 79.53821375000001,
+              "highlight_percent": 4.625
+            },
+            {
+              "mean": 71.46609523809524,
+              "highlight_percent": 2.7417027417027415
+            },
+            {
+              "mean": 67.12856081081081,
+              "highlight_percent": 0.0
+            }
+          ],
+          "delta": [
+            -0.14916513104012097,
+            0.05650945552147846,
+            -0.7292348042178816,
+            0.2399447999559925
+          ],
+          "RGBA_sha256": "dcda8d2b16bbc4d68acc9f75f365aeb0e5d8e9dd68b8e577cf917cd76e04922f",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 60,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 107,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.00425378787878,
+              "highlight_percent": 9.090909090909092,
+              "opaque": 264
+            },
+            {
+              "mean": 79.53821375000001,
+              "highlight_percent": 4.625,
+              "opaque": 800
+            },
+            {
+              "mean": 71.46609523809524,
+              "highlight_percent": 2.7417027417027415,
+              "opaque": 693
+            },
+            {
+              "mean": 67.12856081081081,
+              "highlight_percent": 0.0,
+              "opaque": 740
+            }
+          ],
+          "brightness_delta": [
+            -0.14916513104012097,
+            0.05650945552147846,
+            -0.7292348042178816,
+            0.2399447999559925
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 3,
+          "breath_dy": 1,
+          "lamp_phase": 1,
+          "H": [
+            32,
+            54
+          ],
+          "G": [
+            32,
+            55
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "lower_garment_diff_pixels": 0,
+          "after": [
+            {
+              "mean": 88.00425378787878,
+              "highlight_percent": 9.090909090909092
+            },
+            {
+              "mean": 79.53821375000001,
+              "highlight_percent": 4.625
+            },
+            {
+              "mean": 71.24260832137733,
+              "highlight_percent": 2.72596843615495
+            },
+            {
+              "mean": 67.10348247978436,
+              "highlight_percent": 0.0
+            }
+          ],
+          "delta": [
+            -0.14916513104012097,
+            0.05650945552147846,
+            -0.9527217209357843,
+            0.21486646892954298
+          ],
+          "RGBA_sha256": "5bc5882a9888864f8cfa34c61e09899ed2b446e21bba069eddb557a983cc0a68",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 65,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 112,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.00425378787878,
+              "highlight_percent": 9.090909090909092,
+              "opaque": 264
+            },
+            {
+              "mean": 79.53821375000001,
+              "highlight_percent": 4.625,
+              "opaque": 800
+            },
+            {
+              "mean": 71.24260832137733,
+              "highlight_percent": 2.72596843615495,
+              "opaque": 697
+            },
+            {
+              "mean": 67.10348247978436,
+              "highlight_percent": 0.0,
+              "opaque": 742
+            }
+          ],
+          "brightness_delta": [
+            -0.14916513104012097,
+            0.05650945552147846,
+            -0.9527217209357843,
+            0.21486646892954298
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        },
+        {
+          "frame": 4,
+          "breath_dy": 0,
+          "lamp_phase": 1,
+          "H": [
+            32,
+            53
+          ],
+          "G": [
+            32,
+            54
+          ],
+          "G_minus_H": [
+            0,
+            1
+          ],
+          "lower_garment_diff_pixels": 0,
+          "after": [
+            {
+              "mean": 88.767948630137,
+              "highlight_percent": 8.904109589041095
+            },
+            {
+              "mean": 78.7582887236679,
+              "highlight_percent": 4.584882280049566
+            },
+            {
+              "mean": 71.11005873925502,
+              "highlight_percent": 2.722063037249284
+            },
+            {
+              "mean": 66.835100135318,
+              "highlight_percent": 0.0
+            }
+          ],
+          "delta": [
+            0.614529711218097,
+            -0.72341557081063,
+            -1.085271303058093,
+            -0.05351587553681725
+          ],
+          "RGBA_sha256": "8130c41074a2988081a3ff2a5653fa0ebb961b30404bf8d5e4ed0242077a62ec",
+          "alpha": [
+            0,
+            255
+          ],
+          "new_color_count": 0,
+          "fixed_lower_garment_diff_pixels": 0,
+          "full_rows67_95_diff_pixels": 0,
+          "full_rows55_95_diff_pixels_including_lantern": 38,
+          "full_rows50_95_diff_pixels_including_moving_arms_lantern": 58,
+          "cyan_count": 0,
+          "cyan_pixels": [],
+          "brightness": [
+            {
+              "mean": 88.767948630137,
+              "highlight_percent": 8.904109589041095,
+              "opaque": 292
+            },
+            {
+              "mean": 78.7582887236679,
+              "highlight_percent": 4.584882280049566,
+              "opaque": 807
+            },
+            {
+              "mean": 71.11005873925502,
+              "highlight_percent": 2.722063037249284,
+              "opaque": 698
+            },
+            {
+              "mean": 66.835100135318,
+              "highlight_percent": 0.0,
+              "opaque": 739
+            }
+          ],
+          "brightness_delta": [
+            0.614529711218097,
+            -0.72341557081063,
+            -1.085271303058093,
+            -0.05351587553681725
+          ],
+          "components": 1,
+          "waist_roi_opaque": 49,
+          "neck_roi_opaque": 49
+        }
+      ]
+    }
+  }
+}

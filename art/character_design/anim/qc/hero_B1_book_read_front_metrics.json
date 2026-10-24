@@ -1,0 +1,388 @@
+{
+  "action": "book_read_front",
+  "status": "awaiting_user_and_Claude_in_game_acceptance",
+  "master": "art/character_design/hero_B1_front_straight.png",
+  "frame_count": 4,
+  "frame_size": [
+    96,
+    96
+  ],
+  "sheet_size": [
+    384,
+    96
+  ],
+  "frame_duration_ms": 500,
+  "duration_ms": 2000,
+  "loop": true,
+  "anchor": [
+    48,
+    96
+  ],
+  "master_RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+  "first_frame_RGBA_sha256": "bc604d54614c3d0ec4326e277eec036c6dc4b1169782cbbee22208de3140fc5f",
+  "reference_brightness": [
+    {
+      "mean": 88.1534189189189,
+      "highlight_percent": 8.783783783783784,
+      "opaque": 296
+    },
+    {
+      "mean": 79.48170429447853,
+      "highlight_percent": 3.6809815950920246,
+      "opaque": 815
+    },
+    {
+      "mean": 72.19533004231312,
+      "highlight_percent": 2.8208744710860367,
+      "opaque": 709
+    },
+    {
+      "mean": 66.88861601085482,
+      "highlight_percent": 0.0,
+      "opaque": 737
+    }
+  ],
+  "fixed_garment_definition": "y>=50 except x61..70,y50..54(original left arm reveal) and x27..36,y50..66(right held hand/lantern);all full rows67..95 unchanged",
+  "frames": [
+    {
+      "frame": 1,
+      "breath_dy": 0,
+      "lamp_phase": 0,
+      "H": [
+        32,
+        53
+      ],
+      "G": [
+        32,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lower_garment_diff_pixels": 0,
+      "after": [
+        {
+          "mean": 88.767948630137,
+          "highlight_percent": 8.904109589041095
+        },
+        {
+          "mean": 78.7582887236679,
+          "highlight_percent": 4.584882280049566
+        },
+        {
+          "mean": 71.37265656565657,
+          "highlight_percent": 2.7417027417027415
+        },
+        {
+          "mean": 66.88861601085482,
+          "highlight_percent": 0.0
+        }
+      ],
+      "delta": [
+        0.614529711218097,
+        -0.72341557081063,
+        -0.8226734766565471,
+        0.0
+      ],
+      "RGBA_sha256": "bc604d54614c3d0ec4326e277eec036c6dc4b1169782cbbee22208de3140fc5f",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "fixed_lower_garment_diff_pixels": 0,
+      "full_rows67_95_diff_pixels": 0,
+      "full_rows55_95_diff_pixels_including_lantern": 0,
+      "full_rows50_95_diff_pixels_including_moving_arms_lantern": 20,
+      "cyan_count": 0,
+      "cyan_pixels": [],
+      "brightness": [
+        {
+          "mean": 88.767948630137,
+          "highlight_percent": 8.904109589041095,
+          "opaque": 292
+        },
+        {
+          "mean": 78.7582887236679,
+          "highlight_percent": 4.584882280049566,
+          "opaque": 807
+        },
+        {
+          "mean": 71.37265656565657,
+          "highlight_percent": 2.7417027417027415,
+          "opaque": 693
+        },
+        {
+          "mean": 66.88861601085482,
+          "highlight_percent": 0.0,
+          "opaque": 737
+        }
+      ],
+      "brightness_delta": [
+        0.614529711218097,
+        -0.72341557081063,
+        -0.8226734766565471,
+        0.0
+      ],
+      "components": 1,
+      "waist_roi_opaque": 49,
+      "neck_roi_opaque": 49
+    },
+    {
+      "frame": 2,
+      "breath_dy": 1,
+      "lamp_phase": 0,
+      "H": [
+        32,
+        54
+      ],
+      "G": [
+        32,
+        55
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lower_garment_diff_pixels": 0,
+      "after": [
+        {
+          "mean": 88.00425378787878,
+          "highlight_percent": 9.090909090909092
+        },
+        {
+          "mean": 79.53821375000001,
+          "highlight_percent": 4.625
+        },
+        {
+          "mean": 71.46609523809524,
+          "highlight_percent": 2.7417027417027415
+        },
+        {
+          "mean": 67.12856081081081,
+          "highlight_percent": 0.0
+        }
+      ],
+      "delta": [
+        -0.14916513104012097,
+        0.05650945552147846,
+        -0.7292348042178816,
+        0.2399447999559925
+      ],
+      "RGBA_sha256": "dcda8d2b16bbc4d68acc9f75f365aeb0e5d8e9dd68b8e577cf917cd76e04922f",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "fixed_lower_garment_diff_pixels": 0,
+      "full_rows67_95_diff_pixels": 0,
+      "full_rows55_95_diff_pixels_including_lantern": 60,
+      "full_rows50_95_diff_pixels_including_moving_arms_lantern": 107,
+      "cyan_count": 0,
+      "cyan_pixels": [],
+      "brightness": [
+        {
+          "mean": 88.00425378787878,
+          "highlight_percent": 9.090909090909092,
+          "opaque": 264
+        },
+        {
+          "mean": 79.53821375000001,
+          "highlight_percent": 4.625,
+          "opaque": 800
+        },
+        {
+          "mean": 71.46609523809524,
+          "highlight_percent": 2.7417027417027415,
+          "opaque": 693
+        },
+        {
+          "mean": 67.12856081081081,
+          "highlight_percent": 0.0,
+          "opaque": 740
+        }
+      ],
+      "brightness_delta": [
+        -0.14916513104012097,
+        0.05650945552147846,
+        -0.7292348042178816,
+        0.2399447999559925
+      ],
+      "components": 1,
+      "waist_roi_opaque": 49,
+      "neck_roi_opaque": 49
+    },
+    {
+      "frame": 3,
+      "breath_dy": 1,
+      "lamp_phase": 1,
+      "H": [
+        32,
+        54
+      ],
+      "G": [
+        32,
+        55
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lower_garment_diff_pixels": 0,
+      "after": [
+        {
+          "mean": 88.00425378787878,
+          "highlight_percent": 9.090909090909092
+        },
+        {
+          "mean": 79.53821375000001,
+          "highlight_percent": 4.625
+        },
+        {
+          "mean": 71.24260832137733,
+          "highlight_percent": 2.72596843615495
+        },
+        {
+          "mean": 67.10348247978436,
+          "highlight_percent": 0.0
+        }
+      ],
+      "delta": [
+        -0.14916513104012097,
+        0.05650945552147846,
+        -0.9527217209357843,
+        0.21486646892954298
+      ],
+      "RGBA_sha256": "5bc5882a9888864f8cfa34c61e09899ed2b446e21bba069eddb557a983cc0a68",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "fixed_lower_garment_diff_pixels": 0,
+      "full_rows67_95_diff_pixels": 0,
+      "full_rows55_95_diff_pixels_including_lantern": 65,
+      "full_rows50_95_diff_pixels_including_moving_arms_lantern": 112,
+      "cyan_count": 0,
+      "cyan_pixels": [],
+      "brightness": [
+        {
+          "mean": 88.00425378787878,
+          "highlight_percent": 9.090909090909092,
+          "opaque": 264
+        },
+        {
+          "mean": 79.53821375000001,
+          "highlight_percent": 4.625,
+          "opaque": 800
+        },
+        {
+          "mean": 71.24260832137733,
+          "highlight_percent": 2.72596843615495,
+          "opaque": 697
+        },
+        {
+          "mean": 67.10348247978436,
+          "highlight_percent": 0.0,
+          "opaque": 742
+        }
+      ],
+      "brightness_delta": [
+        -0.14916513104012097,
+        0.05650945552147846,
+        -0.9527217209357843,
+        0.21486646892954298
+      ],
+      "components": 1,
+      "waist_roi_opaque": 49,
+      "neck_roi_opaque": 49
+    },
+    {
+      "frame": 4,
+      "breath_dy": 0,
+      "lamp_phase": 1,
+      "H": [
+        32,
+        53
+      ],
+      "G": [
+        32,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lower_garment_diff_pixels": 0,
+      "after": [
+        {
+          "mean": 88.767948630137,
+          "highlight_percent": 8.904109589041095
+        },
+        {
+          "mean": 78.7582887236679,
+          "highlight_percent": 4.584882280049566
+        },
+        {
+          "mean": 71.11005873925502,
+          "highlight_percent": 2.722063037249284
+        },
+        {
+          "mean": 66.835100135318,
+          "highlight_percent": 0.0
+        }
+      ],
+      "delta": [
+        0.614529711218097,
+        -0.72341557081063,
+        -1.085271303058093,
+        -0.05351587553681725
+      ],
+      "RGBA_sha256": "8130c41074a2988081a3ff2a5653fa0ebb961b30404bf8d5e4ed0242077a62ec",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "fixed_lower_garment_diff_pixels": 0,
+      "full_rows67_95_diff_pixels": 0,
+      "full_rows55_95_diff_pixels_including_lantern": 38,
+      "full_rows50_95_diff_pixels_including_moving_arms_lantern": 58,
+      "cyan_count": 0,
+      "cyan_pixels": [],
+      "brightness": [
+        {
+          "mean": 88.767948630137,
+          "highlight_percent": 8.904109589041095,
+          "opaque": 292
+        },
+        {
+          "mean": 78.7582887236679,
+          "highlight_percent": 4.584882280049566,
+          "opaque": 807
+        },
+        {
+          "mean": 71.11005873925502,
+          "highlight_percent": 2.722063037249284,
+          "opaque": 698
+        },
+        {
+          "mean": 66.835100135318,
+          "highlight_percent": 0.0,
+          "opaque": 739
+        }
+      ],
+      "brightness_delta": [
+        0.614529711218097,
+        -0.72341557081063,
+        -1.085271303058093,
+        -0.05351587553681725
+      ],
+      "components": 1,
+      "waist_roi_opaque": 49,
+      "neck_roi_opaque": 49
+    }
+  ]
+}

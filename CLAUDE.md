@@ -54,7 +54,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   - **标准图就是原版 `art/character_design/hero_B1.png`，一个像素都不改**（包括书上的青蓝小印记）。`hero_B1_book*.png`（v1～v4）都是废稿。
   - 四方向：`hero_B1_front/back/left/right.png` + `hero_B1_turnaround.png`，已接受。右侧已返工并于 2026-10-24 实机通过；graveyard_room 已换成 B1 四方向静止站姿（默认地面板）。
   - **动画第一批**：[docs/HERO_ANIMATION_REQUEST.md](docs/HERO_ANIMATION_REQUEST.md)（待机 4 帧 + 行走 8 帧 × 四方向，交付到 `art/character_design/anim/`）。**2026-10-24 四方向待机 + 行走全部通过**；游戏里的正面用正对镜头的 `hero_B1_front_straight.png`（原版 3/4 只作设定图）。规则见文档第 7 节；graveyard_room 自动加载已交付的条带。
-  - **动画第二批（翻开 Lexicon）需求已发出**：[docs/HERO_BOOK_ANIMATION_REQUEST.md](docs/HERO_BOOK_ANIMATION_REQUEST.md)（只做正面：翻开 6 帧 × 70 ms + 看书循环 4 帧，合书 = 翻开倒放）。
+  - **动画第二批（翻开 Lexicon）2026-10-24 一次通过**：[docs/HERO_BOOK_ANIMATION_REQUEST.md](docs/HERO_BOOK_ANIMATION_REQUEST.md)（只做正面：翻开 6 帧 × 70 ms + 看书循环 4 帧，合书 = 翻开倒放），已接进 Tab 原型。
   - Lexicon 灰盒原型：graveyard_room 里按 Tab（`lexicon_overlay.gd`）。用户选定开合 0.45 秒、大号书。**游戏会有 15000～20000+ 个单词**：书的结构要做成“星图总览 → 星座（主题）→ 单词页”，加搜索和按学习阶段筛选；正式设计等用户整理完知识库（另一个对话在写 `docs/DESIGN_INDEX.md`）。
   - 高清参考：`reference/hero_B1_concept_hires.png`（检查走样用，不是游戏素材）。
   - 旧主角素材（`art/cemetery_pixel_v1/player_anim/` 等）作废。
@@ -69,7 +69,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 接下来可以做的事（2026-10-24 交接时）
 
-1. **主角动画**：待机和四方向行走已完成（2026-10-24），翻书需求已发出，等交付后接进 Tab 原型验收。之后是战斗动作；照 docs/HERO_ANIMATION_REQUEST.md 第 7 节的规则写需求，交付后放进 graveyard_room 实机验收。
+1. **主角动画**：待机、四方向行走、翻开 Lexicon 已完成（2026-10-24）。之后是战斗动作（等知识中枢整理完、看过战斗设计再写需求）；照 docs/HERO_ANIMATION_REQUEST.md 第 7 节的规则写需求，交付后放进 graveyard_room 实机验收。
 2. **Lexicon 界面**设计（书页星图、单词卡片、四个学习阶段的显示）。
 3. 其他验证场景：Abandoned Station、Eleanor's Shop。
 4. 接手正式游戏代码：先读 README 与 `docs/` 运行时文档，出一份现状报告；把 `project.godot` 改为 960×540 原生 + 整数缩放（需用户同意）。

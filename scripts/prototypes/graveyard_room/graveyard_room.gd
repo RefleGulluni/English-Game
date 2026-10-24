@@ -75,6 +75,7 @@ var _props: Array[Node2D] = []
 var _player: CharacterBody2D
 var _player_sprite: AnimatedSprite2D
 var _facing := "front"
+var _book_phase := "" # "", "opening", "reading", "closing": the hero is busy with the Lexicon
 var _shadows: Array[Sprite2D] = []
 var _modulate: CanvasModulate
 var _light: PointLight2D
@@ -161,6 +162,8 @@ func _ready() -> void:
 
 	_lexicon = LexiconOverlay.new()
 	add_child(_lexicon)
+	_lexicon.open_changed.connect(_on_lexicon_open_changed)
+	_player_sprite.animation_finished.connect(_on_player_animation_finished)
 
 	_hud = Label.new()
 	_hud.add_theme_color_override("font_color", Color(0.85, 0.85, 0.82))
@@ -176,10 +179,9 @@ func _physics_process(_delta: float) -> void:
 	var dir := Vector2(
 		float(Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT)) - float(Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT)),
 		float(Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP)))
-	if _lexicon.is_open:
-		# Placeholder for the open-book animation: the hero stops and faces the camera.
-		dir = Vector2.ZERO
-		_facing = "front"
+	if _book_phase != "":
+		_player.velocity = Vector2.ZERO # opening, reading or closing the book: stand still
+		return
 	_player.velocity = dir.normalized() * WALK_SPEED
 	_player.move_and_slide()
 	# Face the dominant direction and keep it when stopping. Walk where a strip exists, else the still pose.
@@ -209,6 +211,31 @@ func _process(delta: float) -> void:
 			base.modulate.a = a
 	var anchor: Vector2 = PROPS[SIGIL_PROP][1] + Vector2(8, -96)
 	_sigil.anchor = anchor # world pixels == language pixels
+
+
+func _on_lexicon_open_changed(is_open: bool) -> void:
+	_facing = "front" # the hero always turns to the camera to read
+	var frames := _player_sprite.sprite_frames
+	if not frames.has_animation("book_open"):
+		_book_phase = "reading" if is_open else ""
+		_player_sprite.play("front")
+	elif is_open:
+		_book_phase = "opening"
+		_player_sprite.play("book_open")
+	else:
+		_book_phase = "closing"
+		_player_sprite.play_backwards("book_open")
+
+
+func _on_player_animation_finished() -> void:
+	if _player_sprite.animation != "book_open":
+		return
+	if _book_phase == "opening":
+		_book_phase = "reading"
+		_player_sprite.play("book_read")
+	elif _book_phase == "closing":
+		_book_phase = ""
+		_player_sprite.play("front")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -437,6 +464,14 @@ func _make_player() -> CharacterBody2D:
 		frames.add_animation(walk)
 		if not _add_strip(frames, walk, "anim/hero_B1_walk_%s.png" % facing, 10.0):
 			frames.remove_animation(walk)
+	# Opening the Lexicon (front only; closing plays the opening backwards), then reading in a loop.
+	frames.add_animation("book_open")
+	frames.set_animation_loop("book_open", false)
+	if not _add_strip(frames, "book_open", "anim/hero_B1_book_open_front.png", 1000.0 / 70.0):
+		frames.remove_animation("book_open")
+	frames.add_animation("book_read")
+	if not _add_strip(frames, "book_read", "anim/hero_B1_book_read_front.png", 2.0):
+		frames.remove_animation("book_read")
 	_player_sprite = AnimatedSprite2D.new()
 	_player_sprite.sprite_frames = frames
 	_player_sprite.animation = "front"
@@ -607,6 +642,12 @@ func _capture() -> void:
 			_player_sprite.frame = i % _player_sprite.sprite_frames.get_frame_count(walk)
 			await _shot("%s/%s_%02d.png" % [dir, walk, i])
 			_player.position += step
+	# Hero opening the book, frame by frame, then reading.
+	_player.position = PLAYER_START
+	for i in 6:
+		_player_sprite.animation = "book_open"
+		_player_sprite.frame = i
+		await _shot("%s/book_open_%d.png" % [dir, i])
 	# Lexicon: half open, fully open at both book sizes.
 	_player.position = PLAYER_START
 	_player_sprite.animation = "front"

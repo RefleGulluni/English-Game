@@ -55,7 +55,8 @@
   教训：正面 / 背面行走不能做竖直方向的支撑脚锁定（俯视角下前后被压缩，会出现长腿和浮空），用原地踏步。
   **2026-10-24 第一批动画全部通过**：四方向待机 + 四方向行走（`anim/hero_B1_{idle,walk}_{front,back,left,right}.png`）。最后一轮修正了正 / 背行走比站姿偏亮（起步变白、停下变暗）：每段平均灰度与站姿相差 ≤2，正面行走头部直接用站姿像素。侧面行走仍比站姿亮 4～6，用户在游戏里看不出，暂不处理。之后：翻书（打开 Lexicon）→ 战斗动作。旧的 `art/cemetery_pixel_v1/player_anim/` 是旧主角，不能再用。
 - 设想（未定）：锚点上的符号带着缺失的那条底边，靠近时三角补全 = 锚定。
-- Lexicon 界面：2026-10-24 在 graveyard_room 做了灰盒原型（Tab 开合，`scripts/prototypes/graveyard_room/lexicon_overlay.gd`）。用户选定：开合 0.45 秒、大号书（书像素 = 3 个原生像素，占屏幕大部分）、背景压暗。**游戏后期会有 15000～20000+ 个单词**，一页列几个词的布局行不通，界面结构要按大词库重新设计（待读用户的设计文档）。参考 `lexicon_book_sheet.png` 和三张 `lexicon_*_concept_hires.png`。
+- Lexicon 界面：2026-10-24 在 graveyard_room 做了灰盒原型（Tab 开合，`scripts/prototypes/graveyard_room/lexicon_overlay.gd`）。用户选定：开合 0.45 秒、大号书（书像素 = 3 个原生像素，占屏幕大部分）、背景压暗。**游戏后期会有 15000～20000+ 个单词**，一页列几个词的布局行不通，界面结构要按大词库重新设计（待读用户的设计文档）。
+  翻开 Lexicon 的角色动画（`anim/hero_B1_book_open_front.png` 6 帧 × 70 ms、`hero_B1_book_read_front.png` 4 帧循环）2026-10-24 一次通过：按 Tab 时主角转向镜头、左手取书翻开、低头看书；合上时倒放，合完才能走。参考 `lexicon_book_sheet.png` 和三张 `lexicon_*_concept_hires.png`。
 
 ## 5. 经验（以后改角色时）
 
