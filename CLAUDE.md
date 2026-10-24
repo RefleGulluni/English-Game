@@ -51,7 +51,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **主角已定稿（2026-10-23）**：B1，记录世界的男性旅人。决定过程、文件清单、已知问题与待办见 [docs/HERO_DESIGN.md](docs/HERO_DESIGN.md)。
   - **标准图就是原版 `art/character_design/hero_B1.png`，一个像素都不改**（包括书上的青蓝小印记）。`hero_B1_book*.png`（v1～v4）都是废稿。
   - 四方向：`hero_B1_front/back/left/right.png` + `hero_B1_turnaround.png`，已接受。右侧已返工并于 2026-10-24 实机通过；graveyard_room 已换成 B1 四方向静止站姿（默认地面板）。
-  - **动画第一批**：[docs/HERO_ANIMATION_REQUEST.md](docs/HERO_ANIMATION_REQUEST.md)（待机 4 帧 + 行走 8 帧 × 四方向，交付到 `art/character_design/anim/`）。侧面四条、背面两条已通过；游戏里的正面改用正对镜头的 `hero_B1_front_straight.png`，正面待机 / 行走按它重做中。规则见文档第 7 节；graveyard_room 自动加载已交付的条带。
+  - **动画第一批**：[docs/HERO_ANIMATION_REQUEST.md](docs/HERO_ANIMATION_REQUEST.md)（待机 4 帧 + 行走 8 帧 × 四方向，交付到 `art/character_design/anim/`）。**2026-10-24 四方向待机 + 行走全部通过**；游戏里的正面用正对镜头的 `hero_B1_front_straight.png`（原版 3/4 只作设定图）。下一步：翻书（打开 Lexicon）动画。规则见文档第 7 节；graveyard_room 自动加载已交付的条带。
   - 高清参考：`reference/hero_B1_concept_hires.png`（检查走样用，不是游戏素材）。
   - 旧主角素材（`art/cemetery_pixel_v1/player_anim/` 等）作废。**下一步：主角动画。**
 - **Lexicon = 主角腰间的实体书**（World Bible 第 6、8.1、12.1、36 节）：打开的界面就是翻开的书，书页四种状态对应四个学习阶段。
@@ -62,7 +62,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 接下来可以做的事（2026-10-23 交接时）
 
-1. **主角动画**：待机 → 四方向行走 → 翻书（打开 Lexicon）→ 战斗动作。先给角色设计组写需求，交付后放进 graveyard_room 实机验收（顺手修右侧图）。
+1. **主角动画**：待机和四方向行走已完成（2026-10-24）。下一步翻书（打开 Lexicon）→ 战斗动作；照 docs/HERO_ANIMATION_REQUEST.md 第 7 节的规则写需求，交付后放进 graveyard_room 实机验收。
 2. **Lexicon 界面**设计（书页星图、单词卡片、四个学习阶段的显示）。
 3. 其他验证场景：Abandoned Station、Eleanor's Shop。
 4. 接手正式游戏代码：先读 README 与 `docs/` 运行时文档，出一份现状报告；把 `project.godot` 改为 960×540 原生 + 整数缩放（需用户同意）。

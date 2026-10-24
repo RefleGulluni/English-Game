@@ -1,0 +1,180 @@
+{
+  "action": "idle_front",
+  "status": "straight_front_revision_awaiting_in_game_acceptance",
+  "master": "art/character_design/hero_B1_front_straight.png",
+  "frame_count": 4,
+  "frame_size": [
+    96,
+    96
+  ],
+  "sheet_size": [
+    384,
+    96
+  ],
+  "frame_duration_ms": 500,
+  "anchor": [
+    48,
+    96
+  ],
+  "standard_RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+  "first_frame_RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+  "first_frame_exact": true,
+  "cyan_shape_and_RGB_sha256": "e4a763e1be620ad65a22f5a80f5fcebc78908f29faf25ea205221de7217a77e5",
+  "vertical_world_lock": false,
+  "frames": [
+    {
+      "frame": 1,
+      "upper_rigid_dy": 0,
+      "lamp_phase": 0,
+      "H": [
+        32,
+        53
+      ],
+      "G": [
+        32,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 16,
+      "cyan_offset": [
+        0,
+        0
+      ],
+      "cyan_shape_and_rgb_hash": "e4a763e1be620ad65a22f5a80f5fcebc78908f29faf25ea205221de7217a77e5",
+      "lowest_visible_y": 95,
+      "bbox": [
+        29,
+        0,
+        68,
+        96
+      ],
+      "waist_roi_opaque": 36
+    },
+    {
+      "frame": 2,
+      "upper_rigid_dy": 1,
+      "lamp_phase": 0,
+      "H": [
+        32,
+        54
+      ],
+      "G": [
+        32,
+        55
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "2c17aa199ecb530d91b30aac3c7e5ce9339e07616388d6966ad985e9c3fd6396",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 16,
+      "cyan_offset": [
+        0,
+        0
+      ],
+      "cyan_shape_and_rgb_hash": "e4a763e1be620ad65a22f5a80f5fcebc78908f29faf25ea205221de7217a77e5",
+      "lowest_visible_y": 95,
+      "bbox": [
+        29,
+        1,
+        68,
+        96
+      ],
+      "waist_roi_opaque": 36
+    },
+    {
+      "frame": 3,
+      "upper_rigid_dy": 1,
+      "lamp_phase": 1,
+      "H": [
+        32,
+        54
+      ],
+      "G": [
+        32,
+        55
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "5660e4f63ddf25eb06a69827d86ca7fbbba4899e9da75142d2816e1385e8db71",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 16,
+      "cyan_offset": [
+        0,
+        0
+      ],
+      "cyan_shape_and_rgb_hash": "e4a763e1be620ad65a22f5a80f5fcebc78908f29faf25ea205221de7217a77e5",
+      "lowest_visible_y": 95,
+      "bbox": [
+        28,
+        1,
+        68,
+        96
+      ],
+      "waist_roi_opaque": 36
+    },
+    {
+      "frame": 4,
+      "upper_rigid_dy": 0,
+      "lamp_phase": 1,
+      "H": [
+        32,
+        53
+      ],
+      "G": [
+        32,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "d6e5dae3c0644f51fac63f38fc8685fe54bf68f0367eb0326a86f0f3da15efac",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 16,
+      "cyan_offset": [
+        0,
+        0
+      ],
+      "cyan_shape_and_rgb_hash": "e4a763e1be620ad65a22f5a80f5fcebc78908f29faf25ea205221de7217a77e5",
+      "lowest_visible_y": 95,
+      "bbox": [
+        28,
+        0,
+        68,
+        96
+      ],
+      "waist_roi_opaque": 36
+    }
+  ],
+  "backup": "/Users/mac/.codex/backups/English-Game/front_step2_before_20261024_163915",
+  "fixed_garment_mask": "y>=40,x>=37; y>=55,x>=35;all y>=67"
+}

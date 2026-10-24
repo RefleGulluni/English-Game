@@ -1,0 +1,17 @@
+{
+  "scope": "straight_front_idle_and_walk_only",
+  "master": "/Users/mac/Documents/GitHub/English-Game/art/character_design/hero_B1_front_straight.png",
+  "raw_walk": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-a7472561-907e-46e0-b02e-b5fe6c2b8646.png",
+  "walk_method": "built-in image_gen complete front-facing2row4col reference sheet;one shared96px scale;whole-frame head/root/shallow boot registration;equal mirrored boot trajectories without mirroring outfit/accessories;original16pixel mark translation only;held-lamp pivots about grip",
+  "lamp_shared_source_registration_scale": [
+    0.72,
+    0.85
+  ],
+  "lamp_scale_reason": "same fixed prop scale across all8frames to match accepted master small lantern instead of generated oversized shade",
+  "idle_method": "accepted full standard frame continuous nearest-pixel breathing registration;head neck shoulder upper chest rigid1px down;lower garment plus bag/book protected;hand follows shoulder and1px delayed lower-lamp inclination",
+  "no_standard_upper_body_splice": true,
+  "no_vertical_world_lock": true,
+  "raw_source_retained": true,
+  "game_code_modified": false,
+  "backup": "/Users/mac/.codex/backups/English-Game/front_step2_before_20261024_163915"
+}

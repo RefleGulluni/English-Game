@@ -1,0 +1,3596 @@
+{
+  "scope": "walk_front_and_walk_back_tone_plus_front_head_only",
+  "backup": "/Users/mac/.codex/backups/English-Game/walk_tone_before_20261024_170612",
+  "no_new_raw_art": true,
+  "front_head_method": "copy accepted front-straight source rows0..19 exactly;translate down0/1/2pixels matching existing body bob;head/neck pixels never recolored",
+  "body_method": "material masks on standing reference and matching animated parts;use only each corresponding reference material actualRGB colors;material histogram/tone registration then constrained per-band mean/highlight matching;no alpha/body/action changes",
+  "material_names": [
+    "coat",
+    "hair_head",
+    "linen",
+    "trousers",
+    "boots",
+    "satchel",
+    "skin",
+    "lantern",
+    "mark_locked"
+  ],
+  "material_definition": "anatomical reference ROIs plus neutral-color identification for trousers/linen;hand/lantern windows use existing contact metadata;shared outline/shadow colors remain assigned to their corresponding region;reference atlas and palette lists included",
+  "bands": [
+    [
+      0,
+      19
+    ],
+    [
+      20,
+      44
+    ],
+    [
+      45,
+      64
+    ],
+    [
+      65,
+      95
+    ]
+  ],
+  "mean_formula": "0.299R+0.587G+0.114B;opaque pixels only;unrounded calculations",
+  "highlight_definition": "same luminance>170;opaque denominator;percentage-point differences",
+  "summaries": {
+    "front": {
+      "reference_all": {
+        "mean": 74.83551036370747,
+        "highlight_percent": 2.9722330856472428
+      },
+      "max_band_mean_error": 1.645539,
+      "max_highlight_percentage_point_error": 0.17144009681322991,
+      "max_whole_mean_error": 0.3611105208166663
+    },
+    "back": {
+      "reference_all": {
+        "mean": 74.85514722445696,
+        "highlight_percent": 0.9654062751407884
+      },
+      "max_band_mean_error": 0.499966,
+      "max_highlight_percentage_point_error": 0.08272460510707375,
+      "max_whole_mean_error": 0.3561350461495749
+    }
+  },
+  "results": {
+    "front": {
+      "reference": "hero_B1_front_straight.png",
+      "reference_stats": [
+        {
+          "mean": 88.1534189189189,
+          "highlight_percent": 8.783783783783784,
+          "opaque_pixels": 296,
+          "highlight_pixels": 26
+        },
+        {
+          "mean": 79.48170429447853,
+          "highlight_percent": 3.6809815950920246,
+          "opaque_pixels": 815,
+          "highlight_pixels": 30
+        },
+        {
+          "mean": 72.19533004231312,
+          "highlight_percent": 2.8208744710860367,
+          "opaque_pixels": 709,
+          "highlight_pixels": 20
+        },
+        {
+          "mean": 66.88861601085482,
+          "highlight_percent": 0.0,
+          "opaque_pixels": 737,
+          "highlight_pixels": 0
+        }
+      ],
+      "material_palette": {
+        "coat": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            44,
+            48,
+            51
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            50,
+            53,
+            55
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            58,
+            61
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            79,
+            75,
+            72
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            95,
+            86,
+            72
+          ],
+          [
+            103,
+            95,
+            88
+          ],
+          [
+            104,
+            87,
+            58
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            130,
+            109,
+            82
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ]
+        ],
+        "hair_head": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            104,
+            87,
+            58
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            130,
+            109,
+            82
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            148,
+            133,
+            115
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ],
+          [
+            205,
+            189,
+            172
+          ],
+          [
+            238,
+            235,
+            226
+          ]
+        ],
+        "linen": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            44,
+            48,
+            51
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            50,
+            53,
+            55
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            55,
+            58,
+            61
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            61,
+            65,
+            70
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            79,
+            75,
+            72
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            95,
+            86,
+            72
+          ],
+          [
+            103,
+            95,
+            88
+          ],
+          [
+            110,
+            102,
+            95
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ],
+          [
+            205,
+            189,
+            172
+          ],
+          [
+            238,
+            235,
+            226
+          ]
+        ],
+        "trousers": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            29,
+            34,
+            39
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            37,
+            42,
+            47
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            44,
+            48,
+            51
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            50,
+            53,
+            55
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            55,
+            58,
+            61
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            61,
+            65,
+            70
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            79,
+            75,
+            72
+          ],
+          [
+            95,
+            86,
+            72
+          ],
+          [
+            103,
+            95,
+            88
+          ],
+          [
+            110,
+            102,
+            95
+          ]
+        ],
+        "boots": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ]
+        ],
+        "satchel": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            50,
+            53,
+            55
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            58,
+            61
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            79,
+            75,
+            72
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            95,
+            86,
+            72
+          ],
+          [
+            104,
+            87,
+            58
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            130,
+            109,
+            82
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ],
+          [
+            205,
+            189,
+            172
+          ],
+          [
+            238,
+            235,
+            226
+          ]
+        ],
+        "skin": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            130,
+            109,
+            82
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ],
+          [
+            205,
+            189,
+            172
+          ]
+        ],
+        "lantern": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ]
+        ]
+      },
+      "frames": [
+        {
+          "frame": 1,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 96.83481818181818,
+              "highlight_percent": 18.181818181818183,
+              "opaque_pixels": 264,
+              "highlight_pixels": 48
+            },
+            {
+              "mean": 85.0539265060241,
+              "highlight_percent": 5.903614457831325,
+              "opaque_pixels": 830,
+              "highlight_pixels": 49
+            },
+            {
+              "mean": 79.5789780521262,
+              "highlight_percent": 4.801097393689986,
+              "opaque_pixels": 729,
+              "highlight_pixels": 35
+            },
+            {
+              "mean": 71.0445836791148,
+              "highlight_percent": 0.13831258644536654,
+              "opaque_pixels": 723,
+              "highlight_pixels": 1
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 84.93493983152828,
+              "highlight_percent": 5.776173285198556,
+              "opaque_pixels": 831,
+              "highlight_pixels": 48
+            },
+            {
+              "mean": 79.5789780521262,
+              "highlight_percent": 4.801097393689986,
+              "opaque_pixels": 729,
+              "highlight_pixels": 35
+            },
+            {
+              "mean": 71.0445836791148,
+              "highlight_percent": 0.13831258644536654,
+              "opaque_pixels": 723,
+              "highlight_pixels": 1
+            }
+          ],
+          "after": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 79.6888110709988,
+              "highlight_percent": 3.730445246690734,
+              "opaque_pixels": 831,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 72.18662139917696,
+              "highlight_percent": 2.880658436213992,
+              "opaque_pixels": 729,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.79315491009682,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 723,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.816501,
+            0.207107,
+            -0.008709,
+            -0.095461
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "a6c2f02a0a9611fb0b961720bcce48509ec5dd36319d8f8aea2323d2950ff407",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.69352959623677,
+            "highlight_percent": 2.9792238337906705
+          },
+          "whole_body_delta": -0.14198076747069877,
+          "component_count": 1
+        },
+        {
+          "frame": 2,
+          "bob": 2,
+          "before": [
+            {
+              "mean": 97.04326778242678,
+              "highlight_percent": 18.410041841004183,
+              "opaque_pixels": 239,
+              "highlight_pixels": 44
+            },
+            {
+              "mean": 85.09044103194104,
+              "highlight_percent": 5.528255528255528,
+              "opaque_pixels": 814,
+              "highlight_pixels": 45
+            },
+            {
+              "mean": 79.78520572207084,
+              "highlight_percent": 5.313351498637602,
+              "opaque_pixels": 734,
+              "highlight_pixels": 39
+            },
+            {
+              "mean": 69.75971408045977,
+              "highlight_percent": 0.28735632183908044,
+              "opaque_pixels": 696,
+              "highlight_pixels": 2
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 86.50788016528925,
+              "highlight_percent": 8.677685950413224,
+              "opaque_pixels": 242,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 85.39455392156863,
+              "highlight_percent": 5.514705882352941,
+              "opaque_pixels": 816,
+              "highlight_pixels": 45
+            },
+            {
+              "mean": 79.78520572207084,
+              "highlight_percent": 5.313351498637602,
+              "opaque_pixels": 734,
+              "highlight_pixels": 39
+            },
+            {
+              "mean": 69.75971408045977,
+              "highlight_percent": 0.28735632183908044,
+              "opaque_pixels": 696,
+              "highlight_pixels": 2
+            }
+          ],
+          "after": [
+            {
+              "mean": 86.50788016528925,
+              "highlight_percent": 8.677685950413224,
+              "opaque_pixels": 242,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 79.42428921568627,
+              "highlight_percent": 3.6764705882352944,
+              "opaque_pixels": 816,
+              "highlight_pixels": 30
+            },
+            {
+              "mean": 72.22001907356947,
+              "highlight_percent": 2.861035422343324,
+              "opaque_pixels": 734,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.94760488505746,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 696,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -1.645539,
+            -0.057415,
+            0.024689,
+            0.058989
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "8638e0b4524907f63182d851f4bc1711ad2d5e39a311ef8c8804acc765ac5134",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.4976503215434,
+            "highlight_percent": 2.8938906752411575
+          },
+          "whole_body_delta": -0.33786004216406695,
+          "component_count": 1
+        },
+        {
+          "frame": 3,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 96.58444202898549,
+              "highlight_percent": 16.304347826086957,
+              "opaque_pixels": 276,
+              "highlight_pixels": 45
+            },
+            {
+              "mean": 85.85373040380047,
+              "highlight_percent": 5.581947743467933,
+              "opaque_pixels": 842,
+              "highlight_pixels": 47
+            },
+            {
+              "mean": 79.95512309820194,
+              "highlight_percent": 5.532503457814661,
+              "opaque_pixels": 723,
+              "highlight_pixels": 40
+            },
+            {
+              "mean": 71.36443004418263,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 679,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 85.72813776722091,
+              "highlight_percent": 5.344418052256532,
+              "opaque_pixels": 842,
+              "highlight_pixels": 45
+            },
+            {
+              "mean": 79.95512309820194,
+              "highlight_percent": 5.532503457814661,
+              "opaque_pixels": 723,
+              "highlight_pixels": 40
+            },
+            {
+              "mean": 71.36443004418263,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 679,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 79.24976247030881,
+              "highlight_percent": 3.681710213776722,
+              "opaque_pixels": 842,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 72.31661825726141,
+              "highlight_percent": 2.7662517289073305,
+              "opaque_pixels": 723,
+              "highlight_pixels": 20
+            },
+            {
+              "mean": 66.71008689248896,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 679,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.816501,
+            -0.231942,
+            0.121288,
+            -0.178529
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "182056adb8d87ca04badb08912862ad8172dcef6bdaf0753a3dcdfd6d034db91",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.72757085987261,
+            "highlight_percent": 2.9856687898089174
+          },
+          "whole_body_delta": -0.10793950383485651,
+          "component_count": 1
+        },
+        {
+          "frame": 4,
+          "bob": 0,
+          "before": [
+            {
+              "mean": 96.21862582781458,
+              "highlight_percent": 14.90066225165563,
+              "opaque_pixels": 302,
+              "highlight_pixels": 45
+            },
+            {
+              "mean": 86.56627823050057,
+              "highlight_percent": 5.355064027939465,
+              "opaque_pixels": 859,
+              "highlight_pixels": 46
+            },
+            {
+              "mean": 81.31335918367347,
+              "highlight_percent": 4.8979591836734695,
+              "opaque_pixels": 735,
+              "highlight_pixels": 36
+            },
+            {
+              "mean": 70.8925304964539,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 705,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque_pixels": 296,
+              "highlight_pixels": 26
+            },
+            {
+              "mean": 86.56627823050057,
+              "highlight_percent": 5.355064027939465,
+              "opaque_pixels": 859,
+              "highlight_pixels": 46
+            },
+            {
+              "mean": 81.31335918367347,
+              "highlight_percent": 4.8979591836734695,
+              "opaque_pixels": 735,
+              "highlight_pixels": 36
+            },
+            {
+              "mean": 70.8925304964539,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 705,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque_pixels": 296,
+              "highlight_pixels": 26
+            },
+            {
+              "mean": 79.78260535506404,
+              "highlight_percent": 3.7252619324796274,
+              "opaque_pixels": 859,
+              "highlight_pixels": 32
+            },
+            {
+              "mean": 72.16114421768708,
+              "highlight_percent": 2.857142857142857,
+              "opaque_pixels": 735,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.8887560283688,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 705,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            0.0,
+            0.300901,
+            -0.034186,
+            0.00014
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "5a3344ea4ad678430b972e8f4ce757614a42fa77b1cd66225bd8ed449d876de1",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 75.07579344894027,
+            "highlight_percent": 3.044315992292871
+          },
+          "whole_body_delta": 0.24028308523280373,
+          "component_count": 1
+        },
+        {
+          "frame": 5,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 92.71730483271376,
+              "highlight_percent": 14.869888475836431,
+              "opaque_pixels": 269,
+              "highlight_pixels": 40
+            },
+            {
+              "mean": 84.31448267622463,
+              "highlight_percent": 4.898446833930705,
+              "opaque_pixels": 837,
+              "highlight_pixels": 41
+            },
+            {
+              "mean": 79.61874059139785,
+              "highlight_percent": 4.56989247311828,
+              "opaque_pixels": 744,
+              "highlight_pixels": 34
+            },
+            {
+              "mean": 70.64223855755895,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 721,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 84.18786021505376,
+              "highlight_percent": 4.778972520908005,
+              "opaque_pixels": 837,
+              "highlight_pixels": 40
+            },
+            {
+              "mean": 79.61874059139785,
+              "highlight_percent": 4.56989247311828,
+              "opaque_pixels": 744,
+              "highlight_pixels": 34
+            },
+            {
+              "mean": 70.64223855755895,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 721,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 79.22997371565113,
+              "highlight_percent": 3.7037037037037033,
+              "opaque_pixels": 837,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 72.32744086021506,
+              "highlight_percent": 2.82258064516129,
+              "opaque_pixels": 744,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.91119417475728,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 721,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.816501,
+            -0.251731,
+            0.132111,
+            0.022578
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "2990208a4d88310d310e3d17e0ad915145287abd18e2ce41c6a29633fb82b962",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.62115525291829,
+            "highlight_percent": 2.9571984435797662
+          },
+          "whole_body_delta": -0.21435511078918523,
+          "component_count": 1
+        },
+        {
+          "frame": 6,
+          "bob": 2,
+          "before": [
+            {
+              "mean": 95.48476095617531,
+              "highlight_percent": 14.741035856573706,
+              "opaque_pixels": 251,
+              "highlight_pixels": 37
+            },
+            {
+              "mean": 84.04493157262905,
+              "highlight_percent": 3.961584633853541,
+              "opaque_pixels": 833,
+              "highlight_pixels": 33
+            },
+            {
+              "mean": 83.38950858652576,
+              "highlight_percent": 5.416116248348745,
+              "opaque_pixels": 757,
+              "highlight_pixels": 41
+            },
+            {
+              "mean": 70.32796353436186,
+              "highlight_percent": 0.1402524544179523,
+              "opaque_pixels": 713,
+              "highlight_pixels": 1
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 86.50788016528925,
+              "highlight_percent": 8.677685950413224,
+              "opaque_pixels": 242,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 83.62341966426858,
+              "highlight_percent": 3.8369304556354913,
+              "opaque_pixels": 834,
+              "highlight_pixels": 32
+            },
+            {
+              "mean": 83.38950858652576,
+              "highlight_percent": 5.416116248348745,
+              "opaque_pixels": 757,
+              "highlight_pixels": 41
+            },
+            {
+              "mean": 70.32796353436186,
+              "highlight_percent": 0.1402524544179523,
+              "opaque_pixels": 713,
+              "highlight_pixels": 1
+            }
+          ],
+          "after": [
+            {
+              "mean": 86.50788016528925,
+              "highlight_percent": 8.677685950413224,
+              "opaque_pixels": 242,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 79.53669664268584,
+              "highlight_percent": 3.7170263788968825,
+              "opaque_pixels": 834,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 72.19622060766181,
+              "highlight_percent": 2.7741083223249667,
+              "opaque_pixels": 757,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.88747685834502,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 713,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -1.645539,
+            0.054992,
+            0.000891,
+            -0.001139
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "dd60df819e371c7ab55f1f3df46b0589ff0118e524601b24e99921b0c9a0976a",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.4743998428908,
+            "highlight_percent": 2.8672427336999213
+          },
+          "whole_body_delta": -0.3611105208166663,
+          "component_count": 1
+        },
+        {
+          "frame": 7,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 95.20329104477612,
+              "highlight_percent": 14.55223880597015,
+              "opaque_pixels": 268,
+              "highlight_pixels": 39
+            },
+            {
+              "mean": 85.81726968973747,
+              "highlight_percent": 4.41527446300716,
+              "opaque_pixels": 838,
+              "highlight_pixels": 37
+            },
+            {
+              "mean": 81.60466622691293,
+              "highlight_percent": 4.617414248021108,
+              "opaque_pixels": 758,
+              "highlight_pixels": 35
+            },
+            {
+              "mean": 70.95952975326561,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 689,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 85.60424701670644,
+              "highlight_percent": 4.41527446300716,
+              "opaque_pixels": 838,
+              "highlight_pixels": 37
+            },
+            {
+              "mean": 81.60466622691293,
+              "highlight_percent": 4.617414248021108,
+              "opaque_pixels": 758,
+              "highlight_pixels": 35
+            },
+            {
+              "mean": 70.95952975326561,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 689,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 87.33691791044777,
+              "highlight_percent": 8.955223880597014,
+              "opaque_pixels": 268,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 79.70008830548926,
+              "highlight_percent": 3.699284009546539,
+              "opaque_pixels": 838,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 72.1983179419525,
+              "highlight_percent": 2.7704485488126647,
+              "opaque_pixels": 758,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.73577648766327,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 689,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.816501,
+            0.218384,
+            0.002988,
+            -0.15284
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "a3b50fd157351f7798c2ae4e23851732136ae11ba799c6c18e54e0d0a995307b",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.77565334900117,
+            "highlight_percent": 2.9768899334116727
+          },
+          "whole_body_delta": -0.059857014706295786,
+          "component_count": 1
+        },
+        {
+          "frame": 8,
+          "bob": 0,
+          "before": [
+            {
+              "mean": 94.99330564784053,
+              "highlight_percent": 14.285714285714285,
+              "opaque_pixels": 301,
+              "highlight_pixels": 43
+            },
+            {
+              "mean": 84.19579768786127,
+              "highlight_percent": 4.855491329479769,
+              "opaque_pixels": 865,
+              "highlight_pixels": 42
+            },
+            {
+              "mean": 78.97867837837839,
+              "highlight_percent": 4.45945945945946,
+              "opaque_pixels": 740,
+              "highlight_pixels": 33
+            },
+            {
+              "mean": 69.28169625520111,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 721,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque_pixels": 296,
+              "highlight_pixels": 26
+            },
+            {
+              "mean": 84.19579768786127,
+              "highlight_percent": 4.855491329479769,
+              "opaque_pixels": 865,
+              "highlight_pixels": 42
+            },
+            {
+              "mean": 78.97867837837839,
+              "highlight_percent": 4.45945945945946,
+              "opaque_pixels": 740,
+              "highlight_pixels": 33
+            },
+            {
+              "mean": 69.28169625520111,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 721,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 88.1534189189189,
+              "highlight_percent": 8.783783783783784,
+              "opaque_pixels": 296,
+              "highlight_pixels": 26
+            },
+            {
+              "mean": 79.38508554913295,
+              "highlight_percent": 3.6994219653179194,
+              "opaque_pixels": 865,
+              "highlight_pixels": 32
+            },
+            {
+              "mean": 72.2162918918919,
+              "highlight_percent": 2.837837837837838,
+              "opaque_pixels": 740,
+              "highlight_pixels": 21
+            },
+            {
+              "mean": 66.93756726768378,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 721,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            0.0,
+            -0.096619,
+            0.020962,
+            0.048951
+          ],
+          "front_head_exact": true,
+          "head_source_rows": [
+            0,
+            19
+          ],
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "4cb49edc5636592ce77417730b26d887352742b612dca5407779189c2b529d3a",
+          "head_RGBA_sha256": "a12e47d55ecae8697e72c722d8f37ddf5e7ca386fc549d3703b339acbd4f9c3b",
+          "whole_body": {
+            "mean": 74.92889130434781,
+            "highlight_percent": 3.012967200610221
+          },
+          "whole_body_delta": 0.09338094064034408,
+          "component_count": 1
+        }
+      ]
+    },
+    "back": {
+      "reference": "hero_B1_back.png",
+      "reference_stats": [
+        {
+          "mean": 72.85585053380782,
+          "highlight_percent": 0.3558718861209964,
+          "opaque_pixels": 281,
+          "highlight_pixels": 1
+        },
+        {
+          "mean": 73.62813333333334,
+          "highlight_percent": 0.628930817610063,
+          "opaque_pixels": 795,
+          "highlight_pixels": 5
+        },
+        {
+          "mean": 79.0169786628734,
+          "highlight_percent": 2.5604551920341394,
+          "opaque_pixels": 703,
+          "highlight_pixels": 18
+        },
+        {
+          "mean": 72.89123055162658,
+          "highlight_percent": 0.0,
+          "opaque_pixels": 707,
+          "highlight_pixels": 0
+        }
+      ],
+      "material_palette": {
+        "coat": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            29,
+            34,
+            39
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            205,
+            189,
+            172
+          ]
+        ],
+        "hair_head": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            95,
+            86,
+            72
+          ],
+          [
+            104,
+            87,
+            58
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            130,
+            109,
+            82
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ]
+        ],
+        "linen": [],
+        "trousers": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            29,
+            34,
+            39
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            37,
+            42,
+            47
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            44,
+            48,
+            51
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            50,
+            53,
+            55
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            55,
+            58,
+            61
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            79,
+            75,
+            72
+          ]
+        ],
+        "boots": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ]
+        ],
+        "satchel": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            38,
+            31,
+            24
+          ],
+          [
+            43,
+            36,
+            28
+          ],
+          [
+            46,
+            42,
+            34
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            64,
+            49,
+            31
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            104,
+            87,
+            58
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            130,
+            109,
+            82
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ],
+          [
+            205,
+            189,
+            172
+          ],
+          [
+            238,
+            235,
+            226
+          ]
+        ],
+        "skin": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ]
+        ],
+        "lantern": [
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            5,
+            4,
+            4
+          ],
+          [
+            13,
+            9,
+            8
+          ],
+          [
+            24,
+            19,
+            17
+          ],
+          [
+            34,
+            23,
+            18
+          ],
+          [
+            55,
+            41,
+            26
+          ],
+          [
+            55,
+            47,
+            33
+          ],
+          [
+            61,
+            55,
+            46
+          ],
+          [
+            71,
+            57,
+            26
+          ],
+          [
+            74,
+            57,
+            46
+          ],
+          [
+            74,
+            64,
+            49
+          ],
+          [
+            76,
+            69,
+            60
+          ],
+          [
+            89,
+            78,
+            56
+          ],
+          [
+            91,
+            67,
+            45
+          ],
+          [
+            95,
+            86,
+            72
+          ],
+          [
+            103,
+            95,
+            88
+          ],
+          [
+            105,
+            79,
+            49
+          ],
+          [
+            110,
+            102,
+            95
+          ],
+          [
+            113,
+            96,
+            73
+          ],
+          [
+            118,
+            87,
+            59
+          ],
+          [
+            123,
+            111,
+            96
+          ],
+          [
+            128,
+            123,
+            119
+          ],
+          [
+            145,
+            106,
+            70
+          ],
+          [
+            148,
+            119,
+            80
+          ],
+          [
+            148,
+            133,
+            115
+          ],
+          [
+            168,
+            134,
+            102
+          ],
+          [
+            179,
+            169,
+            158
+          ],
+          [
+            186,
+            155,
+            125
+          ],
+          [
+            195,
+            170,
+            145
+          ],
+          [
+            205,
+            189,
+            172
+          ]
+        ]
+      },
+      "frames": [
+        {
+          "frame": 1,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 83.33100409836065,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 244,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 84.47271088861076,
+              "highlight_percent": 0.5006257822277848,
+              "opaque_pixels": 799,
+              "highlight_pixels": 4
+            },
+            {
+              "mean": 87.44562286465178,
+              "highlight_percent": 4.07358738501971,
+              "opaque_pixels": 761,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 82.30335943517329,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 779,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 83.33100409836065,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 244,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 84.47271088861076,
+              "highlight_percent": 0.5006257822277848,
+              "opaque_pixels": 799,
+              "highlight_pixels": 4
+            },
+            {
+              "mean": 87.44562286465178,
+              "highlight_percent": 4.07358738501971,
+              "opaque_pixels": 761,
+              "highlight_pixels": 31
+            },
+            {
+              "mean": 82.30335943517329,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 779,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.87031147540984,
+              "highlight_percent": 0.4098360655737705,
+              "opaque_pixels": 244,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.14056320400502,
+              "highlight_percent": 0.6257822277847309,
+              "opaque_pixels": 799,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 78.98039290407358,
+              "highlight_percent": 2.4967148488830486,
+              "opaque_pixels": 761,
+              "highlight_pixels": 19
+            },
+            {
+              "mean": 72.89448010269577,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 779,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            0.014461,
+            -0.48757,
+            -0.036586,
+            0.00325
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "3ea25d814dfcf561cfcfec494e975ab5276029b244e20bd52c811ad32dbd83ea",
+          "whole_body": {
+            "mean": 74.76134146341464,
+            "highlight_percent": 0.9678668215253582
+          },
+          "whole_body_delta": -0.09380576104231864,
+          "component_count": 1
+        },
+        {
+          "frame": 2,
+          "bob": 2,
+          "before": [
+            {
+              "mean": 78.08765350877192,
+              "highlight_percent": 0.43859649122807015,
+              "opaque_pixels": 228,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 84.62530440251572,
+              "highlight_percent": 0.8805031446540881,
+              "opaque_pixels": 795,
+              "highlight_pixels": 7
+            },
+            {
+              "mean": 85.82137403598973,
+              "highlight_percent": 3.7275064267352187,
+              "opaque_pixels": 778,
+              "highlight_pixels": 29
+            },
+            {
+              "mean": 83.12699469496022,
+              "highlight_percent": 0.1326259946949602,
+              "opaque_pixels": 754,
+              "highlight_pixels": 1
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 78.08765350877192,
+              "highlight_percent": 0.43859649122807015,
+              "opaque_pixels": 228,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 84.62530440251572,
+              "highlight_percent": 0.8805031446540881,
+              "opaque_pixels": 795,
+              "highlight_pixels": 7
+            },
+            {
+              "mean": 85.82137403598973,
+              "highlight_percent": 3.7275064267352187,
+              "opaque_pixels": 778,
+              "highlight_pixels": 29
+            },
+            {
+              "mean": 83.12699469496022,
+              "highlight_percent": 0.1326259946949602,
+              "opaque_pixels": 754,
+              "highlight_pixels": 1
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.82989473684209,
+              "highlight_percent": 0.43859649122807015,
+              "opaque_pixels": 228,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.40570440251572,
+              "highlight_percent": 0.628930817610063,
+              "opaque_pixels": 795,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 78.94084061696658,
+              "highlight_percent": 2.570694087403599,
+              "opaque_pixels": 778,
+              "highlight_pixels": 20
+            },
+            {
+              "mean": 72.8816273209549,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 754,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.025956,
+            -0.222429,
+            -0.076138,
+            -0.009603
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "7281878eb0862bde445d524d2f7badf50f482da22fd85c732272f20ac6a5af1f",
+          "whole_body": {
+            "mean": 74.88511624266145,
+            "highlight_percent": 1.0176125244618397
+          },
+          "whole_body_delta": 0.029969018204496933,
+          "component_count": 1
+        },
+        {
+          "frame": 3,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 85.0459079497908,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 239,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 83.34435495716035,
+              "highlight_percent": 0.4895960832313341,
+              "opaque_pixels": 817,
+              "highlight_pixels": 4
+            },
+            {
+              "mean": 87.83225161290322,
+              "highlight_percent": 3.096774193548387,
+              "opaque_pixels": 775,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 82.80488529014846,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 741,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 85.0459079497908,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 239,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 83.34435495716035,
+              "highlight_percent": 0.4895960832313341,
+              "opaque_pixels": 817,
+              "highlight_pixels": 4
+            },
+            {
+              "mean": 87.83225161290322,
+              "highlight_percent": 3.096774193548387,
+              "opaque_pixels": 775,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 82.80488529014846,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 741,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.84556903765689,
+              "highlight_percent": 0.41841004184100417,
+              "opaque_pixels": 239,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.9419853121175,
+              "highlight_percent": 0.6119951040391677,
+              "opaque_pixels": 817,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 79.5046464516129,
+              "highlight_percent": 2.5806451612903225,
+              "opaque_pixels": 775,
+              "highlight_pixels": 20
+            },
+            {
+              "mean": 72.88343319838056,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 741,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.010281,
+            0.313852,
+            0.487668,
+            -0.007797
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "699a36aa57b1287517f5ef048b33e9362dd945be504b57f9064d670e6a655ec6",
+          "whole_body": {
+            "mean": 75.21128227060653,
+            "highlight_percent": 1.010886469673406
+          },
+          "whole_body_delta": 0.3561350461495749,
+          "component_count": 1
+        },
+        {
+          "frame": 4,
+          "bob": 0,
+          "before": [
+            {
+              "mean": 81.46480645161292,
+              "highlight_percent": 0.35842293906810035,
+              "opaque_pixels": 279,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 83.29155965559656,
+              "highlight_percent": 1.2300123001230012,
+              "opaque_pixels": 813,
+              "highlight_pixels": 10
+            },
+            {
+              "mean": 86.88427272727273,
+              "highlight_percent": 3.2085561497326207,
+              "opaque_pixels": 748,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 79.77684871794871,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 780,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 81.46480645161292,
+              "highlight_percent": 0.35842293906810035,
+              "opaque_pixels": 279,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 83.29155965559656,
+              "highlight_percent": 1.2300123001230012,
+              "opaque_pixels": 813,
+              "highlight_pixels": 10
+            },
+            {
+              "mean": 86.88427272727273,
+              "highlight_percent": 3.2085561497326207,
+              "opaque_pixels": 748,
+              "highlight_pixels": 24
+            },
+            {
+              "mean": 79.77684871794871,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 780,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.84462007168457,
+              "highlight_percent": 0.35842293906810035,
+              "opaque_pixels": 279,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.60123493234933,
+              "highlight_percent": 0.6150061500615006,
+              "opaque_pixels": 813,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 79.00530748663101,
+              "highlight_percent": 2.5401069518716577,
+              "opaque_pixels": 748,
+              "highlight_pixels": 19
+            },
+            {
+              "mean": 72.91565897435899,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 780,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.01123,
+            -0.026898,
+            -0.011671,
+            0.024428
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "880bc1e7b434fa0eb3287767cc07971d7c14e0295b5f537f4628455b080098df",
+          "whole_body": {
+            "mean": 74.8594034351145,
+            "highlight_percent": 0.9541984732824428
+          },
+          "whole_body_delta": 0.004256210657544557,
+          "component_count": 1
+        },
+        {
+          "frame": 5,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 81.45643153526972,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 241,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 83.7347175,
+              "highlight_percent": 0.75,
+              "opaque_pixels": 800,
+              "highlight_pixels": 6
+            },
+            {
+              "mean": 88.99965760869566,
+              "highlight_percent": 3.6684782608695654,
+              "opaque_pixels": 736,
+              "highlight_pixels": 27
+            },
+            {
+              "mean": 83.47763376623378,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 770,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 81.45643153526972,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 241,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 83.7347175,
+              "highlight_percent": 0.75,
+              "opaque_pixels": 800,
+              "highlight_pixels": 6
+            },
+            {
+              "mean": 88.99965760869566,
+              "highlight_percent": 3.6684782608695654,
+              "opaque_pixels": 736,
+              "highlight_pixels": 27
+            },
+            {
+              "mean": 83.47763376623378,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 770,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.81897925311203,
+              "highlight_percent": 0.4149377593360996,
+              "opaque_pixels": 241,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.30055875,
+              "highlight_percent": 0.625,
+              "opaque_pixels": 800,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 79.36933423913044,
+              "highlight_percent": 2.5815217391304346,
+              "opaque_pixels": 736,
+              "highlight_pixels": 19
+            },
+            {
+              "mean": 72.87370129870129,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 770,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.036871,
+            -0.327575,
+            0.352356,
+            -0.017529
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "1a231308cc0f9f0204323416fee6ba365ece3ad58287b5421c068d58a62bff31",
+          "whole_body": {
+            "mean": 74.87962347860228,
+            "highlight_percent": 0.9815469179426776
+          },
+          "whole_body_delta": 0.024476254145326948,
+          "component_count": 1
+        },
+        {
+          "frame": 6,
+          "bob": 2,
+          "before": [
+            {
+              "mean": 77.30477292576418,
+              "highlight_percent": 0.43668122270742354,
+              "opaque_pixels": 229,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 85.52933924050632,
+              "highlight_percent": 1.0126582278481013,
+              "opaque_pixels": 790,
+              "highlight_pixels": 8
+            },
+            {
+              "mean": 86.28589853137517,
+              "highlight_percent": 3.337783711615487,
+              "opaque_pixels": 749,
+              "highlight_pixels": 25
+            },
+            {
+              "mean": 82.7910506849315,
+              "highlight_percent": 0.273972602739726,
+              "opaque_pixels": 730,
+              "highlight_pixels": 2
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 77.30477292576418,
+              "highlight_percent": 0.43668122270742354,
+              "opaque_pixels": 229,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 85.52933924050632,
+              "highlight_percent": 1.0126582278481013,
+              "opaque_pixels": 790,
+              "highlight_pixels": 8
+            },
+            {
+              "mean": 86.28589853137517,
+              "highlight_percent": 3.337783711615487,
+              "opaque_pixels": 749,
+              "highlight_pixels": 25
+            },
+            {
+              "mean": 82.7910506849315,
+              "highlight_percent": 0.273972602739726,
+              "opaque_pixels": 730,
+              "highlight_pixels": 2
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.88617467248909,
+              "highlight_percent": 0.43668122270742354,
+              "opaque_pixels": 229,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.36858354430379,
+              "highlight_percent": 0.6329113924050633,
+              "opaque_pixels": 790,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 78.9337303070761,
+              "highlight_percent": 2.53671562082777,
+              "opaque_pixels": 749,
+              "highlight_pixels": 19
+            },
+            {
+              "mean": 72.70181506849316,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 730,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            0.030324,
+            -0.25955,
+            -0.083248,
+            -0.189415
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "bff74699750f97f317b92624dd1ae64e58c2b42d2ae79656f2b01b5f1f789e2a",
+          "whole_body": {
+            "mean": 74.79816012810248,
+            "highlight_percent": 1.00080064051241
+          },
+          "whole_body_delta": -0.05698709635447585,
+          "component_count": 1
+        },
+        {
+          "frame": 7,
+          "bob": 1,
+          "before": [
+            {
+              "mean": 80.76454771784233,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 241,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 82.07441161928305,
+              "highlight_percent": 0.4944375772558714,
+              "opaque_pixels": 809,
+              "highlight_pixels": 4
+            },
+            {
+              "mean": 87.79113499344692,
+              "highlight_percent": 3.4076015727391877,
+              "opaque_pixels": 763,
+              "highlight_pixels": 26
+            },
+            {
+              "mean": 82.86269113573407,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 722,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 80.76454771784233,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 241,
+              "highlight_pixels": 0
+            },
+            {
+              "mean": 82.07441161928305,
+              "highlight_percent": 0.4944375772558714,
+              "opaque_pixels": 809,
+              "highlight_pixels": 4
+            },
+            {
+              "mean": 87.79113499344692,
+              "highlight_percent": 3.4076015727391877,
+              "opaque_pixels": 763,
+              "highlight_pixels": 26
+            },
+            {
+              "mean": 82.86269113573407,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 722,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.81897925311203,
+              "highlight_percent": 0.4149377593360996,
+              "opaque_pixels": 241,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 74.03147960444993,
+              "highlight_percent": 0.6180469715698393,
+              "opaque_pixels": 809,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 79.02346526867628,
+              "highlight_percent": 2.621231979030144,
+              "opaque_pixels": 763,
+              "highlight_pixels": 20
+            },
+            {
+              "mean": 72.3912645429363,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 722,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.036871,
+            0.403346,
+            0.006487,
+            -0.499966
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "b2b1103d7f90562e33d207b426c1ad476a5ff28543f76ad95db85c8e87f3fd3b",
+          "whole_body": {
+            "mean": 74.9515731755424,
+            "highlight_percent": 1.0256410256410255
+          },
+          "whole_body_delta": 0.09642595108545038,
+          "component_count": 1
+        },
+        {
+          "frame": 8,
+          "bob": 0,
+          "before": [
+            {
+              "mean": 81.40254151624549,
+              "highlight_percent": 0.36101083032490977,
+              "opaque_pixels": 277,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 84.28826732673267,
+              "highlight_percent": 1.1138613861386137,
+              "opaque_pixels": 808,
+              "highlight_pixels": 9
+            },
+            {
+              "mean": 87.40747894736842,
+              "highlight_percent": 3.684210526315789,
+              "opaque_pixels": 760,
+              "highlight_pixels": 28
+            },
+            {
+              "mean": 82.46354533333333,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 750,
+              "highlight_pixels": 0
+            }
+          ],
+          "after_head_before_tone": [
+            {
+              "mean": 81.40254151624549,
+              "highlight_percent": 0.36101083032490977,
+              "opaque_pixels": 277,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 84.28826732673267,
+              "highlight_percent": 1.1138613861386137,
+              "opaque_pixels": 808,
+              "highlight_pixels": 9
+            },
+            {
+              "mean": 87.40747894736842,
+              "highlight_percent": 3.684210526315789,
+              "opaque_pixels": 760,
+              "highlight_pixels": 28
+            },
+            {
+              "mean": 82.46354533333333,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 750,
+              "highlight_pixels": 0
+            }
+          ],
+          "after": [
+            {
+              "mean": 72.83005415162455,
+              "highlight_percent": 0.36101083032490977,
+              "opaque_pixels": 277,
+              "highlight_pixels": 1
+            },
+            {
+              "mean": 73.24266212871287,
+              "highlight_percent": 0.6188118811881188,
+              "opaque_pixels": 808,
+              "highlight_pixels": 5
+            },
+            {
+              "mean": 79.15381315789473,
+              "highlight_percent": 2.5,
+              "opaque_pixels": 760,
+              "highlight_pixels": 19
+            },
+            {
+              "mean": 72.91008666666667,
+              "highlight_percent": 0.0,
+              "opaque_pixels": 750,
+              "highlight_pixels": 0
+            }
+          ],
+          "mean_delta": [
+            -0.025796,
+            -0.385471,
+            0.136834,
+            0.018856
+          ],
+          "front_head_exact": "not_requested",
+          "head_source_rows": null,
+          "body_alpha_identical": true,
+          "mark_unchanged": true,
+          "RGBA_sha256": "ae7d729904913115fdbbc1bd12289e6babee8c4f27e7f230a94112a7baeaa165",
+          "whole_body": {
+            "mean": 74.8337028901734,
+            "highlight_percent": 0.9633911368015413
+          },
+          "whole_body_delta": -0.021444334283557964,
+          "component_count": 1
+        }
+      ]
+    }
+  },
+  "all_other_standard_and_animation_files_unchanged": true,
+  "game_code_modified": false
+}

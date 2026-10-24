@@ -413,20 +413,16 @@ func _make_player() -> CharacterBody2D:
 	var frames := SpriteFrames.new()
 	# Strips (96x96 frames in a row) are picked up as they get delivered. Standing uses the
 	# idle strip (500 ms a frame: a calm 2 s breath) when there is one, else the still pose; walking is 100 ms a frame.
-	# Front uses the straight-on pose (the original B1 is a 3/4 view and looked twisted walking down);
-	# its old 3/4 idle/walk strips are skipped until they are redrawn from that pose.
+	# Front uses the straight-on pose (the original B1 is a 3/4 view and looked twisted walking down).
 	var still := {"front": "hero_B1_front_straight.png"}
-	var skip := ["anim/hero_B1_idle_front.png", "anim/hero_B1_walk_front.png"]
 	for facing in ["front", "back", "left", "right"]:
 		frames.add_animation(facing)
-		var idle := "anim/hero_B1_idle_%s.png" % facing
-		if idle in skip or not _add_strip(frames, facing, idle, 2.0):
+		if not _add_strip(frames, facing, "anim/hero_B1_idle_%s.png" % facing, 2.0):
 			var pose: String = still.get(facing, "hero_B1_%s.png" % facing)
 			frames.add_frame(facing, ImageTexture.create_from_image(_img_at(HERO + pose)))
 		var walk: String = "walk_" + facing
 		frames.add_animation(walk)
-		var walk_file := "anim/hero_B1_walk_%s.png" % facing
-		if walk_file in skip or not _add_strip(frames, walk, walk_file, 10.0):
+		if not _add_strip(frames, walk, "anim/hero_B1_walk_%s.png" % facing, 10.0):
 			frames.remove_animation(walk)
 	_player_sprite = AnimatedSprite2D.new()
 	_player_sprite.sprite_frames = frames
