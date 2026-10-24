@@ -16,8 +16,10 @@
 
 | 入口 | 内容 |
 |---|---|
-| **主场景**（F5 运行） | 0.9 Broken Graveyard 切片：走路 → 按 E 进门 → 靠近骷髅进入场景内战斗 → 用手牌（Word Action）、Retain、DEFLECT → 骷髅倒下变骨堆（3 回合后重组）→ Echo（15 + 5）→ 掉落凿子实体 → 走过去按 E 拾取 → 进背包。L 打开文字版 Lexicon，Tab 打开背包，R 重玩，F2 是测试面板 |
-| **旧版 0.8 场景**（只做回归测试） | 完整的 Mini Run：带种子的六层墓地路线、学习导演、12 张牌的牌组、Ghost / Skeleton / Wraith / Mourning Keeper、恢复节点、遗物三选一、开发面板 |
+| **完整的一局游戏：0.8 Mini Run**（`scenes/ui/legacy_combat.tscn`，**目前不是主场景**，README 称之为 legacy，但它才是功能最全的版本） | 带种子的六层墓地路线（每层三选一）、学习导演与跨局知识、12 张牌的牌组、Ghost / Veil Ghost / Grave Skeleton / Neglect Wraith / Mourning Wraith / 两阶段 Mourning Keeper、Black Mist Well、恢复节点、精英、遗物三选一、开发面板。画面是界面式的（地图节点 + 战斗页面），不是可以走动的场景 |
+| **主场景**（F5 运行）：0.9 美术接入单场景试玩 | 0.9 Broken Graveyard 切片：走路 → 按 E 进门 → 靠近骷髅进入场景内战斗 → 用手牌（Word Action）、Retain、DEFLECT → 骷髅倒下变骨堆（3 回合后重组）→ Echo（15 + 5）→ 掉落凿子实体 → 走过去按 E 拾取 → 进背包。L 打开文字版 Lexicon，Tab 打开背包，R 重玩，F2 是测试面板 |
+
+两者用的是**同一套规则大脑**（战斗、学习、Run）：0.9 切片只是把其中一场战斗搬进了可走动的场景。新的正式版应该是“0.8 的完整一局 + 0.9 式的可走动场景 + 像素 v3 画面”。
 
 规模：非原型代码 44 个脚本、约 6,300 行；测试 28 套，**本次全部通过**（2026-10-24 实测）。
 
