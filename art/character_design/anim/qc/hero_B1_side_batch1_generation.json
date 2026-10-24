@@ -1,0 +1,11 @@
+{
+  "scope": "batch_1_side_only",
+  "walk_left_raw": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-876bc63b-cd48-4590-ba1c-5a0b3bbf3d18.png",
+  "walk_left_method": "built-in image_gen full-character left-profile 2row4col sheet using left master and repeated left master anchor grid;no reflection;single shared native scale;binary alpha and master-only palette;continuous whole-frame root/leg/arm registration;existing lamp pixels pivot about held grip",
+  "idle_method": "complete original standard frames continuously re-registered for1px breathing and delayed1px lower-lamp inclination;head and feet coordinate field fixed;first frame copied exactly from standard;no upper/lower layer splice and no newly drawn body pixels",
+  "scale": "one shared scale for all generated walk cells;no per-frame fit",
+  "palette": "union of four native standard PNG opaque pixels only",
+  "raw_generated_original_retained": true,
+  "accepted_right_walk_preserved": true,
+  "QA_backup": "/Users/mac/.codex/backups/English-Game/side_batch1_before_QA_20261024"
+}

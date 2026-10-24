@@ -1,0 +1,579 @@
+{
+  "action": "walk_left",
+  "status": "awaiting_in_game_acceptance",
+  "frame_size": [
+    96,
+    96
+  ],
+  "sheet_size": [
+    768,
+    96
+  ],
+  "frame_count": 8,
+  "frame_duration_ms": 100,
+  "standard_RGBA_sha256": null,
+  "first_frame_RGBA_sha256": "50afbae3452a18989b612bec90c0612741e44151612ea3389400e6964b36e0bc",
+  "first_frame_exact": false,
+  "frames": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        137,
+        58,
+        300,
+        386
+      ],
+      "whole_frame_offset": [
+        26,
+        1
+      ],
+      "top_y": 1,
+      "ground_y": 95,
+      "support_toe_source_x": 27,
+      "support_toe_native_x": 28,
+      "continuous_lower_registration_dx": 1,
+      "upper_registration_dy": 0,
+      "body_world_x": 0,
+      "support_toe_world_x": 28,
+      "seam_roi_opaque": false,
+      "H": [
+        33,
+        52
+      ],
+      "G": [
+        33,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        31,
+        65
+      ],
+      "lamp_relative_base_x": -2,
+      "lamp_min_gap": 1,
+      "lamp_pixel_count": 67,
+      "lamp_cut_x": 35,
+      "rgba_sha256": "50afbae3452a18989b612bec90c0612741e44151612ea3389400e6964b36e0bc",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        28,
+        92
+      ],
+      "ground_projection_native": [
+        28,
+        95
+      ],
+      "ground_projection_world": [
+        28,
+        95
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        164,
+        57,
+        304,
+        388
+      ],
+      "whole_frame_offset": [
+        32,
+        1
+      ],
+      "top_y": 2,
+      "ground_y": 95,
+      "support_toe_source_x": 33,
+      "support_toe_native_x": 35,
+      "continuous_lower_registration_dx": 2,
+      "upper_registration_dy": 1,
+      "body_world_x": -7,
+      "support_toe_world_x": 28,
+      "seam_roi_opaque": false,
+      "H": [
+        34,
+        54
+      ],
+      "G": [
+        34,
+        55
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        32,
+        66
+      ],
+      "lamp_relative_base_x": -2,
+      "lamp_min_gap": 1,
+      "lamp_pixel_count": 60,
+      "lamp_cut_x": 36,
+      "rgba_sha256": "072829ff278a123a16de81d4fc2354649079d84ac0925da7251f0613a2b8cb15",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        35,
+        94
+      ],
+      "ground_projection_native": [
+        35,
+        95
+      ],
+      "ground_projection_world": [
+        28,
+        95
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        155,
+        55,
+        302,
+        383
+      ],
+      "whole_frame_offset": [
+        32,
+        1
+      ],
+      "top_y": 1,
+      "ground_y": 95,
+      "support_toe_source_x": 32,
+      "support_toe_native_x": 42,
+      "continuous_lower_registration_dx": 10,
+      "upper_registration_dy": 0,
+      "body_world_x": -14,
+      "support_toe_world_x": 28,
+      "seam_roi_opaque": false,
+      "H": [
+        34,
+        52
+      ],
+      "G": [
+        34,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        34,
+        64
+      ],
+      "lamp_relative_base_x": 0,
+      "lamp_min_gap": 1,
+      "lamp_pixel_count": 56,
+      "lamp_cut_x": 37,
+      "rgba_sha256": "bbdee1eddbf37bc99b4104dbafb8a6b1d9ba9e31bc0b99ce7ae8d331177636dc",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        42,
+        94
+      ],
+      "ground_projection_native": [
+        42,
+        95
+      ],
+      "ground_projection_world": [
+        28,
+        95
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        124,
+        55,
+        309,
+        388
+      ],
+      "whole_frame_offset": [
+        21,
+        0
+      ],
+      "top_y": 0,
+      "ground_y": 95,
+      "support_toe_source_x": 52,
+      "support_toe_native_x": 49,
+      "continuous_lower_registration_dx": -3,
+      "upper_registration_dy": 0,
+      "body_world_x": -21,
+      "support_toe_world_x": 28,
+      "seam_roi_opaque": false,
+      "H": [
+        33,
+        52
+      ],
+      "G": [
+        33,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        33,
+        63
+      ],
+      "lamp_relative_base_x": 0,
+      "lamp_min_gap": 1,
+      "lamp_pixel_count": 57,
+      "lamp_cut_x": 36,
+      "rgba_sha256": "3979e8a8d5793c1222c9b5f48a110390154b55f6b27cb094b133d3bbe854b957",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        49,
+        94
+      ],
+      "ground_projection_native": [
+        49,
+        95
+      ],
+      "ground_projection_world": [
+        28,
+        95
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        142,
+        55,
+        304,
+        383
+      ],
+      "whole_frame_offset": [
+        27,
+        1
+      ],
+      "top_y": 1,
+      "ground_y": 95,
+      "support_toe_source_x": 28,
+      "support_toe_native_x": 28,
+      "continuous_lower_registration_dx": 0,
+      "upper_registration_dy": 0,
+      "body_world_x": -28,
+      "support_toe_world_x": 0,
+      "seam_roi_opaque": false,
+      "H": [
+        32,
+        53
+      ],
+      "G": [
+        32,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        31,
+        65
+      ],
+      "lamp_relative_base_x": -1,
+      "lamp_min_gap": 1,
+      "lamp_pixel_count": 55,
+      "lamp_cut_x": 34,
+      "rgba_sha256": "d1aa159762c8da500b9d662b72007c2e31ccd24c3c4d2fe91cb525fd3bd85ec4",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        28,
+        92
+      ],
+      "ground_projection_native": [
+        28,
+        95
+      ],
+      "ground_projection_world": [
+        0,
+        95
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        161,
+        53,
+        304,
+        386
+      ],
+      "whole_frame_offset": [
+        31,
+        0
+      ],
+      "top_y": 2,
+      "ground_y": 95,
+      "support_toe_source_x": 31,
+      "support_toe_native_x": 35,
+      "continuous_lower_registration_dx": 4,
+      "upper_registration_dy": 2,
+      "body_world_x": -35,
+      "support_toe_world_x": 0,
+      "seam_roi_opaque": true,
+      "H": [
+        32,
+        55
+      ],
+      "G": [
+        32,
+        56
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        30,
+        66
+      ],
+      "lamp_relative_base_x": -2,
+      "lamp_min_gap": 1,
+      "lamp_pixel_count": 54,
+      "lamp_cut_x": 34,
+      "rgba_sha256": "8f0400394cc954fa92edfe9767bf2b17a3c8186876a66c6336d92cb60c6b4d8b",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        35,
+        93
+      ],
+      "ground_projection_native": [
+        35,
+        95
+      ],
+      "ground_projection_world": [
+        0,
+        95
+      ]
+    },
+    {
+      "frame": 7,
+      "source_bbox": [
+        155,
+        53,
+        302,
+        382
+      ],
+      "whole_frame_offset": [
+        32,
+        1
+      ],
+      "top_y": 1,
+      "ground_y": 95,
+      "support_toe_source_x": 32,
+      "support_toe_native_x": 42,
+      "continuous_lower_registration_dx": 10,
+      "upper_registration_dy": 0,
+      "body_world_x": -42,
+      "support_toe_world_x": 0,
+      "seam_roi_opaque": false,
+      "H": [
+        33,
+        53
+      ],
+      "G": [
+        33,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        30,
+        64
+      ],
+      "lamp_relative_base_x": -3,
+      "lamp_min_gap": 2,
+      "lamp_pixel_count": 50,
+      "lamp_cut_x": 36,
+      "rgba_sha256": "5f2fea5797b1e77720b3c8902365e849f3613c8e768cf6af2ef8c4b6bf247170",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        42,
+        94
+      ],
+      "ground_projection_native": [
+        42,
+        95
+      ],
+      "ground_projection_world": [
+        0,
+        95
+      ]
+    },
+    {
+      "frame": 8,
+      "source_bbox": [
+        126,
+        53,
+        309,
+        386
+      ],
+      "whole_frame_offset": [
+        21,
+        0
+      ],
+      "top_y": 0,
+      "ground_y": 95,
+      "support_toe_source_x": 51,
+      "support_toe_native_x": 49,
+      "continuous_lower_registration_dx": -2,
+      "upper_registration_dy": 0,
+      "body_world_x": -49,
+      "support_toe_world_x": 0,
+      "seam_roi_opaque": false,
+      "H": [
+        33,
+        53
+      ],
+      "G": [
+        33,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        30,
+        64
+      ],
+      "lamp_relative_base_x": -3,
+      "lamp_min_gap": 2,
+      "lamp_pixel_count": 53,
+      "lamp_cut_x": 36,
+      "rgba_sha256": "a6edba8ec6839212e7dde59244403fc12e5117bbbbe298ad09722f6709d4c58d",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "contact_y": 95,
+      "waist_roi": [
+        44,
+        50,
+        50,
+        56
+      ],
+      "waist_opaque_count": 36,
+      "support_toe_actual": [
+        49,
+        94
+      ],
+      "ground_projection_native": [
+        49,
+        95
+      ],
+      "ground_projection_world": [
+        0,
+        95
+      ]
+    }
+  ],
+  "shared_scale": 0.2882882882882883,
+  "world_speed": -70,
+  "support_world_x": [
+    28,
+    28,
+    28,
+    28,
+    0,
+    0,
+    0,
+    0
+  ],
+  "not_mirrored": true,
+  "lantern": "right_hand_far_side",
+  "satchel": "left_hip_near_side",
+  "near_arm": "empty_left_hand"
+}

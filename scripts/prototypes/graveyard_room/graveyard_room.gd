@@ -408,20 +408,19 @@ func _rgb_distance(a: Color, b: Color) -> float:
 
 func _make_player() -> CharacterBody2D:
 	var body := CharacterBody2D.new()
-	body.add_child(_shadow(36, Vector2.ZERO))
+	# Taller and raised 3 px so the far foot of a side pose still lands on it (side poses stand in slight depth).
+	body.add_child(_shadow(36, Vector2(0, -3), 14))
 	var frames := SpriteFrames.new()
+	# Strips (96x96 frames in a row) are picked up as they get delivered. Standing uses the
+	# idle strip (500 ms a frame: a calm 2 s breath) when there is one, else the still pose; walking is 100 ms a frame.
 	for facing in ["front", "back", "left", "right"]:
 		frames.add_animation(facing)
-		frames.add_frame(facing, ImageTexture.create_from_image(_img_at(HERO + "hero_B1_%s.png" % facing)))
-		# Walk strips (96x96 frames in a row, 100 ms each) are picked up as they get delivered.
-		var strip_path := HERO + "anim/hero_B1_walk_%s.png" % facing
-		if FileAccess.file_exists(strip_path):
-			var strip := _img_at(strip_path)
-			var walk: String = "walk_" + facing
-			frames.add_animation(walk)
-			frames.set_animation_speed(walk, 10.0)
-			for i in strip.get_width() / 96:
-				frames.add_frame(walk, ImageTexture.create_from_image(strip.get_region(Rect2i(i * 96, 0, 96, 96))))
+		if not _add_strip(frames, facing, "anim/hero_B1_idle_%s.png" % facing, 2.0):
+			frames.add_frame(facing, ImageTexture.create_from_image(_img_at(HERO + "hero_B1_%s.png" % facing)))
+		var walk: String = "walk_" + facing
+		frames.add_animation(walk)
+		if not _add_strip(frames, walk, "anim/hero_B1_walk_%s.png" % facing, 10.0):
+			frames.remove_animation(walk)
 	_player_sprite = AnimatedSprite2D.new()
 	_player_sprite.sprite_frames = frames
 	_player_sprite.animation = "front"
@@ -456,6 +455,16 @@ func _make_player() -> CharacterBody2D:
 	_light.position = Vector2(0, -30)
 	body.add_child(_light)
 	return body
+
+
+func _add_strip(frames: SpriteFrames, anim: String, file: String, fps: float) -> bool:
+	if not FileAccess.file_exists(HERO + file):
+		return false
+	var strip := _img_at(HERO + file)
+	frames.set_animation_speed(anim, fps)
+	for i in strip.get_width() / 96:
+		frames.add_frame(anim, ImageTexture.create_from_image(strip.get_region(Rect2i(i * 96, 0, 96, 96))))
+	return true
 
 
 func _add_room_bounds() -> void:
@@ -512,8 +521,8 @@ func _scatter_dead_grass() -> void:
 		_bases.add_child(s)
 
 
-func _shadow(width: int, offset: Vector2) -> Sprite2D:
-	var h := maxi(3, int(width * 0.3))
+func _shadow(width: int, offset: Vector2, height := 0) -> Sprite2D:
+	var h := height if height > 0 else maxi(3, int(width * 0.3))
 	var img := Image.create_empty(width, h, false, Image.FORMAT_RGBA8)
 	for y in h:
 		for x in width:
