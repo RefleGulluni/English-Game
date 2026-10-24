@@ -46,7 +46,8 @@
 - ~~右侧图偏弱~~：2026-10-23 角色设计组已返工（站直、提灯与衣服之间有空隙），2026-10-24 用户在墓地场景实机验收通过。
 - 正面是 3/4 视角，往下走时会显得有点斜。到 Godot 里实际看动画再决定。
 - 墓地场景（`graveyard_room`）现在用四张静止站姿，按移动方向切换（还没有行走帧）。
-- 动画：第一批（待机 + 行走）需求已写好，见 [HERO_ANIMATION_REQUEST.md](HERO_ANIMATION_REQUEST.md)，先试做右侧行走。之后：翻书（打开 Lexicon）→ 战斗动作。旧的 `art/cemetery_pixel_v1/player_anim/` 是旧主角，不能再用。
+- 动画：第一批（待机 + 行走）需求已写好，见 [HERO_ANIMATION_REQUEST.md](HERO_ANIMATION_REQUEST.md)，先试做右侧行走。
+  2026-10-24 右侧行走试做第一版（`anim/hero_B1_walk_right.png`）技术规格达标，但退回返修：腰部上下身拼接处断裂（第 1、2、5、6 帧有一行透明缝）；提灯只是整块左右平移，不像挂在手上摆；前半循环支撑脚前滑约 6～8 px（第 3、4 帧）；上身和手臂太僵。graveyard_room 会自动加载 `anim/hero_B1_walk_<方向>.png`。之后：翻书（打开 Lexicon）→ 战斗动作。旧的 `art/cemetery_pixel_v1/player_anim/` 是旧主角，不能再用。
 - 设想（未定）：锚点上的符号带着缺失的那条底边，靠近时三角补全 = 锚定。
 - Lexicon 界面（书页星图、单词卡片）还没有设计。参考 `lexicon_book_sheet.png` 和三张 `lexicon_*_concept_hires.png`。
 

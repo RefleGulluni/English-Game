@@ -73,6 +73,7 @@ var _bases: Node2D # ground bases + dead grass: flat, always under every actor
 var _props: Array[Node2D] = []
 var _player: CharacterBody2D
 var _player_sprite: AnimatedSprite2D
+var _facing := "front"
 var _shadows: Array[Sprite2D] = []
 var _modulate: CanvasModulate
 var _light: PointLight2D
@@ -172,11 +173,16 @@ func _physics_process(_delta: float) -> void:
 		float(Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP)))
 	_player.velocity = dir.normalized() * WALK_SPEED
 	_player.move_and_slide()
-	# Still poses only (no walk frames yet): face the dominant direction, keep it when stopping.
+	# Face the dominant direction and keep it when stopping. Walk where a strip exists, else the still pose.
 	if dir.x != 0.0 and (dir.y == 0.0 or absf(dir.x) >= absf(dir.y)):
-		_player_sprite.animation = "right" if dir.x > 0.0 else "left"
+		_facing = "right" if dir.x > 0.0 else "left"
 	elif dir.y != 0.0:
-		_player_sprite.animation = "front" if dir.y > 0.0 else "back"
+		_facing = "front" if dir.y > 0.0 else "back"
+	var walk := "walk_" + _facing
+	if dir != Vector2.ZERO and _player_sprite.sprite_frames.has_animation(walk):
+		_player_sprite.play(walk)
+	else:
+		_player_sprite.play(_facing)
 
 
 func _process(delta: float) -> void:
@@ -407,6 +413,15 @@ func _make_player() -> CharacterBody2D:
 	for facing in ["front", "back", "left", "right"]:
 		frames.add_animation(facing)
 		frames.add_frame(facing, ImageTexture.create_from_image(_img_at(HERO + "hero_B1_%s.png" % facing)))
+		# Walk strips (96x96 frames in a row, 100 ms each) are picked up as they get delivered.
+		var strip_path := HERO + "anim/hero_B1_walk_%s.png" % facing
+		if FileAccess.file_exists(strip_path):
+			var strip := _img_at(strip_path)
+			var walk: String = "walk_" + facing
+			frames.add_animation(walk)
+			frames.set_animation_speed(walk, 10.0)
+			for i in strip.get_width() / 96:
+				frames.add_frame(walk, ImageTexture.create_from_image(strip.get_region(Rect2i(i * 96, 0, 96, 96))))
 	_player_sprite = AnimatedSprite2D.new()
 	_player_sprite.sprite_frames = frames
 	_player_sprite.animation = "front"
@@ -549,10 +564,24 @@ func _capture() -> void:
 	mode = 1
 	grounding = true
 	_apply()
+	set_physics_process(false) # keyboard handling would reset the pose
 	_player.position = PLAYER_START
 	for facing in ["front", "back", "left", "right"]:
 		_player_sprite.animation = facing
 		await _shot("%s/hero_%s.png" % [dir, facing])
+	# Walk cycles stepped by hand at game speed (70 px/s x 100 ms = 7 px per frame): a planted
+	# foot should stay on the same ground pixel while the body moves past it.
+	for facing in ["front", "back", "left", "right"]:
+		var walk: String = "walk_" + facing
+		if not _player_sprite.sprite_frames.has_animation(walk):
+			continue
+		var step: Vector2 = {"front": Vector2.DOWN, "back": Vector2.UP, "left": Vector2.LEFT, "right": Vector2.RIGHT}[facing] * WALK_SPEED * 0.1
+		_player.position = PLAYER_START
+		_player_sprite.animation = walk
+		for i in _player_sprite.sprite_frames.get_frame_count(walk) * 2:
+			_player_sprite.frame = i % _player_sprite.sprite_frames.get_frame_count(walk)
+			await _shot("%s/%s_%02d.png" % [dir, walk, i])
+			_player.position += step
 	get_tree().quit()
 
 
