@@ -4,16 +4,18 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 运行方式、当前切片范围和历史系统见 [README.md](README.md)。
 
-## 设计文档（Obsidian，只读参考）
+## 设计知识库（Obsidian）
 
-位于 `/Users/mac/Library/Mobile Documents/iCloud~md~obsidian/Documents/English Game/`：
+位于 `/Users/mac/Library/Mobile Documents/iCloud~md~obsidian/Documents/English Game/`，2026-10-24 由用户整理为分层结构：
+`00_HOME`（入口）/ `01_CURRENT_CANON`（当前最高标准）/ `02_SYSTEMS`（专项）/ `03_WORLD_AND_LEVELS` / `90_ARCHIVE`（研发历史）/ `95_ORIGINS`（最初灵感）。
 
-- `English_Game_World_Bible_v1.md` — 世界观总纲（玩法哲学、概念、角色、Cemetery 怪物与场景顺序）。
-- `English_Game_Art_Direction_Bible_v3_Pixel_World_SpecLocked_CLEAN.md` — **当前最高优先级的美术规范**（用户手动保存的最新清理版）。
-- `..._v3_Pixel_World.md` 与 `..._v3_Pixel_World_SpecLocked.md` — v3 的早期版本，已被 `_CLEAN` 替代，不要再引用。
-- `English_Game_Art_Direction_Reset_Brief_v2.md` — 已被 v3 替代，仅作历史参考。
-
-该文件夹里还有许多过时文件。不要自行扫描整个文件夹，按需阅读上面列出的文件，或等用户指定。
+- **先读 `00_HOME/English_Game_Knowledge_Base_Entry_Guide_v2_FULL.md`**：文档分级、阅读顺序、冲突优先级、任务型索引（做什么读什么）。
+- **`00_HOME/English_Game_Decision_Log.md`**：所有已拍板决定的时间线。**用户每拍板一个影响设计或制作的决定，就在末尾追加一条**，并更新对应文档。
+- 冲突优先级：Current Canon → Current Systems → World/Level → High-Value Archive → Origins → Superseded。美术永远以 `01_CURRENT_CANON/..._SpecLocked_CLEAN.md` 为准。**冲突时不要自己融合出第三个版本，列出来问用户。**
+- 旧 ≠ 不重要：`95_ORIGINS/.../NPC.md`、Core Framework v1.4.3、Mini Run 0.4 / 0.8 等仍保存核心思想。
+- 系统整合参考（2026-10-24 由 Claude 建立）：`02_SYSTEMS/02_Learning/` 下的 Learning System Current Reference 与 Lexicon Interface Design、`02_SYSTEMS/05_AI_NPC/`、`02_SYSTEMS/06_Character_and_Animation/`。
+- **2026-10-24 起 Claude 获授权直接维护知识库**：可以新增文档、给过时段落加修订注释、标 Superseded；**不删除历史文档**，大改前先备份（备份在 `/Users/mac/Documents/English Game KB Backups/`）。Codex 方向组也维护知识库，同时改同一文件前先请用户协调。
+- 分工：知识库放“是什么、为什么”；本仓库 `docs/` 放给美术组的具体需求、像素规格、验收数据和实现说明。仓库里拍板的事要回写到知识库（Entry Guide §38.5）。
 
 ## 美术方向（v3 摘要，细节以 Art Direction Bible v3 `_CLEAN` 为准）
 
@@ -81,7 +83,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **Codex 角色设计组**（2026-10-23 新开）：主角与角色设计，**也负责主角动画**，交付到 `art/character_design/`（动画在 `anim/`，QA 在 `anim/qc/hero_B1_anim_QA.md`，累计记录）。它的 QA 会如实写出没做到的地方，值得认真读。
   2026-10-24 决定暂不新开动画组；等到敌人 / NPC 动画要和主角动画同时做时，再开“怪物 / NPC 组”。对话太长时给同一组开新对话，先读 HERO_DESIGN 与 HERO_ANIMATION_REQUEST 即可接上。
 - **Codex 美术组**：按需求生成素材，交付到 `art/` 并附 `qc/*_QA.md`。
-- **Codex 方向组**：维护 Obsidian 中的设计文档（World Bible、Art Direction Bible 等）。文档修改建议写成可直接转发给方向组的文字。
+- **Codex 方向组**：维护 Obsidian 中的设计文档（World Bible、Art Direction Bible 等）。2026-10-24 起 Claude 也可直接修改知识库（见上文“设计知识库”）。
 - 用户在三方之间转达消息。给某一组的文字要明确标注“发给谁”。
 - 过渡期：此前由 Codex 程序组编写的正式游戏代码，接手前先阅读 README 与 `docs/` 中的运行时文档；若工作区有不是本人做的未提交改动，先向用户确认来源再处理。
 - `addons/godot_ai/`（及 `project.godot` 里对应的 autoload / 插件项）是用户自己装的，2026-10-24 已提交。它是连接 Godot 编辑器的 MCP 插件，但还没接到 Claude Code：要用得在 Godot 的 Godot AI 面板里对 Claude Code 点 Configure，再开新对话。
