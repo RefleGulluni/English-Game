@@ -1,0 +1,553 @@
+{
+  "raw": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c1b18d72-da2c-4775-9990-4e8d9bb39ec1.png",
+  "scale": 0.2882882882882883,
+  "frames": [
+    {
+      "frame": 1,
+      "top_y": 1,
+      "source_bbox": [
+        148,
+        56,
+        300,
+        389
+      ],
+      "source_left_sole": [
+        41,
+        92
+      ],
+      "source_right_sole": [
+        53,
+        95
+      ],
+      "left_sole": [
+        41,
+        95
+      ],
+      "right_sole": [
+        53,
+        94
+      ],
+      "sole_depth_difference": 1,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        65,
+        52
+      ],
+      "G": [
+        65,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        64,
+        65
+      ],
+      "lamp_min_gap": 1,
+      "actual_left_foot_bottom_y": 95,
+      "actual_right_foot_bottom_y": 94,
+      "actual_foot_depth_difference": 1,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "adb82b03207918378fc7c0d96fb7e939cbe15b7fcc8c9e822d3268157ac61c7a",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 95,
+      "bbox": [
+        27,
+        1,
+        73,
+        96
+      ]
+    },
+    {
+      "frame": 2,
+      "top_y": 2,
+      "source_bbox": [
+        149,
+        56,
+        299,
+        388
+      ],
+      "source_left_sole": [
+        41,
+        92
+      ],
+      "source_right_sole": [
+        53,
+        95
+      ],
+      "left_sole": [
+        41,
+        95
+      ],
+      "right_sole": [
+        53,
+        92
+      ],
+      "sole_depth_difference": 3,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        66,
+        53
+      ],
+      "G": [
+        66,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        68,
+        65
+      ],
+      "lamp_min_gap": 1,
+      "actual_left_foot_bottom_y": 95,
+      "actual_right_foot_bottom_y": 92,
+      "actual_foot_depth_difference": 3,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "6e9a3627799daf1734fc3a7a60d9125a4888fa0f8c68e2f16f9a6f857e26989d",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 94,
+      "bbox": [
+        27,
+        2,
+        74,
+        96
+      ]
+    },
+    {
+      "frame": 3,
+      "top_y": 1,
+      "source_bbox": [
+        147,
+        56,
+        300,
+        389
+      ],
+      "source_left_sole": [
+        41,
+        93
+      ],
+      "source_right_sole": [
+        52,
+        95
+      ],
+      "left_sole": [
+        41,
+        95
+      ],
+      "right_sole": [
+        52,
+        91
+      ],
+      "sole_depth_difference": 4,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        66,
+        52
+      ],
+      "G": [
+        66,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        67,
+        65
+      ],
+      "lamp_min_gap": 2,
+      "actual_left_foot_bottom_y": 95,
+      "actual_right_foot_bottom_y": 91,
+      "actual_foot_depth_difference": 4,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "e93ff01d4402f36529e2f8a67426810d9cf4134315e8eb27b8a7636eca5bd28b",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 95,
+      "bbox": [
+        26,
+        1,
+        75,
+        96
+      ]
+    },
+    {
+      "frame": 4,
+      "top_y": 0,
+      "source_bbox": [
+        147,
+        56,
+        299,
+        388
+      ],
+      "source_left_sole": [
+        41,
+        95
+      ],
+      "source_right_sole": [
+        53,
+        93
+      ],
+      "left_sole": [
+        41,
+        95
+      ],
+      "right_sole": [
+        53,
+        93
+      ],
+      "sole_depth_difference": 2,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        65,
+        51
+      ],
+      "G": [
+        65,
+        52
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        67,
+        65
+      ],
+      "lamp_min_gap": 3,
+      "actual_left_foot_bottom_y": 95,
+      "actual_right_foot_bottom_y": 93,
+      "actual_foot_depth_difference": 2,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "9227066fa1b1568faaaee5df7ade137dd5231458903f1321d0bd65fb7a14ee29",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 96,
+      "bbox": [
+        26,
+        0,
+        74,
+        96
+      ]
+    },
+    {
+      "frame": 5,
+      "top_y": 1,
+      "source_bbox": [
+        147,
+        55,
+        300,
+        386
+      ],
+      "source_left_sole": [
+        42,
+        95
+      ],
+      "source_right_sole": [
+        54,
+        93
+      ],
+      "left_sole": [
+        42,
+        94
+      ],
+      "right_sole": [
+        54,
+        95
+      ],
+      "sole_depth_difference": 1,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        64,
+        52
+      ],
+      "G": [
+        64,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        65,
+        65
+      ],
+      "lamp_min_gap": 2,
+      "actual_left_foot_bottom_y": 94,
+      "actual_right_foot_bottom_y": 95,
+      "actual_foot_depth_difference": 1,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "e1ce888bdd6fab3e4a5842c451bc8f424b9c81e6dc0defcf9bde919f0989e0d7",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 95,
+      "bbox": [
+        27,
+        1,
+        73,
+        96
+      ]
+    },
+    {
+      "frame": 6,
+      "top_y": 2,
+      "source_bbox": [
+        149,
+        55,
+        299,
+        386
+      ],
+      "source_left_sole": [
+        41,
+        95
+      ],
+      "source_right_sole": [
+        53,
+        93
+      ],
+      "left_sole": [
+        41,
+        92
+      ],
+      "right_sole": [
+        53,
+        95
+      ],
+      "sole_depth_difference": 3,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        64,
+        53
+      ],
+      "G": [
+        64,
+        54
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        67,
+        65
+      ],
+      "lamp_min_gap": 1,
+      "actual_left_foot_bottom_y": 92,
+      "actual_right_foot_bottom_y": 95,
+      "actual_foot_depth_difference": 3,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "138dd60fd17c6cb5a390887c429426d1ab43d5a45202df0c8c803d8c7d5cfcff",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 94,
+      "bbox": [
+        27,
+        2,
+        72,
+        96
+      ]
+    },
+    {
+      "frame": 7,
+      "top_y": 1,
+      "source_bbox": [
+        147,
+        55,
+        300,
+        387
+      ],
+      "source_left_sole": [
+        42,
+        95
+      ],
+      "source_right_sole": [
+        54,
+        91
+      ],
+      "left_sole": [
+        42,
+        91
+      ],
+      "right_sole": [
+        54,
+        95
+      ],
+      "sole_depth_difference": 4,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        65,
+        52
+      ],
+      "G": [
+        65,
+        53
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        64,
+        65
+      ],
+      "lamp_min_gap": 1,
+      "actual_left_foot_bottom_y": 91,
+      "actual_right_foot_bottom_y": 95,
+      "actual_foot_depth_difference": 4,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "8df54a15dd59447c9ec3b88adc56921eaee102b5615bffd8c01b10e21435ac0d",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 95,
+      "bbox": [
+        27,
+        1,
+        73,
+        96
+      ]
+    },
+    {
+      "frame": 8,
+      "top_y": 0,
+      "source_bbox": [
+        150,
+        55,
+        300,
+        386
+      ],
+      "source_left_sole": [
+        41,
+        93
+      ],
+      "source_right_sole": [
+        53,
+        95
+      ],
+      "left_sole": [
+        41,
+        93
+      ],
+      "right_sole": [
+        53,
+        95
+      ],
+      "sole_depth_difference": 2,
+      "ground_y": 95,
+      "vertical_world_lock": false,
+      "H": [
+        65,
+        51
+      ],
+      "G": [
+        65,
+        52
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_base": [
+        64,
+        65
+      ],
+      "lamp_min_gap": 1,
+      "actual_left_foot_bottom_y": 93,
+      "actual_right_foot_bottom_y": 95,
+      "actual_foot_depth_difference": 2,
+      "removed_source_specks": [],
+      "components": 1,
+      "waist_roi_opaque": 36,
+      "RGBA_sha256": "2fda899851f3acd5d478dea348ecdeb4bf8722e07b7c5b239956dbbb45c12a0e",
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "cyan_count": 0,
+      "height": 96,
+      "bbox": [
+        27,
+        0,
+        73,
+        96
+      ]
+    }
+  ],
+  "status": "revised_in_place_march_awaiting_in_game_acceptance",
+  "frame_count": 8,
+  "frame_duration_ms": 100,
+  "cycle_ms": 800,
+  "sheet_size": [
+    768,
+    96
+  ],
+  "frame_size": [
+    96,
+    96
+  ],
+  "anchor": [
+    48,
+    96
+  ],
+  "vertical_world_lock": false,
+  "ground_rule": "at least one actual boot bottom at y95 every frame;maximum actual left/right sole height difference4px",
+  "backup": "/Users/mac/.codex/backups/English-Game/straight_backfix_before_20261024_161706"
+}

@@ -1,0 +1,158 @@
+{
+  "action": "idle_back",
+  "status": "awaiting_user_and_Claude_in_game_acceptance",
+  "frame_count": 4,
+  "frame_size": [
+    96,
+    96
+  ],
+  "sheet_size": [
+    384,
+    96
+  ],
+  "frame_duration_ms": 500,
+  "frames": [
+    {
+      "frame": 1,
+      "upper_body_dy": 0,
+      "H": [
+        65,
+        50
+      ],
+      "G": [
+        65,
+        51
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_phase": 0,
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "f9b6dcc82b4ca27fd60bc49bc90f3b48ced9cfc29e2dc9070eb64d3d44daa8c6",
+      "cyan_pixel_count": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "visible_colors": 43,
+      "bbox": [
+        28,
+        0,
+        69,
+        96
+      ],
+      "lowest_visible_y": 95
+    },
+    {
+      "frame": 2,
+      "upper_body_dy": 1,
+      "H": [
+        65,
+        51
+      ],
+      "G": [
+        65,
+        52
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_phase": 0,
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "e88e53327b714107bf6d22126230426a1b61edabdcc3d77d86bc98fe0f99d2a1",
+      "cyan_pixel_count": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "visible_colors": 43,
+      "bbox": [
+        28,
+        1,
+        69,
+        96
+      ],
+      "lowest_visible_y": 95
+    },
+    {
+      "frame": 3,
+      "upper_body_dy": 1,
+      "H": [
+        65,
+        51
+      ],
+      "G": [
+        65,
+        52
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_phase": 1,
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "d5c22d67107b2048d74ee11ad2330cec128f87ea32608151c3b20069ce8748d5",
+      "cyan_pixel_count": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "visible_colors": 43,
+      "bbox": [
+        28,
+        1,
+        70,
+        96
+      ],
+      "lowest_visible_y": 95
+    },
+    {
+      "frame": 4,
+      "upper_body_dy": 0,
+      "H": [
+        65,
+        50
+      ],
+      "G": [
+        65,
+        51
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_phase": 1,
+      "fixed_lower_garment_diff_pixels": 0,
+      "RGBA_sha256": "fd7bc0c40496cc41a7aec70a8c477d293075868f153a8a6042e5d071aa5d4ec3",
+      "cyan_pixel_count": 0,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "visible_colors": 43,
+      "bbox": [
+        28,
+        0,
+        70,
+        96
+      ],
+      "lowest_visible_y": 95
+    }
+  ],
+  "standard_file_sha256": "8803a5945357fc5d538ec6c263b444215c907d82f425bdc3b40eed055b416dce",
+  "first_frame_exact": true,
+  "first_frame_RGBA_sha256": "f9b6dcc82b4ca27fd60bc49bc90f3b48ced9cfc29e2dc9070eb64d3d44daa8c6",
+  "standard_RGBA_sha256": "f9b6dcc82b4ca27fd60bc49bc90f3b48ced9cfc29e2dc9070eb64d3d44daa8c6",
+  "book_mark_relative_hash": null,
+  "anchor": [
+    48,
+    96
+  ],
+  "ground_note": "feet and lower garment unchanged"
+}

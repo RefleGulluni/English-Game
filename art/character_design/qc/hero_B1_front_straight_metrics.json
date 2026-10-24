@@ -1,0 +1,52 @@
+{
+  "asset": "hero_B1_front_straight",
+  "status": "standing_pose_only_awaiting_in_game_acceptance",
+  "size": [
+    96,
+    96
+  ],
+  "height": 96,
+  "anchor": [
+    48,
+    96
+  ],
+  "feet_contact_pixels": [
+    [
+      38,
+      95
+    ],
+    [
+      58,
+      95
+    ]
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "new_colors": 0,
+  "cyan_count": 16,
+  "cyan_shape_and_rgb_identical_to_original": true,
+  "cyan_RGBA_sha256": "7906fa5527738e32b1822529449d3b9ef191015ca5da4ec6489d5505d112ab05",
+  "RGBA_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614",
+  "source": {
+    "raw": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c06785eb-109f-4d4e-aa50-4cb0745ac7d6.png",
+    "source_bbox": [
+      254,
+      75,
+      768,
+      1352
+    ],
+    "scale": 0.07517619420516837,
+    "x_offset": 28,
+    "raw_glyph_native_bbox": [
+      42,
+      41,
+      47,
+      46
+    ]
+  },
+  "facing": "straight_front_to_camera",
+  "anatomical_sides": "right hand lantern screen left;left hip satchel screen right;strap screenleft shoulder to screenright hip;book front waist",
+  "front_animations_not_modified": true
+}

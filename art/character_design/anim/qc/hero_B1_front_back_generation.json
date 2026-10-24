@@ -1,0 +1,218 @@
+{
+  "scope": "front_and_back_walk_and_idle_only",
+  "walk_raw": {
+    "front": {
+      "raw": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-bbc26b6e-38ea-40b7-9934-8ee4479e8123.png",
+      "scale": 0.27586206896551724,
+      "frames": [
+        {
+          "source_bbox": [
+            128,
+            55,
+            297,
+            402
+          ],
+          "initial_xy": [
+            22,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            127,
+            55,
+            297,
+            402
+          ],
+          "initial_xy": [
+            22,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            125,
+            55,
+            298,
+            402
+          ],
+          "initial_xy": [
+            21,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            124,
+            55,
+            298,
+            401
+          ],
+          "initial_xy": [
+            21,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            131,
+            51,
+            299,
+            398
+          ],
+          "initial_xy": [
+            23,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            127,
+            51,
+            297,
+            394
+          ],
+          "initial_xy": [
+            22,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            128,
+            51,
+            298,
+            399
+          ],
+          "initial_xy": [
+            22,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            127,
+            51,
+            298,
+            399
+          ],
+          "initial_xy": [
+            22,
+            0
+          ]
+        }
+      ]
+    },
+    "back": {
+      "raw": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-0128de0f-b225-4adb-bd77-53a9a15e32bb.png",
+      "scale": 0.28152492668621704,
+      "frames": [
+        {
+          "source_bbox": [
+            147,
+            55,
+            304,
+            396
+          ],
+          "initial_xy": [
+            27,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            144,
+            55,
+            304,
+            396
+          ],
+          "initial_xy": [
+            26,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            146,
+            55,
+            304,
+            392
+          ],
+          "initial_xy": [
+            27,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            146,
+            55,
+            305,
+            396
+          ],
+          "initial_xy": [
+            26,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            147,
+            53,
+            303,
+            390
+          ],
+          "initial_xy": [
+            27,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            146,
+            53,
+            303,
+            387
+          ],
+          "initial_xy": [
+            27,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            147,
+            53,
+            304,
+            390
+          ],
+          "initial_xy": [
+            27,
+            0
+          ]
+        },
+        {
+          "source_bbox": [
+            148,
+            53,
+            304,
+            390
+          ],
+          "initial_xy": [
+            27,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "walk_method": "built-in image_gen separate2row4col full-character reference sheets;one shared native scale within each direction;continuous complete-frame root/leg coordinates and anatomical sole registration inY;hand/handle attachment and per-row lamp inclination;small isolated resampling specks removed",
+  "idle_method": "accepted standard pixels re-registered as complete frame;head/neck/shoulder/upper chest rigid1px displacement;lower chest fold offset settles byy38;lower garment fixed;hand and attached lamp follow shoulder,delayed1px lamp tilt",
+  "book_mark_method": "front walk original16cyan pixels copied exactly in original relative coordinates andRGB to existing waist-book area,translation only;idle waist mark remains exactly original",
+  "book_mark_hash": "e4a763e1be620ad65a22f5a80f5fcebc78908f29faf25ea205221de7217a77e5",
+  "no_mirroring": true,
+  "no_standard_upper_body_layer_splice": true,
+  "original_generated_sources_retained": true,
+  "backup": "/Users/mac/.codex/backups/English-Game/front_back_before_20261024_154604",
+  "game_code_modified": false
+}
