@@ -1,163 +1,240 @@
 {
-  "action": "idle_right",
-  "status": "awaiting_in_game_acceptance",
-  "frame_size": [
-    96,
-    96
+  "frames": [
+    {
+      "frame": 1,
+      "upper_rigid_offset": [
+        0,
+        0
+      ],
+      "head_neck_shoulders_upper_chest_rigid": true,
+      "rigid_source_rows": [
+        0,
+        32
+      ],
+      "torso_transition_source_rows": [
+        33,
+        37
+      ],
+      "lower_clothing_fixed": true,
+      "all_pixels_y65_to95_fixed": true,
+      "lower_body_diff_pixels": 0,
+      "H": [
+        62,
+        44
+      ],
+      "G": [
+        62,
+        45
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_tilt_phase_px": 0,
+      "whole_character_components": [
+        1836
+      ],
+      "seam_roi": [
+        44,
+        40,
+        50,
+        48
+      ],
+      "seam_opaque_count": 48,
+      "RGBA_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+      "first_equals_standard": true,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "ground_contact_y": 95,
+      "visible_colors": 33
+    },
+    {
+      "frame": 2,
+      "upper_rigid_offset": [
+        0,
+        1
+      ],
+      "head_neck_shoulders_upper_chest_rigid": true,
+      "rigid_source_rows": [
+        0,
+        32
+      ],
+      "torso_transition_source_rows": [
+        33,
+        37
+      ],
+      "lower_clothing_fixed": true,
+      "all_pixels_y65_to95_fixed": true,
+      "lower_body_diff_pixels": 0,
+      "H": [
+        62,
+        45
+      ],
+      "G": [
+        62,
+        46
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_tilt_phase_px": 0,
+      "whole_character_components": [
+        1817
+      ],
+      "seam_roi": [
+        44,
+        40,
+        50,
+        48
+      ],
+      "seam_opaque_count": 48,
+      "RGBA_sha256": "df13b81fe2a971d0a14d559e7327a8a2cef45f79c1b8e644095a773e6cfbf6f2",
+      "first_equals_standard": null,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "ground_contact_y": 95,
+      "visible_colors": 33
+    },
+    {
+      "frame": 3,
+      "upper_rigid_offset": [
+        0,
+        1
+      ],
+      "head_neck_shoulders_upper_chest_rigid": true,
+      "rigid_source_rows": [
+        0,
+        32
+      ],
+      "torso_transition_source_rows": [
+        33,
+        37
+      ],
+      "lower_clothing_fixed": true,
+      "all_pixels_y65_to95_fixed": true,
+      "lower_body_diff_pixels": 0,
+      "H": [
+        62,
+        45
+      ],
+      "G": [
+        62,
+        46
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_tilt_phase_px": 1,
+      "whole_character_components": [
+        1818
+      ],
+      "seam_roi": [
+        44,
+        40,
+        50,
+        48
+      ],
+      "seam_opaque_count": 48,
+      "RGBA_sha256": "8b1dbabb9c4e4d654048516b7adaf72237703bb89475338a6cdba431c53259a8",
+      "first_equals_standard": null,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "ground_contact_y": 95,
+      "visible_colors": 33
+    },
+    {
+      "frame": 4,
+      "upper_rigid_offset": [
+        0,
+        0
+      ],
+      "head_neck_shoulders_upper_chest_rigid": true,
+      "rigid_source_rows": [
+        0,
+        32
+      ],
+      "torso_transition_source_rows": [
+        33,
+        37
+      ],
+      "lower_clothing_fixed": true,
+      "all_pixels_y65_to95_fixed": true,
+      "lower_body_diff_pixels": 0,
+      "H": [
+        62,
+        44
+      ],
+      "G": [
+        62,
+        45
+      ],
+      "G_minus_H": [
+        0,
+        1
+      ],
+      "lamp_tilt_phase_px": 1,
+      "whole_character_components": [
+        1837
+      ],
+      "seam_roi": [
+        44,
+        40,
+        50,
+        48
+      ],
+      "seam_opaque_count": 48,
+      "RGBA_sha256": "e19bd6e1bb21666aaf3cb95ba436d85894a31396f7a0ee46c170dd4dc55db56d",
+      "first_equals_standard": null,
+      "alpha": [
+        0,
+        255
+      ],
+      "new_color_count": 0,
+      "ground_contact_y": 95,
+      "visible_colors": 33
+    }
   ],
+  "standard_RGBA_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+  "fixed_garment_definition": "y>=40,x<=55;all x at y>=65",
+  "exception": "hand and suspended lantern below waist move with shoulder;garment region protected separately",
+  "action": "idle_right",
+  "status": "revised_pending_in_game_acceptance",
+  "frame_count": 4,
   "sheet_size": [
     384,
     96
   ],
-  "frame_count": 4,
-  "frame_duration_ms": 250,
-  "standard_RGBA_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
-  "first_frame_RGBA_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+  "frame_size": [
+    96,
+    96
+  ],
+  "preview_frame_duration_ms": 500,
+  "engine_code_modified": false,
   "first_frame_exact": true,
-  "frames": [
-    {
-      "frame": 1,
-      "breath_y": 0,
-      "lamp_tilt": 0,
-      "head_identical": true,
-      "feet_identical": true,
-      "rgba_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
-      "alpha": [
-        0,
-        255
-      ],
-      "new_color_count": 0,
-      "contact_y": 95,
-      "waist_roi": [
-        44,
-        50,
-        50,
-        56
-      ],
-      "waist_opaque_count": 36,
-      "H": [
-        62,
-        44
-      ],
-      "G": [
-        62,
-        45
-      ],
-      "G_minus_H": [
-        0,
-        1
-      ],
-      "head_fixed": true,
-      "feet_fixed": true,
-      "first_frame_equals_standard": true
-    },
-    {
-      "frame": 2,
-      "breath_y": -1,
-      "lamp_tilt": 0,
-      "head_identical": true,
-      "feet_identical": true,
-      "rgba_sha256": "80ae44c30bd1fefabd2d580ecc70f344cd7cf5a1eeb51588b8a8c0ff4d45b7ae",
-      "alpha": [
-        0,
-        255
-      ],
-      "new_color_count": 0,
-      "contact_y": 95,
-      "waist_roi": [
-        44,
-        50,
-        50,
-        56
-      ],
-      "waist_opaque_count": 36,
-      "H": [
-        62,
-        44
-      ],
-      "G": [
-        62,
-        45
-      ],
-      "G_minus_H": [
-        0,
-        1
-      ],
-      "head_fixed": true,
-      "feet_fixed": true,
-      "first_frame_equals_standard": null
-    },
-    {
-      "frame": 3,
-      "breath_y": -1,
-      "lamp_tilt": 1,
-      "head_identical": true,
-      "feet_identical": true,
-      "rgba_sha256": "3108079a46661a43bc8557f65359a2f53ca3816f39c5cd063d276c286ebdab9f",
-      "alpha": [
-        0,
-        255
-      ],
-      "new_color_count": 0,
-      "contact_y": 95,
-      "waist_roi": [
-        44,
-        50,
-        50,
-        56
-      ],
-      "waist_opaque_count": 36,
-      "H": [
-        62,
-        44
-      ],
-      "G": [
-        62,
-        45
-      ],
-      "G_minus_H": [
-        0,
-        1
-      ],
-      "head_fixed": true,
-      "feet_fixed": true,
-      "first_frame_equals_standard": null
-    },
-    {
-      "frame": 4,
-      "breath_y": 0,
-      "lamp_tilt": 1,
-      "head_identical": true,
-      "feet_identical": true,
-      "rgba_sha256": "e19bd6e1bb21666aaf3cb95ba436d85894a31396f7a0ee46c170dd4dc55db56d",
-      "alpha": [
-        0,
-        255
-      ],
-      "new_color_count": 0,
-      "contact_y": 95,
-      "waist_roi": [
-        44,
-        50,
-        50,
-        56
-      ],
-      "waist_opaque_count": 36,
-      "H": [
-        62,
-        44
-      ],
-      "G": [
-        62,
-        45
-      ],
-      "G_minus_H": [
-        0,
-        1
-      ],
-      "head_fixed": true,
-      "feet_fixed": true,
-      "first_frame_equals_standard": null
-    }
-  ]
+  "first_frame_RGBA_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+  "no_new_colors": true,
+  "body_breath_positions_px": [
+    0,
+    1,
+    1,
+    0
+  ],
+  "lamp_phase_px": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "backup": "/Users/mac/.codex/backups/English-Game/idle_breath_before_20261024_153415"
 }

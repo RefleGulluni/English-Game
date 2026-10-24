@@ -1,0 +1,18 @@
+{
+  "scope": "idle_right_and_idle_left_breath_revision_only",
+  "date": "2026-10-24",
+  "source": "accepted native left/right standard images unchanged",
+  "method": "deterministic nearest-pixel whole-frame coordinate re-registration of existing original artwork;no new drawing or recoloring;top/head/neck/shoulder/upper-chest rigid1px vertical motion;offset tapers only in lower-chest fold rows33..37;lower garment zero displacement;arm/held-prop domain shares shoulder displacement and delayed1px lamp inclination",
+  "rigid_motion_px": [
+    0,
+    1,
+    1,
+    0
+  ],
+  "crown_note": "standards already touch canvas top;neutral/down1 preserves all head pixels without clipping",
+  "waist_exception": "held hand and lantern naturally extend below waist,these move;garment/bag/hem/legs/feet remain at original coordinates",
+  "document_conflict": "updated user request and new subsection3 override retained old head-and-feet-still sentence",
+  "preview_duration_ms": 500,
+  "game_files_modified": false,
+  "backup": "/Users/mac/.codex/backups/English-Game/idle_breath_before_20261024_153415"
+}
