@@ -95,6 +95,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - 美术素材由 Codex 生成并写入同一个仓库（常在 `art/` 下，附 `qc/*_QA.md` 检查记录）。**写入素材文件夹前先查看里面已有什么**，不要覆盖 Codex 的交付。
 - 未经用户确认，不要修改 `scenes/main.tscn`、`project.godot` 与 `main` 分支；新实验放在 `prototypes/` 子目录下。
 - 完整的一局游戏是 0.8 Mini Run（`scenes/ui/legacy_combat.tscn`）；主场景 `main.tscn` 目前指向 0.9 美术接入单场景试玩版。两者共用同一套规则代码。
+- 仓库实际位于 `~/Documents/GitHub.nosync/`（`.nosync` 让 iCloud 不同步它），`~/Documents/GitHub` 是指向它的替身，旧路径照常可用（2026-10-24）。原因：仓库放在 iCloud 同步目录里，大批文件变动时 iCloud 会生成成百上千个“ 2”副本。**不要把仓库挪回 iCloud 同步目录。**
 - Godot 可执行文件：`/Applications/Godot.app/Contents/MacOS/Godot`。可以用 `--path . <scene> -- <args>` 运行场景并在脚本里截图验证效果。
   截图模式偶尔卡住（例如脚本报错时窗口一直黑着），用后台运行 + 限时（`sleep N; kill`）跑；给用户开新窗口前先 `pkill -f <场景名>` 关掉旧窗口。
 - 写给美术组的规则要考虑透视：侧面的“脚锁地面”不能照搬到正面 / 背面（俯视角下前后被压缩），这次因此返工过一轮。规格冲突时，宁可让美术组在 QA 里指出，也不要让它自己猜。
