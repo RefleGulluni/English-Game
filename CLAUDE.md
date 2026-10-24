@@ -74,7 +74,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 1. **主角动画**：待机、四方向行走、翻开 Lexicon 已完成（2026-10-24）。之后是战斗动作（等知识中枢整理完、看过战斗设计再写需求）；照 docs/HERO_ANIMATION_REQUEST.md 第 7 节的规则写需求，交付后放进 graveyard_room 实机验收。
 2. **Lexicon 界面**设计（书页星图、单词卡片、四个学习阶段的显示）。
 3. 其他验证场景：Abandoned Station、Eleanor's Shop。
-4. 接手正式游戏代码：先读 README 与 `docs/` 运行时文档，出一份现状报告；把 `project.godot` 改为 960×540 原生 + 整数缩放（需用户同意）。
+4. 接手正式游戏代码：现状报告已完成（[docs/CODE_STATUS_REPORT_2026-10-24.md](docs/CODE_STATUS_REPORT_2026-10-24.md)）。结论：规则层（战斗、学习、Run、掉落、事件）可留用，28 套测试通过；画面层是旧美术方向，要按像素 v3 重做。`main` 分支只到 Combat Prototype 0.1，合并需用户同意；改 960×540 也需用户同意。
 5. 未定设想：锚点上的符号带着缺失的底边，靠近时三角补全 = 锚定。
 
 ## 团队分工（2026-10-22 起）
