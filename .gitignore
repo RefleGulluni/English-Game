@@ -5,3 +5,6 @@ output/
 .DS_Store
 *.tmp
 *.bak
+
+# Art team working backups, kept locally only
+art_source/backups/
