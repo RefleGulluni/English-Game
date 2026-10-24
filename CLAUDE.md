@@ -50,7 +50,8 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
   - 已知问题：横向伸展很宽的物体（如低矮的树枝）与角色处于同一深度时，前后关系难以分辨。可考虑的美术规则：树枝长在角色头顶以上（离地约 100 px 以上）。
 - **主角已定稿（2026-10-23）**：B1，记录世界的男性旅人。决定过程、文件清单、已知问题与待办见 [docs/HERO_DESIGN.md](docs/HERO_DESIGN.md)。
   - **标准图就是原版 `art/character_design/hero_B1.png`，一个像素都不改**（包括书上的青蓝小印记）。`hero_B1_book*.png`（v1～v4）都是废稿。
-  - 四方向：`hero_B1_front/back/left/right.png` + `hero_B1_turnaround.png`，已接受。右侧偏弱（偏驼、提灯看不清），做动画时顺手修。
+  - 四方向：`hero_B1_front/back/left/right.png` + `hero_B1_turnaround.png`，已接受。右侧已返工并于 2026-10-24 实机通过；graveyard_room 已换成 B1 四方向静止站姿（默认地面板）。
+  - **动画第一批需求已发出**：[docs/HERO_ANIMATION_REQUEST.md](docs/HERO_ANIMATION_REQUEST.md)（待机 4 帧 + 行走 8 帧 × 四方向，先试做右侧行走，交付到 `art/character_design/anim/`）。
   - 高清参考：`reference/hero_B1_concept_hires.png`（检查走样用，不是游戏素材）。
   - 旧主角素材（`art/cemetery_pixel_v1/player_anim/` 等）作废。**下一步：主角动画。**
 - **Lexicon = 主角腰间的实体书**（World Bible 第 6、8.1、12.1、36 节）：打开的界面就是翻开的书，书页四种状态对应四个学习阶段。
