@@ -4,8 +4,8 @@ extends Node
 ## 最上方一条雾带，雾里隐约有礼拜堂尖顶。已有的积木直接用，还没有的东西用色块占位并标字。
 ## 房间两屏高（960×1080，D-038），镜头只上下跟着主角：开始只看得到路，大门随着往上走慢慢露出来。
 ## 按键：WASD 走路 · V 切换视角（原版 / 更低）· H 开关占位说明 · T 开关游戏整体色调 · F 全屏
-## 顶部的天空、天际线和礼拜堂剪影两版都有（D-039）。“更低的视角”是一版试验：地上平躺的东西压得更扁、
-## 路往远处收窄、门柱更高、前景更大。
+## 顶部的天空、天际线和礼拜堂剪影（D-039）、更高的门柱（D-040）两版都有。“更低的视角”是一版试验：
+## 地上平躺的东西压得更扁、路往远处收窄、前景更大。
 ## 截图：Godot --path . res://scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn -- --capture=<目录>
 ## 换地面试样：-- --plate=<PNG 路径>（960×540）
 
@@ -292,7 +292,7 @@ func _build_placeholders() -> void:
 	_room.add_child(_labels)
 	for note in [["天空 + 天际线 + 礼拜堂剪影（远景，以后做）", Vector2(530, 70)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
 			["出口 → 第 1 层", Vector2(262, 72)], ["出口 → 第 1 层", Vector2(626, 72)],
-			["门柱（要更高的新素材）", Vector2(540, 196)], ["半开的铁门（占位）", Vector2(330, 246)],
+			["高门柱（约主角 1.6 倍高，新素材）", Vector2(556, 150)], ["半开的铁门（占位）", Vector2(330, 246)],
 			["倒下的铁门（占位）", Vector2(556, 292)], ["路边孤坟", Vector2(120, 300)],
 			["倒下的路灯（占位）", Vector2(600, 1006)], ["枯树（旧素材占位）", Vector2(740, 620)],
 			["前景枯枝（占位）", Vector2(8, 980)], ["泥路（以后换地面贴花）", Vector2(540, 900)],
@@ -345,11 +345,11 @@ func _build_low_angle(ground: Node2D) -> void:
 	for band in [[40, 60, 0.45], [60, 76, 0.25], [76, 90, 0.1]]:
 		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
-	# 更高的门柱：盖在原来的门柱上
+	# 更高的门柱：盖在原来的门柱上；用户要了这一点，两版都有（D-040）
 	for x in [428, 532]:
 		var pillar := Node2D.new()
 		pillar.position = Vector2(x, 272)
-		_keep(_room.sorted, pillar, _low)
+		_room.sorted.add_child(pillar)
 		pillar.add_child(_poly([Vector2(-20, 0), Vector2(-20, -132), Vector2(20, -132), Vector2(20, 0)], STONE))
 		pillar.add_child(_poly([Vector2(8, 0), Vector2(8, -132), Vector2(20, -132), Vector2(20, 0)], STONE_DARK))
 		pillar.add_child(_poly([Vector2(-24, -132), Vector2(-24, -142), Vector2(0, -160), Vector2(24, -142), Vector2(24, -132)], STONE_DARK))
