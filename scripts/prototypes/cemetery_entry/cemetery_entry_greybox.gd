@@ -4,7 +4,8 @@ extends Node
 ## 最上方一条雾带，雾里隐约有礼拜堂尖顶。已有的积木直接用，还没有的东西用色块占位并标字。
 ## 房间两屏高（960×1080，D-038），镜头只上下跟着主角：开始只看得到路，大门随着往上走慢慢露出来。
 ## 按键：WASD 走路 · V 切换视角（原版 / 更低）· H 开关占位说明 · T 开关游戏整体色调 · F 全屏
-## “更低的视角”是一版试验：地上平躺的东西压得更扁、路往远处收窄、顶部露出天空和天际线、门柱更高、前景更大。
+## 顶部的天空、天际线和礼拜堂剪影两版都有（D-039）。“更低的视角”是一版试验：地上平躺的东西压得更扁、
+## 路往远处收窄、门柱更高、前景更大。
 ## 截图：Godot --path . res://scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn -- --capture=<目录>
 ## 换地面试样：-- --plate=<PNG 路径>（960×540）
 
@@ -215,7 +216,8 @@ func _build_placeholders() -> void:
 	var far := Node2D.new()
 	far.z_index = 41 # just over the thickest fog, so it reads as a dark shape inside the mist
 	far.modulate = Color(1, 1, 1, 0.55)
-	_keep(_room, far, _high)
+	_room.add_child(far)
+	far.visible = false # replaced by the sky and skyline (D-039); kept for comparison
 	far.add_child(_poly([Vector2(452, 62), Vector2(452, 34), Vector2(470, 24), Vector2(480, 2), Vector2(490, 24),
 		Vector2(508, 34), Vector2(508, 62)], Color(0.20, 0.21, 0.24)))
 	far.add_child(_poly([Vector2(420, 62), Vector2(420, 44), Vector2(452, 44), Vector2(452, 62)], Color(0.22, 0.23, 0.26)))
@@ -258,7 +260,8 @@ func _build_placeholders() -> void:
 	# 雾带：最上方一条，盖在所有东西上面
 	var fog := Node2D.new()
 	fog.z_index = 40
-	_keep(_room, fog, _high)
+	_room.add_child(fog)
+	fog.visible = false # replaced by the sky and skyline (D-039)
 	for band in [[0, 34, 0.75], [34, 52, 0.5], [52, 68, 0.28], [68, 80, 0.12]]:
 		fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
@@ -287,7 +290,7 @@ func _build_placeholders() -> void:
 	_labels = Node2D.new()
 	_labels.z_index = 80
 	_room.add_child(_labels)
-	for note in [["雾带 + 礼拜堂的影子（以后做）", Vector2(516, 64)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
+	for note in [["天空 + 天际线 + 礼拜堂剪影（远景，以后做）", Vector2(530, 70)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
 			["出口 → 第 1 层", Vector2(262, 72)], ["出口 → 第 1 层", Vector2(626, 72)],
 			["门柱（要更高的新素材）", Vector2(540, 196)], ["半开的铁门（占位）", Vector2(330, 246)],
 			["倒下的铁门（占位）", Vector2(556, 292)], ["路边孤坟", Vector2(120, 300)],
@@ -324,10 +327,10 @@ func _build_low_angle(ground: Node2D) -> void:
 		var w := roundf(lerpf(8, 22, p.y / SIZE.y))
 		_keep(ground, _poly([p + Vector2(-w, -2), p + Vector2(w, -3), p + Vector2(w + 2, 2), p + Vector2(-w + 2, 3)], STONE), _low)
 
-	# 天空 + 天际线：一看到天，就像站着看，而不是从上往下看
+	# 天空 + 天际线 + 礼拜堂剪影：用户喜欢这一部分的神秘感，两种视角都保留（D-039）
 	var sky := Node2D.new()
 	sky.z_index = 39
-	_keep(_room, sky, _low)
+	_room.add_child(sky)
 	sky.add_child(_poly([Vector2(0, 0), Vector2(960, 0), Vector2(960, 46), Vector2(0, 46)], Color(0.66, 0.68, 0.72)))
 	var line := PackedVector2Array([Vector2(0, 70)])
 	for x in range(0, 961, 24):
@@ -338,7 +341,7 @@ func _build_low_angle(ground: Node2D) -> void:
 		Vector2(480, -0), Vector2(488, 12), Vector2(498, 12), Vector2(498, 26), Vector2(520, 26), Vector2(520, 62)], Color(0.26, 0.27, 0.31)))
 	var thin_fog := Node2D.new()
 	thin_fog.z_index = 40
-	_keep(_room, thin_fog, _low)
+	_room.add_child(thin_fog)
 	for band in [[40, 60, 0.45], [60, 76, 0.25], [76, 90, 0.1]]:
 		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
