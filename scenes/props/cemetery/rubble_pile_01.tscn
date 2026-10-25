@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://chplwjxdr46g"]
 
-[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_anmsm"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/rubble_pile_01_base.png" id="2_mk1xx"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/rubble_pile_01.png" id="3_t72sn"]
+[ext_resource type="Script" uid="uid://cxp6ae81iw2yl" path="res://scripts/world/v3/cemetery_prop.gd" id="1_anmsm"]
+[ext_resource type="Texture2D" uid="uid://chdvw8gh52q6g" path="res://art/cemetery_v3/props/rubble_pile_01_base.png" id="2_mk1xx"]
+[ext_resource type="Texture2D" uid="uid://bgfqfly46wf1l" path="res://art/cemetery_v3/props/rubble_pile_01.png" id="3_t72sn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mmdi"]
 size = Vector2(43, 10)
@@ -26,4 +26,3 @@ offset = Vector2(-40, -34)
 [node name="Shape" type="CollisionShape2D" parent="Body" unique_id=894523499]
 position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_2mmdi")
-disabled = true

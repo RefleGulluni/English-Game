@@ -1,11 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bth3yrgkttsyi"]
 
-[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_f15c5"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_upright_02_broken_base.png" id="2_0x00v"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_upright_02_broken.png" id="3_8xo6t"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcc3k"]
-size = Vector2(38, 10)
+[ext_resource type="Script" uid="uid://cxp6ae81iw2yl" path="res://scripts/world/v3/cemetery_prop.gd" id="1_f15c5"]
+[ext_resource type="Texture2D" uid="uid://bepbddtuuh0qs" path="res://art/cemetery_v3/props/tombstone_upright_02_broken_base.png" id="2_0x00v"]
+[ext_resource type="Texture2D" uid="uid://dik2o2na02b5f" path="res://art/cemetery_v3/props/tombstone_upright_02_broken.png" id="3_8xo6t"]
 
 [node name="TombstoneUpright02Broken" type="Node2D" unique_id=108809355]
 script = ExtResource("1_f15c5")
@@ -23,6 +20,5 @@ offset = Vector2(-72, -136)
 
 [node name="Body" type="StaticBody2D" parent="." unique_id=237159195]
 
-[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1153797372]
-position = Vector2(3, -4)
-shape = SubResource("RectangleShape2D_lcc3k")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body" unique_id=2020717485]
+polygon = PackedVector2Array(-27, -13, -66, -13, -67, -6, -8, 4, 2, -1, 16, 1, 25, -8)

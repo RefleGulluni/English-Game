@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cvinwfihfj81f"]
 
-[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_qhbbw"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/open_grave_01_base.png" id="2_yd41w"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/open_grave_01.png" id="3_uanmq"]
+[ext_resource type="Script" uid="uid://cxp6ae81iw2yl" path="res://scripts/world/v3/cemetery_prop.gd" id="1_qhbbw"]
+[ext_resource type="Texture2D" uid="uid://clsnt6cjoy57u" path="res://art/cemetery_v3/props/open_grave_01_base.png" id="2_yd41w"]
+[ext_resource type="Texture2D" uid="uid://b3qipqx4fymkv" path="res://art/cemetery_v3/props/open_grave_01.png" id="3_uanmq"]
 
 [node name="OpenGrave01" type="Node2D" unique_id=1788531472]
 script = ExtResource("1_qhbbw")
@@ -21,4 +21,4 @@ offset = Vector2(-112, -132)
 [node name="Body" type="StaticBody2D" parent="." unique_id=793319690]
 
 [node name="Shape" type="CollisionPolygon2D" parent="Body" unique_id=1626783288]
-polygon = PackedVector2Array(-94, -85, -40, -110, 63, -57, 85, -26, 38, -2, 20, -1, -89, -68)
+polygon = PackedVector2Array(-94, -85, -40, -110, 63, -57, 73, -31, 34, -8, 20, -1, -89, -68)

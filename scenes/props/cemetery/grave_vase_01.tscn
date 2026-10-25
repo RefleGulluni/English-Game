@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://crw6b7l42aaau"]
 
-[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_qs401"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/grave_vase_01_base.png" id="2_f6flm"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/grave_vase_01.png" id="3_1pt4c"]
+[ext_resource type="Script" uid="uid://cxp6ae81iw2yl" path="res://scripts/world/v3/cemetery_prop.gd" id="1_qs401"]
+[ext_resource type="Texture2D" uid="uid://b21b2jxa1h7hk" path="res://art/cemetery_v3/props/grave_vase_01_base.png" id="2_f6flm"]
+[ext_resource type="Texture2D" uid="uid://diqcpnf3htebi" path="res://art/cemetery_v3/props/grave_vase_01.png" id="3_1pt4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1srx"]
 size = Vector2(11, 10)
@@ -26,4 +26,3 @@ offset = Vector2(-24, -52)
 [node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1229021453]
 position = Vector2(-1, -4)
 shape = SubResource("RectangleShape2D_m1srx")
-disabled = true
