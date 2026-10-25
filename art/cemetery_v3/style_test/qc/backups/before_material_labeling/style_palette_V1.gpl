@@ -1,0 +1,29 @@
+GIMP Palette
+Name: Cemetery Style Test V1
+Columns: 5
+# Material ramps
+ 52  59  63  stone_0
+ 89  98 102  stone_1
+138 145 142  stone_2
+173 176 163  stone_3
+197 197 180  stone_4
+ 37  45  50  iron_0
+ 59  70  78  iron_1
+ 97 110 117  iron_2
+145 157 159  iron_3
+ 55  63  67  mud_0
+ 76  87  91  mud_1
+101 112 116  mud_2
+122 133 135  mud_3
+ 67  83  94  water_0
+ 91 110 121  water_1
+124 144 153  water_2
+156 170 173  water_3
+ 66  72  55  grass_0
+ 98 103  75  grass_1
+134 137 100  grass_2
+170 169 131  grass_3
+ 25  30  34  grave_0
+ 39  47  52  grave_1
+ 57  66  70  grave_2
+ 76  87  87  grave_3

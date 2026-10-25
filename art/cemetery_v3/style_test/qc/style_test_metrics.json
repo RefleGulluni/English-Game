@@ -1,0 +1,224 @@
+{
+  "crop": [
+    600,
+    180,
+    960,
+    440
+  ],
+  "native_size": [
+    360,
+    260
+  ],
+  "hero_position": [
+    4,
+    80
+  ],
+  "hero_source_sha256": "b9acae0702948ffec980a432e2168fd6e6d7a78801a576ad375e973200191a80",
+  "extraction": "1536x1024 generated canvas; upper-left 1080x780 artwork; select source[0:780:3,0:1080:3], exactly integer factor 3; never arbitrary resize",
+  "materials": {
+    "V1": {
+      "stone": [
+        "#2b2e32",
+        "#60676a",
+        "#929891",
+        "#adb0a3",
+        "#c5c5b4"
+      ],
+      "iron": [
+        "#192026",
+        "#3b464e",
+        "#616e75",
+        "#919d9f"
+      ],
+      "mud": [
+        "#3b4144",
+        "#545d60",
+        "#707a7c",
+        "#8b9596"
+      ],
+      "water": [
+        "#43535e",
+        "#5b6e79",
+        "#7c9099",
+        "#9caaad"
+      ],
+      "grass": [
+        "#424837",
+        "#62674b",
+        "#868964",
+        "#aaa983"
+      ],
+      "grave": [
+        "#191e22",
+        "#272f34",
+        "#394246",
+        "#4c5757"
+      ]
+    },
+    "V2": {
+      "stone": [
+        "#2e3033",
+        "#62696c",
+        "#949a96",
+        "#c1c1b2"
+      ],
+      "iron": [
+        "#1a2026",
+        "#3e4c55",
+        "#687980",
+        "#9ba8aa"
+      ],
+      "mud": [
+        "#3c4245",
+        "#565f63",
+        "#758084",
+        "#929b9e"
+      ],
+      "water": [
+        "#43525e",
+        "#5e7480",
+        "#8299a3",
+        "#a6b7bc"
+      ],
+      "grass": [
+        "#424d39",
+        "#66724f",
+        "#8b966b",
+        "#b0b790"
+      ],
+      "grave": [
+        "#1a2026",
+        "#2c3840",
+        "#43535a",
+        "#5c6a69"
+      ]
+    }
+  },
+  "variants": {
+    "V1": {
+      "source": "/Users/mac/.codex/generated_images/01a1707a-4cde-7eb1-a5bc-f1c69c246e40/exec-0dc7ecf9-f301-4649-a4d8-57fc686e73f0.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "sample_origin": [
+        0,
+        0
+      ],
+      "sample_step": 3,
+      "native_size": [
+        360,
+        260
+      ],
+      "mode": "RGB",
+      "colors": 19,
+      "palette_limit": 25,
+      "saturated_cyan_blue_colors": 0,
+      "isolated_8_neighbor_pixels": 2090,
+      "generated_3x3_cells_with_channel_range_over_12": 36816,
+      "palette_used_by_family": {
+        "stone": [
+          "#2b2e32",
+          "#60676a",
+          "#929891",
+          "#adb0a3",
+          "#c5c5b4"
+        ],
+        "iron": [
+          "#192026",
+          "#3b464e"
+        ],
+        "mud": [
+          "#3b4144",
+          "#545d60",
+          "#707a7c",
+          "#8b9596"
+        ],
+        "water": [
+          "#5b6e79"
+        ],
+        "grass": [
+          "#424837",
+          "#62674b",
+          "#868964",
+          "#aaa983"
+        ],
+        "grave": [
+          "#191e22",
+          "#272f34",
+          "#394246"
+        ]
+      },
+      "material_label_counts": {
+        "stone": 12517,
+        "iron": 3541,
+        "mud": 73443,
+        "water": 597,
+        "grass": 1498,
+        "grave": 2004
+      }
+    },
+    "V2": {
+      "source": "/Users/mac/.codex/generated_images/01a1707a-4cde-7eb1-a5bc-f1c69c246e40/exec-e94fcf01-5bf9-4495-a655-79b2220ae5e5.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "sample_origin": [
+        0,
+        0
+      ],
+      "sample_step": 3,
+      "native_size": [
+        360,
+        260
+      ],
+      "mode": "RGB",
+      "colors": 16,
+      "palette_limit": 24,
+      "saturated_cyan_blue_colors": 0,
+      "isolated_8_neighbor_pixels": 594,
+      "generated_3x3_cells_with_channel_range_over_12": 15594,
+      "palette_used_by_family": {
+        "stone": [
+          "#2e3033",
+          "#62696c",
+          "#949a96",
+          "#c1c1b2"
+        ],
+        "iron": [
+          "#1a2026",
+          "#3e4c55"
+        ],
+        "mud": [
+          "#3c4245",
+          "#565f63",
+          "#758084",
+          "#929b9e"
+        ],
+        "water": [
+          "#43525e",
+          "#5e7480"
+        ],
+        "grass": [
+          "#424d39",
+          "#66724f",
+          "#8b966b"
+        ],
+        "grave": [
+          "#1a2026",
+          "#2c3840"
+        ]
+      },
+      "material_label_counts": {
+        "stone": 37749,
+        "iron": 3521,
+        "mud": 44692,
+        "water": 4001,
+        "grass": 1583,
+        "grave": 2054
+      }
+    }
+  },
+  "hero_visible_pixels_exact_in_all_comparisons": true
+}

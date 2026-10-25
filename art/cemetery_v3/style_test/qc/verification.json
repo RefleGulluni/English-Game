@@ -1,0 +1,8 @@
+{
+  "original_tracked_files_unchanged": 1795,
+  "compare_3x_every_pixel_block_exact": true,
+  "edges_8x_every_pixel_block_exact": true,
+  "hero_visible_pixels_exact_in_three_panels": 2557,
+  "world_saturated_cyan_blue_colors": 0,
+  "only_new_style_test_directory_written": true
+}
