@@ -15,6 +15,7 @@ const FADE_ALPHA := 0.45
 const PROP_SCENES := "res://scenes/props/cemetery/" # building blocks (D-034) win over bare PNGs
 
 var layout: Dictionary
+var size := NATIVE # most rooms are one screen; the Cemetery Entry is two screens tall (D-038)
 var prop_dir: String # where this room's props live; layouts may point at a newer prop set
 var sorted: Node2D # Y-sorted: props, actors and world loot; every origin is a ground contact point
 var player: Node2D
@@ -27,12 +28,16 @@ func _init(room_layout: Dictionary) -> void:
 	name = "Room_" + str(layout.id)
 	_rng.seed = int(layout.get("seed", 1))
 	prop_dir = str(layout.get("prop_dir", ART + "props/"))
-	var ground := Sprite2D.new()
-	ground.centered = false
+	size = layout.get("size", NATIVE)
 	# plate_file: any PNG path (res:// or on disk), for trying ground candidates before they land.
-	ground.texture = PixelArt.texture(str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")))
-	ground.z_index = -10
-	add_child(ground)
+	var plate := PixelArt.texture(str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")))
+	for y in range(0, size.y, plate.get_height()): # a taller room stacks the plate until real ground exists
+		var ground := Sprite2D.new()
+		ground.centered = false
+		ground.texture = plate
+		ground.position.y = y
+		ground.z_index = -10
+		add_child(ground)
 	var bases := Node2D.new()
 	bases.z_index = CemeteryProp.BASE_Z
 	add_child(bases)
@@ -40,7 +45,7 @@ func _init(room_layout: Dictionary) -> void:
 		var s := Sprite2D.new()
 		s.texture = PixelArt.texture(ART + "decals/dead_grass_%02d.png" % _rng.randi_range(1, 4))
 		s.offset = Vector2(0, -s.texture.get_height() / 2)
-		s.position = Vector2(_rng.randi_range(20, NATIVE.x - 20), _rng.randi_range(30, NATIVE.y - 6))
+		s.position = Vector2(_rng.randi_range(20, size.x - 20), _rng.randi_range(30, size.y - 6))
 		bases.add_child(s)
 	sorted = Node2D.new()
 	sorted.name = "Sorted"
@@ -149,8 +154,8 @@ func _foot_rect(img: Image, gap: int) -> Rect2:
 func _add_bounds() -> void:
 	var walls := StaticBody2D.new()
 	walls.name = "Bounds"
-	for r in [Rect2(-20, -20, NATIVE.x + 40, 20), Rect2(-20, NATIVE.y, NATIVE.x + 40, 20),
-			Rect2(-20, 0, 20, NATIVE.y), Rect2(NATIVE.x, 0, 20, NATIVE.y)]:
+	for r in [Rect2(-20, -20, size.x + 40, 20), Rect2(-20, size.y, size.x + 40, 20),
+			Rect2(-20, 0, 20, size.y), Rect2(size.x, 0, 20, size.y)]:
 		var shape := CollisionShape2D.new()
 		var rect := RectangleShape2D.new()
 		rect.size = r.size
