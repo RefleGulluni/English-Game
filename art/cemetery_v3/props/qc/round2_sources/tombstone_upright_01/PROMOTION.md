@@ -1,0 +1,1 @@
+Promoted from accepted revision1_tombstone_trial. Body RGBA unchanged. Only base warm-material palette darkened; compare final_native_with_base with original approved trial. Original source/grid evidence copied without altering accepted trial.

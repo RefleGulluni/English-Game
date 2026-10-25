@@ -1,13 +1,681 @@
 {
-  "generation_tool_used": false,
-  "imagegen_calls": [],
-  "reason": "User explicitly prohibits a large generated source followed by downsampling; assets designed directly as native integer-coordinate pixel clusters. No source raster was generated or reduced.",
-  "native_workflow": [
-    "References read and viewed first; source restricted to stone/moss/earth/tree regions, not character or sigil.",
-    "Hand-authored native integer-coordinate silhouettes, face planes, chips, cracks, mud patches and tufts; no random noise.",
-    "Native RGBA canvas direct export. No antialias, blur, gradients or asset downscale.",
-    "Nearest integer magnifications only for QC; original northstar background not resampled."
-  ],
-  "palette_source": "props_palette.json",
-  "source_process": "../source/native_pixel_master.py"
+  "tool": "built-in image_gen",
+  "pipeline": "docs/PIXEL_ASSET_PIPELINE.md",
+  "generation": {
+    "common": "One standalone game sprite in high-detail TRUE PIXEL ART. First reference is B1 at 8x integer zoom; second is the accepted tombstone at the same zoom. Match THEIR LARGE SQUARE PIXEL SIZE and handcrafted native detail, not fine realistic illustration. Third reference is an invisible layout/scale envelope ONLY: preserve its canvas aspect ratio and overall object height and width, replace rectangles with the described subject. Each logical pixel should be shown as one uniform 8x8 square output block, no detail smaller than that. Draw on this large-square grid from the outset. Solid #FF00FF backdrop, no labels, frames, diagrams, people or shadow. Camera game 3/4 overhead, upper-left light. Low-saturation mature dark cemetery. Rich 35-48 color variation in purposeful tiny clusters: warm chipped stone bevels, cool damp gray faces, gray lichen, olive moss in fractures, umber rain streaks; not random speckle or flat vector blocks. Ancient, sunken, heavily weathered. Around the foot a thick LOW earth contact decal of DARK mud, crushed dark olive-brown dead grass and small gray stones. Grass must be darker than the stone, NO bright orange/yellow glowing ring. No cyan/teal, glow, AA, blur, smooth gradients or photographic texture. Single subject only, fully visible, never crop its silhouette, not a sheet.",
+    "items": [
+      [
+        "tombstone_upright_02",
+        "A broad-shouldered FLAT-TOP upright grave marker with a big broken-off upper RIGHT corner, distinct from the round arch reference. Standing stone height72 logical px, about37 wide, dark recessed worn blank inscription, deep irregular crack descending from missing corner, edge moss and mineral stains. Preserve narrow visible right thickness. Mud decal below. Do not include a second tombstone."
+      ],
+      [
+        "tombstone_cross_01",
+        "An ancient solid STONE CROSS grave marker, clearly readable cross silhouette, a wide heavy horizontal arm at upper third and long stem. Stone height84 logical px, armspan50px. Slight chips and broken corners, narrow visible right depth and top surfaces. Broad stepped stone footing, hanging moss in arm joints, pitted damp gray with warm exposed stone fragments. DARK crushed-grass mud contact below."
+      ],
+      [
+        "open_grave_01",
+        "ONE EMPTY OPEN GRAVE excavated inside a thick weathered rectangular stone rim. NO headstone, NO separate lid, NO cross, NO coffins, NO body. Bird 3/4 game view. Long rectangle axis diagonal from upperleft to lowerright; OPENING long edge must be110 logical pixels, short edge38px. Broad enough full canvas. The far interior wall is visible with damp earth ledges and stone courses descending into nearly-black deep bottom. Thick rim of old chipped masonry and olive moss. LOW dark displaced mud piles and crushed dark grass around outside, no cast shadow. In the third reference the broad upper envelope contains the entire long diagonal grave; don't turn it into a tall standing tombstone. Single grave only."
+      ],
+      [
+        "grave_lid_01",
+        "ONE large detached stone grave COVER SLAB, diagonal from upperleft to lowerright, tipped slightly on its long side at a low angle resting on edge. NO grave hole, headstone or cross. Its long edge110 logical pixels and short edge38 pixels, matching a human length open grave; slab real thickness6px. Elongated rectangle with beveled chipped stone edges, worn inset panel, long fissure, gray lichen and olive moss. Show thickness on right/lower edge. Dark crushed-grass/mud contact directly underneath. Canvas portrait orientation as guide. Keep a LONG SLAB silhouette, not a small upright headstone."
+      ],
+      [
+        "low_wall_01",
+        "ONE horizontally straight low stone cemetery WALL SEGMENT, standing height56 logical pixels, visible segment width128px. Wall frontal face aligned exactly horizontally; top plane visible from above and narrow mortar gaps; stacked irregular old gray stone blocks, not tidy brick rectangles. BOTH LEFT AND RIGHT ENDS are vertical exposed cutoff cross-sections of a continuous wall, equal height, NO end pillars or end caps: intended to join another identical piece at same x/y. Three uneven stone courses, deep worn pointing, chipped coping top, damp lower stones, lichen and moss growing out of gaps, rain trails. Thick dark earth base. No fence."
+      ],
+      [
+        "low_wall_broken_01",
+        "ONE broken low cemetery WALL SEGMENT matching previous stone masonry, width128 logical pixels and intact LEFT end height56px. Left end a clean vertical joining cutoff, wall runs horizontally; top collapses in a ragged staircase towards RIGHT to low broken stones, interior rubble and fractured stones exposed. Show top faces and depth of masonry but wall baseline remains horizontally straight. NO pillars, no fence. Rich moss and old damp stone, dark low mud/contact crushed grass only around foot."
+      ],
+      [
+        "wall_pillar_01",
+        "ONE upright square stone WALL PILLAR, standing height80 logical pixels, shaft35px wide. Broader heavy chipped coping cap with visible TOP plane and dark right side, rough ashlar blocks matching the accepted grave stone, two recessed mortar joints and a broad raised stone foot. Very aged cracks, gray lichen, olive moss in mortar and wetter darker bottom. Dark earth crushed grass contact below. NO wall segments, NO fence, no cross, no spherical finial."
+      ],
+      [
+        "iron_fence_01",
+        "ONE freestanding horizontally straight WROUGHT IRON FENCE SEGMENT, height72 logical pixels, width128px. Six sturdy thin dark vertical bars with pointed spear tips, two continuous horizontal rails whose left and right cutoff ends have matching height for repeating horizontally; no terminal posts or masonry. Some small open forged diamond ornaments, NOT a dense solid gate. Large clear magenta negative spaces between bars. Dark desaturated gray iron with muted rust-brown pits, chipped metal facets and subtle warm-gray upperleft edge lights, not shiny chrome. The iron has deliberate close shades and joints, not flat one-color lines. Dark sunken mud footline, crushed DARK olive-brown grass at bar feet, no orange bright fringe."
+      ]
+    ],
+    "raw": {
+      "tombstone_upright_02": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-02f6c347-4d38-4762-865c-804d5b6d3546.png",
+      "tombstone_cross_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-aeaae83f-3153-4839-8270-1283112ff3d8.png",
+      "open_grave_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-65484ce9-a925-4cd8-8a30-2101550d6016.png",
+      "grave_lid_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-465b6b22-4f54-4119-bf61-7a77df912ea1.png",
+      "low_wall_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-f8699e25-a73e-4c41-ac15-73eda990c8fb.png",
+      "low_wall_broken_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c9ce78fb-3a75-4130-bd4b-b498a57f1731.png",
+      "wall_pillar_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-47175caa-e31b-4139-ad86-fcf2df9a8499.png",
+      "iron_fence_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-21753375-d6df-4299-91bc-b658e329f49d.png"
+    },
+    "retry_prompts": {
+      "tombstone_upright_02": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.40 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 72 individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nA broad-shouldered FLAT-TOP upright grave marker with a big broken-off upper RIGHT corner, distinct from the round arch reference. Standing stone height72 logical px, about37 wide, dark recessed worn blank inscription, deep irregular crack descending from missing corner, edge moss and mineral stains. Preserve narrow visible right thickness. Mud decal below. Do not include a second tombstone.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning.",
+      "tombstone_cross_01": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.40 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 88 individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nAn ancient solid STONE CROSS grave marker, clearly readable cross silhouette, a wide heavy horizontal arm at upper third and long stem. Stone height84 logical px, armspan50px. Slight chips and broken corners, narrow visible right depth and top surfaces. Broad stepped stone footing, hanging moss in arm joints, pitted damp gray with warm exposed stone fragments. DARK crushed-grass mud contact below.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning.",
+      "open_grave_01": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.45 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 110 along the long inner edge individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nONE EMPTY OPEN GRAVE excavated inside a thick weathered rectangular stone rim. NO headstone, NO separate lid, NO cross, NO coffins, NO body. Bird 3/4 game view. Long rectangle axis diagonal from upperleft to lowerright; OPENING long edge must be110 logical pixels, short edge38px. Broad enough full canvas. The far interior wall is visible with damp earth ledges and stone courses descending into nearly-black deep bottom. Thick rim of old chipped masonry and olive moss. LOW dark displaced mud piles and crushed dark grass around outside, no cast shadow. In the third reference the broad upper envelope contains the entire long diagonal grave; don't turn it into a tall standing tombstone. Single grave only.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning.",
+      "grave_lid_01": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.45 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 110 along the long slab edge individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nONE large detached stone grave COVER SLAB, diagonal from upperleft to lowerright, tipped slightly on its long side at a low angle resting on edge. NO grave hole, headstone or cross. Its long edge110 logical pixels and short edge38 pixels, matching a human length open grave; slab real thickness6px. Elongated rectangle with beveled chipped stone edges, worn inset panel, long fissure, gray lichen and olive moss. Show thickness on right/lower edge. Dark crushed-grass/mud contact directly underneath. Canvas portrait orientation as guide. Keep a LONG SLAB silhouette, not a small upright headstone.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning.",
+      "low_wall_broken_01": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.80 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 56 individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nONE broken low cemetery WALL SEGMENT matching previous stone masonry, width128 logical pixels and intact LEFT end height56px. Left end a clean vertical joining cutoff, wall runs horizontally; top collapses in a ragged staircase towards RIGHT to low broken stones, interior rubble and fractured stones exposed. Show top faces and depth of masonry but wall baseline remains horizontally straight. NO pillars, no fence. Rich moss and old damp stone, dark low mud/contact crushed grass only around foot.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning.",
+      "wall_pillar_01": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.40 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 80 individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nONE upright square stone WALL PILLAR, standing height80 logical pixels, shaft35px wide. Broader heavy chipped coping cap with visible TOP plane and dark right side, rough ashlar blocks matching the accepted grave stone, two recessed mortar joints and a broad raised stone foot. Very aged cracks, gray lichen, olive moss in mortar and wetter darker bottom. Dark earth crushed grass contact below. NO wall segments, NO fence, no cross, no spherical finial.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning.",
+      "iron_fence_01": "REPAINT this single pixel sprite with MUCH BIGGER SQUARE PIXELS. Keep the same object identity, silhouette, 3/4 camera, material landmarks and composition; change pixel resolution, not object design. Existing pixel squares are too small. Draw each new uniform square 1.45 TIMES the side length of an existing pixel square. Visually the result must have FEWER, BIGGER color blocks, like an 80px game sprite shown at16x magnification. No little half-size pixels or fine subpixel mottling inside any block.\nCount the subject: the standing stone/iron structure must be 72 individual square pixels high (or long as specified), excluding ground mud, not 110-160 squares. If you export a file around1254px tall, use about15-18px square blocks for upright objects. A simple readable large-block sprite with deliberate 1-3-pixel clusters. Preserve about40 related colors; don't turn it into flat8color vector. Rich weathering still shows chipped stone, stains, gray lichen, olive moss, dark fissures. Dark material contour, upperleft light.\nONE freestanding horizontally straight WROUGHT IRON FENCE SEGMENT, height72 logical pixels, width128px. Six sturdy thin dark vertical bars with pointed spear tips, two continuous horizontal rails whose left and right cutoff ends have matching height for repeating horizontally; no terminal posts or masonry. Some small open forged diamond ornaments, NOT a dense solid gate. Large clear magenta negative spaces between bars. Dark desaturated gray iron with muted rust-brown pits, chipped metal facets and subtle warm-gray upperleft edge lights, not shiny chrome. The iron has deliberate close shades and joints, not flat one-color lines. Dark sunken mud footline, crushed DARK olive-brown grass at bar feet, no orange bright fringe.\nIMPORTANT: bottom grass must be VERY DARK low-saturation olive-gray-brown and mud nearly charcoal, no orange or gold bright ring. Stone is subdued gray, not glowing ivory. Pure #FF00FF surrounding backdrop. No AA, blur, gradients, microtexture, smooth realism or text. SINGLE object only. Do not rescale an old image: repaint on a larger-square grid from the beginning."
+    },
+    "retry2_prompts": {
+      "open_grave_01": "Repaint THIS SAME empty grave sprite at an intermediate, COARSER pixel grid. The current square pixels are about7 output pixels; make each new square about10 OUTPUT pixels wide/high, NOT14, NOT16. Keep this same canvas aspect and object envelope. Exactly one standalone empty grave, no headstone and no lid. The grave OPENING long interior edge must comprise about110 individual square pixel cells after grid recovery, not 75 and not150. Large visible square blocks from start, NEVER a detailed realistic painting. Keep main structural stones, deep nearly-black excavation, damp earth wall, gray chipped upper-left bevels, olive moss and gray lichen. Roughly44 muted closely related colors, meaningful 1-3 cell details. Actual cast shadow none; thick dark gray-brown earth/contact grass, no orange/yellow bright fringe. Solid #FF00FF outside. NO smoothing, tiny micro-pixels, AA, gradients or text.",
+      "grave_lid_01": "Repaint THIS SAME detached elongated stone grave cover slab at an intermediate COARSER pixel grid. The current squares are about9 output pixels; make each new square about11 OUTPUT pixels wide/high, NOT14 or16. Keep same canvas aspect, diagonal long slab silhouette and overall envelope. Slab long edge must comprise about110 single logical cells after restoration. ONE slab only, not an upright tombstone, no grave pit. Stone thickness visible, inset weathered face, long fissure, dark rain stains, olive moss and gray lichen. Rich44 muted material colors and coherent 1-3-cell details, no random noise. Upperleft diffuse light, darkest material contour. VERY DARK low ground mud and crushed dark olive-gray-brown grass, not gold/orange bright rim. #FF00FF surrounding. Draw only large square pixel blocks, no photographic texture, no AA or smooth gradients, no text.",
+      "iron_fence_01": "Repaint THIS SAME horizontal wrought iron fence at an intermediate COARSER pixel grid. Current squares about7 output pixels; make each new block about10 OUTPUT pixels wide/high, NOT14 or16. Keep source canvas aspect and silhouette envelope. Standing fence must be72 individual square cells high, excluding ground grass, widthabout140 cells, six spear-tipped bars and2 horizontal rails with large MAGENTA open gaps. Same spear tips and two forged diamond ornaments, no masonry or pillars. Dark gray metal with subtle warm gray chipped facets and restrained brown rust pits, approx40 colors in tiny intentional clusters, NOT shiny chrome. Dark material outline, upper-left light. Thick DARK low muddy contact footing, crushed DARK olive-gray dead grass. No orange bright ring. Large-square pixel art, not realistic. #FF00FF background, no text, cast shadow, glow, cyan, AA, blur or gradients."
+    },
+    "grave_final_prompt": "Repaint this SAME single empty open grave preserving exact silhouette, size on canvas, diagonal orientation and masonry shape, but use a SLIGHTLY FINER uniform square pixel grid: EACH block is 9 OUTPUT pixels on a1572x1001 exported image. The reference currently has12px squares and its pit measures only83 native cells; we need the PIT LONG EDGE to measure110 individual square cells after restoring one square to one native pixel. 9px square blocks, not12, not14 and not7. It is STILL obviously chunky large-square PIXEL ART, NOT fine realistic painting. Each square completely flat, no information smaller than9px, no AA or smooth gradients. Preserve dark outline, gray weathered stone, upper-left gray chipped bevels, olive moss, gray lichen and deep nearly-black pit. Restrained40-48 colors, coherent meaningful small clusters. Darken all mud/pressed grass to low-saturation dark gray-brown; no bright orange ring. No headstone, no lid, no body, no coffin. Solid #FF00FF background, no text, labels, grids, glow, blue-green or cast shadow.",
+    "grave_new_prompt": "Create ONE high-detail chunky-square PIXEL ART open empty grave on pure #FF00FF. Image1 is accepted cemetery stone/moss material style and logical pixel size. Image2 is ONLY a shape/scale envelope: replace solid parallelogram with an elongated deep grave at that diagonal footprint. Keep WIDE 2:1 canvas, not a square. Native logical canvas192x96, shown at8x zoom, one logical pixel is one large uniform8x8 square. No detail smaller than that square, not realistic rendering.\nMake the inner opening very LONG and narrow,120 individual square cells along its long edge and28 cells along its short edge, with a6px thick stone rim. The long edge is the long diagonal of the envelope. Dark deep cavity with a nearly-black bottom and two exposed damp earth walls; stone rim of eroded gray ashlar with warm chipped bevels, cool gray damp recesses, gray lichen and olive moss. 40-48 meaningful material shades in 1-3 native-pixel clusters. Ancient and worn. Upperleft light, darkest material edges.\nOnly ONE grave with its low dark mud/pressed dark dead grass contact decal. NO headstone, no cross, no lid, coffin, skeleton or person. No rendered floor or shadow, cyan, teal, orange glowing fringe, text, AA, blur, smooth gradients, microtexture or random noise. Pixel squares should be big and obvious like an 8x enlarged game sprite from the outset.",
+    "selection_note": "For grave/lid retain first generation source grid; later source grids undershot length or were excessively fine. Native shortening by removing one strip and integer translation is recorded separately; no resizing."
+  },
+  "cleanup": {
+    "tombstone_upright_02": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 3,
+      "removed_tiny_islands": [],
+      "ground_darkening": {
+        "changed_pixels": 571,
+        "affected_mean_luma_before": 59.867695271453584,
+        "affected_mean_luma_after": 39.105304728546415,
+        "palette_map": {
+          "#201611": "#150F0D",
+          "#241813": "#18110E",
+          "#261A14": "#1A120F",
+          "#271B15": "#1A1310",
+          "#281D16": "#1B1410",
+          "#2D1E16": "#1E1510",
+          "#2F2218": "#201812",
+          "#342317": "#221812",
+          "#37291D": "#241D16",
+          "#3C2B1B": "#281E15",
+          "#3E3328": "#2A241D",
+          "#442C1A": "#2D1F14",
+          "#45331F": "#2E2418",
+          "#463824": "#2F271B",
+          "#4A3C23": "#322A1B",
+          "#4D4025": "#342C1D",
+          "#53421F": "#372D19",
+          "#584A33": "#3C3426",
+          "#5F534B": "#36302D",
+          "#614C22": "#41341C",
+          "#685324": "#45391E",
+          "#695A47": "#3B342B",
+          "#6E6056": "#3F3833",
+          "#715E42": "#403729",
+          "#7B6B5A": "#453E36",
+          "#7F6333": "#473822",
+          "#7F6E5B": "#484037",
+          "#807061": "#48413A",
+          "#81705C": "#494137",
+          "#855622": "#483219",
+          "#926F30": "#513F21",
+          "#A9916E": "#5F5443",
+          "#C1A57A": "#6D5F4B",
+          "#CEB388": "#746753"
+        }
+      }
+    },
+    "tombstone_cross_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 12,
+      "removed_tiny_islands": [],
+      "ground_darkening": {
+        "changed_pixels": 515,
+        "affected_mean_luma_before": 63.26406407766989,
+        "affected_mean_luma_after": 40.07946213592233,
+        "palette_map": {
+          "#291B17": "#1C1311",
+          "#2B1C16": "#1D1410",
+          "#2E1D17": "#1E1411",
+          "#302018": "#201612",
+          "#352219": "#231813",
+          "#37261C": "#241B15",
+          "#3F291B": "#2A1D15",
+          "#402E1B": "#2B2015",
+          "#40352E": "#2C2521",
+          "#453A30": "#2F2923",
+          "#492E1C": "#302016",
+          "#4A3419": "#312415",
+          "#533C18": "#372915",
+          "#584019": "#3B2C16",
+          "#584A30": "#3C3425",
+          "#614B19": "#403317",
+          "#665535": "#393122",
+          "#674020": "#442D1A",
+          "#6D4C1F": "#48351B",
+          "#6F541C": "#3C3015",
+          "#726359": "#413935",
+          "#77685F": "#443C38",
+          "#806F62": "#48403A",
+          "#815D24": "#47351A",
+          "#8F7C6B": "#514840",
+          "#91806F": "#524A42",
+          "#987023": "#53401A",
+          "#B1916D": "#645442",
+          "#BF9F74": "#6B5C47",
+          "#C8AB7A": "#70624B",
+          "#D6B17F": "#78674E"
+        }
+      }
+    },
+    "open_grave_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 39,
+      "removed_tiny_islands": [
+        [
+          72,
+          3
+        ],
+        [
+          169,
+          58
+        ]
+      ],
+      "native_geometry_edit": {
+        "removed_middle_span_vector": [
+          12,
+          7
+        ],
+        "cut_projection": 1250,
+        "reason": "Shorten one central rim section by integer translation; pit long edge becomes human length without rescaling."
+      },
+      "ground_darkening": {
+        "changed_pixels": 5254,
+        "affected_mean_luma_before": 56.50016406547392,
+        "affected_mean_luma_after": 37.32897202131709,
+        "palette_map": {
+          "#150F0C": "#0E0A09",
+          "#17120F": "#0F0D0B",
+          "#18130F": "#100D0B",
+          "#1C130F": "#130D0B",
+          "#1F1510": "#150F0C",
+          "#231710": "#17100C",
+          "#251B13": "#19130E",
+          "#291C13": "#1C140E",
+          "#2C2017": "#1E1611",
+          "#2F1C13": "#1F140F",
+          "#312419": "#211913",
+          "#332115": "#221711",
+          "#34291D": "#231D15",
+          "#3A2518": "#271A13",
+          "#3E2C1D": "#291F16",
+          "#42271B": "#2B1C15",
+          "#423120": "#2C2218",
+          "#433626": "#2D261D",
+          "#452C1B": "#2D1F15",
+          "#483826": "#30271D",
+          "#4B2D1D": "#312016",
+          "#4B3F30": "#332C24",
+          "#4F341E": "#342418",
+          "#54361F": "#382619",
+          "#554028": "#382D1F",
+          "#554632": "#393125",
+          "#5A4C38": "#3D3529",
+          "#5B3821": "#3C281A",
+          "#634224": "#412E1D",
+          "#635238": "#43392A",
+          "#6B4A29": "#473421",
+          "#6C593E": "#3D3426",
+          "#705E42": "#3F3728",
+          "#734D28": "#4C3620",
+          "#746445": "#41392B",
+          "#7D512C": "#442F1E",
+          "#80663D": "#473A27",
+          "#8A6C3F": "#4D3E29",
+          "#978259": "#554A37",
+          "#986C39": "#533F26",
+          "#A88E65": "#5E523E",
+          "#B39B73": "#655946",
+          "#C9AC7E": "#72634D",
+          "#E5C696": "#81725B"
+        }
+      }
+    },
+    "grave_lid_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 24,
+      "removed_tiny_islands": [
+        [
+          49,
+          104
+        ]
+      ],
+      "native_geometry_edit": {
+        "removed_middle_span_vector": [
+          8,
+          10
+        ],
+        "cut_projection": 1040,
+        "reason": "Shorten slab middle by integer translation to match grave; no rotation or scaling."
+      },
+      "ground_darkening": {
+        "changed_pixels": 2159,
+        "affected_mean_luma_before": 67.74265076424271,
+        "affected_mean_luma_after": 43.67089717461787,
+        "palette_map": {
+          "#1E140D": "#140E0A",
+          "#271A10": "#1A120C",
+          "#331F13": "#22160F",
+          "#372A19": "#241D14",
+          "#3A2516": "#271A11",
+          "#40301C": "#2B2216",
+          "#432A15": "#2C1D12",
+          "#43341E": "#2D2417",
+          "#452A1B": "#2D1E15",
+          "#453928": "#2E281E",
+          "#503B12": "#352811",
+          "#503D2A": "#362B1F",
+          "#522D1E": "#352018",
+          "#55351B": "#372516",
+          "#574328": "#3A2F1F",
+          "#5B482A": "#3D3220",
+          "#5B4C3E": "#3E352D",
+          "#5C3B1C": "#3C2918",
+          "#653D1F": "#432B1A",
+          "#655443": "#393129",
+          "#664923": "#43331C",
+          "#6E4822": "#48321C",
+          "#6F5631": "#3D321F",
+          "#705E51": "#3F3730",
+          "#715D47": "#40362B",
+          "#756354": "#423933",
+          "#784C24": "#4F351E",
+          "#7B5C34": "#443522",
+          "#7D6956": "#463D34",
+          "#835B2A": "#48351D",
+          "#846C4F": "#4A3F31",
+          "#87735D": "#4C4338",
+          "#8C7862": "#4F463B",
+          "#8F5F2C": "#4E371F",
+          "#907A60": "#52473A",
+          "#936A38": "#513D25",
+          "#9D7746": "#57452D",
+          "#A0815A": "#5A4B38",
+          "#AD8D5F": "#60513B",
+          "#B89A6A": "#675841",
+          "#C5A066": "#6E5C40",
+          "#CAAB73": "#716248",
+          "#D1B47E": "#75674D",
+          "#E8CC9D": "#84755F"
+        }
+      }
+    },
+    "low_wall_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 27,
+      "removed_tiny_islands": [],
+      "ground_darkening": {
+        "changed_pixels": 733,
+        "affected_mean_luma_before": 61.682132332878574,
+        "affected_mean_luma_after": 41.25220600272851,
+        "palette_map": {
+          "#211812": "#16110E",
+          "#261C15": "#1A1410",
+          "#2E1F16": "#1E1610",
+          "#312218": "#201812",
+          "#372317": "#241812",
+          "#37271A": "#241B14",
+          "#3C2719": "#281B14",
+          "#3E2C1C": "#291F16",
+          "#40301C": "#2B2216",
+          "#412919": "#2B1D14",
+          "#433421": "#2D2419",
+          "#492D1A": "#301F15",
+          "#4A381F": "#322719",
+          "#4B321B": "#312316",
+          "#4B3A22": "#32291B",
+          "#534129": "#382E20",
+          "#543B1C": "#382917",
+          "#55341E": "#382418",
+          "#574734": "#3B3226",
+          "#5B411D": "#3C2E18",
+          "#5D3B1E": "#3D2919",
+          "#604E38": "#413729",
+          "#63523B": "#43392B",
+          "#64411F": "#422E1A",
+          "#645344": "#383029",
+          "#694F2C": "#463723",
+          "#6E5637": "#3D3223",
+          "#73552C": "#40311E",
+          "#766145": "#42382A",
+          "#7B6647": "#453B2C",
+          "#7C5625": "#44321A",
+          "#887049": "#4C402D",
+          "#896631": "#4B3A21",
+          "#96733E": "#534229",
+          "#998150": "#564A32",
+          "#BF9C6D": "#6B5A43",
+          "#C8A678": "#70604A"
+        }
+      }
+    },
+    "low_wall_broken_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 24,
+      "removed_tiny_islands": [],
+      "ground_darkening": {
+        "changed_pixels": 599,
+        "affected_mean_luma_before": 60.42836727879799,
+        "affected_mean_luma_after": 40.12351919866445,
+        "palette_map": {
+          "#231E19": "#171513",
+          "#26201A": "#1A1613",
+          "#28211B": "#1B1714",
+          "#2A241D": "#1C1915",
+          "#302820": "#211C17",
+          "#372923": "#251D19",
+          "#372D23": "#251F19",
+          "#382F24": "#26211A",
+          "#3A2F24": "#28211A",
+          "#3B3025": "#28221B",
+          "#3E3125": "#2A221B",
+          "#3E372A": "#2A261E",
+          "#443828": "#2E271E",
+          "#453B2B": "#2F2920",
+          "#493E2A": "#312B1F",
+          "#4F422A": "#352E1F",
+          "#544525": "#392F1D",
+          "#574826": "#3A311E",
+          "#594B29": "#3C3320",
+          "#5D4E2C": "#3F3622",
+          "#64584B": "#39332D",
+          "#674F29": "#453621",
+          "#685832": "#3A3220",
+          "#706023": "#3E3619",
+          "#78622E": "#43381F",
+          "#786A57": "#443D34",
+          "#7F6E39": "#473F25",
+          "#8C7339": "#4D4226",
+          "#9B8141": "#564A2B",
+          "#9F8C5C": "#595039"
+        }
+      }
+    },
+    "wall_pillar_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 20,
+      "removed_tiny_islands": [],
+      "native_geometry_edit": {
+        "removed_native_rows": [
+          43,
+          63
+        ],
+        "reason": "Remove one complete central stone course at the mortar joint, integer movement only, pillar higher than wall but below hero height."
+      },
+      "ground_darkening": {
+        "changed_pixels": 308,
+        "affected_mean_luma_before": 52.87571103896102,
+        "affected_mean_luma_after": 35.63121753246753,
+        "palette_map": {
+          "#1D1310": "#130D0C",
+          "#1E1611": "#140F0D",
+          "#221712": "#17100E",
+          "#251B13": "#19130E",
+          "#2F2017": "#1F1611",
+          "#32241A": "#211913",
+          "#34281C": "#231C15",
+          "#3A2E20": "#272018",
+          "#3B291B": "#271D15",
+          "#3D3226": "#2A231C",
+          "#412F1A": "#2C2114",
+          "#42331D": "#2C2416",
+          "#433624": "#2D261B",
+          "#453922": "#2E281A",
+          "#453A30": "#2F2923",
+          "#483A26": "#30291D",
+          "#4B3D28": "#322B1E",
+          "#4F4123": "#352D1B",
+          "#51381D": "#362717",
+          "#5A4823": "#3C311C",
+          "#5E4F29": "#3F3621",
+          "#66532B": "#443922",
+          "#69592B": "#3A331D",
+          "#6E5F2B": "#3D361D",
+          "#6F6050": "#3F3830",
+          "#76673D": "#423B26",
+          "#877442": "#4B422A",
+          "#9D8759": "#584D38"
+        }
+      }
+    },
+    "iron_fence_01": {
+      "quantized_colors": 44,
+      "no_dithering": true,
+      "removed_magenta_cells": 33,
+      "removed_tiny_islands": [],
+      "ground_darkening": {
+        "changed_pixels": 1597,
+        "affected_mean_luma_before": 66.83918221665621,
+        "affected_mean_luma_after": 43.63735879774577,
+        "palette_map": {
+          "#1D1816": "#14110F",
+          "#231F1A": "#181613",
+          "#241C18": "#181412",
+          "#25231D": "#1A1815",
+          "#2B1E18": "#1D1512",
+          "#2D231A": "#1E1813",
+          "#30271C": "#211B15",
+          "#322B1E": "#221E16",
+          "#353024": "#24221A",
+          "#3A2B1C": "#271E16",
+          "#3B3527": "#28251C",
+          "#413725": "#2C261C",
+          "#413C30": "#2D2A23",
+          "#44301F": "#2E2218",
+          "#4A3D2B": "#322B20",
+          "#4A4235": "#332E26",
+          "#523722": "#36261B",
+          "#55432A": "#392F20",
+          "#554F43": "#3A3730",
+          "#595246": "#3D3932",
+          "#5E4C2A": "#3F3420",
+          "#634325": "#412F1E",
+          "#6A4E27": "#46361F",
+          "#6D5C3B": "#3D3425",
+          "#836635": "#483A23",
+          "#88764E": "#4C4330",
+          "#907638": "#504325",
+          "#92805D": "#534939",
+          "#A3916F": "#5D5343",
+          "#C8B489": "#716753",
+          "#D6C195": "#796F5A"
+        }
+      }
+    },
+    "tombstone_upright_01": {
+      "ground_darkening": {
+        "changed_pixels": 949,
+        "affected_mean_luma_before": 73.04213593256058,
+        "affected_mean_luma_after": 46.03573761854583,
+        "palette_map": {
+          "#19130E": "#110D0B",
+          "#261B14": "#1A130F",
+          "#2B231B": "#1D1814",
+          "#342C21": "#231F18",
+          "#352618": "#231B13",
+          "#3E2D1B": "#291F15",
+          "#3E321F": "#292318",
+          "#403623": "#2B261A",
+          "#433A28": "#2E291E",
+          "#49321D": "#302317",
+          "#493D27": "#312B1D",
+          "#503A21": "#35291A",
+          "#50442F": "#363023",
+          "#544832": "#393225",
+          "#563C22": "#392A1B",
+          "#5A4D3A": "#3D362B",
+          "#5B462A": "#3D3120",
+          "#5F3D26": "#3E2B1E",
+          "#634625": "#41311E",
+          "#635746": "#38322A",
+          "#664B29": "#443421",
+          "#69583C": "#3B3325",
+          "#6A5D4B": "#3C362E",
+          "#716251": "#403931",
+          "#735A2C": "#40331E",
+          "#736552": "#413B32",
+          "#75675A": "#433C35",
+          "#7B6A4D": "#453D2F",
+          "#7E5C2B": "#45351D",
+          "#836B3B": "#493D26",
+          "#87764F": "#4C4331",
+          "#916A33": "#503D23",
+          "#9C8960": "#574E3B",
+          "#9F7C47": "#58472E",
+          "#A7946A": "#5E5540"
+        }
+      }
+    }
+  },
+  "assembly": {
+    "tombstone_upright_02": {
+      "canvas": [
+        96,
+        112
+      ],
+      "cell_field": [
+        66,
+        81
+      ],
+      "integer_offset": [
+        15,
+        30
+      ]
+    },
+    "tombstone_cross_01": {
+      "canvas": [
+        96,
+        128
+      ],
+      "cell_field": [
+        68,
+        103
+      ],
+      "integer_offset": [
+        14,
+        24
+      ]
+    },
+    "open_grave_01": {
+      "canvas": [
+        224,
+        144
+      ],
+      "cell_field": [
+        203,
+        123
+      ],
+      "integer_offset": [
+        10,
+        20
+      ]
+    },
+    "grave_lid_01": {
+      "canvas": [
+        160,
+        144
+      ],
+      "cell_field": [
+        123,
+        120
+      ],
+      "integer_offset": [
+        18,
+        23
+      ]
+    },
+    "low_wall_01": {
+      "canvas": [
+        192,
+        96
+      ],
+      "cell_field": [
+        166,
+        60
+      ],
+      "integer_offset": [
+        13,
+        35
+      ]
+    },
+    "low_wall_broken_01": {
+      "canvas": [
+        176,
+        96
+      ],
+      "cell_field": [
+        149,
+        58
+      ],
+      "integer_offset": [
+        13,
+        37
+      ]
+    },
+    "wall_pillar_01": {
+      "canvas": [
+        96,
+        128
+      ],
+      "cell_field": [
+        61,
+        82
+      ],
+      "integer_offset": [
+        17,
+        45
+      ]
+    },
+    "iron_fence_01": {
+      "canvas": [
+        160,
+        104
+      ],
+      "cell_field": [
+        143,
+        78
+      ],
+      "integer_offset": [
+        8,
+        25
+      ]
+    },
+    "tombstone_upright_01": {
+      "canvas": [
+        96,
+        112
+      ],
+      "accepted_body_unchanged": true
+    }
+  },
+  "joins": {
+    "low_wall_01": {
+      "stride": 148,
+      "canvas_core_x": [
+        21,
+        168
+      ],
+      "endpoint_rgba_equal": true,
+      "method": "Trim generated terminal side faces, copy two native contour columns across end. No texture synthesis."
+    },
+    "low_wall_broken_01": {
+      "left_join_x": 21,
+      "left_profile_rgba_equal_to_wall": true,
+      "method": "Use shared50-color wall-family ramp, copy two generated contour columns to match full-wall end; remainder unique broken source art."
+    },
+    "iron_fence_01": {
+      "stride": 132,
+      "canvas_core_x": [
+        12,
+        143
+      ],
+      "endpoint_rgba_equal": true,
+      "method": "Trim terminal knobs, copy one generated native connector column. Six bars keep their world left/right lighting."
+    }
+  },
+  "note": "Native cells recovered by actual painted-boundary detection, centers only; no whole-image resize. Native integer edits and palette maps recorded, no procedural new artwork."
 }

@@ -1,0 +1,44 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+lish-Game/art/cemetery_v3/props/tombstone_upright_01.png    96x112   OK   44    86    0    98
+Game/art/cemetery_v3/props/tombstone_upright_01_base.png    96x112   OK   35    85    0   110
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+lish-Game/art/cemetery_v3/props/tombstone_upright_02.png    96x112   OK   44    83    0   103
+Game/art/cemetery_v3/props/tombstone_upright_02_base.png    96x112   OK   34    84    0   110
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nglish-Game/art/cemetery_v3/props/tombstone_cross_01.png    96x128   OK   44    85    0   118
+h-Game/art/cemetery_v3/props/tombstone_cross_01_base.png    96x128   OK   35    87    0   126
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ync/English-Game/art/cemetery_v3/props/open_grave_01.png   224x144   OK   44    85    0   131
+nglish-Game/art/cemetery_v3/props/open_grave_01_base.png   224x144   OK   44    90    0   135
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+sync/English-Game/art/cemetery_v3/props/grave_lid_01.png   160x144   OK   44    91    0   121
+English-Game/art/cemetery_v3/props/grave_lid_01_base.png   160x144   OK   44    91    0   132
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+osync/English-Game/art/cemetery_v3/props/low_wall_01.png    192x96   OK   36    88    0    88
+/English-Game/art/cemetery_v3/props/low_wall_01_base.png    192x96   OK   37    86    0    94
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nglish-Game/art/cemetery_v3/props/low_wall_broken_01.png    176x96   OK   46    74    0    89
+h-Game/art/cemetery_v3/props/low_wall_broken_01_base.png    176x96   OK   30    79    0    94
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nc/English-Game/art/cemetery_v3/props/wall_pillar_01.png    96x128   OK   44    80    0   122
+glish-Game/art/cemetery_v3/props/wall_pillar_01_base.png    96x128   OK   28    78    0   126
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
+
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ync/English-Game/art/cemetery_v3/props/iron_fence_01.png   160x104   OK   44    90    0    91
+nglish-Game/art/cemetery_v3/props/iron_fence_01_base.png   160x104   OK   44    83    0   102
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

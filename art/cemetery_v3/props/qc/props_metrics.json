@@ -1,641 +1,442 @@
 {
+  "user_checker": "scripts/tools/pixel_check.py",
   "assets": {
     "tombstone_upright_01": {
       "prop": {
-        "file": "tombstone_upright_01.png",
-        "canvas": [
-          48,
-          68
+        "size": "96x112",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 86,
+        "cyan": 0,
+        "lowest": 98,
+        "visible_height": 78,
+        "opaque_bbox": [
+          21,
+          21,
+          74,
+          99
         ],
         "origin": [
-          24,
-          68
+          48,
+          112
         ],
-        "opaque_bbox": [
-          9,
-          4,
-          39,
-          62
-        ],
-        "opaque_height": 58,
-        "opaque_pixels": 1386,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "2e579994ced395c91fd5567dc6fd4bd4f79044054a9d848fe0f42ea5b2d19db5"
+        "sha256": "ad813549d7abc59056d2a89c0b4fe2a1ac345e9d54938969ef8c610cb349541e"
       },
       "base": {
-        "file": "tombstone_upright_01_base.png",
-        "canvas": [
-          48,
-          68
+        "size": "96x112",
+        "alpha_ok": true,
+        "colors": 35,
+        "change": 85,
+        "cyan": 0,
+        "lowest": 110,
+        "visible_height": 25,
+        "opaque_bbox": [
+          9,
+          86,
+          86,
+          111
         ],
         "origin": [
-          24,
-          68
-        ],
-        "opaque_bbox": [
-          1,
-          56,
           48,
-          68
+          112
         ],
-        "opaque_height": 12,
-        "opaque_pixels": 316,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "cc56343220f45adcced547a148d90f72db6d40a05629303f5d6fe85a6faf9a7c"
+        "sha256": "147720e3e372d733bac2b04a8d76931a4aa7e51bae0cc1aca7e16c33f85e4c55"
       }
     },
     "tombstone_upright_02": {
       "prop": {
-        "file": "tombstone_upright_02.png",
-        "canvas": [
-          56,
-          64
+        "size": "96x112",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 83,
+        "cyan": 0,
+        "lowest": 103,
+        "visible_height": 74,
+        "opaque_bbox": [
+          25,
+          30,
+          73,
+          104
         ],
         "origin": [
-          28,
-          64
+          48,
+          112
         ],
-        "opaque_bbox": [
-          10,
-          4,
-          45,
-          61
-        ],
-        "opaque_height": 57,
-        "opaque_pixels": 1602,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "4d064b534744353b325a5cff1d0d584060d4a4992d166fc5cd6300dec9352c8a"
+        "sha256": "51ea864e61f3ea2cdf1b59a9e5897b4bd9119c9ae4ab164ec8b2ffcecda37826"
       },
       "base": {
-        "file": "tombstone_upright_02_base.png",
-        "canvas": [
-          56,
-          64
+        "size": "96x112",
+        "alpha_ok": true,
+        "colors": 34,
+        "change": 84,
+        "cyan": 0,
+        "lowest": 110,
+        "visible_height": 23,
+        "opaque_bbox": [
+          15,
+          88,
+          81,
+          111
         ],
         "origin": [
-          28,
-          64
+          48,
+          112
         ],
-        "opaque_bbox": [
-          1,
-          52,
-          56,
-          64
-        ],
-        "opaque_height": 12,
-        "opaque_pixels": 370,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "775e34b0227cbb2c5785c6754a860f3293eee33ec93ca3871d763aa845a126af"
+        "sha256": "c28f99624051d4aee8a3f16dc258aa4f31e5ce151cf79fd1e331a92651ce8cb4"
       }
     },
     "tombstone_cross_01": {
       "prop": {
-        "file": "tombstone_cross_01.png",
-        "canvas": [
-          56,
-          80
+        "size": "96x128",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 85,
+        "cyan": 0,
+        "lowest": 118,
+        "visible_height": 95,
+        "opaque_bbox": [
+          21,
+          24,
+          75,
+          119
         ],
         "origin": [
-          28,
-          80
-        ],
-        "opaque_bbox": [
-          9,
-          5,
           48,
-          75
+          128
         ],
-        "opaque_height": 70,
-        "opaque_pixels": 1419,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "159e58c93254cbcb6e727ed23db40063fdd2b32c804f73bcedb23c4f6c1b5b04"
+        "sha256": "426670b6936fd0d397f891f094fccc01bf9488e8dbc14727972e742ee5ea09b4"
       },
       "base": {
-        "file": "tombstone_cross_01_base.png",
-        "canvas": [
-          56,
-          80
+        "size": "96x128",
+        "alpha_ok": true,
+        "colors": 35,
+        "change": 87,
+        "cyan": 0,
+        "lowest": 126,
+        "visible_height": 21,
+        "opaque_bbox": [
+          14,
+          106,
+          82,
+          127
         ],
         "origin": [
-          28,
-          80
+          48,
+          128
         ],
-        "opaque_bbox": [
-          2,
-          68,
-          56,
-          80
-        ],
-        "opaque_height": 12,
-        "opaque_pixels": 358,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "ac9e68ae719a1c62ecbcd5be3df191cada725e92b26e7540131c5206246b4844"
+        "sha256": "1f977794c156e35dd9733bae533a918cc404ac189e9e8a6ce7326b0f00aa0ca1"
       }
     },
     "open_grave_01": {
       "prop": {
-        "file": "open_grave_01.png",
-        "canvas": [
-          112,
-          80
+        "size": "224x144",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 85,
+        "cyan": 0,
+        "lowest": 131,
+        "visible_height": 110,
+        "opaque_bbox": [
+          18,
+          22,
+          199,
+          132
         ],
         "origin": [
-          56,
-          80
+          112,
+          144
         ],
-        "opaque_bbox": [
-          17,
-          13,
-          100,
-          71
-        ],
-        "opaque_height": 58,
-        "opaque_pixels": 1490,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "5dfec3e3fe536c9b6f1ae8cad7fd1500916f6c61b3cbb8c3de0dde10c6d4d3d9"
+        "sha256": "6cb3437697b01c79a364f79d2ad83b9dba45ca5a9381aa074a59af513bd52d1f"
       },
       "base": {
-        "file": "open_grave_01_base.png",
-        "canvas": [
-          112,
-          80
+        "size": "224x144",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 90,
+        "cyan": 0,
+        "lowest": 135,
+        "visible_height": 116,
+        "opaque_bbox": [
+          10,
+          20,
+          201,
+          136
         ],
         "origin": [
-          56,
-          80
+          112,
+          144
         ],
-        "opaque_bbox": [
-          7,
-          11,
-          103,
-          78
-        ],
-        "opaque_height": 67,
-        "opaque_pixels": 3827,
-        "color_count": 8,
-        "colors": [
-          "#1D191A",
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#5B5756",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "c0f60e7c5670606513c67ee46d183dac19af35153146f509c7be09e4207fa8df"
+        "sha256": "f12dfb0ded2fc4ebce843ca90659822460873356ce450c5de77145592289e060"
       }
     },
     "grave_lid_01": {
       "prop": {
-        "file": "grave_lid_01.png",
-        "canvas": [
-          64,
-          76
+        "size": "160x144",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 91,
+        "cyan": 0,
+        "lowest": 121,
+        "visible_height": 99,
+        "opaque_bbox": [
+          21,
+          23,
+          133,
+          122
         ],
         "origin": [
-          32,
-          76
+          80,
+          144
         ],
-        "opaque_bbox": [
-          8,
-          16,
-          56,
-          72
-        ],
-        "opaque_height": 56,
-        "opaque_pixels": 1484,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "5861dc6eb81202f0ddde9be5ca3b8f21439a29b2b41ded65c8aacfbed6f7c063"
+        "sha256": "bfcf05c46202ded8eb4e1afcdb0f7e3d06a591b8a2425315fdefb6422527de61"
       },
       "base": {
-        "file": "grave_lid_01_base.png",
-        "canvas": [
-          64,
-          76
+        "size": "160x144",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 91,
+        "cyan": 0,
+        "lowest": 132,
+        "visible_height": 108,
+        "opaque_bbox": [
+          18,
+          25,
+          130,
+          133
         ],
         "origin": [
-          32,
-          76
+          80,
+          144
         ],
-        "opaque_bbox": [
-          2,
-          64,
-          64,
-          76
-        ],
-        "opaque_height": 12,
-        "opaque_pixels": 412,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "3b829eb2475e1efbfb86acb7a0ab678f4644dfd838901d6a4ffa03c576232473"
+        "sha256": "57a62f26896bca82a665ea6cf4203ab883bb988eb03f4a53016dbdb7693230bc"
       }
     },
     "low_wall_01": {
       "prop": {
-        "file": "low_wall_01.png",
-        "canvas": [
-          96,
-          64
+        "size": "192x96",
+        "alpha_ok": true,
+        "colors": 36,
+        "change": 88,
+        "cyan": 0,
+        "lowest": 88,
+        "visible_height": 54,
+        "opaque_bbox": [
+          21,
+          35,
+          169,
+          89
         ],
         "origin": [
-          48,
-          64
-        ],
-        "opaque_bbox": [
-          0,
-          14,
           96,
-          60
+          96
         ],
-        "opaque_height": 46,
-        "opaque_pixels": 4286,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "af9a9031496c2cd3d40d1ac7acb352d1371bc973d1e82f1667552d3806a65813"
+        "sha256": "e13301ec1057f6f17dba271dcd44fae13f7a5efaa01cbc9a3d8ad11989d71d68"
       },
       "base": {
-        "file": "low_wall_01_base.png",
-        "canvas": [
-          96,
-          64
+        "size": "192x96",
+        "alpha_ok": true,
+        "colors": 37,
+        "change": 86,
+        "cyan": 0,
+        "lowest": 94,
+        "visible_height": 16,
+        "opaque_bbox": [
+          13,
+          79,
+          179,
+          95
         ],
         "origin": [
-          48,
-          64
-        ],
-        "opaque_bbox": [
-          1,
-          52,
           96,
-          64
+          96
         ],
-        "opaque_height": 12,
-        "opaque_pixels": 640,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "47be088129fb8921e4afc9d7435556a9bcba79e49b327f337a0fcad76ef560fe"
+        "sha256": "48498ef221d2687b6d46565bf2678e128ff9e9f8714a12106f04de67b82ac7f1"
       }
     },
     "low_wall_broken_01": {
       "prop": {
-        "file": "low_wall_broken_01.png",
-        "canvas": [
-          96,
-          64
+        "size": "176x96",
+        "alpha_ok": true,
+        "colors": 46,
+        "change": 74,
+        "cyan": 0,
+        "lowest": 89,
+        "visible_height": 53,
+        "opaque_bbox": [
+          21,
+          37,
+          159,
+          90
         ],
         "origin": [
-          48,
-          64
+          88,
+          96
         ],
-        "opaque_bbox": [
-          0,
-          14,
-          96,
-          60
-        ],
-        "opaque_height": 46,
-        "opaque_pixels": 2813,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "13537943f86c2dd013b866aad4b7560d00ff58665af97f089d48c38bf6d70390"
+        "sha256": "d02f97d8c35777831029e228e62d925eac61991eee5a4033df47aa12e3d482d9"
       },
       "base": {
-        "file": "low_wall_broken_01_base.png",
-        "canvas": [
-          96,
-          64
+        "size": "176x96",
+        "alpha_ok": true,
+        "colors": 30,
+        "change": 79,
+        "cyan": 0,
+        "lowest": 94,
+        "visible_height": 12,
+        "opaque_bbox": [
+          13,
+          83,
+          162,
+          95
         ],
         "origin": [
-          48,
-          64
+          88,
+          96
         ],
-        "opaque_bbox": [
-          1,
-          52,
-          96,
-          64
-        ],
-        "opaque_height": 12,
-        "opaque_pixels": 651,
-        "color_count": 9,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#5B5756",
-          "#6A5A4D",
-          "#6C6037",
-          "#777476",
-          "#8A7760",
-          "#97928C"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "1a43fde13f95fdab0079c98ff19cba0c9a24a7fe7c31ea9d44b4e1053a58238a"
+        "sha256": "e9fe4ab27220eef7789f5723b7b82c36363ae3ef57370cab424b6a2775ead207"
       }
     },
     "wall_pillar_01": {
       "prop": {
-        "file": "wall_pillar_01.png",
-        "canvas": [
-          48,
-          68
+        "size": "96x128",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 80,
+        "cyan": 0,
+        "lowest": 122,
+        "visible_height": 78,
+        "opaque_bbox": [
+          23,
+          45,
+          71,
+          123
         ],
         "origin": [
-          24,
-          68
+          48,
+          128
         ],
-        "opaque_bbox": [
-          8,
-          9,
-          42,
-          65
-        ],
-        "opaque_height": 56,
-        "opaque_pixels": 1585,
-        "color_count": 8,
-        "colors": [
-          "#3F3C3E",
-          "#443E25",
-          "#5B5756",
-          "#6C6037",
-          "#777476",
-          "#8F7D47",
-          "#97928C",
-          "#BEB7A9"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "ca0db9050cbecfdbcf18c673d0d2692c48544ea8294e952470e97b9d7b7dcaf8"
+        "sha256": "e36a17cc27dde4890c0e115fd876272c440cb30067c64304039cc4b0da155729"
       },
       "base": {
-        "file": "wall_pillar_01_base.png",
-        "canvas": [
-          48,
-          68
+        "size": "96x128",
+        "alpha_ok": true,
+        "colors": 28,
+        "change": 78,
+        "cyan": 0,
+        "lowest": 126,
+        "visible_height": 18,
+        "opaque_bbox": [
+          17,
+          109,
+          78,
+          127
         ],
         "origin": [
-          24,
-          68
-        ],
-        "opaque_bbox": [
-          1,
-          56,
           48,
-          68
+          128
         ],
-        "opaque_height": 12,
-        "opaque_pixels": 316,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "cc56343220f45adcced547a148d90f72db6d40a05629303f5d6fe85a6faf9a7c"
+        "sha256": "9f90515babd479d072935ec686038c23a26c1c2c568fd42f154025c7c7b81873"
       }
     },
     "iron_fence_01": {
       "prop": {
-        "file": "iron_fence_01.png",
-        "canvas": [
-          96,
-          76
+        "size": "160x104",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 90,
+        "cyan": 0,
+        "lowest": 91,
+        "visible_height": 67,
+        "opaque_bbox": [
+          12,
+          25,
+          144,
+          92
         ],
         "origin": [
-          48,
-          76
+          80,
+          104
         ],
-        "opaque_bbox": [
-          0,
-          11,
-          96,
-          69
-        ],
-        "opaque_height": 58,
-        "opaque_pixels": 2091,
-        "color_count": 5,
-        "colors": [
-          "#1D191A",
-          "#363032",
-          "#514C49",
-          "#6A5A4D",
-          "#7B7165"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "0c9166e05d8e375bbd3292808f7965712b8506420fde2be187cf0075c8024d27"
+        "sha256": "1467dbb4b7b6b12daea03443b28dd4796c42a846f94f0f93a856363b2b0cdd07"
       },
       "base": {
-        "file": "iron_fence_01_base.png",
-        "canvas": [
-          96,
-          76
+        "size": "160x104",
+        "alpha_ok": true,
+        "colors": 44,
+        "change": 83,
+        "cyan": 0,
+        "lowest": 102,
+        "visible_height": 21,
+        "opaque_bbox": [
+          8,
+          82,
+          151,
+          103
         ],
         "origin": [
-          48,
-          76
+          80,
+          104
         ],
-        "opaque_bbox": [
-          1,
-          64,
-          96,
-          76
-        ],
-        "opaque_height": 12,
-        "opaque_pixels": 472,
-        "color_count": 6,
-        "colors": [
-          "#403D3F",
-          "#443E25",
-          "#504843",
-          "#6A5A4D",
-          "#6C6037",
-          "#8A7760"
-        ],
-        "alpha_values": [
-          0,
-          255
-        ],
-        "sha256": "ff64ae25f957fb9037eb378d49109390cb6a4291bf97c090749982e77adb59ff"
+        "sha256": "39190e2a73f3b4aa89d44168c1da0f60c9a2409e5d8477924449a9cdd737656e"
       }
     }
   },
-  "wall_seam": {
-    "alpha_profile_equal": true,
-    "endpoint_rgba_differences": 0,
-    "note": "Stone course ends meet without a transparent vertical slit; per-stone highlight differences are deliberate. Not a corner/diagonal tileset."
+  "joins": {
+    "low_wall_01": {
+      "stride": 148,
+      "canvas_core_x": [
+        21,
+        168
+      ],
+      "endpoint_rgba_equal": true,
+      "method": "Trim generated terminal side faces, copy two native contour columns across end. No texture synthesis."
+    },
+    "low_wall_broken_01": {
+      "left_join_x": 21,
+      "left_profile_rgba_equal_to_wall": true,
+      "method": "Use shared50-color wall-family ramp, copy two generated contour columns to match full-wall end; remainder unique broken source art."
+    },
+    "iron_fence_01": {
+      "stride": 132,
+      "canvas_core_x": [
+        12,
+        143
+      ],
+      "endpoint_rgba_equal": true,
+      "method": "Trim terminal knobs, copy one generated native connector column. Six bars keep their world left/right lighting."
+    }
+  },
+  "length_measurements": {
+    "open_grave_01": {
+      "native_geometry_edge_points": [
+        [
+          64,
+          13
+        ],
+        [
+          161,
+          65
+        ]
+      ],
+      "kind": "long inner opening edge",
+      "length_px": 110.05907504608605
+    },
+    "grave_lid_01": {
+      "kind": "opaque prop principal-axis span, includes thickness/edge; not an exact top-face edge",
+      "canvas_endpoints": [
+        [
+          132,
+          110
+        ],
+        [
+          22,
+          37
+        ]
+      ],
+      "principal_axis": [
+        -0.7497976181451077,
+        -0.6616672364745917
+      ],
+      "length_px": 130.77944625860707
+    }
   }
 }

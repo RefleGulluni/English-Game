@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nc/English-Game/art/cemetery_v3/props/wall_pillar_01.png    96x128   OK   44    80    0   122
+glish-Game/art/cemetery_v3/props/wall_pillar_01_base.png    96x128   OK   28    78    0   126
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

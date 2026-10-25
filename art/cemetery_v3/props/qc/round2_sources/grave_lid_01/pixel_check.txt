@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+sync/English-Game/art/cemetery_v3/props/grave_lid_01.png   160x144   OK   44    91    0   121
+English-Game/art/cemetery_v3/props/grave_lid_01_base.png   160x144   OK   44    91    0   132
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

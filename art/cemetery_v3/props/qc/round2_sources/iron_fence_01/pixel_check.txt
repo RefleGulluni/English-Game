@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ync/English-Game/art/cemetery_v3/props/iron_fence_01.png   160x104   OK   44    90    0    91
+nglish-Game/art/cemetery_v3/props/iron_fence_01_base.png   160x104   OK   44    83    0   102
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

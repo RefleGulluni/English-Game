@@ -7,30 +7,29 @@ extends Node
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
 const NATIVE := Vector2i(960, 540)
-# [物件, 原点]；碰撞留空，由房间按立体部分的脚自动生成。物件名可带子目录（返修试样）
-const TRIAL := "qc/revision1_tombstone_trial/tombstone_upright_01"
+# [物件, 原点]；碰撞留空，由房间按立体部分的脚自动生成。物件名可带子目录（例如 qc/backups/round1/ 里的旧版）
+# 第 2 版拼接：完整墙每 148 px 接一段（画布内拼接列 x=21 / 168），残墙左拼接列 x=21；铁栏每 132 px（x=12 / 143）
+const ROUND1 := "qc/backups/round1/"
 const LAYOUT := {
 	"id": "props_v3", "seed": 7, "dead_grass": 8, "prop_dir": PROPS,
 	"props": [
-		["low_wall_01", Vector2(150, 150), null],
-		["low_wall_01", Vector2(246, 150), null],
-		["wall_pillar_01", Vector2(198, 154), null],
-		["wall_pillar_01", Vector2(294, 154), null],
-		["low_wall_broken_01", Vector2(390, 150), null],
-		["wall_pillar_01", Vector2(552, 154), null],
-		["iron_fence_01", Vector2(600, 150), null],
-		["iron_fence_01", Vector2(696, 150), null],
-		["wall_pillar_01", Vector2(744, 154), null],
-		[TRIAL, Vector2(110, 320), null],
-		[TRIAL, Vector2(380, 480), null], # 返修试样和第 1 版并排，主角站在中间
-		["tombstone_upright_01", Vector2(510, 480), null],
-		["tombstone_upright_02", Vector2(220, 400), null],
-		["tombstone_cross_01", Vector2(80, 470), null],
-		["open_grave_01", Vector2(640, 350), null],
-		["grave_lid_01", Vector2(738, 352), null],
-		[TRIAL, Vector2(840, 290), null],
-		["tombstone_cross_01", Vector2(890, 430), null],
-		["tombstone_upright_02", Vector2(780, 500), null],
+		["low_wall_01", Vector2(170, 150), null],
+		["low_wall_01", Vector2(318, 150), null],
+		["wall_pillar_01", Vector2(244, 156), null],
+		["low_wall_broken_01", Vector2(457, 150), null],
+		["wall_pillar_01", Vector2(560, 156), null],
+		["iron_fence_01", Vector2(640, 150), null],
+		["iron_fence_01", Vector2(771, 150), null],
+		["wall_pillar_01", Vector2(838, 156), null],
+		["tombstone_upright_01", Vector2(90, 330), null],
+		["tombstone_upright_02", Vector2(210, 420), null],
+		["tombstone_cross_01", Vector2(70, 500), null],
+		["tombstone_upright_01", Vector2(380, 480), null], # 第 2 版和第 1 版并排，主角站在中间
+		[ROUND1 + "tombstone_upright_01", Vector2(510, 480), null],
+		["open_grave_01", Vector2(640, 400), null],
+		["grave_lid_01", Vector2(810, 410), null],
+		["tombstone_cross_01", Vector2(900, 330), null],
+		["tombstone_upright_02", Vector2(880, 520), null],
 	],
 }
 

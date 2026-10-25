@@ -1,6 +1,15 @@
 {
-  "protected_existing_files": 960,
+  "outside_art_files_checked": 952,
   "changed": [],
-  "hero_B1.png": "428e16c810d76ba6b9b6e23f366fcbd2b38a4909ecb60681c199116419dd2559",
-  "northstar": "2561c161be66aad6a1a1cd534e92e97faba8d5c0b3168b6c5c0cdd23f0bdaebf"
+  "ignored_os_metadata": [
+    "art/.DS_Store",
+    "art/pixel_test/.DS_Store",
+    "art/cemetery_kit_v2/.DS_Store",
+    "art/cemetery_kit_v2/props/.DS_Store",
+    "art/cemetery_kit_v2/terrain/.DS_Store",
+    "art/character_design/.DS_Store"
+  ],
+  "accepted_trial_tombstone_body_unchanged": true,
+  "round1_backup": "backups/round1",
+  "before_promotion_backup": "/Users/mac/.codex/backups/English-Game/props-before-round2-promotion-20261025"
 }

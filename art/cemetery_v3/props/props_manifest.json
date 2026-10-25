@@ -1,127 +1,175 @@
 {
-  "version": 1,
-  "pixel_unit": 1,
-  "origin_convention": "bottom_center",
-  "base_layer": "ground decal; draw before all actors, no Y-sort",
-  "prop_layer": "tall prop; Y-sort with actors",
-  "no_baked_shadow": true,
+  "version": 2,
+  "origin": "bottom_center",
+  "no_auto_trim": true,
+  "base_layer": "ground decal / no Y-sort / below actors",
+  "prop_layer": "Y-sort / occluding",
   "items": {
     "tombstone_upright_01": {
       "prop": "tombstone_upright_01.png",
       "base": "tombstone_upright_01_base.png",
       "canvas": [
-        48,
-        68
+        96,
+        112
       ],
       "origin": [
-        24,
-        68
+        48,
+        112
       ],
-      "description": "完整圆拱墓碑；浅凹碑面、右侧厚度与抬高的石质座。"
+      "join": null,
+      "native_edit": null
     },
     "tombstone_upright_02": {
       "prop": "tombstone_upright_02.png",
       "base": "tombstone_upright_02_base.png",
       "canvas": [
-        56,
-        64
+        96,
+        112
       ],
       "origin": [
-        28,
-        64
+        48,
+        112
       ],
-      "description": "缺角的宽肩墓碑；断面与大裂口取代细碎写实纹理。"
+      "join": null,
+      "native_edit": null
     },
     "tombstone_cross_01": {
       "prop": "tombstone_cross_01.png",
       "base": "tombstone_cross_01_base.png",
       "canvas": [
-        56,
-        80
+        96,
+        128
       ],
       "origin": [
-        28,
-        80
+        48,
+        128
       ],
-      "description": "厚重石十字；窄高竖干与横臂形成独立剪影，右侧石厚清楚。"
+      "join": null,
+      "native_edit": null
     },
     "open_grave_01": {
       "prop": "open_grave_01.png",
       "base": "open_grave_01_base.png",
       "canvas": [
-        112,
-        80
+        224,
+        144
       ],
       "origin": [
-        56,
-        80
+        112,
+        144
       ],
-      "description": "墓穴石沿独立遮挡；坑内深色、土壁与坑底在地面 base 层，避免坑底遮住角色。约96×64占地。"
+      "join": null,
+      "native_edit": {
+        "removed_middle_span_vector": [
+          12,
+          7
+        ],
+        "cut_projection": 1250,
+        "reason": "Shorten one central rim section by integer translation; pit long edge becomes human length without rescaling."
+      }
     },
     "grave_lid_01": {
       "prop": "grave_lid_01.png",
       "base": "grave_lid_01_base.png",
       "canvas": [
-        64,
-        76
+        160,
+        144
       ],
       "origin": [
-        32,
-        76
+        80,
+        144
       ],
-      "description": "单独斜倚的盖板，轮廓为厚石板；可摆在墓穴旁，非固定盖死的成组画。"
+      "join": null,
+      "native_edit": {
+        "removed_middle_span_vector": [
+          8,
+          10
+        ],
+        "cut_projection": 1040,
+        "reason": "Shorten slab middle by integer translation to match grave; no rotation or scaling."
+      }
     },
     "low_wall_01": {
       "prop": "low_wall_01.png",
       "base": "low_wall_01_base.png",
       "canvas": [
-        96,
-        64
+        192,
+        96
       ],
       "origin": [
-        48,
-        64
+        96,
+        96
       ],
-      "description": "96px完整直墙段，错缝石砌；左右端为同一断面，可原生水平重复。"
+      "join": {
+        "stride": 148,
+        "canvas_core_x": [
+          21,
+          168
+        ],
+        "endpoint_rgba_equal": true,
+        "method": "Trim generated terminal side faces, copy two native contour columns across end. No texture synthesis."
+      },
+      "native_edit": null
     },
     "low_wall_broken_01": {
       "prop": "low_wall_broken_01.png",
       "base": "low_wall_broken_01_base.png",
       "canvas": [
-        96,
-        64
+        176,
+        96
       ],
       "origin": [
-        48,
-        64
+        88,
+        96
       ],
-      "description": "同墙系阶梯状残断段，向右破落；不作为无限重复中段。"
+      "join": {
+        "left_join_x": 21,
+        "left_profile_rgba_equal_to_wall": true,
+        "method": "Use shared50-color wall-family ramp, copy two generated contour columns to match full-wall end; remainder unique broken source art."
+      },
+      "native_edit": null
     },
     "wall_pillar_01": {
       "prop": "wall_pillar_01.png",
       "base": "wall_pillar_01_base.png",
       "canvas": [
-        48,
-        68
+        96,
+        128
       ],
       "origin": [
-        24,
-        68
+        48,
+        128
       ],
-      "description": "墙柱与墙同材质，柱帽有顶面；可覆盖墙与栏的连接端。"
+      "join": null,
+      "native_edit": {
+        "removed_native_rows": [
+          43,
+          63
+        ],
+        "reason": "Remove one complete central stone course at the mortar joint, integer movement only, pillar higher than wall but below hero height."
+      }
     },
     "iron_fence_01": {
       "prop": "iron_fence_01.png",
       "base": "iron_fence_01_base.png",
       "canvas": [
-        96,
-        76
+        160,
+        104
       ],
       "origin": [
-        48,
-        76
+        80,
+        104
       ],
-      "description": "六根矛尖铁栏、上下横梁与少量锻铁菱花；镂空清楚，可独立立地。"
+      "join": {
+        "stride": 132,
+        "canvas_core_x": [
+          12,
+          143
+        ],
+        "endpoint_rgba_equal": true,
+        "method": "Trim terminal knobs, copy one generated native connector column. Six bars keep their world left/right lighting."
+      },
+      "native_edit": null
     }
   }
 }

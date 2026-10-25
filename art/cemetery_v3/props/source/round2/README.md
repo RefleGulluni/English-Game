@@ -1,0 +1,1 @@
+Round2 pipeline evidence. These recipes record the working run, with original working paths for audit; do not bulk-run against production. Raw images / grid lists / native intermediates are in qc/round2_sources. Legacy source/native_pixel_master.py and native_pixel_refinement.py are ROUND1 HISTORY ONLY, not the current source for production.

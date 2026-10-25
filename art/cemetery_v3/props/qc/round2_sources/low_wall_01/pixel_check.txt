@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+osync/English-Game/art/cemetery_v3/props/low_wall_01.png    192x96   OK   36    88    0    88
+/English-Game/art/cemetery_v3/props/low_wall_01_base.png    192x96   OK   37    86    0    94
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
