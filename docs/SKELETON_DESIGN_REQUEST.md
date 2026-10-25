@@ -1,15 +1,17 @@
 # 发给：Codex 角色设计组 — Grave Skeleton 设计需求（第一轮：方向探索）
 
-日期：2026-10-25。需求方：Claude（程序），用户拍板。
-**顺序：先完成墓园物件第一批（`docs/CEMETERY_PROPS_PIXEL_REQUEST.md`）并通过验收，再开始这一份。**
+日期：2026-10-25（物件全部通过后更新）。需求方：Claude（程序），用户拍板。
+
+墓园物件三轮（第一批 9 件、墙补件、第二批 12 件）全部通过，辛苦了！你们用“生成 → 逐格还原 → 整理”的做法已经很稳定，**骷髅也照这个做法来**。现在游戏里的敌人还是程序画的灰色火柴人，骷髅是画面上最缺的一块。
 这一轮**只做设计，不做动画、不做四方向**。流程和主角 B1 一样：先出几个方向给用户选，选定后再做四方向，最后做动画。
 
 ## 1. 先读
 
 - 知识库 World Bible §16 Skeleton（设定核心）、§16 后半 Bone Remains。
 - 知识库 Art Direction Bible v3 `_SpecLocked_CLEAN` §21（尺度）、§22（帧动画）。
+- **本仓库 `docs/PIXEL_ASSET_PIPELINE.md`（必读）**：§4 标准、§5 流程、§8 踩过的坑。
 - 本仓库 `docs/HERO_DESIGN.md` §5（以前改角色的经验）、`docs/HERO_ANIMATION_REQUEST.md` §7（动画通用规则，这一轮不做动画，但设计要方便以后做）。
-- 参照物：主角 `art/character_design/hero_B1_front_straight.png`；**北极星参考图** `art/pixel_test/source/graveyard_P_reference.png`（颜色与像素感以它为准，主角放进去的效果见 `docs/reference/northstar_with_hero_B1.png`）；你们刚做完的墓园物件 `art/cemetery_v3/props/`（骷髅要和它们站在一起不违和）。
+- 参照物：主角 `art/character_design/hero_B1_front_straight.png`；**北极星参考图** `art/pixel_test/source/graveyard_P_reference.png`（颜色与像素感以它为准，主角放进去的效果见 `docs/reference/northstar_with_hero_B1.png`）；你们做完的墓园物件 `art/cemetery_v3/props/`（骷髅要和它们站在一起不违和）；游戏里现在的样子：`docs/reference/props_on_ground_v1_2x.png`（地面是临时的样板地面，美术组正在重做）。
 
 ## 2. 它是谁
 
@@ -44,8 +46,8 @@
 | 身高 | 接近主角：头顶到脚底 84～96 px（Art Bible §21.4：“Skeleton 接近主角”） |
 | 视角 | 与主角一致的 3/4 俯视世界；站立形态**正对镜头**（同 `hero_B1_front_straight.png`） |
 | 光源 | 左上 |
-| 像素 | 真像素：无半透明、无抗锯齿、无渐变；AI 生成的先整理（网格 → 调色板 → 边缘）再交付 |
-| 颜色 / 精致程度 | 颜色不限定，北极星图只作感觉参照；**精致程度向主角看齐**（见 `docs/CEMETERY_PROPS_REVISION_1.md` §2），和墓园物件放在一起不违和 |
+| 像素 | 真像素：无半透明、无抗锯齿、无渐变。按制作手册 §5：单独生成大方块像素风 → 找真实像素格、一格还原一个像素 → 逐块整理。不能整体缩小、不能非整数缩放 |
+| 颜色 / 精致程度 | 颜色不限定，北极星图只作感觉参照。**精致程度向主角看齐**：颜色 30～50、相邻像素换色比例不低于 80%（主角 44 色 / 88%），用 `python3 scripts/tools/pixel_check.py` 检查；每一小块颜色都要说得出是什么（骨面、裂纹、污渍、绳纤维、锈钉……），不能加随机杂点凑数字 |
 | 描边 | **不加**整圈描边（与主角一致） |
 | 阴影 | **不画地面投影**，接触阴影由 Godot 处理 |
 | 禁用颜色 | **饱和的青蓝色是语言层专用**（Word Sigil、Lexicon、True Words），骷髅身上一点都不能有。“结构”的力量用黑线、绳索、钉子表现，不要发光 |
@@ -62,12 +64,14 @@
 | `skeleton_A.png` / `_B` / `_C`（可加 `_D`） | 3～4 个方向的站立形态，每个 96×96 |
 | `skeleton_A_remains.png` 等 | 对应的骨堆形态（画布可自定，透明背景，在 QA 里写明尺寸和锚点） |
 | `reference/skeleton_X_concept_hires.png` | 每个方向的高清参考（可以是 AI 插画，只用来以后检查有没有走样） |
-| `qc/skeleton_compare.png` | **所有方向排在一起，旁边站着主角和几件墓园物件，按 2 倍显示**；每个方向的骨堆放在它旁边 |
+| `qc/skeleton_compare.png` | **所有方向排在一起，旁边站着主角和几件墓园物件**（例如 `tombstone_upright_01`、`tombstone_cross_01`、`obelisk_01`），**放在样板地面 `art/cemetery_pixel_v1/plates/ground_plate_960x540.png` 上，按 2 倍显示**；每个方向的骨堆放在它旁边 |
+| `qc/skeleton_vs_hero_6x.png` | 每个方向和主角并排 6 倍，看精致程度 |
+| `qc/skeleton_sources/` | 每个方向的生成原图、逐格还原图、`pixel_check.py` 输出 |
 | `qc/skeleton_silhouette.png` | 纯黑剪影对比（含主角） |
-| `qc/skeleton_design_QA.md` | 每个方向的思路一句话、规格自查（尺寸、锚点、半透明、颜色数、新颜色）、**没做到或拿不准的地方如实写出** |
+| `qc/skeleton_design_QA.md` | 每个方向的思路一句话、规格自查（尺寸、锚点、半透明、颜色数、换色比例）、每种小色块代表什么、**没做到或拿不准的地方如实写出** |
 | `qc/skeleton_design_prompts.json` | 用到的提示词 |
 
-不要修改仓库里其他任何文件。
+不要修改仓库里其他任何文件。完成后停下，等用户选方向。
 
 ## 6. 之后的步骤（这一轮不做）
 
