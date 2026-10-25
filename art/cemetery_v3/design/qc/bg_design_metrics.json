@@ -1,0 +1,353 @@
+{
+  "native_canvas": [
+    960,
+    540
+  ],
+  "environment_palette_limit": 64,
+  "hero_sha256": "b9acae0702948ffec980a432e2168fd6e6d7a78801a576ad375e973200191a80",
+  "hero_original_size": true,
+  "hero_palette_exception": {
+    "reason": "remove pre-existing saturated cyan ornament from world-only visual target",
+    "remap": {
+      "(36, 139, 155)": [
+        107,
+        120,
+        122
+      ],
+      "(70, 202, 213)": [
+        152,
+        165,
+        166
+      ],
+      "(164, 237, 239)": [
+        190,
+        196,
+        190
+      ]
+    },
+    "affected_pixels": 16,
+    "original_source_untouched": true
+  },
+  "method": "nearest native grid -> shared 64-color median-cut palette, saturation cap, no dithering -> isolated-pixel majority cleanup -> 1x hero composite with three cyan ornament palette entries muted",
+  "directions": {
+    "A": {
+      "source_path": "/Users/mac/.codex/generated_images/01a1707a-4cde-7eb1-a5bc-f1c69c246e40/exec-a07a32aa-e235-4041-b636-0bcb0241b346.png",
+      "source_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        960,
+        540
+      ],
+      "mode": "RGB",
+      "colors_total": 106,
+      "environment_colors": 62,
+      "saturated_cyan_blue_colors": 0,
+      "isolated_pixels_cleaned": 1394,
+      "hero_visible_pixel_match_after_declared_color_remap": true,
+      "hero_xy": [
+        350,
+        210
+      ],
+      "hero_size": [
+        96,
+        96
+      ],
+      "layout": {
+        "name": "残墙院落",
+        "arena": [
+          280,
+          100,
+          680,
+          320
+        ],
+        "entry": [
+          0,
+          290,
+          170,
+          385
+        ],
+        "exits": [
+          [
+            440,
+            0,
+            555,
+            90
+          ],
+          [
+            865,
+            102,
+            960,
+            180
+          ]
+        ],
+        "grave": [
+          705,
+          210,
+          865,
+          306
+        ],
+        "hero": [
+          350,
+          210
+        ],
+        "props": [
+          [
+            0,
+            0,
+            200,
+            185
+          ],
+          [
+            0,
+            220,
+            145,
+            320
+          ],
+          [
+            145,
+            300,
+            365,
+            432
+          ],
+          [
+            585,
+            33,
+            860,
+            120
+          ],
+          [
+            720,
+            345,
+            960,
+            540
+          ],
+          [
+            0,
+            400,
+            395,
+            540
+          ]
+        ],
+        "fracture": [
+          0,
+          320,
+          185,
+          390
+        ]
+      }
+    },
+    "B": {
+      "source_path": "/Users/mac/.codex/generated_images/01a1707a-4cde-7eb1-a5bc-f1c69c246e40/exec-ddecc85f-dcf3-4343-89fd-1e48000cdffd.png",
+      "source_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        960,
+        540
+      ],
+      "mode": "RGB",
+      "colors_total": 106,
+      "environment_colors": 62,
+      "saturated_cyan_blue_colors": 0,
+      "isolated_pixels_cleaned": 1423,
+      "hero_visible_pixel_match_after_declared_color_remap": true,
+      "hero_xy": [
+        350,
+        210
+      ],
+      "hero_size": [
+        96,
+        96
+      ],
+      "layout": {
+        "name": "雾坡墓群",
+        "arena": [
+          280,
+          104,
+          680,
+          324
+        ],
+        "entry": [
+          0,
+          225,
+          155,
+          300
+        ],
+        "exits": [
+          [
+            505,
+            0,
+            595,
+            100
+          ],
+          [
+            865,
+            125,
+            960,
+            210
+          ]
+        ],
+        "grave": [
+          715,
+          198,
+          858,
+          290
+        ],
+        "hero": [
+          350,
+          210
+        ],
+        "props": [
+          [
+            0,
+            0,
+            210,
+            205
+          ],
+          [
+            210,
+            45,
+            450,
+            130
+          ],
+          [
+            590,
+            0,
+            835,
+            145
+          ],
+          [
+            0,
+            300,
+            430,
+            540
+          ],
+          [
+            590,
+            365,
+            960,
+            540
+          ],
+          [
+            710,
+            278,
+            795,
+            345
+          ]
+        ],
+        "fracture": [
+          660,
+          277,
+          765,
+          345
+        ]
+      }
+    },
+    "C": {
+      "source_path": "/Users/mac/.codex/generated_images/01a1707a-4cde-7eb1-a5bc-f1c69c246e40/exec-081f878d-def9-4fdd-87cd-69a83ed1d0cb.png",
+      "source_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        960,
+        540
+      ],
+      "mode": "RGB",
+      "colors_total": 106,
+      "environment_colors": 62,
+      "saturated_cyan_blue_colors": 0,
+      "isolated_pixels_cleaned": 1233,
+      "hero_visible_pixel_match_after_declared_color_remap": true,
+      "hero_xy": [
+        350,
+        210
+      ],
+      "hero_size": [
+        96,
+        96
+      ],
+      "layout": {
+        "name": "下沉墓区",
+        "arena": [
+          270,
+          125,
+          670,
+          345
+        ],
+        "entry": [
+          0,
+          215,
+          170,
+          295
+        ],
+        "exits": [
+          [
+            462,
+            0,
+            610,
+            126
+          ],
+          [
+            870,
+            65,
+            960,
+            173
+          ]
+        ],
+        "grave": [
+          755,
+          208,
+          888,
+          286
+        ],
+        "hero": [
+          350,
+          210
+        ],
+        "props": [
+          [
+            0,
+            0,
+            210,
+            200
+          ],
+          [
+            190,
+            0,
+            460,
+            125
+          ],
+          [
+            610,
+            0,
+            865,
+            165
+          ],
+          [
+            0,
+            290,
+            300,
+            540
+          ],
+          [
+            590,
+            345,
+            960,
+            540
+          ]
+        ],
+        "fracture": [
+          125,
+          42,
+          225,
+          110
+        ]
+      }
+    }
+  },
+  "palette_entries": 108
+}
