@@ -1,0 +1,49 @@
+{
+  "parent": "low_wall_01",
+  "canvas": [
+    192,
+    96
+  ],
+  "origin": [
+    96,
+    96
+  ],
+  "joins": {
+    "left": 21,
+    "parent_right": 168,
+    "root_dx_after_parent": 148
+  },
+  "left_unchanged_region": [
+    0,
+    0,
+    89,
+    96
+  ],
+  "native_edit": "Remove source upper-right stone courses along native contour; 2 actual rounded-stone fragments moved onto original base.",
+  "fragments": [
+    {
+      "source_box": [
+        84,
+        77,
+        100,
+        89
+      ],
+      "target_xy": [
+        139,
+        84
+      ]
+    },
+    {
+      "source_box": [
+        118,
+        61,
+        134,
+        73
+      ],
+      "target_xy": [
+        162,
+        84
+      ]
+    }
+  ]
+}

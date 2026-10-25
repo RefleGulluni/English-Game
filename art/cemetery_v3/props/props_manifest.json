@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "origin": "bottom_center",
   "no_auto_trim": true,
   "base_layer": "ground decal / no Y-sort / below actors",
@@ -170,6 +170,167 @@
         "method": "Trim terminal knobs, copy one generated native connector column. Six bars keep their world left/right lighting."
       },
       "native_edit": null
+    },
+    "low_wall_rubble_broken_01": {
+      "prop": "low_wall_rubble_broken_01.png",
+      "base": "low_wall_rubble_broken_01_base.png",
+      "canvas": [
+        192,
+        96
+      ],
+      "origin": [
+        96,
+        96
+      ],
+      "family": "A_rubble",
+      "parent": "low_wall_01",
+      "joins": {
+        "left": 21,
+        "parent_right": 168,
+        "root_dx_after_parent": 148
+      },
+      "derivation_recipe": "qc/wall_family_sources/low_wall_rubble_broken_01/derivation_recipe.json"
+    },
+    "low_wall_rubble_pillar_01": {
+      "prop": "low_wall_rubble_pillar_01.png",
+      "base": "low_wall_rubble_pillar_01_base.png",
+      "canvas": [
+        192,
+        128
+      ],
+      "origin": [
+        96,
+        128
+      ],
+      "family": "A_rubble",
+      "parent": "low_wall_01",
+      "joins": {
+        "left": 21,
+        "right": 168,
+        "stride": 148
+      },
+      "derivation_recipe": "qc/wall_family_sources/low_wall_rubble_pillar_01/derivation_recipe.json"
+    },
+    "low_wall_ashlar_01": {
+      "prop": "low_wall_ashlar_01.png",
+      "base": "low_wall_ashlar_01_base.png",
+      "canvas": [
+        176,
+        96
+      ],
+      "origin": [
+        88,
+        96
+      ],
+      "family": "B_ashlar",
+      "parent": "low_wall_broken_01",
+      "joins": {
+        "left": 21,
+        "right": 148,
+        "stride": 128,
+        "parent_broken_left": 21,
+        "root_dx_to_parent_broken": 128
+      },
+      "derivation_recipe": "qc/wall_family_sources/low_wall_ashlar_01/derivation_recipe.json"
     }
+  },
+  "wall_families": {
+    "A_rubble": {
+      "complete": "low_wall_01",
+      "broken": "low_wall_rubble_broken_01",
+      "embedded_pillar": "low_wall_rubble_pillar_01",
+      "stride": 148,
+      "assembly_roots": [
+        [
+          "low_wall_01",
+          [
+            120,
+            140
+          ]
+        ],
+        [
+          "low_wall_rubble_pillar_01",
+          [
+            268,
+            140
+          ]
+        ],
+        [
+          "low_wall_01",
+          [
+            416,
+            140
+          ]
+        ],
+        [
+          "low_wall_rubble_broken_01",
+          [
+            564,
+            140
+          ]
+        ]
+      ]
+    },
+    "B_ashlar": {
+      "complete": "low_wall_ashlar_01",
+      "broken": "low_wall_broken_01",
+      "gate_pillar": "wall_pillar_01",
+      "iron": "iron_fence_01",
+      "complete_stride": 128,
+      "masonry_assembly_roots": [
+        [
+          "wall_pillar_01",
+          [
+            60,
+            140
+          ]
+        ],
+        [
+          "low_wall_ashlar_01",
+          [
+            131,
+            140
+          ]
+        ],
+        [
+          "low_wall_ashlar_01",
+          [
+            259,
+            140
+          ]
+        ],
+        [
+          "low_wall_broken_01",
+          [
+            387,
+            140
+          ]
+        ]
+      ],
+      "iron_assembly_roots": [
+        [
+          "wall_pillar_01",
+          [
+            50,
+            300
+          ]
+        ],
+        [
+          "iron_fence_01",
+          [
+            131,
+            300
+          ]
+        ],
+        [
+          "wall_pillar_01",
+          [
+            202,
+            300
+          ]
+        ]
+      ]
+    },
+    "do_not_mix_families_in_one_run": true
   }
 }

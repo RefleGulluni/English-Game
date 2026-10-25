@@ -1,0 +1,51 @@
+{
+  "parent": "low_wall_broken_01",
+  "canvas": [
+    176,
+    96
+  ],
+  "origin": [
+    88,
+    96
+  ],
+  "joins": {
+    "left": 21,
+    "right": 148,
+    "stride": 128,
+    "parent_broken_left": 21,
+    "root_dx_to_parent_broken": 128
+  },
+  "native_edit": "Preserve complete parent prefix; extend existing ashlar faces and coping at native original y35/49/70; repeat original dark ground; right context copies parent intact prefix.",
+  "source_regions": {
+    "prefix": [
+      21,
+      32,
+      43,
+      90
+    ],
+    "upper_face": [
+      29,
+      49,
+      61,
+      70
+    ],
+    "lower_face": [
+      31,
+      70,
+      63,
+      90
+    ],
+    "coping": [
+      23,
+      35,
+      43,
+      50
+    ],
+    "base": [
+      15,
+      76,
+      47,
+      96
+    ]
+  }
+}

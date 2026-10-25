@@ -1,0 +1,1 @@
+Native derivation evidence only. Uses approved A/B source pixels with integer crops, masks and translations. No imagegen calls, new paint or synthesized texture. Recipes in qc/wall_family_sources. Work paths are historical audit paths; do not execute over production.

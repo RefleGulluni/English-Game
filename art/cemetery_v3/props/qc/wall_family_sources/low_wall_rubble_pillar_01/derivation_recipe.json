@@ -1,0 +1,44 @@
+{
+  "parent": "low_wall_01",
+  "canvas": [
+    192,
+    128
+  ],
+  "origin": [
+    96,
+    128
+  ],
+  "joins": {
+    "left": 21,
+    "right": 168,
+    "stride": 148
+  },
+  "native_edit": "Same complete parent wall shifted down32 solely for taller canvas; centered upper stones and mortar copied from parent to raise a bonded stack. No projecting pedestal.",
+  "source_patches": [
+    {
+      "source_box": [
+        68,
+        34,
+        112,
+        59
+      ],
+      "target_xy": [
+        74,
+        43
+      ]
+    },
+    {
+      "source_box": [
+        67,
+        58,
+        111,
+        74
+      ],
+      "target_xy": [
+        74,
+        65
+      ]
+    }
+  ],
+  "lower_wall_unchanged_from_y": 81
+}

@@ -1,0 +1,118 @@
+{
+  "assets": {
+    "low_wall_rubble_broken_01": {
+      "prop": {
+        "size": "192x96",
+        "alpha_ok": true,
+        "colors": 36,
+        "change": 89,
+        "cyan": 0,
+        "lowest": 88,
+        "visible_height": 54,
+        "origin": [
+          96,
+          96
+        ],
+        "sha256": "82fef579bee9a9effb431a3314cf06d9ef597325c384ac25f32a3daa29cd23b3"
+      },
+      "base": {
+        "size": "192x96",
+        "alpha_ok": true,
+        "colors": 50,
+        "change": 87,
+        "cyan": 0,
+        "lowest": 95,
+        "visible_height": 17,
+        "origin": [
+          96,
+          96
+        ],
+        "sha256": "96fc924d1cd4d9111ddb33d9d43fa4c1c03df27d0b7609a443adf394a16fe38b"
+      }
+    },
+    "low_wall_rubble_pillar_01": {
+      "prop": {
+        "size": "192x128",
+        "alpha_ok": true,
+        "colors": 36,
+        "change": 89,
+        "cyan": 0,
+        "lowest": 120,
+        "visible_height": 75,
+        "origin": [
+          96,
+          128
+        ],
+        "sha256": "cde2a1558f0dffd9dd06f7a14b7b41b14ada24c67f54ba5b3635ccb600b050f5"
+      },
+      "base": {
+        "size": "192x128",
+        "alpha_ok": true,
+        "colors": 37,
+        "change": 86,
+        "cyan": 0,
+        "lowest": 126,
+        "visible_height": 16,
+        "origin": [
+          96,
+          128
+        ],
+        "sha256": "8faedc53a899b4934b0aab0138f74c9ccd02a4b4673b7bbd765bbfdb65d1b54d"
+      }
+    },
+    "low_wall_ashlar_01": {
+      "prop": {
+        "size": "176x96",
+        "alpha_ok": true,
+        "colors": 46,
+        "change": 76,
+        "cyan": 0,
+        "lowest": 89,
+        "visible_height": 53,
+        "origin": [
+          88,
+          96
+        ],
+        "sha256": "bdaa1885310a6a0fec726adb90df95d9a397cc20042a1e5537e37fb0e98a3780"
+      },
+      "base": {
+        "size": "176x96",
+        "alpha_ok": true,
+        "colors": 21,
+        "change": 83,
+        "cyan": 0,
+        "lowest": 92,
+        "visible_height": 10,
+        "origin": [
+          88,
+          96
+        ],
+        "sha256": "2b12678d264cd1fe61064effe18118aad84694e2b5a75df72a8a592bcbb8d5d9"
+      }
+    }
+  },
+  "interfaces": {
+    "checks": {
+      "A_broken_left_half_exact": true,
+      "A_broken_join_exact": true,
+      "A_pillar_left_join_exact": true,
+      "A_pillar_right_join_exact": true,
+      "A_pillar_lower_courses_exact": true,
+      "A_pillar_base_integer_shift_exact": true,
+      "B_repeat_join_exact": true,
+      "B_full_to_broken_join_exact": true,
+      "B_intact_prefix_exact": true
+    },
+    "joint_atlas_labels": [
+      "A wall / embedded pillar",
+      "A embedded pillar / wall",
+      "A wall / rubble break",
+      "B ashlar / ashlar",
+      "B ashlar / ashlar break",
+      "B gate pillar / wall",
+      "B gate pillar / iron",
+      "B iron / gate pillar"
+    ]
+  },
+  "method": "Deterministic native source-pixel derivation; no new generation or raw drawing"
+}

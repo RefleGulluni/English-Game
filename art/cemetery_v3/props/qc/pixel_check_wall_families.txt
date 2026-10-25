@@ -1,0 +1,8 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+Game/art/cemetery_v3/props/low_wall_rubble_broken_01.png    192x96   OK   36    89    0    88
+art/cemetery_v3/props/low_wall_rubble_broken_01_base.png    192x96   OK   50    87    0    95
+Game/art/cemetery_v3/props/low_wall_rubble_pillar_01.png   192x128   OK   36    89    0   120
+art/cemetery_v3/props/low_wall_rubble_pillar_01_base.png   192x128   OK   37    86    0   126
+nglish-Game/art/cemetery_v3/props/low_wall_ashlar_01.png    176x96   OK   46    76    0    89
+h-Game/art/cemetery_v3/props/low_wall_ashlar_01_base.png    176x96   OK   21    83    0    92
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
