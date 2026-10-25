@@ -1,0 +1,143 @@
+{
+  "ramps": {
+    "stone": [
+      "#3F3C3E",
+      "#5B5756",
+      "#777476",
+      "#97928C",
+      "#BEB7A9"
+    ],
+    "moss": [
+      "#443E25",
+      "#6C6037",
+      "#8F7D47"
+    ],
+    "earth": [
+      "#403D3F",
+      "#504843",
+      "#6A5A4D",
+      "#8A7760"
+    ],
+    "iron": [
+      "#1D191A",
+      "#363032",
+      "#514C49",
+      "#7B7165"
+    ]
+  },
+  "source": "/Users/mac/Documents/GitHub.nosync/English-Game/art/pixel_test/source/graveyard_P_reference.png",
+  "samples": {
+    "#3F3C3E": {
+      "material": "stone",
+      "source_xy": [
+        279,
+        450
+      ]
+    },
+    "#5B5756": {
+      "material": "stone",
+      "source_xy": [
+        368,
+        626
+      ]
+    },
+    "#777476": {
+      "material": "stone",
+      "source_xy": [
+        358,
+        502
+      ]
+    },
+    "#97928C": {
+      "material": "stone",
+      "source_xy": [
+        368,
+        666
+      ]
+    },
+    "#BEB7A9": {
+      "material": "stone",
+      "source_xy": [
+        388,
+        470
+      ]
+    },
+    "#403D3F": {
+      "material": "earth",
+      "source_xy": [
+        1027,
+        781
+      ]
+    },
+    "#504843": {
+      "material": "earth",
+      "source_xy": [
+        1098,
+        780
+      ]
+    },
+    "#6A5A4D": {
+      "material": "earth",
+      "source_xy": [
+        1009,
+        802
+      ]
+    },
+    "#8A7760": {
+      "material": "earth",
+      "source_xy": [
+        1184,
+        862
+      ]
+    },
+    "#1D191A": {
+      "material": "iron",
+      "source_xy": [
+        231,
+        80
+      ]
+    },
+    "#363032": {
+      "material": "iron",
+      "source_xy": [
+        292,
+        127
+      ]
+    },
+    "#514C49": {
+      "material": "iron",
+      "source_xy": [
+        116,
+        113
+      ]
+    },
+    "#7B7165": {
+      "material": "iron",
+      "source_xy": [
+        83,
+        322
+      ]
+    },
+    "#443E25": {
+      "material": "moss",
+      "source_xy": [
+        169,
+        428
+      ]
+    },
+    "#6C6037": {
+      "material": "moss",
+      "source_xy": [
+        437,
+        132
+      ]
+    },
+    "#8F7D47": {
+      "material": "moss",
+      "source_xy": [
+        330,
+        414
+      ]
+    }
+  }
+}

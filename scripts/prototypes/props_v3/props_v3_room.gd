@@ -7,7 +7,8 @@ extends Node
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
 const NATIVE := Vector2i(960, 540)
-# [物件, 原点]；碰撞留空，由房间按立体部分的脚自动生成
+# [物件, 原点]；碰撞留空，由房间按立体部分的脚自动生成。物件名可带子目录（返修试样）
+const TRIAL := "qc/revision1_tombstone_trial/tombstone_upright_01"
 const LAYOUT := {
 	"id": "props_v3", "seed": 7, "dead_grass": 8, "prop_dir": PROPS,
 	"props": [
@@ -20,12 +21,14 @@ const LAYOUT := {
 		["iron_fence_01", Vector2(600, 150), null],
 		["iron_fence_01", Vector2(696, 150), null],
 		["wall_pillar_01", Vector2(744, 154), null],
-		["tombstone_upright_01", Vector2(110, 320), null],
+		[TRIAL, Vector2(110, 320), null],
+		[TRIAL, Vector2(380, 480), null], # 返修试样和第 1 版并排，主角站在中间
+		["tombstone_upright_01", Vector2(510, 480), null],
 		["tombstone_upright_02", Vector2(220, 400), null],
 		["tombstone_cross_01", Vector2(80, 470), null],
 		["open_grave_01", Vector2(640, 350), null],
 		["grave_lid_01", Vector2(738, 352), null],
-		["tombstone_upright_01", Vector2(840, 290), null],
+		[TRIAL, Vector2(840, 290), null],
 		["tombstone_cross_01", Vector2(890, 430), null],
 		["tombstone_upright_02", Vector2(780, 500), null],
 	],
@@ -55,7 +58,7 @@ func _ready() -> void:
 	_room = CemeteryRoom.new(LAYOUT)
 	_viewport.add_child(_room)
 	var hero := HERO_SCENE.instantiate()
-	hero.position = Vector2(440, 440)
+	hero.position = Vector2(445, 470)
 	_room.sorted.add_child(hero)
 	_room.player = hero
 	var screen := TextureRect.new()
@@ -100,7 +103,7 @@ func _capture() -> void:
 	var dir := str(OS.get_cmdline_user_args()[0]).get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	var hero: Node2D = _room.player
-	for shot in [["room", Vector2(440, 440)], ["by_grave", Vector2(600, 400)], ["behind_wall", Vector2(250, 140)]]:
+	for shot in [["room", Vector2(445, 470)], ["by_grave", Vector2(600, 400)], ["behind_wall", Vector2(250, 140)]]:
 		hero.position = shot[1]
 		for i in 40:
 			await get_tree().process_frame

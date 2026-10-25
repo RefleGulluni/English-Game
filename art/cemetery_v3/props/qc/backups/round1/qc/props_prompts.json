@@ -1,0 +1,13 @@
+{
+  "generation_tool_used": false,
+  "imagegen_calls": [],
+  "reason": "User explicitly prohibits a large generated source followed by downsampling; assets designed directly as native integer-coordinate pixel clusters. No source raster was generated or reduced.",
+  "native_workflow": [
+    "References read and viewed first; source restricted to stone/moss/earth/tree regions, not character or sigil.",
+    "Hand-authored native integer-coordinate silhouettes, face planes, chips, cracks, mud patches and tufts; no random noise.",
+    "Native RGBA canvas direct export. No antialias, blur, gradients or asset downscale.",
+    "Nearest integer magnifications only for QC; original northstar background not resampled."
+  ],
+  "palette_source": "props_palette.json",
+  "source_process": "../source/native_pixel_master.py"
+}

@@ -1,0 +1,24 @@
+{
+  "production_pngs_unchanged": [
+    "tombstone_upright_02_base.png",
+    "iron_fence_01_base.png",
+    "iron_fence_01.png",
+    "low_wall_01_base.png",
+    "low_wall_01.png",
+    "open_grave_01_base.png",
+    "tombstone_upright_02.png",
+    "tombstone_upright_01.png",
+    "open_grave_01.png",
+    "grave_lid_01.png",
+    "tombstone_upright_01_base.png",
+    "low_wall_broken_01_base.png",
+    "grave_lid_01_base.png",
+    "tombstone_cross_01.png",
+    "tombstone_cross_01_base.png",
+    "low_wall_broken_01.png",
+    "wall_pillar_01.png",
+    "wall_pillar_01_base.png"
+  ],
+  "outside_art_files_unchanged": 957,
+  "no_other_props_made": true
+}

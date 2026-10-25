@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "colors": 44,
+    "horizontal_color_change_ratio": 0.8841714756801319
+  },
+  "trial": {
+    "colors": 47,
+    "horizontal_color_change_ratio": 0.8845825021373611
+  },
+  "status": "NOT_APPROVED_NOT_PRODUCTION",
+  "generator_file_size": [
+    1254,
+    1254
+  ],
+  "trial_grid": [
+    96,
+    96
+  ],
+  "method": "Nearest sampling 1254x1254 to96x96, 48color quantization without dithering, magenta removal. This DOES involve downsampling; it is not claimed to meet strict native-production requirement."
+}

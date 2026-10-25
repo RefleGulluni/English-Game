@@ -1,0 +1,126 @@
+{
+  "metrics": {
+    "hero": {
+      "canvas": [
+        96,
+        96
+      ],
+      "opaque_bbox": [
+        29,
+        0,
+        68,
+        96
+      ],
+      "visible_height": 96,
+      "colors": 44,
+      "opaque_horizontal_pairs": 2426,
+      "different_horizontal_pairs": 2145,
+      "change_percent": 88.41714756801319,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "rgba_sha256": "a68bf86554ceaa622c0b8a6c4c2a2f52abbdaeb7926556983a9d220035267614"
+    },
+    "prop": {
+      "canvas": [
+        96,
+        112
+      ],
+      "opaque_bbox": [
+        21,
+        21,
+        74,
+        99
+      ],
+      "visible_height": 78,
+      "colors": 44,
+      "opaque_horizontal_pairs": 3255,
+      "different_horizontal_pairs": 2800,
+      "change_percent": 86.02150537634408,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "rgba_sha256": "7ae97b8b429a95c3468dd25c4beb8e9449281ca4ecbc76bc56284d7158e75cd1"
+    },
+    "base": {
+      "canvas": [
+        96,
+        112
+      ],
+      "opaque_bbox": [
+        9,
+        86,
+        86,
+        111
+      ],
+      "visible_height": 25,
+      "colors": 35,
+      "opaque_horizontal_pairs": 895,
+      "different_horizontal_pairs": 763,
+      "change_percent": 85.25139664804469,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "rgba_sha256": "3a52dc0e9acaaaa6f6f1143f2168bc7411d53f61347426ba1e12e6ea3ca1ae37"
+    },
+    "combined": {
+      "canvas": [
+        96,
+        112
+      ],
+      "opaque_bbox": [
+        9,
+        21,
+        86,
+        111
+      ],
+      "visible_height": 90,
+      "colors": 44,
+      "opaque_horizontal_pairs": 4172,
+      "different_horizontal_pairs": 3582,
+      "change_percent": 85.8581016299137,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "rgba_sha256": "0d3c09af7209a44a7cb362d00e9217ef1bb0ea373f6b901eb601b891a686d7db"
+    }
+  },
+  "cleanup": {
+    "palette": "44 colors, derived from source painted cells only; no dithering",
+    "removed_magenta_cells": 0,
+    "removed_detached_small_components": [],
+    "explicit_neighbor_color_merges": [
+      {
+        "xy": [
+          13,
+          24
+        ],
+        "old": [
+          38,
+          27,
+          20,
+          255
+        ],
+        "new": [
+          106,
+          93,
+          83,
+          255
+        ],
+        "reason": "Source contour speck merges into adjoining stone/moss edge, no new color."
+      }
+    ]
+  },
+  "origin": [
+    48,
+    112
+  ],
+  "source_native_shift": [
+    9,
+    20
+  ]
+}

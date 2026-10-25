@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "pixel_unit": 1,
+  "origin_convention": "bottom_center",
+  "base_layer": "ground decal; draw before all actors, no Y-sort",
+  "prop_layer": "tall prop; Y-sort with actors",
+  "no_baked_shadow": true,
+  "items": {
+    "tombstone_upright_01": {
+      "prop": "tombstone_upright_01.png",
+      "base": "tombstone_upright_01_base.png",
+      "canvas": [
+        48,
+        68
+      ],
+      "origin": [
+        24,
+        68
+      ],
+      "description": "完整圆拱墓碑；浅凹碑面、右侧厚度与抬高的石质座。"
+    },
+    "tombstone_upright_02": {
+      "prop": "tombstone_upright_02.png",
+      "base": "tombstone_upright_02_base.png",
+      "canvas": [
+        56,
+        64
+      ],
+      "origin": [
+        28,
+        64
+      ],
+      "description": "缺角的宽肩墓碑；断面与大裂口取代细碎写实纹理。"
+    },
+    "tombstone_cross_01": {
+      "prop": "tombstone_cross_01.png",
+      "base": "tombstone_cross_01_base.png",
+      "canvas": [
+        56,
+        80
+      ],
+      "origin": [
+        28,
+        80
+      ],
+      "description": "厚重石十字；窄高竖干与横臂形成独立剪影，右侧石厚清楚。"
+    },
+    "open_grave_01": {
+      "prop": "open_grave_01.png",
+      "base": "open_grave_01_base.png",
+      "canvas": [
+        112,
+        80
+      ],
+      "origin": [
+        56,
+        80
+      ],
+      "description": "墓穴石沿独立遮挡；坑内深色、土壁与坑底在地面 base 层，避免坑底遮住角色。约96×64占地。"
+    },
+    "grave_lid_01": {
+      "prop": "grave_lid_01.png",
+      "base": "grave_lid_01_base.png",
+      "canvas": [
+        64,
+        76
+      ],
+      "origin": [
+        32,
+        76
+      ],
+      "description": "单独斜倚的盖板，轮廓为厚石板；可摆在墓穴旁，非固定盖死的成组画。"
+    },
+    "low_wall_01": {
+      "prop": "low_wall_01.png",
+      "base": "low_wall_01_base.png",
+      "canvas": [
+        96,
+        64
+      ],
+      "origin": [
+        48,
+        64
+      ],
+      "description": "96px完整直墙段，错缝石砌；左右端为同一断面，可原生水平重复。"
+    },
+    "low_wall_broken_01": {
+      "prop": "low_wall_broken_01.png",
+      "base": "low_wall_broken_01_base.png",
+      "canvas": [
+        96,
+        64
+      ],
+      "origin": [
+        48,
+        64
+      ],
+      "description": "同墙系阶梯状残断段，向右破落；不作为无限重复中段。"
+    },
+    "wall_pillar_01": {
+      "prop": "wall_pillar_01.png",
+      "base": "wall_pillar_01_base.png",
+      "canvas": [
+        48,
+        68
+      ],
+      "origin": [
+        24,
+        68
+      ],
+      "description": "墙柱与墙同材质，柱帽有顶面；可覆盖墙与栏的连接端。"
+    },
+    "iron_fence_01": {
+      "prop": "iron_fence_01.png",
+      "base": "iron_fence_01_base.png",
+      "canvas": [
+        96,
+        76
+      ],
+      "origin": [
+        48,
+        76
+      ],
+      "description": "六根矛尖铁栏、上下横梁与少量锻铁菱花；镂空清楚，可独立立地。"
+    }
+  }
+}
