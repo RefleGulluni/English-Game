@@ -1,0 +1,1 @@
+Audit recipes of completed run, historical work paths; do not run over production. Order: recover -> finish (source-cell row registration/palette) -> match_material (one-to-one material palette calibration) -> preview -> publish. No synthesized source texture; no whole-image resize.

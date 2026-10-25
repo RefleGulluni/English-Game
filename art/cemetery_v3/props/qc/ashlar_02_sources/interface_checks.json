@@ -1,0 +1,59 @@
+{
+  "checks": {
+    "left_equals_broken": true,
+    "right_equals_broken": true,
+    "self_repeat_exact": true,
+    "02_to01_exact": true,
+    "01_to02_exact": true
+  },
+  "assembly": [
+    [
+      "low_wall_ashlar_02",
+      184,
+      140
+    ],
+    [
+      "low_wall_ashlar_02",
+      424,
+      140
+    ],
+    [
+      "low_wall_broken_01",
+      611,
+      140
+    ],
+    [
+      "wall_pillar_01",
+      60,
+      140
+    ],
+    [
+      "low_wall_ashlar_02",
+      184,
+      320
+    ],
+    [
+      "low_wall_ashlar_01",
+      371,
+      320
+    ],
+    [
+      "low_wall_ashlar_02",
+      552,
+      320
+    ],
+    [
+      "wall_pillar_01",
+      60,
+      320
+    ]
+  ],
+  "joint_labels": [
+    "gate /02",
+    "02/02",
+    "02/broken",
+    "gate/02",
+    "02/01",
+    "01/02"
+  ]
+}

@@ -22,12 +22,13 @@ const LAYOUT := {
 		["wall_pillar_01", Vector2(700, 151), null],
 		["iron_fence_01", Vector2(781, 150), null],
 		["wall_pillar_01", Vector2(852, 151), null],
-		# B 条石墙家族：门柱 + 条石墙 + 条石墙 + 条石断墙，间隔 128
+		# B 条石墙家族：门柱 + 02 + 01 + 02 + 断墙（02 有效宽 240；接 01 或断墙间隔 187，01 接 02 间隔 181）
+		["low_wall_ashlar_02", Vector2(184, 270), null],
 		["low_wall_ashlar_01", Vector2(371, 270), null],
-		["low_wall_ashlar_01", Vector2(499, 270), null],
-		["low_wall_broken_01", Vector2(627, 270), null],
-		["wall_pillar_01", Vector2(300, 271), null],
-		["tombstone_upright_01", Vector2(90, 330), null],
+		["low_wall_ashlar_02", Vector2(552, 270), null],
+		["low_wall_broken_01", Vector2(739, 270), null],
+		["wall_pillar_01", Vector2(60, 271), null],
+		["tombstone_upright_01", Vector2(80, 375), null],
 		["tombstone_upright_02", Vector2(210, 420), null],
 		["tombstone_cross_01", Vector2(70, 500), null],
 		["tombstone_upright_01", Vector2(380, 480), null], # 第 2 版和第 1 版并排，主角站在中间

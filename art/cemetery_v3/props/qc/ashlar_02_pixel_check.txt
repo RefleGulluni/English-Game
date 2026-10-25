@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nglish-Game/art/cemetery_v3/props/low_wall_ashlar_02.png    288x96   OK   44    82    0    89
+h-Game/art/cemetery_v3/props/low_wall_ashlar_02_base.png    288x96   OK   48    86    0    95
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

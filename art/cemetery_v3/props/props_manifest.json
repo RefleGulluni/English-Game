@@ -232,6 +232,49 @@
         "root_dx_to_parent_broken": 128
       },
       "derivation_recipe": "qc/wall_family_sources/low_wall_ashlar_01/derivation_recipe.json"
+    },
+    "low_wall_ashlar_02": {
+      "prop": "low_wall_ashlar_02.png",
+      "base": "low_wall_ashlar_02_base.png",
+      "canvas": [
+        288,
+        96
+      ],
+      "origin": [
+        144,
+        96
+      ],
+      "family": "B_ashlar",
+      "role": "primary_complete_variant",
+      "join": {
+        "canvas_core_x": [
+          24,
+          263
+        ],
+        "stride": 240,
+        "reference": "low_wall_broken_01 column21",
+        "root_delta_x_to_self": 240,
+        "root_delta_x_to_broken01": 187,
+        "root_delta_x_to_ashlar01": 187,
+        "root_delta_x_from_ashlar01": 181
+      },
+      "masonry": {
+        "visible_height": 54,
+        "coping_and_upper_bevel_y": [
+          36,
+          45
+        ],
+        "upper_face_y": [
+          46,
+          65
+        ],
+        "main_mortar_y": 66,
+        "lower_face_y": [
+          67,
+          89
+        ]
+      },
+      "source_record": "qc/ashlar_02_sources/generation.json"
     }
   },
   "wall_families": {
@@ -329,6 +372,13 @@
             300
           ]
         ]
+      ],
+      "primary_complete": "low_wall_ashlar_02",
+      "secondary_complete": "low_wall_ashlar_01",
+      "primary_stride": 240,
+      "complete_variants": [
+        "low_wall_ashlar_02",
+        "low_wall_ashlar_01"
       ]
     },
     "do_not_mix_families_in_one_run": true

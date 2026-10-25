@@ -1,0 +1,137 @@
+{
+  "metrics": {
+    "prop": {
+      "size": "288x96",
+      "alpha_ok": true,
+      "colors": 44,
+      "change": 82,
+      "cyan": 0,
+      "lowest": 89,
+      "origin": [
+        144,
+        96
+      ],
+      "opaque_bbox": [
+        24,
+        36,
+        264,
+        90
+      ],
+      "visible_height": 54,
+      "horizontal_pairs": 11398,
+      "different_pairs": 9366,
+      "exact_change_percent": 82.17231093174242,
+      "sha256": "9cbdb003ebff7522364ca7be72cdbd4b2569034795889ead169d4ad3e99ba689"
+    },
+    "base": {
+      "size": "288x96",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 86,
+      "cyan": 0,
+      "lowest": 95,
+      "origin": [
+        144,
+        96
+      ],
+      "opaque_bbox": [
+        13,
+        38,
+        281,
+        96
+      ],
+      "visible_height": 58,
+      "horizontal_pairs": 2676,
+      "different_pairs": 2303,
+      "exact_change_percent": 86.06128550074739,
+      "sha256": "c45c25844a2ddfa4a503d05cc0c843d1864c3b9858d52f70739606439bc9df8c"
+    }
+  },
+  "interfaces": {
+    "checks": {
+      "left_equals_broken": true,
+      "right_equals_broken": true,
+      "self_repeat_exact": true,
+      "02_to01_exact": true,
+      "01_to02_exact": true
+    },
+    "assembly": [
+      [
+        "low_wall_ashlar_02",
+        184,
+        140
+      ],
+      [
+        "low_wall_ashlar_02",
+        424,
+        140
+      ],
+      [
+        "low_wall_broken_01",
+        611,
+        140
+      ],
+      [
+        "wall_pillar_01",
+        60,
+        140
+      ],
+      [
+        "low_wall_ashlar_02",
+        184,
+        320
+      ],
+      [
+        "low_wall_ashlar_01",
+        371,
+        320
+      ],
+      [
+        "low_wall_ashlar_02",
+        552,
+        320
+      ],
+      [
+        "wall_pillar_01",
+        60,
+        320
+      ]
+    ],
+    "joint_labels": [
+      "gate /02",
+      "02/02",
+      "02/broken",
+      "gate/02",
+      "02/01",
+      "01/02"
+    ]
+  },
+  "course_profiles": {
+    "02": {
+      "row_luminance": {
+        "62": 89.2534298245614,
+        "63": 86.72293859649123,
+        "64": 82.60983333333334,
+        "65": 74.93852192982456,
+        "66": 21.46765789473684,
+        "67": 135.56122368421055,
+        "68": 100.29270614035084,
+        "69": 94.12113157894738
+      },
+      "main_mortar_darkest_row_62_69": 66
+    },
+    "broken01": {
+      "row_luminance": {
+        "62": 102.68896296296296,
+        "63": 91.87525925925924,
+        "64": 86.44974074074071,
+        "65": 74.89385185185185,
+        "66": 43.51481481481482,
+        "67": 120.51418518518516,
+        "68": 90.88225925925924,
+        "69": 102.61803703703703
+      },
+      "main_mortar_darkest_row_62_69": 66
+    }
+  }
+}
