@@ -25,6 +25,7 @@ const ROOM_EXIT := preload("res://scripts/world/v3/room_exit.gd")
 const SCREEN_FADE := preload("res://scripts/world/v3/screen_fade.gd")
 const LEXICON := preload("res://scripts/prototypes/graveyard_room/lexicon_overlay.gd")
 const HUD_SCENE := preload("res://scenes/ui/CombatHUD.tscn")
+const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const SKELETON_DATA := preload("res://data/enemies/enemy_grave_skeleton.tres")
 const CHISEL := preload("res://data/loot/loot_weathered_chisel.tres")
 
@@ -138,7 +139,7 @@ func _ready() -> void:
 	rewards.chisel = CHISEL
 	add_child(rewards)
 
-	hero = HeroB1.new()
+	hero = HERO_SCENE.instantiate()
 	_lexicon = LEXICON.new()
 	add_child(_lexicon)
 	_lexicon.set_process_unhandled_input(false) # Tab is routed here, so it respects combat and transitions

@@ -1,7 +1,7 @@
 class_name PixelArt
 extends RefCounted
 ## Small helpers for the v3 pixel world: loading PNGs straight from disk (no editor import
-## needed), contact shadows, and the radial lantern light. All sizes are native pixels.
+## needed), and contact shadows. All sizes are native pixels.
 
 
 static func image(res_path: String) -> Image:
@@ -26,20 +26,6 @@ static func ellipse_sprite(width: int, height: int, color: Color, offset := Vect
 	s.texture = ImageTexture.create_from_image(img)
 	s.position = offset.round()
 	return s
-
-
-static func radial_light(size: int) -> Texture2D:
-	var gradient := Gradient.new()
-	gradient.set_color(0, Color(1, 1, 1, 1))
-	gradient.set_color(1, Color(1, 1, 1, 0))
-	var tex := GradientTexture2D.new()
-	tex.gradient = gradient
-	tex.fill = GradientTexture2D.FILL_RADIAL
-	tex.fill_from = Vector2(0.5, 0.5)
-	tex.fill_to = Vector2(1.0, 0.5)
-	tex.width = size
-	tex.height = size
-	return tex
 
 
 static func lowest_opaque_row(img: Image) -> int:
