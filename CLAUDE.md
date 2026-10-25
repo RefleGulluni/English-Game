@@ -91,11 +91,12 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 - **Claude**：全部程序（Godot 代码、场景、原型与正式游戏）；参与部分方向决定；为美术组撰写素材需求与提示词，并在 Godot 中验收素材。
 - **Codex 角色设计组**（2026-10-23 新开）：主角与角色设计，**也负责主角动画**，交付到 `art/character_design/`（动画在 `anim/`，QA 在 `anim/qc/hero_B1_anim_QA.md`，累计记录）。它的 QA 会如实写出没做到的地方，值得认真读。
-  2026-10-25 起**也负责场景物件**（墓碑、墙、铁栏、墓穴……）：按主角的真像素标准在原生尺寸上逐个制作，交付到 `art/cemetery_v3/props/`（D-026，需求 `docs/CEMETERY_PROPS_PIXEL_REQUEST.md`，建议与骷髅设计分开对话）。
+  2026-10-25 起**也负责场景物件**（墓碑、墙、铁栏、墓穴……）：按主角的真像素标准在原生尺寸上逐个制作，交付到 `art/cemetery_v3/props/`（D-026，需求 `docs/CEMETERY_PROPS_PIXEL_REQUEST.md`）。**先做物件，通过后再做骷髅设计**（`docs/SKELETON_DESIGN_REQUEST.md`，截至 2026-10-25 尚未发出）。
   2026-10-24 决定暂不新开动画组；等到敌人 / NPC 动画要和主角动画同时做时，再开“怪物 / NPC 组”。对话太长时给同一组开新对话，先读 HERO_DESIGN 与 HERO_ANIMATION_REQUEST 即可接上。
 - **Codex 美术组**：按需求生成素材，交付到 `art/` 并附 `qc/*_QA.md`。2026-10-25 起负责**地面与整体构图**；它两轮墓园背景（`art/cemetery_v3/design/`、`style_test/`）都被判定为“被像素化的写实画”，原因是先生成大图再缩小。
 - **画风锚点**：北极星图 `art/pixel_test/source/graveyard_P_reference.png`；主角放进去的效果 `docs/reference/northstar_with_hero_B1.png`。给美术相关组写需求时**一定附图片路径**，不要只引用文字。
 - **Codex 方向组**：维护 Obsidian 中的设计文档（World Bible、Art Direction Bible 等）。2026-10-24 起 Claude 也可直接修改知识库（见上文“设计知识库”）。
+- **每个组就是一个对话**（用户的说法）。不要建议给同一组同时开两个对话；同一组的多件事排先后顺序。只有对话太长时，才给同一组换一个新对话接着做。
 - 用户在三方之间转达消息。给某一组的文字要明确标注“发给谁”。
 - 过渡期：此前由 Codex 程序组编写的正式游戏代码，接手前先阅读 README 与 `docs/` 中的运行时文档；若工作区有不是本人做的未提交改动，先向用户确认来源再处理。
 - `addons/godot_ai/`（及 `project.godot` 里对应的 autoload / 插件项）是用户自己装的，2026-10-24 已提交。它是连接 Godot 编辑器的 MCP 插件，但还没接到 Claude Code：要用得在 Godot 的 Godot AI 面板里对 Claude Code 点 Configure，再开新对话。

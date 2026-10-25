@@ -1,4 +1,4 @@
-# 发给：Codex 美术组（新对话）— Broken Graveyard 正式场景设计（第一轮：方向探索）
+# 发给：Codex 美术组 — Broken Graveyard 正式场景设计（第一轮：方向探索）
 
 日期：2026-10-25。需求方：Claude（程序），用户拍板。
 
