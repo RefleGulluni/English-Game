@@ -1,0 +1,646 @@
+{
+  "tombstone_flat_01": {
+    "source": "tombstone_flat_01",
+    "canvas": [
+      112,
+      112
+    ],
+    "origin": [
+      56,
+      112
+    ],
+    "offset": [
+      12,
+      19
+    ],
+    "native_edit": null,
+    "prop": {
+      "colors": 44,
+      "adjacent_change": 88.002248,
+      "bbox": [
+        25,
+        19,
+        83,
+        91
+      ],
+      "height": 72,
+      "opaque": 3636
+    },
+    "base": {
+      "colors": 15,
+      "adjacent_change": 78.511769,
+      "bbox": [
+        12,
+        86,
+        99,
+        110
+      ],
+      "height": 24,
+      "opaque": 1374
+    }
+  },
+  "tombstone_pointed_01": {
+    "source": "tombstone_pointed_01",
+    "canvas": [
+      96,
+      112
+    ],
+    "origin": [
+      48,
+      112
+    ],
+    "offset": [
+      19,
+      11
+    ],
+    "native_edit": {
+      "remove_native_rows": [
+        63,
+        71
+      ],
+      "reason": "Shorten unlettered shaft by8px, preserve pointed crown and carved marks."
+    },
+    "prop": {
+      "colors": 44,
+      "adjacent_change": 84.585153,
+      "bbox": [
+        24,
+        11,
+        65,
+        96
+      ],
+      "height": 85,
+      "opaque": 2381
+    },
+    "base": {
+      "colors": 15,
+      "adjacent_change": 77.659574,
+      "bbox": [
+        19,
+        91,
+        76,
+        110
+      ],
+      "height": 19,
+      "opaque": 694
+    }
+  },
+  "tombstone_small_01": {
+    "source": "tombstone_small_01",
+    "canvas": [
+      80,
+      64
+    ],
+    "origin": [
+      40,
+      64
+    ],
+    "offset": [
+      12,
+      13
+    ],
+    "native_edit": {
+      "remove_native_rows": [
+        29,
+        34
+      ],
+      "reason": "Shorten one blank panel strip, no scaling."
+    },
+    "prop": {
+      "colors": 48,
+      "adjacent_change": 80.938416,
+      "bbox": [
+        14,
+        13,
+        67,
+        52
+      ],
+      "height": 39,
+      "opaque": 1744
+    },
+    "base": {
+      "colors": 15,
+      "adjacent_change": 69.620253,
+      "bbox": [
+        12,
+        50,
+        68,
+        57
+      ],
+      "height": 7,
+      "opaque": 250
+    }
+  },
+  "obelisk_01": {
+    "source": "obelisk_01",
+    "canvas": [
+      112,
+      160
+    ],
+    "origin": [
+      56,
+      160
+    ],
+    "offset": [
+      14,
+      17
+    ],
+    "native_edit": {
+      "remove_native_rows": [
+        40,
+        78
+      ],
+      "reason": "Remove38native shaft rows, retaining apex, long cracks, taper and all plinth courses."
+    },
+    "prop": {
+      "colors": 49,
+      "adjacent_change": 82.518302,
+      "bbox": [
+        22,
+        17,
+        83,
+        138
+      ],
+      "height": 121,
+      "opaque": 3545
+    },
+    "base": {
+      "colors": 15,
+      "adjacent_change": 70.467142,
+      "bbox": [
+        14,
+        130,
+        98,
+        158
+      ],
+      "height": 28,
+      "opaque": 1317
+    }
+  },
+  "grave_slab_01": {
+    "source": "grave_slab_01",
+    "canvas": [
+      192,
+      112
+    ],
+    "origin": [
+      96,
+      112
+    ],
+    "offset": [
+      18,
+      22
+    ],
+    "native_edit": null,
+    "prop": {
+      "colors": 44,
+      "adjacent_change": 82.961547,
+      "bbox": [
+        27,
+        23,
+        170,
+        84
+      ],
+      "height": 61,
+      "opaque": 4785
+    },
+    "base": {
+      "colors": 15,
+      "adjacent_change": 80.357143,
+      "bbox": [
+        18,
+        22,
+        174,
+        97
+      ],
+      "height": 75,
+      "opaque": 1697
+    }
+  },
+  "rubble_pile_01": {
+    "source": "rubble_pile_01",
+    "canvas": [
+      80,
+      48
+    ],
+    "origin": [
+      40,
+      48
+    ],
+    "offset": [
+      12,
+      17
+    ],
+    "native_edit": null,
+    "prop": {
+      "colors": 39,
+      "adjacent_change": 89.052632,
+      "bbox": [
+        13,
+        17,
+        64,
+        34
+      ],
+      "height": 17,
+      "opaque": 500
+    },
+    "base": {
+      "colors": 13,
+      "adjacent_change": 75.0,
+      "bbox": [
+        12,
+        31,
+        68,
+        37
+      ],
+      "height": 6,
+      "opaque": 134
+    }
+  },
+  "grave_vase_01": {
+    "source": "grave_vase_01_v2",
+    "canvas": [
+      48,
+      64
+    ],
+    "origin": [
+      24,
+      64
+    ],
+    "offset": [
+      16,
+      26
+    ],
+    "native_edit": {
+      "remove_native_rows": [
+        9,
+        16
+      ],
+      "contact_decal_from": "tombstone_upright_01_base.png",
+      "crop": [
+        32,
+        96,
+        62,
+        105
+      ],
+      "decal_offset": [
+        9,
+        48
+      ]
+    },
+    "prop": {
+      "colors": 36,
+      "adjacent_change": 83.42246,
+      "bbox": [
+        16,
+        26,
+        31,
+        52
+      ],
+      "height": 26,
+      "opaque": 224
+    },
+    "base": {
+      "colors": 31,
+      "adjacent_change": 87.5,
+      "bbox": [
+        9,
+        48,
+        39,
+        57
+      ],
+      "height": 9,
+      "opaque": 171
+    }
+  },
+  "candles_01": {
+    "source": "candles_01_v2",
+    "canvas": [
+      64,
+      48
+    ],
+    "origin": [
+      32,
+      48
+    ],
+    "offset": [
+      11,
+      18
+    ],
+    "native_edit": {
+      "remove_native_rows": null,
+      "contact_decal_from": "tombstone_upright_01_base.png",
+      "crop": [
+        19,
+        98,
+        68,
+        108
+      ],
+      "decal_offset": [
+        7,
+        32
+      ]
+    },
+    "prop": {
+      "colors": 25,
+      "adjacent_change": 78.90625,
+      "bbox": [
+        11,
+        18,
+        53,
+        34
+      ],
+      "height": 16,
+      "opaque": 414
+    },
+    "base": {
+      "colors": 29,
+      "adjacent_change": 71.604938,
+      "bbox": [
+        7,
+        32,
+        56,
+        42
+      ],
+      "height": 10,
+      "opaque": 335
+    }
+  },
+  "grave_lantern_01": {
+    "source": "grave_lantern_01_v2",
+    "canvas": [
+      48,
+      64
+    ],
+    "origin": [
+      24,
+      64
+    ],
+    "offset": [
+      16,
+      20
+    ],
+    "native_edit": {
+      "remove_native_rows": [
+        20,
+        22
+      ],
+      "contact_decal_from": "tombstone_cross_01_base.png",
+      "crop": [
+        31,
+        113,
+        63,
+        123
+      ],
+      "decal_offset": [
+        8,
+        44
+      ]
+    },
+    "prop": {
+      "colors": 31,
+      "adjacent_change": 91.883117,
+      "bbox": [
+        16,
+        20,
+        32,
+        52
+      ],
+      "height": 32,
+      "opaque": 343
+    },
+    "base": {
+      "colors": 28,
+      "adjacent_change": 85.840708,
+      "bbox": [
+        8,
+        48,
+        40,
+        54
+      ],
+      "height": 6,
+      "opaque": 120
+    }
+  },
+  "tombstone_upright_02_broken": {
+    "source": "fallen_upright02_fragment_v3",
+    "parent": "tombstone_upright_02",
+    "canvas": [
+      144,
+      144
+    ],
+    "origin": [
+      72,
+      144
+    ],
+    "parent_offset": [
+      24,
+      32
+    ],
+    "surviving_parent_below_y": 67,
+    "native_edit": {
+      "fracture_y": [
+        64,
+        64,
+        63,
+        63,
+        64,
+        65,
+        65,
+        64,
+        63,
+        62,
+        62,
+        63,
+        63,
+        64,
+        65,
+        65,
+        64,
+        64,
+        63,
+        63,
+        64,
+        64,
+        65,
+        64,
+        63,
+        63,
+        64,
+        65,
+        65,
+        64,
+        64,
+        63,
+        63,
+        64,
+        65,
+        65,
+        64,
+        64,
+        64,
+        65
+      ],
+      "fracture_lip_parent_crop": [
+        30,
+        33,
+        68,
+        35
+      ],
+      "fragment_remove_native_rows": [
+        13,
+        25
+      ],
+      "fragment_offset": [
+        4,
+        111
+      ]
+    },
+    "prop": {
+      "colors": 44,
+      "adjacent_change": 84.615385,
+      "bbox": [
+        49,
+        94,
+        97,
+        136
+      ],
+      "height": 42,
+      "opaque": 1575
+    },
+    "base": {
+      "colors": 69,
+      "adjacent_change": 69.898305,
+      "bbox": [
+        4,
+        111,
+        105,
+        143
+      ],
+      "height": 32,
+      "opaque": 1528
+    }
+  },
+  "tombstone_cross_01_broken": {
+    "source": "fallen_cross_fragment_v3",
+    "parent": "tombstone_cross_01",
+    "canvas": [
+      112,
+      144
+    ],
+    "origin": [
+      56,
+      144
+    ],
+    "parent_offset": [
+      8,
+      16
+    ],
+    "native_edit": {
+      "remove_arm_rect": [
+        0,
+        39,
+        38,
+        72
+      ],
+      "root_edit_x": 38,
+      "fragment_remove_columns": [
+        24,
+        51
+      ],
+      "fragment_right_translation_y": -6,
+      "fragment_offset": [
+        14,
+        113
+      ]
+    },
+    "prop": {
+      "colors": 44,
+      "adjacent_change": 84.255147,
+      "bbox": [
+        29,
+        40,
+        83,
+        135
+      ],
+      "height": 95,
+      "opaque": 2590
+    },
+    "base": {
+      "colors": 72,
+      "adjacent_change": 77.677565,
+      "bbox": [
+        15,
+        114,
+        90,
+        143
+      ],
+      "height": 29,
+      "opaque": 939
+    }
+  },
+  "tombstone_upright_01_tilted": {
+    "redrawn_source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-1ad226b8-1188-4115-9537-d6785dcab35f.png",
+    "digital_rotation_or_shear": false,
+    "centerline_fit_rows": [
+      25,
+      65
+    ],
+    "lean_left_angle_degrees": 11.257134166552152,
+    "registration": {
+      "prop_offset": [
+        6,
+        21
+      ],
+      "base_offset": [
+        6,
+        17
+      ],
+      "canvas": [
+        112,
+        112
+      ]
+    },
+    "identity": [
+      "rounded crown",
+      "left crown olive moss",
+      "crown rain streak",
+      "three unreadable incisions",
+      "lowerleft pale lichen",
+      "right thickness and lower fracture"
+    ],
+    "source": "tombstone_upright_01_tilted",
+    "canvas": [
+      112,
+      112
+    ],
+    "origin": [
+      56,
+      112
+    ],
+    "prop": {
+      "colors": 44,
+      "adjacent_change": 83.106418,
+      "bbox": [
+        12,
+        21,
+        81,
+        100
+      ],
+      "height": 79,
+      "opaque": 3682
+    },
+    "base": {
+      "colors": 15,
+      "adjacent_change": 73.871528,
+      "bbox": [
+        6,
+        86,
+        91,
+        111
+      ],
+      "height": 25,
+      "opaque": 1210
+    }
+  }
+}

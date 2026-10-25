@@ -1,0 +1,40 @@
+{
+  "source": "rubble_pile_01",
+  "canvas": [
+    80,
+    48
+  ],
+  "origin": [
+    40,
+    48
+  ],
+  "offset": [
+    12,
+    17
+  ],
+  "native_edit": null,
+  "prop": {
+    "colors": 39,
+    "adjacent_change": 89.052632,
+    "bbox": [
+      13,
+      17,
+      64,
+      34
+    ],
+    "height": 17,
+    "opaque": 500
+  },
+  "base": {
+    "colors": 13,
+    "adjacent_change": 75.0,
+    "bbox": [
+      12,
+      31,
+      68,
+      37
+    ],
+    "height": 6,
+    "opaque": 134
+  }
+}

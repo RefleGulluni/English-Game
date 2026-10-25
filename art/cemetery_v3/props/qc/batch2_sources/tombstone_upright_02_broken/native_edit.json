@@ -1,0 +1,99 @@
+{
+  "source": "fallen_upright02_fragment_v3",
+  "parent": "tombstone_upright_02",
+  "canvas": [
+    144,
+    144
+  ],
+  "origin": [
+    72,
+    144
+  ],
+  "parent_offset": [
+    24,
+    32
+  ],
+  "surviving_parent_below_y": 67,
+  "native_edit": {
+    "fracture_y": [
+      64,
+      64,
+      63,
+      63,
+      64,
+      65,
+      65,
+      64,
+      63,
+      62,
+      62,
+      63,
+      63,
+      64,
+      65,
+      65,
+      64,
+      64,
+      63,
+      63,
+      64,
+      64,
+      65,
+      64,
+      63,
+      63,
+      64,
+      65,
+      65,
+      64,
+      64,
+      63,
+      63,
+      64,
+      65,
+      65,
+      64,
+      64,
+      64,
+      65
+    ],
+    "fracture_lip_parent_crop": [
+      30,
+      33,
+      68,
+      35
+    ],
+    "fragment_remove_native_rows": [
+      13,
+      25
+    ],
+    "fragment_offset": [
+      4,
+      111
+    ]
+  },
+  "prop": {
+    "colors": 44,
+    "adjacent_change": 84.615385,
+    "bbox": [
+      49,
+      94,
+      97,
+      136
+    ],
+    "height": 42,
+    "opaque": 1575
+  },
+  "base": {
+    "colors": 69,
+    "adjacent_change": 69.898305,
+    "bbox": [
+      4,
+      111,
+      105,
+      143
+    ],
+    "height": 32,
+    "opaque": 1528
+  }
+}

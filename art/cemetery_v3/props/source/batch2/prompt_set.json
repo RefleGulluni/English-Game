@@ -1,0 +1,123 @@
+{
+  "mode": "built-in image_gen",
+  "initial": "ONE standalone dark cemetery game prop, TRUE LARGE-SQUARE PIXEL ART. Draw directly as large uniform square cells, not fine realism, not a painting later pixelated. Every small1-3cell cluster has a material reason (pit, chipped edge, old rain stain, lichen, moss, iron facet), no random salt-pepper noise. Same subdued warm/cool gray stone, sparse gray-beige lichen and olive moss as references; upper-left light, darkest material contours, no ring outline. Material detail richness like native96px B1. All inscription marks are shallow unreadable incisions: NEVER readable letters, words or numerals. Dark low contact decal of compressed wet mud, pressed DARK olive-brown dead grass, a few gray chips, no bright orange halo or cast shadow. Solid #FF00FF background, nothing else, no labels or grid, NO cyan/teal/glow, AA, blur or smooth gradients. Subject centered, full silhouette inside envelope with wide blank margin. Last input image is an abstract size envelope ONLY; replace rectangles with subject, don't reproduce them. ",
+  "regeneration_common": "Create a standalone TRUE VERY LOW RESOLUTION PIXEL ART game sprite, solid #FF00FF background. DO NOT make a detailed illustration or pixelate realism. Every pixel is a HUGE solid square, one uniform grid, no fine pixels INSIDE any square. Sparse intentional material clusters: worn edges, lichen, pit, restrained moss, rainstain. Same muted cemetery gray-beige stone as reference; no new color variant, no gold/brown cast, no cyan. Material dark contours, no black ring/no cast shadow. The supplied image is ONLY a style/material reference. Full subject centered with generous blank margin. No text. ",
+  "regeneration_jobs": [
+    [
+      "grave_vase_01_v2",
+      "A tiny funerary vase and three dry dead flower stalks. VASE body exactly 12 square cells tall, dry stems another10cells, TOTAL22square cells high, 12cells wide; the entire object is only22 squares high on a48x48 logical canvas, magnified32x. Count the cells! GIANT32-40px square cells in output. Wide simple chipped rim, dark mouth, weathered gray stone belly, dirty planted foot, muted brown dead stems. Dark compressed soil at foot."
+    ],
+    [
+      "candles_01_v2",
+      "Three or four TINY extinguished dirty wax candles on a low flat stone. TOTAL14 square cells high and24square cells wide including wax drips and slab. Each candle width3-4cells. Black wick1cell, NO flame. On40x32 logical canvas magnified40x, gigantic40px OUTPUT squares, no subdivision. Count only14 squares vertically."
+    ],
+    [
+      "grave_lantern_01_v2",
+      "One TINY UNLIT old iron ground lantern. Total28 square cells high including loop,17cells wide. 1cell wire loop, pyramidal vented cap, dark iron cage with dirty brown-gray glass, dark interior. NO flame, NO luminous yellow, no glow. Each OUTPUT pixel block is a gigantic30-40px square. Only28 squares vertically on48x48 logical canvas. Count28squares high, not50."
+    ],
+    [
+      "obelisk_01_v2",
+      "A slender stone obelisk taller than96px hero. TOTAL122square cells high, shaft19square cells wide and steppedfoot38square cells wide. A 4-sided pointed pyramidal apex. Gray beige weathered stone, olive moss only at base, pale gray lichen and few cracks, light from upperleft, narrow dark rightplane. Large13px square outputcells, count122 cells high, NOT180. Native96x160 logical canvas."
+    ]
+  ],
+  "fragment_v2": [
+    [
+      "fallen_upright02_fragment_v2",
+      "Draw ONLY the UPPER BROKEN HALF of the reference second tombstone, fallen FLAT ON THE EARTH, newly drawn overhead perspective. A short BROAD shallow slab fragment with flat crown and missing corner on crown's RIGHT, moss at crown's LEFT; only ONE faint cut mark survives, not three. Clearly just HALF of marker, not a whole complete tombstone. Rough old moss-grown gray broken bottomedge, not clean newwhite. Native footprint about42square cells long by25cells in projected height. Giant24px square cells. No standing stone. Dark pressedsoil aroundfoot. Same muted grays andolive as reference."
+    ],
+    [
+      "fallen_cross_fragment_v2",
+      "Draw ONLY ONE detached cross arm from reference. Tiny blunt worn gray stone BLOCK LYING FLAT ON GROUND, total22square cells long by9square cells projected height; only3cells thick sideplane. No cross shape, no upright object, no root protrusion. Old chipped rounded gray mossy cut end. Giant45px OUTPUT square cells, no fine pixels. Only22squares long,9high. Same weathered gray with subduedolive lichen. Dark compressedmud contactdecal."
+    ]
+  ],
+  "fragment_v3_common": "Precise object edit / game sprite. Solid #FF00FF background. Use the reference's EXACT gigantic square pixel size and low resolution, do NOT subdivide cells, do NOT draw a detailed large painting. Each reference square is ONE native pixel. Light fromupperleft, no castshadow, no text, no cyan. Very dark flattened pressedsoil only under object. ",
+  "fragment_v3": [
+    [
+      "fallen_cross_fragment_v3",
+      "arm_ref.png",
+      "Redraw THIS SAME SMALL CROSS ARM LYING FLAT on the earth, not standing. A short broad stone brick,22 pixelcells long,10pixelcells high in projected footprint. About2cells side thickness. Keep the darkolive moss running across this arm and chipped lightgray top left. Broken root old roundedmoss, notwhite. Newoverhead perspective. Do not render anything smaller than the reference pixelcells."
+    ],
+    [
+      "fallen_upright02_fragment_v3",
+      "upper_half_ref.png",
+      "Redraw THIS SAME UPPER HALF ONLY of the broken-corner headstone LYING FLAT on earth. Keep LEFTcrown olive moss, missingRIGHT crowncorner, dampstreak andonefaint unreadablegroove. A BROAD small flat fragment, not the wholemarker. About42pixelcells long,25cells projectedheight,4cells side thickness, with oldroundedmossgray lowerfracture. Not upright. Eachpainted outputcell about30-40px."
+    ]
+  ],
+  "initial_generation": {
+    "common": "ONE standalone dark cemetery game prop, TRUE LARGE-SQUARE PIXEL ART. Draw directly as large uniform square cells, not fine realism, not a painting later pixelated. Every small1-3cell cluster has a material reason (pit, chipped edge, old rain stain, lichen, moss, iron facet), no random salt-pepper noise. Same subdued warm/cool gray stone, sparse gray-beige lichen and olive moss as references; upper-left light, darkest material contours, no ring outline. Material detail richness like native96px B1. All inscription marks are shallow unreadable incisions: NEVER readable letters, words or numerals. Dark low contact decal of compressed wet mud, pressed DARK olive-brown dead grass, a few gray chips, no bright orange halo or cast shadow. Solid #FF00FF background, nothing else, no labels or grid, NO cyan/teal/glow, AA, blur or smooth gradients. Subject centered, full silhouette inside envelope with wide blank margin. Last input image is an abstract size envelope ONLY; replace rectangles with subject, don't reproduce them. ",
+    "items": [
+      [
+        "tombstone_flat_01",
+        "A thick upright FLAT-TOP rectangular grave marker, blunt horizontal top with rounded eroded corners, NOT an arch or pointed roof. Stone native visible height66px, width38px, same scale as parent tombstone. Recessed simple blank inscription panel with3 faint worn strokes, diagonal hairline crack and lowerleft lichen. Top and narrow right thickness visible, no large plinth. Native96x112 canvas displayed8x, square cells same size as full references.",
+        false
+      ],
+      [
+        "tombstone_pointed_01",
+        "A narrow tall GOTHIC POINTED-ARCH grave marker, sharply pointed crown and tapering inset panel, native height84px, width30px. Distinct thin vertical silhouette vs parent broad round arch. Gray stone with eroded chipped point, sparse olive moss near one shoulder, two faint incised marks, long damp streak. No cross, no gold crest, no plinth. Native96x128 canvas shown8x. Large cell size as full references.",
+        false
+      ],
+      [
+        "tombstone_small_01",
+        "A VERY SMALL squat single footstone/child grave marker, no plinth, a broad rounded low rectangular lump with one worn blank recess. ONLY36 square pixel cells high, about22 cells wide, in a48x64 LOGICAL canvas shown20x. Very chunky square cells, about20-25 OUTPUT pixels wide, NOT the fine8px cell size used for large tombstones. Sparse gray lichen, old narrow crack, olive moss at foot. Whole subject occupies central half of the canvas height. Detailed but tiny readable native shape.",
+        true
+      ],
+      [
+        "obelisk_01",
+        "A very tall slender ancient stone OBELISK: narrow square pillar tapering towards a four-sided pyramidal pointed apex, small stepped stone plinth at bottom. Native stone height120px, shaft width19px, base width40px; taller than96px hero. 3/4 overhead shows light front-left plane and dark narrow right face. Fine old fissures, rain streak and scattered gray lichen, restrained moss on foot, no readable glyphs. NOT a cross or tombstone plaque. Native96x160 at8x. Same native pixel size as full reference tombstones.",
+        false
+      ],
+      [
+        "grave_slab_01",
+        "A LOW FLAT GRAVE MARKER SLAB LYING FLUSH ON THE EARTH. One long thin rectangular weathered gray stone slab, no coffin beneath, NO raised stone box, NO upright headstone, NOT an opened lid leaning on edge. Seen from overhead3/4, diagonal long footprint about96x44 native cells, side thickness ONLY8px. All4 corners lie on the same flat ground plane, slab level, broad top face with one unreadable incised border and2 shallow strokes, cracked corner, sparse olive moss. Dark mud slightly covers edges. Native144x96 canvas shown12x. Large obvious square cells.",
+        false
+      ],
+      [
+        "fallen_upright02_fragment",
+        "ONLY THE DETACHED UPPER HALF of the second referenced broken-corner gravestone, LYING FLAT on ground in3/4 perspective. No standing stump or entire gravestone. It is the same stone: flat crown with missing upper RIGHT corner, LEFT crown olive moss and lichen, rain streak below crown, same thickness. Upper fragment native length40px bywidth28px, old rounded mossy broken edge at its lower cut, NO fresh white fracture. Horizontal flattened footprint, top face points upward, only low thickness4px. No bitmap rotation: newly draw the changed3D perspective. Native72x48 shown20x; uniform20-25px output squares.",
+        true
+      ],
+      [
+        "fallen_cross_fragment",
+        "ONLY ONE SMALL detached stone CROSS ARM, lying in pressed dark grass on ground. No upright cross, no entire cross. The same blocky short horizontal arm from reference cross with its gray-beige chipped upper edge and olive moss near root. Native length22px, visible projected height9px, low thickness3px. Cut end old rounded eroded mossy gray, never fresh white. New3D perspective, not rotated bitmap. Native48x32 canvas shown32x, GIANT pixel squares about30-40 OUTPUT pixels, very low resolution, do NOT subdivide squares or render tiny details.",
+        true
+      ],
+      [
+        "rubble_pile_01",
+        "A TINY LOW PILE of5-7 angular gray stone fragments and broken masonry blocks, dirt trapped between them. Native height14px, width30px. No big rock or giant boulder, no tall monument. Same old gray stone with olive dust and muted lichen specks. Distinct angular block silhouettes, darkest crevices and upperleft chipped facets, DARK sunken muddy ground around it. Native48x32 shown32x, enormous flat square cells about30-40output pixels, keep14pixel-tall silhouette.",
+        true
+      ],
+      [
+        "grave_vase_01",
+        "A TINY old stone funerary VASE containing3-4 thin withered flower stems with small dead bent heads, no living colored flowers. Vase15native cells high plus dry stems8cells, TOTAL23px; width16px. Simple chipped flared stone lip, dark mouth hole, worn belly, flat buried foot, no ornate pedestal. Same gray/olive material. Native48x48 shown24x; LARGE24-32output pixel square blocks. Tiny game prop, not a detailed large illustration.",
+        true
+      ],
+      [
+        "candles_01",
+        "A TINY group of3 or4 EXTINGUISHED old wax candles at unequal heights on a small flat gray stone, tallest visible height14native cells, group width21cells. Short charcoal black wicks, no flame, absolutely no light or glow. Muted dirty ivory/gray-beige wax (not bright white), thick wax tears flowing down and hardened puddles on dark stone. Native40x32 shown32x, enormous uniform30-40output pixel cells, only14cells high.",
+        true
+      ],
+      [
+        "grave_lantern_01",
+        "A TINY unlit ground-standing iron grave LANTERN, total native height28px including fixed carrying loop, width19px. Dark gray aged iron square frame, domed vented roof, dirty brown-gray glass, dark interior with an unlit candle wick barely seen. NO flame, fire, emissive yellow panels, glow or light halo. Upperleft gray metal facets and muted rust only, little olive moss on buried foot. Native48x48 shown24x: big24-32output-pixel squares, low native resolution but clean recognizable loop/roof/glass silhouette.",
+        true
+      ]
+    ],
+    "raw": {
+      "tombstone_flat_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c661fa44-d169-44a6-b604-f140654d7d11.png",
+      "tombstone_pointed_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-aa69d744-b23f-4d61-bec4-a13803ae9329.png",
+      "tombstone_small_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-4426a58b-1e1b-45bb-a912-3dab26a3f656.png",
+      "obelisk_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-8a6445dc-8690-4c3c-a633-a997527fafcb.png",
+      "grave_slab_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-cca8e106-e15e-4546-8630-fd11d5ba7d80.png",
+      "fallen_upright02_fragment": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-d8ab0193-6c9e-483d-99dc-0829183844ca.png",
+      "fallen_cross_fragment": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-aac39137-2483-4743-96a0-4053996127a6.png",
+      "rubble_pile_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-9f63d2dd-0fde-4b81-bb9d-13e37afb25a8.png",
+      "grave_vase_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-1a4f0c79-a939-4378-bce4-ec9c4b5a15b1.png",
+      "candles_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-782f9de1-72ba-4191-a360-aaeb7c56534e.png",
+      "grave_lantern_01": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-78971e1f-1a7e-49e8-800d-e329840ad79b.png"
+    }
+  },
+  "tilt": {
+    "source": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-1ad226b8-1188-4115-9537-d6785dcab35f.png",
+    "prompt": "EDIT/REDRAW the SAME ancient gravestone from reference1 into a modest LEFT-LEANING state. This is the exact SAME stone, NOT a new gravestone design. Reference1 locks its identity; reference2 B1 locks detailed native pixel style and pixel-square size; reference3 is ONLY an abstract pose envelope. Do not paint the abstract gray polygons.\nFreshly DRAW the left-leaning3D stone in large-square true pixel art. Do NOT rotate, shear, resample or transform the existing sprite bitmap. The geometry leans about12degrees to SCREEN LEFT from its buried foot; top center shifts about16 native pixels left of the foot over a76px stone height. Ground stays HORIZONTAL, not a tilted elliptical base. The carved face is slanted with the stone but illumination STILL comes from UPPER LEFT; left-facing chips stay light and the narrow right thickness stays dark, not rotated lighting. Native stone visible height about76px, same size as reference1.\nIdentity markers MUST remain in corresponding local places: same rounded arched crown, olive moss hanging over LEFT crown, long dark narrow rain streak from crown down upper face, same THREE unreadable shallow horizontal incised scars around middle (NO readable letters), pale gray-beige lichen patch on lower-left face, dark crack running toward right/lower edge, thick dark right side. Same worn warm/coolgray stone, olive moss and muted lichen, rich44-48 shades in intentional1-3pixel clusters. No new symbols.\nIt has slowly sunk LEFT: left soil is COMPRESSED and low, right side wet earth is pried up with3-4 small dark mud clods and torn compressed DARK dead grass. Decal visibly asymmetric, dark not gold/orange. No floating/standing rock plinth. Whole subject and dark low contact decal fully inside frame, broad pure#FF00FF surround.\nLarge uniform square pixels like the8x-enlarged references, no information smaller than one square, no smooth illustration, photo detail, tiny speckle, AA, blur or gradients. Contour uses darkest stone tone, no black outline ring. No cyan/teal, glow, cast ground shadow, text, labels or grid. One leaned gravestone only, not a comparison sheet."
+  }
+}

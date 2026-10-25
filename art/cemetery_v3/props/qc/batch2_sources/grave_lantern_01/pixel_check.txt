@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+/English-Game/art/cemetery_v3/props/grave_lantern_01.png     48x64   OK   31    92    0    51
+ish-Game/art/cemetery_v3/props/grave_lantern_01_base.png     48x64   OK   28    86    0    53
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

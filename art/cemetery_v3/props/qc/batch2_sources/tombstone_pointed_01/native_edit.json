@@ -1,0 +1,46 @@
+{
+  "source": "tombstone_pointed_01",
+  "canvas": [
+    96,
+    112
+  ],
+  "origin": [
+    48,
+    112
+  ],
+  "offset": [
+    19,
+    11
+  ],
+  "native_edit": {
+    "remove_native_rows": [
+      63,
+      71
+    ],
+    "reason": "Shorten unlettered shaft by8px, preserve pointed crown and carved marks."
+  },
+  "prop": {
+    "colors": 44,
+    "adjacent_change": 84.585153,
+    "bbox": [
+      24,
+      11,
+      65,
+      96
+    ],
+    "height": 85,
+    "opaque": 2381
+  },
+  "base": {
+    "colors": 15,
+    "adjacent_change": 77.659574,
+    "bbox": [
+      19,
+      91,
+      76,
+      110
+    ],
+    "height": 19,
+    "opaque": 694
+  }
+}

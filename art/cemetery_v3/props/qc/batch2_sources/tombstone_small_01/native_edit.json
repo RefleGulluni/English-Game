@@ -1,0 +1,46 @@
+{
+  "source": "tombstone_small_01",
+  "canvas": [
+    80,
+    64
+  ],
+  "origin": [
+    40,
+    64
+  ],
+  "offset": [
+    12,
+    13
+  ],
+  "native_edit": {
+    "remove_native_rows": [
+      29,
+      34
+    ],
+    "reason": "Shorten one blank panel strip, no scaling."
+  },
+  "prop": {
+    "colors": 48,
+    "adjacent_change": 80.938416,
+    "bbox": [
+      14,
+      13,
+      67,
+      52
+    ],
+    "height": 39,
+    "opaque": 1744
+  },
+  "base": {
+    "colors": 15,
+    "adjacent_change": 69.620253,
+    "bbox": [
+      12,
+      50,
+      68,
+      57
+    ],
+    "height": 7,
+    "opaque": 250
+  }
+}

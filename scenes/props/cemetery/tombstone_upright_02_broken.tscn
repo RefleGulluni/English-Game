@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_f15c5"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_upright_02_broken_base.png" id="2_0x00v"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_upright_02_broken.png" id="3_8xo6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcc3k"]
+size = Vector2(38, 10)
+
+[node name="TombstoneUpright02Broken" type="Node2D" unique_id=108809355]
+script = ExtResource("1_f15c5")
+ground_gap = 8
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1102536087]
+texture = ExtResource("2_0x00v")
+centered = false
+offset = Vector2(-72, -136)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2026703500]
+texture = ExtResource("3_8xo6t")
+centered = false
+offset = Vector2(-72, -136)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=237159195]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1153797372]
+position = Vector2(3, -4)
+shape = SubResource("RectangleShape2D_lcc3k")

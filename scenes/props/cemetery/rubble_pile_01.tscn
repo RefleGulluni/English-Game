@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_anmsm"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/rubble_pile_01_base.png" id="2_mk1xx"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/rubble_pile_01.png" id="3_t72sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mmdi"]
+size = Vector2(43, 10)
+
+[node name="RubblePile01" type="Node2D" unique_id=816763925]
+script = ExtResource("1_anmsm")
+ground_gap = 14
+
+[node name="Base" type="Sprite2D" parent="." unique_id=998261687]
+texture = ExtResource("2_mk1xx")
+centered = false
+offset = Vector2(-40, -34)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=648043009]
+texture = ExtResource("3_t72sn")
+centered = false
+offset = Vector2(-40, -34)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=902472156]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=894523499]
+position = Vector2(-2, -4)
+shape = SubResource("RectangleShape2D_2mmdi")
+disabled = true

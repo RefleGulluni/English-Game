@@ -1,0 +1,40 @@
+{
+  "source": "grave_slab_01",
+  "canvas": [
+    192,
+    112
+  ],
+  "origin": [
+    96,
+    112
+  ],
+  "offset": [
+    18,
+    22
+  ],
+  "native_edit": null,
+  "prop": {
+    "colors": 44,
+    "adjacent_change": 82.961547,
+    "bbox": [
+      27,
+      23,
+      170,
+      84
+    ],
+    "height": 61,
+    "opaque": 4785
+  },
+  "base": {
+    "colors": 15,
+    "adjacent_change": 80.357143,
+    "bbox": [
+      18,
+      22,
+      174,
+      97
+    ],
+    "height": 75,
+    "opaque": 1697
+  }
+}

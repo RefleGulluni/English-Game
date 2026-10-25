@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_xsopl"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/low_wall_rubble_broken_01_base.png" id="2_3je23"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/low_wall_rubble_broken_01.png" id="3_uosil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihgeg"]
+size = Vector2(148, 12)
+
+[node name="LowWallRubbleBroken01" type="Node2D" unique_id=1675324575]
+script = ExtResource("1_xsopl")
+ground_gap = 7
+
+[node name="Base" type="Sprite2D" parent="." unique_id=343483082]
+texture = ExtResource("2_3je23")
+centered = false
+offset = Vector2(-96, -89)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1511375558]
+texture = ExtResource("3_uosil")
+centered = false
+offset = Vector2(-96, -89)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=514805084]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1653745147]
+position = Vector2(-1, -5)
+shape = SubResource("RectangleShape2D_ihgeg")

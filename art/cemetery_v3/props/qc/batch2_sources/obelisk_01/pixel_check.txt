@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nosync/English-Game/art/cemetery_v3/props/obelisk_01.png   112x160   OK   49    83    0   137
+c/English-Game/art/cemetery_v3/props/obelisk_01_base.png   112x160   OK   15    70    0   157
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

@@ -1,0 +1,58 @@
+{
+  "source": "fallen_cross_fragment_v3",
+  "parent": "tombstone_cross_01",
+  "canvas": [
+    112,
+    144
+  ],
+  "origin": [
+    56,
+    144
+  ],
+  "parent_offset": [
+    8,
+    16
+  ],
+  "native_edit": {
+    "remove_arm_rect": [
+      0,
+      39,
+      38,
+      72
+    ],
+    "root_edit_x": 38,
+    "fragment_remove_columns": [
+      24,
+      51
+    ],
+    "fragment_right_translation_y": -6,
+    "fragment_offset": [
+      14,
+      113
+    ]
+  },
+  "prop": {
+    "colors": 44,
+    "adjacent_change": 84.255147,
+    "bbox": [
+      29,
+      40,
+      83,
+      135
+    ],
+    "height": 95,
+    "opaque": 2590
+  },
+  "base": {
+    "colors": 72,
+    "adjacent_change": 77.677565,
+    "bbox": [
+      15,
+      114,
+      90,
+      143
+    ],
+    "height": 29,
+    "opaque": 939
+  }
+}

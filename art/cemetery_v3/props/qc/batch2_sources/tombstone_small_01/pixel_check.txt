@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nglish-Game/art/cemetery_v3/props/tombstone_small_01.png     80x64   OK   48    81    0    51
+h-Game/art/cemetery_v3/props/tombstone_small_01_base.png     80x64   OK   15    70    0    56
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

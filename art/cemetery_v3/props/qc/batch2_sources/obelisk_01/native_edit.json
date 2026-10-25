@@ -1,0 +1,46 @@
+{
+  "source": "obelisk_01",
+  "canvas": [
+    112,
+    160
+  ],
+  "origin": [
+    56,
+    160
+  ],
+  "offset": [
+    14,
+    17
+  ],
+  "native_edit": {
+    "remove_native_rows": [
+      40,
+      78
+    ],
+    "reason": "Remove38native shaft rows, retaining apex, long cracks, taper and all plinth courses."
+  },
+  "prop": {
+    "colors": 49,
+    "adjacent_change": 82.518302,
+    "bbox": [
+      22,
+      17,
+      83,
+      138
+    ],
+    "height": 121,
+    "opaque": 3545
+  },
+  "base": {
+    "colors": 15,
+    "adjacent_change": 70.467142,
+    "bbox": [
+      14,
+      130,
+      98,
+      158
+    ],
+    "height": 28,
+    "opaque": 1317
+  }
+}

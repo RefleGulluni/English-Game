@@ -1,0 +1,53 @@
+{
+  "source": "candles_01_v2",
+  "canvas": [
+    64,
+    48
+  ],
+  "origin": [
+    32,
+    48
+  ],
+  "offset": [
+    11,
+    18
+  ],
+  "native_edit": {
+    "remove_native_rows": null,
+    "contact_decal_from": "tombstone_upright_01_base.png",
+    "crop": [
+      19,
+      98,
+      68,
+      108
+    ],
+    "decal_offset": [
+      7,
+      32
+    ]
+  },
+  "prop": {
+    "colors": 25,
+    "adjacent_change": 78.90625,
+    "bbox": [
+      11,
+      18,
+      53,
+      34
+    ],
+    "height": 16,
+    "opaque": 414
+  },
+  "base": {
+    "colors": 29,
+    "adjacent_change": 71.604938,
+    "bbox": [
+      7,
+      32,
+      56,
+      42
+    ],
+    "height": 10,
+    "opaque": 335
+  }
+}

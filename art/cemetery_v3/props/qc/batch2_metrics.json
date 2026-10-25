@@ -1,0 +1,366 @@
+{
+  "verification": {
+    "protected_original_files_checked": 1341,
+    "changed_original_files": [],
+    "manifest_is_only_modified_preexisting_art_file": true,
+    "retained_stump_opaque_pixels": 1449,
+    "retained_cross_opaque_pixels": 2562,
+    "every_restored_pixel_is_recorded_source_center": true,
+    "all24_png_alpha_binary": true,
+    "all24_png_last_row_transparent": true,
+    "size_ranges_passed": true,
+    "large_prop_color_and_density_passed": true,
+    "old_manifest_items_unchanged": true,
+    "game_acceptance": "pending"
+  },
+  "assets": {
+    "tombstone_flat_01": {
+      "rgba_sha256": "2d9c80a5795437b65de3d14afc1478f7fc63a26329fd4a61401a2b12b564c5d6",
+      "png_sha256": "6862e040458d9be0b461f801216412fad609cc0b0a2662100c54afc694832a0a",
+      "colors": 44,
+      "adjacent_change": 88.002248,
+      "bbox": [
+        25,
+        19,
+        83,
+        91
+      ],
+      "height": 72,
+      "opaque": 3636,
+      "verified_raw_cell_samples": 5031
+    },
+    "tombstone_flat_01_base": {
+      "rgba_sha256": "e422e48adf55fa99cf4cb1f65054ba9e9187ec3fa210a33947e0594914d86c8e",
+      "png_sha256": "472e0985bf0abaccf8751a28f5fa5f252a78e21d8680b8306971d7b7d2ec9e26",
+      "colors": 15,
+      "adjacent_change": 78.511769,
+      "bbox": [
+        12,
+        86,
+        99,
+        110
+      ],
+      "height": 24,
+      "opaque": 1374
+    },
+    "tombstone_pointed_01": {
+      "rgba_sha256": "69ce54b8939b375a5d693dc6a82ce1a9e56832c4666e08f070fc8f97235438a0",
+      "png_sha256": "e80b8f20fc302c95022e3a9ba5d9114f6038829cdd08e0758106bcf1977dc8ec",
+      "colors": 44,
+      "adjacent_change": 84.585153,
+      "bbox": [
+        24,
+        11,
+        65,
+        96
+      ],
+      "height": 85,
+      "opaque": 2381,
+      "verified_raw_cell_samples": 3347
+    },
+    "tombstone_pointed_01_base": {
+      "rgba_sha256": "4812bb8ef043bebc3225ec1e7205b1100a18018c283a0cd1d32ba868714bdaba",
+      "png_sha256": "05c1e5a409b9a6c9e9003ea6d3cfe0d249da7075c09f2e48a27801b7c910f3e3",
+      "colors": 15,
+      "adjacent_change": 77.659574,
+      "bbox": [
+        19,
+        91,
+        76,
+        110
+      ],
+      "height": 19,
+      "opaque": 694
+    },
+    "tombstone_small_01": {
+      "rgba_sha256": "01a1757760e41bb78b15e47539132faa109b88c52590ec7efd9e88edd5bed818",
+      "png_sha256": "5d30369e95f381a10fac07f56bab5e77864dde8dd1c5ba65240ad8992e806f6e",
+      "colors": 48,
+      "adjacent_change": 80.938416,
+      "bbox": [
+        14,
+        13,
+        67,
+        52
+      ],
+      "height": 39,
+      "opaque": 1744,
+      "verified_raw_cell_samples": 2249
+    },
+    "tombstone_small_01_base": {
+      "rgba_sha256": "e187b3876b4856e9cb2ec5d8bea39dd5434cd706905de76693964fb06b5e7234",
+      "png_sha256": "84a108a11768f7f389cf488b43d97e6acefea9bd7ae229c2254223e700b3b1da",
+      "colors": 15,
+      "adjacent_change": 69.620253,
+      "bbox": [
+        12,
+        50,
+        68,
+        57
+      ],
+      "height": 7,
+      "opaque": 250
+    },
+    "obelisk_01": {
+      "rgba_sha256": "4892306a0a4088a76fcd9622d7af8f056a68cd4761e339af4ed65da5510057a1",
+      "png_sha256": "6e96e5dc3a1c16b350c8a723ac14c09dfa63905fefa775b256ed4045ba9e83c1",
+      "colors": 49,
+      "adjacent_change": 82.518302,
+      "bbox": [
+        22,
+        17,
+        83,
+        138
+      ],
+      "height": 121,
+      "opaque": 3545,
+      "verified_raw_cell_samples": 5830
+    },
+    "obelisk_01_base": {
+      "rgba_sha256": "0952bd5ba7c9baeca80204eaf88575b0ad277e046dfdac609fa82d1f837d3829",
+      "png_sha256": "7fbda35cb4dfe31d0305828bfb52df1d43e23d48bcc86fc92767a40de86daa18",
+      "colors": 15,
+      "adjacent_change": 70.467142,
+      "bbox": [
+        14,
+        130,
+        98,
+        158
+      ],
+      "height": 28,
+      "opaque": 1317
+    },
+    "grave_slab_01": {
+      "rgba_sha256": "73aeacf8fadbfc3fd0002a267e2a08f701ee1c56edef82b2f4f8c928c062d8fd",
+      "png_sha256": "cd706681042933b938b4e21d59045401b1f004573382dac3178ef48d69e6454d",
+      "colors": 44,
+      "adjacent_change": 82.961547,
+      "bbox": [
+        27,
+        23,
+        170,
+        84
+      ],
+      "height": 61,
+      "opaque": 4785,
+      "verified_raw_cell_samples": 6497
+    },
+    "grave_slab_01_base": {
+      "rgba_sha256": "dc1d12450835ae17266b8176088f5c2bcf711bc7555fb6ce4bdb84567ffd8de0",
+      "png_sha256": "7dcc19f4a877271fbd710e1fc2782818e1d5b0459358afaaad4dd175bfc1c080",
+      "colors": 15,
+      "adjacent_change": 80.357143,
+      "bbox": [
+        18,
+        22,
+        174,
+        97
+      ],
+      "height": 75,
+      "opaque": 1697
+    },
+    "rubble_pile_01": {
+      "rgba_sha256": "f3c8da61bc5d9b94ae0e25367a6715bc9fcf63c4d501ec65af48c70feb0cf1a3",
+      "png_sha256": "c5cfcec9e2c993e2ea42fcc552c5cf80a60f882f6b7e3d43abbc66dec61f4460",
+      "colors": 39,
+      "adjacent_change": 89.052632,
+      "bbox": [
+        13,
+        17,
+        64,
+        34
+      ],
+      "height": 17,
+      "opaque": 500,
+      "verified_raw_cell_samples": 635
+    },
+    "rubble_pile_01_base": {
+      "rgba_sha256": "16007c617088b307fdc6ed3dd060fe0eec14c33bb0e31b7f4573f1922be8f163",
+      "png_sha256": "04150d237042323b3d10aa4c15fe16b2d2d0d91b0c4083a373c3dd8374633b9e",
+      "colors": 13,
+      "adjacent_change": 75.0,
+      "bbox": [
+        12,
+        31,
+        68,
+        37
+      ],
+      "height": 6,
+      "opaque": 134
+    },
+    "grave_vase_01": {
+      "rgba_sha256": "3ad00f1287db562a6b9704d26616df1fd0adec58b4633d9c4e6b954d35d81ff0",
+      "png_sha256": "c856f60bd01ae7eaa2452e4898ce8e1cfaf0b6ca4ccab4beee450f84d5c67ada",
+      "colors": 36,
+      "adjacent_change": 83.42246,
+      "bbox": [
+        16,
+        26,
+        31,
+        52
+      ],
+      "height": 26,
+      "opaque": 224,
+      "verified_raw_cell_samples": 278
+    },
+    "grave_vase_01_base": {
+      "rgba_sha256": "dea918edbcc00e7ed80bda516055497b3bbd09ebe4f98feb15747080d1b7c536",
+      "png_sha256": "9c6056ac642651f75001802d048c421244330803226e6d195100b226aca08348",
+      "colors": 31,
+      "adjacent_change": 87.5,
+      "bbox": [
+        9,
+        48,
+        39,
+        57
+      ],
+      "height": 9,
+      "opaque": 171
+    },
+    "candles_01": {
+      "rgba_sha256": "e4d62089c3fa05ca752ad637745f6999c1bf4066e0fa1bb7beaed3116eccbac3",
+      "png_sha256": "cd609f06d9b0424a459bd6a33956db4933c34c27c652f2426fa9db938af9a602",
+      "colors": 25,
+      "adjacent_change": 78.90625,
+      "bbox": [
+        11,
+        18,
+        53,
+        34
+      ],
+      "height": 16,
+      "opaque": 414,
+      "verified_raw_cell_samples": 496
+    },
+    "candles_01_base": {
+      "rgba_sha256": "8ce764ba764430a5e14d8aade779229901a34cfed7e1f4ce4d7083c797aa4732",
+      "png_sha256": "64c2bf31a053a945572b343824482a0a07c8bb2dd5e28fd2387ba4bdca9c2709",
+      "colors": 29,
+      "adjacent_change": 71.604938,
+      "bbox": [
+        7,
+        32,
+        56,
+        42
+      ],
+      "height": 10,
+      "opaque": 335
+    },
+    "grave_lantern_01": {
+      "rgba_sha256": "610fe3f6313d8a6ce948f99265ecfac2445af46fec1f1043e6bd45aefc4a78dd",
+      "png_sha256": "481175626922359e7fbcbd8764bdae8438f5d06afb54def99113826ae9f9f522",
+      "colors": 31,
+      "adjacent_change": 91.883117,
+      "bbox": [
+        16,
+        20,
+        32,
+        52
+      ],
+      "height": 32,
+      "opaque": 343,
+      "verified_raw_cell_samples": 371
+    },
+    "grave_lantern_01_base": {
+      "rgba_sha256": "dafe36d5ad997b32a06afd65aefc93674bd383cae02729fae2fbcc0394f50ba0",
+      "png_sha256": "e264cf3e652981252baa16add6f22208368a08a796d2ee5ae28d1fbe2367e5e6",
+      "colors": 28,
+      "adjacent_change": 85.840708,
+      "bbox": [
+        8,
+        48,
+        40,
+        54
+      ],
+      "height": 6,
+      "opaque": 120
+    },
+    "tombstone_upright_02_broken": {
+      "rgba_sha256": "2088b71cb655bde5f8a872d603084bd160df00b755501e2791371704d8380ee8",
+      "png_sha256": "ac0a64118c51ae467928f0df6d0d87f8e888e22b9ec3979b1d61448c7c161431",
+      "colors": 44,
+      "adjacent_change": 84.615385,
+      "bbox": [
+        49,
+        94,
+        97,
+        136
+      ],
+      "height": 42,
+      "opaque": 1575,
+      "verified_raw_cell_samples": 1867
+    },
+    "tombstone_upright_02_broken_base": {
+      "rgba_sha256": "e4ef072be5dce0a4ed4ce008caf0d46e8daafb5f3043b98defc73a9815bf2fa8",
+      "png_sha256": "63542cca446f4a1aaf3dd863fdb81b13cc8bd594ee825f3eee51a3c953243f99",
+      "colors": 69,
+      "adjacent_change": 69.898305,
+      "bbox": [
+        4,
+        111,
+        105,
+        143
+      ],
+      "height": 32,
+      "opaque": 1528
+    },
+    "tombstone_cross_01_broken": {
+      "rgba_sha256": "7e9c4e687e58e266db6ba026e9dfd0dc3a283fd38340c8f38b8b095a43da8e3d",
+      "png_sha256": "8cadb7d5532514a6ed9b05f76d7539623f497946195f5243845f1a68101a6e1c",
+      "colors": 44,
+      "adjacent_change": 84.255147,
+      "bbox": [
+        29,
+        40,
+        83,
+        135
+      ],
+      "height": 95,
+      "opaque": 2590,
+      "verified_raw_cell_samples": 954
+    },
+    "tombstone_cross_01_broken_base": {
+      "rgba_sha256": "aae800427c37db1142fef2ef4ed856e169d5f86ffb7aef20e162f1c0c99897d7",
+      "png_sha256": "873ac962805a26149829e69e44b1e14d9a9c08fd7a9da39e0347831fb40ca68c",
+      "colors": 72,
+      "adjacent_change": 77.677565,
+      "bbox": [
+        15,
+        114,
+        90,
+        143
+      ],
+      "height": 29,
+      "opaque": 939
+    },
+    "tombstone_upright_01_tilted": {
+      "rgba_sha256": "a4fa9fc9cb68e2b2352d161f6f7fe270b546e6b308ba903b817cadf4768edefd",
+      "png_sha256": "070a139d31f69fced7bebf20fba9cd8014f44c094420d66a4ffb3938501887f4",
+      "colors": 44,
+      "adjacent_change": 83.106418,
+      "bbox": [
+        12,
+        21,
+        81,
+        100
+      ],
+      "height": 79,
+      "opaque": 3682,
+      "verified_raw_cell_samples": 4903
+    },
+    "tombstone_upright_01_tilted_base": {
+      "rgba_sha256": "37a28e79d3a38a0df65fca364ad5ba9a8f60f27bdefc28f42cfa8d54ae2cf453",
+      "png_sha256": "030c92c97eb6662731f97d509285866a98bc0879e2efe216868b81c04e5124d1",
+      "colors": 15,
+      "adjacent_change": 73.871528,
+      "bbox": [
+        6,
+        86,
+        91,
+        111
+      ],
+      "height": 25,
+      "opaque": 1210
+    }
+  }
+}

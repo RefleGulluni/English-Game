@@ -1,0 +1,56 @@
+{
+  "source": "grave_vase_01_v2",
+  "canvas": [
+    48,
+    64
+  ],
+  "origin": [
+    24,
+    64
+  ],
+  "offset": [
+    16,
+    26
+  ],
+  "native_edit": {
+    "remove_native_rows": [
+      9,
+      16
+    ],
+    "contact_decal_from": "tombstone_upright_01_base.png",
+    "crop": [
+      32,
+      96,
+      62,
+      105
+    ],
+    "decal_offset": [
+      9,
+      48
+    ]
+  },
+  "prop": {
+    "colors": 36,
+    "adjacent_change": 83.42246,
+    "bbox": [
+      16,
+      26,
+      31,
+      52
+    ],
+    "height": 26,
+    "opaque": 224
+  },
+  "base": {
+    "colors": 31,
+    "adjacent_change": 87.5,
+    "bbox": [
+      9,
+      48,
+      39,
+      57
+    ],
+    "height": 9,
+    "opaque": 171
+  }
+}

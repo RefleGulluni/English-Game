@@ -1,0 +1,40 @@
+{
+  "source": "tombstone_flat_01",
+  "canvas": [
+    112,
+    112
+  ],
+  "origin": [
+    56,
+    112
+  ],
+  "offset": [
+    12,
+    19
+  ],
+  "native_edit": null,
+  "prop": {
+    "colors": 44,
+    "adjacent_change": 88.002248,
+    "bbox": [
+      25,
+      19,
+      83,
+      91
+    ],
+    "height": 72,
+    "opaque": 3636
+  },
+  "base": {
+    "colors": 15,
+    "adjacent_change": 78.511769,
+    "bbox": [
+      12,
+      86,
+      99,
+      110
+    ],
+    "height": 24,
+    "opaque": 1374
+  }
+}

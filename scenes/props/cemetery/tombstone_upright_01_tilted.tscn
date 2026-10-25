@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_234f1"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_upright_01_tilted_base.png" id="2_c4yrj"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_upright_01_tilted.png" id="3_efbih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fui8r"]
+size = Vector2(43, 10)
+
+[node name="TombstoneUpright01Tilted" type="Node2D" unique_id=1304956780]
+script = ExtResource("1_234f1")
+ground_gap = 12
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1100676272]
+texture = ExtResource("2_c4yrj")
+centered = false
+offset = Vector2(-56, -100)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=194293564]
+texture = ExtResource("3_efbih")
+centered = false
+offset = Vector2(-56, -100)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=596283574]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=662736004]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_fui8r")

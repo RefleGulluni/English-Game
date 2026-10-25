@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_33d26"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_cross_01_base.png" id="2_tbebn"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/tombstone_cross_01.png" id="3_f0cwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie47u"]
+size = Vector2(43, 10)
+
+[node name="TombstoneCross01" type="Node2D" unique_id=1821488985]
+script = ExtResource("1_33d26")
+ground_gap = 9
+
+[node name="Base" type="Sprite2D" parent="." unique_id=867129757]
+texture = ExtResource("2_tbebn")
+centered = false
+offset = Vector2(-48, -119)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=526049210]
+texture = ExtResource("3_f0cwl")
+centered = false
+offset = Vector2(-48, -119)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1652238657]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=32022075]
+position = Vector2(2, -4)
+shape = SubResource("RectangleShape2D_ie47u")

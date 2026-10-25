@@ -12,6 +12,7 @@ const ART := "res://art/cemetery_pixel_v1/"
 const NATIVE := Vector2i(960, 540)
 const SHADOW_COLOR := Color(0.03, 0.03, 0.05, 0.45)
 const FADE_ALPHA := 0.45
+const PROP_SCENES := "res://scenes/props/cemetery/" # building blocks (D-034) win over bare PNGs
 
 var layout: Dictionary
 var prop_dir: String # where this room's props live; layouts may point at a newer prop set
@@ -29,8 +30,10 @@ func _init(room_layout: Dictionary) -> void:
 	var ground := Sprite2D.new()
 	ground.centered = false
 	ground.texture = PixelArt.texture(ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")
+	ground.z_index = -10
 	add_child(ground)
 	var bases := Node2D.new()
+	bases.z_index = CemeteryProp.BASE_Z
 	add_child(bases)
 	for i in int(layout.get("dead_grass", 14)):
 		var s := Sprite2D.new()
@@ -43,6 +46,12 @@ func _init(room_layout: Dictionary) -> void:
 	sorted.y_sort_enabled = true
 	add_child(sorted)
 	for p in layout.get("props", []):
+		if ResourceLoader.exists(PROP_SCENES + str(p[0]) + ".tscn"):
+			# The block brings its own base, collision and fading; the layout point is the PNG origin.
+			var block: CemeteryProp = load(PROP_SCENES + str(p[0]) + ".tscn").instantiate()
+			block.position = p[1] - Vector2(0, block.ground_gap)
+			sorted.add_child(block)
+			continue
 		var base: Sprite2D = null
 		if FileAccess.file_exists(prop_dir + p[0] + "_base.png"):
 			base = Sprite2D.new()
@@ -76,7 +85,8 @@ func _process(delta: float) -> void:
 			base.modulate.a = a
 
 
-## collision: rect relative to the PNG origin, or null for a strip along the upright part's foot.
+## collision: rect relative to the PNG origin, null for a strip along the upright part's foot,
+## or false for none (small props the player walks over).
 func _make_prop(file: String, collision: Variant, ellipse: bool, base: Sprite2D) -> Node2D:
 	var root := Node2D.new()
 	root.set_meta("base", base)
@@ -95,6 +105,8 @@ func _make_prop(file: String, collision: Variant, ellipse: bool, base: Sprite2D)
 	sprite.texture = tex
 	sprite.offset = Vector2(0, -tex.get_height() / 2 + gap)
 	root.add_child(sprite)
+	if collision is bool:
+		return root
 	var body := StaticBody2D.new()
 	body.position = Vector2(0, gap) # collision data is relative to the PNG origin
 	if ellipse:

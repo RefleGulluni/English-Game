@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_xv8nk"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/low_wall_broken_01_base.png" id="2_k3u2c"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/low_wall_broken_01.png" id="3_oqx3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig83t"]
+size = Vector2(138, 12)
+
+[node name="LowWallBroken01" type="Node2D" unique_id=743627186]
+script = ExtResource("1_xv8nk")
+ground_gap = 6
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1894185722]
+texture = ExtResource("2_k3u2c")
+centered = false
+offset = Vector2(-88, -90)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=326494277]
+texture = ExtResource("3_oqx3t")
+centered = false
+offset = Vector2(-88, -90)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1056717494]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=798087420]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_ig83t")

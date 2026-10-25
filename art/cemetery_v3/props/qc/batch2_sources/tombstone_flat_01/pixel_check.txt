@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+English-Game/art/cemetery_v3/props/tombstone_flat_01.png   112x112   OK   44    88    0    90
+sh-Game/art/cemetery_v3/props/tombstone_flat_01_base.png   112x112   OK   15    79    0   109
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

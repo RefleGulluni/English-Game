@@ -1,0 +1,56 @@
+{
+  "source": "grave_lantern_01_v2",
+  "canvas": [
+    48,
+    64
+  ],
+  "origin": [
+    24,
+    64
+  ],
+  "offset": [
+    16,
+    20
+  ],
+  "native_edit": {
+    "remove_native_rows": [
+      20,
+      22
+    ],
+    "contact_decal_from": "tombstone_cross_01_base.png",
+    "crop": [
+      31,
+      113,
+      63,
+      123
+    ],
+    "decal_offset": [
+      8,
+      44
+    ]
+  },
+  "prop": {
+    "colors": 31,
+    "adjacent_change": 91.883117,
+    "bbox": [
+      16,
+      20,
+      32,
+      52
+    ],
+    "height": 32,
+    "opaque": 343
+  },
+  "base": {
+    "colors": 28,
+    "adjacent_change": 85.840708,
+    "bbox": [
+      8,
+      48,
+      40,
+      54
+    ],
+    "height": 6,
+    "opaque": 120
+  }
+}
