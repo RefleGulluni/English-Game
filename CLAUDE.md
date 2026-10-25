@@ -76,7 +76,11 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 接下来可以做的事（按建议顺序）
 
-1. **新的正式 Broken Graveyard**：graveyard_room 的 v3 画面层 + 现有规则大脑（`combat_state`、`learning_schedule`、`run_manager`、`scripts/loot/*`、事件契约）。开新分支做；需要用户同意把 `project.godot` 改为 960×540 原生 + 整数缩放。旧切片在新场景验收前保留。
+1. **新的正式 Broken Graveyard**（2026-10-25 第一版灰盒，分支 `feature/broken-graveyard-v3`）：`scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`。v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`），走动 → 原地开战 → 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 区域名），截图模式 `-- --capture=<目录>` 会自动打完一整圈。
+   - 960×540 + 整数缩放由场景自己在启动时设置，**`project.godot` 没改**（改了会让 1280×720 的 0.8 完整一局被裁切；等 `main.tscn` 切到新场景时再一起改）。
+   - 灰盒部分：代码画的占位骷髅（等角色组交付，需求见 `docs/SKELETON_DESIGN_REQUEST.md`）、0.9 战斗 HUD 缩到 0.75 倍、出口符号与第 2 房间 / Veiled Walk 内容都是占位、出口路线是写死的（还没接 `cemetery_director` 的随机节点）、掉落物凿子是 0.9 的 11 px 素材几乎看不见。
+   - 场景切换规则见知识库 D-022 / D-023 与 `03_WORLD_AND_LEVELS/English_Game_Scene_Structure_and_Transitions.md`。
+   - 注意：iCloud 把 `~/Documents/GitHub` 替身改名成了 `GitHub 2`，原位置变成一个只有空文件夹的真目录；仓库请用 `~/Documents/GitHub.nosync/English-Game`。
 2. **词汇数据化**：把 `cemetery_words.gd` 的词搬到数据文件，以 Word Sense 为单位（学习系统参考 §2、§7、§8）。现在只有 14 个词，越早越便宜。
 3. **Lexicon 正式界面第一版**：书 + 真实学习数据 + 星座结构；先请用户拍板界面设计文档里的 [提案]。
 4. **战斗表现设计**（Word Sigil、HUD、场景内软锁定）→ 再给角色设计组写主角战斗动作需求。
