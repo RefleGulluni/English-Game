@@ -19,90 +19,78 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 美术方向（v3 摘要，细节以 Art Direction Bible v3 `_CLEAN` 为准）
 
-- **The world is pixel and broken. Language is precise and luminous.**（2026-10-22 用户实机选择后修订，v3 原句为 “smooth and precise”）
-  语言层（Word Sigil、Lexicon、True Words）与世界使用**同一像素密度**，靠发光、唯一的饱和青蓝色、精确几何、不受雾/阴影/环境色影响、平稳动画与世界区分。
-  例外：需要阅读学习的长段英文（释义、例句、对话）使用清晰易读的字体。
-- North Star：Cemetery 像素对比测试图的 P 版本。
-- 屏幕上世界元素像素密度必须一致：整数缩放、nearest 过滤、避免半像素。
-- 角色、敌人、NPC 严格真像素 + 帧动画；AI 生成的“伪像素”必须先整理（网格 → 调色板 → 边缘）再入库。
-- 场景分层：远景大图 / 平面 Ground Decoration Plate / 不可见逻辑 TileMap（碰撞、导航）/ 独立高物件（Y-Sort、碰撞、遮挡）/ 角色 / 前景 / 光雾 VFX / 平滑语言层。
-- Ground Plate 只能包含平面信息；有高度、要交互、要遮挡的东西必须是独立素材。
-- 推荐生产方法：先整体生成一张场景，再拆出高物件并补全地面。
-- Fracture 只表现为“关系错误”，**永远不破坏像素网格**，禁止 glitch 类效果；Redactor 是干净的缺失。
-- 角色素材不画地面投影，接触阴影与统一光色在 Godot 中处理。
-- Cemetery 地面：湿泥 + 稀疏枯草为主；石板只作为残缺小路（“曾经有秩序，现在秩序正在失效”）。
-- **已实机选定（2026-10-22）：主角原生高度 96 px，原生画面 960×540**（1080p 屏幕 2 倍、4K 4 倍；主角约占屏幕高度 18%）。测试素材在 `art/pixel_test/size_96/`，共享调色板 `art/pixel_test/shared_palette.gpl`。
-  当前 `project.godot` 仍是 1280×720 视口（原型用 SubViewport 实现 960×540）；改 `project.godot` 前需征得用户同意。
-- 仍待定：正式调色板、Camera zoom、每类房间地面板数量与生成流程（描边：用户偏好不加）。
+- **The world is pixel and broken. Language is precise and luminous.** 语言层（Word Sigil、Lexicon、True Words）与世界**同一像素密度**，靠发光、唯一的饱和青蓝色、精确几何、不受雾 / 阴影 / 环境色影响与世界区分。长段可读英文用清晰字体（`art/ui/fonts/CormorantGaramond.ttf`）。
+- **主角原生 96 px，原生画面 960×540**，整数缩放、nearest、避免半像素。`project.godot` 仍是 1280×720；新场景在启动时自己设 960×540（见下文），改 `project.godot` 前需征得用户同意。
+- 场景分层：地面板（只含平面信息）/ 底座贴花 / 不可见逻辑碰撞 / 独立高物件（Y-Sort、遮挡、后方整件半透明）/ 角色 / 前景 / 光雾 / 语言层。角色和物件不画地面投影，接触阴影在 Godot 做；不加角色描边。
+- Fracture 只表现为“关系错误”，永远不破坏像素网格，禁止 glitch。
+- **画风锚点**：主角 B1 = **精致程度**的标准；北极星图 `art/pixel_test/source/graveyard_P_reference.png` = **感觉**的参照（明暗、冷暖、饱和度、像素密度），**不是颜色仓库**，每个地区有自己的颜色（D-027）。主角放进北极星图：`docs/reference/northstar_with_hero_B1.png`。
+- **像素素材怎么做、怎么验收：[docs/PIXEL_ASSET_PIPELINE.md](docs/PIXEL_ASSET_PIPELINE.md)**（必读）。一句话：单件生成大方块像素风 → 找到真实像素格、一格还原一个像素 → 逐块整理 → 先一件试样进游戏 → 再批量。要拼接的零件以同家族已有零件为底子改出来。检查工具：`python3 scripts/tools/pixel_check.py <文件>`（颜色数、相邻像素换色比例与主角对比；主角 44 色 / 88%）。
+- 整张场景图只用来定构图，不再是最终素材（D-026，Art Bible §15 已加注释）。地面板的真像素做法还没验证。
+- 美术素材目录：[art/README.md](art/README.md)（在用 / 参考 / 作废，各自被谁引用）。新增或作废美术文件夹时同步更新。
 
-## 当前进度（2026-10-24 交接）
+## 当前进度（2026-10-25 交接）
 
 ### 一句话
-设计知识库已理顺；像素 v3 美术方向、主角 B1 与第一批动画、Lexicon 灰盒都已在原型里验证通过；正式游戏代码已通读，**规则层可留用、画面层要按 v3 重做**。下一步是把两者接成新的正式 Broken Graveyard。
+新的正式 Broken Graveyard 灰盒已能从头玩到尾；墓园正式美术找到了可行的方法：角色组用新流程做的第一批 9 件物件已通过，正在补墙的配套零件。
 
-### 正式游戏代码（[docs/CODE_STATUS_REPORT_2026-10-24.md](docs/CODE_STATUS_REPORT_2026-10-24.md)）
-- **完整的一局游戏是 0.8 Mini Run**（`scenes/ui/legacy_combat.tscn`，README 叫它 legacy，但它功能最全：六层墓地路线、学习导演、12 张牌、六种敌人含两阶段 Boss）。主场景 `main.tscn` 指向 0.9 美术接入单场景试玩版（`scenes/world/world_broken_graveyard.tscn`）。两者共用同一套规则代码。
-- 绿（留用）：`scripts/combat/combat_state.gd` 等战斗规则、`scripts/run/learning_schedule.gd` 等学习调度、`run_state` / `run_manager` / `pacing_director`、`scripts/loot/*`、事件契约；**28 套 smoke 测试全部通过**（`for t in tests/*_smoke.gd; do Godot --headless --path . --script res://$t; done`）。
-- 黄（要改）：词汇写死在 `scripts/run/cemetery_words.gd`（14 个词，以 lemma 为单位）→ 要改成 Word Sense 数据文件；Lexicon 只是文字弹窗（`slice_combat_hud.gd` 的 `show_lexicon()`）；战斗界面是卡牌按钮。
-- 红（重做）：0.9 切片的画面层（1280×720、128 格瓦片、旧主角骨骼拆件动画）。
+### 新的正式 Broken Graveyard（分支 `feature/broken-graveyard-v3`）
+- `scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`：v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`）。走动 → 原地开战（不黑屏）→ 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 发光区域名）。截图模式 `-- --capture=<目录>` 自动打完一整圈。
+- 零件：`hero_b1.gd` + **可拖入的主角场景 `scenes/player/hero_b1.tscn`**（帧打包在 `hero_b1_frames.tres`，交付新动画后运行 `scripts/tools/bake_hero_b1.gd` 重新打包）；`cemetery_room.gd`（按布局数据建房间，支持 `prop_dir`、物件名带子目录、不给碰撞时按物件的脚自动生成一条）；`room_exit.gd`（出口 + 语言层符号）；`screen_fade.gd`；`skeleton_placeholder.gd`（代码画的灰色占位骷髅）。
+- 灰盒 / 待办：占位骷髅；0.9 战斗 HUD 缩到 0.75 倍并半透明（战斗表现还没设计）；出口路线是写死的（**用户说先不接**随机算法 `cemetery_director`，等用户说再接）；第 2 房间与 Veiled Walk 是占位；凿子掉落物太小；Lexicon 用的是原型的灰盒书（Tab），L 是旧的文字词表。
+- 960×540 由场景启动时设置，`project.godot` 没改（改了会裁切 1280×720 的 0.8 完整一局；等 `main.tscn` 切到新场景时再一起改）。
+- 28 套 smoke 测试全部通过（`for t in tests/*_smoke.gd; do /Applications/Godot.app/Contents/MacOS/Godot --headless --path . --script res://$t; done`，看输出里的 `: PASS`；macOS 没有 `timeout` 命令）。
 
-### 像素 v3 原型（新画面的零件都在这里）
-- [scenes/prototypes/graveyard_room/graveyard_room.tscn](scenes/prototypes/graveyard_room/graveyard_room.tscn)：960×540 SubViewport + 整数缩放、整张地面板、独立物件 + 底座贴花 + 后方半透明、Y-Sort、接触阴影、B1 四方向待机 / 行走、**Tab 打开 Lexicon**（`lexicon_overlay.gd` + 主角翻书动画）。T 切换地面、O 描边、F 全屏。截图模式 `-- --capture=<目录>` 会按游戏速度逐帧拍行走和 Lexicon。
-- 已确认规则：整个物件（立体 + 底座）一起半透明；有底座的物件不加程序阴影；Y-Sort 点在立体部分落地处；枯树碰撞是树根椭圆；**不加角色描边**；主角接触阴影 36×14、比脚底高 3 px。
-- 已知问题：低矮横伸的树枝与角色同深度时前后难辨（可考虑规则：树枝在离地约 100 px 以上）。
-- 更早的 [scenes/prototypes/pixel_room/pixel_room.tscn](scenes/prototypes/pixel_room/pixel_room.tscn) 是尺寸 / 分辨率 / 语言风格对比用的。细节：[docs/PIXEL_V3_VALIDATION.md](docs/PIXEL_V3_VALIDATION.md)。
+### 关卡结构（知识库 `03_WORLD_AND_LEVELS/English_Game_Scene_Structure_and_Transitions.md`）
+- D-022：场景不无缝拼接，单屏房间；同区域换房间快速淡黑（约 0.4 秒），换区域慢淡黑 + 区域名（约 2～3 秒）；从哪边出去就从对侧进来。
+- D-023：出口即选路，出口上方有发光符号（符号外观待设计）。
+- D-024：**随机路线算法管“发生什么”，区域管“长什么样”**。一局 6 层 → 4 个区域（外墓园 1～2 层 / 雾中墓径 3～4 / 黑雾深处 5 / 哀悼礼拜堂 6 Boss）；World Bible 的 7 个场景变成房间类型（Entry 固定第一间、各区域战斗房、休息 = Sheltered Grave、事件 = Ossuary 类、Boss = Mourning Chapel）；区域只偏向某些敌人，不锁定。区域英文名待定。
+
+### 墓园美术（`art/cemetery_v3/`）
+- 美术组两轮整图背景（`design/`、`style_test/`）未通过：是“被像素化的写实画”。构图方向 A 残墙院落 / B 雾坡 / C 下沉尚未正式选。
+- **角色组物件第一批 9 件（第 2 版）已通过（D-029）**，在 `props/`，第 1 版在 `props/qc/backups/round1/`。墙分两个家族、同一排不混用：A 乱石墙 `low_wall_01`；B 条石墙 `low_wall_broken_01` + `wall_pillar_01`（作门柱）+ `iron_fence_01`。
+- **进行中**：角色组补墙的配套零件（乱石断墙、乱石墙柱、完整条石墙），需求 `docs/CEMETERY_PROPS_WALL_FAMILIES.md`。
+- 试走验收房间：`scenes/prototypes/props_v3/props_v3_room.tscn`（WASD、T 色调、F 全屏；在脚本 `LAYOUT` 加一行即可摆新物件）。地面暂用 `cemetery_pixel_v1` 样板地面板。
+- 待办：墓穴碰撞（现在主角能走进坑里）；墓园物件偏暖黄，等真像素地面出来再整体看；墓园子调色板等物件齐了从实际用色里整理。
+- 之后的顺序：墙补件 → 第二批“墓碑家族”（更多形状 + 歪斜 / 断裂）与小物件 → Grave Skeleton 设计（`docs/SKELETON_DESIGN_REQUEST.md`，**尚未发出**）→ 美术组做真像素地面。
+- 多样性（D-028）：形状家族 × 状态 × 换颜色（调色板替换）× 下沉深浅 × 摆放规则。**像素画不能旋转、不能左右镜像。**
 
 ### 主角 B1 与动画（[docs/HERO_DESIGN.md](docs/HERO_DESIGN.md)；知识库 `02_SYSTEMS/06_Character_and_Animation/`）
-- 原版 `art/character_design/hero_B1.png` 是设定图，**一个像素都不改**；游戏里的正面用正对镜头的 `hero_B1_front_straight.png`；背 / 左 / 右为 `hero_B1_back/left/right.png`（左右不镜像）。
-- **只做 4 个方向**，斜走显示侧面。
-- 已通过：四方向待机（4 × 500 ms）+ 行走（8 × 100 ms）、翻开 Lexicon（仅正面，6 × 70 ms + 看书循环，合书 = 倒放）。文件在 `art/character_design/anim/`，graveyard_room 自动加载。
-- 动画通用规则：[docs/HERO_ANIMATION_REQUEST.md](docs/HERO_ANIMATION_REQUEST.md) 第 7 节（整帧绘制、提灯挂手、侧面锁脚 / 正背面原地踏步、呼吸只动上半段、与站姿四段亮度差 ≤ 2、头部复用站姿像素）。
-- 验收流程：先读 QA → 脚本核对（半透明、新颜色、着地行 y=95、待机首帧 = 站姿、标准图哈希、四段亮度）→ 截图模式出游戏内 GIF → 开窗口让用户走走停停。**用户在游戏里的直觉很准**，数字检查和用户实看缺一不可。
-- 已知小问题：侧面行走比站姿亮 4～6 灰度，用户看不出，暂不处理。旧主角素材（`art/cemetery_pixel_v1/player_anim/`、`art/cemetery_kit_v1/player/`）作废。
+- 原版 `art/character_design/hero_B1.png` 是设定图，**一个像素都不改**；游戏正面用 `hero_B1_front_straight.png`；背 / 左 / 右分别画，不镜像。只做 4 个方向。
+- 已通过：四方向待机（4 × 500 ms）+ 行走（8 × 100 ms）、翻开 Lexicon（仅正面）。动画通用规则见 [docs/HERO_ANIMATION_REQUEST.md](docs/HERO_ANIMATION_REQUEST.md) 第 7 节。主角接触阴影 36×14、比脚底高 3 px。
+- 主角战斗动作：等战斗表现设计后再写需求。
+
+### 正式游戏代码（[docs/CODE_STATUS_REPORT_2026-10-24.md](docs/CODE_STATUS_REPORT_2026-10-24.md)）
+- 完整的一局是 0.8 Mini Run（`scenes/ui/legacy_combat.tscn`）；`main.tscn` 指向 0.9 试玩版（`scenes/world/world_broken_graveyard.tscn`）。规则层（`combat_state`、`learning_schedule`、`run_manager`、`pacing_director`、`scripts/loot/*`、事件契约）留用。
+- 词汇写死在 `scripts/run/cemetery_words.gd`（14 个词）→ 要改成 Word Sense 数据文件。
+- 旧原型：`scenes/prototypes/graveyard_room/`（v3 画面层的起点，Lexicon 灰盒）、`pixel_room/`（尺寸对比）。v3 之前写的运行时文档（如 `docs/MODULAR_2_5D_CONTRACT.md`）美术约定与 v3 冲突时以 v3 为准。
 
 ### Lexicon
-- 实体书（World Bible §8.1）；书封符号定稿；**学会的单词永远不会丢失**。
-- 灰盒已定：开合约 0.45 秒、大号书、背景压暗、主角转向镜头翻书。
-- **游戏会有 15,000～20,000+ 个单词**：结构为“星图总览 → 星座 → 单词页”+ 搜索 + 按阶段筛选；ENCOUNTERED 显示为残缺但认得出的字形。界面设计见知识库 `02_SYSTEMS/02_Learning/English_Game_Lexicon_Interface_Design.md`（其中 [提案] 尚未确认）。
-
-### 已废弃
-**像素素材制作手册：[docs/PIXEL_ASSET_PIPELINE.md](docs/PIXEL_ASSET_PIPELINE.md)**（做对的方法、标准、验收、教训、给新对话的开场模板；检查工具 `scripts/tools/pixel_check.py`）。
-**美术素材的总目录说明：[art/README.md](art/README.md)**（在用 / 参考 / 作废，各自被谁引用）。新增或作废美术文件夹时同步更新它。
-`art/cemetery_kit_v2/`、`scenes|scripts/prototypes/terrain_v2/`（Stone/Mud Dual-Grid 研发记录）；0.9 切片的骨骼拆件美术。`docs/MODULAR_2_5D_CONTRACT.md` 等运行时文档写于 v3 之前，美术约定与 v3 冲突时以 v3 为准，改代码前与用户确认。
+- 实体书；学会的单词永远不会丢失；灰盒已定：开合约 0.45 秒、大号书、背景压暗、主角转向镜头翻书。
+- 游戏会有 15,000～20,000+ 个单词：星图总览 → 星座 → 单词页 + 搜索 + 按阶段筛选。界面设计见知识库 `02_SYSTEMS/02_Learning/English_Game_Lexicon_Interface_Design.md`（[提案] 尚未确认）。
 
 ### Git 状态
-- `main` 已包含到 0.9 + 像素原型 + 主角 + 代码报告的全部工作，**2026-10-24 已推送到 GitHub**。
-- 当前分支 `chore/handoff-notes`：只多了几条交接记录与 `.gitignore`（忽略 `art_source/backups/`），**尚未合回 main**。下一阶段开新分支前可先把它合进 main。
-- **Claude 推送不了 GitHub**（这台机器的命令行没有 GitHub 登录）；推送由用户在 GitHub Desktop 里点 Push origin。用户切分支时若 GitHub Desktop 问“changes 怎么处理”，先查 `git status` 再告诉用户选哪个。
-- 另一个工作区 `~/Documents/GitHub/English-Game-art`（分支 `feature/mini-run-0.9-art`）有 2 个提交和 19 处未提交改动，都是已作废的骨骼拆件美术，没动过。
+- `main` 与 GitHub 同步（含交接记录）。当前工作都在分支 **`feature/broken-graveyard-v3`**（2026-10-25 起，十几个提交，**未合回 main、未推送**）。
+- **Claude 推送不了 GitHub**；推送由用户在 GitHub Desktop 里点 Push origin。
+- `.import` 文件：Godot 导入时自动生成，素材的 `.import` 一般随素材一起提交。
 
 ## 接下来可以做的事（按建议顺序）
 
-1. **新的正式 Broken Graveyard**（2026-10-25 第一版灰盒，分支 `feature/broken-graveyard-v3`）：`scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`。v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`），走动 → 原地开战 → 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 区域名），截图模式 `-- --capture=<目录>` 会自动打完一整圈。
-   - 960×540 + 整数缩放由场景自己在启动时设置，**`project.godot` 没改**（改了会让 1280×720 的 0.8 完整一局被裁切；等 `main.tscn` 切到新场景时再一起改）。
-   - 灰盒部分：代码画的占位骷髅（等角色组交付，需求见 `docs/SKELETON_DESIGN_REQUEST.md`）、0.9 战斗 HUD 缩到 0.75 倍、出口符号与第 2 房间 / Veiled Walk 内容都是占位、出口路线是写死的（还没接 `cemetery_director` 的随机节点）、掉落物凿子是 0.9 的 11 px 素材几乎看不见。
-   - 场景切换规则见知识库 D-022 / D-023 与 `03_WORLD_AND_LEVELS/English_Game_Scene_Structure_and_Transitions.md`。
-   - 注意：iCloud 把 `~/Documents/GitHub` 替身改名成了 `GitHub 2`，原位置变成一个只有空文件夹的真目录；仓库请用 `~/Documents/GitHub.nosync/English-Game`。
-2. **词汇数据化**：把 `cemetery_words.gd` 的词搬到数据文件，以 Word Sense 为单位（学习系统参考 §2、§7、§8）。现在只有 14 个词，越早越便宜。
-3. **Lexicon 正式界面第一版**：书 + 真实学习数据 + 星座结构；先请用户拍板界面设计文档里的 [提案]。
-4. **战斗表现设计**（Word Sigil、HUD、场景内软锁定）→ 再给角色设计组写主角战斗动作需求。
-5. 其他像素验证场景：Abandoned Station、Eleanor's Shop（做 Eleanor 时一并打好 AI NPC 地基：角色状态、知识边界、结构化记忆，见知识库 AI NPC 参考 §10）。
-6. 未定设想：锚点上的符号带着缺失的底边，靠近时三角补全 = 锚定。
+1. 验收角色组的墙补件 → 第二批墓碑家族与小物件 → 发骷髅设计需求。
+2. 新墓园灰盒：接随机路线算法（用户说等他说再接）；墓穴碰撞；换上正式物件。
+3. **词汇数据化**：`cemetery_words.gd` → Word Sense 数据文件（学习系统参考 §2、§7、§8）。
+4. **Lexicon 正式界面第一版**：先请用户拍板界面设计文档里的 [提案]。
+5. **战斗表现设计**（Word Sigil、HUD、场景内软锁定）→ 主角战斗动作需求。
+6. 其他场景：Abandoned Station、Eleanor's Shop（AI NPC 地基见知识库 AI NPC 参考 §10）。
 
-## 团队分工（2026-10-22 起）
+## 团队分工
 
-- **Claude**：全部程序（Godot 代码、场景、原型与正式游戏）；参与部分方向决定；为美术组撰写素材需求与提示词，并在 Godot 中验收素材。
-- **Codex 角色设计组**（2026-10-23 新开）：主角与角色设计，**也负责主角动画**，交付到 `art/character_design/`（动画在 `anim/`，QA 在 `anim/qc/hero_B1_anim_QA.md`，累计记录）。它的 QA 会如实写出没做到的地方，值得认真读。
-  2026-10-25 起**也负责场景物件**（墓碑、墙、铁栏、墓穴……）：按主角的真像素标准在原生尺寸上逐个制作，交付到 `art/cemetery_v3/props/`（D-026，需求 `docs/CEMETERY_PROPS_PIXEL_REQUEST.md`）。**先做物件，通过后再做骷髅设计**（`docs/SKELETON_DESIGN_REQUEST.md`，截至 2026-10-25 尚未发出）。
-  2026-10-24 决定暂不新开动画组；等到敌人 / NPC 动画要和主角动画同时做时，再开“怪物 / NPC 组”。对话太长时给同一组开新对话，先读 HERO_DESIGN 与 HERO_ANIMATION_REQUEST 即可接上。
-- **Codex 美术组**：按需求生成素材，交付到 `art/` 并附 `qc/*_QA.md`。2026-10-25 起负责**地面与整体构图**；它两轮墓园背景（`art/cemetery_v3/design/`、`style_test/`）都被判定为“被像素化的写实画”，原因是先生成大图再缩小。
-- **画风锚点**：北极星图 `art/pixel_test/source/graveyard_P_reference.png`；主角放进去的效果 `docs/reference/northstar_with_hero_B1.png`。给美术相关组写需求时**一定附图片路径**，不要只引用文字。
-- **Codex 方向组**：维护 Obsidian 中的设计文档（World Bible、Art Direction Bible 等）。2026-10-24 起 Claude 也可直接修改知识库（见上文“设计知识库”）。
-- **每个组就是一个对话**（用户的说法）。不要建议给同一组同时开两个对话；同一组的多件事排先后顺序。只有对话太长时，才给同一组换一个新对话接着做。
-- 用户在三方之间转达消息。给某一组的文字要明确标注“发给谁”。
-- 过渡期：此前由 Codex 程序组编写的正式游戏代码，接手前先阅读 README 与 `docs/` 中的运行时文档；若工作区有不是本人做的未提交改动，先向用户确认来源再处理。
-- `addons/godot_ai/`（及 `project.godot` 里对应的 autoload / 插件项）是用户自己装的，2026-10-24 已提交。它是连接 Godot 编辑器的 MCP 插件，但还没接到 Claude Code：要用得在 Godot 的 Godot AI 面板里对 Claude Code 点 Configure，再开新对话。
-- `art_source/backups/` 是美术组 2026-10-22 留下的素材备份，一直未提交，没有动过；处理前问用户。
+- **Claude**：全部程序；参与方向决定；给各组写需求（附图片路径、同时写上限和下限）、在 Godot 里验收；**主动维护知识库**（用户拍板就记）。
+- **Codex 角色设计组**：主角、角色、敌人、NPC 及动画，**以及场景物件**（D-026）。交付到 `art/character_design/`、`art/cemetery_v3/props/`。QA 会如实写出没做到的地方，值得认真读。
+- **Codex 美术组**：地面与整体构图（构图图只定位置和空间）。等物件标准定下后再给它写真像素地面的需求。
+- **Codex 方向组**：维护知识库设计文档；同时改同一文件前先请用户协调。
+- **每个组就是一个对话**：同一组的多件事排先后顺序，不并行开两个对话；只有对话太长时才给同一组换新对话（开场模板见制作手册 §10）。**写好的需求要等用户转发，不要默认已经发出。**
+- 用户在各组之间转达消息；给某组的文字开头标明“发给：xxx”，写成可直接转发的中文。
+- `addons/godot_ai/` 是用户装的 Godot MCP 插件，还没接到 Claude Code。`art_source/backups/` 是美术组的备份，未提交，处理前问用户。
 
 ## 协作约定
 
@@ -111,7 +99,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - 给 Codex 各组的消息写成可直接转发的文字，开头标明“发给：xxx”。
 - 美术素材由 Codex 生成并写入同一个仓库（常在 `art/` 下，附 `qc/*_QA.md` 检查记录）。**写入素材文件夹前先查看里面已有什么**，不要覆盖 Codex 的交付。
 - 未经用户确认，不要修改 `scenes/main.tscn`、`project.godot` 与 `main` 分支；新实验放在 `prototypes/` 子目录下。
-- 仓库实际位于 `~/Documents/GitHub.nosync/`（`.nosync` 让 iCloud 不同步它），`~/Documents/GitHub` 是指向它的替身，旧路径照常可用（2026-10-24）。原因：仓库放在 iCloud 同步目录里，大批文件变动时 iCloud 会生成成百上千个“ 2”副本。**不要把仓库挪回 iCloud 同步目录。**
+- 仓库实际位于 **`~/Documents/GitHub.nosync/English-Game`**（`.nosync` 让 iCloud 不同步它；不要挪回 iCloud 同步目录）。iCloud 后来把替身改名成了 `GitHub 2`，**`~/Documents/GitHub` 现在是空壳，不要用**。Godot 项目列表已指向 `.nosync`；GitHub Desktop 若找不到仓库，让用户点 Locate 选 `.nosync` 路径。
 - Godot 可执行文件：`/Applications/Godot.app/Contents/MacOS/Godot`。可以用 `--path . <scene> -- <args>` 运行场景并在脚本里截图验证效果。
   截图模式偶尔卡住（例如脚本报错时窗口一直黑着），用后台运行 + 限时（`sleep N; kill`）跑；给用户开新窗口前先 `pkill -f <场景名>` 关掉旧窗口。
 - 写给美术组的规则要考虑透视：侧面的“脚锁地面”不能照搬到正面 / 背面（俯视角下前后被压缩），这次因此返工过一轮。规格冲突时，宁可让美术组在 QA 里指出，也不要让它自己猜。
