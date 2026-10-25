@@ -1,0 +1,227 @@
+{
+  "native_boxes": {
+    "front": {
+      "cloth": [
+        [
+          33,
+          18,
+          64,
+          85
+        ]
+      ],
+      "pins": [
+        [
+          31,
+          10,
+          44,
+          20
+        ]
+      ],
+      "X": [
+        [
+          42,
+          23,
+          58,
+          34
+        ]
+      ],
+      "wrap": [
+        [
+          42,
+          2,
+          56,
+          9
+        ]
+      ],
+      "waist": [
+        [
+          36,
+          34,
+          63,
+          40
+        ]
+      ]
+    },
+    "back": {
+      "cloth": [
+        [
+          51,
+          17,
+          68,
+          37
+        ],
+        [
+          35,
+          66,
+          44,
+          81
+        ]
+      ],
+      "pins": [
+        [
+          53,
+          13,
+          65,
+          20
+        ]
+      ],
+      "X": [
+        [
+          51,
+          23,
+          63,
+          32
+        ]
+      ],
+      "wrap": [
+        [
+          40,
+          2,
+          57,
+          10
+        ]
+      ],
+      "waist": [
+        [
+          35,
+          34,
+          64,
+          40
+        ]
+      ]
+    },
+    "left": {
+      "cloth": [
+        [
+          39,
+          36,
+          54,
+          85
+        ],
+        [
+          40,
+          22,
+          47,
+          34
+        ]
+      ],
+      "pins": [
+        [
+          52,
+          12,
+          59,
+          20
+        ]
+      ],
+      "X": [
+        [
+          39,
+          24,
+          47,
+          33
+        ]
+      ],
+      "wrap": [
+        [
+          40,
+          2,
+          56,
+          10
+        ]
+      ],
+      "waist": [
+        [
+          39,
+          33,
+          59,
+          39
+        ]
+      ]
+    },
+    "right": {
+      "cloth": [
+        [
+          30,
+          17,
+          54,
+          37
+        ],
+        [
+          47,
+          40,
+          62,
+          84
+        ]
+      ],
+      "pins": [
+        [
+          31,
+          9,
+          43,
+          20
+        ]
+      ],
+      "X": [
+        [
+          46,
+          23,
+          56,
+          34
+        ]
+      ],
+      "wrap": [
+        [
+          40,
+          2,
+          58,
+          10
+        ]
+      ],
+      "waist": [
+        [
+          39,
+          34,
+          59,
+          41
+        ]
+      ]
+    }
+  },
+  "legend": {
+    "front": [
+      "1 cloth: R shoulder -> L shin",
+      "2 two pins: anatomical R shoulder",
+      "3 black X seam on front sheet",
+      "4 diagonal forehead wrap",
+      "5 waist cord"
+    ],
+    "back": [
+      "1 rear R-shoulder fold; L-calf edge",
+      "2 tips only; heads hidden in front",
+      "3 HIDDEN: X seam on front face",
+      "4 cloth wrap around back of skull",
+      "5 waist cord across back"
+    ],
+    "left": [
+      "1 front edge + NEAR left calf panel",
+      "2 FAR R-shoulder tip; other occluded",
+      "3 partial seam at front chest edge",
+      "4 forehead/side wrap",
+      "5 waist cord at side"
+    ],
+    "right": [
+      "1 NEAR R-shoulder fold; FAR L-calf",
+      "2 two obvious NEAR R-shoulder pins",
+      "3 partial X on front-facing fold",
+      "4 forehead/side wrap",
+      "5 waist cord at side"
+    ]
+  },
+  "colors": {
+    "cloth": "#D7B46F",
+    "pins": "#D8896D",
+    "X": "#C0A2C7",
+    "wrap": "#AFBF8D",
+    "waist": "#DDD3BD"
+  }
+}

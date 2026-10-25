@@ -1,0 +1,17 @@
+from pathlib import Path
+from PIL import Image
+import numpy as np,json,hashlib
+W=Path('/tmp/english-game-skeleton-directions-20261025');R=Path('/Users/mac/Documents/GitHub.nosync/English-Game');O=R/'art/character_design/enemies/skeleton';D=O/'qc/skeleton_B_directions_sources';old=json.loads((W/'protected_hashes.json').read_text());changed=[p for p,h in old.items() if not (R/p).exists() or hashlib.sha256((R/p).read_bytes()).hexdigest()!=h];assert not changed,changed
+P=np.array(json.loads((W/'allowed_palette.json').read_text())).astype(int);rec=json.loads((W/'finish_records.json').read_text());metrics={};count=0
+for n in ['front','back','left','right']:
+ f='skeleton_B.png' if n=='front' else 'skeleton_B_'+n+'.png';p=O/f;a=np.array(Image.open(p).convert('RGBA'));m=a[:,:,3]>0;y,x=np.where(m);q=m[:,:-1]&m[:,1:];diff=np.any(a[:,:-1,:3]!=a[:,1:,:3],axis=2);cols=np.unique(a[m,:3],axis=0);ratio=100*float(np.sum(q&diff))/np.sum(q);assert a.shape==(96,96,4) and int(y.min())==0 and int(y.max())==95;assert set(np.unique(a[:,:,3])).issubset({0,255});assert np.all(np.any(np.all(cols[:,None,:]==P[None,:,:],axis=2),axis=1));assert 30<=len(cols)<=50 and ratio>=80
+ metrics[n]={'file':f,'canvas':[96,96],'origin':[48,96],'visible_bbox':[int(x.min()),int(y.min()),int(x.max()+1),int(y.max()+1)],'visible_height':96,'lowest_opaque_y':95,'colors':len(cols),'adjacent_change':round(ratio,6),'alpha_values':[int(v) for v in np.unique(a[:,:,3])],'palette_subset_of_B_and_remains':True,'png_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rgba_sha256':hashlib.sha256(a.tobytes()).hexdigest()}
+ if n!='front':
+  gd=json.loads((D/n/'grid.json').read_text());raw=np.array(Image.open(D/n/'01_generated_original.png').convert('RGB'));rest=np.array(Image.open(D/n/'02_restored_native_cells.png').convert('RGBA'));xs=gd['x_boundaries'];ys=gd['y_boundaries'];samples=0
+  for yy,xx in zip(*np.where(rest[:,:,3]>0)):
+   assert np.array_equal(rest[yy,xx,:3],raw[(ys[yy]+ys[yy+1])//2,(xs[xx]+xs[xx+1])//2]);samples+=1
+  metrics[n]['verified_source_cell_samples']=samples;count+=samples
+  # Reproduce final entirely from the chosen sampled cells, palette map and recorded native row selection.
+  v=rec[n];b=rest[:,v['crop_x'][0]:v['crop_x'][1]].copy();bad=(b[:,:,0].astype(int)-b[:,:,1].astype(int)>28)&(b[:,:,2].astype(int)-b[:,:,1].astype(int)>28);b[bad]=0;b[b[:,:,3]==0]=0;bm=b[:,:,3]>0;rgb=b[bm,:3].astype(int);b[bm,:3]=P[((rgb[:,None,:]-P[None,:,:])**2).sum(2).argmin(1)];b=b[v['source_row_lookup']];im=Image.new('RGBA',(96,96));im.alpha_composite(Image.fromarray(b),tuple(v['integer_registration']));assert np.array_equal(np.array(im),a)
+left=np.array(Image.open(O/'skeleton_B_left.png').convert('RGBA'));right=np.array(Image.open(O/'skeleton_B_right.png').convert('RGBA'));assert not np.array_equal(left,right[:,::-1]);proof={'old_files_checked':len(old),'changed_old_files':changed,'front_png_matches_initial_snapshot':True,'front_rgba_sha256':metrics['front']['rgba_sha256'],'remains_png_matches_initial_snapshot':True,'A_and_C_and_all_existing_skeleton_files_unchanged':True,'all_new_pngs_96x96_and96high':True,'all_origins':[48,96],'all_alpha_0_255':True,'palette_rgb_count':len(P),'no_new_rgb_colors':True,'new_frames_reproduced_from_sampled_cells_and_recorded_native_edits':True,'source_cell_centers_verified':count,'left_is_not_mirrored_right':True,'animation_and_runtime_changes':False,'acceptance':'awaiting user in-game review'}
+(D/'metrics.json').write_text(json.dumps({'verification':proof,'directions':metrics},indent=2));print(json.dumps(proof,indent=2))

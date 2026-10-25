@@ -47,9 +47,12 @@ const LAYOUT := {
 		["obelisk_01", Vector2(915, 345), null],
 		["grave_slab_01", Vector2(745, 510), false],
 		["tombstone_cross_01_broken", Vector2(900, 525), null],
-		# 选定的骷髅 B「余裹者」（D-037）：站立 + 骨堆
-		[SKELETON + "skeleton_B", Vector2(480, 365), null],
-		[SKELETON + "skeleton_B_remains", Vector2(560, 400), false],
+		# 选定的骷髅 B「余裹者」（D-037）：四方向（正 / 背 / 左 / 右）+ 骨堆
+		[SKELETON + "skeleton_B", Vector2(360, 365), null],
+		[SKELETON + "skeleton_B_back", Vector2(440, 365), null],
+		[SKELETON + "skeleton_B_left", Vector2(520, 365), null],
+		[SKELETON + "skeleton_B_right", Vector2(600, 365), null],
+		[SKELETON + "skeleton_B_remains", Vector2(560, 420), false],
 	],
 }
 

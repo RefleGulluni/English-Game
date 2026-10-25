@@ -1,0 +1,140 @@
+{
+  "verification": {
+    "old_files_checked": 146,
+    "changed_old_files": [],
+    "front_png_matches_initial_snapshot": true,
+    "front_rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623",
+    "remains_png_matches_initial_snapshot": true,
+    "A_and_C_and_all_existing_skeleton_files_unchanged": true,
+    "all_new_pngs_96x96_and96high": true,
+    "all_origins": [
+      48,
+      96
+    ],
+    "all_alpha_0_255": true,
+    "palette_rgb_count": 48,
+    "no_new_rgb_colors": true,
+    "new_frames_reproduced_from_sampled_cells_and_recorded_native_edits": true,
+    "source_cell_centers_verified": 7755,
+    "left_is_not_mirrored_right": true,
+    "animation_and_runtime_changes": false,
+    "acceptance": "awaiting user in-game review"
+  },
+  "directions": {
+    "front": {
+      "file": "skeleton_B.png",
+      "canvas": [
+        96,
+        96
+      ],
+      "origin": [
+        48,
+        96
+      ],
+      "visible_bbox": [
+        27,
+        0,
+        69,
+        96
+      ],
+      "visible_height": 96,
+      "lowest_opaque_y": 95,
+      "colors": 48,
+      "adjacent_change": 89.220918,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_subset_of_B_and_remains": true,
+      "png_sha256": "707b5690cdc690935c0402544a1d957bf1304800cc87b9be913b61e3febce8e5",
+      "rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623"
+    },
+    "back": {
+      "file": "skeleton_B_back.png",
+      "canvas": [
+        96,
+        96
+      ],
+      "origin": [
+        48,
+        96
+      ],
+      "visible_bbox": [
+        23,
+        0,
+        72,
+        96
+      ],
+      "visible_height": 96,
+      "lowest_opaque_y": 95,
+      "colors": 44,
+      "adjacent_change": 85.267621,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_subset_of_B_and_remains": true,
+      "png_sha256": "ba067fd27f6ffbdd372486fd0f1b653427fa6bb29adab9266d913cff4578dae5",
+      "rgba_sha256": "472f5f597c71834270c7c7f2e39ce89e50f874a0c83f34942227301a0212bebd",
+      "verified_source_cell_samples": 2341
+    },
+    "left": {
+      "file": "skeleton_B_left.png",
+      "canvas": [
+        96,
+        96
+      ],
+      "origin": [
+        48,
+        96
+      ],
+      "visible_bbox": [
+        34,
+        0,
+        62,
+        96
+      ],
+      "visible_height": 96,
+      "lowest_opaque_y": 95,
+      "colors": 44,
+      "adjacent_change": 83.063895,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_subset_of_B_and_remains": true,
+      "png_sha256": "996fdcf63145199a9bc4a884145c0742af0a7c7bcca3822dfd5f8106935bc2ae",
+      "rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+      "verified_source_cell_samples": 3303
+    },
+    "right": {
+      "file": "skeleton_B_right.png",
+      "canvas": [
+        96,
+        96
+      ],
+      "origin": [
+        48,
+        96
+      ],
+      "visible_bbox": [
+        29,
+        0,
+        67,
+        96
+      ],
+      "visible_height": 96,
+      "lowest_opaque_y": 95,
+      "colors": 46,
+      "adjacent_change": 87.235294,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "palette_subset_of_B_and_remains": true,
+      "png_sha256": "98b5b7f7102b69c48527a00c193684ad0cd3b26cf92051bfe4faf4e7dfb5ceab",
+      "rgba_sha256": "37049bd143bdeb568f4dc85d5538db33bde7077f6b47536e429d0adf64960a86",
+      "verified_source_cell_samples": 2111
+    }
+  }
+}

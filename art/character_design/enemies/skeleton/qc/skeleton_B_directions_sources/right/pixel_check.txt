@@ -1,0 +1,3 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+t/character_design/enemies/skeleton/skeleton_B_right.png     96x96   OK   46    87    0    95
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95
