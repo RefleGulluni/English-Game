@@ -1,0 +1,8 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ame/art/character_design/enemies/skeleton/skeleton_A.png     96x96   OK   42    92    0    95
+character_design/enemies/skeleton/skeleton_A_remains.png     96x48   OK   44    94    0    47
+ame/art/character_design/enemies/skeleton/skeleton_B.png     96x96   OK   48    89    0    95
+character_design/enemies/skeleton/skeleton_B_remains.png     96x48   OK   46    92    0    47
+ame/art/character_design/enemies/skeleton/skeleton_C.png     96x96   OK   47    92    0    95
+character_design/enemies/skeleton/skeleton_C_remains.png     96x48   OK   45    91    0    47
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

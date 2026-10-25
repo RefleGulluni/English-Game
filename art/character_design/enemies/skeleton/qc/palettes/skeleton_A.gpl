@@ -1,0 +1,52 @@
+GIMP Palette
+Name: Skeleton A paired forms
+Columns: 8
+# sampled material colors, no dithering
+ 26  18  10 material_00
+ 30  22  12 material_01
+ 35  23  14 material_02
+ 37  25  15 material_03
+ 40  27  17 material_04
+ 42  31  19 material_05
+ 46  31  20 material_06
+ 47  35  21 material_07
+ 51  39  23 material_08
+ 56  39  24 material_09
+ 59  39  26 material_10
+ 62  47  28 material_11
+ 69  41  31 material_12
+ 69  52  32 material_13
+ 70  50  28 material_14
+ 76  58  35 material_15
+ 76  55  33 material_16
+ 80  63  39 material_17
+ 86  63  37 material_18
+ 98  64  31 material_19
+ 99  72  44 material_20
+101  78  48 material_21
+111  84  49 material_22
+121  94  55 material_23
+122  87  43 material_24
+130 102  63 material_25
+143 116  71 material_26
+144 108  57 material_27
+149 119  73 material_28
+154 126  80 material_29
+167 131  78 material_30
+173 141  85 material_31
+175 148 103 material_32
+187 151  94 material_33
+187 161 113 material_34
+199 166 107 material_35
+205 183 138 material_36
+219 203 169 material_37
+221 208 177 material_38
+223 209 179 material_39
+224 210 180 material_40
+225 210 179 material_41
+228 215 186 material_42
+240 221 183 material_43
+241 223 188 material_44
+242 226 191 material_45
+243 224 189 material_46
+243 228 195 material_47

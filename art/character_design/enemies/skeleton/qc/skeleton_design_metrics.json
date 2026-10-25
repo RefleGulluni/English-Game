@@ -1,0 +1,276 @@
+{
+  "verification": {
+    "protected_preexisting_files_checked": 1653,
+    "concurrent_changed_preexisting_files_not_written_by_this_task": [
+      "art/ui/combat_hud_theme.tres",
+      "art/cemetery_kit_v1/terrain/cemetery_tileset.tres",
+      "art/cemetery_v3/ground/trial/qc/ground_trial_QA.md"
+    ],
+    "preexisting_png_images_unchanged": true,
+    "protected_files_unchanged_count": 1650,
+    "final_sprite_count": 6,
+    "single_source_cell_center_samples_verified": 11685,
+    "binary_alpha_all": true,
+    "standing_canvases_all_96x96": true,
+    "standing_lowest_y_all_95": true,
+    "standing_origins_all": [
+      48,
+      96
+    ],
+    "remains_canvases_all": [
+      96,
+      48
+    ],
+    "remains_origins_all": [
+      48,
+      48
+    ],
+    "all_colors_30_to50": true,
+    "all_adjacent_change_at_least80": true,
+    "game_runtime_changed": false,
+    "direction_selected": false,
+    "in_game_acceptance": "not_requested_this_round; await user direction choice"
+  },
+  "sprites": {
+    "skeleton_A": {
+      "file": "skeleton_A.png",
+      "origin": [
+        48,
+        96
+      ],
+      "source_crop_bbox": [
+        0,
+        0,
+        39,
+        93
+      ],
+      "integer_registration": [
+        28,
+        3
+      ],
+      "canvas": [
+        96,
+        96
+      ],
+      "bbox": [
+        28,
+        3,
+        67,
+        96
+      ],
+      "visible_width": 39,
+      "visible_height": 93,
+      "lowest_opaque_y": 95,
+      "colors": 42,
+      "adjacent_change": 91.5625,
+      "opaque": 1521,
+      "rgba_sha256": "fd9b5f934c182159736ad384d8ae3de0c49538a190267ff7025268eec134d593",
+      "png_sha256": "c6c23e23c23f72f6ec2bace6001122949081799330a8ff059974e70ea317fbcb",
+      "verified_raw_cell_samples": 1536,
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    "skeleton_A_remains": {
+      "file": "skeleton_A_remains.png",
+      "origin": [
+        48,
+        48
+      ],
+      "source_crop_bbox": [
+        0,
+        0,
+        71,
+        34
+      ],
+      "integer_registration": [
+        12,
+        14
+      ],
+      "canvas": [
+        96,
+        48
+      ],
+      "bbox": [
+        12,
+        14,
+        83,
+        48
+      ],
+      "visible_width": 71,
+      "visible_height": 34,
+      "lowest_opaque_y": 47,
+      "colors": 44,
+      "adjacent_change": 94.030899,
+      "opaque": 1520,
+      "rgba_sha256": "908620353042fee14da6414b570c2550488f50efe9a8c7e6aa7d8e8d0aa2c108",
+      "png_sha256": "0875a1897cacecac59acd6141581c779ace099349f1236b79088dcc094365ec4",
+      "verified_raw_cell_samples": 1700,
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    "skeleton_B": {
+      "file": "skeleton_B.png",
+      "origin": [
+        48,
+        96
+      ],
+      "source_crop_bbox": [
+        0,
+        1,
+        42,
+        97
+      ],
+      "integer_registration": [
+        27,
+        -1
+      ],
+      "canvas": [
+        96,
+        96
+      ],
+      "bbox": [
+        27,
+        0,
+        69,
+        96
+      ],
+      "visible_width": 42,
+      "visible_height": 96,
+      "lowest_opaque_y": 95,
+      "colors": 48,
+      "adjacent_change": 89.220918,
+      "opaque": 2111,
+      "rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623",
+      "png_sha256": "707b5690cdc690935c0402544a1d957bf1304800cc87b9be913b61e3febce8e5",
+      "verified_raw_cell_samples": 2145,
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    "skeleton_B_remains": {
+      "file": "skeleton_B_remains.png",
+      "origin": [
+        48,
+        48
+      ],
+      "source_crop_bbox": [
+        13,
+        0,
+        85,
+        35
+      ],
+      "integer_registration": [
+        -1,
+        13
+      ],
+      "canvas": [
+        96,
+        48
+      ],
+      "bbox": [
+        12,
+        13,
+        84,
+        48
+      ],
+      "visible_width": 72,
+      "visible_height": 35,
+      "lowest_opaque_y": 47,
+      "colors": 46,
+      "adjacent_change": 92.471769,
+      "opaque": 1677,
+      "rgba_sha256": "e8d5844a3af68c32907bf45b34cffeb8d1b614a7ec9f23ec29b239e58bb560d9",
+      "png_sha256": "7c791f6e48ef2d314a41f6eb9dcf44ebf299a8791beca7b9c7a0dcc4dafe0c8b",
+      "verified_raw_cell_samples": 2286,
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    "skeleton_C": {
+      "file": "skeleton_C.png",
+      "origin": [
+        48,
+        96
+      ],
+      "source_crop_bbox": [
+        0,
+        0,
+        53,
+        95
+      ],
+      "integer_registration": [
+        21,
+        1
+      ],
+      "canvas": [
+        96,
+        96
+      ],
+      "bbox": [
+        21,
+        1,
+        74,
+        96
+      ],
+      "visible_width": 53,
+      "visible_height": 95,
+      "lowest_opaque_y": 95,
+      "colors": 47,
+      "adjacent_change": 92.492669,
+      "opaque": 1986,
+      "rgba_sha256": "4a06506b4c2cc662b2ed45eedfc067d55d754b10a40daf93abae77de53184dae",
+      "png_sha256": "4b866f04fc08650063694a1b8df2ae8879a820e2e377dbcdf9ec5eb4aa8b4e3c",
+      "verified_raw_cell_samples": 2017,
+      "alpha_values": [
+        0,
+        255
+      ]
+    },
+    "skeleton_C_remains": {
+      "file": "skeleton_C_remains.png",
+      "origin": [
+        48,
+        48
+      ],
+      "source_crop_bbox": [
+        13,
+        2,
+        84,
+        37
+      ],
+      "integer_registration": [
+        -1,
+        11
+      ],
+      "canvas": [
+        96,
+        48
+      ],
+      "bbox": [
+        12,
+        13,
+        83,
+        48
+      ],
+      "visible_width": 71,
+      "visible_height": 35,
+      "lowest_opaque_y": 47,
+      "colors": 45,
+      "adjacent_change": 90.960056,
+      "opaque": 1539,
+      "rgba_sha256": "97af6dc035b707fd8a262953e811258ede9373cdac07e17f4986ff4d4a823276",
+      "png_sha256": "fdc2c472a40bbfc69a8ab8e1009df83be2d4a398ad0a057084d0e2887f8b50ff",
+      "verified_raw_cell_samples": 2001,
+      "alpha_values": [
+        0,
+        255
+      ]
+    }
+  }
+}

@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 		var behind := player.position.y < prop.position.y and rect.grow(-4).has_point(body)
 		var a := move_toward(sprite.modulate.a, FADE_ALPHA if behind else 1.0, delta * 4.0)
 		sprite.modulate.a = a
-		var base: Sprite2D = prop.get_meta("base")
+		var base: Sprite2D = prop.get_meta("base") if prop.has_meta("base") else null
 		if base:
 			base.modulate.a = a
 
@@ -90,7 +90,8 @@ func _process(delta: float) -> void:
 ## or false for none (small props the player walks over).
 func _make_prop(file: String, collision: Variant, ellipse: bool, base: Sprite2D) -> Node2D:
 	var root := Node2D.new()
-	root.set_meta("base", base)
+	if base:
+		root.set_meta("base", base) # setting null would try to remove a missing key
 	var tex := PixelArt.texture(prop_dir + file + ".png")
 	# Lift the node to where the upright part really meets the ground (Y-sort point).
 	var gap := tex.get_height() - 1 - PixelArt.lowest_opaque_row(tex.get_image())

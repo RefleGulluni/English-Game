@@ -8,6 +8,7 @@ extends Node
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
 const NATIVE := Vector2i(960, 540)
+const SKELETON := "../../character_design/enemies/skeleton/" # relative to PROPS
 # [物件, 原点]；碰撞留空，由房间按立体部分的脚自动生成。物件名可带子目录（例如 qc/backups/round1/ 里的旧版）
 # 第 2 版拼接：完整墙每 148 px 接一段（画布内拼接列 x=21 / 168），残墙左拼接列 x=21；铁栏每 132 px（x=12 / 143）
 const LAYOUT := {
@@ -46,6 +47,13 @@ const LAYOUT := {
 		["obelisk_01", Vector2(915, 345), null],
 		["grave_slab_01", Vector2(745, 510), false],
 		["tombstone_cross_01_broken", Vector2(900, 525), null],
+		# 骷髅设计三个方向（站立 + 骨堆），选定后撤掉
+		[SKELETON + "skeleton_A", Vector2(380, 365), null],
+		[SKELETON + "skeleton_B", Vector2(480, 365), null],
+		[SKELETON + "skeleton_C", Vector2(580, 365), null],
+		[SKELETON + "skeleton_A_remains", Vector2(380, 415), false],
+		[SKELETON + "skeleton_B_remains", Vector2(480, 415), false],
+		[SKELETON + "skeleton_C_remains", Vector2(580, 415), false],
 	],
 }
 

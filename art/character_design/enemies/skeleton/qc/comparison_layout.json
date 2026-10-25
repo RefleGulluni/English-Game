@@ -1,0 +1,57 @@
+{
+  "sample_ground": "art/cemetery_pixel_v1/plates/ground_plate_960x540.png",
+  "scale": 2,
+  "origins": {
+    "B1": [
+      100,
+      340
+    ],
+    "A": {
+      "standing_origin": [
+        275,
+        340
+      ],
+      "remains_origin": [
+        340,
+        382
+      ]
+    },
+    "B": {
+      "standing_origin": [
+        500,
+        340
+      ],
+      "remains_origin": [
+        565,
+        382
+      ]
+    },
+    "C": {
+      "standing_origin": [
+        725,
+        340
+      ],
+      "remains_origin": [
+        790,
+        382
+      ]
+    }
+  },
+  "props": [
+    [
+      "tombstone_upright_01",
+      145,
+      199
+    ],
+    [
+      "tombstone_cross_01",
+      478,
+      192
+    ],
+    [
+      "obelisk_01",
+      786,
+      202
+    ]
+  ]
+}
