@@ -1,0 +1,37 @@
+{
+  "seam_x": 240,
+  "seam_mean_absolute_rgb_jump": 18.7,
+  "nearby_internal_boundaries_mean_absolute_rgb_jump": 14.01,
+  "note": "RGB jump is diagnostic only, not a seam acceptance criterion. No boundary pixels copied, blended, shifted or retouched.",
+  "placements_bottom_center": [
+    [
+      "tombstone_upright_01",
+      [
+        46,
+        122
+      ]
+    ],
+    [
+      "rubble_pile_01",
+      [
+        198,
+        127
+      ]
+    ]
+  ],
+  "hero_bottom_center": [
+    128,
+    128
+  ],
+  "old_crop_xyxy": [
+    80,
+    340,
+    320,
+    475
+  ],
+  "tint": [
+    0.8,
+    0.84,
+    0.92
+  ]
+}

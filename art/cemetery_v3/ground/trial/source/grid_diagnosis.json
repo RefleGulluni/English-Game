@@ -1,0 +1,66 @@
+{
+  "status": "blocked_before_native_reconstruction",
+  "generated_size": [
+    1672,
+    941
+  ],
+  "required_native_size": [
+    480,
+    270
+  ],
+  "method": "Mean absolute RGB adjacent-column/row difference, then FFT. Peaks diagnose approximate cell spacing only; they are NOT verified individual grid boundaries.",
+  "x_peaks": [
+    {
+      "cycles": 249,
+      "spacing_source_pixels": 6.7108,
+      "amplitude": 1882.62
+    },
+    {
+      "cycles": 250,
+      "spacing_source_pixels": 6.684,
+      "amplitude": 1651.6
+    },
+    {
+      "cycles": 499,
+      "spacing_source_pixels": 3.3487,
+      "amplitude": 1087.14
+    },
+    {
+      "cycles": 251,
+      "spacing_source_pixels": 6.6574,
+      "amplitude": 1001.72
+    },
+    {
+      "cycles": 253,
+      "spacing_source_pixels": 6.6047,
+      "amplitude": 756.06
+    }
+  ],
+  "y_peaks": [
+    {
+      "cycles": 139,
+      "spacing_source_pixels": 6.7626,
+      "amplitude": 1264.43
+    },
+    {
+      "cycles": 278,
+      "spacing_source_pixels": 3.3813,
+      "amplitude": 732.67
+    },
+    {
+      "cycles": 138,
+      "spacing_source_pixels": 6.8116,
+      "amplitude": 698.12
+    },
+    {
+      "cycles": 277,
+      "spacing_source_pixels": 3.3935,
+      "amplitude": 604.96
+    },
+    {
+      "cycles": 142,
+      "spacing_source_pixels": 6.6197,
+      "amplitude": 467.63
+    }
+  ]
+}

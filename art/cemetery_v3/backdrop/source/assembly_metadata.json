@@ -1,0 +1,223 @@
+{
+  "skyline_a": {
+    "removed_isolated_pixels": 4,
+    "native_size": [
+      254,
+      142
+    ],
+    "crop_xyxy": [
+      7,
+      42,
+      247,
+      142
+    ],
+    "integer_vertical_offset": 4,
+    "shared_silhouette_color": [
+      76,
+      82,
+      90,
+      255
+    ]
+  },
+  "skyline_b": {
+    "removed_isolated_pixels": 12,
+    "native_size": [
+      256,
+      152
+    ],
+    "crop_xyxy": [
+      0,
+      52,
+      240,
+      152
+    ],
+    "integer_vertical_offset": 15,
+    "shared_silhouette_color": [
+      76,
+      82,
+      90,
+      255
+    ]
+  },
+  "skyline_c": {
+    "removed_isolated_pixels": 26,
+    "native_size": [
+      280,
+      153
+    ],
+    "crop_xyxy": [
+      0,
+      53,
+      240,
+      153
+    ],
+    "integer_vertical_offset": 4,
+    "shared_silhouette_color": [
+      76,
+      82,
+      90,
+      255
+    ]
+  },
+  "skyline_d": {
+    "removed_isolated_pixels": 26,
+    "native_size": [
+      259,
+      154
+    ],
+    "crop_xyxy": [
+      0,
+      54,
+      240,
+      154
+    ],
+    "integer_vertical_offset": 5,
+    "shared_silhouette_color": [
+      76,
+      82,
+      90,
+      255
+    ]
+  },
+  "skyline_seams": [
+    {
+      "join_x": 240,
+      "band_x_inclusive": [
+        216,
+        263
+      ],
+      "end_heights": [
+        63,
+        67
+      ],
+      "changed_pixels": 266,
+      "added_pixels": 0,
+      "removed_pixels": 266
+    },
+    {
+      "join_x": 480,
+      "band_x_inclusive": [
+        456,
+        503
+      ],
+      "end_heights": [
+        66,
+        74
+      ],
+      "changed_pixels": 206,
+      "added_pixels": 1,
+      "removed_pixels": 205
+    },
+    {
+      "join_x": 720,
+      "band_x_inclusive": [
+        696,
+        743
+      ],
+      "end_heights": [
+        52,
+        39
+      ],
+      "changed_pixels": 245,
+      "added_pixels": 40,
+      "removed_pixels": 205
+    }
+  ],
+  "chapel": {
+    "removed_isolated_pixels": 0,
+    "native_size": [
+      174,
+      128
+    ],
+    "crop_bbox": [
+      69,
+      37,
+      105,
+      90
+    ],
+    "visible_size": [
+      36,
+      53
+    ],
+    "placement_top_left": [
+      454,
+      18
+    ],
+    "steeple_tip_x": 480
+  },
+  "branches_left": {
+    "removed_isolated_pixels": 0,
+    "native_size": [
+      252,
+      175
+    ],
+    "crop_bbox": [
+      0,
+      5,
+      150,
+      175
+    ],
+    "visible_size": [
+      150,
+      170
+    ],
+    "final_canvas": [
+      220,
+      175
+    ],
+    "integer_offset": [
+      0,
+      5
+    ],
+    "edge_anchor": "bottom_left"
+  },
+  "branches_right": {
+    "removed_isolated_pixels": 0,
+    "native_size": [
+      237,
+      166
+    ],
+    "crop_bbox": [
+      65,
+      23,
+      237,
+      166
+    ],
+    "visible_size": [
+      172,
+      143
+    ],
+    "final_canvas": [
+      220,
+      150
+    ],
+    "integer_offset": [
+      48,
+      7
+    ],
+    "edge_anchor": "bottom_right"
+  },
+  "preview": {
+    "greybox_size": [
+      960,
+      1090
+    ],
+    "upper_crop": [
+      0,
+      0,
+      960,
+      540
+    ],
+    "lower_crop": [
+      0,
+      550,
+      960,
+      1090
+    ],
+    "central_clear_x_inclusive": [
+      380,
+      580
+    ],
+    "note": "Offline paste preview; scene untouched, no fog/tint added. Backdrop replaces screenshot top100px as requested, not a live engine layer."
+  }
+}

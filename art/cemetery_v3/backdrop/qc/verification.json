@@ -1,0 +1,39 @@
+{
+  "center_sampling_verified_all_7_sources": true,
+  "central_path_clear": true,
+  "independent_branch_shapes": true,
+  "assets": {
+    "entry_backdrop_01": {
+      "size": [
+        960,
+        100
+      ],
+      "alpha_values": [
+        255
+      ],
+      "colors": 10
+    },
+    "fg_branches_left_01": {
+      "size": [
+        220,
+        175
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 3
+    },
+    "fg_branches_right_01": {
+      "size": [
+        220,
+        150
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 3
+    }
+  }
+}

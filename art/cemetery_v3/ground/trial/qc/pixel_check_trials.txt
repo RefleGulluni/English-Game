@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+art/cemetery_v3/ground/trial/ground_trial_01.png           240x135   OK   48    69    0   134
+art/cemetery_v3/ground/trial/ground_trial_02.png           240x135   OK   48    62    0   134
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

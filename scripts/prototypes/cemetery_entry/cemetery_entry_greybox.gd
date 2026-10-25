@@ -64,13 +64,15 @@ const ROAD_LEFT := [Vector2(444, 1080), Vector2(426, 1020), Vector2(450, 960), V
 # 门里的路：从大门到喷泉前，再分成左右两条通向出口
 const INNER_PATHS := [
 	[Vector2(452, 270), Vector2(508, 270), Vector2(512, 232), Vector2(448, 232)],
-	[Vector2(420, 200), Vector2(400, 168), Vector2(330, 110), Vector2(318, 66), Vector2(278, 66), Vector2(290, 116), Vector2(372, 196), Vector2(410, 232)],
-	[Vector2(540, 200), Vector2(560, 168), Vector2(630, 110), Vector2(642, 66), Vector2(682, 66), Vector2(670, 116), Vector2(588, 196), Vector2(550, 232)],
+	[Vector2(420, 200), Vector2(400, 168), Vector2(330, 120), Vector2(318, 96), Vector2(278, 96), Vector2(290, 124), Vector2(372, 196), Vector2(410, 232)],
+	[Vector2(540, 200), Vector2(560, 168), Vector2(630, 120), Vector2(642, 96), Vector2(682, 96), Vector2(670, 124), Vector2(588, 196), Vector2(550, 232)],
 ]
+# 出口在远景条（y 0～100）下沿：小路走进薄雾里
 const EXITS := [
-	{"zone": Rect2(262, 40, 72, 30), "kind": "combat", "target": "layer1_a", "side": "top", "glyph_at": Vector2(298, 26)},
-	{"zone": Rect2(626, 40, 72, 30), "kind": "event", "target": "layer1_b", "side": "top", "glyph_at": Vector2(662, 26)},
+	{"zone": Rect2(262, 92, 72, 26), "kind": "combat", "target": "layer1_a", "side": "top", "glyph_at": Vector2(298, 80)},
+	{"zone": Rect2(626, 92, 72, 26), "kind": "event", "target": "layer1_b", "side": "top", "glyph_at": Vector2(662, 80)},
 ]
+const BACKDROP := "res://art/cemetery_v3/backdrop/" # 美术组的远景条和前景枯枝
 
 const STONE := Color(0.45, 0.44, 0.42)
 const STONE_DARK := Color(0.28, 0.27, 0.26)
@@ -270,6 +272,16 @@ func _build_placeholders() -> void:
 	var fore := Node2D.new()
 	fore.z_index = 60
 	_keep(_room, fore, _high)
+	if FileAccess.file_exists(BACKDROP + "fg_branches_left_01.png"):
+		fore.modulate.a = 0.0 # placeholder kept for the V comparison only
+		for side in ["left", "right"]:
+			var branches := Sprite2D.new()
+			branches.texture = PixelArt.texture(BACKDROP + "fg_branches_%s_01.png" % side)
+			branches.centered = false
+			branches.z_index = 60
+			var size := branches.texture.get_size()
+			branches.position = Vector2(0 if side == "left" else SIZE.x - size.x, SIZE.y - size.y)
+			_room.add_child(branches)
 	var branch := Color(0.08, 0.07, 0.06)
 	fore.position = Vector2(0, SIZE.y - NATIVE.y) # the branches hang over the start of the road
 	fore.add_child(_poly([Vector2(0, 540), Vector2(0, 452), Vector2(22, 470), Vector2(70, 478), Vector2(44, 488), Vector2(118, 512),
@@ -280,7 +292,7 @@ func _build_placeholders() -> void:
 	# 雾带和出口之外不让走出画面上方
 	var top := StaticBody2D.new()
 	_room.add_child(top)
-	for r in [Rect2(0, 0, 262, 70), Rect2(334, 0, 292, 70), Rect2(698, 0, 262, 70)]:
+	for r in [Rect2(0, 0, 262, 100), Rect2(334, 0, 292, 100), Rect2(698, 0, 262, 100), Rect2(262, 0, 72, 92), Rect2(626, 0, 72, 92)]:
 		var block := CollisionShape2D.new()
 		var rect := RectangleShape2D.new()
 		rect.size = r.size
@@ -292,7 +304,7 @@ func _build_placeholders() -> void:
 	_labels.z_index = 80
 	_room.add_child(_labels)
 	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
-			["出口 → 第 1 层", Vector2(262, 72)], ["出口 → 第 1 层", Vector2(626, 72)],
+			["出口 → 第 1 层", Vector2(262, 122)], ["出口 → 第 1 层", Vector2(626, 122)],
 			["高门柱（约主角 1.6 倍高，新素材）", Vector2(556, 150)], ["半开的铁门（占位）", Vector2(330, 246)],
 			["倒下的铁门（占位）", Vector2(556, 292)], ["路边孤坟", Vector2(120, 300)],
 			["倒下的路灯（占位）", Vector2(600, 1006)], ["枯树（旧素材占位）", Vector2(740, 620)],
@@ -332,6 +344,13 @@ func _build_low_angle(ground: Node2D) -> void:
 	var sky := Node2D.new()
 	sky.z_index = 39
 	_room.add_child(sky)
+	if FileAccess.file_exists(BACKDROP + "entry_backdrop_01.png"):
+		sky.visible = false # the art group's backdrop strip replaces this placeholder
+		var strip := Sprite2D.new()
+		strip.texture = PixelArt.texture(BACKDROP + "entry_backdrop_01.png")
+		strip.centered = false
+		strip.z_index = -9 # behind every prop, just over the ground
+		_room.add_child(strip)
 	sky.add_child(_poly([Vector2(0, 0), Vector2(960, 0), Vector2(960, 46), Vector2(0, 46)], Color(0.66, 0.68, 0.72)))
 	var line := PackedVector2Array([Vector2(0, 70)])
 	for x in range(0, 961, 24):
@@ -343,7 +362,7 @@ func _build_low_angle(ground: Node2D) -> void:
 	var thin_fog := Node2D.new()
 	thin_fog.z_index = 40
 	_room.add_child(thin_fog)
-	for band in [[40, 60, 0.45], [60, 76, 0.25], [76, 90, 0.1]]:
+	for band in [[62, 78, 0.3], [78, 92, 0.18], [92, 104, 0.08]]: # low, so the skyline and chapel stay readable
 		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
 	# 更高的门柱：盖在原来的门柱上；用户要了这一点，两版都有（D-040）
