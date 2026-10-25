@@ -16,7 +16,7 @@
 | 文件夹 | 内容 | 制作 | 用在哪里 |
 |---|---|---|---|
 | `character_design/` | **主角 B1**：四方向站姿（`hero_B1_*.png`，游戏里的正面是 `hero_B1_front_straight.png`）、全部动画（`anim/`）、Lexicon 书的设计图（`lexicon_book_sheet.png`）。`hero_B1.png` 是设定图，**一个像素都不改** | 角色设计组 | 可拖入的主角 `scenes/player/hero_b1.tscn`（帧由 `scripts/tools/bake_hero_b1.gd` 打包） |
-| `cemetery_v3/props/` | **墓园物件**（墓碑、十字碑、墓穴、盖板、矮墙、墙柱、铁栏），每件有立体部分 + `_base` 底座贴花。2026-10-25 第 1 版过于平涂；返修墓碑试样已通过（`qc/revision1_tombstone_trial/`），其余 8 件按同一方法制作中 | 角色设计组 | 试走房间 `scenes/prototypes/props_v3/props_v3_room.tscn` |
+| `cemetery_v3/props/` | **墓园物件**（墓碑、十字碑、墓穴、盖板、矮墙、墙柱、铁栏），每件有立体部分 + `_base` 底座贴花。**第 2 版 9 件已通过（D-029）**，第 1 版在 `qc/backups/round1/`。墙分两个家族、同一排不混用：A 乱石墙 `low_wall_01`；B 条石墙 `low_wall_broken_01` + `wall_pillar_01`（也作门柱）+ 铁栏。正在补配套零件（`docs/CEMETERY_PROPS_WALL_FAMILIES.md`） | 角色设计组 | 试走房间 `scenes/prototypes/props_v3/props_v3_room.tscn` |
 | `ui/fonts/` | 长段可读英文用的字体 CormorantGaramond（含授权 `OFL.txt`） | — | Lexicon 灰盒、区域名过渡 |
 
 ## 📎 参考
