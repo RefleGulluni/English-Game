@@ -14,6 +14,7 @@ const SHADOW_COLOR := Color(0.03, 0.03, 0.05, 0.45)
 const FADE_ALPHA := 0.45
 
 var layout: Dictionary
+var prop_dir: String # where this room's props live; layouts may point at a newer prop set
 var sorted: Node2D # Y-sorted: props, actors and world loot; every origin is a ground contact point
 var player: Node2D
 var _props: Array[Node2D] = []
@@ -24,6 +25,7 @@ func _init(room_layout: Dictionary) -> void:
 	layout = room_layout
 	name = "Room_" + str(layout.id)
 	_rng.seed = int(layout.get("seed", 1))
+	prop_dir = str(layout.get("prop_dir", ART + "props/"))
 	var ground := Sprite2D.new()
 	ground.centered = false
 	ground.texture = PixelArt.texture(ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")
@@ -42,9 +44,9 @@ func _init(room_layout: Dictionary) -> void:
 	add_child(sorted)
 	for p in layout.get("props", []):
 		var base: Sprite2D = null
-		if FileAccess.file_exists(ART + "props/" + p[0] + "_base.png"):
+		if FileAccess.file_exists(prop_dir + p[0] + "_base.png"):
 			base = Sprite2D.new()
-			base.texture = PixelArt.texture(ART + "props/" + p[0] + "_base.png")
+			base.texture = PixelArt.texture(prop_dir + p[0] + "_base.png")
 			base.offset = Vector2(0, -base.texture.get_height() / 2)
 			base.position = p[1]
 			bases.add_child(base)
@@ -74,12 +76,15 @@ func _process(delta: float) -> void:
 			base.modulate.a = a
 
 
-func _make_prop(file: String, collision: Rect2, ellipse: bool, base: Sprite2D) -> Node2D:
+## collision: rect relative to the PNG origin, or null for a strip along the upright part's foot.
+func _make_prop(file: String, collision: Variant, ellipse: bool, base: Sprite2D) -> Node2D:
 	var root := Node2D.new()
 	root.set_meta("base", base)
-	var tex := PixelArt.texture(ART + "props/" + file + ".png")
+	var tex := PixelArt.texture(prop_dir + file + ".png")
 	# Lift the node to where the upright part really meets the ground (Y-sort point).
 	var gap := tex.get_height() - 1 - PixelArt.lowest_opaque_row(tex.get_image())
+	if collision == null:
+		collision = _foot_rect(tex.get_image(), gap)
 	if base:
 		tex = PixelArt.without_overlap(tex, base.texture)
 	root.position = Vector2(0, -gap)
@@ -95,7 +100,7 @@ func _make_prop(file: String, collision: Rect2, ellipse: bool, base: Sprite2D) -
 	if ellipse:
 		var poly := CollisionPolygon2D.new()
 		var pts := PackedVector2Array()
-		var c := collision.get_center()
+		var c: Vector2 = collision.get_center()
 		for k in 20:
 			var t := TAU * k / 20.0
 			pts.append(c + Vector2(cos(t), sin(t)) * collision.size / 2.0)
@@ -110,6 +115,21 @@ func _make_prop(file: String, collision: Rect2, ellipse: bool, base: Sprite2D) -
 		body.add_child(shape)
 	root.add_child(body)
 	return root
+
+
+## A 10 px strip across the bottom of the upright part, 85% of its width.
+func _foot_rect(img: Image, gap: int) -> Rect2:
+	var bottom := img.get_height() - 1 - gap
+	var left := img.get_width()
+	var right := -1
+	for y in range(maxi(0, bottom - 7), bottom + 1):
+		for x in img.get_width():
+			if img.get_pixel(x, y).a > 0.5:
+				left = mini(left, x)
+				right = maxi(right, x)
+	var w := maxf(8.0, (right - left + 1) * 0.85)
+	var cx := (left + right + 1) / 2.0 - img.get_width() / 2.0
+	return Rect2(cx - w / 2.0, -gap - 10, w, 10)
 
 
 func _add_bounds() -> void:

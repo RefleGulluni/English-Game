@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/prototypes/props_v3/props_v3_room.gd" id="1"]
+
+[node name="PropsV3Room" type="Node"]
+script = ExtResource("1")
