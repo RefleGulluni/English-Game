@@ -29,7 +29,8 @@ func _init(room_layout: Dictionary) -> void:
 	prop_dir = str(layout.get("prop_dir", ART + "props/"))
 	var ground := Sprite2D.new()
 	ground.centered = false
-	ground.texture = PixelArt.texture(ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")
+	# plate_file: any PNG path (res:// or on disk), for trying ground candidates before they land.
+	ground.texture = PixelArt.texture(str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")))
 	ground.z_index = -10
 	add_child(ground)
 	var bases := Node2D.new()

@@ -3,6 +3,7 @@ extends Node
 ## 物件按 A 残墙院落的样子摆放，地面暂用样板地面板，主角可走动，物件有碰撞、遮挡与半透明。
 ## 按键：WASD 走路 · T 开关游戏整体色调 · F 全屏
 ## 截图：Godot --path . res://scenes/prototypes/props_v3/props_v3_room.tscn -- --capture=<目录>
+## 换地面试样：-- --plate=<PNG 路径>（960×540）
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
@@ -69,7 +70,11 @@ func _ready() -> void:
 	_viewport.snap_2d_transforms_to_pixel = true
 	_viewport.snap_2d_vertices_to_pixel = true
 	add_child(_viewport)
-	_room = CemeteryRoom.new(LAYOUT)
+	var layout := LAYOUT.duplicate()
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--plate="):
+			layout.plate_file = arg.get_slice("=", 1)
+	_room = CemeteryRoom.new(layout)
 	_viewport.add_child(_room)
 	var hero := HERO_SCENE.instantiate()
 	hero.position = Vector2(445, 470)
@@ -114,7 +119,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _capture() -> void:
-	var dir := str(OS.get_cmdline_user_args()[0]).get_slice("=", 1)
+	var dir := ""
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--capture="):
+			dir = arg.get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	var hero: Node2D = _room.player
 	for shot in [["room", Vector2(445, 470)], ["by_grave", Vector2(600, 400)], ["behind_wall", Vector2(450, 255)]]:
