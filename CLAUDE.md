@@ -66,6 +66,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **游戏会有 15,000～20,000+ 个单词**：结构为“星图总览 → 星座 → 单词页”+ 搜索 + 按阶段筛选；ENCOUNTERED 显示为残缺但认得出的字形。界面设计见知识库 `02_SYSTEMS/02_Learning/English_Game_Lexicon_Interface_Design.md`（其中 [提案] 尚未确认）。
 
 ### 已废弃
+**美术素材的总目录说明：[art/README.md](art/README.md)**（在用 / 参考 / 作废，各自被谁引用）。新增或作废美术文件夹时同步更新它。
 `art/cemetery_kit_v2/`、`scenes|scripts/prototypes/terrain_v2/`（Stone/Mud Dual-Grid 研发记录）；0.9 切片的骨骼拆件美术。`docs/MODULAR_2_5D_CONTRACT.md` 等运行时文档写于 v3 之前，美术约定与 v3 冲突时以 v3 为准，改代码前与用户确认。
 
 ### Git 状态
