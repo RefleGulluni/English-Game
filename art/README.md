@@ -9,13 +9,14 @@
 - ⛔ **作废**：旧方向，**不要参考、不要沿用**。没删除，是因为旧的 0.8 / 0.9 版本还在引用它们。
 
 画风唯一标准：知识库 `01_CURRENT_CANON/English_Game_Art_Direction_Bible_v3_Pixel_World_SpecLocked_CLEAN.md`。
+**怎么做像素素材、怎么验收：[docs/PIXEL_ASSET_PIPELINE.md](../docs/PIXEL_ASSET_PIPELINE.md)**；一键检查：`python3 scripts/tools/pixel_check.py <文件>`。
 
 ## ✅ 在用
 
 | 文件夹 | 内容 | 制作 | 用在哪里 |
 |---|---|---|---|
 | `character_design/` | **主角 B1**：四方向站姿（`hero_B1_*.png`，游戏里的正面是 `hero_B1_front_straight.png`）、全部动画（`anim/`）、Lexicon 书的设计图（`lexicon_book_sheet.png`）。`hero_B1.png` 是设定图，**一个像素都不改** | 角色设计组 | 可拖入的主角 `scenes/player/hero_b1.tscn`（帧由 `scripts/tools/bake_hero_b1.gd` 打包） |
-| `cemetery_v3/props/` | **墓园物件**（墓碑、十字碑、墓穴、盖板、矮墙、墙柱、铁栏），每件有立体部分 + `_base` 底座贴花。2026-10-25 第 1 版过于平涂，正在返修（`docs/CEMETERY_PROPS_REVISION_1.md`） | 角色设计组 | 试走房间 `scenes/prototypes/props_v3/props_v3_room.tscn` |
+| `cemetery_v3/props/` | **墓园物件**（墓碑、十字碑、墓穴、盖板、矮墙、墙柱、铁栏），每件有立体部分 + `_base` 底座贴花。2026-10-25 第 1 版过于平涂；返修墓碑试样已通过（`qc/revision1_tombstone_trial/`），其余 8 件按同一方法制作中 | 角色设计组 | 试走房间 `scenes/prototypes/props_v3/props_v3_room.tscn` |
 | `ui/fonts/` | 长段可读英文用的字体 CormorantGaramond（含授权 `OFL.txt`） | — | Lexicon 灰盒、区域名过渡 |
 
 ## 📎 参考
