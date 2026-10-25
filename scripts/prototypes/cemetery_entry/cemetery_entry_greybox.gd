@@ -3,7 +3,8 @@ extends Node
 ## 下方小路弯弯曲曲走上来 → 中间铁栏 + 两根门柱夹着大门 → 门里正对喷泉，喷泉两侧小路是出口 →
 ## 最上方一条雾带，雾里隐约有礼拜堂尖顶。已有的积木直接用，还没有的东西用色块占位并标字。
 ## 房间两屏高（960×1080，D-038），镜头只上下跟着主角：开始只看得到路，大门随着往上走慢慢露出来。
-## 按键：WASD 走路 · H 开关占位说明 · T 开关游戏整体色调 · F 全屏
+## 按键：WASD 走路 · V 切换视角（原版 / 更低）· H 开关占位说明 · T 开关游戏整体色调 · F 全屏
+## “更低的视角”是一版试验：地上平躺的东西压得更扁、路往远处收窄、顶部露出天空和天际线、门柱更高、前景更大。
 ## 截图：Godot --path . res://scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn -- --capture=<目录>
 ## 换地面试样：-- --plate=<PNG 路径>（960×540）
 
@@ -81,6 +82,9 @@ var _room: CemeteryRoom
 var _language: CanvasLayer
 var _labels: Node2D
 var _camera: Camera2D
+var _high: Array[CanvasItem] = [] # placeholders drawn for the current camera angle
+var _low: Array[CanvasItem] = [] # the same things drawn as if the camera sat lower (V)
+var _low_angle := false
 var _exits: Array[Node2D] = []
 var _label: Label
 var _note := ""
@@ -160,8 +164,9 @@ func _process(_delta: float) -> void:
 	for exit in _exits:
 		exit.check(_room.player)
 	var tint := _tint()
-	_label.text = "墓园入口 · 灰盒 · WASD 走路 · H 占位说明：%s · T 色调：%s · F 全屏%s" % [
-		"开" if _labels.visible else "关", "开" if tint.visible else "关", ("\n" + _note) if _note else ""]
+	_label.text = "墓园入口 · 灰盒 · WASD 走路 · V 视角：%s · H 占位说明：%s · T 色调：%s · F 全屏%s" % [
+		"更低" if _low_angle else "原版", "开" if _labels.visible else "关", "开" if tint.visible else "关",
+		("\n" + _note) if _note else ""]
 
 
 ## The hero sits a little below the screen centre, so more of the road ahead shows.
@@ -179,7 +184,7 @@ func _build_placeholders() -> void:
 	for i in range(ROAD_LEFT.size() - 1, -1, -1):
 		var p: Vector2 = ROAD_LEFT[i]
 		road.append(p + Vector2(roundf(lerpf(56, 80, p.y / SIZE.y)), 0))
-	ground.add_child(_poly(road, MUD_PATH))
+	_keep(ground, _poly(road, MUD_PATH), _high)
 	for path in INNER_PATHS:
 		ground.add_child(_poly(path, MUD_PATH))
 	var slabs := [Vector2(482, 1040), Vector2(470, 980), Vector2(502, 930), Vector2(486, 860), Vector2(458, 790),
@@ -189,10 +194,11 @@ func _build_placeholders() -> void:
 		var slab := Sprite2D.new()
 		slab.texture = PixelArt.texture(PROPS + OLD + "path/old_slab_%02d.png" % (i % 8 + 1))
 		slab.position = slabs[i]
-		ground.add_child(slab)
+		_keep(ground, slab, _high)
 	for p in [[Vector2(392, 335), Vector2(26, 7)], [Vector2(568, 442), Vector2(20, 6)], [Vector2(380, 700), Vector2(22, 6)],
 			[Vector2(560, 820), Vector2(28, 8)], [Vector2(540, 1010), Vector2(14, 5)], [Vector2(330, 150), Vector2(16, 5)]]:
-		ground.add_child(_poly(_ellipse(p[0], p[1]), WATER))
+		_keep(ground, _poly(_ellipse(p[0], p[1]), WATER), _high)
+		_keep(ground, _poly(_ellipse(p[0], Vector2(p[1].x * 1.3, maxf(2, p[1].y * 0.45))), WATER), _low)
 	# 倒下的那扇铁门，平躺在门内地上
 	ground.add_child(_poly([Vector2(500, 286), Vector2(552, 290), Vector2(546, 302), Vector2(494, 298)], IRON))
 	# 倒下的路灯（只剩一截灯杆）
@@ -209,7 +215,7 @@ func _build_placeholders() -> void:
 	var far := Node2D.new()
 	far.z_index = 41 # just over the thickest fog, so it reads as a dark shape inside the mist
 	far.modulate = Color(1, 1, 1, 0.55)
-	_room.add_child(far)
+	_keep(_room, far, _high)
 	far.add_child(_poly([Vector2(452, 62), Vector2(452, 34), Vector2(470, 24), Vector2(480, 2), Vector2(490, 24),
 		Vector2(508, 34), Vector2(508, 62)], Color(0.20, 0.21, 0.24)))
 	far.add_child(_poly([Vector2(420, 62), Vector2(420, 44), Vector2(452, 44), Vector2(452, 62)], Color(0.22, 0.23, 0.26)))
@@ -219,12 +225,29 @@ func _build_placeholders() -> void:
 	var fountain := StaticBody2D.new()
 	fountain.position = Vector2(480, 222)
 	_room.sorted.add_child(fountain)
-	fountain.add_child(_poly(_ellipse(Vector2(0, -26), Vector2(70, 24)), STONE))
-	fountain.add_child(_poly(_ellipse(Vector2(0, -30), Vector2(58, 17)), Color(0.22, 0.24, 0.26)))
-	fountain.add_child(_poly([Vector2(-8, -34), Vector2(-8, -88), Vector2(0, -98), Vector2(8, -88), Vector2(8, -34)], STONE_DARK))
+	_keep(fountain, _poly(_ellipse(Vector2(0, -26), Vector2(70, 24)), STONE), _high)
+	_keep(fountain, _poly(_ellipse(Vector2(0, -30), Vector2(58, 17)), Color(0.22, 0.24, 0.26)), _high)
+	_keep(fountain, _poly([Vector2(-8, -34), Vector2(-8, -88), Vector2(0, -98), Vector2(8, -88), Vector2(8, -34)], STONE_DARK), _high)
+	# 低视角：池子压扁、池壁露出侧面、雕像更高（带一对残翼）
+	var wall := _ellipse(Vector2(0, -18), Vector2(72, 11))
+	var front := PackedVector2Array()
+	for pt in wall:
+		if pt.y >= -18:
+			front.append(pt)
+	for i in range(front.size() - 1, -1, -1):
+		front.append(front[i] + Vector2(0, 10))
+	_keep(fountain, _poly(front, STONE_DARK), _low)
+	_keep(fountain, _poly(wall, STONE), _low)
+	_keep(fountain, _poly(_ellipse(Vector2(0, -19), Vector2(60, 7)), Color(0.22, 0.24, 0.26)), _low)
+	_keep(fountain, _poly([Vector2(-7, -18), Vector2(-7, -112), Vector2(0, -124), Vector2(7, -112), Vector2(7, -18)], STONE_DARK), _low)
+	_keep(fountain, _poly([Vector2(-6, -100), Vector2(-30, -116), Vector2(-24, -92), Vector2(-6, -84)], STONE_DARK), _low)
+	_keep(fountain, _poly([Vector2(6, -100), Vector2(22, -110), Vector2(18, -96), Vector2(6, -88)], STONE_DARK), _low)
 	var shape := CollisionPolygon2D.new()
 	shape.polygon = _ellipse(Vector2(0, -24), Vector2(68, 20))
 	fountain.add_child(shape)
+
+	_build_low_angle(ground)
+	_set_low_angle(false)
 
 	# 半开的那扇铁门：从左门柱斜着打开
 	var leaf := Node2D.new()
@@ -235,14 +258,14 @@ func _build_placeholders() -> void:
 	# 雾带：最上方一条，盖在所有东西上面
 	var fog := Node2D.new()
 	fog.z_index = 40
-	_room.add_child(fog)
+	_keep(_room, fog, _high)
 	for band in [[0, 34, 0.75], [34, 52, 0.5], [52, 68, 0.28], [68, 80, 0.12]]:
 		fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
 	# 前景：画面最下面两个角伸进来的枯枝
 	var fore := Node2D.new()
 	fore.z_index = 60
-	_room.add_child(fore)
+	_keep(_room, fore, _high)
 	var branch := Color(0.08, 0.07, 0.06)
 	fore.position = Vector2(0, SIZE.y - NATIVE.y) # the branches hang over the start of the road
 	fore.add_child(_poly([Vector2(0, 540), Vector2(0, 452), Vector2(22, 470), Vector2(70, 478), Vector2(44, 488), Vector2(118, 512),
@@ -282,6 +305,83 @@ func _build_placeholders() -> void:
 		_labels.add_child(label)
 
 
+## The low-angle trial (V): flat things squashed harder, the road narrowing into the distance,
+## sky and a skyline at the top, taller gate pillars, bigger foreground. Only placeholders change.
+func _build_low_angle(ground: Node2D) -> void:
+	var road := PackedVector2Array()
+	var right := PackedVector2Array()
+	for p: Vector2 in ROAD_LEFT:
+		var centre := p.x + lerpf(56, 80, p.y / SIZE.y) / 2.0
+		var half := lerpf(16, 50, pow(p.y / SIZE.y, 1.4)) # much narrower far away
+		road.append(Vector2(roundf(centre - half), p.y))
+		right.append(Vector2(roundf(centre + half), p.y))
+	for i in range(right.size() - 1, -1, -1):
+		road.append(right[i])
+	_keep(ground, _poly(road, MUD_PATH), _low)
+	for p in [Vector2(482, 1040), Vector2(470, 980), Vector2(502, 930), Vector2(486, 860), Vector2(458, 790),
+			Vector2(470, 730), Vector2(500, 668), Vector2(484, 590), Vector2(470, 520), Vector2(492, 418),
+			Vector2(505, 380), Vector2(482, 336), Vector2(478, 300)]: # flagstones as thin slivers
+		var w := roundf(lerpf(8, 22, p.y / SIZE.y))
+		_keep(ground, _poly([p + Vector2(-w, -2), p + Vector2(w, -3), p + Vector2(w + 2, 2), p + Vector2(-w + 2, 3)], STONE), _low)
+
+	# 天空 + 天际线：一看到天，就像站着看，而不是从上往下看
+	var sky := Node2D.new()
+	sky.z_index = 39
+	_keep(_room, sky, _low)
+	sky.add_child(_poly([Vector2(0, 0), Vector2(960, 0), Vector2(960, 46), Vector2(0, 46)], Color(0.66, 0.68, 0.72)))
+	var line := PackedVector2Array([Vector2(0, 70)])
+	for x in range(0, 961, 24):
+		line.append(Vector2(x, 38 + (x * 7 % 13) - (6 if x % 72 == 0 else 0)))
+	line.append(Vector2(960, 70))
+	sky.add_child(_poly(line, Color(0.34, 0.36, 0.40)))
+	sky.add_child(_poly([Vector2(440, 62), Vector2(440, 26), Vector2(462, 26), Vector2(462, 12), Vector2(472, 12),
+		Vector2(480, -0), Vector2(488, 12), Vector2(498, 12), Vector2(498, 26), Vector2(520, 26), Vector2(520, 62)], Color(0.26, 0.27, 0.31)))
+	var thin_fog := Node2D.new()
+	thin_fog.z_index = 40
+	_keep(_room, thin_fog, _low)
+	for band in [[40, 60, 0.45], [60, 76, 0.25], [76, 90, 0.1]]:
+		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
+
+	# 更高的门柱：盖在原来的门柱上
+	for x in [428, 532]:
+		var pillar := Node2D.new()
+		pillar.position = Vector2(x, 272)
+		_keep(_room.sorted, pillar, _low)
+		pillar.add_child(_poly([Vector2(-20, 0), Vector2(-20, -132), Vector2(20, -132), Vector2(20, 0)], STONE))
+		pillar.add_child(_poly([Vector2(8, 0), Vector2(8, -132), Vector2(20, -132), Vector2(20, 0)], STONE_DARK))
+		pillar.add_child(_poly([Vector2(-24, -132), Vector2(-24, -142), Vector2(0, -160), Vector2(24, -142), Vector2(24, -132)], STONE_DARK))
+
+	# 更大的前景：枯枝 + 一排高草，压在画面最下面
+	var fore := Node2D.new()
+	fore.z_index = 60
+	fore.position = Vector2(0, SIZE.y - NATIVE.y)
+	_keep(_room, fore, _low)
+	var dark := Color(0.06, 0.05, 0.05)
+	fore.add_child(_poly([Vector2(0, 540), Vector2(0, 400), Vector2(40, 430), Vector2(120, 440), Vector2(70, 458), Vector2(190, 500),
+		Vector2(100, 498), Vector2(150, 540)], dark))
+	fore.add_child(_poly([Vector2(960, 540), Vector2(960, 420), Vector2(910, 452), Vector2(820, 462), Vector2(870, 476), Vector2(760, 520),
+		Vector2(850, 518), Vector2(820, 540)], dark))
+	for x in range(0, 960, 9):
+		if x > 380 and x < 590:
+			continue # keep the road clear
+		var h := 14 + (x * 13 % 23)
+		fore.add_child(_poly([Vector2(x, 540), Vector2(x + 3, 540 - h), Vector2(x + 6, 540)], dark))
+
+
+func _keep(parent: Node, item: CanvasItem, variant: Array[CanvasItem]) -> CanvasItem:
+	parent.add_child(item)
+	variant.append(item)
+	return item
+
+
+func _set_low_angle(low: bool) -> void:
+	_low_angle = low
+	for item in _high:
+		item.visible = not low
+	for item in _low:
+		item.visible = low
+
+
 func _poly(points: Array, color: Color) -> Polygon2D:
 	var poly := Polygon2D.new()
 	poly.polygon = PackedVector2Array(points)
@@ -307,7 +407,9 @@ func _tint() -> CanvasModulate:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
-	if event.physical_keycode == KEY_H:
+	if event.physical_keycode == KEY_V:
+		_set_low_angle(not _low_angle)
+	elif event.physical_keycode == KEY_H:
 		_labels.visible = not _labels.visible
 	elif event.physical_keycode == KEY_T:
 		_tint().visible = not _tint().visible
@@ -323,10 +425,10 @@ func _capture() -> void:
 			dir = arg.get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	var hero: Node2D = _room.player
-	for shot in [["01_arrive", SPAWN], ["02_halfway", Vector2(470, 720)], ["03_gate", Vector2(480, 330)],
-			["04_fountain", Vector2(380, 214)], ["05_no_labels", Vector2(480, 330)]]:
-		if shot[0] == "05_no_labels":
-			_labels.visible = false
+	_labels.visible = false
+	for shot in [["01_arrive", SPAWN, false], ["02_gate", Vector2(480, 330), false],
+			["03_arrive_low", SPAWN, true], ["04_gate_low", Vector2(480, 330), true]]:
+		_set_low_angle(shot[2])
 		hero.position = shot[1]
 		_follow()
 		_camera.reset_smoothing()
