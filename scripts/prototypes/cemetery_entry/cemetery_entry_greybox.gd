@@ -21,14 +21,15 @@ const LAYOUT := {
 	"id": "cemetery_entry", "seed": 3, "dead_grass": 26, "prop_dir": PROPS, "size": SIZE,
 	"props": [
 		# 大门与铁栏（门柱以后要换成更高的新素材）
-		["wall_pillar_01", Vector2(428, 276), null], ["wall_pillar_01", Vector2(532, 276), null],
-		["iron_fence_01", Vector2(357, 275), null], ["wall_pillar_01", Vector2(276, 276), null],
-		["iron_fence_01", Vector2(205, 275), null], ["wall_pillar_01", Vector2(124, 276), null],
-		["iron_fence_01", Vector2(53, 275), null],
-		["iron_fence_01", Vector2(613, 275), null], ["wall_pillar_01", Vector2(684, 276), null],
-		["iron_fence_01", Vector2(765, 275), null], ["wall_pillar_01", Vector2(836, 276), null],
-		["iron_fence_01", Vector2(917, 275), null],
-		["grave_lantern_01", Vector2(404, 292), null],
+		# 门洞内宽约 96：两扇门各约 48 宽（D-040 高门柱盖在这两根上）
+		["wall_pillar_01", Vector2(408, 276), null], ["wall_pillar_01", Vector2(552, 276), null],
+		["iron_fence_01", Vector2(337, 275), null], ["wall_pillar_01", Vector2(256, 276), null],
+		["iron_fence_01", Vector2(185, 275), null], ["wall_pillar_01", Vector2(104, 276), null],
+		["iron_fence_01", Vector2(33, 275), null],
+		["iron_fence_01", Vector2(633, 275), null], ["wall_pillar_01", Vector2(704, 276), null],
+		["iron_fence_01", Vector2(785, 275), null], ["wall_pillar_01", Vector2(856, 276), null],
+		["iron_fence_01", Vector2(937, 275), null],
+		["grave_lantern_01", Vector2(384, 292), null],
 		# 门里：隔着铁栏看到的墓碑
 		["tombstone_upright_01", Vector2(70, 150), null], ["tombstone_flat_01", Vector2(155, 132), null],
 		["tombstone_pointed_01", Vector2(225, 168), null], ["tombstone_cross_01", Vector2(110, 228), null],
@@ -253,7 +254,7 @@ func _build_placeholders() -> void:
 
 	# 半开的那扇铁门：从左门柱斜着打开
 	var leaf := Node2D.new()
-	leaf.position = Vector2(470, 268)
+	leaf.position = Vector2(452, 268)
 	_room.sorted.add_child(leaf)
 	leaf.add_child(_poly([Vector2(-22, 2), Vector2(-22, -48), Vector2(6, -60), Vector2(6, -10)], Color(IRON, 0.9)))
 
@@ -290,7 +291,7 @@ func _build_placeholders() -> void:
 	_labels = Node2D.new()
 	_labels.z_index = 80
 	_room.add_child(_labels)
-	for note in [["天空 + 天际线 + 礼拜堂剪影（远景，以后做）", Vector2(530, 70)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
+	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
 			["出口 → 第 1 层", Vector2(262, 72)], ["出口 → 第 1 层", Vector2(626, 72)],
 			["高门柱（约主角 1.6 倍高，新素材）", Vector2(556, 150)], ["半开的铁门（占位）", Vector2(330, 246)],
 			["倒下的铁门（占位）", Vector2(556, 292)], ["路边孤坟", Vector2(120, 300)],
@@ -346,7 +347,7 @@ func _build_low_angle(ground: Node2D) -> void:
 		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
 	# 更高的门柱：盖在原来的门柱上；用户要了这一点，两版都有（D-040）
-	for x in [428, 532]:
+	for x in [408, 552]:
 		var pillar := Node2D.new()
 		pillar.position = Vector2(x, 272)
 		_room.sorted.add_child(pillar)
@@ -428,7 +429,7 @@ func _capture() -> void:
 			dir = arg.get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	var hero: Node2D = _room.player
-	_labels.visible = false
+	_labels.visible = "--labels" in str(OS.get_cmdline_user_args())
 	for shot in [["01_arrive", SPAWN, false], ["02_gate", Vector2(480, 330), false],
 			["03_arrive_low", SPAWN, true], ["04_gate_low", Vector2(480, 330), true]]:
 		_set_low_angle(shot[2])
