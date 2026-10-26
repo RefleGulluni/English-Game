@@ -1,0 +1,15 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ter_design/enemies/skeleton/anim/skeleton_B_hit_back.png    288x96   OK   44    85    0    95
+er_design/enemies/skeleton/anim/skeleton_B_hit_front.png    288x96   OK   48    89    0    95
+ter_design/enemies/skeleton/anim/skeleton_B_hit_left.png    288x96   OK   44    83    0    95
+er_design/enemies/skeleton/anim/skeleton_B_hit_right.png    288x96   OK   46    87    0    95
+er_design/enemies/skeleton/anim/skeleton_B_idle_back.png    384x96   OK   44    85    0    95
+r_design/enemies/skeleton/anim/skeleton_B_idle_front.png    384x96   OK   48    89    0    95
+er_design/enemies/skeleton/anim/skeleton_B_idle_left.png    384x96   OK   44    83    0    95
+r_design/enemies/skeleton/anim/skeleton_B_idle_right.png    384x96   OK   46    87    0    95
+gn/enemies/skeleton/anim/skeleton_B_reassemble_front.png   1152x96   OK   48    89    0    95
+design/enemies/skeleton/anim/skeleton_B_remains_idle.png    384x96   OK   46    92    0    95
+er_design/enemies/skeleton/anim/skeleton_B_walk_back.png    768x96   OK   47    84    0    95
+r_design/enemies/skeleton/anim/skeleton_B_walk_front.png    768x96   OK   48    83    0    95
+er_design/enemies/skeleton/anim/skeleton_B_walk_left.png    768x96   OK   47    78    0    95
+ame/art/character_design/enemies/skeleton/skeleton_B.png     96x96   OK   48    89    0    95

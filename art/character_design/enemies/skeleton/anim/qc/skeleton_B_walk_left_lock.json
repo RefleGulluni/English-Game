@@ -1,0 +1,194 @@
+[
+  {
+    "frame": 1,
+    "role": "near",
+    "canvas": [
+      28,
+      95
+    ],
+    "world_translation": [
+      0,
+      0
+    ],
+    "world": [
+      28,
+      95
+    ],
+    "entire_world_sole_x": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 2,
+    "role": "near",
+    "canvas": [
+      33,
+      95
+    ],
+    "world_translation": [
+      -5,
+      0
+    ],
+    "world": [
+      28,
+      95
+    ],
+    "entire_world_sole_x": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 3,
+    "role": "near",
+    "canvas": [
+      38,
+      95
+    ],
+    "world_translation": [
+      -10,
+      0
+    ],
+    "world": [
+      28,
+      95
+    ],
+    "entire_world_sole_x": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 4,
+    "role": "near",
+    "canvas": [
+      43,
+      95
+    ],
+    "world_translation": [
+      -15,
+      0
+    ],
+    "world": [
+      28,
+      95
+    ],
+    "entire_world_sole_x": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 5,
+    "role": "far",
+    "canvas": [
+      28,
+      95
+    ],
+    "world_translation": [
+      -20,
+      0
+    ],
+    "world": [
+      8,
+      95
+    ],
+    "entire_world_sole_x": [
+      8,
+      9,
+      10
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 6,
+    "role": "far",
+    "canvas": [
+      33,
+      95
+    ],
+    "world_translation": [
+      -25,
+      0
+    ],
+    "world": [
+      8,
+      95
+    ],
+    "entire_world_sole_x": [
+      8,
+      9,
+      10
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 7,
+    "role": "far",
+    "canvas": [
+      38,
+      95
+    ],
+    "world_translation": [
+      -30,
+      0
+    ],
+    "world": [
+      8,
+      95
+    ],
+    "entire_world_sole_x": [
+      8,
+      9,
+      10
+    ],
+    "all_opaque": true
+  },
+  {
+    "frame": 8,
+    "role": "far",
+    "canvas": [
+      43,
+      95
+    ],
+    "world_translation": [
+      -35,
+      0
+    ],
+    "world": [
+      8,
+      95
+    ],
+    "entire_world_sole_x": [
+      8,
+      9,
+      10
+    ],
+    "all_opaque": true
+  }
+]

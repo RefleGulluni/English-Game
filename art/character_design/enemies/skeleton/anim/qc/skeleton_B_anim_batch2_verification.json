@@ -1,0 +1,14 @@
+{
+  "protected_original_files": 334,
+  "unchanged_original_files": 333,
+  "only_changed_file": "anim/timing.json",
+  "timing_backup": "qc/backups/before_batch2_20261026/timing.json",
+  "old_animation_entries_identical": true,
+  "new_actions": 13,
+  "new_frames": 68,
+  "total_actions_with_trial": 15,
+  "integration_endpoints_rgba_exact": true,
+  "left_is_not_mirrored_right": true,
+  "all_QA_links_resolve": true,
+  "accepted_trial_png_gif_frame_and_QA_hashes_unchanged": true
+}

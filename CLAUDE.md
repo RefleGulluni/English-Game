@@ -83,7 +83,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 接下来可以做的事（按建议顺序）
 
 1. **下次开工先做**：
-   - **骷髅动画**：需求已写好 `docs/SKELETON_ANIMATION_REQUEST.md`（2026-10-26；待机、行走、受击四方向 + 正面散架 / 重组 + 骨堆待机；**攻击等战斗表现设计后和主角一起写**；试做 = 右侧行走 + 正面散架），**两条试样已通过（D-045）**，第 2 步（其余动画）已转发；用户觉得行走“有点挺胸、怪异”，**这一轮做完后统一改**（需求 §11）；试看房间 `scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn`（空格散架），通用帧条播放 `scripts/world/v3/sprite_strip.gd`；入口其余物件排在动画之后；交回后接进试走房间，替换代码画的占位骷髅 `skeleton_placeholder.gd`；
+   - **骷髅动画**：需求已写好 `docs/SKELETON_ANIMATION_REQUEST.md`（2026-10-26；待机、行走、受击四方向 + 正面散架 / 重组 + 骨堆待机；**攻击等战斗表现设计后和主角一起写**；试做 = 右侧行走 + 正面散架），试样（D-045）和第 2 步大部分（D-046）已通过；**第 3 步返修**（侧面行走挺胸 / 身形变厚、重组的布变长裙、受击太弱）写在需求 §12，**等用户转发**；试看房间 `scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn`（空格散架），通用帧条播放 `scripts/world/v3/sprite_strip.gd`；入口其余物件排在动画之后；交回后接进试走房间，替换代码画的占位骷髅 `skeleton_placeholder.gd`；
    - 美术组的**远景条 + 前景枯枝已通过并换进入口灰盒**（D-042）；**礼拜堂要放大**，补充需求在 `docs/CEMETERY_ENTRY_BACKDROP_REQUEST.md` §5（**等用户转发**），交回 `entry_backdrop_02` 后在灰盒里把 01 换成 02；
    - 提醒用户把**入口物件需求** `docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 发给角色组（骷髅四方向已通过，轮到它了；先交门柱试样）；
    - **地面瓦片试样**：礼拜堂通过后，提醒用户转发 `docs/CEMETERY_GROUND_TILES_REQUEST.md`；交回后接进 TileMapLayer、搭试验房间、和整张试样并排比较；

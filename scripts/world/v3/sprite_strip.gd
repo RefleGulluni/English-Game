@@ -10,14 +10,21 @@ var _loop := true
 var _hold_last := false
 var _frame_time := 0.0
 var playing := false
+var current := "" # the timing.json key now playing
+
+static var _textures := {} # sheet path -> texture, shared by every strip
 
 
 ## dir: the folder that holds timing.json and the sheet; anim: the key in timing.json.
 func load_strip(dir: String, anim: String) -> void:
 	var timing: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "timing.json"))
 	var data: Dictionary = timing.animations[anim]
+	current = anim
 	var cell: Array = timing.get("frame_size", [96, 96])
-	texture = PixelArt.texture(dir + str(data.sprite_sheet))
+	var path := dir + str(data.sprite_sheet)
+	if not _textures.has(path):
+		_textures[path] = PixelArt.texture(path)
+	texture = _textures[path]
 	hframes = int(data.frames)
 	centered = false
 	offset = Vector2(-cell[0] / 2, -cell[1])
