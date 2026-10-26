@@ -58,7 +58,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **从“地板”到“场景”**：一个场景 = 构图（四周密、中间空、出口）+ 高低差（台阶、挡土墙）+ 地面 + 物件 + 远景 + 前景 + 光雾。**先由用户画房间草图**，Claude 翻译成素材清单、用积木和色块先搭灰盒房间。第一张：**墓园入口**（D-036：下方小路走来 → 中间围墙大门 → 上方墓园展开、远处雾中礼拜堂；每局从词典锚点出发）。
   - 墓园入口灰盒：`scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn`（按用户草图：弯路 → 铁栏 + 高门柱大门 → 干涸喷泉 → 两侧出口；现成积木 + 色块占位，H 开关占位说明，V 看“更低视角”试验版）。**两屏高 960×1080、镜头只上下跟随**（D-038，唯一例外；`CemeteryRoom` 的 layout 可给 `size`）；顶部是美术组的远景条 `art/cemetery_v3/backdrop/entry_backdrop_01.png`（天空 + 天际线 + 礼拜堂，D-039 / D-042），下角是正式前景枯枝；Claude 的薄雾压在天际线以下；大门门柱约 160 px（D-040），门洞内宽约 96（门柱中心 408 / 552）；视角其余保持原版。
   - 素材清单 `docs/CEMETERY_ENTRY_ASSET_LIST.md`：美术组的礼拜堂放大版（`docs/CEMETERY_ENTRY_BACKDROP_REQUEST.md` §5，**等用户转发**）；角色组的门柱、铁门、喷泉、枯树、路灯、路牌、木十字架（`docs/CEMETERY_ENTRY_PROPS_REQUEST.md`，先交门柱试样，**等用户转发**）；地面等用户拍板做法。
-- **骷髅选定 B「余裹者」（D-037）**：斜披破裹尸布、右肩两枚铁钉、黑 X 缝线；A / C 留作精英骷髅参考。文件在 `art/character_design/enemies/skeleton/`，试走房间里站着 B 和它的骨堆。**四方向已通过（D-041）**：`skeleton_B.png`（正面原图）/ `_back` / `_left` / `_right`；背面露出的布最少，做行走动画时再看。下一步：动画（待机、行走、攻击、受击、散架、重组），需求还没写。骨头是全画面最亮的颜色，地面和雾做好后再看要不要压暗。
+- **骷髅选定 B「余裹者」（D-037）**：斜披破裹尸布、右肩两枚铁钉、黑 X 缝线；A / C 留作精英骷髅参考。文件在 `art/character_design/enemies/skeleton/`，试走房间里站着 B 和它的骨堆。**四方向已通过（D-041）**：`skeleton_B.png`（正面原图）/ `_back` / `_left` / `_right`；背面露出的布最少，做行走动画时再看。下一步：动画，需求 `docs/SKELETON_ANIMATION_REQUEST.md`（攻击暂缓）。骨头是全画面最亮的颜色，地面和雾做好后再看要不要压暗。
 - 多样性（D-028）：形状家族 × 状态 × 换颜色（调色板替换）× 下沉深浅 × 摆放规则。**像素画不能旋转、不能左右镜像。**
 
 ### 主角 B1 与动画（[docs/HERO_DESIGN.md](docs/HERO_DESIGN.md)；知识库 `02_SYSTEMS/06_Character_and_Animation/`）
@@ -83,7 +83,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 接下来可以做的事（按建议顺序）
 
 1. **下次开工先做**：
-   - **骷髅动画**：写需求（待机、行走、攻击、受击、散架：站立 → 骨堆、重组：骨堆 → 站立），参照主角动画需求 `docs/HERO_ANIMATION_REQUEST.md` §7 的通用规则，先做一条试样；同时想好它在战斗里怎么用（灰盒里现在是代码画的占位骷髅 `skeleton_placeholder.gd`）；
+   - **骷髅动画**：需求已写好 `docs/SKELETON_ANIMATION_REQUEST.md`（2026-10-26；待机、行走、受击四方向 + 正面散架 / 重组 + 骨堆待机；**攻击等战斗表现设计后和主角一起写**；试做 = 右侧行走 + 正面散架），**等用户转发**给角色组（排在入口物件当前那一步之后）；交回后接进试走房间，替换代码画的占位骷髅 `skeleton_placeholder.gd`；
    - 美术组的**远景条 + 前景枯枝已通过并换进入口灰盒**（D-042）；**礼拜堂要放大**，补充需求在 `docs/CEMETERY_ENTRY_BACKDROP_REQUEST.md` §5（**等用户转发**），交回 `entry_backdrop_02` 后在灰盒里把 01 换成 02；
    - 提醒用户把**入口物件需求** `docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 发给角色组（骷髅四方向已通过，轮到它了；先交门柱试样）；
    - 请用户拍板**地面做法**（整张地面板，还是“安静泥地底子 + 地面贴花”），再给美术组写入口地面需求；
