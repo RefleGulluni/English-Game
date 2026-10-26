@@ -2,7 +2,7 @@ extends Node
 ## 墓园入口（Cemetery Entry）灰盒，按用户的草图搭（Decision Log D-036）：
 ## 下方小路弯弯曲曲走上来 → 中间铁栏 + 两根门柱夹着大门 → 门里正对喷泉，喷泉两侧小路是出口 →
 ## 最上方一条雾带，雾里隐约有礼拜堂尖顶。已有的积木直接用，还没有的东西用色块占位并标字。
-## 房间两屏高（960×1080，D-038），镜头只上下跟着主角：开始只看得到路，大门随着往上走慢慢露出来。
+## 房间两屏半高（960×1350；D-038 原为两屏，2026-10-26 用户要门里更长），镜头只上下跟着主角：开始只看得到路，大门随着往上走慢慢露出来。
 ## 按键：WASD 走路 · V 切换视角（原版 / 更低）· H 开关占位说明 · T 开关游戏整体色调 · F 全屏
 ## 顶部的天空、天际线和礼拜堂剪影（D-039）、更高的门柱（D-040）两版都有。“更低的视角”是一版试验：
 ## 地上平躺的东西压得更扁、路往远处收窄、前景更大。
@@ -13,60 +13,54 @@ const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
 const OLD := "../../cemetery_pixel_v1/" # relative to PROPS: old placeholder art (dead tree, slabs)
 const NATIVE := Vector2i(960, 540)
-const SIZE := Vector2i(960, 1080)
-const SPAWN := Vector2(485, 1066)
+const SIZE := Vector2i(960, 1350) # 2.5 屏：门里的墓园加长了约半屏（用户 2026-10-26）
+const SPAWN := Vector2(485, 1336)
 
 # 铁栏一段宽 160：门柱 → 铁栏 +81，铁栏 → 门柱 +71（props_manifest wall_families.B_ashlar）
 const LAYOUT := {
-	"id": "cemetery_entry", "seed": 3, "dead_grass": 26, "prop_dir": PROPS, "size": SIZE,
+	"id": "cemetery_entry", "seed": 3, "dead_grass": 26, "grass_top": 112, "prop_dir": PROPS, "size": SIZE,
 	"props": [
-		# 大门与铁栏（门柱以后要换成更高的新素材）
-		# 门洞内宽约 96：两扇门各约 48 宽（D-040 高门柱盖在这两根上）
-		["wall_pillar_01", Vector2(408, 276), null], ["wall_pillar_01", Vector2(552, 276), null],
-		["iron_fence_01", Vector2(337, 275), null], ["wall_pillar_01", Vector2(256, 276), null],
-		["iron_fence_01", Vector2(185, 275), null], ["wall_pillar_01", Vector2(104, 276), null],
-		["iron_fence_01", Vector2(33, 275), null],
-		["iron_fence_01", Vector2(633, 275), null], ["wall_pillar_01", Vector2(704, 276), null],
-		["iron_fence_01", Vector2(785, 275), null], ["wall_pillar_01", Vector2(856, 276), null],
-		["iron_fence_01", Vector2(937, 275), null],
-		["grave_lantern_01", Vector2(384, 292), null],
-		# 门里：隔着铁栏看到的墓碑
-		["tombstone_upright_01", Vector2(70, 150), null], ["tombstone_flat_01", Vector2(155, 132), null],
-		["tombstone_pointed_01", Vector2(225, 168), null], ["tombstone_cross_01", Vector2(110, 228), null],
-		["tombstone_upright_02", Vector2(200, 240), null], ["tombstone_small_01", Vector2(290, 236), null],
-		["tombstone_cross_01", Vector2(760, 132), null], ["obelisk_01", Vector2(880, 168), null],
-		["tombstone_upright_02", Vector2(700, 210), null], ["tombstone_upright_01_tilted", Vector2(830, 240), null],
-		["tombstone_small_01", Vector2(760, 238), null], ["tombstone_flat_01", Vector2(905, 250), null],
+		# 大门与铁栏：两根高门柱是角色组的正式素材（D-040），柱脚处门洞净空 92
+		["gate_pillar_tall_01", Vector2(408, 546), null], ["gate_pillar_tall_01", Vector2(552, 546), null],
+		["iron_fence_01", Vector2(337, 545), null], ["wall_pillar_01", Vector2(256, 546), null],
+		["iron_fence_01", Vector2(185, 545), null], ["wall_pillar_01", Vector2(104, 546), null],
+		["iron_fence_01", Vector2(33, 545), null],
+		["iron_fence_01", Vector2(633, 545), null], ["wall_pillar_01", Vector2(704, 546), null],
+		["iron_fence_01", Vector2(785, 545), null], ["wall_pillar_01", Vector2(856, 546), null],
+		["iron_fence_01", Vector2(937, 545), null],
+		["grave_lantern_01", Vector2(384, 562), null],
 		# 门外靠近大门：路边孤坟、碎石、花瓶
-		["tombstone_upright_01_tilted", Vector2(95, 345), null], ["tombstone_cross_01_broken", Vector2(205, 352), null],
-		["tombstone_small_01", Vector2(150, 392), null], ["rubble_pile_01", Vector2(260, 395), null],
-		["tombstone_small_01", Vector2(735, 352), null], ["grave_vase_01", Vector2(772, 360), null],
-		["tombstone_upright_02_broken", Vector2(860, 410), null],
+		["tombstone_upright_01_tilted", Vector2(95, 615), null], ["tombstone_cross_01_broken", Vector2(205, 622), null],
+		["tombstone_small_01", Vector2(150, 662), null], ["rubble_pile_01", Vector2(260, 665), null],
+		["tombstone_small_01", Vector2(735, 622), null], ["grave_vase_01", Vector2(772, 630), null],
+		["tombstone_upright_02_broken", Vector2(860, 680), null],
 		# 路的中段：墓园外圈的旧乱石墙，塌得只剩几段（以前的墓园比现在大）
-		["low_wall_01", Vector2(120, 590), null], ["low_wall_rubble_broken_01", Vector2(268, 590), null],
-		["low_wall_rubble_broken_01", Vector2(830, 640), null], ["rubble_pile_01", Vector2(700, 650), null],
-		["tombstone_small_01", Vector2(640, 560), null],
+		["low_wall_01", Vector2(120, 860), null], ["low_wall_rubble_broken_01", Vector2(268, 860), null],
+		["low_wall_rubble_broken_01", Vector2(830, 910), null], ["rubble_pile_01", Vector2(700, 920), null],
+		["tombstone_small_01", Vector2(640, 830), null],
 		# 路的下段：更孤零零的坟
-		["tombstone_cross_01_broken", Vector2(160, 860), null], ["candles_01", Vector2(196, 868), null],
-		["tombstone_small_01", Vector2(800, 900), null],
+		["tombstone_cross_01_broken", Vector2(160, 1130), null], ["candles_01", Vector2(196, 1138), null],
+		["tombstone_small_01", Vector2(800, 1170), null],
 		# 枯树（旧样板素材占位，比主角高一倍，以后要新画）；离开路中间，免得挡住视线
-		[OLD + "props/dead_tree_01", Vector2(318, 480), null],
-		[OLD + "props/dead_tree_01", Vector2(720, 800), null],
-		[OLD + "props/dead_tree_01", Vector2(300, 1010), null],
-		[OLD + "props/dead_tree_01", Vector2(880, 1050), null],
+		[OLD + "props/dead_tree_01", Vector2(318, 750), null],
+		[OLD + "props/dead_tree_01", Vector2(720, 1070), null],
+		[OLD + "props/dead_tree_01", Vector2(300, 1280), null],
+		[OLD + "props/dead_tree_01", Vector2(880, 1320), null],
 	],
 }
 
 # 路的左边线，从下往上；右边线 = 左边线 + 路宽（近处宽、远处窄一点）
-const ROAD_LEFT := [Vector2(444, 1080), Vector2(426, 1020), Vector2(450, 960), Vector2(474, 900), Vector2(452, 840),
-	Vector2(418, 780), Vector2(426, 720), Vector2(462, 660), Vector2(476, 600), Vector2(448, 540),
-	Vector2(428, 482), Vector2(452, 420), Vector2(470, 372), Vector2(440, 322), Vector2(452, 282)]
-# 门里的路：从大门到喷泉前，再分成左右两条通向出口
-const INNER_PATHS := [
-	[Vector2(452, 270), Vector2(508, 270), Vector2(512, 232), Vector2(448, 232)],
-	[Vector2(420, 200), Vector2(400, 168), Vector2(330, 120), Vector2(318, 96), Vector2(278, 96), Vector2(290, 124), Vector2(372, 196), Vector2(410, 232)],
-	[Vector2(540, 200), Vector2(560, 168), Vector2(630, 120), Vector2(642, 96), Vector2(682, 96), Vector2(670, 124), Vector2(588, 196), Vector2(550, 232)],
-]
+const ROAD_LEFT := [Vector2(444, 1350), Vector2(426, 1290), Vector2(450, 1230), Vector2(474, 1170), Vector2(452, 1110),
+	Vector2(418, 1050), Vector2(426, 990), Vector2(462, 930), Vector2(476, 870), Vector2(448, 810),
+	Vector2(428, 752), Vector2(452, 690), Vector2(470, 642), Vector2(440, 592), Vector2(452, 552)]
+# 门里的路：从大门笔直走到喷泉前，再分成左右两条，穿过墓碑群通向出口
+const FOUNTAIN := Vector2(480, 334) # 门里的正中间，从大门要走一段才到
+const AVENUE := [Vector2(452, 540), Vector2(508, 540), Vector2(512, 344), Vector2(448, 344)]
+const BRANCH := [Vector2(420, 326), Vector2(376, 266), Vector2(336, 196), Vector2(308, 140), Vector2(298, 100)] # 左边那条的中线，右边左右对称
+# 门里两侧铺满墓碑（用现成的积木）：一排一排，避开路和喷泉
+const YARD_GRAVES := ["tombstone_upright_01", "tombstone_upright_02", "tombstone_flat_01", "tombstone_pointed_01",
+	"tombstone_cross_01", "tombstone_small_01", "tombstone_upright_01", "tombstone_upright_02", "tombstone_small_01",
+	"tombstone_upright_01_tilted", "tombstone_cross_01_broken", "tombstone_upright_02_broken", "obelisk_01"]
 # 出口在远景条（y 0～100）下沿：小路走进薄雾里
 const EXITS := [
 	{"zone": Rect2(262, 92, 72, 26), "kind": "combat", "target": "layer1_a", "side": "top", "glyph_at": Vector2(298, 80)},
@@ -113,6 +107,7 @@ func _ready() -> void:
 	_viewport.snap_2d_vertices_to_pixel = true
 	add_child(_viewport)
 	var layout := LAYOUT.duplicate()
+	layout.props = LAYOUT.props + _yard_graves()
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--plate="):
 			layout.plate_file = arg.get_slice("=", 1)
@@ -189,28 +184,29 @@ func _build_placeholders() -> void:
 		var p: Vector2 = ROAD_LEFT[i]
 		road.append(p + Vector2(roundf(lerpf(56, 80, p.y / SIZE.y)), 0))
 	_keep(ground, _poly(road, MUD_PATH), _high)
-	for path in INNER_PATHS:
-		ground.add_child(_poly(path, MUD_PATH))
-	var slabs := [Vector2(482, 1040), Vector2(470, 980), Vector2(502, 930), Vector2(486, 860), Vector2(458, 790),
-		Vector2(470, 730), Vector2(500, 668), Vector2(484, 590), Vector2(470, 520), Vector2(492, 418),
-		Vector2(505, 380), Vector2(482, 336), Vector2(478, 300), Vector2(480, 250)]
+	ground.add_child(_poly(AVENUE, MUD_PATH))
+	for side in [1, -1]:
+		ground.add_child(_poly(_branch_polygon(side), MUD_PATH))
+	var slabs := [Vector2(482, 1310), Vector2(470, 1250), Vector2(502, 1200), Vector2(486, 1130), Vector2(458, 1060),
+		Vector2(470, 1000), Vector2(500, 938), Vector2(484, 860), Vector2(470, 790), Vector2(492, 688),
+		Vector2(505, 650), Vector2(482, 606), Vector2(478, 570), Vector2(480, 520)]
 	for i in slabs.size(): # old flagstones scattered along the road
 		var slab := Sprite2D.new()
 		slab.texture = PixelArt.texture(PROPS + OLD + "path/old_slab_%02d.png" % (i % 8 + 1))
 		slab.position = slabs[i]
 		_keep(ground, slab, _high)
-	for p in [[Vector2(392, 335), Vector2(26, 7)], [Vector2(568, 442), Vector2(20, 6)], [Vector2(380, 700), Vector2(22, 6)],
-			[Vector2(560, 820), Vector2(28, 8)], [Vector2(540, 1010), Vector2(14, 5)], [Vector2(330, 150), Vector2(16, 5)]]:
+	for p in [[Vector2(392, 605), Vector2(26, 7)], [Vector2(568, 712), Vector2(20, 6)], [Vector2(380, 970), Vector2(22, 6)],
+			[Vector2(560, 1090), Vector2(28, 8)], [Vector2(540, 1280), Vector2(14, 5)], [Vector2(424, 470), Vector2(14, 4)]]:
 		_keep(ground, _poly(_ellipse(p[0], p[1]), WATER), _high)
 		_keep(ground, _poly(_ellipse(p[0], Vector2(p[1].x * 1.3, maxf(2, p[1].y * 0.45))), WATER), _low)
 	# 倒下的那扇铁门，平躺在门内地上
-	ground.add_child(_poly([Vector2(500, 286), Vector2(552, 290), Vector2(546, 302), Vector2(494, 298)], IRON))
+	ground.add_child(_poly([Vector2(500, 556), Vector2(552, 560), Vector2(546, 572), Vector2(494, 568)], IRON))
 	# 倒下的路灯（只剩一截灯杆）
-	ground.add_child(_poly([Vector2(600, 996), Vector2(682, 976), Vector2(684, 980), Vector2(602, 1000)], IRON))
-	ground.add_child(_poly(_ellipse(Vector2(687, 977), Vector2(5, 4)), IRON))
+	ground.add_child(_poly([Vector2(600, 1266), Vector2(682, 1246), Vector2(684, 1250), Vector2(602, 1270)], IRON))
+	ground.add_child(_poly(_ellipse(Vector2(687, 1247), Vector2(5, 4)), IRON))
 	# 歪倒的路牌：一根木桩 + 一块牌子（立着的东西，参与前后遮挡）
 	var sign_post := Node2D.new()
-	sign_post.position = Vector2(560, 760)
+	sign_post.position = Vector2(560, 1030)
 	_room.sorted.add_child(sign_post)
 	sign_post.add_child(_poly([Vector2(-2, 0), Vector2(-6, -44), Vector2(-2, -44), Vector2(2, 0)], Color(0.30, 0.22, 0.16)))
 	sign_post.add_child(_poly([Vector2(-22, -42), Vector2(12, -36), Vector2(12, -26), Vector2(-22, -32)], Color(0.38, 0.29, 0.21)))
@@ -228,7 +224,7 @@ func _build_placeholders() -> void:
 
 	# 喷泉：参与前后遮挡，有碰撞
 	var fountain := StaticBody2D.new()
-	fountain.position = Vector2(480, 222)
+	fountain.position = FOUNTAIN
 	_room.sorted.add_child(fountain)
 	_keep(fountain, _poly(_ellipse(Vector2(0, -26), Vector2(70, 24)), STONE), _high)
 	_keep(fountain, _poly(_ellipse(Vector2(0, -30), Vector2(58, 17)), Color(0.22, 0.24, 0.26)), _high)
@@ -256,7 +252,7 @@ func _build_placeholders() -> void:
 
 	# 半开的那扇铁门：从左门柱斜着打开
 	var leaf := Node2D.new()
-	leaf.position = Vector2(452, 268)
+	leaf.position = Vector2(452, 538)
 	_room.sorted.add_child(leaf)
 	leaf.add_child(_poly([Vector2(-22, 2), Vector2(-22, -48), Vector2(6, -60), Vector2(6, -10)], Color(IRON, 0.9)))
 
@@ -303,13 +299,13 @@ func _build_placeholders() -> void:
 	_labels = Node2D.new()
 	_labels.z_index = 80
 	_room.add_child(_labels)
-	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 228)],
+	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 340)],
 			["出口 → 第 1 层", Vector2(262, 122)], ["出口 → 第 1 层", Vector2(626, 122)],
-			["高门柱（约主角 1.6 倍高，新素材）", Vector2(556, 150)], ["半开的铁门（占位）", Vector2(330, 246)],
-			["倒下的铁门（占位）", Vector2(556, 292)], ["路边孤坟", Vector2(120, 300)],
-			["倒下的路灯（占位）", Vector2(600, 1006)], ["枯树（旧素材占位）", Vector2(740, 620)],
-			["前景枯枝（占位）", Vector2(8, 980)], ["泥路（以后换地面贴花）", Vector2(540, 900)],
-			["外圈旧乱石墙（塌了）", Vector2(110, 600)], ["歪倒的路牌（占位）", Vector2(576, 730)]]:
+			["门里两侧：一排排墓碑", Vector2(60, 300)], ["半开的铁门（占位）", Vector2(330, 516)],
+			["倒下的铁门（占位）", Vector2(556, 562)], ["路边孤坟", Vector2(120, 570)],
+			["倒下的路灯（占位）", Vector2(600, 1276)], ["枯树（旧素材占位）", Vector2(740, 890)],
+			["前景枯枝（占位）", Vector2(8, 1250)], ["泥路（以后换地面贴花）", Vector2(540, 1170)],
+			["外圈旧乱石墙（塌了）", Vector2(110, 870)], ["歪倒的路牌（占位）", Vector2(576, 1000)]]:
 		var label := Label.new()
 		label.text = note[0]
 		label.add_theme_font_override("font", _font)
@@ -334,9 +330,9 @@ func _build_low_angle(ground: Node2D) -> void:
 	for i in range(right.size() - 1, -1, -1):
 		road.append(right[i])
 	_keep(ground, _poly(road, MUD_PATH), _low)
-	for p in [Vector2(482, 1040), Vector2(470, 980), Vector2(502, 930), Vector2(486, 860), Vector2(458, 790),
-			Vector2(470, 730), Vector2(500, 668), Vector2(484, 590), Vector2(470, 520), Vector2(492, 418),
-			Vector2(505, 380), Vector2(482, 336), Vector2(478, 300)]: # flagstones as thin slivers
+	for p in [Vector2(482, 1310), Vector2(470, 1250), Vector2(502, 1200), Vector2(486, 1130), Vector2(458, 1060),
+			Vector2(470, 1000), Vector2(500, 938), Vector2(484, 860), Vector2(470, 790), Vector2(492, 688),
+			Vector2(505, 650), Vector2(482, 606), Vector2(478, 570)]: # flagstones as thin slivers
 		var w := roundf(lerpf(8, 22, p.y / SIZE.y))
 		_keep(ground, _poly([p + Vector2(-w, -2), p + Vector2(w, -3), p + Vector2(w + 2, 2), p + Vector2(-w + 2, 3)], STONE), _low)
 
@@ -344,10 +340,13 @@ func _build_low_angle(ground: Node2D) -> void:
 	var sky := Node2D.new()
 	sky.z_index = 39
 	_room.add_child(sky)
-	if FileAccess.file_exists(BACKDROP + "entry_backdrop_01.png"):
+	var backdrop := BACKDROP + "entry_backdrop_02.png" # 02 = 放大的礼拜堂
+	if not FileAccess.file_exists(backdrop):
+		backdrop = BACKDROP + "entry_backdrop_01.png"
+	if FileAccess.file_exists(backdrop):
 		sky.visible = false # the art group's backdrop strip replaces this placeholder
 		var strip := Sprite2D.new()
-		strip.texture = PixelArt.texture(BACKDROP + "entry_backdrop_01.png")
+		strip.texture = PixelArt.texture(backdrop)
 		strip.centered = false
 		strip.z_index = -9 # behind every prop, just over the ground
 		_room.add_child(strip)
@@ -365,10 +364,10 @@ func _build_low_angle(ground: Node2D) -> void:
 	for band in [[62, 78, 0.3], [78, 92, 0.18], [92, 104, 0.08]]: # low, so the skyline and chapel stay readable
 		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
 
-	# 更高的门柱：盖在原来的门柱上；用户要了这一点，两版都有（D-040）
-	for x in [408, 552]:
+	# 更高的门柱占位：正式素材到了就不用（D-040）
+	for x in ([] if ResourceLoader.exists(PROPS + "gate_pillar_tall_01.png") else [408, 552]):
 		var pillar := Node2D.new()
-		pillar.position = Vector2(x, 272)
+		pillar.position = Vector2(x, 542)
 		_room.sorted.add_child(pillar)
 		pillar.add_child(_poly([Vector2(-20, 0), Vector2(-20, -132), Vector2(20, -132), Vector2(20, 0)], STONE))
 		pillar.add_child(_poly([Vector2(8, 0), Vector2(8, -132), Vector2(20, -132), Vector2(20, 0)], STONE_DARK))
@@ -389,6 +388,54 @@ func _build_low_angle(ground: Node2D) -> void:
 			continue # keep the road clear
 		var h := 14 + (x * 13 % 23)
 		fore.add_child(_poly([Vector2(x, 540), Vector2(x + 3, 540 - h), Vector2(x + 6, 540)], dark))
+
+
+## Rows of graves filling both sides of the yard, kept off the avenue, the fountain and the two paths.
+func _yard_graves() -> Array:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7
+	var graves := []
+	var row := 0
+	for y in range(150, 520, 58):
+		for x in range(36 + (row % 2) * 31, 940, 62):
+			var p := Vector2(x + rng.randi_range(-8, 8), y + rng.randi_range(-6, 6))
+			var name: String = YARD_GRAVES[rng.randi() % YARD_GRAVES.size()]
+			if rng.randf() < 0.14 or _near_paths(p):
+				continue # a few gaps, like graves that were never dug
+			graves.append([name, p, null])
+		row += 1
+	return graves
+
+
+func _near_paths(p: Vector2) -> bool:
+	if absf(p.x - FOUNTAIN.x) < 120 and p.y > FOUNTAIN.y - 130 and p.y < FOUNTAIN.y + 40:
+		return true
+	if absf(p.x - FOUNTAIN.x) < 74 and p.y > FOUNTAIN.y:
+		return true
+	if absf(p.x - FOUNTAIN.x) < 96 and p.y < 236:
+		return true # 从大门望过去，礼拜堂不被墓碑挡住
+	for side in [1, -1]:
+		for i in BRANCH.size() - 1:
+			var a := _mirror(BRANCH[i], side)
+			var b := _mirror(BRANCH[i + 1], side)
+			if p.distance_to(Geometry2D.get_closest_point_to_segment(p, a, b)) < 46:
+				return true
+	return false
+
+
+func _mirror(p: Vector2, side: int) -> Vector2:
+	return p if side == 1 else Vector2(SIZE.x - p.x, p.y)
+
+
+## The path along BRANCH, 40 px wide.
+func _branch_polygon(side: int) -> PackedVector2Array:
+	var left := PackedVector2Array()
+	var right := PackedVector2Array()
+	for p: Vector2 in BRANCH:
+		left.append(_mirror(p + Vector2(-20, 0), side))
+		right.append(_mirror(p + Vector2(20, 0), side))
+	right.reverse()
+	return left + right
 
 
 func _keep(parent: Node, item: CanvasItem, variant: Array[CanvasItem]) -> CanvasItem:
@@ -449,8 +496,9 @@ func _capture() -> void:
 	DirAccess.make_dir_recursive_absolute(dir)
 	var hero: Node2D = _room.player
 	_labels.visible = "--labels" in str(OS.get_cmdline_user_args())
-	for shot in [["01_arrive", SPAWN, false], ["02_gate", Vector2(480, 330), false],
-			["03_arrive_low", SPAWN, true], ["04_gate_low", Vector2(480, 330), true]]:
+	for shot in [["01_arrive", SPAWN, false], ["02_gate", Vector2(480, 600), false],
+			["03_arrive_low", SPAWN, true], ["04_gate_low", Vector2(480, 600), true],
+			["05_fountain", Vector2(480, 470), false], ["06_yard_top", Vector2(330, 200), false]]:
 		_set_low_angle(shot[2])
 		hero.position = shot[1]
 		_follow()

@@ -1,0 +1,949 @@
+{
+  "gate_roots": [
+    [
+      408,
+      270
+    ],
+    [
+      552,
+      270
+    ]
+  ],
+  "center_distance": 144,
+  "layout": [
+    [
+      "iron_fence_01",
+      185,
+      270
+    ],
+    [
+      "iron_fence_01",
+      337,
+      270
+    ],
+    [
+      "iron_fence_01",
+      633,
+      270
+    ],
+    [
+      "iron_fence_01",
+      785,
+      270
+    ],
+    [
+      "wall_pillar_01",
+      256,
+      270
+    ],
+    [
+      "wall_pillar_01",
+      704,
+      270
+    ],
+    [
+      "gate_pillar_tall_01",
+      408,
+      270
+    ],
+    [
+      "gate_pillar_tall_01",
+      552,
+      270
+    ]
+  ],
+  "endpoint_checks": [
+    {
+      "fence_root": [
+        337,
+        270
+      ],
+      "pier_root": [
+        408,
+        270
+      ],
+      "fence_native_column": 143,
+      "opaque_endpoint_pixels": 11,
+      "hidden_by_stone": 11,
+      "all_hidden": true
+    },
+    {
+      "fence_root": [
+        633,
+        270
+      ],
+      "pier_root": [
+        552,
+        270
+      ],
+      "fence_native_column": 12,
+      "opaque_endpoint_pixels": 11,
+      "hidden_by_stone": 11,
+      "all_hidden": true
+    },
+    {
+      "fence_root": [
+        185,
+        270
+      ],
+      "pier_root": [
+        256,
+        270
+      ],
+      "fence_native_column": 143,
+      "opaque_endpoint_pixels": 11,
+      "hidden_by_stone": 11,
+      "all_hidden": true
+    },
+    {
+      "fence_root": [
+        337,
+        270
+      ],
+      "pier_root": [
+        256,
+        270
+      ],
+      "fence_native_column": 12,
+      "opaque_endpoint_pixels": 11,
+      "hidden_by_stone": 11,
+      "all_hidden": true
+    },
+    {
+      "fence_root": [
+        633,
+        270
+      ],
+      "pier_root": [
+        704,
+        270
+      ],
+      "fence_native_column": 143,
+      "opaque_endpoint_pixels": 11,
+      "hidden_by_stone": 11,
+      "all_hidden": true
+    },
+    {
+      "fence_root": [
+        785,
+        270
+      ],
+      "pier_root": [
+        704,
+        270
+      ],
+      "fence_native_column": 12,
+      "opaque_endpoint_pixels": 11,
+      "hidden_by_stone": 11,
+      "all_hidden": true
+    }
+  ],
+  "gap_by_row": [
+    {
+      "native_row": 25,
+      "width": 5,
+      "clear_gap_px": 139
+    },
+    {
+      "native_row": 26,
+      "width": 6,
+      "clear_gap_px": 138
+    },
+    {
+      "native_row": 27,
+      "width": 6,
+      "clear_gap_px": 138
+    },
+    {
+      "native_row": 28,
+      "width": 11,
+      "clear_gap_px": 133
+    },
+    {
+      "native_row": 29,
+      "width": 16,
+      "clear_gap_px": 128
+    },
+    {
+      "native_row": 30,
+      "width": 16,
+      "clear_gap_px": 128
+    },
+    {
+      "native_row": 31,
+      "width": 14,
+      "clear_gap_px": 130
+    },
+    {
+      "native_row": 32,
+      "width": 15,
+      "clear_gap_px": 129
+    },
+    {
+      "native_row": 33,
+      "width": 18,
+      "clear_gap_px": 126
+    },
+    {
+      "native_row": 34,
+      "width": 28,
+      "clear_gap_px": 116
+    },
+    {
+      "native_row": 35,
+      "width": 33,
+      "clear_gap_px": 111
+    },
+    {
+      "native_row": 36,
+      "width": 36,
+      "clear_gap_px": 108
+    },
+    {
+      "native_row": 37,
+      "width": 37,
+      "clear_gap_px": 107
+    },
+    {
+      "native_row": 38,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 39,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 40,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 41,
+      "width": 37,
+      "clear_gap_px": 107
+    },
+    {
+      "native_row": 42,
+      "width": 35,
+      "clear_gap_px": 109
+    },
+    {
+      "native_row": 43,
+      "width": 35,
+      "clear_gap_px": 109
+    },
+    {
+      "native_row": 44,
+      "width": 33,
+      "clear_gap_px": 111
+    },
+    {
+      "native_row": 45,
+      "width": 33,
+      "clear_gap_px": 111
+    },
+    {
+      "native_row": 46,
+      "width": 32,
+      "clear_gap_px": 112
+    },
+    {
+      "native_row": 47,
+      "width": 31,
+      "clear_gap_px": 113
+    },
+    {
+      "native_row": 48,
+      "width": 29,
+      "clear_gap_px": 115
+    },
+    {
+      "native_row": 49,
+      "width": 27,
+      "clear_gap_px": 117
+    },
+    {
+      "native_row": 50,
+      "width": 23,
+      "clear_gap_px": 121
+    },
+    {
+      "native_row": 51,
+      "width": 19,
+      "clear_gap_px": 125
+    },
+    {
+      "native_row": 52,
+      "width": 18,
+      "clear_gap_px": 126
+    },
+    {
+      "native_row": 53,
+      "width": 16,
+      "clear_gap_px": 128
+    },
+    {
+      "native_row": 54,
+      "width": 17,
+      "clear_gap_px": 127
+    },
+    {
+      "native_row": 55,
+      "width": 24,
+      "clear_gap_px": 120
+    },
+    {
+      "native_row": 56,
+      "width": 27,
+      "clear_gap_px": 117
+    },
+    {
+      "native_row": 57,
+      "width": 28,
+      "clear_gap_px": 116
+    },
+    {
+      "native_row": 58,
+      "width": 35,
+      "clear_gap_px": 109
+    },
+    {
+      "native_row": 59,
+      "width": 41,
+      "clear_gap_px": 103
+    },
+    {
+      "native_row": 60,
+      "width": 44,
+      "clear_gap_px": 100
+    },
+    {
+      "native_row": 61,
+      "width": 47,
+      "clear_gap_px": 97
+    },
+    {
+      "native_row": 62,
+      "width": 49,
+      "clear_gap_px": 95
+    },
+    {
+      "native_row": 63,
+      "width": 49,
+      "clear_gap_px": 95
+    },
+    {
+      "native_row": 64,
+      "width": 50,
+      "clear_gap_px": 94
+    },
+    {
+      "native_row": 65,
+      "width": 50,
+      "clear_gap_px": 94
+    },
+    {
+      "native_row": 66,
+      "width": 50,
+      "clear_gap_px": 94
+    },
+    {
+      "native_row": 67,
+      "width": 50,
+      "clear_gap_px": 94
+    },
+    {
+      "native_row": 68,
+      "width": 49,
+      "clear_gap_px": 95
+    },
+    {
+      "native_row": 69,
+      "width": 48,
+      "clear_gap_px": 96
+    },
+    {
+      "native_row": 70,
+      "width": 48,
+      "clear_gap_px": 96
+    },
+    {
+      "native_row": 71,
+      "width": 46,
+      "clear_gap_px": 98
+    },
+    {
+      "native_row": 72,
+      "width": 44,
+      "clear_gap_px": 100
+    },
+    {
+      "native_row": 73,
+      "width": 43,
+      "clear_gap_px": 101
+    },
+    {
+      "native_row": 74,
+      "width": 43,
+      "clear_gap_px": 101
+    },
+    {
+      "native_row": 75,
+      "width": 43,
+      "clear_gap_px": 101
+    },
+    {
+      "native_row": 76,
+      "width": 43,
+      "clear_gap_px": 101
+    },
+    {
+      "native_row": 77,
+      "width": 42,
+      "clear_gap_px": 102
+    },
+    {
+      "native_row": 78,
+      "width": 40,
+      "clear_gap_px": 104
+    },
+    {
+      "native_row": 79,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 80,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 81,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 82,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 83,
+      "width": 37,
+      "clear_gap_px": 107
+    },
+    {
+      "native_row": 84,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 85,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 86,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 87,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 88,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 89,
+      "width": 37,
+      "clear_gap_px": 107
+    },
+    {
+      "native_row": 90,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 91,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 92,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 93,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 94,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 95,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 96,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 97,
+      "width": 36,
+      "clear_gap_px": 108
+    },
+    {
+      "native_row": 98,
+      "width": 36,
+      "clear_gap_px": 108
+    },
+    {
+      "native_row": 99,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 100,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 101,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 102,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 103,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 104,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 105,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 106,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 107,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 108,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 109,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 110,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 111,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 112,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 113,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 114,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 115,
+      "width": 37,
+      "clear_gap_px": 107
+    },
+    {
+      "native_row": 116,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 117,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 118,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 119,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 120,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 121,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 122,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 123,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 124,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 125,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 126,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 127,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 128,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 129,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 130,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 131,
+      "width": 37,
+      "clear_gap_px": 107
+    },
+    {
+      "native_row": 132,
+      "width": 36,
+      "clear_gap_px": 108
+    },
+    {
+      "native_row": 133,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 134,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 135,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 136,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 137,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 138,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 139,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 140,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 141,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 142,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 143,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 144,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 145,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 146,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 147,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 148,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 149,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 150,
+      "width": 38,
+      "clear_gap_px": 106
+    },
+    {
+      "native_row": 151,
+      "width": 39,
+      "clear_gap_px": 105
+    },
+    {
+      "native_row": 152,
+      "width": 40,
+      "clear_gap_px": 104
+    },
+    {
+      "native_row": 153,
+      "width": 41,
+      "clear_gap_px": 103
+    },
+    {
+      "native_row": 154,
+      "width": 40,
+      "clear_gap_px": 104
+    },
+    {
+      "native_row": 155,
+      "width": 42,
+      "clear_gap_px": 102
+    },
+    {
+      "native_row": 156,
+      "width": 43,
+      "clear_gap_px": 101
+    },
+    {
+      "native_row": 157,
+      "width": 46,
+      "clear_gap_px": 98
+    },
+    {
+      "native_row": 158,
+      "width": 48,
+      "clear_gap_px": 96
+    },
+    {
+      "native_row": 159,
+      "width": 50,
+      "clear_gap_px": 94
+    },
+    {
+      "native_row": 160,
+      "width": 51,
+      "clear_gap_px": 93
+    },
+    {
+      "native_row": 161,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 162,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 163,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 164,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 165,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 166,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 167,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 168,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 169,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 170,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 171,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 172,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 173,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 174,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 175,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 176,
+      "width": 52,
+      "clear_gap_px": 92
+    },
+    {
+      "native_row": 177,
+      "width": 48,
+      "clear_gap_px": 96
+    },
+    {
+      "native_row": 178,
+      "width": 41,
+      "clear_gap_px": 103
+    },
+    {
+      "native_row": 179,
+      "width": 36,
+      "clear_gap_px": 108
+    },
+    {
+      "native_row": 180,
+      "width": 30,
+      "clear_gap_px": 114
+    },
+    {
+      "native_row": 181,
+      "width": 24,
+      "clear_gap_px": 120
+    },
+    {
+      "native_row": 182,
+      "width": 18,
+      "clear_gap_px": 126
+    },
+    {
+      "native_row": 183,
+      "width": 13,
+      "clear_gap_px": 131
+    },
+    {
+      "native_row": 184,
+      "width": 6,
+      "clear_gap_px": 138
+    },
+    {
+      "native_row": 185,
+      "width": 1,
+      "clear_gap_px": 143
+    }
+  ],
+  "same_sprite_no_mirror": true
+}

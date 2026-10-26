@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_7pgxx"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/gate_pillar_tall_01_base.png" id="2_4mykj"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/gate_pillar_tall_01.png" id="3_mnsdc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gldix"]
+size = Vector2(35, 10)
+
+[node name="GatePillarTall01" type="Node2D" unique_id=1078765275]
+script = ExtResource("1_7pgxx")
+ground_gap = 6
+
+[node name="Base" type="Sprite2D" parent="." unique_id=504717808]
+texture = ExtResource("2_4mykj")
+centered = false
+offset = Vector2(-48, -186)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=353959851]
+texture = ExtResource("3_mnsdc")
+centered = false
+offset = Vector2(-48, -186)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1855224835]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1212138625]
+position = Vector2(4, -4)
+shape = SubResource("RectangleShape2D_gldix")

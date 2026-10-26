@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmqu7pg4wkly1"
-path="res://.godot/imported/props_with_hero_1x.png-e6b7ea1a8dd581416507b3d52dbfd97f.ctex"
+path="res://.godot/imported/props_with_hero_1x.png-a7cd670f75453721e1a99325f1b91384.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/qc/props_with_hero_1x.png"
-dest_files=["res://.godot/imported/props_with_hero_1x.png-e6b7ea1a8dd581416507b3d52dbfd97f.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/qc/props_with_hero_1x.png"
+dest_files=["res://.godot/imported/props_with_hero_1x.png-a7cd670f75453721e1a99325f1b91384.ctex"]
 
 [params]
 

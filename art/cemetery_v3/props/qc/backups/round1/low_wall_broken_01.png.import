@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csku6rqc4k1ov"
-path="res://.godot/imported/low_wall_broken_01.png-958b1d8e510d7788df3917c3c5984de7.ctex"
+path="res://.godot/imported/low_wall_broken_01.png-f41302efca98ec94c38300c386e76f38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/low_wall_broken_01.png"
-dest_files=["res://.godot/imported/low_wall_broken_01.png-958b1d8e510d7788df3917c3c5984de7.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/low_wall_broken_01.png"
+dest_files=["res://.godot/imported/low_wall_broken_01.png-f41302efca98ec94c38300c386e76f38.ctex"]
 
 [params]
 

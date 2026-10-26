@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6s1mhhd63xo5"
-path="res://.godot/imported/tombstone_cross_01.png-371e0b346b03f3300300aa1f737f3d63.ctex"
+path="res://.godot/imported/tombstone_cross_01.png-fc452df6fd4add02ca82b06017be6764.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/tombstone_cross_01.png"
-dest_files=["res://.godot/imported/tombstone_cross_01.png-371e0b346b03f3300300aa1f737f3d63.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/tombstone_cross_01.png"
+dest_files=["res://.godot/imported/tombstone_cross_01.png-fc452df6fd4add02ca82b06017be6764.ctex"]
 
 [params]
 

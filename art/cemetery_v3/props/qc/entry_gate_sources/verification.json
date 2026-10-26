@@ -1,0 +1,12 @@
+{
+  "source_cell_center_rgb_checks": 7974,
+  "all_match": true,
+  "final_layers_reconstructed_exactly": [
+    "gate_pillar_tall_01",
+    "gate_pillar_tall_01_base"
+  ],
+  "qa_links_checked": 19,
+  "all_qa_links_resolve": true,
+  "preexisting_files_unchanged": 51,
+  "manifest_backup_sha256": "c5c808388f32a3cafe664da12cf2c2e348853a817b7254caeb55994763258d0e"
+}

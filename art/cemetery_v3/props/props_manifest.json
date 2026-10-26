@@ -635,6 +635,34 @@
       "qa": "qc/batch2_QA.md",
       "lean_degrees": 11.257134166552152,
       "digital_rotation_or_shear": false
+    },
+    "gate_pillar_tall_01": {
+      "prop": "gate_pillar_tall_01.png",
+      "base": "gate_pillar_tall_01_base.png",
+      "canvas": [
+        96,
+        192
+      ],
+      "origin": [
+        48,
+        192
+      ],
+      "visible_height_px": 161,
+      "family": "B_ashlar",
+      "parent_material": "wall_pillar_01 / low_wall_ashlar_02",
+      "palette_parent": "wall_pillar_01",
+      "join": {
+        "gate_center_spacing": 144,
+        "minimum_stone_clear_gap_px": 92,
+        "fence_endpoint_columns": [
+          12,
+          143
+        ],
+        "assembly": "qc/entry_gate_assembly_2x.png"
+      },
+      "source_record": "qc/entry_gate_sources/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-044"
     }
   },
   "wall_families": {
@@ -760,7 +788,7 @@
     ],
     "count": 12,
     "qc": "qc/batch2_QA.md",
-    "status": "awaiting_in_game_acceptance",
+    "status": "accepted_D-044",
     "production": "single built-in image generation / detected cell center sampling / native selections and integer translations / inherited stone palettes",
     "no_whole_image_resize": true
   }

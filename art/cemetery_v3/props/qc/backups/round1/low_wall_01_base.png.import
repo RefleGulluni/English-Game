@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlx3ksi350ev7"
-path="res://.godot/imported/low_wall_01_base.png-b79deefb628dd3ed6b9def632a92d899.ctex"
+path="res://.godot/imported/low_wall_01_base.png-0e2e215aa1dc4d1e2ac7f0b264b0fc21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/low_wall_01_base.png"
-dest_files=["res://.godot/imported/low_wall_01_base.png-b79deefb628dd3ed6b9def632a92d899.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/low_wall_01_base.png"
+dest_files=["res://.godot/imported/low_wall_01_base.png-0e2e215aa1dc4d1e2ac7f0b264b0fc21.ctex"]
 
 [params]
 

@@ -45,7 +45,7 @@ func _init(room_layout: Dictionary) -> void:
 		var s := Sprite2D.new()
 		s.texture = PixelArt.texture(ART + "decals/dead_grass_%02d.png" % _rng.randi_range(1, 4))
 		s.offset = Vector2(0, -s.texture.get_height() / 2)
-		s.position = Vector2(_rng.randi_range(20, size.x - 20), _rng.randi_range(30, size.y - 6))
+		s.position = Vector2(_rng.randi_range(20, size.x - 20), _rng.randi_range(int(layout.get("grass_top", 30)), size.y - 6)) # grass_top: keep it off a backdrop strip
 		bases.add_child(s)
 	sorted = Node2D.new()
 	sorted.name = "Sorted"

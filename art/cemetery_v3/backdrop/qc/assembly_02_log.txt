@@ -1,0 +1,110 @@
+{
+  "generated_native_bbox": [
+    3,
+    3,
+    102,
+    115
+  ],
+  "native_crop_xyxy": [
+    3,
+    3,
+    102,
+    96
+  ],
+  "native_crop_size": [
+    99,
+    93
+  ],
+  "placement_top_left": [
+    426,
+    3
+  ],
+  "steeple_tip": [
+    480,
+    3
+  ],
+  "visible_bbox_xyxy": [
+    439,
+    3,
+    519,
+    96
+  ],
+  "visible_size": [
+    80,
+    93
+  ],
+  "opaque_material_ramp_world_y": [
+    [
+      62,
+      [
+        53,
+        58,
+        66
+      ]
+    ],
+    [
+      72,
+      [
+        61,
+        67,
+        75
+      ]
+    ],
+    [
+      82,
+      [
+        68,
+        74,
+        82
+      ]
+    ],
+    [
+      88,
+      [
+        72,
+        78,
+        86
+      ]
+    ],
+    [
+      92,
+      [
+        74,
+        80,
+        88
+      ]
+    ],
+    [
+      95,
+      [
+        75,
+        81,
+        89
+      ]
+    ]
+  ],
+  "three_source_window_boxes": [
+    [
+      61,
+      52,
+      63,
+      64
+    ],
+    [
+      17,
+      74,
+      20,
+      93
+    ],
+    [
+      90,
+      77,
+      93,
+      96
+    ]
+  ],
+  "changed_pixels_vs_01": 3541,
+  "unrelated_background_pixels_changed": 0,
+  "protected_assets_hashes_unchanged": true,
+  "composition_note": "User clarified: chapel body crosses ridge, lower mass extends to95 for runtime fog. Original side slope color occludes only lateral chapel footprint. No new fog baked in."
+}

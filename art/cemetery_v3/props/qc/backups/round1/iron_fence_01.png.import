@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dblucq6em2kk7"
-path="res://.godot/imported/iron_fence_01.png-4f4e9fd63e8df4ea11fea1bf82d9eaf4.ctex"
+path="res://.godot/imported/iron_fence_01.png-bcdd49fd4cc36bc8010ed5a0aa757970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/iron_fence_01.png"
-dest_files=["res://.godot/imported/iron_fence_01.png-4f4e9fd63e8df4ea11fea1bf82d9eaf4.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/iron_fence_01.png"
+dest_files=["res://.godot/imported/iron_fence_01.png-bcdd49fd4cc36bc8010ed5a0aa757970.ctex"]
 
 [params]
 

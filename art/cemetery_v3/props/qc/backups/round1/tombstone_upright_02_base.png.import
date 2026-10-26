@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhjyosnr0s7en"
-path="res://.godot/imported/tombstone_upright_02_base.png-cfb61439a4a71671a1511b3daeb18120.ctex"
+path="res://.godot/imported/tombstone_upright_02_base.png-543db974e1a470bb0d18bf2410724e3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/tombstone_upright_02_base.png"
-dest_files=["res://.godot/imported/tombstone_upright_02_base.png-cfb61439a4a71671a1511b3daeb18120.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/tombstone_upright_02_base.png"
+dest_files=["res://.godot/imported/tombstone_upright_02_base.png-543db974e1a470bb0d18bf2410724e3a.ctex"]
 
 [params]
 

@@ -1,0 +1,3 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+art/cemetery_v3/backdrop/entry_backdrop_02.png             960x100   OK   17     2    0    99
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

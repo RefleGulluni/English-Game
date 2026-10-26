@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n6fqclnpf8x6"
-path="res://.godot/imported/grave_lid_01_base.png-b46668a9bb2e5456383e2898e27feb34.ctex"
+path="res://.godot/imported/grave_lid_01_base.png-12670bea15298b6107cd6fcd3721b67d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/grave_lid_01_base.png"
-dest_files=["res://.godot/imported/grave_lid_01_base.png-b46668a9bb2e5456383e2898e27feb34.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/grave_lid_01_base.png"
+dest_files=["res://.godot/imported/grave_lid_01_base.png-12670bea15298b6107cd6fcd3721b67d.ctex"]
 
 [params]
 

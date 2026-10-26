@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gm6uaqjv5svx"
-path="res://.godot/imported/wall_join_test_4x.png-d72024465020c1ed069d9a66a798e437.ctex"
+path="res://.godot/imported/wall_join_test_4x.png-674f029e5af93d0fd483e33b549111e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cemetery_v3/props/qc/wall_join_test_4x.png"
-dest_files=["res://.godot/imported/wall_join_test_4x.png-d72024465020c1ed069d9a66a798e437.ctex"]
+source_file="res://art/cemetery_v3/props/qc/backups/round1/qc/wall_join_test_4x.png"
+dest_files=["res://.godot/imported/wall_join_test_4x.png-674f029e5af93d0fd483e33b549111e3.ctex"]
 
 [params]
 
