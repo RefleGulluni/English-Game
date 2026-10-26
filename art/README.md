@@ -17,7 +17,7 @@
 |---|---|---|---|
 | `character_design/` | **主角 B1**：四方向站姿（`hero_B1_*.png`，游戏里的正面是 `hero_B1_front_straight.png`）、全部动画（`anim/`）、Lexicon 书的设计图（`lexicon_book_sheet.png`）。**墓园骷髅** `enemies/skeleton/`：选定 B「余裹者」`skeleton_B.png` + 骨堆（D-037），A / C 留作精英参考；B 四方向已通过（D-041）。`hero_B1.png` 是设定图，**一个像素都不改** | 角色设计组 | 可拖入的主角 `scenes/player/hero_b1.tscn`（帧由 `scripts/tools/bake_hero_b1.gd` 打包） |
 | `cemetery_v3/backdrop/` | **墓园入口远景条**（天空 + 天际线 + 礼拜堂）与**前景枯枝**（D-042）；礼拜堂放大版 `entry_backdrop_02` 制作中 | 美术组 | 入口灰盒 `scenes/prototypes/cemetery_entry/` |
-| `cemetery_v3/ground/trial/` | 地面试样（D-035）：质感好但太暖，拼接失败；地面做法待用户拍板 | 美术组 | 试走房间 `-- --plate=` |
+| `cemetery_v3/ground/trial/` | 地面试样（D-035）：质感好但太暖，拼接失败；地面已改为瓦片 + 贴花（D-043），这块只作颜色质感对照 | 美术组 | 试走房间 `-- --plate=` |
 | `cemetery_v3/props/` | **墓园物件**（墓碑、十字碑、墓穴、盖板、矮墙、墙柱、铁栏），每件有立体部分 + `_base` 底座贴花。**第 2 版 9 件已通过（D-029）**，第 1 版在 `qc/backups/round1/`。墙分两个家族、同一排不混用：A 乱石墙 `low_wall_01`；B 条石墙 `low_wall_broken_01` + `wall_pillar_01`（也作门柱）+ 铁栏。补件（D-030）：A 加了乱石断墙 `low_wall_rubble_broken_01`、乱石嵌柱 `low_wall_rubble_pillar_01`（墙的变化段）；B 加了完整条石墙 `low_wall_ashlar_01`（有重复感，作次要变体）。条石墙主力 `low_wall_ashlar_02` 已通过（D-032，有效宽 240）。第二批墓碑家族与小物件 12 件已通过（D-033）。每件都有对应的积木场景 `scenes/props/cemetery/<名字>.tscn`（D-034）。补件的来源与拼装图在 `qc/wall_family_sources/`、`qc/wall_family_*` | 角色设计组 | 试走房间 `scenes/prototypes/props_v3/props_v3_room.tscn` |
 | `ui/fonts/` | 长段可读英文用的字体 CormorantGaramond（含授权 `OFL.txt`） | — | Lexicon 灰盒、区域名过渡 |
 
