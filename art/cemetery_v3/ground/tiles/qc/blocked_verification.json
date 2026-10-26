@@ -1,0 +1,102 @@
+{
+  "status": "BLOCKED_VISUAL_SELF_QA_NOT_FULL_SET",
+  "runtime_unique_colors": 4,
+  "tile_checks": [
+    {
+      "file": "ground_mud_01.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_02.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_03.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_04.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_05.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_06.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_07.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    },
+    {
+      "file": "ground_mud_08.png",
+      "size": [
+        32,
+        32
+      ],
+      "alpha": [
+        255
+      ],
+      "colors": 4
+    }
+  ],
+  "missing": [
+    "16 corner transitions+JSON",
+    "3 full-path variations",
+    "6-8 decals",
+    "complete480x270 test area"
+  ],
+  "context_preview": "mud_only_vs_trial_2x.png is old240x135 and new240x135 native side by side, same existing hero/props, no scale change. It is not the requested full test-area comparison.",
+  "edge_limit_note": "MaxRGB jump<=20 is just the color-ramp range, not proof of seamlessness. Original source crops have overlapping strips in attempt02/03, never identical tiles."
+}

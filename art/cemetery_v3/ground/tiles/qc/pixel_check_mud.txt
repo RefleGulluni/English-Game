@@ -1,0 +1,10 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+art/cemetery_v3/ground/tiles/ground_mud_01.png               32x32   OK    4    56    0    31
+art/cemetery_v3/ground/tiles/ground_mud_02.png               32x32   OK    4    57    0    31
+art/cemetery_v3/ground/tiles/ground_mud_03.png               32x32   OK    4    54    0    31
+art/cemetery_v3/ground/tiles/ground_mud_04.png               32x32   OK    4    55    0    31
+art/cemetery_v3/ground/tiles/ground_mud_05.png               32x32   OK    4    54    0    31
+art/cemetery_v3/ground/tiles/ground_mud_06.png               32x32   OK    4    52    0    31
+art/cemetery_v3/ground/tiles/ground_mud_07.png               32x32   OK    4    55    0    31
+art/cemetery_v3/ground/tiles/ground_mud_08.png               32x32   OK    4    54    0    31
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95
