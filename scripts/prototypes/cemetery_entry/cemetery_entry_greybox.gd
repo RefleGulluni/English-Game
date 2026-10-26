@@ -340,10 +340,11 @@ func _build_low_angle(ground: Node2D) -> void:
 	var sky := Node2D.new()
 	sky.z_index = 39
 	_room.add_child(sky)
-	var backdrop := BACKDROP + "entry_backdrop_02.png" # 02 = 放大的礼拜堂
-	if not FileAccess.file_exists(backdrop):
-		backdrop = BACKDROP + "entry_backdrop_01.png"
-	if FileAccess.file_exists(backdrop):
+	var backdrop := ""
+	for v in ["03", "02", "01"]: # 最新的一版：02 放大礼拜堂，03 修好雾里的底部和屋顶
+		if backdrop == "" and FileAccess.file_exists(BACKDROP + "entry_backdrop_%s.png" % v):
+			backdrop = BACKDROP + "entry_backdrop_%s.png" % v
+	if backdrop != "":
 		sky.visible = false # the art group's backdrop strip replaces this placeholder
 		var strip := Sprite2D.new()
 		strip.texture = PixelArt.texture(backdrop)

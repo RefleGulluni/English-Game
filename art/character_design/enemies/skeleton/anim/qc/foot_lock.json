@@ -1,0 +1,138 @@
+[
+  {
+    "frame": 1,
+    "support": "near_right",
+    "support_local": [
+      68,
+      95
+    ],
+    "world_translation": [
+      0,
+      0
+    ],
+    "support_world": [
+      68,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 2,
+    "support": "near_right",
+    "support_local": [
+      63,
+      95
+    ],
+    "world_translation": [
+      5,
+      0
+    ],
+    "support_world": [
+      68,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 3,
+    "support": "near_right",
+    "support_local": [
+      58,
+      95
+    ],
+    "world_translation": [
+      10,
+      0
+    ],
+    "support_world": [
+      68,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 4,
+    "support": "near_right",
+    "support_local": [
+      53,
+      95
+    ],
+    "world_translation": [
+      15,
+      0
+    ],
+    "support_world": [
+      68,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 5,
+    "support": "far_left",
+    "support_local": [
+      68,
+      95
+    ],
+    "world_translation": [
+      20,
+      0
+    ],
+    "support_world": [
+      88,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 6,
+    "support": "far_left",
+    "support_local": [
+      63,
+      95
+    ],
+    "world_translation": [
+      25,
+      0
+    ],
+    "support_world": [
+      88,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 7,
+    "support": "far_left",
+    "support_local": [
+      58,
+      95
+    ],
+    "world_translation": [
+      30,
+      0
+    ],
+    "support_world": [
+      88,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  },
+  {
+    "frame": 8,
+    "support": "far_left",
+    "support_local": [
+      53,
+      95
+    ],
+    "world_translation": [
+      35,
+      0
+    ],
+    "support_world": [
+      88,
+      95
+    ],
+    "actual_support_pixel_opaque": true
+  }
+]

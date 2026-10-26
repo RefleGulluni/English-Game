@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "frame_size": [
+    96,
+    96
+  ],
+  "anchor": [
+    48,
+    96
+  ],
+  "animations": {
+    "skeleton_B_walk_right": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_right.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": -5
+    },
+    "skeleton_B_collapse_front": {
+      "frames": 9,
+      "durations_ms": [
+        80,
+        70,
+        70,
+        80,
+        90,
+        100,
+        120,
+        200,
+        200
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_collapse_front.png",
+      "hold_last_frame": true
+    }
+  }
+}

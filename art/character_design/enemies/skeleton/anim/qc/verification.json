@@ -1,0 +1,146 @@
+{
+  "walk": {
+    "center_samples_checked": 20613,
+    "exact": true
+  },
+  "collapse": {
+    "center_samples_checked": 19759,
+    "exact": true
+  },
+  "mid": {
+    "center_samples_checked": 8545,
+    "exact": true
+  },
+  "total_source_samples": 48917,
+  "preexisting_files_unchanged": 204,
+  "planted_sole_world_pixels": [
+    {
+      "frame": 1,
+      "support_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 2,
+      "support_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 3,
+      "support_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 4,
+      "support_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 5,
+      "support_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 6,
+      "support_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 7,
+      "support_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_opaque": true
+    },
+    {
+      "frame": 8,
+      "support_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_opaque": true
+    }
+  ]
+}

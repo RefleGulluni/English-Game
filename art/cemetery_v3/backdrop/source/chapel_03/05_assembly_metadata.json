@@ -1,0 +1,92 @@
+{
+  "version": "03",
+  "tower_protected_source_pixels_xyxy": [
+    466,
+    0,
+    499,
+    64
+  ],
+  "tower_protected_pixel_count": 850,
+  "tip_preserved": [
+    480,
+    3
+  ],
+  "roof_edit_rois_xyxy": [
+    [
+      439,
+      0,
+      473,
+      64
+    ],
+    [
+      490,
+      0,
+      523,
+      64
+    ]
+  ],
+  "roof_shape_integer_y_shift": -8,
+  "left_roof_native_top_y_outside_to_inside": [
+    64,
+    64,
+    63,
+    63,
+    63,
+    62,
+    62,
+    61,
+    61,
+    60,
+    60,
+    59,
+    59,
+    58,
+    58,
+    57,
+    57,
+    57,
+    56,
+    56,
+    55,
+    55,
+    54,
+    54,
+    53,
+    53,
+    52
+  ],
+  "right_roof_native_top_y_inside_to_outside": [
+    54,
+    55,
+    55,
+    56,
+    56,
+    57,
+    57,
+    58,
+    58,
+    59,
+    60,
+    60,
+    61,
+    61,
+    62,
+    63,
+    63,
+    64,
+    64,
+    66,
+    69
+  ],
+  "lower_chapel_world_y_min": 64,
+  "lower_exact_rgb": [
+    76,
+    82,
+    90
+  ],
+  "lower_replaced_pixel_count": 2915,
+  "changed_pixels_vs_02": 2839,
+  "outside_allowed_changes": 0,
+  "protected_asset_hashes_unchanged": true,
+  "note": "Only sampled generated side-roof silhouettes are used. Accepted02 tower/cross/core pixels are copied exactly; accepted backgrounds remain outside roof/body changes. No fog added."
+}

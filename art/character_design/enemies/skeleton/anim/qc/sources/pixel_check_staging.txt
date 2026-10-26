@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+eton-animation-20261026/staged/skeleton_B_walk_right.png    768x96   OK   48    79    0    95
+-animation-20261026/staged/skeleton_B_collapse_front.png    864x96   OK   48    87    0    95
+t/character_design/enemies/skeleton/skeleton_B_right.png     96x96   OK   46    87    0    95

@@ -57,7 +57,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **地面试样（美术组新对话）已交**：`art/cemetery_v3/ground/trial/`。质感、和物件底座的衔接大有进步；但**太暖太单一**（满屏棕色，不像冷湿墓园），主角棕色风衣容易融进地面。**拼接实验失败**（接缝可见、石板路断开），一张生成图只能还原约 250×140。**用户已拍板改为瓦片 + 贴花（D-043）**：32×32 泥地底子 8 块变体 + 泥地↔石板路 16 块四角匹配过渡 + 6～8 件贴花，需求 `docs/CEMETERY_GROUND_TILES_REQUEST.md`（排在礼拜堂放大版之后，**等用户转发**）。交回后 Claude 把瓦片接进 Godot TileMapLayer（Terrain 自动接边），搭试验房间让用户亲手刷。试走房间可用 `-- --plate=<PNG>` 换地面试看。
 - **从“地板”到“场景”**：一个场景 = 构图（四周密、中间空、出口）+ 高低差（台阶、挡土墙）+ 地面 + 物件 + 远景 + 前景 + 光雾。**先由用户画房间草图**，Claude 翻译成素材清单、用积木和色块先搭灰盒房间。第一张：**墓园入口**（D-036：下方小路走来 → 中间围墙大门 → 上方墓园展开、远处雾中礼拜堂；每局从词典锚点出发）。
   - 墓园入口灰盒：`scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn`（按用户草图：弯路 → 铁栏 + 高门柱大门 → 干涸喷泉 → 两侧出口；现成积木 + 色块占位，H 开关占位说明，V 看“更低视角”试验版）。**两屏半高 960×1350、镜头只上下跟随**（D-038 → D-044，唯一例外；`CemeteryRoom` 的 layout 可给 `size`、`grass_top`）；门里：笔直甬道 → 正中喷泉 → 两条斜路穿过一排排墓碑（`_yard_graves()` 按排生成）通向出口，望向礼拜堂的视线留空；顶部是美术组的远景条 `art/cemetery_v3/backdrop/entry_backdrop_01.png`（天空 + 天际线 + 礼拜堂，D-039 / D-042），下角是正式前景枯枝；Claude 的薄雾压在天际线以下；大门是角色组的正式高门柱 `gate_pillar_tall_01`（D-044 通过，已做成积木），柱脚处门洞净空 92（门柱中心 408 / 552）；视角其余保持原版。
-  - 素材清单 `docs/CEMETERY_ENTRY_ASSET_LIST.md`：美术组的礼拜堂：02 尖塔通过、灰盒在用，小修（雾里的“桶”、屋顶方向）见 `docs/CEMETERY_ENTRY_BACKDROP_REQUEST.md` §6 → `entry_backdrop_03`，**等用户转发**；角色组：门柱通过，其余铁门、喷泉、枯树、路灯、路牌、木十字架（`docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 第 2 步）**等用户转发**；地面已定做法（D-043），先交瓦片试样。
+  - 素材清单 `docs/CEMETERY_ENTRY_ASSET_LIST.md`：美术组的礼拜堂：**03 通过（D-045），灰盒在用**；下一件是地面瓦片试样（`docs/CEMETERY_GROUND_TILES_REQUEST.md`，**等用户转发**）；角色组：门柱通过，其余铁门、喷泉、枯树、路灯、路牌、木十字架（`docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 第 2 步）**等用户转发**；地面已定做法（D-043），先交瓦片试样。
 - **骷髅选定 B「余裹者」（D-037）**：斜披破裹尸布、右肩两枚铁钉、黑 X 缝线；A / C 留作精英骷髅参考。文件在 `art/character_design/enemies/skeleton/`，试走房间里站着 B 和它的骨堆。**四方向已通过（D-041）**：`skeleton_B.png`（正面原图）/ `_back` / `_left` / `_right`；背面露出的布最少，做行走动画时再看。下一步：动画，需求 `docs/SKELETON_ANIMATION_REQUEST.md`（攻击暂缓）。骨头是全画面最亮的颜色，地面和雾做好后再看要不要压暗。
 - 多样性（D-028）：形状家族 × 状态 × 换颜色（调色板替换）× 下沉深浅 × 摆放规则。**像素画不能旋转、不能左右镜像。**
 
@@ -83,7 +83,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 接下来可以做的事（按建议顺序）
 
 1. **下次开工先做**：
-   - **骷髅动画**：需求已写好 `docs/SKELETON_ANIMATION_REQUEST.md`（2026-10-26；待机、行走、受击四方向 + 正面散架 / 重组 + 骨堆待机；**攻击等战斗表现设计后和主角一起写**；试做 = 右侧行走 + 正面散架），**2026-10-26 已转发给角色组**（先交右侧行走 + 正面散架试样）；入口其余物件排在动画之后；交回后接进试走房间，替换代码画的占位骷髅 `skeleton_placeholder.gd`；
+   - **骷髅动画**：需求已写好 `docs/SKELETON_ANIMATION_REQUEST.md`（2026-10-26；待机、行走、受击四方向 + 正面散架 / 重组 + 骨堆待机；**攻击等战斗表现设计后和主角一起写**；试做 = 右侧行走 + 正面散架），**两条试样已通过（D-045）**，等用户转发第 2 步（其余动画）；试看房间 `scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn`（空格散架），通用帧条播放 `scripts/world/v3/sprite_strip.gd`；入口其余物件排在动画之后；交回后接进试走房间，替换代码画的占位骷髅 `skeleton_placeholder.gd`；
    - 美术组的**远景条 + 前景枯枝已通过并换进入口灰盒**（D-042）；**礼拜堂要放大**，补充需求在 `docs/CEMETERY_ENTRY_BACKDROP_REQUEST.md` §5（**等用户转发**），交回 `entry_backdrop_02` 后在灰盒里把 01 换成 02；
    - 提醒用户把**入口物件需求** `docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 发给角色组（骷髅四方向已通过，轮到它了；先交门柱试样）；
    - **地面瓦片试样**：礼拜堂通过后，提醒用户转发 `docs/CEMETERY_GROUND_TILES_REQUEST.md`；交回后接进 TileMapLayer、搭试验房间、和整张试样并排比较；
