@@ -34,6 +34,18 @@ func load_strip(dir: String, anim: String) -> void:
 	restart()
 
 
+## Jumps to a random moment of a looping strip, so several actors sharing one idle don't move in step.
+func random_phase() -> void:
+	var total := 0.0
+	for d in _durations:
+		total += float(d)
+	_frame_time = randf() * total
+	frame = 0
+	while _frame_time >= float(_durations[frame]):
+		_frame_time -= float(_durations[frame])
+		frame += 1
+
+
 func restart() -> void:
 	frame = 0
 	_frame_time = 0.0

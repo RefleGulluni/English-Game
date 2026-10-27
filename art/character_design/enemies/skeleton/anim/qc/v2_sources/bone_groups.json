@@ -1,0 +1,35 @@
+{
+  "skull": {
+    "opaque_pixels": 334
+  },
+  "rib_tip": {
+    "opaque_pixels": 6
+  },
+  "shoulder_nails": {
+    "opaque_pixels": 209
+  },
+  "shroud": {
+    "opaque_pixels": 453
+  },
+  "ribs": {
+    "opaque_pixels": 210
+  },
+  "left_arm": {
+    "opaque_pixels": 167
+  },
+  "left_leg": {
+    "opaque_pixels": 147
+  },
+  "right_arm": {
+    "opaque_pixels": 103
+  },
+  "right_leg": {
+    "opaque_pixels": 33
+  },
+  "pelvis": {
+    "opaque_pixels": 1
+  },
+  "small_bones": {
+    "opaque_pixels": 14
+  }
+}

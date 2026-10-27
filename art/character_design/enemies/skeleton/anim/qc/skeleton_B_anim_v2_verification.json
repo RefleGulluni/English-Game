@@ -1,0 +1,141 @@
+{
+  "skeleton_B_walk_left_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "lower_geometry_y50_plus_identical_to_v1": true,
+    "chest_silhouette_rows21_to44_matches_registered_standard": true
+  },
+  "skeleton_B_walk_right_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "lower_geometry_y50_plus_identical_to_v1": true,
+    "chest_silhouette_rows21_to44_matches_registered_standard": true
+  },
+  "skeleton_B_walk_front_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "lower_geometry_y50_plus_identical_to_v1": true
+  },
+  "skeleton_B_walk_back_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "lower_geometry_y50_plus_identical_to_v1": true
+  },
+  "skeleton_B_idle_front_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_last_exact_standard": true,
+    "first_rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623",
+    "standard_rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623",
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_idle_back_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_last_exact_standard": true,
+    "first_rgba_sha256": "472f5f597c71834270c7c7f2e39ce89e50f874a0c83f34942227301a0212bebd",
+    "standard_rgba_sha256": "472f5f597c71834270c7c7f2e39ce89e50f874a0c83f34942227301a0212bebd",
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_idle_left_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_last_exact_standard": true,
+    "first_rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+    "standard_rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_idle_right_v2": {
+    "gif_frames": 8,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_last_exact_standard": true,
+    "first_rgba_sha256": "37049bd143bdeb568f4dc85d5538db33bde7077f6b47536e429d0adf64960a86",
+    "standard_rgba_sha256": "37049bd143bdeb568f4dc85d5538db33bde7077f6b47536e429d0adf64960a86",
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_hit_front_v2": {
+    "gif_frames": 3,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_is_immediate_recoil": true,
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_hit_back_v2": {
+    "gif_frames": 3,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_is_immediate_recoil": true,
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_hit_left_v2": {
+    "gif_frames": 3,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_is_immediate_recoil": true,
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_hit_right_v2": {
+    "gif_frames": 3,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_is_immediate_recoil": true,
+    "feet_y84_plus_exact": true
+  },
+  "skeleton_B_reassemble_front_v2": {
+    "gif_frames": 20,
+    "gif_decoded_rgba_exact": true,
+    "gif_durations_exact": true,
+    "first_exact_padded_remains": true,
+    "last_exact_front_standard": true,
+    "first_rgba_sha256": "b4147d4206bd1f72f2de5a3ed84c13b4ba9d75aa3714894bc2a0a35c733c1008",
+    "last_rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623"
+  },
+  "_protected_existing_files": {
+    "count": 650,
+    "all_unchanged_before_publication": true
+  },
+  "_source_grid": {
+    "ground": {
+      "restored_frames": 8,
+      "opaque_cell_centers_verified": 10999,
+      "every_opaque_rgb_exact_source_center": true,
+      "nominal_cell_px": 7,
+      "raw_sha256": "f4955b96219f48d85bf06d5db93bb32255408ba372cb9c6baf9f0611ad142bd8",
+      "note": "Generated grid is locally irregular; explicit cell boundaries retained. No full-image scaling."
+    },
+    "rise": {
+      "restored_frames": 6,
+      "opaque_cell_centers_verified": 17429,
+      "every_opaque_rgb_exact_source_center": true,
+      "nominal_cell_px": 4,
+      "raw_sha256": "96995a662c0389594b1d0c6d6ddbf9aec20aa09ade5ea7b38be8050ce8799a87",
+      "note": "Generated grid is locally irregular; explicit cell boundaries retained. No full-image scaling."
+    },
+    "settle": {
+      "restored_frames": 6,
+      "opaque_cell_centers_verified": 17457,
+      "every_opaque_rgb_exact_source_center": true,
+      "nominal_cell_px": 3,
+      "raw_sha256": "03b894bf7667de5f1a2aec42097a70bc7319763498f269fb3e64b75ee51e1857",
+      "note": "Generated grid is locally irregular; explicit cell boundaries retained. No full-image scaling."
+    }
+  },
+  "_publication": {
+    "new_actions": 13,
+    "new_frames": 96,
+    "all_old_animation_entries_unchanged": true,
+    "old_files_count": 650,
+    "only_existing_file_modified": "anim/timing.json",
+    "timing_backup": "qc/backups/before_v2_20261027/timing.json",
+    "backup_matches_original_sha256": true,
+    "all_other_649_preexisting_files_unchanged": true
+  }
+}

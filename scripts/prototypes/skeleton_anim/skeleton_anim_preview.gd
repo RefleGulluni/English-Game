@@ -3,7 +3,8 @@ extends Node
 ## 左上一只按 50 px/秒 绕着一圈走（右 → 下 → 左 → 上，四个方向的行走都会出现，到拐角站一下待机）；
 ## 中间一排四只站着待机（正 / 背 / 左 / 右），按 H 一起受击；
 ## 右下一只按空格散架 → 骨堆待机 → 重组 → 站回待机。主角站在旁边作比例参照。
-## 按键：空格 散架 / 重组 · H 受击 · T 开关游戏整体色调 · F 全屏
+## 有 `_v2` 返修版的动画默认播返修版，V 切回旧版对比；待机各自从随机位置开始，几只不会一起动。
+## 按键：空格 散架 / 重组 · H 受击 · V 新版 / 旧版 · T 开关游戏整体色调 · F 全屏
 ## 截图：Godot --path . res://scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn -- --capture=<目录>
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
@@ -34,9 +35,12 @@ var _pause := 0.0
 var _standing: Array[SpriteStrip] = []
 var _faller: SpriteStrip
 var _label: Label
+var _use_v2 := true
+var _keys := {} # every animation name in timing.json
 
 
 func _ready() -> void:
+	_keys = JSON.parse_string(FileAccess.get_file_as_string(ANIM + "timing.json")).animations
 	var win := get_window()
 	win.content_scale_size = NATIVE
 	win.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
@@ -64,7 +68,8 @@ func _ready() -> void:
 	_walk_strip = _walker.get_node("Strip")
 	for i in DIRS.size():
 		var strip: SpriteStrip = _actor(Vector2(520 + i * 100, 330), "skeleton_B_idle_" + DIRS[i]).get_node("Strip")
-		strip.finished.connect(func(): strip.load_strip(ANIM, "skeleton_B_idle_" + DIRS[i]))
+		strip.finished.connect(func(): _play(strip, "skeleton_B_idle_" + DIRS[i]))
+		strip.random_phase()
 		_standing.append(strip)
 	_faller = _actor(Vector2(760, 470), "skeleton_B_idle_front").get_node("Strip")
 	_faller.finished.connect(_faller_next)
@@ -79,7 +84,7 @@ func _ready() -> void:
 	_label.add_theme_font_size_override("font_size", 11)
 	_label.add_theme_constant_override("outline_size", 3)
 	_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	_label.text = "骷髅动画试看 · 左上：绕圈走 · 中间：四方向待机，H 受击 · 右下：空格 散架 / 重组 · T 色调 · F 全屏"
+	_update_label()
 	add_child(_label)
 	if "--capture" in str(OS.get_cmdline_user_args()):
 		_capture()
@@ -94,8 +99,21 @@ func _actor(at: Vector2, anim: String) -> Node2D:
 	var strip := SpriteStrip.new()
 	strip.name = "Strip"
 	root.add_child(strip)
-	strip.load_strip(ANIM, anim)
+	_play(strip, anim)
 	return root
+
+
+## Plays the returned (_v2) version of anim when there is one and V hasn't switched back to the old set.
+func _play(strip: SpriteStrip, anim: String) -> void:
+	strip.load_strip(ANIM, anim + "_v2" if _use_v2 and _keys.has(anim + "_v2") else anim)
+
+
+func _base(anim: String) -> String:
+	return anim.trim_suffix("_v2")
+
+
+func _update_label() -> void:
+	_label.text = "骷髅动画试看（%s）· 左上：绕圈走 · 中间：四方向待机，H 受击 · 右下：空格 散架 / 重组 · V 新版 / 旧版 · T 色调 · F 全屏" % ("返修版" if _use_v2 else "旧版")
 
 
 func _process(delta: float) -> void:
@@ -104,13 +122,13 @@ func _process(delta: float) -> void:
 	if _pause > 0.0:
 		_pause -= delta
 		return
-	if _walk_strip.current != "skeleton_B_walk_" + dir:
-		_walk_strip.load_strip(ANIM, "skeleton_B_walk_" + dir)
+	if _base(_walk_strip.current) != "skeleton_B_walk_" + dir:
+		_play(_walk_strip, "skeleton_B_walk_" + dir)
 	_walker.position = _walker.position.move_toward(target, WALK_SPEED * delta)
 	if _walker.position == target:
 		_leg = (_leg + 1) % LOOP.size()
 		_pause = PAUSE
-		_walk_strip.load_strip(ANIM, "skeleton_B_idle_" + dir)
+		_play(_walk_strip, "skeleton_B_idle_" + dir)
 
 
 func _dir_name(v: Vector2) -> String:
@@ -121,23 +139,23 @@ func _dir_name(v: Vector2) -> String:
 
 ## collapse → remains idle (a few seconds) → reassemble → idle again.
 func _faller_next() -> void:
-	match _faller.current:
+	match _base(_faller.current):
 		"skeleton_B_collapse_front":
-			_faller.load_strip(ANIM, "skeleton_B_remains_idle")
+			_play(_faller, "skeleton_B_remains_idle")
 			await get_tree().create_timer(REMAINS_TIME).timeout
-			_faller.load_strip(ANIM, "skeleton_B_reassemble_front")
+			_play(_faller, "skeleton_B_reassemble_front")
 		"skeleton_B_reassemble_front":
-			_faller.load_strip(ANIM, "skeleton_B_idle_front")
+			_play(_faller, "skeleton_B_idle_front")
 
 
 func _collapse() -> void:
-	if _faller.current == "skeleton_B_idle_front":
-		_faller.load_strip(ANIM, "skeleton_B_collapse_front")
+	if _base(_faller.current) == "skeleton_B_idle_front":
+		_play(_faller, "skeleton_B_collapse_front")
 
 
 func _hit() -> void:
 	for i in DIRS.size():
-		_standing[i].load_strip(ANIM, "skeleton_B_hit_" + DIRS[i])
+		_play(_standing[i], "skeleton_B_hit_" + DIRS[i])
 
 
 func _tint() -> CanvasModulate:
@@ -154,6 +172,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_collapse()
 	elif event.physical_keycode == KEY_H:
 		_hit()
+	elif event.physical_keycode == KEY_V:
+		_use_v2 = not _use_v2
+		var strips: Array = [_walk_strip, _faller]
+		strips.append_array(_standing)
+		for strip in strips:
+			_play(strip, _base(strip.current))
+		_update_label()
 	elif event.physical_keycode == KEY_T:
 		_tint().visible = not _tint().visible
 	elif event.physical_keycode == KEY_F:
@@ -173,7 +198,7 @@ func _capture() -> void:
 	_hit()
 	_collapse()
 	var shots := [["01_hit_peak", 0.12], ["02_collapsing", 0.45], ["03_remains", 1.0],
-		["04_reassembling", 3.2], ["05_head_flying", 0.1]]
+		["04_reassembling", 3.75], ["05_settling", 1.0]]
 	for shot in shots:
 		await get_tree().create_timer(shot[1]).timeout
 		await RenderingServer.frame_post_draw
