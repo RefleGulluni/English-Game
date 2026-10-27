@@ -1,0 +1,1526 @@
+{
+  "skeleton_B_walk_left_v5": [
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": -5,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 1,
+          "foot_dx": 5,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 2,
+      "cycle_index": 1,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 3,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 0,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 3,
+      "cycle_index": 2,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 5,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 4,
+          "foot_dx": -5,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": 1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 1,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 4,
+      "cycle_index": 3,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 10,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 2,
+          "foot_dx": -10,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": 2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 2,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 5,
+      "cycle_index": 4,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 1,
+          "foot_dx": 10,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": -10,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": 2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 3,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 6,
+      "cycle_index": 5,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 3,
+          "foot_dx": 5,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": -5,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": 1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 4,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 7,
+      "cycle_index": 6,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 4,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 5,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 2,
+          "foot_dx": -5,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 5,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true
+    }
+  ],
+  "skeleton_B_walk_start_left": [
+    {
+      "exact_standard": true
+    },
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": -2,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 2,
+          "foot_dx": 2,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.35
+    },
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": -4,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 2,
+          "foot_dx": 4,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.7
+    }
+  ],
+  "skeleton_B_walk_stop_left": [
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 1,
+          "foot_dx": -4,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 4,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.7
+    },
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": -2,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 2,
+          "foot_dx": 2,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.35
+    },
+    {
+      "exact_standard": true
+    }
+  ],
+  "skeleton_B_walk_front_v5": [
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 2,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": -2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 2,
+      "cycle_index": 1,
+      "pelvis_offset": [
+        1,
+        2
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 5,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 2
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 0,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 3,
+      "cycle_index": 2,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 6,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 2
+        }
+      },
+      "arm_swing": 1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 1,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 4,
+      "cycle_index": 3,
+      "pelvis_offset": [
+        -1,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 3,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": 2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 2,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 5,
+      "cycle_index": 4,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 2,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": 2,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 3,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 6,
+      "cycle_index": 5,
+      "pelvis_offset": [
+        -1,
+        2
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 5,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 2
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": 1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 4,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 7,
+      "cycle_index": 6,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 6,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 2
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 5,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        1,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 3,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -2,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true
+    }
+  ],
+  "skeleton_B_walk_start_front": [
+    {
+      "exact_standard": true
+    },
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 1,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.35
+    },
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 1,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.7
+    }
+  ],
+  "skeleton_B_walk_stop_front": [
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        1,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 2,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.7
+    },
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 1,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.35
+    },
+    {
+      "exact_standard": true
+    }
+  ],
+  "skeleton_B_walk_back_v5": [
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 2,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": -2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 2,
+      "cycle_index": 1,
+      "pelvis_offset": [
+        1,
+        2
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 5,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 2
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 0,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 3,
+      "cycle_index": 2,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 6,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 2
+        }
+      },
+      "arm_swing": 1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 1,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 4,
+      "cycle_index": 3,
+      "pelvis_offset": [
+        -1,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 3,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": 2,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 2,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 5,
+      "cycle_index": 4,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 2,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": 2,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 3,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 6,
+      "cycle_index": 5,
+      "pelvis_offset": [
+        -1,
+        2
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 5,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 2
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": 1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 4,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 7,
+      "cycle_index": 6,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "neck_offset": [
+        0,
+        1
+      ],
+      "legs": {
+        "left": {
+          "lift": 6,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 2
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 5,
+      "head_neck_chest_one_group": true
+    },
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        1,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 3,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -2,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true
+    }
+  ],
+  "skeleton_B_walk_start_back": [
+    {
+      "exact_standard": true
+    },
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 1,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.35
+    },
+    {
+      "frame": 1,
+      "cycle_index": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 1,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": false,
+          "knee_outward": 1
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "left",
+      "shroud_leg": "left",
+      "cloth_phase_index": 7,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.7
+    }
+  ],
+  "skeleton_B_walk_stop_back": [
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        1,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 2,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 1
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.7
+    },
+    {
+      "frame": 8,
+      "cycle_index": 7,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "neck_offset": [
+        0,
+        0
+      ],
+      "legs": {
+        "left": {
+          "lift": 1,
+          "foot_dx": 0,
+          "support": false,
+          "cloth_owner": true,
+          "knee_outward": 0
+        },
+        "right": {
+          "lift": 0,
+          "foot_dx": 0,
+          "support": true,
+          "cloth_owner": false,
+          "knee_outward": 0
+        }
+      },
+      "arm_swing": -1,
+      "foreground_leg": "right",
+      "shroud_leg": "left",
+      "cloth_phase_index": 6,
+      "head_neck_chest_one_group": true,
+      "motion_blend": 0.35
+    },
+    {
+      "exact_standard": true
+    }
+  ]
+}

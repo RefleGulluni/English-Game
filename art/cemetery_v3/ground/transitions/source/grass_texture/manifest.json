@@ -1,0 +1,49 @@
+{
+  "status": "SECTION7_GRASS_TEXTURE_READY_FOR_USER_REVIEW",
+  "asset": "../../grass_texture_01.png",
+  "tool": "Built-in image_gen, no API fallback",
+  "material": {
+    "raw": "01_material_generated.png",
+    "prompt": "01_material.prompt.txt",
+    "grid": "01_material_grid.json",
+    "restored": "01_material_restored_cells.png",
+    "native_size": [
+      374,
+      238
+    ],
+    "source_cell_pitch_estimate": [
+      4.35,
+      4.3
+    ],
+    "crop_xyxy": [
+      75,
+      55,
+      299,
+      183
+    ]
+  },
+  "repair": {
+    "actual_generation_input": "04_edit_reference_6x.png",
+    "actual_generation_input_native": "04_edit_reference_native.png",
+    "raw": "04_cross_repair_generated.png",
+    "prompt": "04_cross_repair.prompt.txt",
+    "grid": "04_cross_repair_grid.json",
+    "restored": "04_cross_repair_restored_cells.png",
+    "native_size": [
+      224,
+      128
+    ],
+    "source_cell_pitch_estimate": [
+      7.40625,
+      7.40625
+    ],
+    "selection_mask": "05_cross_selection_mask.png",
+    "assembly": "05_assembly.json"
+  },
+  "cleanup": "02_cleanup_metadata.json",
+  "final_palette": "05_final_palette.json",
+  "review": "../../qc/grass_texture_fill_2x.png",
+  "report": "../../qc/grass_texture_verification.json",
+  "provenance_note": "Actual image_gen repair input snapshot retained separately. Later close-shade cleanup of the same native base preserves material classes and pixel layout; source/edit share palette before integer cross assembly. No resizing, generated plant geometry or noise.",
+  "scope": "Opaque grass/moss surface only. Existing road, bases,20decals,masks,shaders and scenes unchanged."
+}

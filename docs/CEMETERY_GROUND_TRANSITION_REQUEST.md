@@ -138,3 +138,7 @@ Claude 已经把“形状”做出来了，并在 Godot 里试过（`docs/refere
 - 附 `qc/grass_texture_fill_2x.png`（光铺满一屏）和 QA。形状（草地的边缘）由 Claude 用程序做，边缘会是零碎的草尖、不是硬边。
 
 完成后停下，等用户验收。
+
+## 8. 草地纹理已交、已加进刷路房间（2026-10-28）
+
+`grass_texture_01.png`：224×128，32 色，平均约 (67,71,55)，换色 67%，四边首尾相接。Claude 给它生成了一套草地形状（`masks/ground_grass_masks_01.png`：边缘没有泥边，改为零碎的草尖伸进泥地），在刷路房间加了 `Ground/Grass` 层（在路的下面，路可以穿过草地），并刷了三块示范草地；用户原来刷的路一点没动。截图 `docs/reference/ground_paint_room_grass_01.png`。**等用户看过、亲手刷过再定。**

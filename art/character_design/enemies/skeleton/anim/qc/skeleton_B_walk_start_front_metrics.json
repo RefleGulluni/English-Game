@@ -1,0 +1,169 @@
+{
+  "direction": "front",
+  "kind": "start",
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "1108035b8b5490bd1c67f5ad6d71fd89162913fe663b4d0e7b1320334e8c8623",
+      "colors": 48,
+      "neighbor_color_change_pct": 89.22091782283886,
+      "bottom_y": 95,
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_neck_visible_crop_equal": true,
+      "connected_components": 1,
+      "source_rigid_sha256": {},
+      "feet": {},
+      "brightness": {
+        "bands": [
+          {
+            "mean": 125.2771544117647,
+            "highlight_gt170_fraction": 0.3014705882352941
+          },
+          {
+            "mean": 122.77581553398058,
+            "highlight_gt170_fraction": 0.14701803051317613
+          },
+          {
+            "mean": 122.32747993311037,
+            "highlight_gt170_fraction": 0.16220735785953178
+          },
+          {
+            "mean": 119.49320384615385,
+            "highlight_gt170_fraction": 0.23846153846153847
+          }
+        ],
+        "whole_mean": 122.16250497394599
+      },
+      "band_mean_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "whole_mean_delta": 0.0,
+      "pixel_delta_from_previous": null
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "000aac0eb72958da8dd6bf15b23e8c59187e018fda7cf82561e9b75ba5bd8a76",
+      "colors": 48,
+      "neighbor_color_change_pct": 89.2036344200962,
+      "bottom_y": 95,
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_neck_visible_crop_equal": true,
+      "connected_components": 1,
+      "source_rigid_sha256": {
+        "upper_rigid": "115d53901a3c43ebce006de49c23a349554056695d5d7819eaa651acfb26e615",
+        "pelvis_rigid": "3986567c76aa086bbe1e03a9fbaf34344e9d0614d926e7f1441c000df02e16cd"
+      },
+      "feet": {
+        "left": {
+          "bottom_y": 95,
+          "lift_px": 0,
+          "support": true
+        },
+        "right": {
+          "bottom_y": 94,
+          "lift_px": 1,
+          "support": false
+        }
+      },
+      "brightness": {
+        "bands": [
+          {
+            "mean": 125.2771544117647,
+            "highlight_gt170_fraction": 0.3014705882352941
+          },
+          {
+            "mean": 122.89607103064066,
+            "highlight_gt170_fraction": 0.14763231197771587
+          },
+          {
+            "mean": 121.73977889447234,
+            "highlight_gt170_fraction": 0.15912897822445563
+          },
+          {
+            "mean": 119.07053606237817,
+            "highlight_gt170_fraction": 0.23586744639376217
+          }
+        ],
+        "whole_mean": 121.94123714285713
+      },
+      "band_mean_delta": [
+        0.0,
+        0.1203,
+        -0.5877,
+        -0.4227
+      ],
+      "whole_mean_delta": -0.2213,
+      "pixel_delta_from_previous": 525
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "2788c9c69e7199ecc1deef0ba52a556c3fb331c145fa9d364a37991d86e00eb8",
+      "colors": 48,
+      "neighbor_color_change_pct": 89.21095008051529,
+      "bottom_y": 95,
+      "upper_offset": [
+        0,
+        0
+      ],
+      "head_neck_visible_crop_equal": true,
+      "connected_components": 1,
+      "source_rigid_sha256": {
+        "upper_rigid": "115d53901a3c43ebce006de49c23a349554056695d5d7819eaa651acfb26e615",
+        "pelvis_rigid": "3986567c76aa086bbe1e03a9fbaf34344e9d0614d926e7f1441c000df02e16cd"
+      },
+      "feet": {
+        "left": {
+          "bottom_y": 95,
+          "lift_px": 0,
+          "support": true
+        },
+        "right": {
+          "bottom_y": 94,
+          "lift_px": 1,
+          "support": false
+        }
+      },
+      "brightness": {
+        "bands": [
+          {
+            "mean": 125.2771544117647,
+            "highlight_gt170_fraction": 0.3014705882352941
+          },
+          {
+            "mean": 122.89607103064066,
+            "highlight_gt170_fraction": 0.14763231197771587
+          },
+          {
+            "mean": 121.73977889447234,
+            "highlight_gt170_fraction": 0.15912897822445563
+          },
+          {
+            "mean": 119.07053606237817,
+            "highlight_gt170_fraction": 0.23586744639376217
+          }
+        ],
+        "whole_mean": 121.94123714285713
+      },
+      "band_mean_delta": [
+        0.0,
+        0.1203,
+        -0.5877,
+        -0.4227
+      ],
+      "whole_mean_delta": -0.2213,
+      "pixel_delta_from_previous": 133
+    }
+  ],
+  "loop_boundary_pixel_changes": null,
+  "gif_exact_rgba_nearest8x": true,
+  "endpoint_exact_standing": true
+}

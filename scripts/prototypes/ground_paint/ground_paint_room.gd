@@ -1,6 +1,6 @@
 extends Node
-## 地面刷路试验（docs/CEMETERY_GROUND_TRANSITION_REQUEST.md）：大块底子 + 可以用画笔刷的碎石泥路。
-## 在编辑器里打开本场景 → 选中 Ground/Path → 底部 TileMap 面板的 Terrains 页 → 选“碎石泥路”→ 在画面上拖着刷；
+## 地面刷路试验（方法：docs/GROUND_TERRAIN_METHOD.md）：大块底子 + 可以用画笔刷的草地和碎石泥路。
+## 在编辑器里打开本场景 → 选中 Ground/Path（或 Ground/Grass）→ 底部 TileMap 面板的 Terrains 页 → 选“碎石泥路”（或“枯草苔藓地”）→ 在画面上拖着刷；
 ## 右键擦掉。Ground/Base 是两块底子随机铺的，一般不用动。运行（F6）后 WASD 走路看效果。
 ## 瓦片集和本场景由 scripts/tools/build_ground_paint_room.gd 生成；本场景已存在时不会被覆盖。
 ## 截图：Godot --path . res://scenes/prototypes/ground_paint/ground_paint_room.tscn -- --capture=<目录>
@@ -56,7 +56,7 @@ func _ready() -> void:
 	_label.add_theme_font_size_override("font_size", 11)
 	_label.add_theme_constant_override("outline_size", 3)
 	_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	_label.text = "地面刷路试验 · WASD 走路 · T 游戏色调 · F 全屏 · 路在编辑器里刷：Ground/Path → Terrains → 碎石泥路"
+	_label.text = "地面刷路试验 · WASD 走路 · T 游戏色调 · F 全屏 · 在编辑器里刷：Ground/Path 碎石泥路 · Ground/Grass 枯草苔藓地"
 	add_child(_label)
 	if "--capture" in str(OS.get_cmdline_user_args()):
 		_capture()

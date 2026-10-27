@@ -1,0 +1,68 @@
+{
+  "left": {
+    "left": {
+      "bottom": 95,
+      "toe_min": 36,
+      "foot_bbox": [
+        34,
+        84,
+        52,
+        96
+      ]
+    },
+    "right": {
+      "bottom": 92,
+      "toe_min": 52,
+      "foot_bbox": [
+        52,
+        84,
+        62,
+        96
+      ]
+    }
+  },
+  "front": {
+    "left": {
+      "bottom": 95,
+      "toe_min": 56,
+      "foot_bbox": [
+        53,
+        84,
+        64,
+        96
+      ]
+    },
+    "right": {
+      "bottom": 95,
+      "toe_min": 33,
+      "foot_bbox": [
+        32,
+        84,
+        44,
+        96
+      ]
+    }
+  },
+  "back": {
+    "left": {
+      "bottom": 95,
+      "toe_min": 37,
+      "foot_bbox": [
+        29,
+        84,
+        43,
+        96
+      ]
+    },
+    "right": {
+      "bottom": 95,
+      "toe_min": 54,
+      "foot_bbox": [
+        53,
+        84,
+        67,
+        96
+      ]
+    }
+  }
+}

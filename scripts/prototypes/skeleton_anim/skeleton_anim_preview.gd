@@ -12,8 +12,9 @@ const PROPS := "res://art/cemetery_v3/props/"
 const ANIM := "res://art/character_design/enemies/skeleton/anim/"
 const NATIVE := Vector2i(960, 540)
 const WALK_SPEED := 50.0
-## 绕圈的四个拐角。向右那段 280 px = 7 个完整步子（每步 8 帧 × 5 px），走到拐角时正好踩完第 8 帧，能直接接停步。
-const LOOP := [Vector2(80, 170), Vector2(360, 170), Vector2(360, 300), Vector2(80, 300)]
+## 绕圈的四个拐角。每段都是 40 px 的整数倍（一个完整步子 = 8 帧 × 5 px）：左右 280、上下 120，
+## 走到拐角时正好踩完第 8 帧，能直接接停步。
+const LOOP := [Vector2(80, 170), Vector2(360, 170), Vector2(360, 290), Vector2(80, 290)]
 const PAUSE := 1.0 # 每个拐角站一下，看待机和走 / 停的衔接
 const DIRS := ["front", "back", "left", "right"]
 const REMAINS_TIME := 3.0

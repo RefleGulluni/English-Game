@@ -1,0 +1,36 @@
+{
+  "size": [
+    224,
+    128
+  ],
+  "mean_rgb": [
+    67.01796177455357,
+    71.03571428571429,
+    54.865792410714285
+  ],
+  "colors": 32,
+  "horizontal_change": 67.43974215246637,
+  "opposite_left_right_exact": true,
+  "opposite_top_bottom_exact": true,
+  "all_alpha_255": true,
+  "bare_fill_native_size": [
+    960,
+    540
+  ],
+  "bare_fill_scale": 2,
+  "status": "SECTION7_GRASS_TEXTURE_READY_FOR_USER_REVIEW",
+  "straw_highlight_rgb": [
+    [
+      106,
+      102,
+      76
+    ],
+    [
+      109,
+      105,
+      79
+    ]
+  ],
+  "near_shade_merges": [],
+  "protected_previous_files_unchanged": true
+}
