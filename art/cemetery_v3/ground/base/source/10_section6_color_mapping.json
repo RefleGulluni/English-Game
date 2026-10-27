@@ -1,0 +1,565 @@
+{
+  "mapping": [
+    {
+      "from": [
+        29,
+        33,
+        33
+      ],
+      "to": [
+        49,
+        49,
+        40
+      ],
+      "material": "packed_soil",
+      "pixel_count": 520
+    },
+    {
+      "from": [
+        31,
+        36,
+        35
+      ],
+      "to": [
+        52,
+        52,
+        43
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1256
+    },
+    {
+      "from": [
+        32,
+        38,
+        36
+      ],
+      "to": [
+        54,
+        55,
+        45
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1094
+    },
+    {
+      "from": [
+        35,
+        39,
+        38
+      ],
+      "to": [
+        57,
+        56,
+        47
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1397
+    },
+    {
+      "from": [
+        36,
+        40,
+        39
+      ],
+      "to": [
+        58,
+        57,
+        48
+      ],
+      "material": "packed_soil",
+      "pixel_count": 3772
+    },
+    {
+      "from": [
+        37,
+        42,
+        41
+      ],
+      "to": [
+        59,
+        60,
+        50
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1118
+    },
+    {
+      "from": [
+        38,
+        42,
+        41
+      ],
+      "to": [
+        60,
+        60,
+        50
+      ],
+      "material": "packed_soil",
+      "pixel_count": 2860
+    },
+    {
+      "from": [
+        38,
+        43,
+        43
+      ],
+      "to": [
+        60,
+        61,
+        52
+      ],
+      "material": "packed_soil",
+      "pixel_count": 182
+    },
+    {
+      "from": [
+        39,
+        45,
+        44
+      ],
+      "to": [
+        62,
+        63,
+        54
+      ],
+      "material": "packed_soil",
+      "pixel_count": 105
+    },
+    {
+      "from": [
+        40,
+        44,
+        43
+      ],
+      "to": [
+        63,
+        62,
+        53
+      ],
+      "material": "packed_soil",
+      "pixel_count": 930
+    },
+    {
+      "from": [
+        41,
+        45,
+        44
+      ],
+      "to": [
+        64,
+        63,
+        54
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1776
+    },
+    {
+      "from": [
+        41,
+        46,
+        45
+      ],
+      "to": [
+        64,
+        64,
+        55
+      ],
+      "material": "packed_soil",
+      "pixel_count": 345
+    },
+    {
+      "from": [
+        41,
+        46,
+        46
+      ],
+      "to": [
+        64,
+        64,
+        56
+      ],
+      "material": "packed_soil",
+      "pixel_count": 31
+    },
+    {
+      "from": [
+        42,
+        47,
+        46
+      ],
+      "to": [
+        65,
+        66,
+        56
+      ],
+      "material": "packed_soil",
+      "pixel_count": 917
+    },
+    {
+      "from": [
+        42,
+        47,
+        47
+      ],
+      "to": [
+        65,
+        66,
+        57
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1489
+    },
+    {
+      "from": [
+        44,
+        46,
+        43
+      ],
+      "to": [
+        67,
+        65,
+        54
+      ],
+      "material": "packed_soil",
+      "pixel_count": 270
+    },
+    {
+      "from": [
+        44,
+        48,
+        46
+      ],
+      "to": [
+        67,
+        67,
+        57
+      ],
+      "material": "packed_soil",
+      "pixel_count": 230
+    },
+    {
+      "from": [
+        44,
+        49,
+        48
+      ],
+      "to": [
+        68,
+        68,
+        59
+      ],
+      "material": "packed_soil",
+      "pixel_count": 4715
+    },
+    {
+      "from": [
+        45,
+        49,
+        47
+      ],
+      "to": [
+        68,
+        68,
+        58
+      ],
+      "material": "packed_soil",
+      "pixel_count": 636
+    },
+    {
+      "from": [
+        45,
+        50,
+        49
+      ],
+      "to": [
+        69,
+        69,
+        60
+      ],
+      "material": "packed_soil",
+      "pixel_count": 272
+    },
+    {
+      "from": [
+        46,
+        49,
+        46
+      ],
+      "to": [
+        69,
+        68,
+        57
+      ],
+      "material": "packed_soil",
+      "pixel_count": 288
+    },
+    {
+      "from": [
+        46,
+        51,
+        48
+      ],
+      "to": [
+        70,
+        70,
+        59
+      ],
+      "material": "packed_soil",
+      "pixel_count": 4982
+    },
+    {
+      "from": [
+        46,
+        51,
+        49
+      ],
+      "to": [
+        70,
+        70,
+        60
+      ],
+      "material": "packed_soil",
+      "pixel_count": 602
+    },
+    {
+      "from": [
+        47,
+        52,
+        51
+      ],
+      "to": [
+        71,
+        72,
+        62
+      ],
+      "material": "packed_soil",
+      "pixel_count": 249
+    },
+    {
+      "from": [
+        48,
+        52,
+        50
+      ],
+      "to": [
+        72,
+        72,
+        62
+      ],
+      "material": "packed_soil",
+      "pixel_count": 10186
+    },
+    {
+      "from": [
+        49,
+        52,
+        49
+      ],
+      "to": [
+        73,
+        72,
+        61
+      ],
+      "material": "packed_soil",
+      "pixel_count": 468
+    },
+    {
+      "from": [
+        49,
+        54,
+        53
+      ],
+      "to": [
+        74,
+        74,
+        65
+      ],
+      "material": "packed_soil",
+      "pixel_count": 401
+    },
+    {
+      "from": [
+        50,
+        55,
+        52
+      ],
+      "to": [
+        75,
+        75,
+        64
+      ],
+      "material": "packed_soil",
+      "pixel_count": 2714
+    },
+    {
+      "from": [
+        50,
+        56,
+        54
+      ],
+      "to": [
+        75,
+        76,
+        66
+      ],
+      "material": "packed_soil",
+      "pixel_count": 277
+    },
+    {
+      "from": [
+        51,
+        52,
+        47
+      ],
+      "to": [
+        75,
+        72,
+        59
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1089
+    },
+    {
+      "from": [
+        51,
+        57,
+        56
+      ],
+      "to": [
+        76,
+        78,
+        68
+      ],
+      "material": "packed_soil",
+      "pixel_count": 235
+    },
+    {
+      "from": [
+        52,
+        55,
+        50
+      ],
+      "to": [
+        76,
+        75,
+        63
+      ],
+      "material": "packed_soil",
+      "pixel_count": 377
+    },
+    {
+      "from": [
+        52,
+        57,
+        54
+      ],
+      "to": [
+        77,
+        78,
+        67
+      ],
+      "material": "packed_soil",
+      "pixel_count": 532
+    },
+    {
+      "from": [
+        53,
+        58,
+        55
+      ],
+      "to": [
+        78,
+        79,
+        68
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1840
+    },
+    {
+      "from": [
+        54,
+        60,
+        59
+      ],
+      "to": [
+        80,
+        81,
+        72
+      ],
+      "material": "packed_soil",
+      "pixel_count": 3460
+    },
+    {
+      "from": [
+        56,
+        57,
+        53
+      ],
+      "to": [
+        81,
+        78,
+        66
+      ],
+      "material": "packed_soil",
+      "pixel_count": 623
+    },
+    {
+      "from": [
+        58,
+        61,
+        58
+      ],
+      "to": [
+        84,
+        83,
+        72
+      ],
+      "material": "packed_soil",
+      "pixel_count": 937
+    },
+    {
+      "from": [
+        60,
+        65,
+        63
+      ],
+      "to": [
+        87,
+        87,
+        77
+      ],
+      "material": "packed_soil",
+      "pixel_count": 2590
+    },
+    {
+      "from": [
+        67,
+        73,
+        72
+      ],
+      "to": [
+        96,
+        97,
+        87
+      ],
+      "material": "packed_soil",
+      "pixel_count": 1579
+    }
+  ],
+  "old_weighted_mean_rgb": [
+    46.10813685825893,
+    50.631103515625,
+    48.843087332589285
+  ],
+  "new_weighted_mean_rgb": [
+    70.06227329799107,
+    70.02200753348214,
+    60.081019810267854
+  ],
+  "old_luminance_std": 7.927095736866797,
+  "new_luminance_std": 9.54349479552815,
+  "color_count": 39,
+  "injective": true,
+  "method": "Material-role hue ramps plus1.2x luminance difference; pixel-weighted mean calibrated to70,70,60. Exact39-to39 color lookup, no geometry/texture edits."
+}

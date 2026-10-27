@@ -1,0 +1,70 @@
+{
+  "skeleton_B_walk_left_v3": {
+    "gif_decoded_rgba_and_durations_exact": true,
+    "frames": 8,
+    "total_ms": 800,
+    "upper_y0_44_exact_v2": true,
+    "feet_y84_95_rgba_exact_v2": true,
+    "bare_leg_protected_pixels_rgba_exact_v2": true,
+    "support_ground_positions_exact_v2": true,
+    "no_empty_horizontal_waist_row_y43_to56": true
+  },
+  "skeleton_B_walk_right_v3": {
+    "gif_decoded_rgba_and_durations_exact": true,
+    "frames": 8,
+    "total_ms": 800,
+    "upper_y0_44_exact_v2": true,
+    "feet_y84_95_rgba_exact_v2": true,
+    "bare_leg_protected_pixels_rgba_exact_v2": true,
+    "support_ground_positions_exact_v2": true,
+    "no_empty_horizontal_waist_row_y43_to56": true
+  },
+  "skeleton_B_reassemble_front_v3": {
+    "gif_decoded_rgba_and_durations_exact": true,
+    "frames": 26,
+    "total_ms": 3180,
+    "first_exact_padded_remains": true,
+    "last_exact_standard": true,
+    "last_four_frames_exact_v2_17_to20": true,
+    "consecutive_rgba_changed_pixels": [
+      472,
+      372,
+      180,
+      577,
+      456,
+      251,
+      510,
+      522,
+      472,
+      782,
+      1384,
+      1539,
+      1650,
+      1804,
+      1688,
+      92,
+      92,
+      644,
+      649,
+      488,
+      171,
+      101,
+      1278,
+      908,
+      1379
+    ]
+  },
+  "_old_files": {
+    "count": 1010,
+    "all_unchanged_before_publication": true
+  },
+  "_publication": {
+    "old_files_count": 1010,
+    "only_existing_file_modified": "anim/timing.json",
+    "old_28_timing_entries_unchanged": true,
+    "all_other_existing_files_unchanged": true,
+    "timing_backup_matches_original": true,
+    "new_actions": 3,
+    "new_frames": 42
+  }
+}

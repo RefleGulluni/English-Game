@@ -1,4 +1,14 @@
 文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
-art/cemetery_v3/ground/base/ground_base_01.png             224x128   OK   39    63    0   127
-art/cemetery_v3/ground/base/ground_base_02.png             224x128   OK   39    62    0   127
+lish-Game/art/cemetery_v3/ground/base/ground_base_01.png   224x128   OK   39    63    0   127
+lish-Game/art/cemetery_v3/ground/base/ground_base_02.png   224x128   OK   39    62    0   127
+h-Game/art/cemetery_v3/ground/decals/decal_puddle_01.png     37x17   OK   22    68    0    14
+h-Game/art/cemetery_v3/ground/decals/decal_puddle_02.png     58x27   OK   24    64    0    24
+-Game/art/cemetery_v3/ground/decals/decal_wet_mud_01.png     57x26   OK   24    77    0    23
+-Game/art/cemetery_v3/ground/decals/decal_wet_mud_02.png     91x36   OK   24    74    0    33
+ish-Game/art/cemetery_v3/ground/decals/decal_moss_01.png     30x17   OK   23    76    0    14
+ish-Game/art/cemetery_v3/ground/decals/decal_moss_02.png     74x29   OK   24    83    0    26
+me/art/cemetery_v3/ground/decals/decal_dead_grass_01.png     35x14   OK   23    82    0    11
+me/art/cemetery_v3/ground/decals/decal_dead_grass_02.png     70x30   OK   23    80    0    27
+h-Game/art/cemetery_v3/ground/decals/decal_leaves_01.png     33x20   OK   24    75    0    17
+me/art/cemetery_v3/ground/decals/decal_loose_slab_01.png     33x19   OK   24    71    0    16
 对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

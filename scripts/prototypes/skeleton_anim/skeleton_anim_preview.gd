@@ -3,8 +3,8 @@ extends Node
 ## 左上一只按 50 px/秒 绕着一圈走（右 → 下 → 左 → 上，四个方向的行走都会出现，到拐角站一下待机）；
 ## 中间一排四只站着待机（正 / 背 / 左 / 右），按 H 一起受击；
 ## 右下一只按空格散架 → 骨堆待机 → 重组 → 站回待机。主角站在旁边作比例参照。
-## 有 `_v2` 返修版的动画默认播返修版，V 切回旧版对比；待机各自从随机位置开始，几只不会一起动。
-## 按键：空格 散架 / 重组 · H 受击 · V 新版 / 旧版 · T 开关游戏整体色调 · F 全屏
+## 有返修版（`_v3` / `_v2`）的动画默认播最新一版，V 切回最初版对比；待机各自从随机位置开始，几只不会一起动。
+## 按键：空格 散架 / 重组 · H 受击 · V 新版 / 最初版 · T 开关游戏整体色调 · F 全屏
 ## 截图：Godot --path . res://scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn -- --capture=<目录>
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
@@ -103,17 +103,22 @@ func _actor(at: Vector2, anim: String) -> Node2D:
 	return root
 
 
-## Plays the returned (_v2) version of anim when there is one and V hasn't switched back to the old set.
+## Plays the newest returned version of anim (_v3, then _v2) unless V has switched back to the first set.
 func _play(strip: SpriteStrip, anim: String) -> void:
-	strip.load_strip(ANIM, anim + "_v2" if _use_v2 and _keys.has(anim + "_v2") else anim)
+	if _use_v2:
+		for suffix in ["_v3", "_v2"]:
+			if _keys.has(anim + suffix):
+				strip.load_strip(ANIM, anim + suffix)
+				return
+	strip.load_strip(ANIM, anim)
 
 
 func _base(anim: String) -> String:
-	return anim.trim_suffix("_v2")
+	return anim.trim_suffix("_v2").trim_suffix("_v3")
 
 
 func _update_label() -> void:
-	_label.text = "骷髅动画试看（%s）· 左上：绕圈走 · 中间：四方向待机，H 受击 · 右下：空格 散架 / 重组 · V 新版 / 旧版 · T 色调 · F 全屏" % ("返修版" if _use_v2 else "旧版")
+	_label.text = "骷髅动画试看（%s）· 左上：绕圈走 · 中间：四方向待机，H 受击 · 右下：空格 散架 / 重组 · V 新版 / 最初版 · T 色调 · F 全屏" % ("最新返修版" if _use_v2 else "最初版")
 
 
 func _process(delta: float) -> void:
@@ -198,7 +203,7 @@ func _capture() -> void:
 	_hit()
 	_collapse()
 	var shots := [["01_hit_peak", 0.12], ["02_collapsing", 0.45], ["03_remains", 1.0],
-		["04_reassembling", 3.75], ["05_settling", 1.0]]
+		["04_rising", 4.18], ["05_skull_flying", 0.75]]
 	for shot in shots:
 		await get_tree().create_timer(shot[1]).timeout
 		await RenderingServer.frame_post_draw

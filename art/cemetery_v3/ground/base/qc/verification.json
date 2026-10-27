@@ -6,8 +6,13 @@
     ],
     "opposite_lr_exact": true,
     "opposite_tb_exact": true,
-    "colors": 39,
-    "horizontal_change": 63.38
+    "mean_rgb": [
+      70.17902483258929,
+      70.18341936383929,
+      60.258510044642854
+    ],
+    "horizontal_change": 63.37584080717489,
+    "exact_palette_lookup_texture_unchanged": true
   },
   "2": {
     "size": [
@@ -16,9 +21,95 @@
     ],
     "opposite_lr_exact": true,
     "opposite_tb_exact": true,
-    "colors": 39,
-    "horizontal_change": 61.92
+    "mean_rgb": [
+      69.94552176339286,
+      69.860595703125,
+      59.903529575892854
+    ],
+    "horizontal_change": 61.91844170403588,
+    "exact_palette_lookup_texture_unchanged": true
   },
   "variant_four_edges_exact": true,
-  "status": "NOT_APPROVED_REPEAT_REMAINS_DECALS_NOT_STARTED"
+  "protected_trial_tiles_unchanged": true,
+  "random_seed": 1048,
+  "fill_tile_ids": [
+    [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    [
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      2,
+      2
+    ]
+  ],
+  "area_decal_centers": {
+    "decal_puddle_01": [
+      151,
+      69
+    ],
+    "decal_puddle_02": [
+      405,
+      201
+    ],
+    "decal_wet_mud_01": [
+      58,
+      228
+    ],
+    "decal_wet_mud_02": [
+      372,
+      103
+    ],
+    "decal_moss_01": [
+      126,
+      121
+    ],
+    "decal_moss_02": [
+      199,
+      42
+    ],
+    "decal_dead_grass_01": [
+      26,
+      193
+    ],
+    "decal_dead_grass_02": [
+      374,
+      250
+    ],
+    "decal_leaves_01": [
+      146,
+      240
+    ],
+    "decal_loose_slab_01": [
+      305,
+      178
+    ]
+  },
+  "status": "REPETITION_ACCEPTED_BY_USER_SECTION6; RECOLOR_AND10_DECALS_READY_FOR_IN_GAME_REVIEW"
 }

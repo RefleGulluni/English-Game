@@ -1,0 +1,65 @@
+{
+  "skeleton_B_walk_left_v3": {
+    "frames": 8,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "sprite_sheet": "skeleton_B_walk_left_v3.png"
+  },
+  "skeleton_B_walk_right_v3": {
+    "frames": 8,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "sprite_sheet": "skeleton_B_walk_right_v3.png"
+  },
+  "skeleton_B_reassemble_front_v3": {
+    "frames": 26,
+    "durations_ms": [
+      340,
+      160,
+      100,
+      170,
+      130,
+      150,
+      130,
+      120,
+      110,
+      140,
+      120,
+      100,
+      90,
+      90,
+      100,
+      90,
+      90,
+      130,
+      100,
+      100,
+      60,
+      90,
+      150,
+      110,
+      110,
+      100
+    ],
+    "loop": false,
+    "sprite_sheet": "skeleton_B_reassemble_front_v3.png"
+  }
+}
