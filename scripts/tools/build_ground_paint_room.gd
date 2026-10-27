@@ -13,7 +13,7 @@ const PATH_TILESET := MASKS + "ground_path_tileset.tres"
 const ROOM := "res://scenes/prototypes/ground_paint/ground_paint_room.tscn"
 const ROOM_SCRIPT := "res://scripts/prototypes/ground_paint/ground_paint_room.gd"
 const PATH_SHADER := "res://scripts/world/v3/ground_path.gdshader"
-const PATH_TEXTURE := MASKS + "path_texture_placeholder.png" # until the art group's path texture lands
+const PATH_TEXTURE := GROUND + "transitions/path_texture_01.png" # the art group's seamless path surface
 const BITS := {
 	"tl": TileSet.CELL_NEIGHBOR_TOP_LEFT_CORNER, "tr": TileSet.CELL_NEIGHBOR_TOP_RIGHT_CORNER,
 	"bl": TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_CORNER, "br": TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER,

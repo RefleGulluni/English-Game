@@ -1,0 +1,23 @@
+{
+  "size": [
+    224,
+    128
+  ],
+  "mean_rgb": [
+    92.76388113839286,
+    87.51482282366071,
+    73.38249860491071
+  ],
+  "colors": 32,
+  "horizontal_change": 59.01065022421525,
+  "opposite_left_right_exact": true,
+  "opposite_top_bottom_exact": true,
+  "all_alpha_255": true,
+  "bare_fill_native_size": [
+    960,
+    540
+  ],
+  "bare_fill_scale": 2,
+  "status": "SECTION5_TEXTURE_READY_FOR_USER_REVIEW",
+  "protected_previous_files_unchanged": true
+}

@@ -117,3 +117,7 @@ Claude 已经把“形状”做出来了，并在 Godot 里试过（`docs/refere
 - 交付时附 `qc/path_texture_fill_2x.png`（光铺满一屏）和 QA；**不用做试验地**：Claude 会把它换进刷路房间截图给用户看。
 
 完成后停下，等用户验收。§3 原来的 16 块整图、3 块全路变体都**不用再做**。
+
+## 6. 路面纹理已交、已换进刷路房间（2026-10-27）
+
+`ground/transitions/path_texture_01.png`：224×128，32 色，平均约 (93,88,73)，换色 59%，四边首尾相接。Claude 已把刷路房间的路面从临时纹理换成它（用户之前亲手刷的路自动换上），截图 `docs/reference/ground_paint_room_path_texture_01.png`。Claude 初看：路读得出来、比泥地亮、边缘碎；碎石点偏少，路面偏“平滑的浅色泥”，可以靠撒 `decal_pebbles_*` 补。**等用户在房间里看过再定。**

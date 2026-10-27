@@ -1,0 +1,55 @@
+{
+  "status": "SECTION5_PATH_TEXTURE_READY_FOR_USER_REVIEW",
+  "asset": "../../path_texture_01.png",
+  "tool": "Built-in image_gen, no API fallback",
+  "material_attempts": [
+    {
+      "raw": "01_material_generated.png",
+      "prompt": "01_material.prompt.txt",
+      "grid": "01_material_grid.json",
+      "restored": "01_material_restored_cells.png",
+      "native_size": [
+        201,
+        126
+      ],
+      "used": false,
+      "reason": "Too small for224x128 native crop."
+    },
+    {
+      "raw": "02_material_generated.png",
+      "prompt": "02_material.prompt.txt",
+      "grid": "02_material_grid.json",
+      "restored": "02_material_restored_cells.png",
+      "native_size": [
+        229,
+        141
+      ],
+      "used": true,
+      "crop_xyxy": [
+        2,
+        6,
+        226,
+        134
+      ]
+    }
+  ],
+  "repair": {
+    "input": "04_half_offset_6x.png",
+    "raw": "05_cross_repair_generated.png",
+    "prompt": "05_cross_repair.prompt.txt",
+    "grid": "05_cross_repair_grid.json",
+    "restored": "05_cross_repair_restored_cells.png",
+    "native_size": [
+      224,
+      128
+    ],
+    "selection_mask": "06_cross_selection_mask.png",
+    "assembly": "06_assembly.json"
+  },
+  "palette_cleanup": "03_cleanup_metadata.json",
+  "reference": "accepted_base_reference_6x.png",
+  "reference_origin": "art/cemetery_v3/ground/base/ground_base_01.png, integer6x preview only",
+  "review": "../../qc/path_texture_fill_2x.png",
+  "report": "../../qc/path_texture_verification.json",
+  "scope": "Path surface texture only. Existing masks, shaders, scenes, approved bases/decals unchanged. No16corner atlas or3full variants."
+}
