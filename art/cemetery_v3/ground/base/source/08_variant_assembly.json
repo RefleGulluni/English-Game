@@ -1,0 +1,45 @@
+{
+  "same_four_edges_exact": true,
+  "same_outer8px_exact": true,
+  "changed_pixel_count": 13273,
+  "mask_pixels": 18139,
+  "random_seed": 1048,
+  "random_ids": [
+    [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  ],
+  "method": "AI interior variation, paired40color palette and directed cleanup, irregular integer min-error perimeter cuts, original margins retained. No flips/rotations/resize."
+}
