@@ -1,0 +1,94 @@
+{
+  "standing_crop": [
+    40,
+    0,
+    55,
+    23
+  ],
+  "frames": [
+    {
+      "action": "walk",
+      "frame": 1,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 2,
+      "dy": 1,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 3,
+      "dy": 1,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 4,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 5,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 6,
+      "dy": 1,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 7,
+      "dy": 1,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "walk",
+      "frame": 8,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "start",
+      "frame": 1,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "start",
+      "frame": 2,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "start",
+      "frame": 3,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "stop",
+      "frame": 1,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "stop",
+      "frame": 2,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    },
+    {
+      "action": "stop",
+      "frame": 3,
+      "dy": 0,
+      "actual_head_neck_upper_chest_crop_untranslated_rgba_mismatches": 0
+    }
+  ]
+}

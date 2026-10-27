@@ -724,6 +724,34 @@
       "sprite_sheet": "skeleton_B_walk_right_v6.png",
       "movement_px_per_second": 50,
       "support_foot_canvas_step_px": -5
+    },
+    "skeleton_B_walk_right_v7": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_right_v7.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": -5
+    },
+    "skeleton_B_walk_stop_right_v7": {
+      "frames": 3,
+      "durations_ms": [
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_walk_stop_right_v7.png",
+      "hold_last_frame": true
     }
   }
 }
