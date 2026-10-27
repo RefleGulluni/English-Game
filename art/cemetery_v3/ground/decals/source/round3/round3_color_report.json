@@ -1,0 +1,198 @@
+{
+  "method": "Existing native pixels recolored to user-specified material RGB ranges; alpha/dimensions preserved. Reflection singleton marks extended by one existing water pixel only. No regeneration, resampling, blur or noise. Source material masks from saved round2 cells.",
+  "assets": [
+    {
+      "file": "decal_puddle_01.png",
+      "water_mean_rgb": [
+        57.97931034482759,
+        61.97931034482759,
+        65.97931034482758
+      ],
+      "wet_rim_mean_rgb": [
+        57.52542372881356,
+        59.52542372881356,
+        55.29661016949152
+      ],
+      "wet_rim_distance_px": [
+        1,
+        3
+      ],
+      "reflection_groups": [
+        {
+          "size": 3,
+          "pixels_xy": [
+            [
+              13,
+              7
+            ],
+            [
+              14,
+              7
+            ],
+            [
+              15,
+              8
+            ]
+          ]
+        }
+      ],
+      "reflection_rgb": [
+        [
+          103,
+          108,
+          115
+        ],
+        [
+          105,
+          110,
+          117
+        ]
+      ],
+      "previous_water_mean_rgb": [
+        46.04137931034483,
+        49.04137931034483,
+        49.04137931034483
+      ],
+      "alpha_and_dimensions_unchanged": true,
+      "canvas": [
+        41,
+        20
+      ],
+      "sha256": "5c6c09fe7d98a2b3dd761be1269093d1ed8448df5c5152b8983a4cdfad5f901d"
+    },
+    {
+      "file": "decal_puddle_02.png",
+      "water_mean_rgb": [
+        58.020930232558136,
+        62.020930232558136,
+        66.02093023255814
+      ],
+      "wet_rim_mean_rgb": [
+        57.69604863221885,
+        59.69604863221885,
+        55.31003039513678
+      ],
+      "wet_rim_distance_px": [
+        1,
+        3
+      ],
+      "reflection_groups": [
+        {
+          "size": 2,
+          "pixels_xy": [
+            [
+              54,
+              14
+            ],
+            [
+              55,
+              14
+            ]
+          ]
+        }
+      ],
+      "reflection_rgb": [
+        [
+          103,
+          108,
+          115
+        ],
+        [
+          105,
+          110,
+          117
+        ]
+      ],
+      "previous_water_mean_rgb": [
+        45.955813953488374,
+        48.955813953488374,
+        48.955813953488374
+      ],
+      "alpha_and_dimensions_unchanged": true,
+      "canvas": [
+        81,
+        25
+      ],
+      "sha256": "544fbdd88afa4c40c2ffa5bcf227f9b941294f6c23cad067e2c338319f22ba02"
+    },
+    {
+      "file": "decal_puddle_03.png",
+      "water_mean_rgb": [
+        57.88383838383838,
+        61.88383838383838,
+        65.88383838383838
+      ],
+      "wet_rim_mean_rgb": [
+        57.79838709677419,
+        59.79838709677419,
+        55.693548387096776
+      ],
+      "wet_rim_distance_px": [
+        1,
+        3
+      ],
+      "reflection_groups": [
+        {
+          "size": 2,
+          "pixels_xy": [
+            [
+              26,
+              9
+            ],
+            [
+              27,
+              9
+            ]
+          ]
+        }
+      ],
+      "reflection_rgb": [
+        [
+          103,
+          108,
+          115
+        ],
+        [
+          105,
+          110,
+          117
+        ]
+      ],
+      "previous_water_mean_rgb": [
+        45.12626262626262,
+        48.12626262626262,
+        47.56060606060606
+      ],
+      "alpha_and_dimensions_unchanged": true,
+      "canvas": [
+        82,
+        21
+      ],
+      "sha256": "4e89f49db9591e5e82155eb68a150aa78cb73a6a78ca1f583decb6a9a6126c86"
+    },
+    {
+      "file": "decal_dead_flowers_01.png",
+      "petal_pixels": 367,
+      "previous_petal_mean_rgb": [
+        64.05722070844686,
+        51.05722070844686,
+        56.05722070844686
+      ],
+      "petal_mean_rgb": [
+        65.433242506812,
+        63.433242506811986,
+        63.433242506811986
+      ],
+      "previous_petal_mean_saturation": 0.20412848529457803,
+      "petal_mean_saturation": 0.030635892511636488,
+      "stems_byte_identical": true,
+      "alpha_and_dimensions_unchanged": true,
+      "canvas": [
+        68,
+        34
+      ],
+      "sha256": "d00adf4bf6e947a050d939774bd4da15a0118239aa6ec086d1e74b335a7d3f81"
+    }
+  ],
+  "accepted16_and2_bases_byte_identical": true
+}

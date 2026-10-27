@@ -1,0 +1,16 @@
+{
+  "accepted16_and2_bases_byte_identical": true,
+  "changed4_alpha_identical": {
+    "decal_puddle_01.png": true,
+    "decal_puddle_02.png": true,
+    "decal_puddle_03.png": true,
+    "decal_dead_flowers_01.png": true
+  },
+  "native_area": [
+    480,
+    270
+  ],
+  "native_decal_count": 20,
+  "round2_composition_preserved": true,
+  "status": "SECTION8_COLOR_FIXES_PENDING_USER_IN_GAME_REVIEW"
+}

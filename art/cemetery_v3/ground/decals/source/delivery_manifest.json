@@ -1,5 +1,5 @@
 {
-  "status": "BASE_AND6_DECALS_ACCEPTED;14_ROUND2_DECALS_PENDING_USER_REVIEW",
+  "status": "BASE_AND16_DECALS_ACCEPTED;4_SECTION8_RECOLORS_PENDING_USER_REVIEW",
   "decals": [
     {
       "file": "decal_puddle_01.png",
@@ -7,7 +7,7 @@
       "prompt": "round2/puddle_small_b.prompt.txt",
       "grid": "round2/puddle_small_b_round2_grid.json",
       "restored": "round2/puddle_small_b_round2_cells.png",
-      "cleaned": "round2/decal_puddle_01_cleaned_native.png",
+      "cleaned": "round3/decal_puddle_01_recolored_native.png",
       "material": "puddle",
       "canvas": [
         41,
@@ -19,7 +19,7 @@
         57,
         33
       ],
-      "colors": 23,
+      "colors": 16,
       "material_stats": {
         "water_pixels": 148,
         "reflection_pixels": 3,
@@ -39,7 +39,8 @@
         37,
         16
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "SECTION8_PENDING_IN_GAME_REVIEW",
+      "current_color_report": "round3/round3_color_report.json"
     },
     {
       "file": "decal_puddle_02.png",
@@ -47,7 +48,7 @@
       "prompt": "round2/puddle_medium_c.coarse.prompt.txt",
       "grid": "round2/puddle_medium_c_round2_grid.json",
       "restored": "round2/puddle_medium_c_round2_cells.png",
-      "cleaned": "round2/decal_puddle_02_cleaned_native.png",
+      "cleaned": "round3/decal_puddle_02_recolored_native.png",
       "material": "puddle",
       "canvas": [
         81,
@@ -59,7 +60,7 @@
         85,
         41
       ],
-      "colors": 23,
+      "colors": 17,
       "material_stats": {
         "water_pixels": 432,
         "reflection_pixels": 2,
@@ -79,7 +80,8 @@
         77,
         21
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "SECTION8_PENDING_IN_GAME_REVIEW",
+      "current_color_report": "round3/round3_color_report.json"
     },
     {
       "file": "decal_puddle_03.png",
@@ -87,7 +89,7 @@
       "prompt": "round2/decal_puddle_03.coarse.prompt.txt",
       "grid": "round2/decal_puddle_03_round2_grid.json",
       "restored": "round2/decal_puddle_03_round2_cells.png",
-      "cleaned": "round2/decal_puddle_03_cleaned_native.png",
+      "cleaned": "round3/decal_puddle_03_recolored_native.png",
       "material": "puddle",
       "canvas": [
         82,
@@ -99,7 +101,7 @@
         151,
         83
       ],
-      "colors": 23,
+      "colors": 20,
       "material_stats": {
         "water_pixels": 200,
         "reflection_pixels": 2,
@@ -119,7 +121,8 @@
         78,
         17
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "SECTION8_PENDING_IN_GAME_REVIEW",
+      "current_color_report": "round3/round3_color_report.json"
     },
     {
       "file": "decal_moss_01.png",
@@ -145,7 +148,7 @@
         24,
         14
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_moss_02.png",
@@ -171,7 +174,7 @@
         70,
         23
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_moss_03.png",
@@ -197,7 +200,7 @@
         19,
         12
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_pebbles_01.png",
@@ -223,7 +226,7 @@
         47,
         14
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_pebbles_02.png",
@@ -249,7 +252,7 @@
         39,
         10
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_bone_bits_01.png",
@@ -275,7 +278,7 @@
         38,
         18
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_ruts_01.png",
@@ -301,7 +304,7 @@
         57,
         16
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_roots_01.png",
@@ -327,7 +330,7 @@
         42,
         20
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_dead_flowers_01.png",
@@ -335,7 +338,7 @@
       "prompt": "round2/decal_dead_flowers_01.coarse.prompt.txt",
       "grid": "round2/decal_dead_flowers_01_round2_grid.json",
       "restored": "round2/decal_dead_flowers_01_round2_cells.png",
-      "cleaned": "round2/decal_dead_flowers_01_cleaned_native.png",
+      "cleaned": "round3/decal_dead_flowers_01_recolored_native.png",
       "material": "flowers",
       "canvas": [
         68,
@@ -347,13 +350,14 @@
         144,
         102
       ],
-      "colors": 23,
+      "colors": 22,
       "material_stats": {},
       "visible_bbox_size": [
         64,
         30
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "SECTION8_PENDING_IN_GAME_REVIEW",
+      "current_color_report": "round3/round3_color_report.json"
     },
     {
       "file": "decal_cracked_slab_01.png",
@@ -379,7 +383,7 @@
         22,
         13
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_leaves_02.png",
@@ -405,7 +409,7 @@
         104,
         32
       ],
-      "status": "SECTION7_PENDING_IN_GAME_REVIEW"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_wet_mud_01.png",
@@ -2891,7 +2895,7 @@
         21.0,
         21.0
       ],
-      "status": "ACCEPTED_UNCHANGED_BY_SECTION7"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_wet_mud_02.png",
@@ -11281,7 +11285,7 @@
         18.4,
         19.0
       ],
-      "status": "ACCEPTED_UNCHANGED_BY_SECTION7"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_dead_grass_01.png",
@@ -13683,7 +13687,7 @@
         21.0,
         21.0
       ],
-      "status": "ACCEPTED_UNCHANGED_BY_SECTION7"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_dead_grass_02.png",
@@ -19313,7 +19317,7 @@
         16.5,
         17.0
       ],
-      "status": "ACCEPTED_UNCHANGED_BY_SECTION7"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_leaves_01.png",
@@ -22892,7 +22896,7 @@
         23.0,
         24.8
       ],
-      "status": "ACCEPTED_UNCHANGED_BY_SECTION7"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     },
     {
       "file": "decal_loose_slab_01.png",
@@ -25390,16 +25394,36 @@
         19.3,
         18.0
       ],
-      "status": "ACCEPTED_UNCHANGED_BY_SECTION7"
+      "status": "ACCEPTED_UNCHANGED_BY_SECTION8"
     }
   ],
-  "replaced_files": [
+  "accepted_unchanged_files": [
+    "decal_moss_01.png",
+    "decal_moss_02.png",
+    "decal_moss_03.png",
+    "decal_pebbles_01.png",
+    "decal_pebbles_02.png",
+    "decal_bone_bits_01.png",
+    "decal_ruts_01.png",
+    "decal_roots_01.png",
+    "decal_cracked_slab_01.png",
+    "decal_leaves_02.png",
+    "decal_wet_mud_01.png",
+    "decal_wet_mud_02.png",
+    "decal_dead_grass_01.png",
+    "decal_dead_grass_02.png",
+    "decal_leaves_01.png",
+    "decal_loose_slab_01.png"
+  ],
+  "round2_details": "round2/round2_manifest.json",
+  "source_mode": "Built-in image_gen; exact prompts per entry, observed source grid, native center samples, material cleanup. No API fallback.",
+  "previous_section7_replaced_files": [
     "decal_moss_01.png",
     "decal_moss_02.png",
     "decal_puddle_01.png",
     "decal_puddle_02.png"
   ],
-  "added_files": [
+  "previous_section7_added_files": [
     "decal_bone_bits_01.png",
     "decal_cracked_slab_01.png",
     "decal_dead_flowers_01.png",
@@ -25411,14 +25435,12 @@
     "decal_roots_01.png",
     "decal_ruts_01.png"
   ],
-  "accepted_unchanged_files": [
-    "decal_wet_mud_01.png",
-    "decal_wet_mud_02.png",
-    "decal_dead_grass_01.png",
-    "decal_dead_grass_02.png",
-    "decal_leaves_01.png",
-    "decal_loose_slab_01.png"
+  "replaced_files": [
+    "decal_puddle_01.png",
+    "decal_puddle_02.png",
+    "decal_puddle_03.png",
+    "decal_dead_flowers_01.png"
   ],
-  "round2_details": "round2/round2_manifest.json",
-  "source_mode": "Built-in image_gen; exact prompts per entry, observed source grid, native center samples, material cleanup. No API fallback."
+  "added_files": [],
+  "revision_mode": "Section8 numeric material recolor only. Existing generated source cells reused; no regeneration or resampling."
 }
