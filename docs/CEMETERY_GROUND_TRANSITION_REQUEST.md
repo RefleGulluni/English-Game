@@ -120,7 +120,7 @@ Claude 已经把“形状”做出来了，并在 Godot 里试过（`docs/refere
 
 ## 6. 路面纹理已交、已换进刷路房间（2026-10-27）
 
-`ground/transitions/path_texture_01.png`：224×128，32 色，平均约 (93,88,73)，换色 59%，四边首尾相接。Claude 已把刷路房间的路面从临时纹理换成它（用户之前亲手刷的路自动换上），截图 `docs/reference/ground_paint_room_path_texture_01.png`。Claude 初看：路读得出来、比泥地亮、边缘碎；碎石点偏少，路面偏“平滑的浅色泥”，可以靠撒 `decal_pebbles_*` 补。**等用户在房间里看过再定。**
+`ground/transitions/path_texture_01.png`：224×128，32 色，平均约 (93,88,73)，换色 59%，四边首尾相接。Claude 已把刷路房间的路面从临时纹理换成它（用户之前亲手刷的路自动换上），截图 `docs/reference/ground_paint_room_path_texture_01.png`。Claude 初看：路读得出来、比泥地亮、边缘碎；碎石点偏少，路面偏“平滑的浅色泥”，可以靠撒 `decal_pebbles_*` 补。**用户 2026-10-27 通过（D-056）。**
 
 ## 7. 路面通过；下一种：枯草 / 苔藓地（2026-10-27，D-056）
 
@@ -141,4 +141,4 @@ Claude 已经把“形状”做出来了，并在 Godot 里试过（`docs/refere
 
 ## 8. 草地纹理已交、已加进刷路房间（2026-10-28）
 
-`grass_texture_01.png`：224×128，32 色，平均约 (67,71,55)，换色 67%，四边首尾相接。Claude 给它生成了一套草地形状（`masks/ground_grass_masks_01.png`：边缘没有泥边，改为零碎的草尖伸进泥地），在刷路房间加了 `Ground/Grass` 层（在路的下面，路可以穿过草地），并刷了三块示范草地；用户原来刷的路一点没动。截图 `docs/reference/ground_paint_room_grass_01.png`。**等用户看过、亲手刷过再定。**
+`grass_texture_01.png`：224×128，32 色，平均约 (67,71,55)，换色 67%，四边首尾相接。Claude 给它生成了一套草地形状（`masks/ground_grass_masks_01.png`：边缘没有泥边，改为零碎的草尖伸进泥地），在刷路房间加了 `Ground/Grass` 层（在路的下面，路可以穿过草地），并刷了三块示范草地；用户原来刷的路一点没动。截图 `docs/reference/ground_paint_room_grass_01.png`。**用户 2026-10-28 通过（D-057）。**
