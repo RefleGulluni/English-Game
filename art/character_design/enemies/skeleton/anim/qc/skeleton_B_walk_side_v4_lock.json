@@ -1,0 +1,430 @@
+{
+  "right": [
+    {
+      "frame": 1,
+      "support": "near_right",
+      "canvas": [
+        68,
+        95
+      ],
+      "world_translation": [
+        0,
+        0
+      ],
+      "world": [
+        68,
+        95
+      ],
+      "entire_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 2,
+      "support": "near_right",
+      "canvas": [
+        63,
+        95
+      ],
+      "world_translation": [
+        5,
+        0
+      ],
+      "world": [
+        68,
+        95
+      ],
+      "entire_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 3,
+      "support": "near_right",
+      "canvas": [
+        58,
+        95
+      ],
+      "world_translation": [
+        10,
+        0
+      ],
+      "world": [
+        68,
+        95
+      ],
+      "entire_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 4,
+      "support": "near_right",
+      "canvas": [
+        53,
+        95
+      ],
+      "world_translation": [
+        15,
+        0
+      ],
+      "world": [
+        68,
+        95
+      ],
+      "entire_world_sole_x": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 5,
+      "support": "far_left",
+      "canvas": [
+        68,
+        95
+      ],
+      "world_translation": [
+        20,
+        0
+      ],
+      "world": [
+        88,
+        95
+      ],
+      "entire_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 6,
+      "support": "far_left",
+      "canvas": [
+        63,
+        95
+      ],
+      "world_translation": [
+        25,
+        0
+      ],
+      "world": [
+        88,
+        95
+      ],
+      "entire_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 7,
+      "support": "far_left",
+      "canvas": [
+        58,
+        95
+      ],
+      "world_translation": [
+        30,
+        0
+      ],
+      "world": [
+        88,
+        95
+      ],
+      "entire_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 8,
+      "support": "far_left",
+      "canvas": [
+        53,
+        95
+      ],
+      "world_translation": [
+        35,
+        0
+      ],
+      "world": [
+        88,
+        95
+      ],
+      "entire_world_sole_x": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "all_sole_pixels_opaque": true
+    }
+  ],
+  "left": [
+    {
+      "frame": 1,
+      "support": "near",
+      "canvas": [
+        28,
+        95
+      ],
+      "world_translation": [
+        0,
+        0
+      ],
+      "world": [
+        28,
+        95
+      ],
+      "entire_world_sole_x": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 2,
+      "support": "near",
+      "canvas": [
+        33,
+        95
+      ],
+      "world_translation": [
+        -5,
+        0
+      ],
+      "world": [
+        28,
+        95
+      ],
+      "entire_world_sole_x": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 3,
+      "support": "near",
+      "canvas": [
+        38,
+        95
+      ],
+      "world_translation": [
+        -10,
+        0
+      ],
+      "world": [
+        28,
+        95
+      ],
+      "entire_world_sole_x": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 4,
+      "support": "near",
+      "canvas": [
+        43,
+        95
+      ],
+      "world_translation": [
+        -15,
+        0
+      ],
+      "world": [
+        28,
+        95
+      ],
+      "entire_world_sole_x": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 5,
+      "support": "far",
+      "canvas": [
+        28,
+        95
+      ],
+      "world_translation": [
+        -20,
+        0
+      ],
+      "world": [
+        8,
+        95
+      ],
+      "entire_world_sole_x": [
+        8,
+        9,
+        10
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 6,
+      "support": "far",
+      "canvas": [
+        33,
+        95
+      ],
+      "world_translation": [
+        -25,
+        0
+      ],
+      "world": [
+        8,
+        95
+      ],
+      "entire_world_sole_x": [
+        8,
+        9,
+        10
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 7,
+      "support": "far",
+      "canvas": [
+        38,
+        95
+      ],
+      "world_translation": [
+        -30,
+        0
+      ],
+      "world": [
+        8,
+        95
+      ],
+      "entire_world_sole_x": [
+        8,
+        9,
+        10
+      ],
+      "all_sole_pixels_opaque": true
+    },
+    {
+      "frame": 8,
+      "support": "far",
+      "canvas": [
+        43,
+        95
+      ],
+      "world_translation": [
+        -35,
+        0
+      ],
+      "world": [
+        8,
+        95
+      ],
+      "entire_world_sole_x": [
+        8,
+        9,
+        10
+      ],
+      "all_sole_pixels_opaque": true
+    }
+  ]
+}

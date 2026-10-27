@@ -1,0 +1,21 @@
+{
+  "decal_puddle_01_a_generated.png": {
+    "prompt": "decal_puddle_01.prompt.txt",
+    "reason": "Native cell footprint too large; not used for game asset.",
+    "reference": "docs/reference/ground_base_decals_in_game.png"
+  },
+  "decal_puddle_02_a_generated.png": {
+    "prompt": "decal_puddle_02.prompt.txt",
+    "reason": "Native cell footprint too large; not used for game asset.",
+    "reference": "docs/reference/ground_base_decals_in_game.png"
+  },
+  "decal_moss_01_a_generated.png": {
+    "prompt": "decal_moss_01.prompt.txt",
+    "reason": "Native cell footprint too large; not used for game asset.",
+    "reference": "docs/reference/ground_base_decals_in_game.png"
+  },
+  "moss_medium_b_generated.png": {
+    "prompt": "moss_medium_b.prompt.txt",
+    "reason": "Native footprint too large; replaced by edit preserving small-colony cell size."
+  }
+}

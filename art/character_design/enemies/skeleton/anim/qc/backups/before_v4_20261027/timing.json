@@ -1,0 +1,493 @@
+{
+  "version": 1,
+  "frame_size": [
+    96,
+    96
+  ],
+  "anchor": [
+    48,
+    96
+  ],
+  "animations": {
+    "skeleton_B_walk_right": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_right.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": -5
+    },
+    "skeleton_B_collapse_front": {
+      "frames": 9,
+      "durations_ms": [
+        80,
+        70,
+        70,
+        80,
+        90,
+        100,
+        120,
+        200,
+        200
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_collapse_front.png",
+      "hold_last_frame": true
+    },
+    "skeleton_B_idle_front": {
+      "frames": 4,
+      "durations_ms": [
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_front.png"
+    },
+    "skeleton_B_hit_front": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_front.png"
+    },
+    "skeleton_B_idle_back": {
+      "frames": 4,
+      "durations_ms": [
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_back.png"
+    },
+    "skeleton_B_hit_back": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_back.png"
+    },
+    "skeleton_B_idle_left": {
+      "frames": 4,
+      "durations_ms": [
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_left.png"
+    },
+    "skeleton_B_hit_left": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_left.png"
+    },
+    "skeleton_B_idle_right": {
+      "frames": 4,
+      "durations_ms": [
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_right.png"
+    },
+    "skeleton_B_hit_right": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_right.png"
+    },
+    "skeleton_B_remains_idle": {
+      "frames": 4,
+      "durations_ms": [
+        500,
+        500,
+        500,
+        500
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_remains_idle.png"
+    },
+    "skeleton_B_walk_left": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_left.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": 5,
+      "world_direction": [
+        -1,
+        0
+      ]
+    },
+    "skeleton_B_walk_front": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_front.png",
+      "walk_mode": "in_place",
+      "max_foot_height_difference_px": 3,
+      "vertical_support_lock": false
+    },
+    "skeleton_B_walk_back": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_back.png",
+      "walk_mode": "in_place",
+      "max_foot_height_difference_px": 3,
+      "vertical_support_lock": false
+    },
+    "skeleton_B_reassemble_front": {
+      "frames": 12,
+      "durations_ms": [
+        180,
+        180,
+        160,
+        90,
+        80,
+        70,
+        70,
+        100,
+        60,
+        40,
+        90,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_reassemble_front.png",
+      "hold_last_frame": true
+    },
+    "skeleton_B_walk_left_v2": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_left_v2.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": 5,
+      "world_direction": [
+        -1,
+        0
+      ]
+    },
+    "skeleton_B_walk_right_v2": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_right_v2.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": -5
+    },
+    "skeleton_B_walk_front_v2": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_front_v2.png",
+      "walk_mode": "in_place",
+      "max_foot_height_difference_px": 3,
+      "vertical_support_lock": false
+    },
+    "skeleton_B_walk_back_v2": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_back_v2.png",
+      "walk_mode": "in_place",
+      "max_foot_height_difference_px": 3,
+      "vertical_support_lock": false
+    },
+    "skeleton_B_idle_front_v2": {
+      "frames": 8,
+      "durations_ms": [
+        1000,
+        700,
+        450,
+        120,
+        900,
+        550,
+        120,
+        700
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_front_v2.png"
+    },
+    "skeleton_B_idle_back_v2": {
+      "frames": 8,
+      "durations_ms": [
+        950,
+        650,
+        550,
+        110,
+        1100,
+        500,
+        130,
+        650
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_back_v2.png"
+    },
+    "skeleton_B_idle_left_v2": {
+      "frames": 8,
+      "durations_ms": [
+        1000,
+        600,
+        550,
+        110,
+        850,
+        600,
+        130,
+        650
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_left_v2.png"
+    },
+    "skeleton_B_idle_right_v2": {
+      "frames": 8,
+      "durations_ms": [
+        900,
+        650,
+        500,
+        120,
+        1050,
+        550,
+        100,
+        700
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_idle_right_v2.png"
+    },
+    "skeleton_B_hit_front_v2": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_front_v2.png"
+    },
+    "skeleton_B_hit_back_v2": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_back_v2.png"
+    },
+    "skeleton_B_hit_left_v2": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_left_v2.png"
+    },
+    "skeleton_B_hit_right_v2": {
+      "frames": 3,
+      "durations_ms": [
+        80,
+        120,
+        160
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_hit_right_v2.png"
+    },
+    "skeleton_B_reassemble_front_v2": {
+      "frames": 20,
+      "durations_ms": [
+        340,
+        160,
+        100,
+        170,
+        130,
+        150,
+        130,
+        120,
+        110,
+        140,
+        120,
+        100,
+        90,
+        90,
+        130,
+        50,
+        150,
+        110,
+        110,
+        100
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_reassemble_front_v2.png",
+      "hold_last_frame": true
+    },
+    "skeleton_B_walk_left_v3": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_left_v3.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": 5,
+      "world_direction": [
+        -1,
+        0
+      ]
+    },
+    "skeleton_B_walk_right_v3": {
+      "frames": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": true,
+      "sprite_sheet": "skeleton_B_walk_right_v3.png",
+      "movement_px_per_second": 50,
+      "support_foot_canvas_step_px": -5
+    },
+    "skeleton_B_reassemble_front_v3": {
+      "frames": 26,
+      "durations_ms": [
+        340,
+        160,
+        100,
+        170,
+        130,
+        150,
+        130,
+        120,
+        110,
+        140,
+        120,
+        100,
+        90,
+        90,
+        100,
+        90,
+        90,
+        130,
+        100,
+        100,
+        60,
+        90,
+        150,
+        110,
+        110,
+        100
+      ],
+      "loop": false,
+      "sprite_sheet": "skeleton_B_reassemble_front_v3.png",
+      "hold_last_frame": true
+    }
+  }
+}

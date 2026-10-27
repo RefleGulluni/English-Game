@@ -1,0 +1,420 @@
+{
+  "pipeline": "Built-in image_gen, observed source cell center sampling, binary key and semantic palette cleanup, integer crop/pad. Intentional isolated moss/pebble flecks kept. No scaling, mirroring, rotation, generated noise or drawn pixels.",
+  "assets": [
+    {
+      "file": "decal_puddle_01.png",
+      "source": "puddle_small_b_generated.png",
+      "prompt": "puddle_small_b.prompt.txt",
+      "grid": "puddle_small_b_round2_grid.json",
+      "restored": "puddle_small_b_round2_cells.png",
+      "cleaned": "decal_puddle_01_cleaned_native.png",
+      "material": "puddle",
+      "canvas": [
+        41,
+        20
+      ],
+      "visible": [
+        37,
+        16
+      ],
+      "source_cell_crop": [
+        20,
+        17,
+        57,
+        33
+      ],
+      "colors": 23,
+      "material_stats": {
+        "water_pixels": 148,
+        "reflection_pixels": 3,
+        "water_mean_before": [
+          51.817567567567565,
+          56.32432432432432,
+          53.560810810810814
+        ],
+        "water_mean_after": [
+          46.02849544827588,
+          49.02849544827588,
+          49.02849544827588
+        ],
+        "wet_mud_pixels": 157
+      }
+    },
+    {
+      "file": "decal_puddle_02.png",
+      "source": "puddle_medium_c_generated.png",
+      "prompt": "puddle_medium_c.coarse.prompt.txt",
+      "grid": "puddle_medium_c_round2_grid.json",
+      "restored": "puddle_medium_c_round2_cells.png",
+      "cleaned": "decal_puddle_02_cleaned_native.png",
+      "material": "puddle",
+      "canvas": [
+        81,
+        25
+      ],
+      "visible": [
+        77,
+        21
+      ],
+      "source_cell_crop": [
+        8,
+        20,
+        85,
+        41
+      ],
+      "colors": 23,
+      "material_stats": {
+        "water_pixels": 432,
+        "reflection_pixels": 2,
+        "water_mean_before": [
+          54.72453703703704,
+          60.120370370370374,
+          55.36574074074074
+        ],
+        "water_mean_after": [
+          45.97684186046513,
+          48.97684186046515,
+          48.97684186046515
+        ],
+        "wet_mud_pixels": 440
+      }
+    },
+    {
+      "file": "decal_puddle_03.png",
+      "source": "decal_puddle_03_generated.png",
+      "prompt": "decal_puddle_03.coarse.prompt.txt",
+      "grid": "decal_puddle_03_round2_grid.json",
+      "restored": "decal_puddle_03_round2_cells.png",
+      "cleaned": "decal_puddle_03_cleaned_native.png",
+      "material": "puddle",
+      "canvas": [
+        82,
+        21
+      ],
+      "visible": [
+        78,
+        17
+      ],
+      "source_cell_crop": [
+        73,
+        66,
+        151,
+        83
+      ],
+      "colors": 23,
+      "material_stats": {
+        "water_pixels": 200,
+        "reflection_pixels": 2,
+        "water_mean_before": [
+          58.58,
+          72.38,
+          71.86
+        ],
+        "water_mean_after": [
+          44.92815757575757,
+          47.92815757575757,
+          47.92815757575757
+        ],
+        "wet_mud_pixels": 538
+      }
+    },
+    {
+      "file": "decal_moss_01.png",
+      "source": "moss_small_b_generated.png",
+      "prompt": "moss_small_b.prompt.txt",
+      "grid": "moss_small_b_round2_grid.json",
+      "restored": "moss_small_b_round2_cells.png",
+      "cleaned": "decal_moss_01_cleaned_native.png",
+      "material": "moss",
+      "canvas": [
+        28,
+        18
+      ],
+      "visible": [
+        24,
+        14
+      ],
+      "source_cell_crop": [
+        23,
+        17,
+        47,
+        31
+      ],
+      "colors": 10,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_moss_02.png",
+      "source": "moss_medium_c_generated.png",
+      "prompt": "moss_medium_c.coarse.prompt.txt",
+      "grid": "moss_medium_c_round2_grid.json",
+      "restored": "moss_medium_c_round2_cells.png",
+      "cleaned": "decal_moss_02_cleaned_native.png",
+      "material": "moss",
+      "canvas": [
+        74,
+        27
+      ],
+      "visible": [
+        70,
+        23
+      ],
+      "source_cell_crop": [
+        5,
+        16,
+        75,
+        39
+      ],
+      "colors": 10,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_moss_03.png",
+      "source": "decal_moss_03_generated.png",
+      "prompt": "decal_moss_03.coarse.prompt.txt",
+      "grid": "decal_moss_03_round2_grid.json",
+      "restored": "decal_moss_03_round2_cells.png",
+      "cleaned": "decal_moss_03_cleaned_native.png",
+      "material": "moss",
+      "canvas": [
+        23,
+        16
+      ],
+      "visible": [
+        19,
+        12
+      ],
+      "source_cell_crop": [
+        51,
+        33,
+        70,
+        45
+      ],
+      "colors": 10,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_pebbles_01.png",
+      "source": "decal_pebbles_01_generated.png",
+      "prompt": "decal_pebbles_01.coarse.prompt.txt",
+      "grid": "decal_pebbles_01_round2_grid.json",
+      "restored": "decal_pebbles_01_round2_cells.png",
+      "cleaned": "decal_pebbles_01_cleaned_native.png",
+      "material": "pebbles",
+      "canvas": [
+        51,
+        18
+      ],
+      "visible": [
+        47,
+        14
+      ],
+      "source_cell_crop": [
+        102,
+        69,
+        149,
+        83
+      ],
+      "colors": 24,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_pebbles_02.png",
+      "source": "decal_pebbles_02_generated.png",
+      "prompt": "decal_pebbles_02.coarse.prompt.txt",
+      "grid": "decal_pebbles_02_round2_grid.json",
+      "restored": "decal_pebbles_02_round2_cells.png",
+      "cleaned": "decal_pebbles_02_cleaned_native.png",
+      "material": "pebbles",
+      "canvas": [
+        43,
+        14
+      ],
+      "visible": [
+        39,
+        10
+      ],
+      "source_cell_crop": [
+        57,
+        42,
+        96,
+        52
+      ],
+      "colors": 24,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_bone_bits_01.png",
+      "source": "decal_bone_bits_01_generated.png",
+      "prompt": "decal_bone_bits_01.coarse.prompt.txt",
+      "grid": "decal_bone_bits_01_round2_grid.json",
+      "restored": "decal_bone_bits_01_round2_cells.png",
+      "cleaned": "decal_bone_bits_01_cleaned_native.png",
+      "material": "bone",
+      "canvas": [
+        42,
+        22
+      ],
+      "visible": [
+        38,
+        18
+      ],
+      "source_cell_crop": [
+        77,
+        55,
+        115,
+        73
+      ],
+      "colors": 24,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_ruts_01.png",
+      "source": "decal_ruts_01_generated.png",
+      "prompt": "decal_ruts_01.coarse.prompt.txt",
+      "grid": "decal_ruts_01_round2_grid.json",
+      "restored": "decal_ruts_01_round2_cells.png",
+      "cleaned": "decal_ruts_01_cleaned_native.png",
+      "material": "ruts",
+      "canvas": [
+        61,
+        20
+      ],
+      "visible": [
+        57,
+        16
+      ],
+      "source_cell_crop": [
+        69,
+        57,
+        126,
+        73
+      ],
+      "colors": 24,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_roots_01.png",
+      "source": "decal_roots_01_generated.png",
+      "prompt": "decal_roots_01.coarse.prompt.txt",
+      "grid": "decal_roots_01_round2_grid.json",
+      "restored": "decal_roots_01_round2_cells.png",
+      "cleaned": "decal_roots_01_cleaned_native.png",
+      "material": "roots",
+      "canvas": [
+        46,
+        24
+      ],
+      "visible": [
+        42,
+        20
+      ],
+      "source_cell_crop": [
+        88,
+        57,
+        130,
+        77
+      ],
+      "colors": 24,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_dead_flowers_01.png",
+      "source": "decal_dead_flowers_01_generated.png",
+      "prompt": "decal_dead_flowers_01.coarse.prompt.txt",
+      "grid": "decal_dead_flowers_01_round2_grid.json",
+      "restored": "decal_dead_flowers_01_round2_cells.png",
+      "cleaned": "decal_dead_flowers_01_cleaned_native.png",
+      "material": "flowers",
+      "canvas": [
+        68,
+        34
+      ],
+      "visible": [
+        64,
+        30
+      ],
+      "source_cell_crop": [
+        80,
+        72,
+        144,
+        102
+      ],
+      "colors": 23,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_cracked_slab_01.png",
+      "source": "decal_cracked_slab_01_generated.png",
+      "prompt": "decal_cracked_slab_01.edit.prompt.txt",
+      "grid": "decal_cracked_slab_01_round2_grid.json",
+      "restored": "decal_cracked_slab_01_round2_cells.png",
+      "cleaned": "decal_cracked_slab_01_cleaned_native.png",
+      "material": "slab",
+      "canvas": [
+        26,
+        17
+      ],
+      "visible": [
+        22,
+        13
+      ],
+      "source_cell_crop": [
+        53,
+        40,
+        75,
+        53
+      ],
+      "colors": 16,
+      "material_stats": {}
+    },
+    {
+      "file": "decal_leaves_02.png",
+      "source": "decal_leaves_02_generated.png",
+      "prompt": "decal_leaves_02.coarse.prompt.txt",
+      "grid": "decal_leaves_02_round2_grid.json",
+      "restored": "decal_leaves_02_round2_cells.png",
+      "cleaned": "decal_leaves_02_cleaned_native.png",
+      "material": "leaves",
+      "canvas": [
+        108,
+        36
+      ],
+      "visible": [
+        104,
+        32
+      ],
+      "source_cell_crop": [
+        77,
+        71,
+        181,
+        103
+      ],
+      "colors": 24,
+      "material_stats": {}
+    }
+  ],
+  "unselected_sources": [
+    "decal_puddle_01_a_generated.png",
+    "decal_moss_01_a_generated.png",
+    "moss_medium_b_generated.png",
+    "decal_puddle_02_a_generated.png"
+  ],
+  "status": "PUBLISHED_FOR_USER_IN_GAME_REVIEW",
+  "published_sha256": {
+    "decal_puddle_01.png": "98761760f98004c8662b467bd23f993da25f70da19cc051298426457eabb8ac7",
+    "decal_puddle_02.png": "9027681a5cbf1ed7a30fcbad9834fe68105aab8bbbb8fe657c9432c77971ffed",
+    "decal_puddle_03.png": "af7d8bd65558ff04008f46f0bf1d226f58c9d65d8c669822a0a78fa0ad01f162",
+    "decal_moss_01.png": "1bf328f08a538737afe12a838efc5e601f66f5a5ee9f7f37758c49f29add33a4",
+    "decal_moss_02.png": "3979cc37802bd70b305e92d1633557b4835ddd85ab75d79ebed1af42fa85801a",
+    "decal_moss_03.png": "c34754b415569e4d3191017f49af49e8c52347e0cd47ece2aa53529cceb8e071",
+    "decal_pebbles_01.png": "abe7f8e7f66e9b68cf2d8fe3ce929d19cf2108ce3f576003640b674bc9614d35",
+    "decal_pebbles_02.png": "1abc0a75a2fe926245dcab35e338ed7b391a366c8f84872b6fc41b80ff805c01",
+    "decal_bone_bits_01.png": "d3886bb6d1e28c8e7f17daad906c918b6b066c5d58e6ff311006f78d9ad31d30",
+    "decal_ruts_01.png": "6a1d22e9c5c2f96265e05f8668e20d2acf35439c33e3cb4c4cb17619c2f7d502",
+    "decal_roots_01.png": "254001378291e22efb2a52dbb084ca59456103b6cb7376f1d2a581313859d395",
+    "decal_dead_flowers_01.png": "cd949bb6c27e3ed90e7288ea2e0def6fbf1e3075abdcd003e8858a1d42b89a2a",
+    "decal_cracked_slab_01.png": "3c9c01752738fbe125c3c2d90a45e49a11dca8674d4bb875cc9a3fa314ce4f16",
+    "decal_leaves_02.png": "5b9a8ccc5b2623e7bd7db830f78dbc39ed1e8eef4437afd8777bdf99c482ee4f"
+  }
+}

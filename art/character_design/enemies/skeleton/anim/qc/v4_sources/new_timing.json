@@ -1,0 +1,111 @@
+{
+  "skeleton_B_walk_left_v4": {
+    "frames": 8,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "sprite_sheet": "skeleton_B_walk_left_v4.png"
+  },
+  "skeleton_B_walk_right_v4": {
+    "frames": 8,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "sprite_sheet": "skeleton_B_walk_right_v4.png"
+  },
+  "skeleton_B_walk_front_v4": {
+    "frames": 8,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "sprite_sheet": "skeleton_B_walk_front_v4.png"
+  },
+  "skeleton_B_walk_back_v4": {
+    "frames": 8,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "loop": true,
+    "sprite_sheet": "skeleton_B_walk_back_v4.png"
+  },
+  "skeleton_B_reassemble_front_v4": {
+    "frames": 42,
+    "durations_ms": [
+      340,
+      160,
+      150,
+      150,
+      150,
+      150,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      120,
+      110,
+      110,
+      100,
+      100,
+      100,
+      90,
+      60,
+      110,
+      150,
+      140,
+      140,
+      130,
+      120,
+      100
+    ],
+    "loop": false,
+    "sprite_sheet": "skeleton_B_reassemble_front_v4.png"
+  }
+}

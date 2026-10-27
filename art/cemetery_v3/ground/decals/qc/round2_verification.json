@@ -1,0 +1,161 @@
+{
+  "accepted_base_and6_decals_byte_identical": {
+    "art/cemetery_v3/ground/base/ground_base_01.png": true,
+    "art/cemetery_v3/ground/base/ground_base_02.png": true,
+    "art/cemetery_v3/ground/decals/decal_wet_mud_01.png": true,
+    "art/cemetery_v3/ground/decals/decal_wet_mud_02.png": true,
+    "art/cemetery_v3/ground/decals/decal_leaves_01.png": true,
+    "art/cemetery_v3/ground/decals/decal_loose_slab_01.png": true,
+    "art/cemetery_v3/ground/decals/decal_dead_grass_02.png": true,
+    "art/cemetery_v3/ground/decals/decal_dead_grass_01.png": true
+  },
+  "native_area_size": [
+    480,
+    270
+  ],
+  "native_decal_count": 20,
+  "draw_order": "base, all decals, all prop bases, then y-sorted props+hero",
+  "decals": {
+    "decal_puddle_01": {
+      "center": [
+        148,
+        108
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_puddle_02": {
+      "center": [
+        264,
+        44
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_puddle_03": {
+      "center": [
+        369,
+        258
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_moss_01": {
+      "center": [
+        243,
+        99
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_moss_02": {
+      "center": [
+        66,
+        39
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_moss_03": {
+      "center": [
+        19,
+        184
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_pebbles_01": {
+      "center": [
+        166,
+        37
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_pebbles_02": {
+      "center": [
+        432,
+        145
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_bone_bits_01": {
+      "center": [
+        161,
+        242
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_ruts_01": {
+      "center": [
+        387,
+        182
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_roots_01": {
+      "center": [
+        71,
+        209
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_dead_flowers_01": {
+      "center": [
+        277,
+        142
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_cracked_slab_01": {
+      "center": [
+        454,
+        82
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_leaves_02": {
+      "center": [
+        410,
+        222
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_wet_mud_01": {
+      "center": [
+        52,
+        251
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_wet_mud_02": {
+      "center": [
+        421,
+        113
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_dead_grass_01": {
+      "center": [
+        25,
+        113
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_dead_grass_02": {
+      "center": [
+        148,
+        74
+      ],
+      "visible_fraction_after_props": 1.0
+    },
+    "decal_leaves_01": {
+      "center": [
+        250,
+        238
+      ],
+      "visible_fraction_after_props": 0.9365671641791045
+    },
+    "decal_loose_slab_01": {
+      "center": [
+        332,
+        208
+      ],
+      "visible_fraction_after_props": 1.0
+    }
+  },
+  "status": "SECTION7_REPLACED4_ADDED10_READY_FOR_IN_GAME_REVIEW"
+}

@@ -1,0 +1,6465 @@
+{
+  "skeleton_B_walk_left_v4": [
+    {
+      "frame": 1,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 333,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 137.61927064220183,
+          "difference": 0.2774508997125622,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 119.4910052219321,
+          "difference": 0.9614233579522562,
+          "rgb_offset": -1.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.28974153846153,
+          "difference": -1.793440000000004,
+          "rgb_offset": 10.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 119.27506782945736,
+          "difference": 1.4413605645001155,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 335,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 137.61927064220183,
+          "difference": 0.2774508997125622,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 119.65721148825065,
+          "difference": 1.12762962427081,
+          "rgb_offset": -1.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.39017280453258,
+          "difference": -1.6930087339289486,
+          "rgb_offset": 14.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 118.39708571428571,
+          "difference": 0.5633784493284679,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            1,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 322,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 136.06405853658535,
+          "difference": -1.2777612059039143,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 120.21337830687831,
+          "difference": 1.683796442898469,
+          "rgb_offset": -10.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.45401524390245,
+          "difference": -1.6291662945590843,
+          "rgb_offset": 10.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 118.64017391304348,
+          "difference": 0.8064666480862428,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            -1,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 344,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 137.61927064220183,
+          "difference": 0.2774508997125622,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 118.98282989690722,
+          "difference": 0.4532480329273767,
+          "rgb_offset": -1.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.30038797814208,
+          "difference": -1.7827935603194476,
+          "rgb_offset": 19.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 118.78721443736728,
+          "difference": 0.9535071724100419,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 344,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 137.61927064220183,
+          "difference": 0.2774508997125622,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 119.04167362924281,
+          "difference": 0.5120917652629657,
+          "rgb_offset": -1.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.3610084745763,
+          "difference": -1.7221730638852364,
+          "rgb_offset": 10.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 119.59205378486057,
+          "difference": 1.758346519903327,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 334,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 137.61927064220183,
+          "difference": 0.2774508997125622,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 118.38197389033944,
+          "difference": -0.14760797364040457,
+          "rgb_offset": -1.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.39728695652174,
+          "difference": -1.6858945819397917,
+          "rgb_offset": 11.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 119.5757130044843,
+          "difference": 1.742005739527059,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            2,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 324,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 136.06405853658535,
+          "difference": -1.2777612059039143,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 120.30965343915344,
+          "difference": 1.7800715751735936,
+          "rgb_offset": -5.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.50839275766016,
+          "difference": -1.57478878080137,
+          "rgb_offset": 10.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 116.16247734138973,
+          "difference": -1.671229923567509,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            -1,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 330,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 137.34181974248926,
+          "mean": 137.61927064220183,
+          "difference": 0.2774508997125622,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 118.52958186397984,
+          "mean": 119.73092525773197,
+          "difference": 1.2013433937521256,
+          "rgb_offset": -1.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 124.08318153846153,
+          "mean": 122.37342249240119,
+          "difference": -1.7097590460603413,
+          "rgb_offset": 17.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 117.83370726495724,
+          "mean": 119.57294808126409,
+          "difference": 1.7392408163068467,
+          "rgb_offset": -125.0
+        }
+      ]
+    }
+  ],
+  "skeleton_B_walk_right_v4": [
+    {
+      "frame": 1,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 362,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 131.49636654804272,
+          "difference": 0.8604498813760699,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.84035952848723,
+          "difference": 1.678548313533966,
+          "rgb_offset": -4.5
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.20385034013604,
+          "difference": -1.7494311724689737,
+          "rgb_offset": 11.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 121.43698207885306,
+          "difference": 1.0967211331437738,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 361,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 131.49636654804272,
+          "difference": 0.8604498813760699,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.90138627450979,
+          "difference": 1.739575059556529,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.29538341968912,
+          "difference": -1.6578980929159002,
+          "rgb_offset": 4.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 122.01409025270758,
+          "difference": 1.673829306998286,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            -1,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 357,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 132.04580608365015,
+          "difference": 1.4098894169835035,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.7357019607843,
+          "difference": 1.5738907458310365,
+          "rgb_offset": -13.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.29098395721925,
+          "difference": -1.6622975553857628,
+          "rgb_offset": 17.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 122.10495632183908,
+          "difference": 1.7646953761297937,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            1,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 371,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 131.49636654804272,
+          "difference": 0.8604498813760699,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.9246640625,
+          "difference": 1.762852847546739,
+          "rgb_offset": -18.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.23919191919192,
+          "difference": -1.7140895934130924,
+          "rgb_offset": 10.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 122.0890821596244,
+          "difference": 1.7488212139151074,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 370,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 131.49636654804272,
+          "difference": 0.8604498813760699,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.94774124513617,
+          "difference": 1.7859300301829109,
+          "rgb_offset": -10.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.44374162679425,
+          "difference": -1.5095398858107671,
+          "rgb_offset": 10.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 121.65556529516994,
+          "difference": 1.3153043494606464,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 369,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 131.49636654804272,
+          "difference": 0.8604498813760699,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.82062890625,
+          "difference": 1.6588176912967327,
+          "rgb_offset": -8.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.18960533333333,
+          "difference": -1.763676179271684,
+          "rgb_offset": 6.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 121.8500065645514,
+          "difference": 1.5097456188421177,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            -2,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            0,
+            2
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 369,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 132.04580608365015,
+          "difference": 1.4098894169835035,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.92874656188606,
+          "difference": 1.7669353469327973,
+          "rgb_offset": -7.5
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.15931891891893,
+          "difference": -1.7939625936860892,
+          "rgb_offset": 22.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 122.06930952380951,
+          "difference": 1.729048578100219,
+          "rgb_offset": -125.0
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "whole_arm_poses": [
+        {
+          "arm": 1,
+          "offset": [
+            0,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        },
+        {
+          "arm": 2,
+          "offset": [
+            1,
+            1
+          ],
+          "source_shape_rigid_integer_translation": true
+        }
+      ],
+      "edit_envelope_pixels": 362,
+      "no_y44_join": true,
+      "below_y61_rgba_exact_v3": true,
+      "arm_only_tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 130.63591666666665,
+          "mean": 131.49636654804272,
+          "difference": 0.8604498813760699,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.16181121495326,
+          "mean": 123.40958349705303,
+          "difference": 1.247772282099774,
+          "rgb_offset": -17.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 127.95328151260502,
+          "mean": 126.17230303030303,
+          "difference": -1.7809784823019896,
+          "rgb_offset": 12.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 120.34026094570929,
+          "mean": 122.01649009009009,
+          "difference": 1.6762291443807982,
+          "rgb_offset": -125.0
+        }
+      ]
+    }
+  ],
+  "skeleton_B_walk_front_v4": [
+    {
+      "frame": 1,
+      "lift_screen_left": 0,
+      "lift_screen_right": 1,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 8,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.2771544117647,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 123.5978981612447,
+          "difference": 0.8220826272641233,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 121.10975041050901,
+          "difference": -1.2177295226013598,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 121.23453952569169,
+          "difference": 1.7413356795378405,
+          "rgb_offset": -1.5
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "lift_screen_left": 0,
+      "lift_screen_right": 5,
+      "pelvis_offset": [
+        1,
+        1
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 1,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.2771544117647,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 121.46579344729344,
+          "difference": -1.310022086687141,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 121.43056622516555,
+          "difference": -0.8969137079448188,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 121.22338367346937,
+          "difference": 1.7301798273155242,
+          "rgb_offset": -1.5
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "lift_screen_left": 0,
+      "lift_screen_right": 6,
+      "pelvis_offset": [
+        1,
+        2
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "whole_arm_offsets": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 2,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.23248760330578,
+          "difference": -0.044666808458913465,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 121.84188017118402,
+          "difference": -0.9339353627965608,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 120.87412274959082,
+          "difference": -1.4533571835195431,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 121.0784675052411,
+          "difference": 1.5852636590872464,
+          "rgb_offset": -3.0
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "lift_screen_left": 0,
+      "lift_screen_right": 3,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 3,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.23248760330578,
+          "difference": -0.044666808458913465,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 123.73199574468083,
+          "difference": 0.9561802107002535,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 121.0831278317152,
+          "difference": -1.2443521013951653,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 121.24961428571429,
+          "difference": 1.7564104395604403,
+          "rgb_offset": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "lift_screen_left": 1,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 4,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.2771544117647,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 123.5978981612447,
+          "difference": 0.8220826272641233,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 121.30662932454692,
+          "difference": -1.0208506085634497,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 121.1129979757085,
+          "difference": 1.6197941295546485,
+          "rgb_offset": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "lift_screen_left": 5,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        -1,
+        1
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 5,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.2771544117647,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 121.46579344729344,
+          "difference": -1.310022086687141,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 120.57889569536422,
+          "difference": -1.7485842377461438,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 120.32287991718427,
+          "difference": 0.8296760710304198,
+          "rgb_offset": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "lift_screen_left": 6,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        -1,
+        2
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 6,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.23248760330578,
+          "difference": -0.044666808458913465,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 121.84188017118402,
+          "difference": -0.9339353627965608,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 120.57436935483871,
+          "difference": -1.7531105782716594,
+          "rgb_offset": 1.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 120.96874050632911,
+          "difference": 1.4755366601752655,
+          "rgb_offset": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "lift_screen_left": 3,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 7,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 125.2771544117647,
+          "mean": 125.23248760330578,
+          "difference": -0.044666808458913465,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 122.77581553398058,
+          "mean": 123.73199574468083,
+          "difference": 0.9561802107002535,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 122.32747993311037,
+          "mean": 121.36237318255249,
+          "difference": -0.9651067505578794,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 119.49320384615385,
+          "mean": 120.5743223140496,
+          "difference": 1.0811184678957488,
+          "rgb_offset": -4.5
+        }
+      ]
+    }
+  ],
+  "skeleton_B_walk_back_v4": [
+    {
+      "frame": 1,
+      "lift_screen_left": 0,
+      "lift_screen_right": 1,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 8,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 143.65398809523808,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 128.94667567567566,
+          "difference": 0.7875710098496995,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 139.29145106382975,
+          "difference": -1.0913463217911499,
+          "rgb_offset": -0.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 136.11892745098038,
+          "difference": -0.8351946420428931,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "lift_screen_left": 0,
+      "lift_screen_right": 5,
+      "pelvis_offset": [
+        1,
+        1
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 1,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 143.65398809523808,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 127.57474578469518,
+          "difference": -0.5843588811307825,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 139.49963924050633,
+          "difference": -0.883158145114578,
+          "rgb_offset": -0.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 135.9786714876033,
+          "difference": -0.9754506054199794,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "lift_screen_left": 0,
+      "lift_screen_right": 6,
+      "pelvis_offset": [
+        1,
+        2
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "whole_arm_offsets": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 2,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 142.99641666666668,
+          "difference": -0.6575714285714014,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 129.1846362451108,
+          "difference": 1.0255315792848307,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 138.6189979757085,
+          "difference": -1.7637994099123944,
+          "rgb_offset": 6.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 136.40808620689654,
+          "difference": -0.5460358861267309,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "lift_screen_left": 0,
+      "lift_screen_right": 3,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 3,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 142.99641666666668,
+          "difference": -0.6575714285714014,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 129.78727016645328,
+          "difference": 1.6281655006273184,
+          "rgb_offset": -2.5
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 138.77587525562373,
+          "difference": -1.606922129997173,
+          "rgb_offset": 5.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 137.492670781893,
+          "difference": 0.5385486888697244,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "lift_screen_left": 1,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 4,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 143.65398809523808,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 128.94667567567566,
+          "difference": 0.7875710098496995,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 139.29145106382975,
+          "difference": -1.0913463217911499,
+          "rgb_offset": -0.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 137.03075198412694,
+          "difference": 0.07662989110366425,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "lift_screen_left": 5,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        -1,
+        1
+      ],
+      "head_torso_y": 0,
+      "arm_shoulder_y": 1,
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "cloth_lag_source_frame": 5,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 143.65398809523808,
+          "difference": 0.0,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 126.87347650130548,
+          "difference": -1.2856281645204888,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 139.74559916492692,
+          "difference": -0.637198220693989,
+          "rgb_offset": -0.5
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 138.20902748414375,
+          "difference": 1.2549053911204737,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "lift_screen_left": 6,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        -1,
+        2
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          -1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 6,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 142.99641666666668,
+          "difference": -0.6575714285714014,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 129.04647957839262,
+          "difference": 0.8873749125666563,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 138.77166531440162,
+          "difference": -1.6111320712192878,
+          "rgb_offset": 5.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 138.3336175213675,
+          "difference": 1.379495428344228,
+          "rgb_offset": -0.5
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "lift_screen_left": 3,
+      "lift_screen_right": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "head_torso_y": 1,
+      "arm_shoulder_y": 2,
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "whole_arm_offsets": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "cloth_lag_source_frame": 7,
+      "tone": [
+        {
+          "band": [
+            0,
+            19
+          ],
+          "standing_mean": 143.65398809523808,
+          "mean": 142.99641666666668,
+          "difference": -0.6575714285714014,
+          "rgb_offset": 0.0
+        },
+        {
+          "band": [
+            20,
+            44
+          ],
+          "standing_mean": 128.15910466582596,
+          "mean": 129.78727016645328,
+          "difference": 1.6281655006273184,
+          "rgb_offset": -2.5
+        },
+        {
+          "band": [
+            45,
+            64
+          ],
+          "standing_mean": 140.3827973856209,
+          "mean": 138.92112704918034,
+          "difference": -1.4616703364405623,
+          "rgb_offset": 5.0
+        },
+        {
+          "band": [
+            65,
+            95
+          ],
+          "standing_mean": 136.95412209302327,
+          "mean": 137.86552822580646,
+          "difference": 0.9114061327831848,
+          "rgb_offset": -0.5
+        }
+      ]
+    }
+  ],
+  "skeleton_B_reassemble_front_v4": [
+    {
+      "phase": "wake",
+      "exact_padded_remains": true
+    },
+    {
+      "phase": "wake",
+      "group_offsets": {
+        "small_bones": [
+          0,
+          0
+        ],
+        "pelvis": [
+          0,
+          0
+        ],
+        "right_leg": [
+          0,
+          0
+        ],
+        "left_leg": [
+          0,
+          0
+        ],
+        "ribs": [
+          0,
+          0
+        ],
+        "left_arm": [
+          0,
+          0
+        ],
+        "right_arm": [
+          0,
+          0
+        ],
+        "rib_tip": [
+          1,
+          0
+        ],
+        "shoulder_nails": [
+          0,
+          0
+        ],
+        "shroud": [
+          -1,
+          0
+        ],
+        "skull": [
+          0,
+          0
+        ]
+      },
+      "changed_groups": {
+        "shroud": [
+          -1,
+          0
+        ],
+        "rib_tip": [
+          1,
+          0
+        ]
+      },
+      "ground_groups": [
+        "left_arm",
+        "left_leg",
+        "pelvis",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ]
+    },
+    {
+      "phase": "wake",
+      "group_offsets": {
+        "small_bones": [
+          0,
+          0
+        ],
+        "pelvis": [
+          0,
+          0
+        ],
+        "right_leg": [
+          0,
+          0
+        ],
+        "left_leg": [
+          0,
+          0
+        ],
+        "ribs": [
+          0,
+          0
+        ],
+        "left_arm": [
+          2,
+          -1
+        ],
+        "right_arm": [
+          0,
+          0
+        ],
+        "rib_tip": [
+          0,
+          0
+        ],
+        "shoulder_nails": [
+          0,
+          0
+        ],
+        "shroud": [
+          -1,
+          0
+        ],
+        "skull": [
+          0,
+          0
+        ]
+      },
+      "changed_groups": {
+        "rib_tip": [
+          0,
+          0
+        ],
+        "left_arm": [
+          2,
+          -1
+        ]
+      },
+      "ground_groups": [
+        "left_arm",
+        "left_leg",
+        "pelvis",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ]
+    },
+    {
+      "phase": "wake",
+      "group_offsets": {
+        "small_bones": [
+          0,
+          0
+        ],
+        "pelvis": [
+          0,
+          0
+        ],
+        "right_leg": [
+          0,
+          0
+        ],
+        "left_leg": [
+          3,
+          -2
+        ],
+        "ribs": [
+          0,
+          0
+        ],
+        "left_arm": [
+          2,
+          -1
+        ],
+        "right_arm": [
+          0,
+          0
+        ],
+        "rib_tip": [
+          0,
+          0
+        ],
+        "shoulder_nails": [
+          0,
+          0
+        ],
+        "shroud": [
+          -2,
+          -1
+        ],
+        "skull": [
+          0,
+          0
+        ]
+      },
+      "changed_groups": {
+        "left_leg": [
+          3,
+          -2
+        ],
+        "shroud": [
+          -2,
+          -1
+        ]
+      },
+      "ground_groups": [
+        "left_arm",
+        "left_leg",
+        "pelvis",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ]
+    },
+    {
+      "phase": "gather",
+      "group_offsets": {
+        "small_bones": [
+          0,
+          0
+        ],
+        "pelvis": [
+          0,
+          0
+        ],
+        "right_leg": [
+          0,
+          0
+        ],
+        "left_leg": [
+          3,
+          -2
+        ],
+        "ribs": [
+          0,
+          -2
+        ],
+        "left_arm": [
+          2,
+          -1
+        ],
+        "right_arm": [
+          -3,
+          0
+        ],
+        "rib_tip": [
+          0,
+          0
+        ],
+        "shoulder_nails": [
+          0,
+          0
+        ],
+        "shroud": [
+          -2,
+          -1
+        ],
+        "skull": [
+          0,
+          0
+        ]
+      },
+      "changed_groups": {
+        "right_arm": [
+          -3,
+          0
+        ],
+        "ribs": [
+          0,
+          -2
+        ]
+      },
+      "ground_groups": [
+        "left_arm",
+        "left_leg",
+        "pelvis",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ]
+    },
+    {
+      "phase": "gather",
+      "group_offsets": {
+        "small_bones": [
+          0,
+          0
+        ],
+        "pelvis": [
+          0,
+          -2
+        ],
+        "right_leg": [
+          -2,
+          -1
+        ],
+        "left_leg": [
+          3,
+          -2
+        ],
+        "ribs": [
+          0,
+          -2
+        ],
+        "left_arm": [
+          2,
+          -1
+        ],
+        "right_arm": [
+          -3,
+          0
+        ],
+        "rib_tip": [
+          0,
+          0
+        ],
+        "shoulder_nails": [
+          2,
+          1
+        ],
+        "shroud": [
+          -2,
+          -1
+        ],
+        "skull": [
+          0,
+          0
+        ]
+      },
+      "changed_groups": {
+        "shoulder_nails": [
+          2,
+          1
+        ],
+        "right_leg": [
+          -2,
+          -1
+        ],
+        "pelvis": [
+          0,
+          -2
+        ]
+      },
+      "ground_groups": [
+        "left_arm",
+        "left_leg",
+        "pelvis",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 27,
+      "thorax_delta_y": 27,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            66,
+            67
+          ],
+          "target_start_y": 73,
+          "knee_out_px": -6
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 78,
+          "knee_out_px": -6
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            53,
+            60,
+            62,
+            63,
+            73,
+            74,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 72
+        }
+      ],
+      "ground_groups": [
+        "left_arm",
+        "left_leg",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "pelvis"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 27,
+      "thorax_delta_y": 27,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            66,
+            67
+          ],
+          "target_start_y": 73,
+          "knee_out_px": -6
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 78,
+          "knee_out_px": -6
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            66,
+            67
+          ],
+          "target_start_y": 73,
+          "knee_out_px": 6
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 78,
+          "knee_out_px": 6
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            53,
+            60,
+            62,
+            63,
+            73,
+            74,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 72
+        }
+      ],
+      "ground_groups": [
+        "left_arm",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "right_leg",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "left_leg"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 24,
+      "thorax_delta_y": 27,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 71,
+          "knee_out_px": -5
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 77,
+          "knee_out_px": -5
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 71,
+          "knee_out_px": 5
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 77,
+          "knee_out_px": 5
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            53,
+            55,
+            60,
+            62,
+            63,
+            70,
+            73,
+            74,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 69
+        }
+      ],
+      "ground_groups": [
+        "left_arm",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "right_leg"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 24,
+      "thorax_delta_y": 24,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 71,
+          "knee_out_px": -5
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 77,
+          "knee_out_px": -5
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 71,
+          "knee_out_px": 5
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 77,
+          "knee_out_px": 5
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            53,
+            55,
+            60,
+            62,
+            63,
+            70,
+            73,
+            74,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 69
+        }
+      ],
+      "ground_groups": [
+        "left_arm",
+        "rib_tip",
+        "ribs",
+        "right_arm",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 21,
+      "thorax_delta_y": 24,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 69,
+          "knee_out_px": -5
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 76,
+          "knee_out_px": -5
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 69,
+          "knee_out_px": 5
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 76,
+          "knee_out_px": 5
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            51,
+            53,
+            55,
+            57,
+            60,
+            62,
+            63,
+            70,
+            73,
+            74,
+            77,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 66
+        }
+      ],
+      "ground_groups": [
+        "left_arm",
+        "rib_tip",
+        "right_arm",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "ribs"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 21,
+      "thorax_delta_y": 21,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 69,
+          "knee_out_px": -5
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 76,
+          "knee_out_px": -5
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 69,
+          "knee_out_px": 5
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 76,
+          "knee_out_px": 5
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            51,
+            53,
+            55,
+            57,
+            60,
+            62,
+            63,
+            70,
+            73,
+            74,
+            77,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 66
+        }
+      ],
+      "ground_groups": [
+        "rib_tip",
+        "right_arm",
+        "shoulder_nails",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "left_arm"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 18,
+      "thorax_delta_y": 21,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 67,
+          "knee_out_px": -4
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            78,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 75,
+          "knee_out_px": -4
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 67,
+          "knee_out_px": 4
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            78,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 75,
+          "knee_out_px": 4
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            51,
+            53,
+            55,
+            57,
+            60,
+            62,
+            63,
+            66,
+            67,
+            69,
+            70,
+            73,
+            74,
+            77,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 63
+        }
+      ],
+      "ground_groups": [
+        "rib_tip",
+        "right_arm",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "shoulder_nails"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 18,
+      "thorax_delta_y": 18,
+      "arm_delta_y": [
+        27,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 67,
+          "knee_out_px": -4
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            78,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 75,
+          "knee_out_px": -4
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 67,
+          "knee_out_px": 4
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            73,
+            75,
+            77,
+            78,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 75,
+          "knee_out_px": 4
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            51,
+            53,
+            55,
+            57,
+            60,
+            62,
+            63,
+            66,
+            67,
+            69,
+            70,
+            73,
+            74,
+            77,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 63
+        }
+      ],
+      "ground_groups": [
+        "right_arm",
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "rib_tip"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 15,
+      "thorax_delta_y": 18,
+      "arm_delta_y": [
+        18,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 65,
+          "knee_out_px": -3
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 73,
+          "knee_out_px": -3
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 65,
+          "knee_out_px": 3
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 73,
+          "knee_out_px": 3
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            51,
+            53,
+            55,
+            57,
+            59,
+            60,
+            62,
+            63,
+            66,
+            67,
+            69,
+            70,
+            73,
+            74,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 60
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": [
+        "right_arm"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 15,
+      "thorax_delta_y": 15,
+      "arm_delta_y": [
+        18,
+        27
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 65,
+          "knee_out_px": -3
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 73,
+          "knee_out_px": -3
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 65,
+          "knee_out_px": 3
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 73,
+          "knee_out_px": 3
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            51,
+            53,
+            55,
+            57,
+            59,
+            60,
+            62,
+            63,
+            66,
+            67,
+            69,
+            70,
+            73,
+            74,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 60
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull",
+        "small_bones"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 12,
+      "thorax_delta_y": 15,
+      "arm_delta_y": [
+        15,
+        17
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 63,
+          "knee_out_px": -3
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 72,
+          "knee_out_px": -3
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 63,
+          "knee_out_px": 3
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 72,
+          "knee_out_px": 3
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            51,
+            52,
+            53,
+            55,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            66,
+            67,
+            69,
+            70,
+            72,
+            73,
+            74,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 57
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull"
+      ],
+      "removed_from_ground": [
+        "small_bones"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 12,
+      "thorax_delta_y": 12,
+      "arm_delta_y": [
+        15,
+        14
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 63,
+          "knee_out_px": -3
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 72,
+          "knee_out_px": -3
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 63,
+          "knee_out_px": 3
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 72,
+          "knee_out_px": 3
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            51,
+            52,
+            53,
+            55,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            66,
+            67,
+            69,
+            70,
+            72,
+            73,
+            74,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 57
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 9,
+      "thorax_delta_y": 12,
+      "arm_delta_y": [
+        12,
+        14
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 61,
+          "knee_out_px": -2
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 71,
+          "knee_out_px": -2
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 61,
+          "knee_out_px": 2
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 71,
+          "knee_out_px": 2
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            65,
+            66,
+            67,
+            69,
+            70,
+            72,
+            73,
+            74,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 54
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 9,
+      "thorax_delta_y": 9,
+      "arm_delta_y": [
+        12,
+        11
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 61,
+          "knee_out_px": -2
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 71,
+          "knee_out_px": -2
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 61,
+          "knee_out_px": 2
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 71,
+          "knee_out_px": 2
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            65,
+            66,
+            67,
+            69,
+            70,
+            72,
+            73,
+            74,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 54
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 6,
+      "thorax_delta_y": 9,
+      "arm_delta_y": [
+        9,
+        11
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 59,
+          "knee_out_px": -1
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 70,
+          "knee_out_px": -1
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 59,
+          "knee_out_px": 1
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 70,
+          "knee_out_px": 1
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 51
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 6,
+      "thorax_delta_y": 6,
+      "arm_delta_y": [
+        9,
+        8
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 59,
+          "knee_out_px": -1
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 70,
+          "knee_out_px": -1
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 59,
+          "knee_out_px": 1
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 70,
+          "knee_out_px": 1
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            51,
+            52,
+            53,
+            55,
+            56,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 51
+        }
+      ],
+      "ground_groups": [
+        "shroud",
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 4,
+      "thorax_delta_y": 6,
+      "arm_delta_y": [
+        6,
+        8
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 58,
+          "knee_out_px": -1
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 69,
+          "knee_out_px": -1
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 58,
+          "knee_out_px": 1
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 69,
+          "knee_out_px": 1
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 49
+        }
+      ],
+      "ground_groups": [
+        "skull"
+      ],
+      "removed_from_ground": [
+        "shroud"
+      ]
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 4,
+      "thorax_delta_y": 4,
+      "arm_delta_y": [
+        6,
+        5
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 58,
+          "knee_out_px": -1
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 69,
+          "knee_out_px": -1
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 58,
+          "knee_out_px": 1
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 69,
+          "knee_out_px": 1
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            77,
+            78,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 49
+        }
+      ],
+      "ground_groups": [
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 2,
+      "thorax_delta_y": 4,
+      "arm_delta_y": [
+        4,
+        5
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 56,
+          "knee_out_px": 0
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 68,
+          "knee_out_px": 0
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 56,
+          "knee_out_px": 0
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 68,
+          "knee_out_px": 0
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 47
+        }
+      ],
+      "ground_groups": [
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "rise",
+      "pelvis_delta_y": 2,
+      "thorax_delta_y": 2,
+      "arm_delta_y": [
+        4,
+        2
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 56,
+          "knee_out_px": 0
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 68,
+          "knee_out_px": 0
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 56,
+          "knee_out_px": 0
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 68,
+          "knee_out_px": 0
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 47
+        }
+      ],
+      "ground_groups": [
+        "skull"
+      ],
+      "removed_from_ground": []
+    },
+    {
+      "phase": "headless_pause",
+      "pelvis_delta_y": 1,
+      "thorax_delta_y": 2,
+      "arm_delta_y": [
+        2,
+        2
+      ],
+      "canonical_ledger": [
+        {
+          "side": 0,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 56,
+          "knee_out_px": 0
+        },
+        {
+          "side": 0,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 67,
+          "knee_out_px": 0
+        },
+        {
+          "side": 1,
+          "part": "thigh",
+          "source_rows": [
+            55,
+            56,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "target_start_y": 56,
+          "knee_out_px": 0
+        },
+        {
+          "side": 1,
+          "part": "shin",
+          "source_rows": [
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 67,
+          "knee_out_px": 0
+        },
+        {
+          "part": "shroud_waist_to_shin",
+          "source_rows": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83
+          ],
+          "target_start_y": 46
+        }
+      ],
+      "ground_groups": [
+        "skull"
+      ],
+      "removed_from_ground": [],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ],
+        [
+          54,
+          21
+        ],
+        [
+          54,
+          22
+        ],
+        [
+          55,
+          23
+        ],
+        [
+          55,
+          24
+        ],
+        [
+          55,
+          25
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          56,
+          27
+        ],
+        [
+          56,
+          28
+        ],
+        [
+          57,
+          29
+        ],
+        [
+          57,
+          30
+        ],
+        [
+          58,
+          31
+        ],
+        [
+          58,
+          32
+        ],
+        [
+          58,
+          33
+        ],
+        [
+          59,
+          34
+        ],
+        [
+          59,
+          35
+        ],
+        [
+          60,
+          36
+        ],
+        [
+          60,
+          37
+        ],
+        [
+          60,
+          38
+        ],
+        [
+          61,
+          39
+        ],
+        [
+          61,
+          40
+        ],
+        [
+          61,
+          41
+        ],
+        [
+          62,
+          42
+        ],
+        [
+          62,
+          43
+        ],
+        [
+          63,
+          44
+        ],
+        [
+          63,
+          45
+        ],
+        [
+          63,
+          45
+        ],
+        [
+          64,
+          46
+        ],
+        [
+          64,
+          47
+        ],
+        [
+          65,
+          48
+        ],
+        [
+          65,
+          49
+        ],
+        [
+          66,
+          50
+        ],
+        [
+          66,
+          51
+        ],
+        [
+          67,
+          52
+        ],
+        [
+          68,
+          53
+        ],
+        [
+          68,
+          54
+        ],
+        [
+          69,
+          55
+        ],
+        [
+          69,
+          56
+        ],
+        [
+          70,
+          57
+        ],
+        [
+          70,
+          58
+        ],
+        [
+          71,
+          59
+        ],
+        [
+          71,
+          60
+        ],
+        [
+          72,
+          61
+        ],
+        [
+          73,
+          62
+        ],
+        [
+          73,
+          63
+        ],
+        [
+          74,
+          64
+        ],
+        [
+          74,
+          65
+        ],
+        [
+          75,
+          66
+        ],
+        [
+          75,
+          67
+        ],
+        [
+          76,
+          68
+        ]
+      ]
+    },
+    {
+      "phase": "thread_taut",
+      "skull_offset_from_ground": [
+        0,
+        0
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ],
+        [
+          54,
+          21
+        ],
+        [
+          54,
+          22
+        ],
+        [
+          55,
+          23
+        ],
+        [
+          55,
+          24
+        ],
+        [
+          56,
+          25
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          27
+        ],
+        [
+          57,
+          28
+        ],
+        [
+          58,
+          29
+        ],
+        [
+          58,
+          30
+        ],
+        [
+          59,
+          31
+        ],
+        [
+          59,
+          32
+        ],
+        [
+          60,
+          33
+        ],
+        [
+          60,
+          34
+        ],
+        [
+          61,
+          35
+        ],
+        [
+          61,
+          36
+        ],
+        [
+          61,
+          37
+        ],
+        [
+          62,
+          38
+        ],
+        [
+          62,
+          39
+        ],
+        [
+          63,
+          40
+        ],
+        [
+          63,
+          41
+        ],
+        [
+          64,
+          42
+        ],
+        [
+          64,
+          43
+        ],
+        [
+          65,
+          44
+        ],
+        [
+          65,
+          45
+        ],
+        [
+          66,
+          46
+        ],
+        [
+          66,
+          47
+        ],
+        [
+          67,
+          48
+        ],
+        [
+          67,
+          49
+        ],
+        [
+          68,
+          50
+        ],
+        [
+          68,
+          51
+        ],
+        [
+          68,
+          52
+        ],
+        [
+          69,
+          53
+        ],
+        [
+          69,
+          54
+        ],
+        [
+          70,
+          55
+        ],
+        [
+          70,
+          56
+        ],
+        [
+          71,
+          57
+        ],
+        [
+          71,
+          58
+        ],
+        [
+          72,
+          59
+        ],
+        [
+          72,
+          60
+        ],
+        [
+          73,
+          61
+        ],
+        [
+          73,
+          62
+        ],
+        [
+          74,
+          63
+        ],
+        [
+          74,
+          64
+        ],
+        [
+          75,
+          65
+        ],
+        [
+          75,
+          66
+        ],
+        [
+          76,
+          67
+        ],
+        [
+          76,
+          68
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        76,
+        68
+      ]
+    },
+    {
+      "phase": "ground_drag",
+      "skull_offset_from_ground": [
+        -3,
+        0
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ],
+        [
+          54,
+          21
+        ],
+        [
+          54,
+          22
+        ],
+        [
+          55,
+          23
+        ],
+        [
+          55,
+          24
+        ],
+        [
+          55,
+          25
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          56,
+          27
+        ],
+        [
+          57,
+          28
+        ],
+        [
+          57,
+          29
+        ],
+        [
+          57,
+          30
+        ],
+        [
+          58,
+          31
+        ],
+        [
+          58,
+          32
+        ],
+        [
+          59,
+          33
+        ],
+        [
+          59,
+          34
+        ],
+        [
+          60,
+          35
+        ],
+        [
+          60,
+          36
+        ],
+        [
+          60,
+          37
+        ],
+        [
+          61,
+          38
+        ],
+        [
+          61,
+          39
+        ],
+        [
+          62,
+          40
+        ],
+        [
+          62,
+          41
+        ],
+        [
+          62,
+          42
+        ],
+        [
+          63,
+          43
+        ],
+        [
+          63,
+          44
+        ],
+        [
+          64,
+          45
+        ],
+        [
+          64,
+          46
+        ],
+        [
+          64,
+          47
+        ],
+        [
+          65,
+          48
+        ],
+        [
+          65,
+          49
+        ],
+        [
+          66,
+          50
+        ],
+        [
+          66,
+          51
+        ],
+        [
+          66,
+          52
+        ],
+        [
+          67,
+          53
+        ],
+        [
+          67,
+          54
+        ],
+        [
+          68,
+          55
+        ],
+        [
+          68,
+          56
+        ],
+        [
+          69,
+          57
+        ],
+        [
+          69,
+          58
+        ],
+        [
+          69,
+          59
+        ],
+        [
+          70,
+          60
+        ],
+        [
+          70,
+          61
+        ],
+        [
+          71,
+          62
+        ],
+        [
+          71,
+          63
+        ],
+        [
+          71,
+          64
+        ],
+        [
+          72,
+          65
+        ],
+        [
+          72,
+          66
+        ],
+        [
+          73,
+          67
+        ],
+        [
+          73,
+          68
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        73,
+        68
+      ]
+    },
+    {
+      "phase": "ground_drag",
+      "skull_offset_from_ground": [
+        -6,
+        -1
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ],
+        [
+          54,
+          21
+        ],
+        [
+          54,
+          22
+        ],
+        [
+          54,
+          23
+        ],
+        [
+          55,
+          24
+        ],
+        [
+          55,
+          25
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          27
+        ],
+        [
+          56,
+          28
+        ],
+        [
+          57,
+          29
+        ],
+        [
+          57,
+          30
+        ],
+        [
+          57,
+          31
+        ],
+        [
+          58,
+          32
+        ],
+        [
+          58,
+          33
+        ],
+        [
+          58,
+          34
+        ],
+        [
+          59,
+          35
+        ],
+        [
+          59,
+          36
+        ],
+        [
+          59,
+          37
+        ],
+        [
+          60,
+          38
+        ],
+        [
+          60,
+          39
+        ],
+        [
+          60,
+          40
+        ],
+        [
+          61,
+          41
+        ],
+        [
+          61,
+          42
+        ],
+        [
+          62,
+          43
+        ],
+        [
+          62,
+          44
+        ],
+        [
+          62,
+          45
+        ],
+        [
+          63,
+          46
+        ],
+        [
+          63,
+          47
+        ],
+        [
+          63,
+          48
+        ],
+        [
+          64,
+          49
+        ],
+        [
+          64,
+          50
+        ],
+        [
+          64,
+          51
+        ],
+        [
+          65,
+          52
+        ],
+        [
+          65,
+          53
+        ],
+        [
+          65,
+          54
+        ],
+        [
+          66,
+          55
+        ],
+        [
+          66,
+          56
+        ],
+        [
+          66,
+          57
+        ],
+        [
+          67,
+          58
+        ],
+        [
+          67,
+          59
+        ],
+        [
+          68,
+          60
+        ],
+        [
+          68,
+          61
+        ],
+        [
+          68,
+          62
+        ],
+        [
+          69,
+          63
+        ],
+        [
+          69,
+          64
+        ],
+        [
+          69,
+          65
+        ],
+        [
+          70,
+          66
+        ],
+        [
+          70,
+          67
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        70,
+        67
+      ]
+    },
+    {
+      "phase": "lift",
+      "skull_offset_from_ground": [
+        -8,
+        -11
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ],
+        [
+          54,
+          21
+        ],
+        [
+          54,
+          22
+        ],
+        [
+          55,
+          23
+        ],
+        [
+          55,
+          24
+        ],
+        [
+          55,
+          25
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          56,
+          27
+        ],
+        [
+          57,
+          28
+        ],
+        [
+          57,
+          29
+        ],
+        [
+          57,
+          30
+        ],
+        [
+          58,
+          31
+        ],
+        [
+          58,
+          32
+        ],
+        [
+          59,
+          33
+        ],
+        [
+          59,
+          34
+        ],
+        [
+          59,
+          35
+        ],
+        [
+          60,
+          36
+        ],
+        [
+          60,
+          37
+        ],
+        [
+          61,
+          38
+        ],
+        [
+          61,
+          39
+        ],
+        [
+          61,
+          40
+        ],
+        [
+          62,
+          41
+        ],
+        [
+          62,
+          42
+        ],
+        [
+          62,
+          43
+        ],
+        [
+          63,
+          44
+        ],
+        [
+          63,
+          45
+        ],
+        [
+          64,
+          46
+        ],
+        [
+          64,
+          47
+        ],
+        [
+          64,
+          48
+        ],
+        [
+          65,
+          49
+        ],
+        [
+          65,
+          50
+        ],
+        [
+          66,
+          51
+        ],
+        [
+          66,
+          52
+        ],
+        [
+          66,
+          53
+        ],
+        [
+          67,
+          54
+        ],
+        [
+          67,
+          55
+        ],
+        [
+          68,
+          56
+        ],
+        [
+          68,
+          57
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        68,
+        57
+      ]
+    },
+    {
+      "phase": "hanging_sway_left",
+      "skull_offset_from_ground": [
+        -14,
+        -25
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ],
+        [
+          54,
+          21
+        ],
+        [
+          54,
+          22
+        ],
+        [
+          55,
+          23
+        ],
+        [
+          55,
+          24
+        ],
+        [
+          55,
+          25
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          56,
+          27
+        ],
+        [
+          56,
+          28
+        ],
+        [
+          57,
+          29
+        ],
+        [
+          57,
+          30
+        ],
+        [
+          58,
+          31
+        ],
+        [
+          58,
+          32
+        ],
+        [
+          58,
+          33
+        ],
+        [
+          59,
+          34
+        ],
+        [
+          59,
+          35
+        ],
+        [
+          59,
+          36
+        ],
+        [
+          60,
+          37
+        ],
+        [
+          60,
+          38
+        ],
+        [
+          61,
+          39
+        ],
+        [
+          61,
+          40
+        ],
+        [
+          61,
+          41
+        ],
+        [
+          62,
+          42
+        ],
+        [
+          62,
+          43
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        62,
+        43
+      ]
+    },
+    {
+      "phase": "hanging_sway_right",
+      "skull_offset_from_ground": [
+        -12,
+        -38
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          54,
+          20
+        ],
+        [
+          55,
+          21
+        ],
+        [
+          56,
+          22
+        ],
+        [
+          57,
+          23
+        ],
+        [
+          58,
+          24
+        ],
+        [
+          59,
+          25
+        ],
+        [
+          60,
+          26
+        ],
+        [
+          61,
+          27
+        ],
+        [
+          62,
+          28
+        ],
+        [
+          63,
+          29
+        ],
+        [
+          64,
+          30
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        64,
+        30
+      ]
+    },
+    {
+      "phase": "thread_reel_in",
+      "skull_offset_from_ground": [
+        -19,
+        -54
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          54,
+          18
+        ],
+        [
+          55,
+          17
+        ],
+        [
+          55,
+          16
+        ],
+        [
+          56,
+          15
+        ],
+        [
+          57,
+          14
+        ]
+      ],
+      "neck_anchor": [
+        53,
+        19
+      ],
+      "skull_attachment": [
+        57,
+        14
+      ]
+    },
+    {
+      "phase": "snap_60ms",
+      "head_offset": [
+        3,
+        1
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          54,
+          18
+        ],
+        [
+          55,
+          18
+        ]
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ]
+    },
+    {
+      "phase": "thread_retract",
+      "head_offset": [
+        2,
+        2
+      ],
+      "thread_path": [
+        [
+          53,
+          19
+        ],
+        [
+          53,
+          20
+        ]
+      ],
+      "thread_rgb": [
+        19,
+        10,
+        2
+      ]
+    },
+    {
+      "phase": "settling",
+      "upper_x": 2,
+      "hip_x": 1,
+      "knee_out": 2,
+      "head_offset": [
+        2,
+        2
+      ],
+      "thread_gone": true
+    },
+    {
+      "phase": "settling",
+      "upper_x": 1,
+      "hip_x": 1,
+      "knee_out": 2,
+      "head_offset": [
+        2,
+        2
+      ],
+      "thread_gone": true
+    },
+    {
+      "phase": "settling",
+      "upper_x": 0,
+      "hip_x": 1,
+      "knee_out": 2,
+      "head_offset": [
+        1,
+        2
+      ],
+      "thread_gone": true
+    },
+    {
+      "phase": "settling",
+      "upper_x": 0,
+      "hip_x": 0,
+      "knee_out": 1,
+      "head_offset": [
+        0,
+        1
+      ],
+      "thread_gone": true
+    },
+    {
+      "phase": "settling",
+      "upper_only_y_offset": 1,
+      "thread_gone": true
+    },
+    {
+      "phase": "settled",
+      "exact_standard_front": true,
+      "thread_gone": true
+    }
+  ]
+}

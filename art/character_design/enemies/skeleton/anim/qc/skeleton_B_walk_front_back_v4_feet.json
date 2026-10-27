@@ -1,0 +1,670 @@
+{
+  "front": [
+    {
+      "frame": 1,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 1,
+          "actual_foot_lowest_y": 94,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "cloth_lag_source_frame": 8
+    },
+    {
+      "frame": 2,
+      "pelvis_offset": [
+        1,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 5,
+          "actual_foot_lowest_y": 90,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "cloth_lag_source_frame": 1
+    },
+    {
+      "frame": 3,
+      "pelvis_offset": [
+        1,
+        2
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 6,
+          "actual_foot_lowest_y": 89,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "cloth_lag_source_frame": 2
+    },
+    {
+      "frame": 4,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 3,
+          "actual_foot_lowest_y": 92,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "cloth_lag_source_frame": 3
+    },
+    {
+      "frame": 5,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 1,
+          "actual_foot_lowest_y": 94,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "cloth_lag_source_frame": 4
+    },
+    {
+      "frame": 6,
+      "pelvis_offset": [
+        -1,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 5,
+          "actual_foot_lowest_y": 90,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "cloth_lag_source_frame": 5
+    },
+    {
+      "frame": 7,
+      "pelvis_offset": [
+        -1,
+        2
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 6,
+          "actual_foot_lowest_y": 89,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "cloth_lag_source_frame": 6
+    },
+    {
+      "frame": 8,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 3,
+          "actual_foot_lowest_y": 92,
+          "bottom_sole_x": [
+            33,
+            34,
+            35,
+            36,
+            38,
+            39
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            56,
+            57,
+            59,
+            60,
+            61,
+            62
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "cloth_lag_source_frame": 7
+    }
+  ],
+  "back": [
+    {
+      "frame": 1,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 1,
+          "actual_foot_lowest_y": 94,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "cloth_lag_source_frame": 8
+    },
+    {
+      "frame": 2,
+      "pelvis_offset": [
+        1,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 5,
+          "actual_foot_lowest_y": 90,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "cloth_lag_source_frame": 1
+    },
+    {
+      "frame": 3,
+      "pelvis_offset": [
+        1,
+        2
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 6,
+          "actual_foot_lowest_y": 89,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        2
+      ],
+      "cloth_lag_source_frame": 2
+    },
+    {
+      "frame": 4,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 3,
+          "actual_foot_lowest_y": 92,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        0,
+        1
+      ],
+      "cloth_lag_source_frame": 3
+    },
+    {
+      "frame": 5,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 1,
+          "actual_foot_lowest_y": 94,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "cloth_lag_source_frame": 4
+    },
+    {
+      "frame": 6,
+      "pelvis_offset": [
+        -1,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 5,
+          "actual_foot_lowest_y": 90,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "cloth_lag_source_frame": 5
+    },
+    {
+      "frame": 7,
+      "pelvis_offset": [
+        -1,
+        2
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 6,
+          "actual_foot_lowest_y": 89,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        2,
+        0
+      ],
+      "cloth_lag_source_frame": 6
+    },
+    {
+      "frame": 8,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "feet": [
+        {
+          "side": "screen_left",
+          "lift_px": 3,
+          "actual_foot_lowest_y": 92,
+          "bottom_sole_x": [
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "all_actual_sole_pixels_present": true
+        },
+        {
+          "side": "screen_right",
+          "lift_px": 0,
+          "actual_foot_lowest_y": 95,
+          "bottom_sole_x": [
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "all_actual_sole_pixels_present": true
+        }
+      ],
+      "knee_outward_px": [
+        1,
+        0
+      ],
+      "cloth_lag_source_frame": 7
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "left": [
+    {
+      "frame": 1,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 2,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 3,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 4,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 5,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 6,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 7,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 8,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    }
+  ],
+  "right": [
+    {
+      "frame": 1,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 2,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 3,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 4,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 5,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 6,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 7,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    },
+    {
+      "frame": 8,
+      "whole_arm_alpha_masks_present_at_exact_integer_offsets": true,
+      "all_pixels_outside_arm_edit_envelope_rgba_exact_v3": true,
+      "all_pixels_y61_95_rgba_exact_v3": true,
+      "thorax_core_rgba_exact_v3": true,
+      "arm_color_calibrated_only_inside_new_arm_mask": true
+    }
+  ]
+}

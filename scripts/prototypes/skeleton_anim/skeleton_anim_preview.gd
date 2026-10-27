@@ -3,7 +3,7 @@ extends Node
 ## 左上一只按 50 px/秒 绕着一圈走（右 → 下 → 左 → 上，四个方向的行走都会出现，到拐角站一下待机）；
 ## 中间一排四只站着待机（正 / 背 / 左 / 右），按 H 一起受击；
 ## 右下一只按空格散架 → 骨堆待机 → 重组 → 站回待机。主角站在旁边作比例参照。
-## 有返修版（`_v3` / `_v2`）的动画默认播最新一版，V 切回最初版对比；待机各自从随机位置开始，几只不会一起动。
+## 有返修版（`_v2`、`_v3`……）的动画默认播最新一版，V 切回最初版对比；待机各自从随机位置开始，几只不会一起动。
 ## 按键：空格 散架 / 重组 · H 受击 · V 新版 / 最初版 · T 开关游戏整体色调 · F 全屏
 ## 截图：Godot --path . res://scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn -- --capture=<目录>
 
@@ -103,18 +103,19 @@ func _actor(at: Vector2, anim: String) -> Node2D:
 	return root
 
 
-## Plays the newest returned version of anim (_v3, then _v2) unless V has switched back to the first set.
+## Plays the newest returned version of anim (the highest _vN) unless V has switched back to the first set.
 func _play(strip: SpriteStrip, anim: String) -> void:
 	if _use_v2:
-		for suffix in ["_v3", "_v2"]:
-			if _keys.has(anim + suffix):
-				strip.load_strip(ANIM, anim + suffix)
+		for n in range(9, 1, -1):
+			if _keys.has("%s_v%d" % [anim, n]):
+				strip.load_strip(ANIM, "%s_v%d" % [anim, n])
 				return
 	strip.load_strip(ANIM, anim)
 
 
 func _base(anim: String) -> String:
-	return anim.trim_suffix("_v2").trim_suffix("_v3")
+	var cut := anim.rfind("_v")
+	return anim.left(cut) if cut > 0 and anim.substr(cut + 2).is_valid_int() else anim
 
 
 func _update_label() -> void:

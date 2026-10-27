@@ -1,0 +1,185 @@
+{
+  "skeleton_B_walk_left_v4": {
+    "frames": 8,
+    "duration_ms": 800,
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "arm_shape_sources_constant_rigid_translation": true,
+    "lower_y61_to95_rgba_exact_v3": true,
+    "support_feet_ground_positions_exact_v3": true,
+    "cloth_outside_arm_occlusion_unchanged": true,
+    "chest_core_rgba_exact_v3": true
+  },
+  "skeleton_B_walk_right_v4": {
+    "frames": 8,
+    "duration_ms": 800,
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "arm_shape_sources_constant_rigid_translation": true,
+    "lower_y61_to95_rgba_exact_v3": true,
+    "support_feet_ground_positions_exact_v3": true,
+    "cloth_outside_arm_occlusion_unchanged": true,
+    "chest_core_rgba_exact_v3": true
+  },
+  "skeleton_B_walk_front_v4": {
+    "frames": 8,
+    "duration_ms": 800,
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "actual_raised_foot_peak_6px": true,
+    "at_least_one_actual_support_sole_at_y95_every_frame": true,
+    "in_place_no_vertical_foot_lock": true
+  },
+  "skeleton_B_walk_back_v4": {
+    "frames": 8,
+    "duration_ms": 800,
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "actual_raised_foot_peak_6px": true,
+    "at_least_one_actual_support_sole_at_y95_every_frame": true,
+    "in_place_no_vertical_foot_lock": true
+  },
+  "skeleton_B_reassemble_front_v4": {
+    "frames": 42,
+    "duration_ms": 4880,
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "first_exact_padded_remains": true,
+    "last_exact_front_standard": true,
+    "every_adjacent_rgba_change_at_most_1000": true,
+    "adjacent_rgba_changed_pixels": [
+      450,
+      542,
+      587,
+      412,
+      252,
+      443,
+      114,
+      354,
+      178,
+      418,
+      349,
+      515,
+      643,
+      619,
+      744,
+      696,
+      915,
+      662,
+      912,
+      779,
+      912,
+      811,
+      868,
+      818,
+      883,
+      877,
+      78,
+      463,
+      456,
+      554,
+      604,
+      559,
+      618,
+      567,
+      174,
+      2,
+      732,
+      890,
+      721,
+      404,
+      964
+    ],
+    "thread_checks": [
+      {
+        "frame": 27,
+        "phase": "headless_pause",
+        "color": "#130A02",
+        "path_pixels": 50,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 28,
+        "phase": "thread_taut",
+        "color": "#130A02",
+        "path_pixels": 50,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 29,
+        "phase": "ground_drag",
+        "color": "#130A02",
+        "path_pixels": 50,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 30,
+        "phase": "ground_drag",
+        "color": "#130A02",
+        "path_pixels": 49,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 31,
+        "phase": "lift",
+        "color": "#130A02",
+        "path_pixels": 39,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 32,
+        "phase": "hanging_sway_left",
+        "color": "#130A02",
+        "path_pixels": 25,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 33,
+        "phase": "hanging_sway_right",
+        "color": "#130A02",
+        "path_pixels": 12,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 34,
+        "phase": "thread_reel_in",
+        "color": "#130A02",
+        "path_pixels": 6,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 35,
+        "phase": "snap_60ms",
+        "color": "#130A02",
+        "path_pixels": 3,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      },
+      {
+        "frame": 36,
+        "phase": "thread_retract",
+        "color": "#130A02",
+        "path_pixels": 2,
+        "all_pixels_opaque_and_exact_seam_color": true,
+        "path_8_connected": true
+      }
+    ],
+    "all_non_snap_frames_at_least80ms": true
+  },
+  "_old_files": {
+    "protected_count": 1243,
+    "all_existing_files_unchanged_before_publication": true
+  },
+  "_publication": {
+    "old_file_count": 1243,
+    "only_existing_file_changed": "anim/timing.json",
+    "all_old31_animation_entries_unchanged": true,
+    "all_other_prior_files_unchanged": true,
+    "timing_backup_matches_original": true,
+    "new_actions": 5,
+    "new_frames": 74
+  }
+}
