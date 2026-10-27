@@ -1,0 +1,355 @@
+{
+  "source": "skeleton_B_right.png only; no previous walking PNG or frames may be read",
+  "rigid_parts": [
+    "head",
+    "thorax_with_shroud_and_pins",
+    "pelvis_with_waist_cord"
+  ],
+  "render_order": [
+    "far_left_leg_and_its_cloth",
+    "near_right_bare_leg",
+    "pelvis",
+    "flexible_waist_tie",
+    "thorax",
+    "hidden_far_arm",
+    "visible_near_arm",
+    "head"
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 59,
+      "far_toe_x": 49,
+      "near_lift": 0,
+      "far_lift": 1,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        1,
+        1
+      ],
+      "head_offset": [
+        1,
+        0
+      ],
+      "near_arm_swing": -1,
+      "near_hand_target": [
+        40,
+        54
+      ],
+      "far_hand_target": [
+        50,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 8
+    },
+    {
+      "frame": 2,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 54,
+      "far_toe_x": 54,
+      "near_lift": 0,
+      "far_lift": 2,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "chest_offset": [
+        0,
+        2
+      ],
+      "head_offset": [
+        1,
+        1
+      ],
+      "near_arm_swing": 1,
+      "near_hand_target": [
+        41,
+        55
+      ],
+      "far_hand_target": [
+        47,
+        53
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 1
+    },
+    {
+      "frame": 3,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 49,
+      "far_toe_x": 59,
+      "near_lift": 0,
+      "far_lift": 3,
+      "pelvis_offset": [
+        1,
+        0
+      ],
+      "chest_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        2
+      ],
+      "near_arm_swing": 2,
+      "near_hand_target": [
+        42,
+        54
+      ],
+      "far_hand_target": [
+        46,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 2
+    },
+    {
+      "frame": 4,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 44,
+      "far_toe_x": 64,
+      "near_lift": 0,
+      "far_lift": 1,
+      "pelvis_offset": [
+        1,
+        1
+      ],
+      "chest_offset": [
+        1,
+        0
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": 1,
+      "near_hand_target": [
+        42,
+        53
+      ],
+      "far_hand_target": [
+        48,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 3
+    },
+    {
+      "frame": 5,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 44,
+      "far_toe_x": 64,
+      "near_lift": 1,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        1,
+        1
+      ],
+      "head_offset": [
+        1,
+        0
+      ],
+      "near_arm_swing": 0,
+      "near_hand_target": [
+        41,
+        54
+      ],
+      "far_hand_target": [
+        49,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 4
+    },
+    {
+      "frame": 6,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 49,
+      "far_toe_x": 59,
+      "near_lift": 2,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "chest_offset": [
+        0,
+        2
+      ],
+      "head_offset": [
+        1,
+        1
+      ],
+      "near_arm_swing": -2,
+      "near_hand_target": [
+        38,
+        55
+      ],
+      "far_hand_target": [
+        50,
+        53
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 5
+    },
+    {
+      "frame": 7,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 54,
+      "far_toe_x": 54,
+      "near_lift": 4,
+      "far_lift": 0,
+      "pelvis_offset": [
+        1,
+        0
+      ],
+      "chest_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        2
+      ],
+      "near_arm_swing": -3,
+      "near_hand_target": [
+        37,
+        54
+      ],
+      "far_hand_target": [
+        51,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 6
+    },
+    {
+      "frame": 8,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 59,
+      "far_toe_x": 49,
+      "near_lift": 2,
+      "far_lift": 0,
+      "pelvis_offset": [
+        1,
+        1
+      ],
+      "chest_offset": [
+        1,
+        0
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": -1,
+      "near_hand_target": [
+        40,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 7
+    }
+  ],
+  "start": {
+    "frames": 3,
+    "durations_ms": [
+      100,
+      100,
+      100
+    ],
+    "first": "exact standing",
+    "last": "exact walk frame1"
+  },
+  "stop": {
+    "frames": 3,
+    "durations_ms": [
+      100,
+      100,
+      100
+    ],
+    "first": "exact walk frame8",
+    "last": "exact standing"
+  },
+  "reassembly_cloth": {
+    "source_animation": "skeleton_B_reassemble_front_v4",
+    "six_cloth_states_frames": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "beats": [
+      "waist corner lifts",
+      "diagonal drag, most on floor",
+      "half over pelvis/ribs",
+      "upper edge climbs chest",
+      "tail is last to leave floor",
+      "shroud hangs loose below pins"
+    ]
+  }
+}

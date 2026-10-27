@@ -1,0 +1,22 @@
+{
+  "right": {
+    "bottom": 95,
+    "toe": 46,
+    "source_foot_box": [
+      0,
+      84,
+      48,
+      96
+    ]
+  },
+  "left": {
+    "bottom": 93,
+    "toe": 66,
+    "source_foot_box": [
+      48,
+      84,
+      76,
+      96
+    ]
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "skeleton_B_walk_right_v5": [
+    {
+      "frame": 1,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 59,
+      "far_toe_x": 49,
+      "near_lift": 0,
+      "far_lift": 1,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "near_arm_swing": -2,
+      "near_hand_target": [
+        38,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 8,
+      "cycle_index": 0,
+      "near_hand_landmark": [
+        38,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 2,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 54,
+      "far_toe_x": 54,
+      "near_lift": 0,
+      "far_lift": 2,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "near_arm_swing": -1,
+      "near_hand_target": [
+        39,
+        54
+      ],
+      "far_hand_target": [
+        49,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 1,
+      "cycle_index": 1,
+      "near_hand_landmark": [
+        39,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 3,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 49,
+      "far_toe_x": 59,
+      "near_lift": 0,
+      "far_lift": 3,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": 1,
+      "near_hand_target": [
+        41,
+        54
+      ],
+      "far_hand_target": [
+        47,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 2,
+      "cycle_index": 2,
+      "near_hand_landmark": [
+        41,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 4,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 44,
+      "far_toe_x": 64,
+      "near_lift": 0,
+      "far_lift": 1,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": 2,
+      "near_hand_target": [
+        42,
+        53
+      ],
+      "far_hand_target": [
+        46,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 3,
+      "cycle_index": 3,
+      "near_hand_landmark": [
+        42,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 5,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 44,
+      "far_toe_x": 64,
+      "near_lift": 1,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "near_arm_swing": 2,
+      "near_hand_target": [
+        42,
+        53
+      ],
+      "far_hand_target": [
+        46,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 4,
+      "cycle_index": 4,
+      "near_hand_landmark": [
+        42,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 6,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "left",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 49,
+      "far_toe_x": 59,
+      "near_lift": 2,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "near_arm_swing": 1,
+      "near_hand_target": [
+        41,
+        54
+      ],
+      "far_hand_target": [
+        47,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 5,
+      "cycle_index": 5,
+      "near_hand_landmark": [
+        41,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 7,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 54,
+      "far_toe_x": 54,
+      "near_lift": 4,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        1
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": -1,
+      "near_hand_target": [
+        39,
+        54
+      ],
+      "far_hand_target": [
+        49,
+        52
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 6,
+      "cycle_index": 6,
+      "near_hand_landmark": [
+        39,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 8,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 59,
+      "far_toe_x": 49,
+      "near_lift": 2,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": -2,
+      "near_hand_target": [
+        38,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 7,
+      "cycle_index": 7,
+      "near_hand_landmark": [
+        38,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    }
+  ],
+  "skeleton_B_walk_start_right": [
+    {
+      "exact_standard": true,
+      "near_hand_landmark": [
+        33,
+        55
+      ],
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "frame": 1,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 46,
+      "far_toe_x": 66,
+      "near_lift": 0,
+      "far_lift": 2,
+      "pelvis_offset": [
+        0,
+        1
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "near_arm_swing": 0,
+      "near_hand_target": [
+        38,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 8,
+      "cycle_index": 0,
+      "disable_hem_lag": true,
+      "arm_pose_blend": 0.5,
+      "near_hand_landmark": [
+        37,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 1,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "right",
+      "near_toe_x": 59,
+      "far_toe_x": 66,
+      "near_lift": 0,
+      "far_lift": 2,
+      "pelvis_offset": [
+        0,
+        2
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ],
+      "near_arm_swing": -2,
+      "near_hand_target": [
+        38,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 8,
+      "cycle_index": 0,
+      "disable_hem_lag": true,
+      "arm_pose_blend": 1,
+      "near_hand_landmark": [
+        38,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    }
+  ],
+  "skeleton_B_walk_stop_right": [
+    {
+      "frame": 8,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 58,
+      "far_toe_x": 49,
+      "near_lift": 1,
+      "far_lift": 0,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": -2,
+      "near_hand_target": [
+        38,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 7,
+      "cycle_index": 7,
+      "arm_pose_blend": 1,
+      "near_hand_landmark": [
+        38,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "frame": 8,
+      "near_leg": "anatomical_right_bare",
+      "far_leg": "anatomical_left_shrouded",
+      "stride_lead": "right",
+      "occlusion_front": "anatomical_right",
+      "support": "left",
+      "near_toe_x": 46,
+      "far_toe_x": 66,
+      "near_lift": 0,
+      "far_lift": 1,
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        1
+      ],
+      "near_arm_swing": 0,
+      "near_hand_target": [
+        38,
+        53
+      ],
+      "far_hand_target": [
+        50,
+        51
+      ],
+      "far_hand_occluded": true,
+      "shroud_owner": "anatomical_left_only",
+      "free_hem_lag_source_frame": 7,
+      "cycle_index": 7,
+      "arm_pose_blend": 1,
+      "endpoint_pixel_changes": [
+        922,
+        812
+      ],
+      "near_hand_landmark": [
+        40,
+        55
+      ],
+      "far_hand_visibility": "occluded; target only, no invented visible hand"
+    },
+    {
+      "exact_standard": true,
+      "near_hand_landmark": [
+        33,
+        55
+      ],
+      "pelvis_offset": [
+        0,
+        0
+      ],
+      "chest_offset": [
+        0,
+        0
+      ],
+      "head_offset": [
+        0,
+        0
+      ]
+    }
+  ]
+}

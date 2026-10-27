@@ -1,0 +1,290 @@
+[
+  {
+    "frame": 1,
+    "part": "head",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 1,
+    "part": "thorax",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 1,
+    "part": "pelvis",
+    "offset": [
+      0,
+      2
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 2,
+    "part": "head",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 2,
+    "part": "thorax",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 2,
+    "part": "pelvis",
+    "offset": [
+      0,
+      2
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 3,
+    "part": "head",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 3,
+    "part": "thorax",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 3,
+    "part": "pelvis",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 4,
+    "part": "head",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 4,
+    "part": "thorax",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 4,
+    "part": "pelvis",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 5,
+    "part": "head",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 5,
+    "part": "thorax",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 5,
+    "part": "pelvis",
+    "offset": [
+      0,
+      2
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 6,
+    "part": "head",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 6,
+    "part": "thorax",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 6,
+    "part": "pelvis",
+    "offset": [
+      0,
+      2
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 7,
+    "part": "head",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 7,
+    "part": "thorax",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 7,
+    "part": "pelvis",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 8,
+    "part": "head",
+    "offset": [
+      0,
+      1
+    ],
+    "source_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "untranslated_rgba_sha256": "5a69ce4c98f51289bd95a25f9edf534d6574e700345dd9d479ef9e8ddf0a5d92",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 8,
+    "part": "thorax",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "untranslated_rgba_sha256": "114a9c6440e03ef7f2557e1e8ee769258b76479b11afb88a252c794c7a633ef1",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  },
+  {
+    "frame": 8,
+    "part": "pelvis",
+    "offset": [
+      0,
+      0
+    ],
+    "source_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "untranslated_rgba_sha256": "4be92e8c4c70ab186d83f48900a73b0eecb9700254eceb27d516ffe88264a720",
+    "mismatch_pixels": 0,
+    "visible_pixels_match_source_rgba": true
+  }
+]

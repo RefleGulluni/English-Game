@@ -1,0 +1,177 @@
+{
+  "skeleton_B_walk_right_v5": {
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "frames": 8,
+    "duration_ms": 800,
+    "consecutive_changed_pixels": [
+      1146,
+      1107,
+      1299,
+      808,
+      1304,
+      1115,
+      1169
+    ],
+    "transitions_over1000": [
+      {
+        "from": 1,
+        "to": 2,
+        "changed_pixels": 1146
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "changed_pixels": 1107
+      },
+      {
+        "from": 3,
+        "to": 4,
+        "changed_pixels": 1299
+      },
+      {
+        "from": 5,
+        "to": 6,
+        "changed_pixels": 1304
+      },
+      {
+        "from": 6,
+        "to": 7,
+        "changed_pixels": 1115
+      },
+      {
+        "from": 7,
+        "to": 8,
+        "changed_pixels": 1169
+      }
+    ]
+  },
+  "skeleton_B_walk_start_right": {
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "frames": 3,
+    "duration_ms": 300,
+    "consecutive_changed_pixels": [
+      511,
+      879
+    ],
+    "transitions_over1000": []
+  },
+  "skeleton_B_walk_stop_right": {
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "frames": 3,
+    "duration_ms": 300,
+    "consecutive_changed_pixels": [
+      932,
+      812
+    ],
+    "transitions_over1000": []
+  },
+  "skeleton_B_reassemble_front_v5": {
+    "gif_decoded_pixels_alpha_framecount_timing_exact": true,
+    "frames": 42,
+    "duration_ms": 4880,
+    "consecutive_changed_pixels": [
+      450,
+      542,
+      587,
+      412,
+      252,
+      443,
+      114,
+      354,
+      178,
+      418,
+      349,
+      869,
+      1086,
+      949,
+      1317,
+      1327,
+      978,
+      656,
+      912,
+      779,
+      912,
+      529,
+      869,
+      818,
+      883,
+      877,
+      78,
+      463,
+      456,
+      554,
+      604,
+      559,
+      618,
+      567,
+      174,
+      2,
+      732,
+      890,
+      721,
+      404,
+      964
+    ],
+    "transitions_over1000": [
+      {
+        "from": 13,
+        "to": 14,
+        "changed_pixels": 1086
+      },
+      {
+        "from": 15,
+        "to": 16,
+        "changed_pixels": 1317
+      },
+      {
+        "from": 16,
+        "to": 17,
+        "changed_pixels": 1327
+      }
+    ]
+  },
+  "boundaries": {
+    "start_to_walk": 430,
+    "walk_loop_8_to1": 894,
+    "walk8_to_stop": 346
+  },
+  "rigid_parts": {
+    "all_24_untranslated_sets_rgba_exact": true,
+    "no_recolor_or_new_rib_pixels": true
+  },
+  "anatomy": {
+    "wide_shroud_source_is_far_left_only": true,
+    "near_right_layer_always_foreground_at_crossing": true,
+    "support_reference_pixels_actual_opaque_and_world_locked": true
+  },
+  "reassembly_preserved": {
+    "frames1_to12_and24_to42_rgba_exact_v4": true,
+    "black_thread_sequence_unchanged": true,
+    "cloth_lift_frames": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "cloth_lift_duration_ms": 600
+  },
+  "new_walk_source": {
+    "only_character_art_input": "skeleton_B_right.png",
+    "no_previous_walk_png_or_frame_read": true,
+    "pre_draw_parts_table_preserved": true
+  },
+  "old_assets": {
+    "count": 1562,
+    "all_unchanged_before_publication": true
+  },
+  "publication": {
+    "new_actions": 4,
+    "new_frames": 56,
+    "only_existing_file_modified": "anim/timing.json",
+    "backup_matches_original": true,
+    "all_old36_animation_entries_unchanged": true,
+    "all_other_prior_files_unchanged": true
+  }
+}

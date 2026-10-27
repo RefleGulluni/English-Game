@@ -1,0 +1,73 @@
+{
+  "tool": "Built-in image_gen; no API fallback",
+  "status": "STOPPED_NOT_A_DELIVERABLE_TILESET",
+  "attempts": [
+    {
+      "id": 1,
+      "raw": "01_path_atlas_generated.png",
+      "prompt": "01_path_atlas.prompt.txt",
+      "grid": "01_path_atlas_grid.json",
+      "restored": "01_path_atlas_restored_cells.png",
+      "estimated_source_cell_pitch": [
+        8.03,
+        8.03
+      ],
+      "native_size": [
+        156,
+        156
+      ]
+    },
+    {
+      "id": 2,
+      "raw": "02_path_atlas_generated.png",
+      "prompt": "02_path_atlas.prompt.txt",
+      "grid": "02_path_atlas_grid.json",
+      "restored": "02_path_atlas_restored_cells.png",
+      "estimated_source_cell_pitch": [
+        13,
+        14.7
+      ],
+      "native_size": [
+        97,
+        86
+      ]
+    },
+    {
+      "id": 3,
+      "raw": "03_path_atlas_generated.png",
+      "prompt": "03_path_atlas.prompt.txt",
+      "grid": "03_path_atlas_grid.json",
+      "restored": "03_path_atlas_restored_cells.png",
+      "estimated_source_cell_pitch": [
+        12.1,
+        12.4
+      ],
+      "native_size": [
+        104,
+        102
+      ]
+    }
+  ],
+  "generation_references": {
+    "01": [
+      "layout_guide_8x.png",
+      "../../decals/qc/decals_round3_test_area_2x.png"
+    ],
+    "02": [
+      "layout_guide_8x.png",
+      "01_path_atlas_generated.png"
+    ],
+    "03": [
+      "layout_guide_8x.png"
+    ]
+  },
+  "candidate": "01_best_native_crop_palette_preview.png",
+  "candidate_native_crop": [
+    14,
+    13,
+    142,
+    141
+  ],
+  "formal_atlas_and_full_variants_not_published": true,
+  "reference_paths_relative_to": "source/"
+}

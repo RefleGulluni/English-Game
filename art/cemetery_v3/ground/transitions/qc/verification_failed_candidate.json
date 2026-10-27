@@ -1,0 +1,973 @@
+{
+  "status": "STOPPED_NATIVE_ATLAS_CONTRACT_FAILED",
+  "native_restores": {
+    "01": [
+      156,
+      156
+    ],
+    "02": [
+      97,
+      86
+    ],
+    "03": [
+      104,
+      102
+    ]
+  },
+  "crop_feasibility": {
+    "crop": [
+      14,
+      13,
+      142,
+      141
+    ],
+    "score": [
+      0,
+      25,
+      259
+    ],
+    "bad_corner_samples": 0,
+    "transition_edges_outside_tolerance": 25,
+    "transition_edge_count": 32,
+    "worst_midpoint_error": 14,
+    "midpoint_errors": [
+      5,
+      12,
+      3,
+      6,
+      11,
+      6,
+      2,
+      7,
+      9,
+      10,
+      5,
+      2,
+      7,
+      5,
+      6,
+      1,
+      9,
+      11,
+      6,
+      4,
+      4,
+      4,
+      14,
+      14,
+      11,
+      11,
+      11,
+      11,
+      12,
+      13,
+      14,
+      13
+    ]
+  },
+  "legal_adjacency_combinations": 128,
+  "rgba_exact_pairs": 32,
+  "alpha_exact_pairs": 71,
+  "all_pairs": [
+    {
+      "a": "mmmm",
+      "b": "mmmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mmmm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mmmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mmmP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mmPm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mPmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mmPP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmm",
+      "b": "mPmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmP",
+      "b": "mPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmmP",
+      "b": "mPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmmP",
+      "b": "mmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmmP",
+      "b": "mPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmmP",
+      "b": "mmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmmP",
+      "b": "mPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmmP",
+      "b": "mPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmmP",
+      "b": "mPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "Pmmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "Pmmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "PmPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "PmmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "PmmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "PPmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "PPmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPPm",
+      "b": "PmPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "Pmmm",
+      "b": "mmmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mmmm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mmmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mmmP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mmPm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mPmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mmPP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "Pmmm",
+      "b": "mPmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPm",
+      "b": "mmmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPm",
+      "b": "mmmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPm",
+      "b": "Pmmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmPm",
+      "b": "mPmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPm",
+      "b": "PmPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmPm",
+      "b": "PmmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPm",
+      "b": "mPmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPm",
+      "b": "PmPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmP",
+      "b": "mPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmP",
+      "b": "mPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmP",
+      "b": "PmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmP",
+      "b": "mPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmP",
+      "b": "PPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmP",
+      "b": "PPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmP",
+      "b": "mPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmP",
+      "b": "PmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPP",
+      "b": "mPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPP",
+      "b": "mmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPP",
+      "b": "mmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPP",
+      "b": "mPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPP",
+      "b": "PPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPP",
+      "b": "PPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPP",
+      "b": "PPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPP",
+      "b": "PPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPP",
+      "b": "mPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmPP",
+      "b": "mmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmPP",
+      "b": "mmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmPP",
+      "b": "mPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mmPP",
+      "b": "PPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPP",
+      "b": "PPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPP",
+      "b": "PPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mmPP",
+      "b": "PPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmmP",
+      "b": "mPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmmP",
+      "b": "mPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmmP",
+      "b": "mmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmmP",
+      "b": "mPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmmP",
+      "b": "mmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmmP",
+      "b": "mPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmmP",
+      "b": "mPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmmP",
+      "b": "mPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPPP",
+      "b": "PmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPP",
+      "b": "PmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPPm",
+      "b": "Pmmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "Pmmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "PmPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "PmmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "PmmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "PPmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "PPmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPPm",
+      "b": "PmPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmm",
+      "b": "mmmm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmm",
+      "b": "mmmP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmm",
+      "b": "Pmmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmm",
+      "b": "mmPm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmm",
+      "b": "mmPP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmm",
+      "b": "PmmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "mPmm",
+      "b": "PPmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "mPmm",
+      "b": "PPmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmm",
+      "b": "mmmm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmm",
+      "b": "mmmP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmm",
+      "b": "Pmmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmm",
+      "b": "mmPm",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmm",
+      "b": "mmPP",
+      "axis": "vertical",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmm",
+      "b": "PmmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmm",
+      "b": "PPmm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmm",
+      "b": "PPmP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmP",
+      "b": "mPPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmP",
+      "b": "mPmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmP",
+      "b": "PmPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmP",
+      "b": "mPPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmP",
+      "b": "PPPP",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmP",
+      "b": "PPPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PPmP",
+      "b": "mPmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PPmP",
+      "b": "PmPm",
+      "axis": "horizontal",
+      "rgba_exact": false,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPm",
+      "b": "mmmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPm",
+      "b": "mmmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPm",
+      "b": "Pmmm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPm",
+      "b": "mPmP",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPm",
+      "b": "PmPP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPm",
+      "b": "PmmP",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    },
+    {
+      "a": "PmPm",
+      "b": "mPmm",
+      "axis": "horizontal",
+      "rgba_exact": true,
+      "alpha_exact": true
+    },
+    {
+      "a": "PmPm",
+      "b": "PmPm",
+      "axis": "vertical",
+      "rgba_exact": false,
+      "alpha_exact": false
+    }
+  ],
+  "mmmm_opaque_pixels": 0,
+  "PPPP_transparent_pixels": 0,
+  "protected274_pngs_unchanged": true,
+  "variants_not_made": "No valid master atlas; stopped before manufacturing compatible full variants."
+}

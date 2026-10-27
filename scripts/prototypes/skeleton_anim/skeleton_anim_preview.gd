@@ -12,7 +12,8 @@ const PROPS := "res://art/cemetery_v3/props/"
 const ANIM := "res://art/character_design/enemies/skeleton/anim/"
 const NATIVE := Vector2i(960, 540)
 const WALK_SPEED := 50.0
-const LOOP := [Vector2(80, 170), Vector2(360, 170), Vector2(360, 300), Vector2(80, 300)] # 绕圈的四个拐角
+## 绕圈的四个拐角。向右那段 280 px = 7 个完整步子（每步 8 帧 × 5 px），走到拐角时正好踩完第 8 帧，能直接接停步。
+const LOOP := [Vector2(80, 170), Vector2(360, 170), Vector2(360, 300), Vector2(80, 300)]
 const PAUSE := 1.0 # 每个拐角站一下，看待机和走 / 停的衔接
 const DIRS := ["front", "back", "left", "right"]
 const REMAINS_TIME := 3.0
@@ -32,6 +33,7 @@ var _walker: Node2D
 var _walk_strip: SpriteStrip
 var _leg := 0
 var _pause := 0.0
+var _stepping := false # 起步 / 停步正在播，期间原地不动
 var _standing: Array[SpriteStrip] = []
 var _faller: SpriteStrip
 var _label: Label
@@ -64,8 +66,9 @@ func _ready() -> void:
 	hero.face_direction(Vector2.RIGHT)
 	_room.player = hero
 
-	_walker = _actor(LOOP[0], "skeleton_B_walk_right")
+	_walker = _actor(LOOP[0], "skeleton_B_idle_right")
 	_walk_strip = _walker.get_node("Strip")
+	_walk_strip.finished.connect(_walker_next)
 	for i in DIRS.size():
 		var strip: SpriteStrip = _actor(Vector2(520 + i * 100, 330), "skeleton_B_idle_" + DIRS[i]).get_node("Strip")
 		strip.finished.connect(func(): _play(strip, "skeleton_B_idle_" + DIRS[i]))
@@ -128,13 +131,39 @@ func _process(delta: float) -> void:
 	if _pause > 0.0:
 		_pause -= delta
 		return
+	if _stepping:
+		return
 	if _base(_walk_strip.current) != "skeleton_B_walk_" + dir:
+		if _has_step("start", dir) and _base(_walk_strip.current).begins_with("skeleton_B_idle_"):
+			_stepping = true
+			_play(_walk_strip, "skeleton_B_walk_start_" + dir)
+			return
 		_play(_walk_strip, "skeleton_B_walk_" + dir)
 	_walker.position = _walker.position.move_toward(target, WALK_SPEED * delta)
 	if _walker.position == target:
 		_leg = (_leg + 1) % LOOP.size()
+		if _has_step("stop", dir):
+			_stepping = true
+			_play(_walk_strip, "skeleton_B_walk_stop_" + dir)
+		else:
+			_pause = PAUSE
+			_play(_walk_strip, "skeleton_B_idle_" + dir)
+
+
+## A start / stop step exists for this direction (and V hasn't switched back to the first set).
+func _has_step(kind: String, dir: String) -> bool:
+	return _use_v2 and _keys.has("skeleton_B_walk_%s_%s" % [kind, dir])
+
+
+## start → walk; stop → idle and the corner pause.
+func _walker_next() -> void:
+	var anim := _base(_walk_strip.current)
+	_stepping = false
+	if anim.begins_with("skeleton_B_walk_start_"):
+		_play(_walk_strip, "skeleton_B_walk_" + anim.trim_prefix("skeleton_B_walk_start_"))
+	elif anim.begins_with("skeleton_B_walk_stop_"):
 		_pause = PAUSE
-		_play(_walk_strip, "skeleton_B_idle_" + dir)
+		_play(_walk_strip, "skeleton_B_idle_" + anim.trim_prefix("skeleton_B_walk_stop_"))
 
 
 func _dir_name(v: Vector2) -> String:

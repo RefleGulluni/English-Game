@@ -1,0 +1,51 @@
+{
+  "crop": [
+    14,
+    13,
+    142,
+    141
+  ],
+  "score": [
+    0,
+    25,
+    259
+  ],
+  "bad_corner_samples": 0,
+  "transition_edges_outside_tolerance": 25,
+  "transition_edge_count": 32,
+  "worst_midpoint_error": 14,
+  "midpoint_errors": [
+    5,
+    12,
+    3,
+    6,
+    11,
+    6,
+    2,
+    7,
+    9,
+    10,
+    5,
+    2,
+    7,
+    5,
+    6,
+    1,
+    9,
+    11,
+    6,
+    4,
+    4,
+    4,
+    14,
+    14,
+    11,
+    11,
+    11,
+    11,
+    12,
+    13,
+    14,
+    13
+  ]
+}

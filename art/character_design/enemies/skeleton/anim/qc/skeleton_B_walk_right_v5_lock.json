@@ -1,0 +1,346 @@
+[
+  {
+    "frame": 1,
+    "support_anatomical_leg": "right",
+    "local": [
+      59,
+      95
+    ],
+    "world_translation": [
+      0,
+      0
+    ],
+    "world": [
+      59,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "entire_world_sole_x": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 2,
+    "support_anatomical_leg": "right",
+    "local": [
+      54,
+      95
+    ],
+    "world_translation": [
+      5,
+      0
+    ],
+    "world": [
+      59,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ],
+    "entire_world_sole_x": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 3,
+    "support_anatomical_leg": "right",
+    "local": [
+      49,
+      95
+    ],
+    "world_translation": [
+      10,
+      0
+    ],
+    "world": [
+      59,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "entire_world_sole_x": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 4,
+    "support_anatomical_leg": "right",
+    "local": [
+      44,
+      95
+    ],
+    "world_translation": [
+      15,
+      0
+    ],
+    "world": [
+      59,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "entire_world_sole_x": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 5,
+    "support_anatomical_leg": "left",
+    "local": [
+      64,
+      95
+    ],
+    "world_translation": [
+      20,
+      0
+    ],
+    "world": [
+      84,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "entire_world_sole_x": [
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 6,
+    "support_anatomical_leg": "left",
+    "local": [
+      59,
+      95
+    ],
+    "world_translation": [
+      25,
+      0
+    ],
+    "world": [
+      84,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "entire_world_sole_x": [
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 7,
+    "support_anatomical_leg": "left",
+    "local": [
+      54,
+      95
+    ],
+    "world_translation": [
+      30,
+      0
+    ],
+    "world": [
+      84,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ],
+    "entire_world_sole_x": [
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "whole_sole_opaque": true
+  },
+  {
+    "frame": 8,
+    "support_anatomical_leg": "left",
+    "local": [
+      49,
+      95
+    ],
+    "world_translation": [
+      35,
+      0
+    ],
+    "world": [
+      84,
+      95
+    ],
+    "shroud_anatomical_owner": "left",
+    "foreground_occluder": "right",
+    "entire_actual_sole_x": [
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "entire_world_sole_x": [
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "whole_sole_opaque": true
+  }
+]

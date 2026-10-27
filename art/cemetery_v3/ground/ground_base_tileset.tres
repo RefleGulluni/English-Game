@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" format=3]
+
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/base/ground_base_01.png" id="1_eliah"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/base/ground_base_02.png" id="2_l1l2x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbil2"]
+texture = ExtResource("1_eliah")
+texture_region_size = Vector2i(224, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kij8g"]
+texture = ExtResource("2_l1l2x")
+texture_region_size = Vector2i(224, 128)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(224, 128)
+sources/0 = SubResource("TileSetAtlasSource_dbil2")
+sources/1 = SubResource("TileSetAtlasSource_kij8g")

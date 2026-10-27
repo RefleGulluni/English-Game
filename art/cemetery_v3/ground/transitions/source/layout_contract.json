@@ -1,0 +1,160 @@
+{
+  "tile_size": 32,
+  "atlas_size": [
+    128,
+    128
+  ],
+  "corner_order": [
+    "tl",
+    "tr",
+    "bl",
+    "br"
+  ],
+  "tiles": [
+    {
+      "x": 0,
+      "y": 0,
+      "tl": "m",
+      "tr": "m",
+      "bl": "m",
+      "br": "m",
+      "code": "mmmm"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "tl": "m",
+      "tr": "m",
+      "bl": "m",
+      "br": "P",
+      "code": "mmmP"
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "tl": "m",
+      "tr": "P",
+      "bl": "P",
+      "br": "m",
+      "code": "mPPm"
+    },
+    {
+      "x": 3,
+      "y": 0,
+      "tl": "P",
+      "tr": "m",
+      "bl": "m",
+      "br": "m",
+      "code": "Pmmm"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "tl": "m",
+      "tr": "m",
+      "bl": "P",
+      "br": "m",
+      "code": "mmPm"
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "tl": "m",
+      "tr": "P",
+      "bl": "m",
+      "br": "P",
+      "code": "mPmP"
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "tl": "P",
+      "tr": "m",
+      "bl": "P",
+      "br": "P",
+      "code": "PmPP"
+    },
+    {
+      "x": 3,
+      "y": 1,
+      "tl": "m",
+      "tr": "m",
+      "bl": "P",
+      "br": "P",
+      "code": "mmPP"
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "tl": "P",
+      "tr": "m",
+      "bl": "m",
+      "br": "P",
+      "code": "PmmP"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "tl": "m",
+      "tr": "P",
+      "bl": "P",
+      "br": "P",
+      "code": "mPPP"
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "tl": "P",
+      "tr": "P",
+      "bl": "P",
+      "br": "P",
+      "code": "PPPP"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "tl": "P",
+      "tr": "P",
+      "bl": "P",
+      "br": "m",
+      "code": "PPPm"
+    },
+    {
+      "x": 0,
+      "y": 3,
+      "tl": "m",
+      "tr": "P",
+      "bl": "m",
+      "br": "m",
+      "code": "mPmm"
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "tl": "P",
+      "tr": "P",
+      "bl": "m",
+      "br": "m",
+      "code": "PPmm"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "tl": "P",
+      "tr": "P",
+      "bl": "m",
+      "br": "P",
+      "code": "PPmP"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "tl": "P",
+      "tr": "m",
+      "bl": "P",
+      "br": "m",
+      "code": "PmPm"
+    }
+  ],
+  "guide_source": "docs/reference/ground_path_corners_layout_tiled.png, first quadrant, one center sample per2px guide cell; guide geometry only, not artwork."
+}

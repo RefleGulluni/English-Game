@@ -29,15 +29,18 @@ func _init(room_layout: Dictionary) -> void:
 	_rng.seed = int(layout.get("seed", 1))
 	prop_dir = str(layout.get("prop_dir", ART + "props/"))
 	size = layout.get("size", NATIVE)
-	# plate_file: any PNG path (res:// or on disk), for trying ground candidates before they land.
-	var plate := PixelArt.texture(str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png")))
-	for y in range(0, size.y, plate.get_height()): # a taller room stacks the plate until real ground exists
-		var ground := Sprite2D.new()
-		ground.centered = false
-		ground.texture = plate
-		ground.position.y = y
-		ground.z_index = -10
-		add_child(ground)
+	# plate_file: any PNG path (res:// or on disk), for trying ground candidates before they land;
+	# "" means the scene draws its own ground (tile layers) underneath the room.
+	var plate_file := str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png"))
+	if plate_file != "":
+		var plate := PixelArt.texture(plate_file)
+		for y in range(0, size.y, plate.get_height()): # a taller room stacks the plate until real ground exists
+			var ground := Sprite2D.new()
+			ground.centered = false
+			ground.texture = plate
+			ground.position.y = y
+			ground.z_index = -10
+			add_child(ground)
 	var bases := Node2D.new()
 	bases.z_index = CemeteryProp.BASE_Z
 	add_child(bases)

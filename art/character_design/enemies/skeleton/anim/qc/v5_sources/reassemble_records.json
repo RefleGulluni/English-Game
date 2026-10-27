@@ -1,0 +1,75 @@
+[
+  {
+    "frame": 13,
+    "source_v4_frame": 13,
+    "cloth_lift_stage": 1,
+    "ground_material_cutoff_x": 30,
+    "raised_top_y": 65,
+    "same_canonical_cloth_source": true
+  },
+  {
+    "frame": 14,
+    "source_v4_frame": 14,
+    "cloth_lift_stage": 2,
+    "ground_material_cutoff_x": 37,
+    "raised_top_y": 57,
+    "same_canonical_cloth_source": true
+  },
+  {
+    "frame": 15,
+    "source_v4_frame": 15,
+    "cloth_lift_stage": 3,
+    "ground_material_cutoff_x": 44,
+    "raised_top_y": 49,
+    "same_canonical_cloth_source": true
+  },
+  {
+    "frame": 16,
+    "source_v4_frame": 16,
+    "cloth_lift_stage": 4,
+    "ground_material_cutoff_x": 51,
+    "raised_top_y": 41,
+    "same_canonical_cloth_source": true
+  },
+  {
+    "frame": 17,
+    "source_v4_frame": 17,
+    "cloth_lift_stage": 5,
+    "ground_material_cutoff_x": 58,
+    "raised_top_y": 34,
+    "same_canonical_cloth_source": true
+  },
+  {
+    "frame": 18,
+    "source_v4_frame": 18,
+    "cloth_lift_stage": 6,
+    "ground_material_cutoff_x": 96,
+    "raised_top_y": 31,
+    "same_canonical_cloth_source": true
+  },
+  {
+    "frame": 19,
+    "source_v4_frame": 19,
+    "ground_shroud_already_lifted": true
+  },
+  {
+    "frame": 20,
+    "source_v4_frame": 20,
+    "ground_shroud_already_lifted": true
+  },
+  {
+    "frame": 21,
+    "source_v4_frame": 21,
+    "ground_shroud_already_lifted": true
+  },
+  {
+    "frame": 22,
+    "source_v4_frame": 22,
+    "ground_shroud_already_lifted": true
+  },
+  {
+    "frame": 23,
+    "source_v4_frame": 23,
+    "ground_shroud_already_lifted": true
+  }
+]
