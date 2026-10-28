@@ -61,3 +61,5 @@ Claude 把它们换进 `room_exit.gd`，在 v3 墓园里走到出口前看：远
 - **未知 / 未理解**分得开：未知是完整封闭的窗、里面错位；未理解是只剩几个锚点，像还没拼起来的符号，不是 glitch。
 
 **已接进游戏**：`scripts/world/v3/room_exit.gd` 直接读这 9 个 PNG（规则层的 `encounter` 对应战斗、`boss` 对应最终；`understood = false` 时显示“未理解”版，还没接到规则）。截图：`docs/reference/exit_glyphs_v3_ingame.png`（整张，顶部一排是 9 个对比，右边两个是房间里真正的出口）、`docs/reference/exit_glyphs_v3_ingame_lineup.png`（放大并标了名字）。在游戏里看：发光后最终的中心没有糊成一团，休息虽然最矮但仍看得清。
+
+**用户看过：通过**（2026-10-28，Decision Log D-065）。

@@ -43,7 +43,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ### 关卡结构（知识库 `03_WORLD_AND_LEVELS/English_Game_Scene_Structure_and_Transitions.md`）
 - D-022：场景不无缝拼接，单屏房间；同区域换房间快速淡黑（约 0.4 秒），换区域慢淡黑 + 区域名（约 2～3 秒）；从哪边出去就从对侧进来。
-- D-023：出口即选路，出口上方有发光符号（符号外观待设计）。
+- D-023：出口即选路，出口上方有发光符号。**符号已通过（D-065）**：美术组 9 个 15×15 `art/ui/exit_glyphs_v3/`，`room_exit.gd` 直接读 PNG；“未理解”版（`understood = false`）还没接规则。
 - D-024：**随机路线算法管“发生什么”，区域管“长什么样”**。一局 6 层 → 4 个区域（外墓园 1～2 层 / 雾中墓径 3～4 / 黑雾深处 5 / 哀悼礼拜堂 6 Boss）；World Bible 的 7 个场景变成房间类型（Entry 固定第一间、各区域战斗房、休息 = Sheltered Grave、事件 = Ossuary 类、Boss = Mourning Chapel）；区域只偏向某些敌人，不锁定。区域英文名待定。
 
 ### 墓园美术（`art/cemetery_v3/`）
