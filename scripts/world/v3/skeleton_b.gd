@@ -32,6 +32,14 @@ var _wander_spots: Array[Vector2] = []
 var _wander_wait := 0.0
 ## An approach asked for while it was busy; taken as soon as it stands still again.
 var _approach: Array = []
+## A stand-off asked for while it was busy: [x to stand at, point to look at].
+var _stand_off: Array = []
+## While a word is still flying at it, the hit and the change of state wait until it lands.
+var _hold := 0.0
+var _held_hit := false
+var _held_snapshot := {}
+## Where to look once the current walk ends (the stand-off may walk away from the hero first).
+var _look_after_walk := Vector2.INF
 
 static var _keys := {}
 
@@ -47,7 +55,16 @@ func _ready() -> void:
 	_strip.random_phase()
 
 
+## Keeps hits and state changes (collapse, reassembly) back for a moment: the rules resolve a word
+## at once, but on screen it first has to reach the skeleton (scripts/world/v3/combat_view.gd).
+func hold_for(seconds: float) -> void:
+	_hold = seconds
+
+
 func present(snapshot: Dictionary) -> void:
+	if _hold > 0.0:
+		_held_snapshot = snapshot
+		return
 	var mode := str(snapshot.get("mode", "standing"))
 	if mode == _mode:
 		return
@@ -67,6 +84,9 @@ func present_motion(_velocity: Vector2, _facing: Vector2) -> void:
 
 ## Took damage: the hit strip while standing, a 1 px shudder while it lies in pieces.
 func hit() -> void:
+	if _hold > 0.0:
+		_held_hit = true
+		return
 	if _mode != "standing":
 		_shake = 0.18
 	elif action == "idle" or action == "hit":
@@ -116,6 +136,24 @@ func approach(target: Vector2, keep_away: float) -> void:
 		face(to)
 
 
+## Combat stand-off (KB Combat Presentation: the two face each other across the room, never
+## above / below each other, so fights only need the left and right strips): walks sideways in
+## whole strides to stand at x, then turns to look at look_at. Waits until it is free when busy.
+func stand_off(x: float, look_at: Vector2) -> void:
+	if _mode != "standing":
+		return
+	if action != "idle":
+		_stand_off = [x, look_at]
+		return
+	var strides := roundi((x - mover.position.x) / STRIDE)
+	var side := Vector2(signf(look_at.x - x), 0)
+	if strides == 0:
+		face(side)
+		return
+	_look_after_walk = side
+	walk_to(mover.position + Vector2(strides * STRIDE, 0))
+
+
 ## Walks straight toward target along its main axis, in whole strides, and stops there.
 func walk_to(target: Vector2) -> void:
 	if mover == null or action != "idle" or _mode != "standing":
@@ -138,6 +176,16 @@ static func dir_name(v: Vector2) -> String:
 
 
 func _process(delta: float) -> void:
+	if _hold > 0.0:
+		_hold -= delta
+		if _hold <= 0.0:
+			if _held_hit:
+				_held_hit = false
+				hit()
+			if not _held_snapshot.is_empty():
+				var snapshot := _held_snapshot
+				_held_snapshot = {}
+				present(snapshot)
 	if action == "idle" and _mode == "standing" and not _wander_spots.is_empty():
 		_wander_wait -= delta
 		if _wander_wait <= 0.0:
@@ -174,6 +222,13 @@ func _on_finished() -> void:
 			if action == "reassemble":
 				facing = "front"
 			_switch("idle", "idle_" + facing)
+			if _look_after_walk != Vector2.INF:
+				face(_look_after_walk)
+				_look_after_walk = Vector2.INF
+			if not _stand_off.is_empty():
+				var wanted := _stand_off
+				_stand_off = []
+				stand_off(wanted[0], wanted[1])
 			if not _approach.is_empty():
 				var queued := _approach
 				_approach = []

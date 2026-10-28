@@ -8,8 +8,10 @@ extends Node
 ## turn controller, skeleton logic, reward controller, world loot, gameplay event bus.
 ## Rooms and exits follow Decision Log D-022 / D-023 (KB: Scene Structure and Transitions).
 ##
-## The skeleton is the real design B (skeleton_b.gd). Grey-box parts: the combat HUD is the 0.9 one
-## scaled to the 960x540 screen, exit glyphs and room 2 / area 2 contents are stand-ins.
+## The skeleton is the real design B (skeleton_b.gd). The fight is shown by combat_view.gd (first pass
+## of the KB combat presentation, 2026-10-28): stand-off across the room, mist instead of zoom, thin
+## word bar, intent over the enemy. The 0.9 HUD stays only for messages, prompts and the Lexicon /
+## bag pages. Grey-box parts: exit glyphs and room 2 / area 2 contents are stand-ins.
 ##
 ## Keys: WASD move · E interact · Tab Lexicon book · L knowledge list · B run bag ·
 ## Space end turn · R replay (after the fight) · F fullscreen
@@ -32,7 +34,7 @@ const CHISEL := preload("res://data/loot/loot_weathered_chisel.tres")
 const NATIVE := Vector2i(960, 540)
 const HUD_DESIGN_SIZE := Vector2(1280, 720) # the 0.9 HUD was laid out for this screen
 const ENCOUNTER_DISTANCE := 110.0
-const SKELETON_KEEPS_AWAY := 56.0 # how close the skeleton walks up to the hero when a fight starts
+const STAND_OFF := 120.0 # how far apart, side to side, the two stand in a fight (about three strides)
 
 # Room layouts. Props: [file, origin, collision rect relative to the PNG origin, ellipse?]
 const ROOMS := {
@@ -104,6 +106,8 @@ var turns: Node
 var interactions: Node
 var rewards: Node
 var hud: CanvasLayer
+var view: CombatView
+var _hud_header: Array[Control] = [] # the 0.9 grey-box title block, hidden while fighting
 
 
 func _ready() -> void:
@@ -170,6 +174,19 @@ func _ready() -> void:
 	for node in hud.ui_root.find_children("*", "Button", true, false):
 		if (node as Button).text == "RUN BAG [TAB]": # Tab opens the Lexicon book in this scene
 			node.text = "RUN BAG [B]"
+
+	view = CombatView.new()
+	add_child(view)
+	view.setup(_viewport, _language, screen, combat)
+	view.invoke_requested.connect(_invoke)
+	view.retain_requested.connect(_retain)
+	view.end_turn_requested.connect(func():
+		if not hud.overlay_open: turns.end_turn())
+	view.mulligan_confirmed.connect(func(ids):
+		if turns.phase == TURNS.Phase.PLAYER_TURN: combat.finish_mulligan(ids))
+	view.reaction_answered.connect(func(value):
+		if not hud.overlay_open: turns.react(value))
+	_hud_header = [hud.ui_root.get_child(0), hud.ui_root.get_child(1)]
 
 	_bind_rules()
 	_load_room("bg_1", "")
@@ -251,8 +268,7 @@ func start_encounter() -> void:
 	encounter_started = true
 	turns.set_phase(TURNS.Phase.COMBAT_ENTER)
 	_update_lock()
-	hero.face_direction(skeleton.global_position - hero.global_position)
-	_skeleton_steps_up()
+	_stand_off()
 	var node := {"id": "broken_graveyard_skeleton", "title": "GRAVE SKELETON", "type": "encounter", "words": ["REASSEMBLE", "REMAINS", "SCATTER", "ERODE", "TOXIC"], "tags": ["RISK", "COMBAT"], "biome": "cemetery", "primary": ""}
 	node.primary = manager.learning.choose_target(node, manager.rng, 0)
 	if not str(node.primary).is_empty():
@@ -267,6 +283,10 @@ func start_encounter() -> void:
 	combat.start_battle(7, snapshot)
 	manager.state.prepared_armor = 0
 	hud.set_combat_active(true)
+	hud.combat_panel.hide() # the fight is shown by the combat view
+	for part in _hud_header:
+		part.hide()
+	view.open(hero, skeleton, SKELETON_DATA.display_name)
 	events.publish(&"combat_started", {"enemy_id": SKELETON_DATA.id, "scene_id": manager.state.current_node_id})
 	# The fight starts where they stand: no black screen, no separate battle page (0.9 spec §10).
 	get_tree().create_timer(0.4).timeout.connect(func():
@@ -275,22 +295,27 @@ func start_encounter() -> void:
 			hud.refresh())
 
 
-func _invoke(uid: int, restore_target: String) -> void:
-	if hud.overlay_open:
-		return
+func _invoke(uid: int, restore_target: String) -> bool:
+	if hud.overlay_open or view.busy:
+		return false
 	var card: Dictionary = {}
 	for candidate in combat.deck.hand:
 		if int(candidate.instance_id) == uid:
 			card = candidate
 			break
 	if card.is_empty():
-		return
+		return false
 	events.publish(&"word_sigil_selected", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
+	var before := view.hold_enemy() # the rules resolve now; the skeleton reacts when the word lands
 	if turns.invoke(uid, restore_target):
 		events.publish(&"word_sigil_invoked", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
 		if card in combat.deck.exhaust_pile:
 			events.publish(&"word_sigil_exhausted", {"word_id": card.name, "instance_id": uid})
+		view.play_cast(card, before)
 		hud.refresh()
+		return true
+	view.release_enemy()
+	return false
 
 
 func _retain(uid: int) -> void:
@@ -305,6 +330,10 @@ func _battle_finished(victory: bool) -> void:
 	manager.state.capture_combat(combat)
 	manager.cemetery_finish_node()
 	hud.set_combat_active(false)
+	get_tree().create_timer(0.9).timeout.connect(func(): # let the last word land first
+		view.close()
+		for part in _hud_header:
+			part.show())
 	if not victory:
 		manager.state.completed = true
 		manager.state.victory = false
@@ -350,7 +379,7 @@ func _on_event(event_id: StringName, payload: Dictionary) -> void:
 		&"enemy_reassembled":
 			hud.announce("The bones pull themselves back together.")
 			if is_instance_valid(skeleton): # once it stands it turns to the hero again
-				skeleton.get_node("VisualRoot/Visual").approach(hero.position, SKELETON_KEEPS_AWAY)
+				skeleton.get_node("VisualRoot/Visual").stand_off(skeleton.position.x, hero.position)
 
 
 # --- Rooms, exits and transitions (D-022, D-023) --------------------------------------------
@@ -428,12 +457,21 @@ func _make_skeleton(at: Vector2) -> Node2D:
 	return root
 
 
-## When the fight starts the skeleton stops pacing and walks up to meet the hero (whole strides,
-## stopping a little short of them), or just turns to face them when they are already close.
-func _skeleton_steps_up() -> void:
+## When the fight starts the skeleton stops pacing and walks sideways (whole strides) until it
+## stands across from the hero, about three strides to the side, at whatever height it already is:
+## a diagonal stand-off in the room, never one above the other, so fights need only the left and
+## right animations (KB Combat Presentation §1). The hero turns to face it.
+func _stand_off() -> void:
 	var visual: SkeletonB = skeleton.get_node("VisualRoot/Visual")
 	visual.stop_wander()
-	visual.approach(hero.position, SKELETON_KEEPS_AWAY)
+	var side := signf(skeleton.position.x - hero.position.x)
+	if side == 0.0:
+		side = 1.0 if hero.position.x < NATIVE.x / 2.0 else -1.0
+	var x := hero.position.x + side * STAND_OFF
+	if x < 40.0 or x > NATIVE.x - 40.0: # no room on that side: go round to the other
+		x = hero.position.x - side * STAND_OFF
+	visual.stand_off(x, hero.position)
+	hero.face_direction(Vector2(signf(x - hero.position.x), 0))
 
 
 func _take_exit(exit: Node2D) -> void:
@@ -497,7 +535,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("open_run_bag"):
 		if hud.overlay_open: hud.close_overlay()
 		else: hud.show_bag()
-	elif key == KEY_SPACE and not hud.overlay_open:
+	elif key == KEY_SPACE and not hud.overlay_open and not view.busy:
 		turns.end_turn()
 	elif key == KEY_R and (encounter_cleared or turns.phase == TURNS.Phase.DEFEAT):
 		restart()
@@ -518,26 +556,37 @@ func _capture() -> void:
 	await _frames(20)
 	await _shot(dir + "/01_room.png")
 	hero.position = skeleton.position + Vector2(-100, 30)
-	await _frames(30)
+	await get_tree().create_timer(2.6).timeout # the skeleton steps across, the mist and bar come in
 	await _shot(dir + "/02_combat.png")
 	# Play: keep the opening hand, use every affordable word, take hits, until it ends.
 	var collapsed_shot := false
-	for i in 400:
+	var cast_shots := 0
+	for i in 4000:
 		if combat.finished:
 			break
 		if combat.bone_remains and not collapsed_shot:
 			collapsed_shot = true
-			await _frames(10)
+			await get_tree().create_timer(1.6).timeout
 			await _shot(dir + "/03_remains.png")
-		if turns.phase == TURNS.Phase.PLAYER_TURN:
+		if turns.phase == TURNS.Phase.PLAYER_TURN and not view.busy:
 			if combat.deck.mulligan_pending:
 				combat.finish_mulligan([])
 			else:
 				var played := false
 				for card in combat.deck.hand.duplicate():
-					if combat.card_cost(card) <= combat.focus and turns.invoke(int(card.instance_id), "hp"):
-						played = true
-						break
+					if combat.card_cost(card) <= combat.focus and combat.disabled_reason(str(card.name), int(card.instance_id)).is_empty():
+						if cast_shots < 3: # the word, its hover preview, then the shape on its way
+							view._show_word_tip(card, view._words.get_child(combat.deck.hand.find(card)))
+							await _frames(4)
+							await _shot(dir + "/02%s_preview_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
+							view._hide_tip()
+						if _invoke(int(card.instance_id), "hp"):
+							played = true
+							if cast_shots < 3:
+								await get_tree().create_timer(view.IMPACT_AT + 0.08).timeout
+								await _shot(dir + "/02%s_cast_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
+								cast_shots += 1
+							break
 				if not played:
 					turns.end_turn()
 		elif turns.phase == TURNS.Phase.ENEMY_TURN and combat.turn_ending:
