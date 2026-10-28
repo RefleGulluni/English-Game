@@ -117,7 +117,11 @@ func _ready() -> void:
 	_viewport.snap_2d_vertices_to_pixel = true
 	add_child(_viewport)
 	var layout := LAYOUT.duplicate()
-	layout.props = LAYOUT.props + _yard_graves()
+	layout.props = LAYOUT.props + yard_graves()
+	var placed: Node2D = get_node_or_null("Props") # the user's own arrangement of the blocks
+	if placed:
+		layout.props = []
+		remove_child(placed)
 	var reference := get_node_or_null("Reference")
 	if reference:
 		reference.free() # an editor-only guide to where the props stand
@@ -141,6 +145,8 @@ func _ready() -> void:
 				painted.visible = false
 	_room = CemeteryRoom.new(layout)
 	_viewport.add_child(_room)
+	if placed:
+		_take_placed_props(placed)
 	_build_placeholders()
 	var hero := HERO_SCENE.instantiate()
 	hero.position = SPAWN
@@ -376,7 +382,8 @@ func _build_low_angle(ground: Node2D) -> void:
 
 
 ## Rows of graves filling both sides of the yard, kept off the avenue, the fountain and the two paths.
-func _yard_graves() -> Array:
+## Only the first arrangement: once the scene has a Props node, the user's blocks are used instead.
+static func yard_graves() -> Array:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 7
 	var graves := []
@@ -385,14 +392,14 @@ func _yard_graves() -> Array:
 		for x in range(36 + (row % 2) * 31, 940, 62):
 			var p := Vector2(x + rng.randi_range(-8, 8), y + rng.randi_range(-6, 6))
 			var name: String = YARD_GRAVES[rng.randi() % YARD_GRAVES.size()]
-			if rng.randf() < 0.14 or _near_paths(p):
+			if rng.randf() < 0.14 or near_paths(p):
 				continue # a few gaps, like graves that were never dug
 			graves.append([name, p, null])
 		row += 1
 	return graves
 
 
-func _near_paths(p: Vector2) -> bool:
+static func near_paths(p: Vector2) -> bool:
 	if absf(p.x - FOUNTAIN.x) < 120 and p.y > FOUNTAIN.y - 130 and p.y < FOUNTAIN.y + 40:
 		return true
 	if absf(p.x - FOUNTAIN.x) < 74 and p.y > FOUNTAIN.y:
@@ -484,6 +491,17 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 ## Decals dragged onto the scene root instead of Ground/Decals would never be drawn (the root is
 ## not in the viewport); move them where they belong, keeping their place.
+## The blocks the user placed under Props (and any dropped on the scene root by mistake) join the
+## room's Y-sorted layer, so they sort, fade and collide like the props the layout builds.
+func _take_placed_props(placed: Node2D) -> void:
+	for child in get_children():
+		if child is CemeteryProp:
+			child.reparent(placed)
+	for prop in placed.get_children():
+		prop.reparent(_room.sorted)
+	placed.free()
+
+
 func _collect_stray_decals(ground: Node2D) -> void:
 	var decals: Node2D = ground.get_node_or_null("Decals")
 	if decals == null:

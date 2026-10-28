@@ -25,7 +25,35 @@
 [ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/decals/decal_bone_bits_01.png" id="21_kbxkd"]
 [ext_resource type="PackedScene" path="res://scenes/props/cemetery/decals/decal_roots_01.tscn" id="22_ipbsv"]
 [ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/decals/decal_roots_01.png" id="23_s6mio"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/rooms/cemetery_entry_reference.png" id="24_h8gx2"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/gate_pillar_tall_01.tscn" id="26_5ytce"]
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="27_j2j7t"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/iron_fence_01.tscn" id="28_71ha3"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/wall_pillar_01.tscn" id="29_nyhey"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/grave_lantern_01.tscn" id="30_7wqps"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_upright_01_tilted.tscn" id="31_3onyr"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_cross_01_broken.tscn" id="32_t8no7"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_small_01.tscn" id="33_0ciyl"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/rubble_pile_01.tscn" id="34_6x6po"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/grave_vase_01.tscn" id="35_eh3h5"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_upright_02_broken.tscn" id="36_sg8bs"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/low_wall_01.tscn" id="37_xn1co"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/low_wall_rubble_broken_01.tscn" id="38_ekwj7"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/candles_01.tscn" id="39_dmc73"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/dead_tree_02.tscn" id="40_1ygho"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/dead_tree_03.tscn" id="41_u5se0"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/iron_gate_leaf_open_01.tscn" id="42_yvslf"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/iron_gate_leaf_fallen_01.tscn" id="43_cyroh"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/fountain_dry_01.tscn" id="44_868af"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/signpost_01.tscn" id="45_4xrql"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/fallen_lamp_post_01.tscn" id="46_6r2vr"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/wooden_cross_01.tscn" id="47_p6heo"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/wooden_cross_02.tscn" id="48_gm0m7"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_upright_01.tscn" id="49_lpd3v"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_upright_02.tscn" id="50_enmqj"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_flat_01.tscn" id="51_x1gce"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/obelisk_01.tscn" id="52_n4gvb"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_pointed_01.tscn" id="53_bq4jh"]
+[ext_resource type="PackedScene" path="res://scenes/props/cemetery/tombstone_cross_01.tscn" id="54_5gjfo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_54oo3"]
 shader = ExtResource("3_cphym")
@@ -114,7 +142,540 @@ texture = ExtResource("23_s6mio")
 centered = false
 offset = Vector2(-23, -12)
 
-[node name="Reference" type="Sprite2D" parent="." unique_id=1522558786]
-modulate = Color(1, 1, 1, 0.5)
-texture = ExtResource("24_h8gx2")
-centered = false
+[node name="Props" type="Node2D" parent="." unique_id=1576203783]
+y_sort_enabled = true
+
+[node name="GatePillarTall01" type="Node2D" parent="Props" unique_id=1078765275 instance=ExtResource("26_5ytce")]
+position = Vector2(408, 540)
+script = ExtResource("27_j2j7t")
+ground_gap = 6
+
+[node name="GatePillarTall02" type="Node2D" parent="Props" unique_id=1270168791 instance=ExtResource("26_5ytce")]
+position = Vector2(552, 540)
+script = ExtResource("27_j2j7t")
+ground_gap = 6
+
+[node name="IronFence01" type="Node2D" parent="Props" unique_id=1112501263 instance=ExtResource("28_71ha3")]
+position = Vector2(337, 533)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="WallPillar01" type="Node2D" parent="Props" unique_id=513605461 instance=ExtResource("29_nyhey")]
+position = Vector2(256, 541)
+script = ExtResource("27_j2j7t")
+ground_gap = 5
+
+[node name="IronFence02" type="Node2D" parent="Props" unique_id=564042048 instance=ExtResource("28_71ha3")]
+position = Vector2(185, 533)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="WallPillar02" type="Node2D" parent="Props" unique_id=1277093026 instance=ExtResource("29_nyhey")]
+position = Vector2(104, 541)
+script = ExtResource("27_j2j7t")
+ground_gap = 5
+
+[node name="IronFence03" type="Node2D" parent="Props" unique_id=1759902826 instance=ExtResource("28_71ha3")]
+position = Vector2(33, 533)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="IronFence04" type="Node2D" parent="Props" unique_id=985832981 instance=ExtResource("28_71ha3")]
+position = Vector2(633, 533)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="WallPillar03" type="Node2D" parent="Props" unique_id=744750548 instance=ExtResource("29_nyhey")]
+position = Vector2(704, 541)
+script = ExtResource("27_j2j7t")
+ground_gap = 5
+
+[node name="IronFence05" type="Node2D" parent="Props" unique_id=1054170041 instance=ExtResource("28_71ha3")]
+position = Vector2(785, 533)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="WallPillar04" type="Node2D" parent="Props" unique_id=1397369805 instance=ExtResource("29_nyhey")]
+position = Vector2(856, 541)
+script = ExtResource("27_j2j7t")
+ground_gap = 5
+
+[node name="IronFence06" type="Node2D" parent="Props" unique_id=1732050702 instance=ExtResource("28_71ha3")]
+position = Vector2(937, 533)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="GraveLantern01" type="Node2D" parent="Props" unique_id=1765677653 instance=ExtResource("30_7wqps")]
+position = Vector2(384, 550)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright01Tilted" type="Node2D" parent="Props" unique_id=1304956780 instance=ExtResource("31_3onyr")]
+position = Vector2(95, 603)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneCross01Broken" type="Node2D" parent="Props" unique_id=1135804782 instance=ExtResource("32_t8no7")]
+position = Vector2(205, 613)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneSmall01" type="Node2D" parent="Props" unique_id=2120332359 instance=ExtResource("33_0ciyl")]
+position = Vector2(150, 650)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="RubblePile01" type="Node2D" parent="Props" unique_id=816763925 instance=ExtResource("34_6x6po")]
+position = Vector2(260, 651)
+script = ExtResource("27_j2j7t")
+ground_gap = 14
+
+[node name="TombstoneSmall02" type="Node2D" parent="Props" unique_id=627370812 instance=ExtResource("33_0ciyl")]
+position = Vector2(735, 610)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="GraveVase01" type="Node2D" parent="Props" unique_id=2064144124 instance=ExtResource("35_eh3h5")]
+position = Vector2(772, 618)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright02Broken" type="Node2D" parent="Props" unique_id=108809355 instance=ExtResource("36_sg8bs")]
+position = Vector2(860, 672)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="LowWall01" type="Node2D" parent="Props" unique_id=1203795279 instance=ExtResource("37_xn1co")]
+position = Vector2(120, 853)
+script = ExtResource("27_j2j7t")
+ground_gap = 7
+
+[node name="LowWallRubbleBroken01" type="Node2D" parent="Props" unique_id=1675324575 instance=ExtResource("38_ekwj7")]
+position = Vector2(268, 853)
+script = ExtResource("27_j2j7t")
+ground_gap = 7
+
+[node name="LowWallRubbleBroken02" type="Node2D" parent="Props" unique_id=1307124784 instance=ExtResource("38_ekwj7")]
+position = Vector2(830, 903)
+script = ExtResource("27_j2j7t")
+ground_gap = 7
+
+[node name="RubblePile02" type="Node2D" parent="Props" unique_id=192653462 instance=ExtResource("34_6x6po")]
+position = Vector2(700, 906)
+script = ExtResource("27_j2j7t")
+ground_gap = 14
+
+[node name="TombstoneSmall03" type="Node2D" parent="Props" unique_id=1218343254 instance=ExtResource("33_0ciyl")]
+position = Vector2(640, 818)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneCross01Broken2" type="Node2D" parent="Props" unique_id=2126856963 instance=ExtResource("32_t8no7")]
+position = Vector2(160, 1121)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="Candles01" type="Node2D" parent="Props" unique_id=1650393869 instance=ExtResource("39_dmc73")]
+position = Vector2(196, 1124)
+script = ExtResource("27_j2j7t")
+ground_gap = 14
+
+[node name="TombstoneSmall04" type="Node2D" parent="Props" unique_id=1091611415 instance=ExtResource("33_0ciyl")]
+position = Vector2(800, 1158)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="DeadTree02" type="Node2D" parent="Props" unique_id=233540395 instance=ExtResource("40_1ygho")]
+position = Vector2(318, 720)
+script = ExtResource("27_j2j7t")
+ground_gap = 30
+
+[node name="DeadTree03" type="Node2D" parent="Props" unique_id=1938763771 instance=ExtResource("41_u5se0")]
+position = Vector2(720, 1049)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="DeadTree04" type="Node2D" parent="Props" unique_id=431205517 instance=ExtResource("41_u5se0")]
+position = Vector2(300, 1259)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="DeadTree05" type="Node2D" parent="Props" unique_id=1752904611 instance=ExtResource("40_1ygho")]
+position = Vector2(880, 1290)
+script = ExtResource("27_j2j7t")
+ground_gap = 30
+
+[node name="IronGateLeafOpen01" type="Node2D" parent="Props" unique_id=1142525130 instance=ExtResource("42_yvslf")]
+position = Vector2(433, 536)
+script = ExtResource("27_j2j7t")
+ground_gap = 10
+
+[node name="IronGateLeafFallen01" type="Node2D" parent="Props" unique_id=431036805 instance=ExtResource("43_cyroh")]
+position = Vector2(512, 518)
+script = ExtResource("27_j2j7t")
+flat = true
+
+[node name="FountainDry01" type="Node2D" parent="Props" unique_id=753070424 instance=ExtResource("44_868af")]
+position = Vector2(480, 326)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="Signpost01" type="Node2D" parent="Props" unique_id=679529612 instance=ExtResource("45_4xrql")]
+position = Vector2(560, 1015)
+script = ExtResource("27_j2j7t")
+ground_gap = 15
+
+[node name="FallenLampPost01" type="Node2D" parent="Props" unique_id=1597478112 instance=ExtResource("46_6r2vr")]
+position = Vector2(642, 1272)
+script = ExtResource("27_j2j7t")
+flat = true
+
+[node name="WoodenCross01" type="Node2D" parent="Props" unique_id=1083618252 instance=ExtResource("47_p6heo")]
+position = Vector2(56, 685)
+script = ExtResource("27_j2j7t")
+ground_gap = 15
+
+[node name="WoodenCross02" type="Node2D" parent="Props" unique_id=1652529322 instance=ExtResource("48_gm0m7")]
+position = Vector2(752, 1168)
+script = ExtResource("27_j2j7t")
+ground_gap = 20
+
+[node name="TombstoneUpright01" type="Node2D" parent="Props" unique_id=431886949 instance=ExtResource("49_lpd3v")]
+position = Vector2(33, 141)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneCross01Broken3" type="Node2D" parent="Props" unique_id=579916989 instance=ExtResource("32_t8no7")]
+position = Vector2(91, 143)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneUpright02" type="Node2D" parent="Props" unique_id=1692722964 instance=ExtResource("50_enmqj")]
+position = Vector2(159, 147)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneFlat01" type="Node2D" parent="Props" unique_id=22456055 instance=ExtResource("51_x1gce")]
+position = Vector2(226, 132)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneFlat02" type="Node2D" parent="Props" unique_id=812183758 instance=ExtResource("51_x1gce")]
+position = Vector2(590, 130)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneUpright03" type="Node2D" parent="Props" unique_id=338897901 instance=ExtResource("49_lpd3v")]
+position = Vector2(835, 143)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneUpright04" type="Node2D" parent="Props" unique_id=1848044761 instance=ExtResource("50_enmqj")]
+position = Vector2(899, 142)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneUpright02Broken2" type="Node2D" parent="Props" unique_id=1142739299 instance=ExtResource("36_sg8bs")]
+position = Vector2(74, 197)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneSmall05" type="Node2D" parent="Props" unique_id=1488086630 instance=ExtResource("33_0ciyl")]
+position = Vector2(136, 195)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright05" type="Node2D" parent="Props" unique_id=907195253 instance=ExtResource("50_enmqj")]
+position = Vector2(193, 201)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="Obelisk01" type="Node2D" parent="Props" unique_id=147362666 instance=ExtResource("52_n4gvb")]
+position = Vector2(253, 190)
+script = ExtResource("27_j2j7t")
+ground_gap = 22
+
+[node name="TombstoneUpright02Broken3" type="Node2D" parent="Props" unique_id=1573788408 instance=ExtResource("36_sg8bs")]
+position = Vector2(684, 194)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneUpright06" type="Node2D" parent="Props" unique_id=104363901 instance=ExtResource("49_lpd3v")]
+position = Vector2(741, 191)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneUpright02Broken4" type="Node2D" parent="Props" unique_id=990294600 instance=ExtResource("36_sg8bs")]
+position = Vector2(819, 201)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneUpright07" type="Node2D" parent="Props" unique_id=1331955911 instance=ExtResource("50_enmqj")]
+position = Vector2(877, 200)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneSmall06" type="Node2D" parent="Props" unique_id=367196909 instance=ExtResource("33_0ciyl")]
+position = Vector2(934, 190)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstonePointed01" type="Node2D" parent="Props" unique_id=1855630843 instance=ExtResource("53_bq4jh")]
+position = Vector2(44, 250)
+script = ExtResource("27_j2j7t")
+ground_gap = 16
+
+[node name="TombstoneUpright08" type="Node2D" parent="Props" unique_id=1992335694 instance=ExtResource("49_lpd3v")]
+position = Vector2(90, 251)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneCross01Broken4" type="Node2D" parent="Props" unique_id=907541764 instance=ExtResource("32_t8no7")]
+position = Vector2(158, 256)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneUpright09" type="Node2D" parent="Props" unique_id=714833766 instance=ExtResource("49_lpd3v")]
+position = Vector2(224, 249)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneSmall07" type="Node2D" parent="Props" unique_id=1167667108 instance=ExtResource("33_0ciyl")]
+position = Vector2(278, 253)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneSmall08" type="Node2D" parent="Props" unique_id=389734685 instance=ExtResource("33_0ciyl")]
+position = Vector2(655, 254)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstonePointed02" type="Node2D" parent="Props" unique_id=847102054 instance=ExtResource("53_bq4jh")]
+position = Vector2(781, 250)
+script = ExtResource("27_j2j7t")
+ground_gap = 16
+
+[node name="TombstoneUpright10" type="Node2D" parent="Props" unique_id=86271787 instance=ExtResource("50_enmqj")]
+position = Vector2(845, 262)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneUpright01Tilted2" type="Node2D" parent="Props" unique_id=945302685 instance=ExtResource("31_3onyr")]
+position = Vector2(912, 253)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneCross01" type="Node2D" parent="Props" unique_id=1821488985 instance=ExtResource("54_5gjfo")]
+position = Vector2(66, 321)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneSmall09" type="Node2D" parent="Props" unique_id=1063218411 instance=ExtResource("33_0ciyl")]
+position = Vector2(185, 313)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright11" type="Node2D" parent="Props" unique_id=1995203944 instance=ExtResource("50_enmqj")]
+position = Vector2(246, 318)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneSmall10" type="Node2D" parent="Props" unique_id=953903818 instance=ExtResource("33_0ciyl")]
+position = Vector2(311, 313)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstonePointed03" type="Node2D" parent="Props" unique_id=1766032872 instance=ExtResource("53_bq4jh")]
+position = Vector2(630, 305)
+script = ExtResource("27_j2j7t")
+ground_gap = 16
+
+[node name="TombstoneFlat03" type="Node2D" parent="Props" unique_id=19743301 instance=ExtResource("51_x1gce")]
+position = Vector2(692, 308)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneUpright12" type="Node2D" parent="Props" unique_id=419484965 instance=ExtResource("49_lpd3v")]
+position = Vector2(745, 311)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="Obelisk02" type="Node2D" parent="Props" unique_id=2081161685 instance=ExtResource("52_n4gvb")]
+position = Vector2(813, 300)
+script = ExtResource("27_j2j7t")
+ground_gap = 22
+
+[node name="TombstoneUpright01Tilted3" type="Node2D" parent="Props" unique_id=633925037 instance=ExtResource("31_3onyr")]
+position = Vector2(879, 316)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright02Broken5" type="Node2D" parent="Props" unique_id=927750905 instance=ExtResource("36_sg8bs")]
+position = Vector2(933, 320)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneSmall11" type="Node2D" parent="Props" unique_id=1082467023 instance=ExtResource("33_0ciyl")]
+position = Vector2(39, 372)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright13" type="Node2D" parent="Props" unique_id=1787555970 instance=ExtResource("49_lpd3v")]
+position = Vector2(106, 364)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="Obelisk03" type="Node2D" parent="Props" unique_id=456215368 instance=ExtResource("52_n4gvb")]
+position = Vector2(154, 366)
+script = ExtResource("27_j2j7t")
+ground_gap = 22
+
+[node name="TombstoneUpright14" type="Node2D" parent="Props" unique_id=939692052 instance=ExtResource("49_lpd3v")]
+position = Vector2(215, 371)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneFlat04" type="Node2D" parent="Props" unique_id=2089660701 instance=ExtResource("51_x1gce")]
+position = Vector2(280, 366)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="Obelisk04" type="Node2D" parent="Props" unique_id=1467687857 instance=ExtResource("52_n4gvb")]
+position = Vector2(348, 358)
+script = ExtResource("27_j2j7t")
+ground_gap = 22
+
+[node name="TombstonePointed04" type="Node2D" parent="Props" unique_id=1118841683 instance=ExtResource("53_bq4jh")]
+position = Vector2(586, 371)
+script = ExtResource("27_j2j7t")
+ground_gap = 16
+
+[node name="TombstoneUpright02Broken6" type="Node2D" parent="Props" unique_id=1456647708 instance=ExtResource("36_sg8bs")]
+position = Vector2(653, 375)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstonePointed05" type="Node2D" parent="Props" unique_id=931680985 instance=ExtResource("53_bq4jh")]
+position = Vector2(716, 365)
+script = ExtResource("27_j2j7t")
+ground_gap = 16
+
+[node name="TombstoneCross01Broken5" type="Node2D" parent="Props" unique_id=643875243 instance=ExtResource("32_t8no7")]
+position = Vector2(788, 373)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneUpright01Tilted4" type="Node2D" parent="Props" unique_id=2048289645 instance=ExtResource("31_3onyr")]
+position = Vector2(849, 366)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="Obelisk05" type="Node2D" parent="Props" unique_id=987719044 instance=ExtResource("52_n4gvb")]
+position = Vector2(899, 354)
+script = ExtResource("27_j2j7t")
+ground_gap = 22
+
+[node name="TombstoneCross01Broken6" type="Node2D" parent="Props" unique_id=641361802 instance=ExtResource("32_t8no7")]
+position = Vector2(72, 431)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstonePointed06" type="Node2D" parent="Props" unique_id=1186096823 instance=ExtResource("53_bq4jh")]
+position = Vector2(130, 420)
+script = ExtResource("27_j2j7t")
+ground_gap = 16
+
+[node name="TombstoneCross02" type="Node2D" parent="Props" unique_id=750736847 instance=ExtResource("54_5gjfo")]
+position = Vector2(191, 437)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneFlat05" type="Node2D" parent="Props" unique_id=81409056 instance=ExtResource("51_x1gce")]
+position = Vector2(375, 423)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneSmall12" type="Node2D" parent="Props" unique_id=634783453 instance=ExtResource("33_0ciyl")]
+position = Vector2(570, 430)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright01Tilted5" type="Node2D" parent="Props" unique_id=1631219747 instance=ExtResource("31_3onyr")]
+position = Vector2(630, 430)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneCross01Broken7" type="Node2D" parent="Props" unique_id=138334648 instance=ExtResource("32_t8no7")]
+position = Vector2(690, 429)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneCross03" type="Node2D" parent="Props" unique_id=539146655 instance=ExtResource("54_5gjfo")]
+position = Vector2(754, 431)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneFlat06" type="Node2D" parent="Props" unique_id=229384255 instance=ExtResource("51_x1gce")]
+position = Vector2(878, 423)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneUpright15" type="Node2D" parent="Props" unique_id=1322256073 instance=ExtResource("50_enmqj")]
+position = Vector2(932, 436)
+script = ExtResource("27_j2j7t")
+ground_gap = 8
+
+[node name="TombstoneUpright01Tilted6" type="Node2D" parent="Props" unique_id=1906477927 instance=ExtResource("31_3onyr")]
+position = Vector2(40, 481)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright16" type="Node2D" parent="Props" unique_id=570497804 instance=ExtResource("49_lpd3v")]
+position = Vector2(154, 482)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneSmall13" type="Node2D" parent="Props" unique_id=605734042 instance=ExtResource("33_0ciyl")]
+position = Vector2(224, 486)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneUpright17" type="Node2D" parent="Props" unique_id=1072382878 instance=ExtResource("49_lpd3v")]
+position = Vector2(279, 482)
+script = ExtResource("27_j2j7t")
+ground_gap = 13
+
+[node name="TombstoneUpright01Tilted7" type="Node2D" parent="Props" unique_id=2001174513 instance=ExtResource("31_3onyr")]
+position = Vector2(346, 480)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneFlat07" type="Node2D" parent="Props" unique_id=2035285646 instance=ExtResource("51_x1gce")]
+position = Vector2(598, 480)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneFlat08" type="Node2D" parent="Props" unique_id=803480115 instance=ExtResource("51_x1gce")]
+position = Vector2(652, 474)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneSmall14" type="Node2D" parent="Props" unique_id=1138038996 instance=ExtResource("33_0ciyl")]
+position = Vector2(719, 490)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
+
+[node name="TombstoneFlat09" type="Node2D" parent="Props" unique_id=560177594 instance=ExtResource("51_x1gce")]
+position = Vector2(785, 483)
+script = ExtResource("27_j2j7t")
+ground_gap = 21
+
+[node name="TombstoneCross01Broken8" type="Node2D" parent="Props" unique_id=189010483 instance=ExtResource("32_t8no7")]
+position = Vector2(838, 487)
+script = ExtResource("27_j2j7t")
+ground_gap = 9
+
+[node name="TombstoneSmall15" type="Node2D" parent="Props" unique_id=1328338519 instance=ExtResource("33_0ciyl")]
+position = Vector2(904, 488)
+script = ExtResource("27_j2j7t")
+ground_gap = 12
