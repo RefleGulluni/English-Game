@@ -73,7 +73,7 @@ func _initialize() -> void:
 
 	visual.present({"mode": "remains"})
 	check(visual.action == "collapse", "falling apart plays the collapse")
-	run(1.1)
+	run(1.4) # the side and back collapses take 1.28 s
 	check(visual.action == "remains" and strip.current == "skeleton_B_remains_idle", "collapse ends in the remains idle")
 	visual.hit()
 	check(visual.action == "remains", "hits on the remains only shudder")
