@@ -31,7 +31,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 当前进度（2026-10-28 交接）
 
 ### 一句话
-墓园正式美术走上正轨：物件 25 件全部做成可拖入的“积木”（碰撞由用户亲手调好）；用户亲手画的第一个正式房间“墓园入口”已搭成两屏半高灰盒。2026-10-27～28 两件大事完成：**① 地面做法定型、用户已能在 Godot 里亲手画地图**：大块无缝底子 + 20 件贴花 + 可刷的碎石泥路和枯草苔藓地（D-054～D-057，方法见 `docs/GROUND_TERRAIN_METHOD.md`，用户说“以后就用这个方法”）；**② 骷髅 B「余裹者」动画全部通过**：四方向待机、受击、行走（从头重画，带起步 / 停步）、散架、骨堆待机、重组（D-053～D-057）。
+墓园入口这个房间基本成形，交给用户亲手调：25 + 9 件正式物件都是可拖的积木（入口 9 件 D-060，**用户定为以后素材的质量标准**），地面可刷四层（泥地底子 / 枯草苔藓地 / 碎石泥路 / 旧石板路 D-061）+ 20 件贴花积木，入口的全部物件已放进场景 `Props` 让用户自己增删挪（D-062 门里墓园往上加长、喷泉挪到中间）。骷髅 B「余裹者」动画全部通过并已接进 v3 墓园（四方向散架都落成同一个骨堆，D-058）。**战斗表现设计提案已写好，等用户拍板**（知识库 `02_SYSTEMS/01_Combat/English_Game_Combat_Presentation_Proposal.md`）。
 
 ### 新的正式 Broken Graveyard（分支 `feature/broken-graveyard-v3`）
 - `scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`：v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`）。走动 → 原地开战（不黑屏）→ 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 发光区域名）。截图模式 `-- --capture=<目录>` 自动打完一整圈。
@@ -54,10 +54,10 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **物件积木（D-034）**：每件一个场景 `scenes/props/cemetery/<名字>.tscn`（脚本 `scripts/world/v3/cemetery_prop.gd`：原点 = 脚 = Y 排序点；只在主角真被像素挡住时半透明；`flat` 平躺物件不挡人）。由 `scripts/tools/bake_cemetery_props.gd` 从 manifest 生成，**已存在的不覆盖**（用户手调过碰撞）。`CemeteryRoom` 有同名积木就用积木。**用户负责调碰撞**（说明 `docs/PROP_COLLISION_GUIDE.md`），Claude 负责遮挡等程序问题；改完由 Claude 检查提交。新素材入库：`--import` → 跑生成工具。
 - 试走验收房间：`scenes/prototypes/props_v3/props_v3_room.tscn`（WASD、T 色调、F 全屏；在脚本 `LAYOUT` 加一行即可摆新物件）。地面暂用 `cemetery_pixel_v1` 样板地面板。
 - 待办：墓园物件偏暖黄，等真像素地面出来再整体看；墓园子调色板等物件齐了从实际用色里整理。
-- **地面（定型，D-043 → D-057）**：试过整张生成图、32×32 小块、美术画 16 块边角都失败（记录见制作手册第 9、12 条），最终做法见 [docs/GROUND_TERRAIN_METHOD.md](docs/GROUND_TERRAIN_METHOD.md)：`ground/base/` 两块 224×128 底子 + `ground/decals/` 20 件贴花 + `ground/transitions/` 的路面 / 草地纹理，形状由 Claude 的程序画，用户在刷路房间 `scenes/prototypes/ground_paint/ground_paint_room.tscn` 里亲手刷（`Ground/Base`、`Ground/Grass`、`Ground/Path`）。**用户刷过的场景是用户的作品，生成工具只补缺的层，不覆盖**。旧的 `-- --plate=<PNG>` 试走方式仍可用。
+- **地面（定型，D-043 → D-057）**：试过整张生成图、32×32 小块、美术画 16 块边角都失败（记录见制作手册第 9、12 条），最终做法见 [docs/GROUND_TERRAIN_METHOD.md](docs/GROUND_TERRAIN_METHOD.md)：`ground/base/` 两块 224×128 底子 + `ground/decals/` 20 件贴花 + `ground/transitions/` 的路面 / 草地 / 旧石板纹理（石板第一版“砖墙”未通过，第二版 D-061 通过；**验收地面纹理拿亮度标准差和已通过地面比**：路 8.2 / 草 14.2 / 底子 9.5 / 石板 13），形状由 Claude 的程序画，用户在刷路房间 `scenes/prototypes/ground_paint/ground_paint_room.tscn` 里亲手刷（`Ground/Base`、`Grass`、`Path`、`Paving`）。**用户刷过的场景是用户的作品，生成工具只补缺的层，不覆盖**。旧的 `-- --plate=<PNG>` 试走方式仍可用。
 - **从“地板”到“场景”**：一个场景 = 构图（四周密、中间空、出口）+ 高低差（台阶、挡土墙）+ 地面 + 物件 + 远景 + 前景 + 光雾。**先由用户画房间草图**，Claude 翻译成素材清单、用积木和色块先搭灰盒房间。第一张：**墓园入口**（D-036：下方小路走来 → 中间围墙大门 → 上方墓园展开、远处雾中礼拜堂；每局从词典锚点出发）。
-  - 墓园入口灰盒：`scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn`（按用户草图：弯路 → 铁栏 + 高门柱大门 → 干涸喷泉 → 两侧出口；现成积木 + 色块占位，H 开关占位说明，V 看“更低视角”试验版）。**两屏半高 960×1350、镜头只上下跟随**（D-038 → D-044，唯一例外；`CemeteryRoom` 的 layout 可给 `size`、`grass_top`）；门里：笔直甬道 → 正中喷泉 → 两条斜路穿过一排排墓碑（`_yard_graves()` 按排生成）通向出口，望向礼拜堂的视线留空；顶部是美术组的远景条 `art/cemetery_v3/backdrop/entry_backdrop_01.png`（天空 + 天际线 + 礼拜堂，D-039 / D-042），下角是正式前景枯枝；Claude 的薄雾压在天际线以下；大门是角色组的正式高门柱 `gate_pillar_tall_01`（D-044 通过，已做成积木），柱脚处门洞净空 92（门柱中心 408 / 552）；视角其余保持原版。
-  - 素材清单 `docs/CEMETERY_ENTRY_ASSET_LIST.md`：礼拜堂 03 通过（D-045）、高门柱通过（D-044）；角色组其余铁门、喷泉、枯树、路灯、路牌、木十字架（`docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 第 2 步）**还没发，排在下一个**；地面已有可刷的路和草地，入口灰盒还没换成新地面。
+  - 墓园入口灰盒：`scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn`（按用户草图：弯路 → 铁栏 + 高门柱大门 → 石板广场 → 干涸喷泉 + 哀悼天使 → 两条小路通向两侧出口；H 开关占位说明，V 看“更低视角”试验版）。**房间从 y = -256 到 1350（`TOP`，D-062 往上加长，原有坐标不变；`CemeteryRoom` 的 layout 可给 `size`、`top`、`grass_top`），镜头只上下跟随**（D-038 → D-044）。场景里：`Ground`（`Base` / `Grass` / `Path` / `Paving` / `Decals`，用户亲手刷）+ `Props`（全部物件积木，用户亲手摆；运行时搬进 Y 排序层，场景没有 `Props` 时才用脚本里的 `LAYOUT`）。喷泉脚底在 (480, 200)；顶部是美术组的远景条 `art/cemetery_v3/backdrop/entry_backdrop_03.png`（天空 + 天际线 + 礼拜堂）放在 `TOP`，下面压一层 Claude 的地平线雾 `scripts/world/v3/horizon_fog.gdshader`（平滑、下沿起伏、缓慢飘动，远处墓碑越远越朦胧）；下角是正式前景枯枝；门柱中心 408 / 552，柱脚门洞净空 92。一次性工具：`build_cemetery_entry_ground.gd`（补缺的地面层）、`build_cemetery_entry_props.gd`（物件放进场景）、`extend_cemetery_entry_top.gd`（往上加长），都不覆盖用户的作品。
+  - 素材清单 `docs/CEMETERY_ENTRY_ASSET_LIST.md`：礼拜堂、高门柱、入口其余 9 件（铁门两扇、喷泉、枯树两棵、倒路灯、路牌、木十字架两种）**全部通过**；喷泉按用户意思用生成时的原始大小（池 194×119、天使 57×138，画布 256×256，不删行列——删行穿过斜边会出“横切一刀”）。
 - **骷髅选定 B「余裹者」（D-037）**：斜披破裹尸布、右肩两枚铁钉、黑 X 缝线；A / C 留作精英骷髅参考。文件在 `art/character_design/enemies/skeleton/`，四方向站姿通过（D-041）。**动画全部通过**（需求 `docs/SKELETON_ANIMATION_REQUEST.md`，每条用最高 `_vN` 版本，帧在 `anim/`，`timing.json` 由角色组维护）：待机 `_v2`（“几乎不动、偶尔被扯一下”）、受击 `_v2`、行走右 `_v7` / 左正背 `_v5` + 每个方向的 `walk_start_*`、`walk_stop_*`、四个方向的散架（都落成同一个骨堆）、骨堆待机、重组 `_v5`（黑缝线牵头骨、布分 6 帧拉起）。试看房间 `scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn`（绕圈走每段 40 px 整数倍，转弯起步 / 停步；H 受击；空格 散架 → 重组；V 切最初版对比），帧条播放 `scripts/world/v3/sprite_strip.gd`。**攻击动画**等战斗表现设计后再写。骨头是全画面最亮的颜色，以后看要不要压暗。
 - 多样性（D-028）：形状家族 × 状态 × 换颜色（调色板替换）× 下沉深浅 × 摆放规则。**像素画不能旋转、不能左右镜像。**
 
@@ -82,19 +82,16 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 接下来可以做的事（按建议顺序）
 
-1. **下次开工先做**（2026-10-28 用户收工时，地面和骷髅动画都已通过）：
-   - ~~把正式骷髅接进游戏~~（2026-10-28 已接，等用户在游戏里看）；骷髅开战前在墓边来回走动；**四个方向的散架 2026-10-28 全部通过**（需求 §21，都落成同一个骨堆，D-058）；角色组下一份是入口其余物件（需求已补 §6，**等用户转发**）；
-   - ~~20 件地面贴花做成可拖的积木~~（2026-10-28 已做：`scenes/props/cemetery/decals/`，拖进房间的 `Ground/Decals`，步骤见 `docs/GROUND_TERRAIN_METHOD.md` §5）；
-   - **墓园入口的物件已放进场景**（2026-10-28，`Props` 节点下 107 块积木，`scripts/tools/build_cemetery_entry_props.gd`）：用户在编辑器里自己增删挪墓碑，教程 `教程/Godot摆物件.md`；
-   - ~~墓园入口灰盒换成新地面~~（2026-10-28 已换：场景里有 `Ground` 四层 + 编辑器参考图 `Reference`，路照旧草图预刷，**等用户亲手刷**；教程在知识库 `教程/Godot刷路和草地.md` §7）；
-   - ~~入口其余物件~~（2026-10-28 全部通过，D-060，**用户定为以后素材的质量标准**；已做成积木摆进入口）。喷泉按用户的意思**不删行列、用原始大小**重新合成（池 194×119、天使 57×138，画布 256×256），2026-10-28 通过，碰撞按新池子重做；
-   - ~~旧石板路~~（第三种可刷地面 `Ground/Paving`，第二版 2026-10-28 通过，D-061；入口门里甬道和喷泉四周已预铺，等用户亲手调）；
+1. **下次开工先做**：
+   - **问用户入口调完没有**：`scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn` 里有用户正在调的地面、物件（2026-10-28 Claude 还按用户要求减了墓碑 82 → 53、天使后面加了 6 件矮物件），以及用户改过碰撞的 `scenes/props/cemetery/dead_tree_02/03`、`fountain_dry_01`、`tombstone_upright_01` 和 `ground_paint_room.tscn`——**都没提交，等用户说调好了再检查提交**；
+   - **战斗表现提案等用户拍板**（5 条：横向对站不缩放 / 底部薄单词栏 + 敌人信息浮在头顶 / 符文飞向敌人、特效全由程序画 / 意图符号看懂多少画多少 / 动画只要左右两向）。前三条定了就在 v3 墓园里先做界面和站位，用户实机试过再给角色组发主角施法、受击和骷髅攻击需求；
+   - 两个 Codex 组现在都空闲；美术组可做的“碎骨 + 翻土坟坑贴花”用户说**先不做**；
    - 地面以后要加新种类（苔藓地、积水地）时照 `docs/GROUND_TERRAIN_METHOD.md` §6；
 2. 新墓园灰盒：接随机路线算法（用户说等他说再接）；换上正式物件和正式骷髅。
    - **关卡制作方向（D-031）**：地面由瓦片 + 贴花组成（D-043 取代原来的“AI 整体生成”），用户用画笔刷；单体素材做成可拖入的“积木”场景（图片 + 底座贴花 + 遮挡 + 默认碰撞），由用户在编辑器里摆房间、调碰撞，手工房间组成随机算法的房间池。积木已做（D-034）；**教用户拖拽摆房间要等素材更多时**，不要提前做。
 3. **词汇数据化**：`cemetery_words.gd` → Word Sense 数据文件（学习系统参考 §2、§7、§8）。
 4. **Lexicon 正式界面第一版**：先请用户拍板界面设计文档里的 [提案]。
-5. **战斗表现设计**（Word Sigil、HUD、场景内软锁定）→ 主角战斗动作需求。
+5. **战斗表现设计**：提案已写（见第 1 条），拍板后实现 → 主角 / 骷髅战斗动作需求。
 6. 其他场景：Abandoned Station、Eleanor's Shop（AI NPC 地基见知识库 AI NPC 参考 §10）。
 
 ## 团队分工
