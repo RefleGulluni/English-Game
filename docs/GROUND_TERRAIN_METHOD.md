@@ -19,7 +19,7 @@
 
 1. **底子层**（`Ground/Base`）：两块 224×128 的大块无缝泥地（`ground/base/ground_base_01.png`、`_02.png`），随机铺满整个房间；
 2. **路层**（`Ground/Path`）：用户刷的碎石泥路。瓦片里泥地的部分是**透明**的，露出下面的底子；
-3. （以后）**草地层**、**苔藓地层**……每种地面一层，做法完全一样；
+3. **草地层**（`Ground/Grass`，在路层下面）、**旧石板路层**（`Ground/Paving`，最上面，D-061：边缘是陷进泥里的暗边 + 2×2 碎石板渣），以后的苔藓地、积水地……每种地面一层，做法完全一样；
 4. **贴花**（`Ground/Decals`）：积水、落叶、碎石子等 20 件，平贴在地上，打破重复。每件是一个可拖的积木 `scenes/props/cemetery/decals/<名字>.tscn`（2026-10-28），没有碰撞、不挡人，盖在路和草地上面、物件和角色下面；
 5. **物件积木**：墓碑、墙、门柱，站在地面上。
 
@@ -85,11 +85,13 @@ f ≥ 0.5 是路；刚过 0.5 的一小圈是湿泥边；刚不到 0.5 的地方
 |---|---|
 | `scripts/tools/build_ground_path_masks.py` | 生成 15 块路的形状（`transitions/masks/ground_path_masks_01.png` + `.json`） |
 | `scripts/tools/build_ground_paint_room.gd` | 生成底子 TileSet、路 TileSet（Match Corners）和试验房间（已有房间只补缺的层和 Decals） |
-| `scripts/tools/build_cemetery_entry_ground.gd` | 给墓园入口灰盒加上四层地面 + 编辑器参考图（只在没有 `Ground` 时生成一次） |
+| `scripts/tools/build_cemetery_entry_ground.gd` | 给墓园入口灰盒加上地面各层 + 编辑器参考图（没有 `Ground` 时整套生成；已有时只补缺的层，例如旧石板路，预铺在门里甬道和喷泉四周） |
 | `scripts/tools/bake_ground_decals.gd` | 把 `ground/decals/decal_*.png` 做成可拖的贴花积木（已有的不覆盖） |
 | `scripts/world/v3/ground_path.gdshader` | 纯白 → 按世界坐标贴纹理 |
 | `scenes/prototypes/ground_paint/ground_paint_room.tscn` | 刷路试验房间（含用户亲手刷的路） |
 | `art/cemetery_v3/ground/base/` | 大块底子（通过，D-049 / D-054） |
 | `art/cemetery_v3/ground/decals/` | 20 件贴花（通过，D-054） |
 | `art/cemetery_v3/ground/transitions/path_texture_01.png` | 碎石泥路纹理（通过，D-056） |
+| `art/cemetery_v3/ground/transitions/grass_texture_01.png` | 枯草苔藓地纹理（通过，D-057） |
+| `art/cemetery_v3/ground/transitions/paving_texture_01.png` | 旧石板路纹理（第二版通过，D-061；第一版“砖墙”在 git 2bedd84） |
 | `docs/CEMETERY_GROUND_TRANSITION_REQUEST.md` | 给美术组的纹理需求写法 |
