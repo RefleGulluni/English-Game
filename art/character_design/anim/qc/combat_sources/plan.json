@@ -1,0 +1,180 @@
+{
+  "hero": [
+    {
+      "f": 1,
+      "body_dx": 0,
+      "arm_pose": 0,
+      "lamp_bottom_dx": 0,
+      "phase": "standard"
+    },
+    {
+      "f": 2,
+      "body_dx": 0,
+      "arm_pose": 2,
+      "lamp_bottom_dx": 0,
+      "phase": "elbow gathers"
+    },
+    {
+      "f": 3,
+      "body_dx": 1,
+      "arm_pose": 3,
+      "lamp_bottom_dx": 0,
+      "phase": "open palm lifts"
+    },
+    {
+      "f": 4,
+      "body_dx": 1,
+      "arm_pose": 4,
+      "lamp_bottom_dx": 0,
+      "phase": "release"
+    },
+    {
+      "f": 5,
+      "body_dx": 1,
+      "arm_pose": 4,
+      "lamp_bottom_dx": 1,
+      "phase": "held word"
+    },
+    {
+      "f": 6,
+      "body_dx": 1,
+      "arm_pose": 6,
+      "lamp_bottom_dx": 0,
+      "phase": "hand returns"
+    },
+    {
+      "f": 7,
+      "body_dx": 0,
+      "arm_pose": 7,
+      "lamp_bottom_dx": -1,
+      "phase": "lower/settle"
+    },
+    {
+      "f": 8,
+      "body_dx": 0,
+      "arm_pose": 0,
+      "lamp_bottom_dx": 0,
+      "phase": "standard"
+    }
+  ],
+  "skeleton": [
+    {
+      "f": 1,
+      "pelvis": [
+        0,
+        0
+      ],
+      "upper": [
+        0,
+        0
+      ],
+      "arm_pose": "standard",
+      "phase": "standard"
+    },
+    {
+      "f": 2,
+      "pelvis": [
+        -1,
+        1
+      ],
+      "upper": [
+        0,
+        0
+      ],
+      "arm_pose": "standard",
+      "phase": "pelvis pulls back"
+    },
+    {
+      "f": 3,
+      "pelvis": [
+        -2,
+        1
+      ],
+      "upper": [
+        -1,
+        1
+      ],
+      "arm_pose": "3",
+      "phase": "shoulder follows; elbow pulled back"
+    },
+    {
+      "f": 4,
+      "pelvis": [
+        -2,
+        1
+      ],
+      "upper": [
+        -2,
+        1
+      ],
+      "arm_pose": "4",
+      "phase": "hold windup"
+    },
+    {
+      "f": 5,
+      "pelvis": [
+        1,
+        0
+      ],
+      "upper": [
+        0,
+        1
+      ],
+      "arm_pose": "hit",
+      "phase": "bone cut contact"
+    },
+    {
+      "f": 6,
+      "pelvis": [
+        1,
+        0
+      ],
+      "upper": [
+        1,
+        0
+      ],
+      "arm_pose": "hit_follow",
+      "phase": "followthrough; upper follows pelvis"
+    },
+    {
+      "f": 7,
+      "pelvis": [
+        0,
+        0
+      ],
+      "upper": [
+        1,
+        0
+      ],
+      "arm_pose": "7",
+      "phase": "pelvis returns, arm catches"
+    },
+    {
+      "f": 8,
+      "pelvis": [
+        0,
+        0
+      ],
+      "upper": [
+        0,
+        0
+      ],
+      "arm_pose": "8",
+      "phase": "arm drops; cloth lags"
+    },
+    {
+      "f": 9,
+      "pelvis": [
+        0,
+        0
+      ],
+      "upper": [
+        0,
+        0
+      ],
+      "arm_pose": "standard",
+      "phase": "standard"
+    }
+  ],
+  "fixed": "Both feet stay exactly in master positions at every frame. Hero right near hand holds lantern; left far hand casts. Skeleton right near arm attacks, shroud remains right shoulder to left shin. Head+neck+thorax same rigid pixel group."
+}

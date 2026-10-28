@@ -22,6 +22,14 @@ const STRIPS := [
 	["book_open", "hero_B1_book_open_front.png", 1000.0 / 70.0, false], # 6 x 70 ms; closing plays it backwards
 	["book_read", "hero_B1_book_read_front.png", 2.0, true],
 ]
+# Strips timed frame by frame in anim/timing.json (combat, docs/COMBAT_ANIMATION_REQUEST.md):
+# [animation, timing.json key]. Missing ones are skipped until delivered.
+const TIMED := [
+	["cast_right", "hero_B1_cast_right"],
+	["cast_left", "hero_B1_cast_left"],
+	["hit_right", "hero_B1_hit_right"],
+	["hit_left", "hero_B1_hit_left"],
+]
 
 
 func _init() -> void:
@@ -41,6 +49,23 @@ func _init() -> void:
 			atlas.atlas = strip
 			atlas.region = Rect2(i * FRAME, 0, FRAME, FRAME)
 			frames.add_frame(s[0], atlas)
+	var timing: Dictionary = {}
+	if FileAccess.file_exists(ANIM + "timing.json"):
+		timing = JSON.parse_string(FileAccess.get_file_as_string(ANIM + "timing.json")).animations
+	for t in TIMED:
+		if not timing.has(t[1]):
+			continue
+		var data: Dictionary = timing[t[1]]
+		var strip: Texture2D = load(ANIM + str(data.sprite_sheet))
+		frames.add_animation(t[0])
+		frames.set_animation_speed(t[0], 100.0) # 10 ms per unit; each frame lasts its own number of units
+		frames.set_animation_loop(t[0], bool(data.get("loop", false)))
+		for i in int(data.frames):
+			var atlas := AtlasTexture.new()
+			atlas.atlas = strip
+			atlas.region = Rect2(i * FRAME, 0, FRAME, FRAME)
+			frames.add_frame(t[0], atlas, float(data.durations_ms[i]) / 10.0)
+		frames.set_meta(t[0] + "_key_ms", int(data.get("key_frame", {}).get("time_ms", 0)))
 	var err := ResourceSaver.save(frames, OUT + "hero_b1_frames.tres")
 	# Contact shadow 36x14 (user-approved 2026-10-24); the scene raises it 3 px.
 	var img := Image.create_empty(36, 14, false, Image.FORMAT_RGBA8)

@@ -1,0 +1,87 @@
+[
+  {
+    "actor": "hero",
+    "frame": 1,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 2,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 3,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 4,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 5,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 6,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 7,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "hero",
+    "frame": 8,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 1,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 2,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 3,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 4,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 5,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 6,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 7,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 8,
+    "missing_original_neck_pixels": 0
+  },
+  {
+    "actor": "skeleton",
+    "frame": 9,
+    "missing_original_neck_pixels": 0
+  }
+]

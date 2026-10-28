@@ -252,7 +252,12 @@ func _bind_rules() -> void:
 	combat.battle_finished.connect(_battle_finished)
 	combat.enemy_action_started.connect(func(action):
 		if is_instance_valid(skeleton):
-			skeleton.get_node("VisualRoot/Visual").lunge(hero.global_position)
+			var visual: SkeletonB = skeleton.get_node("VisualRoot/Visual")
+			var hit_in := visual.attack(hero.global_position) if str(action.kind) == "physical" else 0.0
+			if hit_in > 0.0:
+				view.enemy_attack(hit_in, 1.05)
+			else:
+				visual.lunge(hero.global_position)
 			events.publish(&"enemy_attack_started", {"enemy_id": "enemy.grave_skeleton", "position": skeleton.global_position, "action": action.word, "kind": action.kind}))
 	for word in manager.learning.words.values():
 		word.changed.connect(_word_changed.bind(word.lemma))
@@ -551,16 +556,21 @@ func restart() -> void:
 # --- Capture mode: scripted walk-through with screenshots ------------------------------------
 
 func _capture() -> void:
-	var dir := str(OS.get_cmdline_user_args()[0]).get_slice("=", 1)
+	var dir := ""
+	for arg in OS.get_cmdline_user_args():
+		if str(arg).begins_with("--capture="):
+			dir = str(arg).get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	await _frames(20)
 	await _shot(dir + "/01_room.png")
-	hero.position = skeleton.position + Vector2(-100, 30)
+	# --mirror: meet it from the right (it then swings to the right; until both sides are delivered).
+	hero.position = skeleton.position + (Vector2(100, 30) if "--mirror" in OS.get_cmdline_user_args() else Vector2(-100, 30))
 	await get_tree().create_timer(2.6).timeout # the skeleton steps across, the mist and bar come in
 	await _shot(dir + "/02_combat.png")
 	# Play: keep the opening hand, use every affordable word, take hits, until it ends.
 	var collapsed_shot := false
 	var cast_shots := 0
+	var attack_shot := false
 	for i in 4000:
 		if combat.finished:
 			break
@@ -585,14 +595,23 @@ func _capture() -> void:
 						if _invoke(int(card.instance_id), "hp"):
 							played = true
 							if cast_shots < 3:
-								await get_tree().create_timer(0.2).timeout
+								await get_tree().create_timer(0.3).timeout
 								await _shot(dir + "/02%s_leave_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
-								await get_tree().create_timer(view.LEAD + view.IMPACT_AT - 0.12).timeout
+								await get_tree().create_timer(view.LEAD + view.IMPACT_AT - 0.22).timeout
 								await _shot(dir + "/02%s_cast_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
 								cast_shots += 1
 							break
 				if not played:
+					var physical := str(combat.intent.get("kind", "")) == "physical" and not combat.bone_remains
 					turns.end_turn()
+					if combat.turn_ending and not combat.finished:
+						turns.react(false)
+					if physical and not attack_shot:
+						attack_shot = true # the skeleton's BONE CUT: wind-up, then its hit frame
+						await get_tree().create_timer(0.38).timeout
+						await _shot(dir + "/02d_attack_windup.png")
+						await get_tree().create_timer(0.17).timeout
+						await _shot(dir + "/02e_attack_hit.png")
 		elif turns.phase == TURNS.Phase.ENEMY_TURN and combat.turn_ending:
 			turns.react(false)
 		hud.refresh()

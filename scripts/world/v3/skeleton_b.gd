@@ -38,6 +38,11 @@ var _stand_off: Array = []
 var _hold := 0.0
 var _held_hit := false
 var _held_snapshot := {}
+## BONE CUT in progress: where it started, which way it lunges, how long it has run.
+var _attack_from := Vector2.ZERO
+var _attack_dir := 0.0
+var _attack_t := 0.0
+var _attack_key := ""
 ## Where to look once the current walk ends (the stand-off may walk away from the hero first).
 var _look_after_walk := Vector2.INF
 
@@ -99,6 +104,24 @@ func lunge(toward: Vector2) -> void:
 	var tween := create_tween()
 	tween.tween_property(_strip, "position", (dir * 8.0).round(), 0.12)
 	tween.tween_property(_strip, "position", Vector2.ZERO, 0.2)
+
+
+## BONE CUT (docs/COMBAT_ANIMATION_REQUEST.md §5): plays the attack strip for the side the hero is
+## on while the whole skeleton steps one stride (40 px) in during the wind-up and back during the
+## recovery. Returns the seconds until the hit frame, or 0 when that side's strip is not delivered
+## (then it only leans in, as before).
+func attack(toward: Vector2) -> float:
+	var side := "right" if toward.x >= global_position.x else "left"
+	_attack_key = "skeleton_B_attack_" + side
+	if _mode != "standing" or action != "idle" or not _keys.has(_attack_key):
+		lunge(toward)
+		return 0.0
+	facing = side
+	_attack_from = mover.position
+	_attack_dir = 1.0 if side == "right" else -1.0
+	_attack_t = 0.0
+	_switch("attack", "attack_" + side)
+	return float(_keys[_attack_key].key_frame.time_ms) / 1000.0
 
 
 ## Turns to look along v (only while standing still).
@@ -190,6 +213,16 @@ func _process(delta: float) -> void:
 		_wander_wait -= delta
 		if _wander_wait <= 0.0:
 			_wander_step()
+	if action == "attack":
+		_attack_t += delta * 1000.0
+		var data: Dictionary = _keys[_attack_key]
+		var hit := float(data.key_frame.time_ms)
+		var durations: Array = data.durations_ms
+		var back_from := hit + float(durations[4]) + float(durations[5]) # holds through the follow-through
+		var total := float(data.duration_ms)
+		var advance := float(data.get("expected_program_advance_px", 40))
+		var share := clampf(_attack_t / hit, 0.0, 1.0) if _attack_t < back_from else 1.0 - clampf((_attack_t - back_from) / (total - back_from), 0.0, 1.0)
+		mover.position = _attack_from + Vector2(_attack_dir * roundf(advance * share), 0)
 	if action == "walk":
 		mover.position = mover.position.move_toward(_target, WALK_SPEED * delta)
 		if mover.position == _target:
@@ -218,9 +251,11 @@ func _on_finished() -> void:
 	match action:
 		"start":
 			_switch("walk", "walk_" + facing)
-		"stop", "hit", "reassemble":
+		"stop", "hit", "reassemble", "attack":
 			if action == "reassemble":
 				facing = "front"
+			if action == "attack":
+				mover.position = _attack_from
 			_switch("idle", "idle_" + facing)
 			if _look_after_walk != Vector2.INF:
 				face(_look_after_walk)

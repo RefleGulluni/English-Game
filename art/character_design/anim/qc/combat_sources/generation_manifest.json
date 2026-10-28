@@ -1,0 +1,13 @@
+{
+  "tool": "built-in image_gen",
+  "action": "hero_B1_cast_right",
+  "prompt_files": [
+    "hero_prompt.txt"
+  ],
+  "raw": [
+    "hero_generated.png"
+  ],
+  "final": "../../hero_B1_cast_right.png",
+  "status": "trial_pending_user_review",
+  "source": "standing pixel groups + native restored pose arm pixels; no old walk frames"
+}

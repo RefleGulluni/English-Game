@@ -1,0 +1,540 @@
+{
+  "name": "hero_B1_cast_right",
+  "reference": "art/character_design/hero_B1_right.png",
+  "standard_file_sha256": "e9ad804c3028921af6f662b1895ed8d1db32c60f4933025ad657a14d275ee7b7",
+  "standard_rgba_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+  "first_frame_rgba_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+  "last_frame_rgba_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+  "first_last_exact": true,
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1836
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 67.39101308411215,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 0.0,
+          "highlight_over170_pct": 4.672897196261682,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "401cd441afc322dcb9119be05199f8c91607b469c5a9055bb8db18c296d690e0",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1894
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 145,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 69.16461720067454,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 1.773604116562396,
+          "highlight_over170_pct": 5.059021922428331,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "81654b424fcea8c0529be500e17ddac5d45f97b5f9f3d1b66423cebeefc42f84",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1921
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 1180,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 69.18606290322582,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 1.7950498191136717,
+          "highlight_over170_pct": 5.0,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "rgba_sha256": "e05ee1080d53c13f078f5e6733b27a7bf3dfb5c942fd280e79dcb994b1b65928",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1976
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 283,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 68.85286814814815,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 1.4618550640360013,
+          "highlight_over170_pct": 6.666666666666667,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "rgba_sha256": "ed228552dfc99bfcf0fcadcdb4ca389712757acd1141d6239bb71770e0ff96e4",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1976
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 47,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 68.85286814814815,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 1.4618550640360013,
+          "highlight_over170_pct": 6.666666666666667,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "rgba_sha256": "5440cf20deeb8c04b6d7944a15334421ee9f01a0477827b97729d2a01b92f0f8",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1889
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 296,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 68.88781972789116,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 1.49680664377901,
+          "highlight_over170_pct": 4.931972789115646,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "rgba_sha256": "b359da22fe2391ba01b822388034594d3f8f4d007ec6ab7940da2832d7d0419c",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1836
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 1162,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 67.39101308411215,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 0.0,
+          "highlight_over170_pct": 4.672897196261682,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "rgba_sha256": "8aafe06d9bf7f8582362f5d413d8ec1731319f544b24bc90156a513cf2c4b7cf",
+      "alpha_values": [
+        0,
+        255
+      ],
+      "colors": 33,
+      "cyan_pixels": 0,
+      "connected_components_sizes": [
+        1836
+      ],
+      "foot_pixels_exact": true,
+      "lowest_y": 95,
+      "changed_pixels_from_previous": 47,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 68.27976171875,
+          "standing_mean_luma": 68.27976171875,
+          "delta": 0.0,
+          "highlight_over170_pct": 5.859375,
+          "standing_highlight_over170_pct": 5.859375
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 67.39101308411215,
+          "standing_mean_luma": 67.39101308411215,
+          "delta": 0.0,
+          "highlight_over170_pct": 4.672897196261682,
+          "standing_highlight_over170_pct": 4.672897196261682
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 66.27703047619048,
+          "standing_mean_luma": 66.27703047619048,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.9523809523809524,
+          "standing_highlight_over170_pct": 0.9523809523809524
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 56.803824999999996,
+          "standing_mean_luma": 56.803824999999996,
+          "delta": 0.0,
+          "highlight_over170_pct": 0.0,
+          "standing_highlight_over170_pct": 0.0
+        }
+      ]
+    }
+  ],
+  "timing": {
+    "frames": 8,
+    "frame_size": [
+      96,
+      96
+    ],
+    "anchor": [
+      48,
+      96
+    ],
+    "durations_ms": [
+      90,
+      100,
+      100,
+      120,
+      100,
+      90,
+      80,
+      80
+    ],
+    "duration_ms": 760,
+    "loop": false,
+    "sprite_sheet": "hero_B1_cast_right.png",
+    "release_frame": 4,
+    "release_frame_index": 3,
+    "key_frame": {
+      "type": "release",
+      "frame": 4,
+      "frame_index": 3,
+      "time_ms": 290
+    },
+    "frame_numbering": "frame fields are1-based; *_index fields are0-based"
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "frame": 4,
+    "region": "flexible lower shroud y48..64, x78..91 (160canvas)",
+    "palette_from": "standard shroud y48..64 x44..60",
+    "palette_shift": -3,
+    "waist_mean_delta": 1.5341582779708887
+  },
+  {
+    "frame": 5,
+    "region": "flexible lower shroud y48..64, x78..91 (160canvas)",
+    "palette_from": "standard shroud y48..64 x44..60",
+    "palette_shift": -4,
+    "waist_mean_delta": 1.6848497209907833
+  },
+  {
+    "frame": 6,
+    "region": "flexible lower shroud y48..64, x78..91 (160canvas)",
+    "palette_from": "standard shroud y48..64 x44..60",
+    "palette_shift": -4,
+    "waist_mean_delta": 1.6848497209907833
+  }
+]

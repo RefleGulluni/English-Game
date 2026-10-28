@@ -1,6 +1,6 @@
 class_name SpriteStrip
 extends Sprite2D
-## Plays one horizontal frame strip (96×96 cells) with per-frame durations from the character
+## Plays one horizontal frame strip (96×96 cells unless the animation says otherwise) with per-frame durations from the character
 ## group's timing.json. The feet sit on the node's origin, like every v3 actor and prop.
 
 signal finished
@@ -20,14 +20,16 @@ func load_strip(dir: String, anim: String) -> void:
 	var timing: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "timing.json"))
 	var data: Dictionary = timing.animations[anim]
 	current = anim
-	var cell: Array = timing.get("frame_size", [96, 96])
+	# An animation may bring its own cell and anchor (the 160x96 attack, feet at (80, 96)).
+	var cell: Array = data.get("frame_size", timing.get("frame_size", [96, 96]))
+	var anchor: Array = data.get("anchor", [cell[0] / 2, cell[1]])
 	var path := dir + str(data.sprite_sheet)
 	if not _textures.has(path):
 		_textures[path] = PixelArt.texture(path)
 	texture = _textures[path]
 	hframes = int(data.frames)
 	centered = false
-	offset = Vector2(-cell[0] / 2, -cell[1])
+	offset = Vector2(-int(anchor[0]), -int(anchor[1]))
 	_durations = data.durations_ms
 	_loop = bool(data.get("loop", true))
 	_hold_last = bool(data.get("hold_last_frame", false))

@@ -85,7 +85,27 @@ func set_book_open(open: bool) -> void:
 		sprite.play_backwards("book_open")
 
 
+## Combat (KB Combat Presentation): plays the shared casting strip for the side it faces and
+## returns how long until the release frame, when the word's shape leaves the hand (0 when the
+## strip for that side is not delivered yet).
+func cast() -> float:
+	var anim := "cast_" + facing
+	if not sprite.sprite_frames.has_animation(anim):
+		return 0.0
+	sprite.play(anim)
+	return float(sprite.sprite_frames.get_meta(anim + "_key_ms", 0)) / 1000.0
+
+
+func take_hit() -> void:
+	var anim := "hit_" + facing
+	if sprite.sprite_frames.has_animation(anim):
+		sprite.play(anim)
+
+
 func _on_animation_finished() -> void:
+	if sprite.animation.begins_with("cast_") or sprite.animation.begins_with("hit_"):
+		sprite.play(facing)
+		return
 	if sprite.animation != "book_open":
 		return
 	if book_phase == "opening":

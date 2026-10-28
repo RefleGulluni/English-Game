@@ -706,7 +706,14 @@ func play_cast(card: Dictionary, before: Dictionary) -> void:
 		close.tween_callback(func():
 			_gap_index = -1
 			refresh())
-	await get_tree().create_timer(LEAD).timeout
+	# The hero lifts a hand as the word arrives; its shape leaves on the release frame.
+	var release := 0.0
+	if is_instance_valid(hero) and hero.has_method("cast"):
+		await get_tree().create_timer(maxf(0.0, LEAD - 0.29)).timeout
+		release = hero.cast()
+		await get_tree().create_timer(release if release > 0.0 else 0.29).timeout
+	else:
+		await get_tree().create_timer(LEAD).timeout
 	var to_enemy := signf(enemy.global_position.x - hero.global_position.x) if is_instance_valid(enemy) else 1.0
 	var origin := hero.global_position + HERO_CHEST + Vector2(to_enemy * 22, 0)
 	var target := enemy.global_position + ENEMY_BODY if is_instance_valid(enemy) else origin
@@ -762,6 +769,24 @@ func _impact(word: String, before: Dictionary) -> void:
 	_last_hero_hp = combat.hp
 	if shook:
 		_shake(0.12)
+
+
+## The enemy's attack is under way: hold the hero's hit until its hit frame, and keep the bar
+## quiet until the attack has finished playing.
+func enemy_attack(hit_in: float, total: float) -> void:
+	busy = true
+	refresh()
+	await get_tree().create_timer(hit_in).timeout
+	if is_instance_valid(hero):
+		if combat.hp < _last_hero_hp:
+			_float("-%d" % (_last_hero_hp - combat.hp), hero.global_position + Vector2(0, -108), HURT, 16)
+			_shake(0.14)
+		if hero.has_method("take_hit"):
+			hero.take_hit()
+	_last_hero_hp = combat.hp
+	await get_tree().create_timer(maxf(0.0, total - hit_in)).timeout
+	busy = false
+	refresh()
 
 
 func _on_changed() -> void:

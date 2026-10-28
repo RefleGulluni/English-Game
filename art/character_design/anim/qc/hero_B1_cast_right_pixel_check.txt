@@ -1,0 +1,10 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+-20261028/delivery/hero/frames/hero_B1_cast_right/01.png     96x96   OK   33    83    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/02.png     96x96   OK   33    82    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/03.png     96x96   OK   33    82    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/04.png     96x96   OK   33    82    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/05.png     96x96   OK   33    82    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/06.png     96x96   OK   33    82    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/07.png     96x96   OK   33    83    0    95
+-20261028/delivery/hero/frames/hero_B1_cast_right/08.png     96x96   OK   33    83    0    95
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

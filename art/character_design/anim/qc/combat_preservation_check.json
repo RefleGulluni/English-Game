@@ -1,0 +1,12 @@
+{
+  "protected_files": 3253,
+  "changed_existing_files": [
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/timing.json"
+  ],
+  "old_skeleton_timing_entries": 55,
+  "new_skeleton_timing_entries": 56,
+  "all_old_timing_entries_unchanged": true,
+  "all_standard_and_old_animation_hashes_unchanged": true,
+  "new_hero_timing_created": true,
+  "no_godot_scene_changes": true
+}

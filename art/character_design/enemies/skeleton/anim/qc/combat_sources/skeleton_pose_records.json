@@ -1,0 +1,209 @@
+[
+  {
+    "f": 1,
+    "pelvis": [
+      0,
+      0
+    ],
+    "upper": [
+      0,
+      0
+    ],
+    "arm_pose": "standard",
+    "phase": "standard",
+    "arm_tip": [
+      70,
+      25
+    ],
+    "tip_offset_from_root": -10,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      0,
+      0
+    ]
+  },
+  {
+    "f": 2,
+    "pelvis": [
+      -1,
+      1
+    ],
+    "upper": [
+      0,
+      0
+    ],
+    "arm_pose": "standard",
+    "phase": "pelvis pulls back",
+    "arm_tip": [
+      70,
+      25
+    ],
+    "tip_offset_from_root": -10,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      0,
+      0
+    ]
+  },
+  {
+    "f": 3,
+    "pelvis": [
+      -2,
+      1
+    ],
+    "upper": [
+      -1,
+      1
+    ],
+    "arm_pose": "3",
+    "phase": "shoulder follows; elbow pulled back",
+    "arm_tip": [
+      68,
+      25
+    ],
+    "tip_offset_from_root": -12,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      -1,
+      1
+    ]
+  },
+  {
+    "f": 4,
+    "pelvis": [
+      -2,
+      1
+    ],
+    "upper": [
+      -2,
+      1
+    ],
+    "arm_pose": "4",
+    "phase": "hold windup",
+    "arm_tip": [
+      67,
+      25
+    ],
+    "tip_offset_from_root": -13,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      -2,
+      1
+    ]
+  },
+  {
+    "f": 5,
+    "pelvis": [
+      1,
+      0
+    ],
+    "upper": [
+      0,
+      1
+    ],
+    "arm_pose": "hit",
+    "phase": "bone cut contact",
+    "arm_tip": [
+      145,
+      26
+    ],
+    "tip_offset_from_root": 65,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      0,
+      1
+    ]
+  },
+  {
+    "f": 6,
+    "pelvis": [
+      1,
+      0
+    ],
+    "upper": [
+      1,
+      0
+    ],
+    "arm_pose": "hit_follow",
+    "phase": "followthrough; upper follows pelvis",
+    "arm_tip": [
+      146,
+      29
+    ],
+    "tip_offset_from_root": 66,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      1,
+      0
+    ]
+  },
+  {
+    "f": 7,
+    "pelvis": [
+      0,
+      0
+    ],
+    "upper": [
+      1,
+      0
+    ],
+    "arm_pose": "7",
+    "phase": "pelvis returns, arm catches",
+    "arm_tip": [
+      81,
+      47
+    ],
+    "tip_offset_from_root": 1,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      1,
+      0
+    ]
+  },
+  {
+    "f": 8,
+    "pelvis": [
+      0,
+      0
+    ],
+    "upper": [
+      0,
+      0
+    ],
+    "arm_pose": "8",
+    "phase": "arm drops; cloth lags",
+    "arm_tip": [
+      71,
+      51
+    ],
+    "tip_offset_from_root": -9,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      0,
+      0
+    ]
+  },
+  {
+    "f": 9,
+    "pelvis": [
+      0,
+      0
+    ],
+    "upper": [
+      0,
+      0
+    ],
+    "arm_pose": "standard",
+    "phase": "standard",
+    "arm_tip": [
+      70,
+      25
+    ],
+    "tip_offset_from_root": -10,
+    "feet_exact_standard": true,
+    "head_neck_thorax_translation": [
+      0,
+      0
+    ]
+  }
+]

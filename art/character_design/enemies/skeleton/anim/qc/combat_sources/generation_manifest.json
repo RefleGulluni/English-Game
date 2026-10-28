@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "action": "skeleton_B_attack_right",
+  "prompt_files": [
+    "skeleton_prompt.txt",
+    "skeleton_hit_prompt.txt"
+  ],
+  "raw": [
+    "skeleton_generated.png",
+    "hit_generated.png"
+  ],
+  "final": "../../skeleton_B_attack_right.png",
+  "status": "trial_pending_user_review",
+  "source": "standing pixel groups + native restored pose arm pixels; no old walk frames"
+}
