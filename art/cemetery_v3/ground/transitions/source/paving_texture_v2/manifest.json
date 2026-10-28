@@ -1,0 +1,60 @@
+{
+  "task": "CEMETERY_GROUND_TRANSITION_REQUEST section9.1; second version, not approved yet",
+  "tool": "built-in image_gen",
+  "final": "../../paving_texture_01.png",
+  "backup": "../../qc/backups/paving_artgroup_before_v2.zip",
+  "sources": [
+    {
+      "prompt": "01_material.prompt.txt",
+      "raw": "01_material_generated.png",
+      "restored": "01_material_restored_cells.png",
+      "grid": "01_material_grid.json",
+      "observed_pitch": [
+        6.68,
+        6.46
+      ],
+      "restored_size": [
+        248,
+        146
+      ],
+      "crop": [
+        12,
+        9,
+        236,
+        137
+      ]
+    },
+    {
+      "prompt": "04_cross_repair.prompt.txt",
+      "raw": "04_cross_repair_generated.png",
+      "reference": "03_half_offset_6x.png",
+      "restored": "04_cross_repair_restored_cells.png",
+      "grid": "04_cross_repair_grid.json",
+      "observed_pitch": [
+        7.40625,
+        7.40625
+      ],
+      "restored_size": [
+        224,
+        128
+      ]
+    }
+  ],
+  "processing": [
+    "prepare_material.py",
+    "02_cleanup_metadata.json",
+    "finish_material.py",
+    "05_tiny_shade_cleanup.json",
+    "05_assembly.json",
+    "05_final_palette.json"
+  ],
+  "method": "Observed-cell center sampling; integer crop/half-offset112,64; AI broad central cross to reconnect slabs and obscure joint stretches; nearest32 palette; tiny <=4px same-material near-shade islands merged distance<=8 for2passes; native minimum-error pixel cuts; opposite1px textured profiles paired; material-specific palette keeps moss/mud filled joints lighter and puts contrast into stone faces. No art resizing, filtering, blending, added noise, rotations or mirroring.",
+  "checks": "../../qc/paving_texture_verification.json",
+  "limitations": [
+    "Bare fill still has recognizable repetition via cracks and missing patches.",
+    "Some shadowed slab patches can read as stains rather than unambiguous collapsed corners.",
+    "Moss-filled gaps are locally broad; not all boundaries have vanished.",
+    "Static prop composite, not in-game screenshot."
+  ],
+  "external_reference_change_detected": "art/cemetery_v3/ground/rooms/cemetery_entry_reference.png hash changed concurrently; never read or written by this workflow."
+}

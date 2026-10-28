@@ -1,0 +1,14 @@
+{
+  "max_component_area": 4,
+  "max_RGB_distance": 8,
+  "passes": 2,
+  "same_material_only": true,
+  "edit_horizontal_rate_progress": [
+    54.330156950672645,
+    43.841087443946186
+  ],
+  "old_horizontal_rate_progress": [
+    57.54274103139013,
+    50.05955717488789
+  ]
+}
