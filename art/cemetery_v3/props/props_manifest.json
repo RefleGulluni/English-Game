@@ -725,7 +725,7 @@
       "family": "stone",
       "source_record": "qc/entry_step2_sources/fountain_fullsize_revision/composition.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "accepted_D-060_design_fullsize_recomposition_pending_review",
+      "status": "accepted_D-060",
       "flat_base_only": false,
       "pool_width_px": 194,
       "angel_with_pedestal_height_px": 138
