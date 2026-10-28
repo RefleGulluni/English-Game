@@ -16,6 +16,7 @@ const PROP_SCENES := "res://scenes/props/cemetery/" # building blocks (D-034) wi
 
 var layout: Dictionary
 var size := NATIVE # most rooms are one screen; the Cemetery Entry is two screens tall (D-038)
+var top := 0 # a room lengthened upwards starts above y 0, so nothing already placed has to move
 var prop_dir: String # where this room's props live; layouts may point at a newer prop set
 var sorted: Node2D # Y-sorted: props, actors and world loot; every origin is a ground contact point
 var player: Node2D
@@ -29,12 +30,13 @@ func _init(room_layout: Dictionary) -> void:
 	_rng.seed = int(layout.get("seed", 1))
 	prop_dir = str(layout.get("prop_dir", ART + "props/"))
 	size = layout.get("size", NATIVE)
+	top = int(layout.get("top", 0))
 	# plate_file: any PNG path (res:// or on disk), for trying ground candidates before they land;
 	# "" means the scene draws its own ground (tile layers) underneath the room.
 	var plate_file := str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png"))
 	if plate_file != "":
 		var plate := PixelArt.texture(plate_file)
-		for y in range(0, size.y, plate.get_height()): # a taller room stacks the plate until real ground exists
+		for y in range(top, size.y, plate.get_height()): # a taller room stacks the plate until real ground exists
 			var ground := Sprite2D.new()
 			ground.centered = false
 			ground.texture = plate
@@ -157,8 +159,8 @@ func _foot_rect(img: Image, gap: int) -> Rect2:
 func _add_bounds() -> void:
 	var walls := StaticBody2D.new()
 	walls.name = "Bounds"
-	for r in [Rect2(-20, -20, size.x + 40, 20), Rect2(-20, size.y, size.x + 40, 20),
-			Rect2(-20, 0, 20, size.y), Rect2(size.x, 0, 20, size.y)]:
+	for r in [Rect2(-20, top - 20, size.x + 40, 20), Rect2(-20, size.y, size.x + 40, 20),
+			Rect2(-20, top, 20, size.y - top), Rect2(size.x, top, 20, size.y - top)]:
 		var shape := CollisionShape2D.new()
 		var rect := RectangleShape2D.new()
 		rect.size = r.size

@@ -18,11 +18,14 @@ const PROPS := "res://art/cemetery_v3/props/"
 const OLD := "../../cemetery_pixel_v1/" # relative to PROPS: old placeholder art (road slabs)
 const NATIVE := Vector2i(960, 540)
 const SIZE := Vector2i(960, 1350) # 2.5 屏：门里的墓园加长了约半屏（用户 2026-10-26）
+# 门里的墓园再往上加长（用户 2026-10-28：进门后先看到天使，走一段才看到礼拜堂）。
+# 往上长出去的部分用负坐标，原来摆好、刷好的东西一个都不用挪。
+const TOP := -256
 const SPAWN := Vector2(485, 1336)
 
 # 铁栏一段宽 160：门柱 → 铁栏 +81，铁栏 → 门柱 +71（props_manifest wall_families.B_ashlar）
 const LAYOUT := {
-	"id": "cemetery_entry", "seed": 3, "dead_grass": 26, "grass_top": 112, "prop_dir": PROPS, "size": SIZE,
+	"id": "cemetery_entry", "seed": 3, "dead_grass": 26, "grass_top": TOP + 112, "prop_dir": PROPS, "size": SIZE, "top": TOP,
 	"props": [
 		# 大门与铁栏：两根高门柱是角色组的正式素材（D-040），柱脚处门洞净空 92
 		["gate_pillar_tall_01", Vector2(408, 546), null], ["gate_pillar_tall_01", Vector2(552, 546), null],
@@ -51,7 +54,7 @@ const LAYOUT := {
 		# 大门：左边一扇半开（门轴在左门柱），另一扇倒在门里的地上（位置照角色组的拼装图）
 		["iron_gate_leaf_open_01", Vector2(433, 546), null], ["iron_gate_leaf_fallen_01", Vector2(512, 518), null],
 		# 门里正中：干涸的喷泉和哀悼天使
-		["fountain_dry_01", Vector2(480, 334), null], # = FOUNTAIN,
+		["fountain_dry_01", Vector2(480, 200), null], # = FOUNTAIN,
 		# 门外路边：歪倒的路牌、倒下的路灯、穷人坟的木十字架
 		["signpost_01", Vector2(560, 1030), null], ["fallen_lamp_post_01", Vector2(642, 1272), null],
 		["wooden_cross_01", Vector2(56, 700), null], ["wooden_cross_02", Vector2(752, 1188), null],
@@ -63,17 +66,18 @@ const ROAD_LEFT := [Vector2(444, 1350), Vector2(426, 1290), Vector2(450, 1230), 
 	Vector2(418, 1050), Vector2(426, 990), Vector2(462, 930), Vector2(476, 870), Vector2(448, 810),
 	Vector2(428, 752), Vector2(452, 690), Vector2(470, 642), Vector2(440, 592), Vector2(452, 552)]
 # 门里的路：从大门笔直走到喷泉前，再分成左右两条，穿过墓碑群通向出口
-const FOUNTAIN := Vector2(480, 334) # 门里的正中间，从大门要走一段才到
+const FOUNTAIN := Vector2(480, 200) # 门里墓园的正中间（2026-10-28 从 334 挪上来，墓园加长了）
 const AVENUE := [Vector2(452, 540), Vector2(508, 540), Vector2(512, 344), Vector2(448, 344)]
-const BRANCH := [Vector2(420, 326), Vector2(376, 266), Vector2(336, 196), Vector2(308, 140), Vector2(298, 100)] # 左边那条的中线，右边左右对称
+const BRANCH := [Vector2(420, 326), Vector2(376, 266), Vector2(336, 196), Vector2(308, 140), Vector2(298, 100),
+	Vector2(298, TOP + 100)] # 左边那条的中线，右边左右对称；最后一段是加长后笔直通向出口
 # 门里两侧铺满墓碑（用现成的积木）：一排一排，避开路和喷泉
 const YARD_GRAVES := ["tombstone_upright_01", "tombstone_upright_02", "tombstone_flat_01", "tombstone_pointed_01",
 	"tombstone_cross_01", "tombstone_small_01", "tombstone_upright_01", "tombstone_upright_02", "tombstone_small_01",
 	"tombstone_upright_01_tilted", "tombstone_cross_01_broken", "tombstone_upright_02_broken", "obelisk_01"]
-# 出口在远景条（y 0～100）下沿：小路走进薄雾里
+# 出口在远景条（TOP ～ TOP + 100）下沿：小路走进薄雾里
 const EXITS := [
-	{"zone": Rect2(262, 92, 72, 26), "kind": "combat", "target": "layer1_a", "side": "top", "glyph_at": Vector2(298, 80)},
-	{"zone": Rect2(626, 92, 72, 26), "kind": "event", "target": "layer1_b", "side": "top", "glyph_at": Vector2(662, 80)},
+	{"zone": Rect2(262, TOP + 92, 72, 26), "kind": "combat", "target": "layer1_a", "side": "top", "glyph_at": Vector2(298, TOP + 80)},
+	{"zone": Rect2(626, TOP + 92, 72, 26), "kind": "event", "target": "layer1_b", "side": "top", "glyph_at": Vector2(662, TOP + 80)},
 ]
 const BACKDROP := "res://art/cemetery_v3/backdrop/" # 美术组的远景条和前景枯枝
 
@@ -83,7 +87,7 @@ const IRON := Color(0.16, 0.15, 0.15)
 const MUD_PATH := Color(0.36, 0.30, 0.25)
 const WATER := Color(0.34, 0.40, 0.46, 0.85)
 const FOG := Color(0.62, 0.66, 0.72)
-const HORIZON_FOG := Rect2(0, 24, 960, 210) # from inside the backdrop strip's flat bottom down over the far graves
+const HORIZON_FOG := Rect2(0, TOP + 24, 960, 210) # from inside the backdrop strip's flat bottom down over the far graves
 
 var _viewport: SubViewport
 var _room: CemeteryRoom
@@ -158,7 +162,7 @@ func _ready() -> void:
 	_camera = Camera2D.new()
 	_camera.limit_left = 0
 	_camera.limit_right = SIZE.x
-	_camera.limit_top = 0
+	_camera.limit_top = TOP
 	_camera.limit_bottom = SIZE.y
 	_camera.position_smoothing_enabled = true
 	_camera.position_smoothing_speed = 4.0
@@ -280,6 +284,7 @@ func _build_placeholders() -> void:
 	var top := StaticBody2D.new()
 	_room.add_child(top)
 	for r in [Rect2(0, 0, 262, 100), Rect2(334, 0, 292, 100), Rect2(698, 0, 262, 100), Rect2(262, 0, 72, 92), Rect2(626, 0, 72, 92)]:
+		r.position.y += TOP
 		var block := CollisionShape2D.new()
 		var rect := RectangleShape2D.new()
 		rect.size = r.size
@@ -290,8 +295,8 @@ func _build_placeholders() -> void:
 	_labels = Node2D.new()
 	_labels.z_index = 80
 	_room.add_child(_labels)
-	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["干涸的喷泉 + 哀悼天使", Vector2(372, 340)],
-			["出口 → 第 1 层", Vector2(262, 122)], ["出口 → 第 1 层", Vector2(626, 122)],
+	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, TOP + 86)], ["干涸的喷泉 + 哀悼天使", Vector2(372, 206)],
+			["出口 → 第 1 层", Vector2(262, TOP + 122)], ["出口 → 第 1 层", Vector2(626, TOP + 122)],
 			["门里两侧：一排排墓碑", Vector2(60, 300)], ["半开的铁门", Vector2(330, 516)],
 			["倒下的铁门", Vector2(540, 500)], ["路边孤坟", Vector2(120, 570)],
 			["倒下的路灯", Vector2(600, 1276)], ["枯树", Vector2(740, 890)],
@@ -330,6 +335,7 @@ func _build_low_angle(ground: Node2D) -> void:
 	# 天空 + 天际线 + 礼拜堂剪影：用户喜欢这一部分的神秘感，两种视角都保留（D-039）
 	var sky := Node2D.new()
 	sky.z_index = 39
+	sky.position.y = TOP
 	_room.add_child(sky)
 	var backdrop := ""
 	for v in ["03", "02", "01"]: # 最新的一版：02 放大礼拜堂，03 修好雾里的底部和屋顶
@@ -341,6 +347,7 @@ func _build_low_angle(ground: Node2D) -> void:
 		strip.texture = PixelArt.texture(backdrop)
 		strip.centered = false
 		strip.z_index = -9 # behind every prop, just over the ground
+		strip.position.y = TOP
 		_room.add_child(strip)
 	sky.add_child(_poly([Vector2(0, 0), Vector2(960, 0), Vector2(960, 46), Vector2(0, 46)], Color(0.66, 0.68, 0.72)))
 	var line := PackedVector2Array([Vector2(0, 70)])
@@ -529,8 +536,8 @@ func _save_reference() -> void:
 	_labels.visible = true
 	_tint().visible = false
 	_room.player.visible = false
-	_viewport.size = SIZE
-	_camera.position = Vector2(SIZE) / 2
+	_viewport.size = Vector2i(SIZE.x, SIZE.y - TOP)
+	_camera.position = Vector2(SIZE.x / 2.0, (SIZE.y + TOP) / 2.0)
 	_camera.reset_smoothing()
 	set_process(false)
 	for i in 30:
@@ -550,7 +557,8 @@ func _capture() -> void:
 	_labels.visible = "--labels" in str(OS.get_cmdline_user_args())
 	for shot in [["01_arrive", SPAWN, false], ["02_gate", Vector2(480, 600), false],
 			["03_arrive_low", SPAWN, true], ["04_gate_low", Vector2(480, 600), true],
-			["05_fountain", Vector2(480, 470), false], ["06_yard_top", Vector2(330, 200), false]]:
+			["05_fountain", Vector2(480, 470), false], ["06_yard_mid", Vector2(330, 200), false],
+			["07_yard_top", Vector2(330, TOP + 200), false]]:
 		_set_low_angle(shot[2])
 		hero.position = shot[1]
 		_follow()
