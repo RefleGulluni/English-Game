@@ -590,6 +590,12 @@ func _capture() -> void:
 							view._show_word_tip(card, view._words.get_child(combat.deck.hand.find(card)))
 							await get_tree().create_timer(0.5).timeout
 							await _shot(dir + "/02%s_preview_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
+							if cast_shots == 0: # the same moment in the cold palette, to compare
+								view.set_palette("cold")
+								view._show_word_tip(card, view._words.get_child(combat.deck.hand.find(card)))
+								await get_tree().create_timer(0.2).timeout
+								await _shot(dir + "/02a_preview_cold.png")
+								view.set_palette("warm")
 							view._hide_tip()
 							view.forced_hover = -1
 						if _invoke(int(card.instance_id), "hp"):

@@ -24,9 +24,17 @@ signal mulligan_confirmed(ids: Array[int])
 signal reaction_answered(deflect: bool)
 
 const CYAN := Color(0.42, 0.86, 0.95)
-const INK := Color(0.86, 0.89, 0.86)
-const DIM := Color(0.56, 0.6, 0.62)
-const HURT := Color(0.9, 0.45, 0.4)
+## Cyan belongs to language only (Art Bible v3 §8): the words, their shapes, the intent, Focus.
+## Everything else (numbers, labels, frames, hints) uses a palette of its own. Two to compare
+## (user 2026-10-28: "all one cyan is a little monotonous"); P switches them in a fight.
+const PALETTES := {
+	"warm": {"ink": Color8(222, 206, 176), "dim": Color8(150, 136, 116), "hurt": Color8(206, 98, 76), "panel": Color(0.055, 0.045, 0.035, 0.94), "edge": Color8(150, 128, 92, 150), "button": Color8(222, 206, 176)},
+	"cold": {"ink": Color(0.86, 0.89, 0.86), "dim": Color(0.56, 0.6, 0.62), "hurt": Color(0.9, 0.45, 0.4), "panel": Color(0.02, 0.03, 0.04, 0.93), "edge": Color(0.42, 0.86, 0.95, 0.45), "button": Color(0.42, 0.86, 0.95)},
+}
+var INK := Color8(222, 206, 176)
+var DIM := Color8(150, 136, 116)
+var HURT := Color8(206, 98, 76)
+var palette := "warm"
 const NATIVE := Vector2(960, 540)
 const BAR_TOP := 432.0
 const FONT := preload("res://art/ui/fonts/CormorantGaramond.ttf")
@@ -136,6 +144,28 @@ func setup(viewport: SubViewport, language: CanvasLayer, world_screen: Control, 
 	_floats.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_ui.add_child(_floats)
 	_build_tip()
+	set_palette(palette)
+
+
+func set_palette(name: String) -> void:
+	palette = name
+	var p: Dictionary = PALETTES[name]
+	INK = p.ink
+	DIM = p.dim
+	HURT = p.hurt
+	var style := _tip.get_theme_stylebox("panel") as StyleBoxFlat
+	style.bg_color = p.panel
+	style.border_color = p.edge
+	for button in [_end_button, _deflect_button]:
+		button.add_theme_color_override("font_color", p.button)
+		button.add_theme_color_override("font_disabled_color", Color(p.button, 0.35))
+	refresh()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if active and event.is_pressed() and not event.is_echo() and event.physical_keycode == KEY_P:
+		set_palette("cold" if palette == "warm" else "warm")
+		_float("PALETTE · " + palette.to_upper(), Vector2(480, 60), INK, 14)
 
 
 # --- Opening and closing -----------------------------------------------------------------
@@ -761,7 +791,7 @@ func _impact(word: String, before: Dictionary) -> void:
 		_float("BOUND", at + Vector2(0, -18), CYAN, 15)
 	var hero_at := hero.global_position + Vector2(0, -108)
 	if int(after.hero_hp) > int(before.hero_hp):
-		_float("+%d" % (int(after.hero_hp) - int(before.hero_hp)), hero_at, CYAN, 15)
+		_float("+%d" % (int(after.hero_hp) - int(before.hero_hp)), hero_at, INK, 15)
 	if int(after.armor) > int(before.armor):
 		_float("ARMOR +%d" % (int(after.armor) - int(before.armor)), hero_at, CYAN, 13)
 	if word == "STABILIZE":
