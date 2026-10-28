@@ -1,0 +1,56 @@
+{
+  "canvas": [
+    256,
+    256
+  ],
+  "origin": [
+    128,
+    256
+  ],
+  "pool_source": "../fountain_pool/02_restored_cells.png",
+  "angel_source": "../fountain_angel/02_restored_cells.png",
+  "pool_source_size": [
+    194,
+    119
+  ],
+  "angel_source_size": [
+    57,
+    138
+  ],
+  "pool_deleted_rows": [],
+  "pool_deleted_columns": [],
+  "angel_deleted_rows": [],
+  "angel_deleted_columns": [],
+  "pool_placement": [
+    31,
+    129
+  ],
+  "angel_placement": [
+    100,
+    71
+  ],
+  "front_rim_occlusion": "Reapply unchanged pool pixels for source y>=78 over statue; both complete source images retained. No slicing and reconnecting.",
+  "palette": "Nearest existing accepted fountain48-color palette; unchanged palette, no new art colors. Magenta contamination removed as before.",
+  "integer_translation_only": true,
+  "prop_bbox": [
+    31,
+    71,
+    225,
+    248
+  ],
+  "base_bbox": [
+    34,
+    218,
+    215,
+    246
+  ],
+  "alpha_values": [
+    0,
+    255
+  ],
+  "combined_colors": 48,
+  "horizontal_change_pct": 89.30461424194597,
+  "no_rows_columns_deleted": true,
+  "protected_other_props": 68,
+  "protected_other_props_unchanged": true
+}

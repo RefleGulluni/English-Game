@@ -21,7 +21,7 @@ const FOOTPRINT := ["open_grave_01", "grave_lid_01"]
 const FLAT := ["grave_slab_01", "iron_gate_leaf_fallen_01", "fallen_lamp_post_01"]
 ## Wide things whose bottom rows are narrower than what stands on the ground (the fountain's front
 ## corner): an ellipse inside this box, relative to the foot, measured from the pool's widest rows.
-const POOLS := {"fountain_dry_01": Rect2(-70, -66, 142, 62)}
+const POOLS := {"fountain_dry_01": Rect2(-92, -92, 186, 84)}
 ## Too small to block the way; the shape is there but switched off.
 const WALK_OVER := ["rubble_pile_01", "grave_vase_01", "candles_01", "grave_lantern_01"]
 

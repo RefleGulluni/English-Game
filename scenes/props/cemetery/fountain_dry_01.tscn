@@ -4,21 +4,21 @@
 [ext_resource type="Texture2D" path="res://art/cemetery_v3/props/fountain_dry_01_base.png" id="2_2bggi"]
 [ext_resource type="Texture2D" path="res://art/cemetery_v3/props/fountain_dry_01.png" id="3_8jn5j"]
 
-[node name="FountainDry01" type="Node2D" unique_id=1177660122]
+[node name="FountainDry01" type="Node2D" unique_id=753070424]
 script = ExtResource("1_1duuf")
 ground_gap = 8
 
-[node name="Base" type="Sprite2D" parent="." unique_id=1440516139]
+[node name="Base" type="Sprite2D" parent="." unique_id=741614027]
 texture = ExtResource("2_2bggi")
 centered = false
-offset = Vector2(-112, -216)
+offset = Vector2(-128, -248)
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1803498951]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=263334626]
 texture = ExtResource("3_8jn5j")
 centered = false
-offset = Vector2(-112, -216)
+offset = Vector2(-128, -248)
 
-[node name="Body" type="StaticBody2D" parent="." unique_id=317991944]
+[node name="Body" type="StaticBody2D" parent="." unique_id=799606510]
 
-[node name="Shape" type="CollisionPolygon2D" parent="Body" unique_id=703408640]
-polygon = PackedVector2Array(72, -35, 62, -20, 37, -8, 1, -4, -35, -8, -60, -20, -70, -35, -60, -51, -35, -62, 1, -66, 37, -62, 62, -51)
+[node name="Shape" type="CollisionPolygon2D" parent="Body" unique_id=980297727]
+polygon = PackedVector2Array(94, -50, 82, -29, 48, -14, 1, -8, -46, -14, -80, -29, -92, -50, -80, -71, -46, -86, 1, -92, 48, -86, 82, -71)

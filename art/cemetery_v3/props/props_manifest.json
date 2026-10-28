@@ -714,21 +714,21 @@
       "prop": "fountain_dry_01.png",
       "base": "fountain_dry_01_base.png",
       "canvas": [
-        224,
-        224
+        256,
+        256
       ],
       "origin": [
-        112,
-        224
+        128,
+        256
       ],
-      "visible_height_px": 167,
+      "visible_height_px": 177,
       "family": "stone",
-      "source_record": "qc/entry_step2_sources/fountain_dry_01/generation.json",
+      "source_record": "qc/entry_step2_sources/fountain_fullsize_revision/composition.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "accepted_D-060_row_seam_fix_requested",
+      "status": "accepted_D-060_design_fullsize_recomposition_pending_review",
       "flat_base_only": false,
-      "pool_width_px": 150,
-      "angel_with_pedestal_height_px": 120
+      "pool_width_px": 194,
+      "angel_with_pedestal_height_px": 138
     },
     "dead_tree_02": {
       "prop": "dead_tree_02.png",
