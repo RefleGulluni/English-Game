@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/decals/decal_pebbles_01.png" id="1_lrr2p"]
+
+[node name="Pebbles01" type="Sprite2D" unique_id=841419710]
+texture = ExtResource("1_lrr2p")
+centered = false
+offset = Vector2(-25, -9)

@@ -20,7 +20,7 @@
 1. **底子层**（`Ground/Base`）：两块 224×128 的大块无缝泥地（`ground/base/ground_base_01.png`、`_02.png`），随机铺满整个房间；
 2. **路层**（`Ground/Path`）：用户刷的碎石泥路。瓦片里泥地的部分是**透明**的，露出下面的底子；
 3. （以后）**草地层**、**苔藓地层**……每种地面一层，做法完全一样；
-4. **贴花**：积水、落叶、碎石子等 20 件，平贴在地上，打破重复（以后做成可拖的积木）；
+4. **贴花**（`Ground/Decals`）：积水、落叶、碎石子等 20 件，平贴在地上，打破重复。每件是一个可拖的积木 `scenes/props/cemetery/decals/<名字>.tscn`（2026-10-28），没有碰撞、不挡人，盖在路和草地上面、物件和角色下面；
 5. **物件积木**：墓碑、墙、门柱，站在地面上。
 
 ## 3. 为什么这样做（踩过的坑）
@@ -61,6 +61,13 @@ f ≥ 0.5 是路；刚过 0.5 的一小圈是湿泥边；刚不到 0.5 的地方
 4. 在画面上按住左键拖动刷路，右键擦掉；
 5. Cmd+S 保存，F6 运行，WASD 走上去看。
 
+**摆贴花**：
+1. 左边场景树点 **Ground → Decals**；
+2. 左下文件栏打开 `scenes/props/cemetery/decals/`，把想要的贴花（例如 `decal_puddle_02.tscn`）**拖进画面**，松手的地方就是贴花的中心；
+3. 拖好后可以直接拖动挪位置；选中按 Delete 删掉；同一件可以拖很多次；
+4. 不小心拖到了别的节点下面也没关系，运行时会自动收进 Decals；但在编辑器里看到它被路盖住，就把它拖回 Decals 下面；
+5. **像素画不能旋转、不能翻转、不能缩放**，只挪位置。
+
 **重要**：用户刷好的场景是用户的作品。`build_ground_paint_room.gd` 只在场景**不存在时**才生成；改形状或纹理不需要重刷，已刷的路会自动更新。
 
 ## 6. 加一种新地面（例如草地）的步骤
@@ -77,7 +84,8 @@ f ≥ 0.5 是路；刚过 0.5 的一小圈是湿泥边；刚不到 0.5 的地方
 | 文件 | 作用 |
 |---|---|
 | `scripts/tools/build_ground_path_masks.py` | 生成 15 块路的形状（`transitions/masks/ground_path_masks_01.png` + `.json`） |
-| `scripts/tools/build_ground_paint_room.gd` | 生成底子 TileSet、路 TileSet（Match Corners）和试验房间 |
+| `scripts/tools/build_ground_paint_room.gd` | 生成底子 TileSet、路 TileSet（Match Corners）和试验房间（已有房间只补缺的层和 Decals） |
+| `scripts/tools/bake_ground_decals.gd` | 把 `ground/decals/decal_*.png` 做成可拖的贴花积木（已有的不覆盖） |
 | `scripts/world/v3/ground_path.gdshader` | 纯白 → 按世界坐标贴纹理 |
 | `scenes/prototypes/ground_paint/ground_paint_room.tscn` | 刷路试验房间（含用户亲手刷的路） |
 | `art/cemetery_v3/ground/base/` | 大块底子（通过，D-049 / D-054） |

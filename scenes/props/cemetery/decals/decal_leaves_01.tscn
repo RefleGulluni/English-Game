@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/decals/decal_leaves_01.png" id="1_8gd8r"]
+
+[node name="Leaves01" type="Sprite2D" unique_id=1572065550]
+texture = ExtResource("1_8gd8r")
+centered = false
+offset = Vector2(-16, -10)

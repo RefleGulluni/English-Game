@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/decals/decal_moss_01.png" id="1_efpcj"]
+
+[node name="Moss01" type="Sprite2D" unique_id=1787668625]
+texture = ExtResource("1_efpcj")
+centered = false
+offset = Vector2(-14, -9)

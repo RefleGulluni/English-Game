@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/decals/decal_cracked_slab_01.png" id="1_drve0"]
+
+[node name="CrackedSlab01" type="Sprite2D" unique_id=1427231761]
+texture = ExtResource("1_drve0")
+centered = false
+offset = Vector2(-13, -8)

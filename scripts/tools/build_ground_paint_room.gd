@@ -3,7 +3,8 @@ extends SceneTree
 ## art/cemetery_v3/ground/: the big base (224×128, two variants) and one painted terrain per
 ## entry in TERRAINS (corner masks from scripts/tools/build_ground_path_masks.py + the art group's
 ## 224×128 texture). Re-run after either changes. The room scene is only created when missing;
-## an existing room only gains the layers it lacks, so everything the user painted is kept.
+## an existing room only gains the layers it lacks (and the Decals node), so everything the user
+## painted is kept.
 ## Method: docs/GROUND_TERRAIN_METHOD.md.
 ##   Godot --headless --path . --import
 ##   Godot --headless --path . --script res://scripts/tools/build_ground_paint_room.gd
@@ -34,6 +35,12 @@ const SAMPLE_PATH := [
 const SAMPLE_PATCH := [Vector2(23, 13), Vector2(24, 13), Vector2(23, 14)]
 ## Sample meadows (cell rectangles) painted when the Grass layer is first added.
 const SAMPLE_GRASS := [Rect2i(1, 9, 6, 5), Rect2i(19, 11, 7, 5), Rect2i(17, 1, 5, 4)]
+## Ground decals (scenes from scripts/tools/bake_ground_decals.gd) dropped in when the Decals node
+## is first added, so the user sees how they sit on the painted ground.
+const DECALS := "res://scenes/props/cemetery/decals/"
+const SAMPLE_DECALS := [["decal_puddle_02", Vector2(420, 300)], ["decal_leaves_01", Vector2(330, 262)],
+	["decal_moss_02", Vector2(700, 250)], ["decal_pebbles_01", Vector2(520, 450)],
+	["decal_dead_flowers_01", Vector2(650, 398)], ["decal_roots_01", Vector2(150, 150)]]
 
 
 func _init() -> void:
@@ -121,6 +128,7 @@ func _save_room() -> void:
 		ground.add_child(layer)
 		layer.owner = root
 	_paint_sample_grass(ground.get_node("Grass"))
+	_add_decals(ground, root)
 	var path: TileMapLayer = ground.get_node("Path")
 	var cells: Array[Vector2i] = []
 	for line in SAMPLE_PATH:
@@ -158,8 +166,25 @@ func _add_missing_layers() -> void:
 			_paint_sample_grass(layer)
 		added = true
 		print("added layer ", t.layer)
+	if not ground.has_node("Decals"):
+		_add_decals(ground, root)
+		added = true
+		print("added Decals")
 	if added:
 		_pack(root)
+
+
+## The Decals node goes last under Ground: above every painted layer, below props and actors.
+func _add_decals(ground: Node2D, root: Node) -> void:
+	var decals := Node2D.new()
+	decals.name = "Decals"
+	ground.add_child(decals)
+	decals.owner = root
+	for d in SAMPLE_DECALS:
+		var decal: Node2D = load(DECALS + d[0] + ".tscn").instantiate()
+		decal.position = d[1]
+		decals.add_child(decal, true)
+		decal.owner = root
 
 
 func _paint_sample_grass(layer: TileMapLayer) -> void:

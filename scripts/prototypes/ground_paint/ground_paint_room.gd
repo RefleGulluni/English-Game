@@ -2,6 +2,7 @@ extends Node
 ## 地面刷路试验（方法：docs/GROUND_TERRAIN_METHOD.md）：大块底子 + 可以用画笔刷的草地和碎石泥路。
 ## 在编辑器里打开本场景 → 选中 Ground/Path（或 Ground/Grass）→ 底部 TileMap 面板的 Terrains 页 → 选“碎石泥路”（或“枯草苔藓地”）→ 在画面上拖着刷；
 ## 右键擦掉。Ground/Base 是两块底子随机铺的，一般不用动。运行（F6）后 WASD 走路看效果。
+## 贴花：先点 Ground/Decals，再从左下文件栏 scenes/props/cemetery/decals/ 把贴花拖进画面（拖错地方也没关系，运行时会自动收进 Decals）。
 ## 瓦片集和本场景由 scripts/tools/build_ground_paint_room.gd 生成；本场景已存在时不会被覆盖。
 ## 截图：Godot --path . res://scenes/prototypes/ground_paint/ground_paint_room.tscn -- --capture=<目录>
 
@@ -40,6 +41,7 @@ func _ready() -> void:
 	var ground: Node2D = $Ground # painted in the editor; drawn under the room
 	remove_child(ground)
 	_viewport.add_child(ground)
+	_collect_stray_decals(ground)
 	_room = CemeteryRoom.new(LAYOUT)
 	_viewport.add_child(_room)
 	var hero := HERO_SCENE.instantiate()
@@ -56,10 +58,21 @@ func _ready() -> void:
 	_label.add_theme_font_size_override("font_size", 11)
 	_label.add_theme_constant_override("outline_size", 3)
 	_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	_label.text = "地面刷路试验 · WASD 走路 · T 游戏色调 · F 全屏 · 在编辑器里刷：Ground/Path 碎石泥路 · Ground/Grass 枯草苔藓地"
+	_label.text = "地面刷路试验 · WASD 走路 · T 游戏色调 · F 全屏 · 在编辑器里刷：Ground/Path 碎石泥路 · Ground/Grass 枯草苔藓地 · 贴花拖进 Ground/Decals"
 	add_child(_label)
 	if "--capture" in str(OS.get_cmdline_user_args()):
 		_capture()
+
+
+## Decals dragged onto the scene root instead of Ground/Decals would never be drawn (the root is
+## not in the viewport); move them where they belong, keeping their place on screen.
+func _collect_stray_decals(ground: Node2D) -> void:
+	var decals: Node2D = ground.get_node_or_null("Decals")
+	if decals == null:
+		return
+	for child in get_children():
+		if child is Sprite2D:
+			child.reparent(decals)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
