@@ -306,7 +306,7 @@ func _invoke(uid: int, restore_target: String) -> bool:
 	if card.is_empty():
 		return false
 	events.publish(&"word_sigil_selected", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
-	var before := view.hold_enemy() # the rules resolve now; the skeleton reacts when the word lands
+	var before := view.hold_enemy(uid) # the rules resolve now; the skeleton reacts when the word lands
 	if turns.invoke(uid, restore_target):
 		events.publish(&"word_sigil_invoked", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
 		if card in combat.deck.exhaust_pile:
@@ -575,15 +575,19 @@ func _capture() -> void:
 				var played := false
 				for card in combat.deck.hand.duplicate():
 					if combat.card_cost(card) <= combat.focus and combat.disabled_reason(str(card.name), int(card.instance_id)).is_empty():
-						if cast_shots < 3: # the word, its hover preview, then the shape on its way
+						if cast_shots < 3: # the word, its hover preview, it leaving the bar, then its shape on the way
+							view.forced_hover = int(card.instance_id)
 							view._show_word_tip(card, view._words.get_child(combat.deck.hand.find(card)))
-							await _frames(4)
+							await get_tree().create_timer(0.5).timeout
 							await _shot(dir + "/02%s_preview_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
 							view._hide_tip()
+							view.forced_hover = -1
 						if _invoke(int(card.instance_id), "hp"):
 							played = true
 							if cast_shots < 3:
-								await get_tree().create_timer(view.IMPACT_AT + 0.08).timeout
+								await get_tree().create_timer(0.2).timeout
+								await _shot(dir + "/02%s_leave_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
+								await get_tree().create_timer(view.LEAD + view.IMPACT_AT - 0.12).timeout
 								await _shot(dir + "/02%s_cast_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
 								cast_shots += 1
 							break

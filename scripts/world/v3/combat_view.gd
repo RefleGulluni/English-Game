@@ -35,6 +35,24 @@ const IMPACT_AT := 0.42 # seconds from invoking to the word reaching the enemy
 const CAST_TIME := 0.85 # the whole cast; clicks wait until it is over
 const ENEMY_BODY := Vector2(0, -46) # from the feet to the middle of the body
 const HERO_CHEST := Vector2(0, -50)
+const SIGIL_FONT := 18
+const SIGIL_H := 40.0
+const DISSOLVE_TIME := 0.55
+const LEAD := 0.45 # the word leaves the bar and reaches the hero before the hero speaks it
+## 11x11 family marks: Claude's placeholders until the art group designs the real nine
+## (docs/WORD_SIGIL_DESIGN_REQUEST.md §2). Keys are CombatContent.SKILLS families.
+const FAMILY_MARKS := {
+	"FORCE": [".....X.....", "..X..X..X..", "...X...X...", "....X.X....", ".XX.....XX.", "....X.X....", "...X...X...", "..X..X..X..", ".....X.....", "...........", "..........."],
+	"DIRECT HP": ["...........", "...........", "........X..", ".........X.", "XXXXXXXXXXX", ".........X.", "........X..", "...........", "...........", "...........", "..........."],
+	"PERCEPTION": [".....X.....", "....X.X....", "...X...X...", "..X.....X..", ".X...X...X.", "X...XXX...X", ".X...X...X.", "..X.....X..", "...X...X...", "....X.X....", ".....X....."],
+	"CONTROL": ["....XXX....", "..XX...XX..", ".X.......X.", ".X..XXX..X.", "X..X...X..X", "X..X...X..X", ".X..XXX..X.", ".X.......X.", "..XX...XX..", "....XXX....", "..........."],
+	"DECAY": [".....X.....", "...........", "....X.X....", "...........", "...X.X.X...", "...........", "..X.X.X.X..", "...........", ".X.X.X.X.X.", "...........", "X.X.X.X.X.X"],
+	"TOXICITY": [".....X.....", ".....X.....", "....X.X....", "....X.X....", "...X...X...", "...X...X...", "..X.....X..", "..X..X..X..", "...X...X...", "....XXX....", "..........."],
+	"REACTION": ["X..........", ".X.........", "..X........", "...X.......", "....X......", "....X......", "...X.X.....", "..X...X....", ".X.....XX..", "X.......XXX", "..........."],
+	"SEMANTIC PROTECTION": ["...XXXXX...", "..X.....X..", ".X.......X.", "X....X....X", "X...XXX...X", "X....X....X", ".X.......X.", "..X.....X..", "...XXXXX...", "...........", "..........."],
+	"RESTORATION": [".....X.....", ".....X.....", ".....X.....", "...........", "XXX.....XXX", "...........", ".....X.....", ".....X.....", ".....X.....", "...........", "..........."],
+	"": ["...........", "...........", "...........", ".....X.....", "....X.X....", "...X...X...", "....X.X....", ".....X.....", "...........", "...........", "..........."],
+}
 
 var combat: CombatState
 var hero: Node2D
@@ -43,6 +61,7 @@ var enemy_name := "ENEMY"
 var active := false
 var busy := false
 var selected_mulligan: Array[int] = []
+var forced_hover := -1 # capture mode: show this word as if the mouse were on it
 
 var _viewport: SubViewport
 var _world_screen: Control
@@ -66,6 +85,10 @@ var _reaction := {}
 var _last_hero_hp := -1
 var _strength := 0.0
 var _clock := 0.0
+var _leaving := {} # the used word's place in the bar, for its dissolve
+var _gap_index := -1 # the bar keeps the used word's place open while it dissolves, then closes it
+var _gap_w := 0.0
+var _gap: Control
 
 
 func setup(viewport: SubViewport, language: CanvasLayer, world_screen: Control, model: CombatState) -> void:
@@ -182,7 +205,7 @@ func _build_bar() -> void:
 	_words.position = Vector2(230, 44)
 	_words.size = Vector2(500, 48)
 	_words.alignment = BoxContainer.ALIGNMENT_CENTER
-	_words.add_theme_constant_override("separation", 10)
+	_words.add_theme_constant_override("separation", 12)
 	_bar.add_child(_words)
 
 	_deflect_button = _text_button("DEFLECT", 16)
@@ -223,6 +246,12 @@ func refresh() -> void:
 		child.queue_free()
 	for card in combat.deck.hand:
 		_words.add_child(_word_button(card))
+	_gap = null
+	if _gap_index >= 0:
+		_gap = Control.new()
+		_gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_words.add_child(_gap)
+		_words.move_child(_gap, mini(_gap_index, _words.get_child_count() - 1))
 	if not _reaction.is_empty():
 		var action: Dictionary = _reaction.action
 		_note.text = "%s comes at you%s" % [str(action.word), "  ·  %d damage" % int(action.get("damage", 0)) if combat.inattention_tier < 4 else ""]
@@ -245,34 +274,35 @@ func refresh() -> void:
 	_tag.queue_redraw()
 
 
-func _word_button(card: Dictionary) -> Button:
+func _word_button(card: Dictionary) -> Control:
 	var uid := int(card.instance_id)
 	var word := str(card.name)
 	var reason := combat.disabled_reason(word, uid)
-	var button := _text_button(word, 18)
-	button.custom_minimum_size = Vector2(84, 44)
-	button.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-	var usable := reason.is_empty() and not busy
-	if combat.deck.mulligan_pending:
-		usable = not busy
-	button.set_meta("usable", usable)
-	button.modulate.a = 1.0 if usable else 0.38
-	button.mouse_filter = Control.MOUSE_FILTER_STOP
-	button.draw.connect(_draw_word_frame.bind(button, card))
-	button.gui_input.connect(func(event: InputEvent):
+	var sigil := Control.new()
+	var text_w := FONT.get_string_size(word, HORIZONTAL_ALIGNMENT_LEFT, -1, SIGIL_FONT).x
+	sigil.custom_minimum_size = Vector2(maxf(56.0, ceilf(text_w) + 36.0), SIGIL_H)
+	sigil.mouse_filter = Control.MOUSE_FILTER_STOP
+	sigil.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	var usable := (reason.is_empty() or combat.deck.mulligan_pending) and not busy
+	sigil.set_meta("uid", uid)
+	sigil.set_meta("usable", usable)
+	sigil.set_meta("blocked", not reason.is_empty() and not combat.deck.mulligan_pending) # its own reason, not just "a word is flying"
+	sigil.set_meta("hover", false)
+	sigil.draw.connect(_draw_sigil.bind(sigil, card))
+	sigil.gui_input.connect(func(event: InputEvent):
 		if event is InputEventMouseButton and event.pressed:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				_press_word(card)
 			elif event.button_index == MOUSE_BUTTON_RIGHT and not combat.deck.mulligan_pending:
 				retain_requested.emit(uid))
-	button.mouse_entered.connect(func():
-		button.queue_redraw()
-		_show_word_tip(card, button))
-	button.mouse_exited.connect(func():
-		button.queue_redraw()
+	sigil.mouse_entered.connect(func():
+		sigil.set_meta("hover", true)
+		sigil.set_meta("hover_since", _clock)
+		_show_word_tip(card, sigil))
+	sigil.mouse_exited.connect(func():
+		sigil.set_meta("hover", false)
 		_hide_tip())
-	return button
+	return sigil
 
 
 func _press_word(card: Dictionary) -> void:
@@ -293,28 +323,156 @@ func _press_word(card: Dictionary) -> void:
 	invoke_requested.emit(uid, "hp" if combat.hp < CombatState.MAX_HP else "armor")
 
 
-func _draw_word_frame(button: Button, card: Dictionary) -> void:
+## The Word Sigil, level 3 of docs/reference/word_sigil_refinement_levels.png on the art group's
+## direction B (art/ui/word_sigil_v3/): the word stands on a precise baseline with a node at each
+## end, a dotted ruler between them, a faint echo line below, and its Focus cost as nodes set into
+## the middle of the line. Light: a soft halo around every stroke (glow may be smooth). Motion: the
+## cost nodes breathe; under the mouse the line closes, light runs in from both ends and a crown of
+## nodes rises over the word. Family marks are Claude's placeholders until the art group's arrive.
+func _draw_sigil(sigil: Control, card: Dictionary) -> void:
 	var uid := int(card.instance_id)
-	var r := Rect2(Vector2.ZERO, button.size).grow(-2)
-	var hovered := button.is_hovered() and bool(button.get_meta("usable", false))
-	var c := CYAN if hovered else Color(CYAN, 0.45)
-	# Precise corner brackets; the whole frame closes while the word is under the mouse.
-	var arm := r.size.x / 2.0 if hovered else 7.0
-	for corner in [r.position, Vector2(r.end.x, r.position.y), r.end, Vector2(r.position.x, r.end.y)]:
-		var sx := 1.0 if corner.x == r.position.x else -1.0
-		var sy := 1.0 if corner.y == r.position.y else -1.0
-		button.draw_line(corner, corner + Vector2(arm * sx, 0), c, 1.0)
-		button.draw_line(corner, corner + Vector2(0, minf(arm, r.size.y / 2.0) * sy), c, 1.0)
-	# Focus cost as small nodes under the word.
+	var word := str(card.name)
+	var usable := bool(sigil.get_meta("usable", false))
+	var hover := usable and (bool(sigil.get_meta("hover", false)) or uid == forced_hover)
+	var retained := uid in combat.deck.retained_cards
+	var blocked := bool(sigil.get_meta("blocked", false))
+	var a := 1.0 if hover else (0.42 if blocked else (0.86 if usable else 0.7))
+	var w := sigil.size.x
+	var base := 28.0
+	var mid := roundf(w / 2.0)
 	var cost := combat.card_cost(card)
-	var left := r.get_center().x - (cost - 1) * 4.5
+	var breathe := 0.78 + 0.22 * sin(_clock * 2.2 + uid)
+	# Family mark and the word.
+	var family := str(CombatContent.SKILLS.get(str(card.card_id), {}).get("family", ""))
+	_glyph(sigil, Vector2(6, 9), FAMILY_MARKS.get(family, FAMILY_MARKS[""]), Color(CYAN, a * 0.9))
+	_glow_text(sigil, Vector2(23, 20), word, SIGIL_FONT, Color(CYAN, a))
+	# The baseline: two ends and a dotted ruler, or one closed line under the mouse.
+	var c := Color(CYAN, a * 0.85)
+	var gap := cost * 4.0 + 3.0
+	if hover:
+		_glow_line(sigil, Vector2(1, base), Vector2(w - 2, base), Color(CYAN, a))
+		# Light running in from both ends to the centre.
+		var run := fmod((_clock - float(sigil.get_meta("hover_since", _clock))) * 0.9, 1.0)
+		var reach := (mid - 2.0) * run
+		for x in [1.0 + reach, w - 2.0 - reach]:
+			sigil.draw_rect(Rect2(Vector2(roundf(x) - 1, base - 1), Vector2(3, 3)), Color(1, 1, 1, 0.75 * (1.0 - run)))
+		# A crown of nodes over the word.
+		for dx in [-12, -6, 6, 12]:
+			sigil.draw_rect(Rect2(Vector2(mid + dx, -1 + absi(dx) / 6), Vector2(1, 1)), Color(CYAN, 0.6))
+		_diamond(sigil, Vector2(mid, -3), 1.5, Color(CYAN, 0.95), true)
+	else:
+		_glow_line(sigil, Vector2(1, base), Vector2(10, base), c)
+		_glow_line(sigil, Vector2(w - 11, base), Vector2(w - 2, base), c)
+		for x in range(12, int(mid - gap), 2):
+			sigil.draw_rect(Rect2(Vector2(x, base), Vector2(1, 1)), Color(CYAN, a * 0.3))
+		for x in range(int(mid + gap) + 1, int(w - 12), 2):
+			sigil.draw_rect(Rect2(Vector2(x, base), Vector2(1, 1)), Color(CYAN, a * 0.3))
+	sigil.draw_line(Vector2(1, base - 3), Vector2(1, base), c, 1.0)
+	sigil.draw_line(Vector2(w - 2, base - 3), Vector2(w - 2, base), c, 1.0)
+	_diamond(sigil, Vector2(1, base), 1.5, Color(CYAN, a), true)
+	_diamond(sigil, Vector2(w - 2, base), 1.5, Color(CYAN, a), true)
+	sigil.draw_line(Vector2(5, base + 2.5), Vector2(w - 6, base + 2.5), Color(CYAN, a * 0.2), 1.0)
+	# Focus cost: nodes set into the middle of the line, breathing while the word can be used.
+	var left := mid - (cost - 1) * 4.0
 	for i in cost:
-		_diamond(button, Vector2(left + i * 9, r.end.y - 6), 2.5, Color(CYAN, 0.8), true)
-	if uid in combat.deck.retained_cards:
-		button.draw_line(Vector2(r.position.x + 10, r.end.y + 3), Vector2(r.end.x - 10, r.end.y + 3), CYAN, 1.0)
-		button.draw_line(Vector2(r.position.x + 10, r.end.y + 5), Vector2(r.end.x - 10, r.end.y + 5), CYAN, 1.0)
+		var node_a := a * (breathe if usable and not hover else 1.0)
+		_halo(sigil, Vector2(left + i * 8, base), 4.0, Color(CYAN, node_a * 0.35))
+		_diamond(sigil, Vector2(left + i * 8, base), 2.5, Color(CYAN, node_a), true)
+	# Marks at the top right: kept for next turn, cannot be used, chosen to replace.
+	var corner := Vector2(w - 9, 1)
+	if retained:
+		sigil.draw_polyline(PackedVector2Array([corner + Vector2(0, 6), corner, corner + Vector2(6, 0), corner + Vector2(6, 6)]), CYAN, 1.0)
+		sigil.draw_line(corner + Vector2(0, 6), corner + Vector2(3, 4), CYAN, 1.0)
+		sigil.draw_line(corner + Vector2(6, 6), corner + Vector2(3, 4), CYAN, 1.0)
+	if blocked:
+		sigil.draw_line(corner + Vector2(2, 1), corner + Vector2(6, 5), Color(CYAN, 0.55), 1.0)
+		sigil.draw_line(corner + Vector2(6, 1), corner + Vector2(2, 5), Color(CYAN, 0.55), 1.0)
 	if uid in selected_mulligan:
-		button.draw_line(Vector2(r.position.x + 6, r.get_center().y - 3), Vector2(r.end.x - 6, r.get_center().y - 3), HURT, 1.0)
+		sigil.draw_polyline(PackedVector2Array([corner + Vector2(6, 0), corner + Vector2(6, 5), corner + Vector2(0, 5)]), CYAN, 1.0)
+		sigil.draw_line(corner + Vector2(0, 5), corner + Vector2(2, 3), CYAN, 1.0)
+		sigil.draw_line(corner + Vector2(0, 5), corner + Vector2(2, 7), CYAN, 1.0)
+
+
+## A used word leaves the bar (about half a second): the line draws in to its centre, the letters
+## flare one by one and drift up as cyan pixels, and the centre node flies off to the hero, who
+## then speaks the word. Drawn on a ghost at the word's old place, since the bar rebuilds at once.
+func _dissolve(word: String, rect: Rect2) -> void:
+	var ghost := Control.new()
+	ghost.position = rect.position - _ui.global_position
+	ghost.size = rect.size
+	ghost.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ghost.set_meta("t0", _clock)
+	ghost.set_meta("word", word)
+	ghost.set_meta("to", _to_screen(hero.global_position + HERO_CHEST) - ghost.position if is_instance_valid(hero) else Vector2.ZERO)
+	ghost.draw.connect(_draw_dissolve.bind(ghost))
+	_floats.add_child(ghost)
+	get_tree().create_timer(DISSOLVE_TIME + 0.1).timeout.connect(ghost.queue_free)
+
+
+func _draw_dissolve(ghost: Control) -> void:
+	var t := (_clock - float(ghost.get_meta("t0"))) / DISSOLVE_TIME # 0 → 1
+	var word := str(ghost.get_meta("word"))
+	var w := ghost.size.x
+	var base := 28.0
+	var mid := roundf(w / 2.0)
+	# 1. The line draws in to its centre (first 40 %).
+	var close := clampf(t / 0.4, 0.0, 1.0)
+	if close < 1.0:
+		var half := (mid - 1.0) * (1.0 - close)
+		_glow_line(ghost, Vector2(mid - half, base), Vector2(mid + half, base), Color(CYAN, 1.0 - close * 0.3))
+	# 2. Each letter flares, then breaks into a few pixels drifting up and fading.
+	var x := 23.0
+	for i in word.length():
+		var ch := word[i]
+		var local := clampf((t - 0.05 - i * 0.04) / 0.5, 0.0, 1.0)
+		var adv := FONT.get_string_size(ch, HORIZONTAL_ALIGNMENT_LEFT, -1, SIGIL_FONT).x
+		if local < 0.25:
+			var flare := Color(CYAN.lerp(Color.WHITE, local * 3.0), 1.0)
+			ghost.draw_char(FONT, Vector2(x, 20), ch, SIGIL_FONT, flare)
+		else:
+			var e := (local - 0.25) / 0.75
+			for k in 3:
+				var seed := float(i * 7 + k * 13)
+				var drift := Vector2(sin(seed) * 6.0 * e, -18.0 * e - k * 3.0 * e)
+				var at := (Vector2(x + adv * (0.25 + 0.25 * k), 12 + k * 3) + drift).round()
+				ghost.draw_rect(Rect2(at, Vector2(1, 1)), Color(CYAN, 1.0 - e))
+		x += adv
+	# 3. The centre node flies to the hero (last 45 %).
+	var fly := clampf((t - 0.55) / 0.45, 0.0, 1.0)
+	if fly > 0.0 and fly < 1.0:
+		var to: Vector2 = ghost.get_meta("to")
+		var at := Vector2(mid, base).lerp(to, fly * fly)
+		_halo(ghost, at, 5.0, Color(CYAN, 0.5))
+		_diamond(ghost, at.round(), 2.5, CYAN, true)
+	elif close >= 1.0 and fly <= 0.0:
+		_halo(ghost, Vector2(mid, base), 5.0, Color(CYAN, 0.6))
+		_diamond(ghost, Vector2(mid, base), 2.5, Color.WHITE, true)
+
+
+# Soft light (smooth is allowed for light, Art Bible v3 §7) under crisp 1-pixel strokes.
+func _glow_line(ci: CanvasItem, from: Vector2, to: Vector2, color: Color) -> void:
+	ci.draw_line(from, to, Color(color, color.a * 0.07), 7.0, true)
+	ci.draw_line(from, to, Color(color, color.a * 0.16), 3.0, true)
+	ci.draw_line(from, to, color, 1.0)
+
+
+func _glow_text(ci: CanvasItem, at: Vector2, text: String, size: int, color: Color) -> void:
+	ci.draw_string_outline(FONT, at, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, 9, Color(color, color.a * 0.06))
+	ci.draw_string_outline(FONT, at, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, 4, Color(color, color.a * 0.14))
+	ci.draw_string(FONT, at, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
+
+
+func _halo(ci: CanvasItem, at: Vector2, r: float, color: Color) -> void:
+	for i in 3:
+		ci.draw_circle(at, r * (1.0 + i * 0.6), Color(color, color.a * (0.35 - i * 0.1)))
+
+
+func _glyph(ci: CanvasItem, at: Vector2, rows: Array, color: Color) -> void:
+	for j in rows.size():
+		var row: String = rows[j]
+		for i in row.length():
+			if row[i] == "X":
+				ci.draw_rect(Rect2(at + Vector2(i, j), Vector2(1, 1)), color)
 
 
 func _draw_vitals() -> void:
@@ -510,10 +668,14 @@ func preview(card: Dictionary) -> Array[String]:
 # --- Casting -------------------------------------------------------------------------------
 
 ## Call right before the rules resolve a word: the enemy's look waits until the word lands.
-func hold_enemy() -> Dictionary:
+func hold_enemy(uid := -1) -> Dictionary:
 	_holding = true
+	_leaving = {}
+	for sigil in _words.get_children():
+		if int(sigil.get_meta("uid", -2)) == uid:
+			_leaving = {"rect": sigil.get_global_rect(), "index": sigil.get_index()}
 	if is_instance_valid(enemy):
-		enemy.get_node("VisualRoot/Visual").hold_for(IMPACT_AT)
+		enemy.get_node("VisualRoot/Visual").hold_for(LEAD + IMPACT_AT)
 	return _snapshot()
 
 
@@ -532,6 +694,19 @@ func play_cast(card: Dictionary, before: Dictionary) -> void:
 	busy = true
 	refresh()
 	var word := str(card.card_id)
+	if not _leaving.is_empty():
+		_dissolve(str(card.name), _leaving.rect)
+		_gap_index = int(_leaving.index)
+		_gap_w = _leaving.rect.size.x
+		_leaving = {}
+		refresh()
+		var close := create_tween()
+		close.tween_interval(DISSOLVE_TIME)
+		close.tween_property(self, "_gap_w", 0.0, 0.3).set_trans(Tween.TRANS_SINE)
+		close.tween_callback(func():
+			_gap_index = -1
+			refresh())
+	await get_tree().create_timer(LEAD).timeout
 	var to_enemy := signf(enemy.global_position.x - hero.global_position.x) if is_instance_valid(enemy) else 1.0
 	var origin := hero.global_position + HERO_CHEST + Vector2(to_enemy * 22, 0)
 	var target := enemy.global_position + ENEMY_BODY if is_instance_valid(enemy) else origin
@@ -664,6 +839,13 @@ func _process(delta: float) -> void:
 		var feet := _to_screen(enemy.global_position)
 		_tag.position = (feet + Vector2(-_tag.size.x / 2.0, -170)).clamp(Vector2(6, 6), Vector2(NATIVE.x - _tag.size.x - 6, BAR_TOP - 80)).round()
 		_tag.modulate.a = 1.0 if Rect2(_tag.position, _tag.size).has_point(_ui.get_local_mouse_position()) else 0.82
+	if is_instance_valid(_gap):
+		_gap.custom_minimum_size.x = maxf(0.0, _gap_w - 12.0)
+	for sigil in _words.get_children():
+		sigil.queue_redraw()
+	for ghost in _floats.get_children():
+		if ghost.has_meta("t0"):
+			ghost.queue_redraw()
 	_fx = _fx.filter(func(f): return _clock - float(f.t0) < CAST_TIME + 0.2)
 	_fx_node.queue_redraw()
 
