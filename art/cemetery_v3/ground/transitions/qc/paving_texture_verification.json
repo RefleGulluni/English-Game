@@ -1,0 +1,33 @@
+{
+  "size": [
+    224,
+    128
+  ],
+  "mean_rgb": [
+    84.95050920758929,
+    83.910888671875,
+    79.81131417410714
+  ],
+  "colors": 32,
+  "horizontal_change": 69.26499439461884,
+  "vertical_change": 75.50267154105737,
+  "palette_component_max": [
+    118,
+    116,
+    108
+  ],
+  "opposite_left_right_exact": true,
+  "opposite_top_bottom_exact": true,
+  "alpha_values": [
+    255
+  ],
+  "bare_fill_native_size": [
+    960,
+    540
+  ],
+  "bare_fill_scale": 2,
+  "status": "SECTION9_PAVING_READY_FOR_USER_REVIEW",
+  "sha256": "40ec76731de902452e5154d09fb902c38b834a46a821d129aa774ff3b27644e8",
+  "props_preview": "672x384 rectangular material patch on approved mud, native-scale3 tombstones and hero. Hard rectangle is a comparison swatch, not Claude terrain shape. No lighting/fog/shadows added.",
+  "previous_files_unchanged_except_status": true
+}

@@ -1,0 +1,69 @@
+{
+  "task": "CEMETERY_GROUND_TRANSITION_REQUEST section9",
+  "tool": "built-in image_gen; no CLI/API fallback",
+  "final": "../../paving_texture_01.png",
+  "status": "ready for user review; no runtime scene/masks edited",
+  "generation_attempts": [
+    {
+      "prompt": "01_material.prompt.txt",
+      "raw": "01_material_generated.png",
+      "used": false,
+      "reason": "Observed source cells near4.7–4.9px, resulting slabs too large; not resized or published."
+    },
+    {
+      "prompt": "02_material.prompt.txt",
+      "raw": "02_material_generated.png",
+      "used": "reference only for third pass",
+      "reason": "Denser layout but tiny native grain near3.34px; not used as final pixel source."
+    },
+    {
+      "prompt": "03_coarser_grid.prompt.txt",
+      "raw": "03_material_generated.png",
+      "reference": "02_material_generated.png",
+      "used": true,
+      "restored": "03_material_restored_cells.png",
+      "grid": "03_material_grid.json",
+      "observed_pitch_nominal": [
+        6.6,
+        6.6
+      ],
+      "restored_size": [
+        256,
+        145
+      ],
+      "crop": [
+        16,
+        8,
+        240,
+        136
+      ]
+    },
+    {
+      "prompt": "06_cross_repair.prompt.txt",
+      "raw": "06_cross_repair_generated.png",
+      "reference": "05_half_offset_6x.png",
+      "restored": "06_cross_repair_restored_cells.png",
+      "grid": "06_cross_repair_grid.json",
+      "used": "central irregular cross only",
+      "restored_size": [
+        224,
+        128
+      ]
+    }
+  ],
+  "processing": [
+    "prepare_paving_material.py",
+    "04_cleanup_metadata.json",
+    "finish_paving_texture.py",
+    "07_assembly.json"
+  ],
+  "constraints": "Native center samples, integer crop/offset/copy; no art resizing, averaging, synthesized texture, blur or dithering. Preview enlargement NEAREST only.",
+  "checks": "../../qc/paving_texture_verification.json",
+  "protected_assets_count": 5040,
+  "recoverable_backup": "../../qc/backups/before_paving_texture_section9.zip",
+  "known_limitations": [
+    "Bare fill repetition can be traced from missing stones/cracks; no claim of unrecognizable repetition.",
+    "Stone sizes vary outside preferred range at local repairs/cuts; slight observed-grid inference drift possible.",
+    "Props comparison is static composite, not an in-game screenshot; rectangular boundary is not final terrain edge."
+  ]
+}
