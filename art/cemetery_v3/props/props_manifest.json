@@ -679,7 +679,7 @@
       "family": "iron",
       "source_record": "qc/entry_step2_sources/iron_gate_leaf_open_01/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": false,
       "join": {
         "unfolded_design_width_range": [
@@ -707,7 +707,7 @@
       "family": "iron",
       "source_record": "qc/entry_step2_sources/iron_gate_leaf_fallen_01/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": true
     },
     "fountain_dry_01": {
@@ -725,7 +725,7 @@
       "family": "stone",
       "source_record": "qc/entry_step2_sources/fountain_dry_01/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060_row_seam_fix_requested",
       "flat_base_only": false,
       "pool_width_px": 150,
       "angel_with_pedestal_height_px": 120
@@ -745,7 +745,7 @@
       "family": "bark",
       "source_record": "qc/entry_step2_sources/dead_tree_02/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": false
     },
     "dead_tree_03": {
@@ -763,7 +763,7 @@
       "family": "bark",
       "source_record": "qc/entry_step2_sources/dead_tree_03/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": false
     },
     "fallen_lamp_post_01": {
@@ -781,7 +781,7 @@
       "family": "iron",
       "source_record": "qc/entry_step2_sources/fallen_lamp_post_01/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": true
     },
     "signpost_01": {
@@ -799,7 +799,7 @@
       "family": "wood",
       "source_record": "qc/entry_step2_sources/signpost_01/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": false
     },
     "wooden_cross_01": {
@@ -817,7 +817,7 @@
       "family": "wood",
       "source_record": "qc/entry_step2_sources/wooden_cross_01/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": false
     },
     "wooden_cross_02": {
@@ -835,7 +835,7 @@
       "family": "wood",
       "source_record": "qc/entry_step2_sources/wooden_cross_02/generation.json",
       "qa": "qc/entry_props_QA.md",
-      "status": "pending_user_review",
+      "status": "accepted_D-060",
       "flat_base_only": false
     }
   },
