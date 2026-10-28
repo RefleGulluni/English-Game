@@ -83,6 +83,7 @@ const IRON := Color(0.16, 0.15, 0.15)
 const MUD_PATH := Color(0.36, 0.30, 0.25)
 const WATER := Color(0.34, 0.40, 0.46, 0.85)
 const FOG := Color(0.62, 0.66, 0.72)
+const HORIZON_FOG := Rect2(0, 24, 960, 210) # from inside the backdrop strip's flat bottom down over the far graves
 
 var _viewport: SubViewport
 var _room: CemeteryRoom
@@ -349,11 +350,19 @@ func _build_low_angle(ground: Node2D) -> void:
 	sky.add_child(_poly(line, Color(0.34, 0.36, 0.40)))
 	sky.add_child(_poly([Vector2(440, 62), Vector2(440, 26), Vector2(462, 26), Vector2(462, 12), Vector2(472, 12),
 		Vector2(480, -0), Vector2(488, 12), Vector2(498, 12), Vector2(498, 26), Vector2(520, 26), Vector2(520, 62)], Color(0.26, 0.27, 0.31)))
-	var thin_fog := Node2D.new()
-	thin_fog.z_index = 40
-	_room.add_child(thin_fog)
-	for band in [[62, 78, 0.3], [78, 92, 0.18], [92, 104, 0.08]]: # low, so the skyline and chapel stay readable
-		thin_fog.add_child(_poly([Vector2(0, band[0]), Vector2(960, band[0]), Vector2(960, band[1]), Vector2(0, band[1])], Color(FOG, band[2])))
+	# 地平线的雾：盖住远景条底部平平的一块和地面开始的那条直线，往下慢慢变淡，
+	# 罩住最后几排墓碑（越远越朦胧）；下沿起伏、缓慢飘动，不出现直线
+	var mist := ColorRect.new()
+	mist.position = HORIZON_FOG.position
+	mist.size = HORIZON_FOG.size
+	mist.z_index = 40
+	mist.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var mat := ShaderMaterial.new()
+	mat.shader = load("res://scripts/world/v3/horizon_fog.gdshader")
+	mat.set_shader_parameter("size", HORIZON_FOG.size)
+	mat.set_shader_parameter("fog_color", Color8(76, 82, 90)) # the backdrop strip's own bottom colour
+	mist.material = mat
+	_room.add_child(mist)
 
 	# 更高的门柱占位：正式素材到了就不用（D-040）
 	for x in ([] if ResourceLoader.exists(PROPS + "gate_pillar_tall_01.png") else [408, 552]):
