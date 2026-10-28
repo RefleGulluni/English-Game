@@ -18,7 +18,10 @@ const WALLS := ["low_wall_01", "low_wall_broken_01", "low_wall_rubble_broken_01"
 ## Lying boxes and pits: block their whole footprint.
 const FOOTPRINT := ["open_grave_01", "grave_lid_01"]
 ## On the ground; walked over.
-const FLAT := ["grave_slab_01"]
+const FLAT := ["grave_slab_01", "iron_gate_leaf_fallen_01", "fallen_lamp_post_01"]
+## Wide things whose bottom rows are narrower than what stands on the ground (the fountain's front
+## corner): an ellipse inside this box, relative to the foot, measured from the pool's widest rows.
+const POOLS := {"fountain_dry_01": Rect2(-70, -66, 142, 62)}
 ## Too small to block the way; the shape is there but switched off.
 const WALK_OVER := ["rubble_pile_01", "grave_vase_01", "candles_01", "grave_lantern_01"]
 
@@ -70,6 +73,17 @@ func _bake(prop_name: String) -> PackedScene:
 		var poly := CollisionPolygon2D.new()
 		poly.name = "Shape"
 		poly.polygon = _footprint(img, gap)
+		body.add_child(poly)
+		poly.owner = root
+	elif prop_name in POOLS:
+		var box: Rect2 = POOLS[prop_name]
+		var poly := CollisionPolygon2D.new()
+		poly.name = "Shape"
+		var pts := PackedVector2Array()
+		for i in 12:
+			var a := TAU * i / 12.0
+			pts.append((box.get_center() + Vector2(cos(a), sin(a)) * box.size / 2.0).round())
+		poly.polygon = pts
 		body.add_child(poly)
 		poly.owner = root
 	else:

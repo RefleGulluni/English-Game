@@ -1,0 +1,6 @@
+{
+  "name": "fountain_pool",
+  "prompt": "ONE standalone DRY OCTAGONAL cemetery fountain STONE BASIN ONLY. NO statue, NO pedestal, NO figure.3/4 overhead camera looking inside. Native basin outer width150 pixels, depth70 pixels in perspective, wall height20 pixels. Paint the entire object in a strict coarse pixel grid: one native pixel is a solid8x8 to10x10 source square. Rich weathered grey limestone exactly like tombstone reference, left-upper light, meaningful stone grains, cracks, dark seams, olive-grey lichen. A big chipped missing section at FRONT LEFT rim; empty basin contains dark grey mud, sparse brown leaves and dull olive weeds, NO water, no blue. Keep center floor mostly clear so statue can be placed there later. Thin dark grey-brown mud contact apron, average70,70,60, no orange grass rim. Full isolated basin with magenta margins, solid #FF00FF background, no floor tile, cast shadow, lettering, labels or framing. Make a production-sized sprite approximately150 logical pixels across, not250 and not100.",
+  "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-2a3065b7-a8ac-436d-8c59-2043954ede97.png",
+  "family": "stone"
+}

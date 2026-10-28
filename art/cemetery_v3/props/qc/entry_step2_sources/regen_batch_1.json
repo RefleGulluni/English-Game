@@ -1,0 +1,65 @@
+[
+  {
+    "name": "iron_gate_leaf_open_01",
+    "family": "iron",
+    "brief": "ONE narrow wrought-iron gate leaf HALF OPEN, standing on a LEFT hinge axis and swinging inward about45 degrees. Same iron material/pickets as reference iron fence: slender squared rusty iron rods, small spear tips, two simple diamond ornaments, rivet collars. ONLY three main vertical pickets, simple outer frame and two rails; no huge elaborate Victorian curls. Physical opened-out leaf45 native pixels wide and74 high. In this inward45-degree oblique view the horizontal projected width is32 native pixels, overall visible height about78 pixels. The free RIGHT edge recedes upward into depth by8-10 pixels, left hinge nearest/lower; show top edges. This is a newly drawn perspective, not a squashed or rotated flat icon. No stone column in output, only small left hinge straps and one gate leaf. Modest dark mud scuff at foot of hinge only. Preserve iron family shape, scale, warm-grey highlights and dark rust from fence reference.",
+    "prompt": "Redraw ONE production sprite with STRICT LARGE PIXEL GRID. FIRST reference is a layout/scale guide only: preserve its canvas framing and the EMPTY grey rectangle's object envelope, but DO NOT DRAW the grey rectangle, corner checker swatch or any guides. Each checker square shows ONE native pixel enlarged 10x. Draw the object in VERY COARSE squares of about10 by10 display pixels, NEVER subdivide a square into smaller details. Every square must be one solid palette color. This is the MOST important correction: earlier drafts had far too many small pixels and restored several times too large. Native object bounds are [32,18,64,98] inside a native [96,112] canvas. Keep these dimensions so that recovering one painted square gives ONE native pixel at the requested size. Do NOT zoom object to fill whole image. Aim about40 meaningful colors and rich material variation INSIDE that small logical grid. Use solid magenta #FF00FF outside/through object. NO people, no frame, no labels, no cast shadow, no glow, no cyan, no smooth painting or antialiasing. Upper-left light;3/4 top-down. Ground contact mud must be very subdued grey-brown70,70,60 and dull olive, not orange. Other references are style/material only.  SUBJECT: ONE narrow wrought-iron gate leaf HALF OPEN, standing on a LEFT hinge axis and swinging inward about45 degrees. Same iron material/pickets as reference iron fence: slender squared rusty iron rods, small spear tips, two simple diamond ornaments, rivet collars. ONLY three main vertical pickets, simple outer frame and two rails; no huge elaborate Victorian curls. Physical opened-out leaf45 native pixels wide and74 high. In this inward45-degree oblique view the horizontal projected width is32 native pixels, overall visible height about78 pixels. The free RIGHT edge recedes upward into depth by8-10 pixels, left hinge nearest/lower; show top edges. This is a newly drawn perspective, not a squashed or rotated flat icon. No stone column in output, only small left hinge straps and one gate leaf. Modest dark mud scuff at foot of hinge only. Preserve iron family shape, scale, warm-grey highlights and dark rust from fence reference. CRITICAL SIZE AGAIN: use the guide's BIG 10px square blocks, not6px blocks; only the requested native number of pixel cells. No dither noise.",
+    "guide": {
+      "canvas": [
+        96,
+        112
+      ],
+      "source_pixel_scale": 10,
+      "native_object_bbox": [
+        32,
+        18,
+        64,
+        98
+      ]
+    },
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-b470c30e-1487-441e-8db9-c12e9ab38f72.png",
+    "hint": "Generated images are saved to /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896 as /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-b470c30e-1487-441e-8db9-c12e9ab38f72.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "name": "iron_gate_leaf_fallen_01",
+    "family": "iron",
+    "brief": "ONE matching narrow iron gate leaf fallen FLAT on ground, 3/4 overhead view of a horizontal panel, its long axis about55 native pixels and short axis about30. Same slender spear-ended iron rods, rivet collars, simple diamond ornament and old rusty frame as reference fence. One bent corner sunk into dark grey-brown mud, a few crushed dark olive grasses and small pebbles. The object must read as a gate lying down, NOT standing diagonally. No upright post or stone pillar. Keep compact proportional to96px hero; iron dark grey warm rust, ground subdued charcoal grey-brown around RGB70,70,60, no bright orange grass ring.",
+    "prompt": "Redraw ONE production sprite with STRICT LARGE PIXEL GRID. FIRST reference is a layout/scale guide only: preserve its canvas framing and the EMPTY grey rectangle's object envelope, but DO NOT DRAW the grey rectangle, corner checker swatch or any guides. Each checker square shows ONE native pixel enlarged 14x. Draw the object in VERY COARSE squares of about14 by14 display pixels, NEVER subdivide a square into smaller details. Every square must be one solid palette color. This is the MOST important correction: earlier drafts had far too many small pixels and restored several times too large. Native object bounds are [20,18,76,49] inside a native [96,64] canvas. Keep these dimensions so that recovering one painted square gives ONE native pixel at the requested size. Do NOT zoom object to fill whole image. Aim about40 meaningful colors and rich material variation INSIDE that small logical grid. Use solid magenta #FF00FF outside/through object. NO people, no frame, no labels, no cast shadow, no glow, no cyan, no smooth painting or antialiasing. Upper-left light;3/4 top-down. Ground contact mud must be very subdued grey-brown70,70,60 and dull olive, not orange. Other references are style/material only.  SUBJECT: ONE matching narrow iron gate leaf fallen FLAT on ground, 3/4 overhead view of a horizontal panel, its long axis about55 native pixels and short axis about30. Same slender spear-ended iron rods, rivet collars, simple diamond ornament and old rusty frame as reference fence. One bent corner sunk into dark grey-brown mud, a few crushed dark olive grasses and small pebbles. The object must read as a gate lying down, NOT standing diagonally. No upright post or stone pillar. Keep compact proportional to96px hero; iron dark grey warm rust, ground subdued charcoal grey-brown around RGB70,70,60, no bright orange grass ring. CRITICAL SIZE AGAIN: use the guide's BIG 14px square blocks, not6px blocks; only the requested native number of pixel cells. No dither noise.",
+    "guide": {
+      "canvas": [
+        96,
+        64
+      ],
+      "source_pixel_scale": 14,
+      "native_object_bbox": [
+        20,
+        18,
+        76,
+        49
+      ]
+    },
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-734099e8-1c11-478b-929c-9321b529e335.png",
+    "hint": "Generated images are saved to /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896 as /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-734099e8-1c11-478b-929c-9321b529e335.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "name": "fountain_dry_01",
+    "family": "stone",
+    "brief": "ONE dry ruined cemetery fountain, 3/4 top-down mature RPG prop. An octagonal old stone basin about150 native pixels across, with visibly thick rim, a broken missing front-left rim section, blackened weathered grey limestone matching reference tombstone. Inside entirely DRY: dark mud, dead leaves, few grey-olive weeds, NO water or reflective blue surface. At basin center a low layered pedestal supporting a sorrowful weathered stone ANGEL, bowed head, one wing broken to stump, other wing small and drooping, cracked draped robes, softened hands held low. Angel plus pedestal about115 native pixels tall measured from basin interior floor. Overall native sprite about155 wide by150 tall including perspective basin, not a tiny figurine in oversized pool. Rich cool/warm stone grains, lichen, rain streaks, cracks and chipped bevels, low saturation. Thin irregular dark-grey mud apron around basin foot, NO broad bright halo. No readable engravings.",
+    "prompt": "Redraw ONE production sprite with STRICT LARGE PIXEL GRID. FIRST reference is a layout/scale guide only: preserve its canvas framing and the EMPTY grey rectangle's object envelope, but DO NOT DRAW the grey rectangle, corner checker swatch or any guides. Each checker square shows ONE native pixel enlarged 7x. Draw the object in VERY COARSE squares of about7 by7 display pixels, NEVER subdivide a square into smaller details. Every square must be one solid palette color. This is the MOST important correction: earlier drafts had far too many small pixels and restored several times too large. Native object bounds are [21,8,171,160] inside a native [192,176] canvas. Keep these dimensions so that recovering one painted square gives ONE native pixel at the requested size. Do NOT zoom object to fill whole image. Aim about40 meaningful colors and rich material variation INSIDE that small logical grid. Use solid magenta #FF00FF outside/through object. NO people, no frame, no labels, no cast shadow, no glow, no cyan, no smooth painting or antialiasing. Upper-left light;3/4 top-down. Ground contact mud must be very subdued grey-brown70,70,60 and dull olive, not orange. Other references are style/material only.  SUBJECT: ONE dry ruined cemetery fountain, 3/4 top-down mature RPG prop. An octagonal old stone basin about150 native pixels across, with visibly thick rim, a broken missing front-left rim section, blackened weathered grey limestone matching reference tombstone. Inside entirely DRY: dark mud, dead leaves, few grey-olive weeds, NO water or reflective blue surface. At basin center a low layered pedestal supporting a sorrowful weathered stone ANGEL, bowed head, one wing broken to stump, other wing small and drooping, cracked draped robes, softened hands held low. Angel plus pedestal about115 native pixels tall measured from basin interior floor. Overall native sprite about155 wide by150 tall including perspective basin, not a tiny figurine in oversized pool. Rich cool/warm stone grains, lichen, rain streaks, cracks and chipped bevels, low saturation. Thin irregular dark-grey mud apron around basin foot, NO broad bright halo. No readable engravings. CRITICAL SIZE AGAIN: use the guide's BIG 7px square blocks, not6px blocks; only the requested native number of pixel cells. No dither noise.",
+    "guide": {
+      "canvas": [
+        192,
+        176
+      ],
+      "source_pixel_scale": 7,
+      "native_object_bbox": [
+        21,
+        8,
+        171,
+        160
+      ]
+    },
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-6f1231e2-38e6-47c4-a0c1-1a86fd18063d.png",
+    "hint": "Generated images are saved to /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896 as /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-6f1231e2-38e6-47c4-a0c1-1a86fd18063d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

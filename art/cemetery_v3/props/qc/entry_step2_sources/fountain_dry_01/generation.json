@@ -1,0 +1,11 @@
+{
+  "method": "separately generated pool and angel, native interior-row/column edits and integer composition",
+  "selected_sources": [
+    "../fountain_pool/generation.json",
+    "../fountain_angel/generation.json"
+  ],
+  "unused_full_shots": [
+    "attempt01",
+    "unused_full_object_attempt02"
+  ]
+}

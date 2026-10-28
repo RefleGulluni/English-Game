@@ -1,0 +1,29 @@
+{
+  "pillar_roots": [
+    [
+      408,
+      270
+    ],
+    [
+      552,
+      270
+    ]
+  ],
+  "center_spacing": 144,
+  "minimum_clear_opening": 92,
+  "open_gate_root": [
+    433,
+    270
+  ],
+  "fallen_gate_root": [
+    512,
+    242
+  ],
+  "unfolded_gate_design_width_range": [
+    44,
+    46
+  ],
+  "projected_hinge_to_free_post_axis_span": 31,
+  "axis_span_unfolded_at45deg": 43.84,
+  "notes": "Picket/diamond decorations and hinge mounting ears extend outside the nominal leaf-axis span. Game collision/door interaction left for Claude."
+}

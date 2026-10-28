@@ -15,7 +15,7 @@ extends Node
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
-const OLD := "../../cemetery_pixel_v1/" # relative to PROPS: old placeholder art (dead tree, slabs)
+const OLD := "../../cemetery_pixel_v1/" # relative to PROPS: old placeholder art (road slabs)
 const NATIVE := Vector2i(960, 540)
 const SIZE := Vector2i(960, 1350) # 2.5 屏：门里的墓园加长了约半屏（用户 2026-10-26）
 const SPAWN := Vector2(485, 1336)
@@ -45,11 +45,16 @@ const LAYOUT := {
 		# 路的下段：更孤零零的坟
 		["tombstone_cross_01_broken", Vector2(160, 1130), null], ["candles_01", Vector2(196, 1138), null],
 		["tombstone_small_01", Vector2(800, 1170), null],
-		# 枯树（旧样板素材占位，比主角高一倍，以后要新画）；离开路中间，免得挡住视线
-		[OLD + "props/dead_tree_01", Vector2(318, 750), null],
-		[OLD + "props/dead_tree_01", Vector2(720, 1070), null],
-		[OLD + "props/dead_tree_01", Vector2(300, 1280), null],
-		[OLD + "props/dead_tree_01", Vector2(880, 1320), null],
+		# 枯树（角色组第 2 步，两种形状交替）；离开路中间，免得挡住视线
+		["dead_tree_02", Vector2(318, 750), null], ["dead_tree_03", Vector2(720, 1070), null],
+		["dead_tree_03", Vector2(300, 1280), null], ["dead_tree_02", Vector2(880, 1320), null],
+		# 大门：左边一扇半开（门轴在左门柱），另一扇倒在门里的地上（位置照角色组的拼装图）
+		["iron_gate_leaf_open_01", Vector2(433, 546), null], ["iron_gate_leaf_fallen_01", Vector2(512, 518), null],
+		# 门里正中：干涸的喷泉和哀悼天使
+		["fountain_dry_01", Vector2(480, 334), null], # = FOUNTAIN,
+		# 门外路边：歪倒的路牌、倒下的路灯、穷人坟的木十字架
+		["signpost_01", Vector2(560, 1030), null], ["fallen_lamp_post_01", Vector2(642, 1272), null],
+		["wooden_cross_01", Vector2(56, 700), null], ["wooden_cross_02", Vector2(752, 1188), null],
 	],
 }
 
@@ -221,18 +226,6 @@ func _build_placeholders() -> void:
 			[Vector2(560, 1090), Vector2(28, 8)], [Vector2(540, 1280), Vector2(14, 5)], [Vector2(424, 470), Vector2(14, 4)]]:
 		_keep(ground, _poly(_ellipse(p[0], p[1]), WATER), _high)
 		_keep(ground, _poly(_ellipse(p[0], Vector2(p[1].x * 1.3, maxf(2, p[1].y * 0.45))), WATER), _low)
-	# 倒下的那扇铁门，平躺在门内地上
-	ground.add_child(_poly([Vector2(500, 556), Vector2(552, 560), Vector2(546, 572), Vector2(494, 568)], IRON))
-	# 倒下的路灯（只剩一截灯杆）
-	ground.add_child(_poly([Vector2(600, 1266), Vector2(682, 1246), Vector2(684, 1250), Vector2(602, 1270)], IRON))
-	ground.add_child(_poly(_ellipse(Vector2(687, 1247), Vector2(5, 4)), IRON))
-	# 歪倒的路牌：一根木桩 + 一块牌子（立着的东西，参与前后遮挡）
-	var sign_post := Node2D.new()
-	sign_post.position = Vector2(560, 1030)
-	_room.sorted.add_child(sign_post)
-	sign_post.add_child(_poly([Vector2(-2, 0), Vector2(-6, -44), Vector2(-2, -44), Vector2(2, 0)], Color(0.30, 0.22, 0.16)))
-	sign_post.add_child(_poly([Vector2(-22, -42), Vector2(12, -36), Vector2(12, -26), Vector2(-22, -32)], Color(0.38, 0.29, 0.21)))
-
 	# 远景：雾里的礼拜堂尖顶，在地面之上、雾之下
 	var far := Node2D.new()
 	far.z_index = 41 # just over the thickest fog, so it reads as a dark shape inside the mist
@@ -244,39 +237,8 @@ func _build_placeholders() -> void:
 	far.add_child(_poly([Vector2(420, 62), Vector2(420, 44), Vector2(452, 44), Vector2(452, 62)], Color(0.22, 0.23, 0.26)))
 	far.add_child(_poly([Vector2(508, 62), Vector2(508, 46), Vector2(540, 46), Vector2(540, 62)], Color(0.22, 0.23, 0.26)))
 
-	# 喷泉：参与前后遮挡，有碰撞
-	var fountain := StaticBody2D.new()
-	fountain.position = FOUNTAIN
-	_room.sorted.add_child(fountain)
-	_keep(fountain, _poly(_ellipse(Vector2(0, -26), Vector2(70, 24)), STONE), _high)
-	_keep(fountain, _poly(_ellipse(Vector2(0, -30), Vector2(58, 17)), Color(0.22, 0.24, 0.26)), _high)
-	_keep(fountain, _poly([Vector2(-8, -34), Vector2(-8, -88), Vector2(0, -98), Vector2(8, -88), Vector2(8, -34)], STONE_DARK), _high)
-	# 低视角：池子压扁、池壁露出侧面、雕像更高（带一对残翼）
-	var wall := _ellipse(Vector2(0, -18), Vector2(72, 11))
-	var front := PackedVector2Array()
-	for pt in wall:
-		if pt.y >= -18:
-			front.append(pt)
-	for i in range(front.size() - 1, -1, -1):
-		front.append(front[i] + Vector2(0, 10))
-	_keep(fountain, _poly(front, STONE_DARK), _low)
-	_keep(fountain, _poly(wall, STONE), _low)
-	_keep(fountain, _poly(_ellipse(Vector2(0, -19), Vector2(60, 7)), Color(0.22, 0.24, 0.26)), _low)
-	_keep(fountain, _poly([Vector2(-7, -18), Vector2(-7, -112), Vector2(0, -124), Vector2(7, -112), Vector2(7, -18)], STONE_DARK), _low)
-	_keep(fountain, _poly([Vector2(-6, -100), Vector2(-30, -116), Vector2(-24, -92), Vector2(-6, -84)], STONE_DARK), _low)
-	_keep(fountain, _poly([Vector2(6, -100), Vector2(22, -110), Vector2(18, -96), Vector2(6, -88)], STONE_DARK), _low)
-	var shape := CollisionPolygon2D.new()
-	shape.polygon = _ellipse(Vector2(0, -24), Vector2(68, 20))
-	fountain.add_child(shape)
-
 	_build_low_angle(ground)
 	_set_low_angle(false)
-
-	# 半开的那扇铁门：从左门柱斜着打开
-	var leaf := Node2D.new()
-	leaf.position = Vector2(452, 538)
-	_room.sorted.add_child(leaf)
-	leaf.add_child(_poly([Vector2(-22, 2), Vector2(-22, -48), Vector2(6, -60), Vector2(6, -10)], Color(IRON, 0.9)))
 
 	# 雾带：最上方一条，盖在所有东西上面
 	var fog := Node2D.new()
@@ -321,13 +283,13 @@ func _build_placeholders() -> void:
 	_labels = Node2D.new()
 	_labels.z_index = 80
 	_room.add_child(_labels)
-	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["喷泉（占位，建议干涸 + 残缺天使像）", Vector2(372, 340)],
+	for note in [["天空 + 天际线 + 礼拜堂轮廓", Vector2(392, 86)], ["干涸的喷泉 + 哀悼天使", Vector2(372, 340)],
 			["出口 → 第 1 层", Vector2(262, 122)], ["出口 → 第 1 层", Vector2(626, 122)],
-			["门里两侧：一排排墓碑", Vector2(60, 300)], ["半开的铁门（占位）", Vector2(330, 516)],
-			["倒下的铁门（占位）", Vector2(556, 562)], ["路边孤坟", Vector2(120, 570)],
-			["倒下的路灯（占位）", Vector2(600, 1276)], ["枯树（旧素材占位）", Vector2(740, 890)],
+			["门里两侧：一排排墓碑", Vector2(60, 300)], ["半开的铁门", Vector2(330, 516)],
+			["倒下的铁门", Vector2(540, 500)], ["路边孤坟", Vector2(120, 570)],
+			["倒下的路灯", Vector2(600, 1276)], ["枯树", Vector2(740, 890)],
 			["前景枯枝（占位）", Vector2(8, 1250)], ["泥路（色块占位，正式地面在 Ground 里刷）", Vector2(540, 1170)],
-			["外圈旧乱石墙（塌了）", Vector2(110, 870)], ["歪倒的路牌（占位）", Vector2(576, 1000)]]:
+			["外圈旧乱石墙（塌了）", Vector2(110, 870)], ["歪倒的路牌", Vector2(576, 1000)]]:
 		var label := Label.new()
 		label.text = note[0]
 		label.add_theme_font_override("font", _font)

@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ish-game-entry-step2-20261028/staged/wooden_cross_02.png     80x80   OK   40    94    0    59
+ame-entry-step2-20261028/staged/wooden_cross_02_base.png     80x80   OK   30    90    0    75
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

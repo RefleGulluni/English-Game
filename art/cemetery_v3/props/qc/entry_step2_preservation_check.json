@@ -1,0 +1,19 @@
+{
+  "protected_files": 739,
+  "changed_existing_files": [
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/props_manifest.json",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/qc/entry_gate_assembly_1x.png",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/qc/entry_props_QA.md",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/qc/entry_gate_assembly_2x.png"
+  ],
+  "backed_up_existing_files": [
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/props_manifest.json",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/qc/entry_gate_assembly_1x.png",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/qc/entry_props_QA.md",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/cemetery_v3/props/qc/entry_gate_assembly_2x.png"
+  ],
+  "old_manifest_count": 26,
+  "new_manifest_count": 35,
+  "published_file_count": 220,
+  "published_content_hashes_match": true
+}

@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_456ap"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/wooden_cross_02_base.png" id="2_51pta"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/wooden_cross_02.png" id="3_imre3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqv38"]
+size = Vector2(11, 10)
+
+[node name="WoodenCross02" type="Node2D" unique_id=1652529322]
+script = ExtResource("1_456ap")
+ground_gap = 20
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1621942764]
+texture = ExtResource("2_51pta")
+centered = false
+offset = Vector2(-40, -60)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=883651784]
+texture = ExtResource("3_imre3")
+centered = false
+offset = Vector2(-40, -60)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=218288173]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1932366032]
+position = Vector2(3, -4)
+shape = SubResource("RectangleShape2D_lqv38")

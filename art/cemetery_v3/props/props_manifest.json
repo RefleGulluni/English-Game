@@ -663,6 +663,180 @@
       "source_record": "qc/entry_gate_sources/generation.json",
       "qa": "qc/entry_props_QA.md",
       "status": "accepted_D-044"
+    },
+    "iron_gate_leaf_open_01": {
+      "prop": "iron_gate_leaf_open_01.png",
+      "base": "iron_gate_leaf_open_01_base.png",
+      "canvas": [
+        96,
+        112
+      ],
+      "origin": [
+        48,
+        112
+      ],
+      "visible_height_px": 79,
+      "family": "iron",
+      "source_record": "qc/entry_step2_sources/iron_gate_leaf_open_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "join": {
+        "unfolded_design_width_range": [
+          44,
+          46
+        ],
+        "projected_axis_span_px": 31,
+        "estimated_unfolded_axis_span_px": 43.84,
+        "clear_opening_px": 92,
+        "assembly": "qc/entry_gate_assembly_2x.png"
+      }
+    },
+    "iron_gate_leaf_fallen_01": {
+      "prop": "iron_gate_leaf_fallen_01.png",
+      "base": "iron_gate_leaf_fallen_01_base.png",
+      "canvas": [
+        96,
+        80
+      ],
+      "origin": [
+        48,
+        80
+      ],
+      "visible_height_px": 0,
+      "family": "iron",
+      "source_record": "qc/entry_step2_sources/iron_gate_leaf_fallen_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": true
+    },
+    "fountain_dry_01": {
+      "prop": "fountain_dry_01.png",
+      "base": "fountain_dry_01_base.png",
+      "canvas": [
+        224,
+        224
+      ],
+      "origin": [
+        112,
+        224
+      ],
+      "visible_height_px": 167,
+      "family": "stone",
+      "source_record": "qc/entry_step2_sources/fountain_dry_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "pool_width_px": 150,
+      "angel_with_pedestal_height_px": 120
+    },
+    "dead_tree_02": {
+      "prop": "dead_tree_02.png",
+      "base": "dead_tree_02_base.png",
+      "canvas": [
+        224,
+        224
+      ],
+      "origin": [
+        112,
+        224
+      ],
+      "visible_height_px": 169,
+      "family": "bark",
+      "source_record": "qc/entry_step2_sources/dead_tree_02/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false
+    },
+    "dead_tree_03": {
+      "prop": "dead_tree_03.png",
+      "base": "dead_tree_03_base.png",
+      "canvas": [
+        256,
+        192
+      ],
+      "origin": [
+        128,
+        192
+      ],
+      "visible_height_px": 145,
+      "family": "bark",
+      "source_record": "qc/entry_step2_sources/dead_tree_03/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false
+    },
+    "fallen_lamp_post_01": {
+      "prop": "fallen_lamp_post_01.png",
+      "base": "fallen_lamp_post_01_base.png",
+      "canvas": [
+        128,
+        80
+      ],
+      "origin": [
+        64,
+        80
+      ],
+      "visible_height_px": 0,
+      "family": "iron",
+      "source_record": "qc/entry_step2_sources/fallen_lamp_post_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": true
+    },
+    "signpost_01": {
+      "prop": "signpost_01.png",
+      "base": "signpost_01_base.png",
+      "canvas": [
+        96,
+        80
+      ],
+      "origin": [
+        48,
+        80
+      ],
+      "visible_height_px": 55,
+      "family": "wood",
+      "source_record": "qc/entry_step2_sources/signpost_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false
+    },
+    "wooden_cross_01": {
+      "prop": "wooden_cross_01.png",
+      "base": "wooden_cross_01_base.png",
+      "canvas": [
+        80,
+        80
+      ],
+      "origin": [
+        40,
+        80
+      ],
+      "visible_height_px": 45,
+      "family": "wood",
+      "source_record": "qc/entry_step2_sources/wooden_cross_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false
+    },
+    "wooden_cross_02": {
+      "prop": "wooden_cross_02.png",
+      "base": "wooden_cross_02_base.png",
+      "canvas": [
+        80,
+        80
+      ],
+      "origin": [
+        40,
+        80
+      ],
+      "visible_height_px": 49,
+      "family": "wood",
+      "source_record": "qc/entry_step2_sources/wooden_cross_02/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false
     }
   },
   "wall_families": {
@@ -791,5 +965,22 @@
     "status": "accepted_D-044",
     "production": "single built-in image generation / detected cell center sampling / native selections and integer translations / inherited stone palettes",
     "no_whole_image_resize": true
+  },
+  "cemetery_entry_step2": {
+    "items": [
+      "iron_gate_leaf_open_01",
+      "iron_gate_leaf_fallen_01",
+      "fountain_dry_01",
+      "dead_tree_02",
+      "dead_tree_03",
+      "fallen_lamp_post_01",
+      "signpost_01",
+      "wooden_cross_01",
+      "wooden_cross_02"
+    ],
+    "count": 9,
+    "ground": "art/cemetery_v3/ground/base/ground_base_01.png",
+    "qa": "qc/entry_props_QA.md",
+    "status": "pending_user_review"
   }
 }

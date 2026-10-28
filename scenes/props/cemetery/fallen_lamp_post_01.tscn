@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_23ttx"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/fallen_lamp_post_01_base.png" id="2_vvb0l"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/fallen_lamp_post_01.png" id="3_gakhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q362s"]
+size = Vector2(8, 10)
+
+[node name="FallenLampPost01" type="Node2D" unique_id=1597478112]
+script = ExtResource("1_23ttx")
+flat = true
+
+[node name="Base" type="Sprite2D" parent="." unique_id=419829721]
+texture = ExtResource("2_vvb0l")
+centered = false
+offset = Vector2(-64, -80)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1901875182]
+texture = ExtResource("3_gakhd")
+centered = false
+offset = Vector2(-64, -80)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=2028537708]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=1443792008]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_q362s")
+disabled = true

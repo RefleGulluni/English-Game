@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+nglish-game-entry-step2-20261028/staged/dead_tree_03.png   256x192   OK   48    94    0   170
+h-game-entry-step2-20261028/staged/dead_tree_03_base.png   256x192   OK   31    84    0   187
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

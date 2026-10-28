@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+english-game-entry-step2-20261028/staged/signpost_01.png     96x80   OK   46    87    0    64
+sh-game-entry-step2-20261028/staged/signpost_01_base.png     96x80   OK   21    83    0    75
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

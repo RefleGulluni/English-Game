@@ -1,0 +1,135 @@
+[
+  {
+    "name": "iron_gate_leaf_open_01",
+    "family": "iron",
+    "brief": "ONE narrow wrought-iron gate leaf HALF OPEN, standing on a LEFT hinge axis and swinging inward about45 degrees. Same iron material/pickets as reference iron fence: slender squared rusty iron rods, small spear tips, two simple diamond ornaments, rivet collars. ONLY three main vertical pickets, simple outer frame and two rails; no huge elaborate Victorian curls. Physical opened-out leaf45 native pixels wide and74 high. In this inward45-degree oblique view the horizontal projected width is32 native pixels, overall visible height about78 pixels. The free RIGHT edge recedes upward into depth by8-10 pixels, left hinge nearest/lower; show top edges. This is a newly drawn perspective, not a squashed or rotated flat icon. No stone column in output, only small left hinge straps and one gate leaf. Modest dark mud scuff at foot of hinge only. Preserve iron family shape, scale, warm-grey highlights and dark rust from fence reference.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE narrow wrought-iron gate leaf HALF OPEN, standing on a LEFT hinge axis and swinging inward about45 degrees. Same iron material/pickets as reference iron fence: slender squared rusty iron rods, small spear tips, two simple diamond ornaments, rivet collars. ONLY three main vertical pickets, simple outer frame and two rails; no huge elaborate Victorian curls. Physical opened-out leaf45 native pixels wide and74 high. In this inward45-degree oblique view the horizontal projected width is32 native pixels, overall visible height about78 pixels. The free RIGHT edge recedes upward into depth by8-10 pixels, left hinge nearest/lower; show top edges. This is a newly drawn perspective, not a squashed or rotated flat icon. No stone column in output, only small left hinge straps and one gate leaf. Modest dark mud scuff at foot of hinge only. Preserve iron family shape, scale, warm-grey highlights and dark rust from fence reference.",
+    "guide": {
+      "canvas": [
+        96,
+        112
+      ],
+      "source_pixel_scale": 10,
+      "native_object_bbox": [
+        32,
+        18,
+        64,
+        98
+      ]
+    }
+  },
+  {
+    "name": "iron_gate_leaf_fallen_01",
+    "family": "iron",
+    "brief": "ONE matching narrow iron gate leaf fallen FLAT on ground, 3/4 overhead view of a horizontal panel, its long axis about55 native pixels and short axis about30. Same slender spear-ended iron rods, rivet collars, simple diamond ornament and old rusty frame as reference fence. One bent corner sunk into dark grey-brown mud, a few crushed dark olive grasses and small pebbles. The object must read as a gate lying down, NOT standing diagonally. No upright post or stone pillar. Keep compact proportional to96px hero; iron dark grey warm rust, ground subdued charcoal grey-brown around RGB70,70,60, no bright orange grass ring.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE matching narrow iron gate leaf fallen FLAT on ground, 3/4 overhead view of a horizontal panel, its long axis about55 native pixels and short axis about30. Same slender spear-ended iron rods, rivet collars, simple diamond ornament and old rusty frame as reference fence. One bent corner sunk into dark grey-brown mud, a few crushed dark olive grasses and small pebbles. The object must read as a gate lying down, NOT standing diagonally. No upright post or stone pillar. Keep compact proportional to96px hero; iron dark grey warm rust, ground subdued charcoal grey-brown around RGB70,70,60, no bright orange grass ring.",
+    "guide": {
+      "canvas": [
+        96,
+        64
+      ],
+      "source_pixel_scale": 14,
+      "native_object_bbox": [
+        20,
+        18,
+        76,
+        49
+      ]
+    }
+  },
+  {
+    "name": "fountain_dry_01",
+    "family": "stone",
+    "brief": "ONE dry ruined cemetery fountain, 3/4 top-down mature RPG prop. An octagonal old stone basin about150 native pixels across, with visibly thick rim, a broken missing front-left rim section, blackened weathered grey limestone matching reference tombstone. Inside entirely DRY: dark mud, dead leaves, few grey-olive weeds, NO water or reflective blue surface. At basin center a low layered pedestal supporting a sorrowful weathered stone ANGEL, bowed head, one wing broken to stump, other wing small and drooping, cracked draped robes, softened hands held low. Angel plus pedestal about115 native pixels tall measured from basin interior floor. Overall native sprite about155 wide by150 tall including perspective basin, not a tiny figurine in oversized pool. Rich cool/warm stone grains, lichen, rain streaks, cracks and chipped bevels, low saturation. Thin irregular dark-grey mud apron around basin foot, NO broad bright halo. No readable engravings.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE dry ruined cemetery fountain, 3/4 top-down mature RPG prop. An octagonal old stone basin about150 native pixels across, with visibly thick rim, a broken missing front-left rim section, blackened weathered grey limestone matching reference tombstone. Inside entirely DRY: dark mud, dead leaves, few grey-olive weeds, NO water or reflective blue surface. At basin center a low layered pedestal supporting a sorrowful weathered stone ANGEL, bowed head, one wing broken to stump, other wing small and drooping, cracked draped robes, softened hands held low. Angel plus pedestal about115 native pixels tall measured from basin interior floor. Overall native sprite about155 wide by150 tall including perspective basin, not a tiny figurine in oversized pool. Rich cool/warm stone grains, lichen, rain streaks, cracks and chipped bevels, low saturation. Thin irregular dark-grey mud apron around basin foot, NO broad bright halo. No readable engravings.",
+    "guide": {
+      "canvas": [
+        192,
+        176
+      ],
+      "source_pixel_scale": 7,
+      "native_object_bbox": [
+        21,
+        8,
+        171,
+        160
+      ]
+    }
+  },
+  {
+    "name": "fallen_lamp_post_01",
+    "family": "iron",
+    "brief": "ONE fallen abandoned RAILWAY LAMP POST lying FLAT in mud, viewed3/4 overhead. Native long axis85 pixels, a thin cracked iron pole ending in a small rectangular old station lantern head with BROKEN GLASS and bent cage, a few restrained pale glass shards beside it, NO light or glow. Diagonal layout roughly lower-left pole foot to upper-right lantern head, flattened depth, not upright. Simple utilitarian railway hardware, NOT an ornate fantasy street lamp. Same dark warm-grey rusty iron as fence reference; worn bolt collars, rusty seams. One end half buried in dark grey-brown mud aroundRGB70,70,60 and dull olive crushed grass; narrow irregular patch, no bright soil circle. Entire object stays low on ground.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE fallen abandoned RAILWAY LAMP POST lying FLAT in mud, viewed3/4 overhead. Native long axis85 pixels, a thin cracked iron pole ending in a small rectangular old station lantern head with BROKEN GLASS and bent cage, a few restrained pale glass shards beside it, NO light or glow. Diagonal layout roughly lower-left pole foot to upper-right lantern head, flattened depth, not upright. Simple utilitarian railway hardware, NOT an ornate fantasy street lamp. Same dark warm-grey rusty iron as fence reference; worn bolt collars, rusty seams. One end half buried in dark grey-brown mud aroundRGB70,70,60 and dull olive crushed grass; narrow irregular patch, no bright soil circle. Entire object stays low on ground.",
+    "guide": {
+      "canvas": [
+        128,
+        64
+      ],
+      "source_pixel_scale": 12,
+      "native_object_bbox": [
+        20,
+        20,
+        108,
+        50
+      ]
+    }
+  },
+  {
+    "name": "signpost_01",
+    "family": "wood",
+    "brief": "ONE crooked weathered wooden cemetery direction sign, about50 native pixels high. Narrow split timber stake leaning slightly LEFT, two small battered planks nailed crosswise, one broken pointed end. A few black iron nails, grey-brown wood grain, splinters, water-dark bottom and grey-green lichen. Board faces contain ONLY shallow unrecognizable abrasions and wood cracks: ABSOLUTELY NO readable letters, numbers, alphabetic shapes, words, runes, logos, symbols or decorative writing. Poor abandoned utilitarian object, detailed mature pixel art, not cute. Dark charcoal grey-brown churned soil at root, compressed muted olive grass, small stones, not an orange ring. Upper-left lighting.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE crooked weathered wooden cemetery direction sign, about50 native pixels high. Narrow split timber stake leaning slightly LEFT, two small battered planks nailed crosswise, one broken pointed end. A few black iron nails, grey-brown wood grain, splinters, water-dark bottom and grey-green lichen. Board faces contain ONLY shallow unrecognizable abrasions and wood cracks: ABSOLUTELY NO readable letters, numbers, alphabetic shapes, words, runes, logos, symbols or decorative writing. Poor abandoned utilitarian object, detailed mature pixel art, not cute. Dark charcoal grey-brown churned soil at root, compressed muted olive grass, small stones, not an orange ring. Upper-left lighting.",
+    "guide": {
+      "canvas": [
+        96,
+        80
+      ],
+      "source_pixel_scale": 14,
+      "native_object_bbox": [
+        24,
+        14,
+        72,
+        66
+      ]
+    }
+  },
+  {
+    "name": "wooden_cross_01",
+    "family": "wood",
+    "brief": "ONE poor person's wooden grave CROSS, upright and simply made from two narrow unequal rough timber strips tied at intersection by fraying old cord, native visible height42 pixels, width25. Plain vertical silhouette, worn grey-brown grain with a few small warmer exposed fibers, dark splits, chipped end grain, subtle grey-green lichen, two tiny dark nail heads. NO carvings or readable letters. Small flattened mound of DARK GREY-BROWN earth below, irregular settled mud, dull crushed olive grass and two pebbles; not a big ornamental pedestal, no orange/yellow rim. Detailed small pixel clusters comparable to96px hero, understated and sad, no glow.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE poor person's wooden grave CROSS, upright and simply made from two narrow unequal rough timber strips tied at intersection by fraying old cord, native visible height42 pixels, width25. Plain vertical silhouette, worn grey-brown grain with a few small warmer exposed fibers, dark splits, chipped end grain, subtle grey-green lichen, two tiny dark nail heads. NO carvings or readable letters. Small flattened mound of DARK GREY-BROWN earth below, irregular settled mud, dull crushed olive grass and two pebbles; not a big ornamental pedestal, no orange/yellow rim. Detailed small pixel clusters comparable to96px hero, understated and sad, no glow.",
+    "guide": {
+      "canvas": [
+        80,
+        72
+      ],
+      "source_pixel_scale": 16,
+      "native_object_bbox": [
+        26,
+        12,
+        54,
+        55
+      ]
+    }
+  },
+  {
+    "name": "wooden_cross_02",
+    "family": "wood",
+    "brief": "ONE different poor person's wooden grave CROSS, native visible height38-45 pixels, deliberately LEANING RIGHT about15degrees, freshly drawn leaning shape with correct upper-left light, never a rotated copy. Two rough splintered unequal wooden battens lashed by worn cord, one cross-arm lower/chipped, left arm a little longer. More rotten than upright version: dark wet timber bottom, pale small end-grain chips, grey-green lichen, hairline cracks. No readable letters, carvings, runes or symbols. A small settled dark grey-brown grave mound and pressed dull olive grass at foot, no bright orange grass circle. Mature low saturation detailed pixel art, not cute.",
+    "prompt": "Generate ONE standalone game prop only, not a scene, not an asset sheet. TRUE NATIVE BIG-BLOCK PIXEL ART matching supplied hero/prop references; crisp square blocks at roughly5-10 display pixels per native pixel, no smooth contours, no painterly rendering, no tiny photorealistic detail. Each block is one intended native pixel. Mature restrained dark cemetery style, upper-left light. Dense meaningful material details (grain, rust, lichen, chips, cracks), about40-50 shades in small pixel clusters, no random noise, no flat8-color cartoon. 3/4 TOP-DOWN camera. Solid uniform #FF00FF magenta background all around and through openings. NO ground cast shadow, no outline stroke, no halo, no glow, no cyan/teal. Include only the immediate material base contact patch as described, not a rectangular ground tile. NO people, skeletons, reference boards, labels, borders, numbers, readable letters or text. Keep full object and root/mud patch safely inside image, generous magenta margin. Respect stated native size relative to96px reference hero; do not enlarge fine detail to thousands of tiny pixels. ONE different poor person's wooden grave CROSS, native visible height38-45 pixels, deliberately LEANING RIGHT about15degrees, freshly drawn leaning shape with correct upper-left light, never a rotated copy. Two rough splintered unequal wooden battens lashed by worn cord, one cross-arm lower/chipped, left arm a little longer. More rotten than upright version: dark wet timber bottom, pale small end-grain chips, grey-green lichen, hairline cracks. No readable letters, carvings, runes or symbols. A small settled dark grey-brown grave mound and pressed dull olive grass at foot, no bright orange grass circle. Mature low saturation detailed pixel art, not cute.",
+    "guide": {
+      "canvas": [
+        80,
+        72
+      ],
+      "source_pixel_scale": 16,
+      "native_object_bbox": [
+        24,
+        12,
+        56,
+        55
+      ]
+    }
+  }
+]

@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+e-entry-step2-20261028/staged/iron_gate_leaf_open_01.png    96x112   OK   43    92    0   101
+ry-step2-20261028/staged/iron_gate_leaf_open_01_base.png    96x112   OK   14    76    0   107
+ish-Game/art/character_design/hero_B1_front_straight.png     96x96   OK   44    88   13    95

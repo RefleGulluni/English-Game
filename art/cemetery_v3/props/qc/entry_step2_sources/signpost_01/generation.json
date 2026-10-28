@@ -1,0 +1,21 @@
+{
+  "name": "signpost_01",
+  "family": "wood",
+  "brief": "ONE crooked weathered wooden cemetery direction sign, about50 native pixels high. Narrow split timber stake leaning slightly LEFT, two small battered planks nailed crosswise, one broken pointed end. A few black iron nails, grey-brown wood grain, splinters, water-dark bottom and grey-green lichen. Board faces contain ONLY shallow unrecognizable abrasions and wood cracks: ABSOLUTELY NO readable letters, numbers, alphabetic shapes, words, runes, logos, symbols or decorative writing. Poor abandoned utilitarian object, detailed mature pixel art, not cute. Dark charcoal grey-brown churned soil at root, compressed muted olive grass, small stones, not an orange ring. Upper-left lighting.",
+  "prompt": "Redraw ONE production sprite with STRICT LARGE PIXEL GRID. FIRST reference is a layout/scale guide only: preserve its canvas framing and the EMPTY grey rectangle's object envelope, but DO NOT DRAW the grey rectangle, corner checker swatch or any guides. Each checker square shows ONE native pixel enlarged 14x. Draw the object in VERY COARSE squares of about14 by14 display pixels, NEVER subdivide a square into smaller details. Every square must be one solid palette color. This is the MOST important correction: earlier drafts had far too many small pixels and restored several times too large. Native object bounds are [24,14,72,66] inside a native [96,80] canvas. Keep these dimensions so that recovering one painted square gives ONE native pixel at the requested size. Do NOT zoom object to fill whole image. Aim about40 meaningful colors and rich material variation INSIDE that small logical grid. Use solid magenta #FF00FF outside/through object. NO people, no frame, no labels, no cast shadow, no glow, no cyan, no smooth painting or antialiasing. Upper-left light;3/4 top-down. Ground contact mud must be very subdued grey-brown70,70,60 and dull olive, not orange. Other references are style/material only. The last image shows the desired object design but its old pixel grid is TOO FINE: redraw it using the much larger guide pixel squares. SUBJECT: ONE crooked weathered wooden cemetery direction sign, about50 native pixels high. Narrow split timber stake leaning slightly LEFT, two small battered planks nailed crosswise, one broken pointed end. A few black iron nails, grey-brown wood grain, splinters, water-dark bottom and grey-green lichen. Board faces contain ONLY shallow unrecognizable abrasions and wood cracks: ABSOLUTELY NO readable letters, numbers, alphabetic shapes, words, runes, logos, symbols or decorative writing. Poor abandoned utilitarian object, detailed mature pixel art, not cute. Dark charcoal grey-brown churned soil at root, compressed muted olive grass, small stones, not an orange ring. Upper-left lighting. CRITICAL SIZE AGAIN: use the guide's BIG 14px square blocks, not6px blocks; only the requested native number of pixel cells. No dither noise.",
+  "guide": {
+    "canvas": [
+      96,
+      80
+    ],
+    "source_pixel_scale": 14,
+    "native_object_bbox": [
+      24,
+      14,
+      72,
+      66
+    ]
+  },
+  "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-a94f067e-5d2e-419c-b2fe-480ff59c494b.png",
+  "hint": "Generated images are saved to /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896 as /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-a94f067e-5d2e-419c-b2fe-480ff59c494b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}
