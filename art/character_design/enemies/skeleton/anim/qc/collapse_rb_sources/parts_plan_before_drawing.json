@@ -1,0 +1,36 @@
+{
+  "spec": "21.3",
+  "directions": [
+    "right",
+    "back"
+  ],
+  "per_direction_frames": 12,
+  "durations_ms": [
+    100,
+    110,
+    90,
+    80,
+    70,
+    70,
+    70,
+    80,
+    100,
+    130,
+    180,
+    200
+  ],
+  "part_ownership": [
+    "one skull",
+    "one shoulder/pins",
+    "one chest/spine",
+    "one pelvis",
+    "one pair of arms/hands",
+    "one pair of legs/feet",
+    "one shroud"
+  ],
+  "bone_group_handoff": "standing group removed before settled equivalent is shown; no full headed heap behind falling head",
+  "right": "right profile independently generated, no mirror. Pelvis vertically drops, skull tips down then falls toward right heap skull.",
+  "back": "posterior skull and scapulae/spine visible during fall, no front standing turn. Skull rolls to face outward only on landing.",
+  "frame1": "exact direction standard",
+  "frame12": "exact front collapse final RGBA"
+}

@@ -1,0 +1,868 @@
+{
+  "right": {
+    "name": "skeleton_B_collapse_right",
+    "spec": "21.3",
+    "frame_size": [
+      96,
+      96
+    ],
+    "anchor": [
+      48,
+      96
+    ],
+    "frames": [
+      {
+        "frame": 1,
+        "duration_ms": 100,
+        "rgba_sha256": "37049bd143bdeb568f4dc85d5538db33bde7077f6b47536e429d0adf64960a86",
+        "colors": 46,
+        "neighbor_change_pct": 87.2353,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          38,
+          0,
+          55,
+          20
+        ],
+        "head_center": [
+          46.0,
+          9.5
+        ],
+        "bone_group_ownership": {
+          "skull": "standing",
+          "shoulder_chest": "standing",
+          "pelvis": "standing",
+          "arms_hands": "standing",
+          "legs_feet": "standing",
+          "shroud": "standing"
+        },
+        "pixel_changes_from_previous": null
+      },
+      {
+        "frame": 2,
+        "duration_ms": 110,
+        "rgba_sha256": "e7ccc36b0bae460d31fef47451c10a003005f227377e1b5387fb28a5aa128872",
+        "colors": 48,
+        "neighbor_change_pct": 86.1111,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          47,
+          8,
+          65,
+          29
+        ],
+        "head_center": [
+          55.5,
+          18.0
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2308
+      },
+      {
+        "frame": 3,
+        "duration_ms": 90,
+        "rgba_sha256": "da4cf1f439c6411bf386a86f5314dc4941faa54706461a159cf8a26e4db5a36d",
+        "colors": 48,
+        "neighbor_change_pct": 87.2242,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          50,
+          15,
+          69,
+          36
+        ],
+        "head_center": [
+          59.0,
+          25.0
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2333
+      },
+      {
+        "frame": 4,
+        "duration_ms": 80,
+        "rgba_sha256": "217d5b8241d411d81256e3f8688245c9a25824193e8b139bbd264bc426e6eadb",
+        "colors": 47,
+        "neighbor_change_pct": 87.3349,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          50,
+          18,
+          71,
+          39
+        ],
+        "head_center": [
+          60.0,
+          28.0
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2255
+      },
+      {
+        "frame": 5,
+        "duration_ms": 70,
+        "rgba_sha256": "02a4119dea590e34c783a800cce7542ceb78808a3868c265a7f465046fe9e480",
+        "colors": 48,
+        "neighbor_change_pct": 88.8673,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          60,
+          25,
+          77,
+          45
+        ],
+        "head_center": [
+          68.0,
+          34.5
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2705
+      },
+      {
+        "frame": 6,
+        "duration_ms": 70,
+        "rgba_sha256": "c4e8e57f54a9747fce5617cb1a1b1a25234cd0b9fa616d2cba71fab94d09c8ce",
+        "colors": 48,
+        "neighbor_change_pct": 89.6272,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          61,
+          34,
+          78,
+          54
+        ],
+        "head_center": [
+          69.0,
+          43.5
+        ],
+        "bone_group_ownership": {
+          "skull": "direction_droop",
+          "shoulder_chest": "airborne_direction",
+          "pelvis": "airborne_direction",
+          "arms_hands": "airborne_direction",
+          "legs_feet": "canonical_ground",
+          "shroud": "upper_direction_plus_lower_hem"
+        },
+        "pixel_changes_from_previous": 2241
+      },
+      {
+        "frame": 7,
+        "duration_ms": 70,
+        "rgba_sha256": "5f2279e7ea4873b1c7195163a6b49eded5850c2d69865628999cc37b62c4999a",
+        "colors": 48,
+        "neighbor_change_pct": 89.7166,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          48,
+          80,
+          68
+        ],
+        "head_center": [
+          71.0,
+          57.5
+        ],
+        "bone_group_ownership": {
+          "skull": "direction_droop",
+          "shoulder_chest": "airborne_direction",
+          "pelvis": "airborne_direction",
+          "arms_hands": "airborne_direction",
+          "legs_feet": "canonical_ground",
+          "shroud": "upper_direction_plus_lower_hem"
+        },
+        "pixel_changes_from_previous": 1713
+      },
+      {
+        "frame": 8,
+        "duration_ms": 80,
+        "rgba_sha256": "e84b76c4d49687bef4f9f6c4089dcd45632feca78b6fd16aa09999f8fbfd5a89",
+        "colors": 48,
+        "neighbor_change_pct": 92.6116,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          65,
+          62,
+          82,
+          82
+        ],
+        "head_center": [
+          73.0,
+          71.5
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "ground_turn"
+        },
+        "pixel_changes_from_previous": 2058
+      },
+      {
+        "frame": 9,
+        "duration_ms": 100,
+        "rgba_sha256": "7d572dcefc806ce0732a49f1503fcf29ac2de4a9467d945e7d3c4d7d72be5062",
+        "colors": 46,
+        "neighbor_change_pct": 92.6451,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          64,
+          68,
+          85,
+          91
+        ],
+        "head_center": [
+          74.0,
+          79.0
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "canonical_skull"
+        },
+        "pixel_changes_from_previous": 1338
+      },
+      {
+        "frame": 10,
+        "duration_ms": 130,
+        "rgba_sha256": "c08aba78a0aba9b56f97318f8b70d21ab1c7f72251eed70c28146c85ee68da4b",
+        "colors": 46,
+        "neighbor_change_pct": 92.4516,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          64,
+          84,
+          87
+        ],
+        "head_center": [
+          73.0,
+          75.0
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "canonical_skull"
+        },
+        "pixel_changes_from_previous": 683
+      },
+      {
+        "frame": 11,
+        "duration_ms": 180,
+        "rgba_sha256": "17b151c079a1292012fbaaf3300894083e891eb8350fbf62aa9a28da34382493",
+        "colors": 46,
+        "neighbor_change_pct": 92.5298,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          65,
+          84,
+          88
+        ],
+        "head_center": [
+          73.0,
+          76.0
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "canonical_skull"
+        },
+        "pixel_changes_from_previous": 607
+      },
+      {
+        "frame": 12,
+        "duration_ms": 200,
+        "rgba_sha256": "b4147d4206bd1f72f2de5a3ed84c13b4ba9d75aa3714894bc2a0a35c733c1008",
+        "colors": 46,
+        "neighbor_change_pct": 92.4718,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          66,
+          84,
+          89
+        ],
+        "head_center": [
+          73.0,
+          77.0
+        ],
+        "bone_group_ownership": {
+          "skull": "canonical_ground",
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground"
+        },
+        "pixel_changes_from_previous": 398
+      }
+    ],
+    "total_ms": 1280,
+    "first_equals_direction_standard": true,
+    "last_equals_front_final": true,
+    "last_equals_left_final": true,
+    "last_equals_remains_pasted_0_48": true,
+    "first_rgba_sha256": "37049bd143bdeb568f4dc85d5538db33bde7077f6b47536e429d0adf64960a86",
+    "last_rgba_sha256": "b4147d4206bd1f72f2de5a3ed84c13b4ba9d75aa3714894bc2a0a35c733c1008",
+    "gif_exact_nearest8x_decoded": true,
+    "independent_generation": "/tmp/english-game-skeleton-collapse-rb-213-20261028/staged/qc/collapse_rb_sources/right/generated_early_fall.png",
+    "mirror_or_raster_rotation_used": false,
+    "anatomical_count_validation": "Explicit single skull/headless-body layers + per-frame visual review and bone-group handoff ledger; not an automatic tiny-bone anatomical detector."
+  },
+  "back": {
+    "name": "skeleton_B_collapse_back",
+    "spec": "21.3",
+    "frame_size": [
+      96,
+      96
+    ],
+    "anchor": [
+      48,
+      96
+    ],
+    "frames": [
+      {
+        "frame": 1,
+        "duration_ms": 100,
+        "rgba_sha256": "472f5f597c71834270c7c7f2e39ce89e50f874a0c83f34942227301a0212bebd",
+        "colors": 44,
+        "neighbor_change_pct": 85.2676,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          40,
+          0,
+          55,
+          15
+        ],
+        "head_center": [
+          47.0,
+          7.0
+        ],
+        "bone_group_ownership": {
+          "skull": "standing",
+          "shoulder_chest": "standing",
+          "pelvis": "standing",
+          "arms_hands": "standing",
+          "legs_feet": "standing",
+          "shroud": "standing"
+        },
+        "pixel_changes_from_previous": null
+      },
+      {
+        "frame": 2,
+        "duration_ms": 110,
+        "rgba_sha256": "0aafb5d9c9707b5a52763670f3874319511f3d9516aa0e8ed3e3cdc3b7a2afde",
+        "colors": 48,
+        "neighbor_change_pct": 87.2837,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          40,
+          2,
+          65,
+          22
+        ],
+        "head_center": [
+          52.0,
+          11.5
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2884
+      },
+      {
+        "frame": 3,
+        "duration_ms": 90,
+        "rgba_sha256": "10373f53bd77246795d26bf8bc6f43fb44b7ecd7726b1cb586ca654f63470366",
+        "colors": 45,
+        "neighbor_change_pct": 86.5376,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          46,
+          8,
+          67,
+          28
+        ],
+        "head_center": [
+          56.0,
+          17.5
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 3135
+      },
+      {
+        "frame": 4,
+        "duration_ms": 80,
+        "rgba_sha256": "786f8e320872da793ebf501ef92e0ca11c0887ac747f421ff2b2678d4480f285",
+        "colors": 45,
+        "neighbor_change_pct": 87.2618,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          45,
+          16,
+          67,
+          36
+        ],
+        "head_center": [
+          55.5,
+          25.5
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2880
+      },
+      {
+        "frame": 5,
+        "duration_ms": 70,
+        "rgba_sha256": "57815ba4e87704eb060233db9ca9531543e4bd0b80e9361877826b3035536fc8",
+        "colors": 45,
+        "neighbor_change_pct": 87.0105,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          48,
+          20,
+          68,
+          40
+        ],
+        "head_center": [
+          57.5,
+          29.5
+        ],
+        "bone_group_ownership": {
+          "skull": "new_direction_pose",
+          "shoulder_chest": "new_direction_pose",
+          "pelvis": "new_direction_pose",
+          "arms_hands": "new_direction_pose",
+          "legs_feet": "new_direction_pose",
+          "shroud": "new_direction_pose"
+        },
+        "pixel_changes_from_previous": 2797
+      },
+      {
+        "frame": 6,
+        "duration_ms": 70,
+        "rgba_sha256": "529fa62dab7a8098faed000b585d7ae24586370457b14c560e78caddf2c9a06a",
+        "colors": 48,
+        "neighbor_change_pct": 87.1896,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          52,
+          33,
+          72,
+          53
+        ],
+        "head_center": [
+          61.5,
+          42.5
+        ],
+        "bone_group_ownership": {
+          "skull": "direction_droop",
+          "shoulder_chest": "airborne_direction",
+          "pelvis": "airborne_direction",
+          "arms_hands": "airborne_direction",
+          "legs_feet": "canonical_ground",
+          "shroud": "upper_direction_plus_lower_hem"
+        },
+        "pixel_changes_from_previous": 3221
+      },
+      {
+        "frame": 7,
+        "duration_ms": 70,
+        "rgba_sha256": "6772e01cc37929194f6a6e65519585aaef7cf1e87dfea63f42b89c67a81844db",
+        "colors": 48,
+        "neighbor_change_pct": 87.7131,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          56,
+          47,
+          76,
+          67
+        ],
+        "head_center": [
+          65.5,
+          56.5
+        ],
+        "bone_group_ownership": {
+          "skull": "direction_droop",
+          "shoulder_chest": "airborne_direction",
+          "pelvis": "airborne_direction",
+          "arms_hands": "airborne_direction",
+          "legs_feet": "canonical_ground",
+          "shroud": "upper_direction_plus_lower_hem"
+        },
+        "pixel_changes_from_previous": 2498
+      },
+      {
+        "frame": 8,
+        "duration_ms": 80,
+        "rgba_sha256": "d365a1340b143469b1e3d9d2ba541db8aaa65e47debe4464189d8de4fbba6b65",
+        "colors": 48,
+        "neighbor_change_pct": 92.3621,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          60,
+          61,
+          80,
+          81
+        ],
+        "head_center": [
+          69.5,
+          70.5
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "ground_turn"
+        },
+        "pixel_changes_from_previous": 2263
+      },
+      {
+        "frame": 9,
+        "duration_ms": 100,
+        "rgba_sha256": "cd945bedb413428ec767259ab727e7a5678f688cea324d0a585607d8c0d9b8bc",
+        "colors": 46,
+        "neighbor_change_pct": 92.6698,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          68,
+          84,
+          91
+        ],
+        "head_center": [
+          73.0,
+          79.0
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "canonical_skull"
+        },
+        "pixel_changes_from_previous": 1369
+      },
+      {
+        "frame": 10,
+        "duration_ms": 130,
+        "rgba_sha256": "c08aba78a0aba9b56f97318f8b70d21ab1c7f72251eed70c28146c85ee68da4b",
+        "colors": 46,
+        "neighbor_change_pct": 92.4516,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          64,
+          84,
+          87
+        ],
+        "head_center": [
+          73.0,
+          75.0
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "canonical_skull"
+        },
+        "pixel_changes_from_previous": 684
+      },
+      {
+        "frame": 11,
+        "duration_ms": 180,
+        "rgba_sha256": "17b151c079a1292012fbaaf3300894083e891eb8350fbf62aa9a28da34382493",
+        "colors": 46,
+        "neighbor_change_pct": 92.5298,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          65,
+          84,
+          88
+        ],
+        "head_center": [
+          73.0,
+          76.0
+        ],
+        "bone_group_ownership": {
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground",
+          "skull": "canonical_skull"
+        },
+        "pixel_changes_from_previous": 607
+      },
+      {
+        "frame": 12,
+        "duration_ms": 200,
+        "rgba_sha256": "b4147d4206bd1f72f2de5a3ed84c13b4ba9d75aa3714894bc2a0a35c733c1008",
+        "colors": 46,
+        "neighbor_change_pct": 92.4718,
+        "alpha_values": [
+          0,
+          255
+        ],
+        "new_colors": 0,
+        "bottom_y": 95,
+        "one_explicit_skull_layer": true,
+        "head_plus_headless_body_equals_final": true,
+        "head_bbox": [
+          63,
+          66,
+          84,
+          89
+        ],
+        "head_center": [
+          73.0,
+          77.0
+        ],
+        "bone_group_ownership": {
+          "skull": "canonical_ground",
+          "shoulder_chest": "canonical_ground",
+          "pelvis": "canonical_ground",
+          "arms_hands": "canonical_ground",
+          "legs_feet": "canonical_ground",
+          "shroud": "canonical_ground"
+        },
+        "pixel_changes_from_previous": 398
+      }
+    ],
+    "total_ms": 1280,
+    "first_equals_direction_standard": true,
+    "last_equals_front_final": true,
+    "last_equals_left_final": true,
+    "last_equals_remains_pasted_0_48": true,
+    "first_rgba_sha256": "472f5f597c71834270c7c7f2e39ce89e50f874a0c83f34942227301a0212bebd",
+    "last_rgba_sha256": "b4147d4206bd1f72f2de5a3ed84c13b4ba9d75aa3714894bc2a0a35c733c1008",
+    "gif_exact_nearest8x_decoded": true,
+    "independent_generation": "/tmp/english-game-skeleton-collapse-rb-213-20261028/staged/qc/collapse_rb_sources/back/generated_early_fall.png",
+    "mirror_or_raster_rotation_used": false,
+    "anatomical_count_validation": "Explicit single skull/headless-body layers + per-frame visual review and bone-group handoff ledger; not an automatic tiny-bone anatomical detector."
+  }
+}

@@ -1,0 +1,14 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+-20261028/staged/frames/skeleton_B_collapse_right/01.png     96x96   OK   46    87    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/02.png     96x96   OK   48    86    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/03.png     96x96   OK   48    87    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/04.png     96x96   OK   47    87    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/05.png     96x96   OK   48    89    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/06.png     96x96   OK   48    90    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/07.png     96x96   OK   48    90    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/08.png     96x96   OK   48    93    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/09.png     96x96   OK   46    93    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/10.png     96x96   OK   46    92    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/11.png     96x96   OK   46    93    0    95
+-20261028/staged/frames/skeleton_B_collapse_right/12.png     96x96   OK   46    92    0    95
+Hub.nosync/English-Game/art/character_design/hero_B1.png     96x96   OK   48    89   13    95
