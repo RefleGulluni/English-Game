@@ -153,9 +153,7 @@ func set_palette(name: String) -> void:
 	INK = p.ink
 	DIM = p.dim
 	HURT = p.hurt
-	var style := _tip.get_theme_stylebox("panel") as StyleBoxFlat
-	style.bg_color = p.panel
-	style.border_color = p.edge
+	_tip.queue_redraw()
 	for button in [_end_button, _deflect_button]:
 		button.add_theme_color_override("font_color", p.button)
 		button.add_theme_color_override("font_disabled_color", Color(p.button, 0.35))
@@ -584,38 +582,151 @@ func _draw_tag() -> void:
 
 
 # --- Tips ----------------------------------------------------------------------------------
+# The hover card, drawn like the sigils (level 3): a precise instrument, not a plain box. Header
+# with the family mark, the word in cyan and its family in small letters; a rule with a node at its
+# centre; effects as label → value columns (keywords stay cyan, the language colour); a double
+# hairline frame with corner ticks and nodes, and a short stem down to the word it belongs to.
+
+const TIP_W := 236.0
 
 func _build_tip() -> void:
 	_tip = PanelContainer.new()
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.02, 0.03, 0.04, 0.93)
-	style.border_color = Color(CYAN, 0.45)
-	style.set_border_width_all(1)
-	style.set_content_margin_all(8)
+	var style := StyleBoxFlat.new() # only holds the palette colours and the margins; _draw_tip paints
+	style.draw_center = false
+	style.set_content_margin_all(10)
+	style.content_margin_top = 9
+	style.content_margin_bottom = 9
 	_tip.add_theme_stylebox_override("panel", style)
 	_tip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_tip.draw.connect(_draw_tip)
 	_tip_rows = VBoxContainer.new()
-	_tip_rows.add_theme_constant_override("separation", 1)
+	_tip_rows.add_theme_constant_override("separation", 2)
 	_tip.add_child(_tip_rows)
 	_tip.hide()
 	_ui.add_child(_tip)
 
 
+func _draw_tip() -> void:
+	var p: Dictionary = PALETTES[palette]
+	var r := Rect2(Vector2.ZERO, _tip.size)
+	var edge: Color = p.edge
+	_tip.draw_rect(r, p.panel)
+	_tip.draw_rect(Rect2(r.position, Vector2(r.size.x, 30)), Color(edge, 0.06)) # header band
+	_tip.draw_rect(r.grow(-0.5), edge, false, 1.0)
+	_tip.draw_rect(r.grow(-3.5), Color(edge, edge.a * 0.35), false, 1.0)
+	for corner in [r.position, Vector2(r.end.x, r.position.y), r.end, Vector2(r.position.x, r.end.y)]:
+		var sx := 1.0 if corner.x == r.position.x else -1.0
+		var sy := 1.0 if corner.y == r.position.y else -1.0
+		var c: Vector2 = corner + Vector2(sx * 0.5, sy * 0.5)
+		_tip.draw_line(c, c + Vector2(sx * 9, 0), Color(edge, 1.0), 2.0)
+		_tip.draw_line(c, c + Vector2(0, sy * 9), Color(edge, 1.0), 2.0)
+		_diamond(_tip, c + Vector2(sx * 6, sy * 6), 1.5, Color(edge, 1.0), true)
+	# The stem to the word: a node on the edge and a short tick beyond it.
+	var stem_y := r.end.y if _tip_above else 0.0
+	var dir := 1.0 if _tip_above else -1.0
+	var mid := roundf(_tip_anchor_x - _tip.position.x)
+	_tip.draw_line(Vector2(mid, stem_y), Vector2(mid, stem_y + dir * 5), edge, 1.0)
+	_diamond(_tip, Vector2(mid, stem_y), 2.5, p.panel, true)
+	_diamond(_tip, Vector2(mid, stem_y), 2.5, Color(edge, 1.0), false)
+
+
+var _tip_above := true
+var _tip_anchor_x := 0.0
+
+
+## rows: {kind: "title", word, family, mark} · {kind: "rule"} · {kind: "sense", text} ·
+## {kind: "stat", key, value, extra} · {kind: "text", text} · {kind: "hint", text, color}
 func _show_tip(rows: Array, anchor: Rect2, above := true) -> void:
 	for child in _tip_rows.get_children():
 		_tip_rows.remove_child(child)
 		child.queue_free()
 	for row in rows:
-		var label := _label(str(row[0]), int(row[1]), row[2])
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.custom_minimum_size.x = 250
-		_tip_rows.add_child(label)
+		_tip_rows.add_child(_tip_row(row))
 	_tip.reset_size()
+	_tip.modulate.a = 0.0
 	_tip.show()
 	await get_tree().process_frame # let the panel size itself
 	var size := _tip.get_combined_minimum_size()
-	var at := Vector2(anchor.get_center().x - size.x / 2.0, anchor.position.y - size.y - 6 if above else anchor.end.y + 6)
-	_tip.position = at.clamp(Vector2(6, 6), NATIVE - size - Vector2(6, 6)).round()
+	_tip_above = above
+	_tip_anchor_x = anchor.get_center().x
+	var at := Vector2(anchor.get_center().x - size.x / 2.0, anchor.position.y - size.y - 9 if above else anchor.end.y + 9)
+	# Over the bar it keeps clear of the HP and Focus corner.
+	var left := 222.0 if anchor.position.y >= BAR_TOP else 6.0
+	_tip.position = at.clamp(Vector2(left, 6), NATIVE - size - Vector2(6, 6)).round()
+	_tip_anchor_x = clampf(_tip_anchor_x, _tip.position.x + 14, _tip.position.x + size.x - 14)
+	var rest := _tip.position
+	_tip.position.y += 4.0 if above else -4.0
+	var tween := _tip.create_tween().set_parallel()
+	tween.tween_property(_tip, "modulate:a", 1.0, 0.12)
+	tween.tween_property(_tip, "position", rest, 0.12).set_trans(Tween.TRANS_SINE)
+	_tip.queue_redraw()
+
+
+func _tip_row(row: Dictionary) -> Control:
+	match str(row.kind):
+		"title":
+			var line := HBoxContainer.new()
+			line.add_theme_constant_override("separation", 7)
+			var mark := Control.new()
+			mark.custom_minimum_size = Vector2(11, 22)
+			var rows: Array = row.get("mark", [])
+			mark.draw.connect(func(): _glyph(mark, Vector2(0, 6), rows, CYAN))
+			line.add_child(mark)
+			var word := Label.new()
+			word.text = str(row.word)
+			word.add_theme_font_override("font", FONT)
+			word.add_theme_font_size_override("font_size", 20)
+			word.add_theme_color_override("font_color", CYAN)
+			word.add_theme_color_override("font_outline_color", Color(CYAN, 0.16))
+			word.add_theme_constant_override("outline_size", 4)
+			word.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			line.add_child(word)
+			var family := _label(str(row.get("family", "")), 10, DIM)
+			family.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			line.add_child(family)
+			return line
+		"rule":
+			var rule := Control.new()
+			rule.custom_minimum_size = Vector2(TIP_W, 9)
+			rule.draw.connect(func():
+				var edge: Color = PALETTES[palette].edge
+				var y := 4.5
+				var w := rule.size.x
+				rule.draw_line(Vector2(0, y), Vector2(w / 2 - 6, y), Color(edge, 0.9), 1.0)
+				rule.draw_line(Vector2(w / 2 + 6, y), Vector2(w, y), Color(edge, 0.9), 1.0)
+				for x in [w / 2 - 10, w / 2 + 10]:
+					rule.draw_rect(Rect2(Vector2(x, y - 0.5), Vector2(1, 1)), edge)
+				_diamond(rule, Vector2(w / 2, y), 2.5, Color(CYAN, 0.85), true))
+			return rule
+		"sense":
+			var sense := _label("“%s”" % str(row.text), 14, INK)
+			sense.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			sense.custom_minimum_size.x = TIP_W
+			return sense
+		"stat":
+			var line := HBoxContainer.new()
+			line.custom_minimum_size.x = TIP_W
+			var key := _label(str(row.key), 12, DIM)
+			key.custom_minimum_size.x = 84
+			key.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			line.add_child(key)
+			var value := _label(str(row.value), 15, INK)
+			value.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			line.add_child(value)
+			if not str(row.get("extra", "")).is_empty():
+				var extra := _label(str(row.extra), 13, CYAN)
+				extra.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+				line.add_child(extra)
+			return line
+		"hint":
+			var hint := _label(str(row.text), 11, row.get("color", DIM))
+			hint.custom_minimum_size.x = TIP_W
+			hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			return hint
+	var text := _label(str(row.get("text", "")), 13, INK)
+	text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	text.custom_minimum_size.x = TIP_W
+	return text
 
 
 func _hide_tip() -> void:
@@ -624,27 +735,44 @@ func _hide_tip() -> void:
 
 func _show_word_tip(card: Dictionary, button: Control) -> void:
 	var word := str(card.name)
-	var rows: Array = [[word, 19, CYAN]]
 	var skill: Dictionary = CombatContent.SKILLS.get(str(card.card_id), {})
+	var family := str(skill.get("family", ""))
+	var rows: Array = [{"kind": "title", "word": word, "family": family.replace("SEMANTIC ", "").replace("DIRECT HP", "DIRECT"), "mark": FAMILY_MARKS.get(family, FAMILY_MARKS[""])}]
+	rows.append({"kind": "rule"})
 	if skill.has("sense"):
-		rows.append([str(skill.sense), 14, INK])
+		rows.append({"kind": "sense", "text": str(skill.sense)})
 	for line in preview(card):
-		rows.append([line, 14, INK])
+		rows.append(_stat_row(line))
 	var reason := combat.disabled_reason(word, int(card.instance_id))
 	if not reason.is_empty() and not combat.deck.mulligan_pending:
-		rows.append([reason, 12, HURT])
+		rows.append({"kind": "hint", "text": reason, "color": HURT})
 	if int(card.instance_id) in combat.deck.retained_cards:
-		rows.append(["RETAINED · kept for next turn", 12, CYAN])
+		rows.append({"kind": "hint", "text": "RETAINED · kept for next turn", "color": CYAN})
 	elif combat.retain_disabled_reason(card).is_empty():
-		rows.append(["Right-click: retain for next turn", 12, DIM])
+		rows.append({"kind": "hint", "text": "right-click · retain for next turn"})
 	_show_tip(rows, button.get_global_rect())
+
+
+## "STRUCTURE 12 → 4  ·  EXPOSED" → label STRUCTURE, value 12 → 4, keyword EXPOSED.
+func _stat_row(line: String) -> Dictionary:
+	var parts := line.split("  ·  ")
+	var head := parts[0]
+	var cut := -1
+	for i in head.length():
+		if head[i] in "0123456789-+" and i > 0 and head[i - 1] == " ":
+			cut = i
+			break
+	var extra := " · ".join(parts.slice(1)) if parts.size() > 1 else ""
+	if cut < 0:
+		return {"kind": "text", "text": line}
+	return {"kind": "stat", "key": head.substr(0, cut).strip_edges(), "value": head.substr(cut), "extra": extra}
 
 
 func _show_intent_tip() -> void:
 	var text := combat.intent_description()
 	if text.is_empty():
 		return
-	_show_tip([[str(intent_text()[0]), 16, CYAN], [text, 13, INK]], _tag.get_global_rect(), false)
+	_show_tip([{"kind": "title", "word": str(intent_text()[0]), "family": "INTENT · " + combat.clarity_name(), "mark": []}, {"kind": "rule"}, {"kind": "text", "text": text}], _tag.get_global_rect(), false)
 
 
 ## What a word will do right now, in numbers (KB: knowledge removes helplessness, not danger).
