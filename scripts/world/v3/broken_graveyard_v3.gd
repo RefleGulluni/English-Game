@@ -349,6 +349,8 @@ func _on_event(event_id: StringName, payload: Dictionary) -> void:
 			hud.announce("It falls apart, but the cords still hold. Break the remains before it rises.")
 		&"enemy_reassembled":
 			hud.announce("The bones pull themselves back together.")
+			if is_instance_valid(skeleton): # once it stands it turns to the hero again
+				skeleton.get_node("VisualRoot/Visual").approach(hero.position, SKELETON_KEEPS_AWAY)
 
 
 # --- Rooms, exits and transitions (D-022, D-023) --------------------------------------------
@@ -372,6 +374,10 @@ func _load_room(id: String, entered_from: String, exit_zone := Rect2()) -> void:
 	if layout.has("skeleton"):
 		skeleton = _make_skeleton(layout.skeleton)
 		room.sorted.add_child(skeleton)
+		if not encounter_cleared:
+			var home: Vector2 = layout.skeleton
+			# It paces a small loop beside its grave (left of and below it, clear of the stones).
+			skeleton.get_node("VisualRoot/Visual").wander([home, home + Vector2(-80, 0), home + Vector2(-80, 40), home + Vector2(0, 40)] as Array[Vector2])
 	for data in layout.exits:
 		var exit: Node2D = ROOM_EXIT.new()
 		exit.setup(data, _language)
@@ -422,20 +428,12 @@ func _make_skeleton(at: Vector2) -> Node2D:
 	return root
 
 
-## When the fight starts the skeleton walks up to meet the hero (whole strides, stopping a
-## little short of them), or just turns to face them when they are already close.
+## When the fight starts the skeleton stops pacing and walks up to meet the hero (whole strides,
+## stopping a little short of them), or just turns to face them when they are already close.
 func _skeleton_steps_up() -> void:
-	var visual: Node2D = skeleton.get_node("VisualRoot/Visual")
-	var to := hero.global_position - skeleton.global_position
-	var gap := maxf(0.0, (absf(to.x) if absf(to.x) >= absf(to.y) else absf(to.y)) - SKELETON_KEEPS_AWAY)
-	if gap >= SkeletonB.STRIDE:
-		visual.walk_to(skeleton.position + _axis(to) * minf(gap, 2 * SkeletonB.STRIDE))
-	else:
-		visual.face(to)
-
-
-func _axis(v: Vector2) -> Vector2:
-	return Vector2(signf(v.x), 0) if absf(v.x) >= absf(v.y) else Vector2(0, signf(v.y))
+	var visual: SkeletonB = skeleton.get_node("VisualRoot/Visual")
+	visual.stop_wander()
+	visual.approach(hero.position, SKELETON_KEEPS_AWAY)
 
 
 func _take_exit(exit: Node2D) -> void:

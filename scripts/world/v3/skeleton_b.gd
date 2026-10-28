@@ -2,14 +2,15 @@ class_name SkeletonB
 extends Node2D
 ## The real Grave Skeleton, design B "余裹者" (D-037, animations D-053 – D-057), playing the
 ## character group's frame strips. Replaces skeleton_placeholder.gd with the same interface:
-## present(snapshot) / hit() / lunge() from the rule layer, plus face() and walk_to().
+## present(snapshot) / hit() / lunge() from the rule layer, plus face(), walk_to(), approach()
+## and wander() (pacing about its grave until a fight starts, so it never just stands there).
 ## Presentation only: it reads the semantic snapshot from skeleton_logic.gd and never changes it.
 ##
 ## Rules learned in the preview room (scenes/prototypes/skeleton_anim/):
 ## - every animation plays its newest returned version (the highest _vN in timing.json);
 ## - a walk is start step → walk loop → stop step; the stop step only fits after walk frame 8,
 ##   so walk_to() rounds every walk to whole strides of 40 px (8 frames × 5 px at 50 px/s);
-## - collapse / reassemble exist only facing front.
+## - collapse plays the strip for its facing when one exists; reassembly rises facing front.
 
 const ANIM := "res://art/character_design/enemies/skeleton/anim/"
 const SHADOW_COLOR := Color(0.03, 0.03, 0.05, 0.45)
@@ -26,6 +27,11 @@ var _mode := "standing"
 var _strip: SpriteStrip
 var _target := Vector2.ZERO
 var _shake := 0.0
+## Spots it paces between while nobody fights it (whole strides apart, in straight lines).
+var _wander_spots: Array[Vector2] = []
+var _wander_wait := 0.0
+## An approach asked for while it was busy; taken as soon as it stands still again.
+var _approach: Array = []
 
 static var _keys := {}
 
@@ -51,7 +57,8 @@ func present(snapshot: Dictionary) -> void:
 	if mode == "standing":
 		_switch("reassemble", "reassemble_front")
 	elif was == "standing":
-		_switch("collapse", "collapse_front")
+		# Each facing collapses its own way once those strips exist (request §21); the front one until then.
+		_switch("collapse", "collapse_" + facing if _keys.has("skeleton_B_collapse_" + facing) else "collapse_front")
 
 
 func present_motion(_velocity: Vector2, _facing: Vector2) -> void:
@@ -82,6 +89,33 @@ func face(v: Vector2) -> void:
 		_play("idle_" + facing)
 
 
+## Paces between spots (positions in the mover's parent) with pauses and the odd look around.
+func wander(spots: Array[Vector2]) -> void:
+	_wander_spots = spots
+	_wander_wait = randf_range(1.0, 2.5)
+
+
+func stop_wander() -> void:
+	_wander_spots.clear()
+
+
+## Walks up to target and stops keep_away short of it (whole strides, at most two), or only turns
+## when it is already close. If it is busy (mid-step, being hit) it does so right after.
+func approach(target: Vector2, keep_away: float) -> void:
+	if _mode != "standing":
+		return
+	if action != "idle":
+		_approach = [target, keep_away]
+		return
+	var to := target - mover.position
+	var axis := Vector2(signf(to.x), 0) if absf(to.x) >= absf(to.y) else Vector2(0, signf(to.y))
+	var gap := maxf(0.0, absf(to.dot(axis)) - keep_away)
+	if gap >= STRIDE:
+		walk_to(mover.position + axis * minf(gap, 2 * STRIDE))
+	else:
+		face(to)
+
+
 ## Walks straight toward target along its main axis, in whole strides, and stops there.
 func walk_to(target: Vector2) -> void:
 	if mover == null or action != "idle" or _mode != "standing":
@@ -104,6 +138,10 @@ static func dir_name(v: Vector2) -> String:
 
 
 func _process(delta: float) -> void:
+	if action == "idle" and _mode == "standing" and not _wander_spots.is_empty():
+		_wander_wait -= delta
+		if _wander_wait <= 0.0:
+			_wander_step()
 	if action == "walk":
 		mover.position = mover.position.move_toward(_target, WALK_SPEED * delta)
 		if mover.position == _target:
@@ -113,18 +151,35 @@ func _process(delta: float) -> void:
 		_strip.position.x = 0.0 if _shake <= 0.0 else (1.0 if int(_shake * 40.0) % 2 == 0 else -1.0)
 
 
+## Walk to a spot straight along a row or column from here, or now and then just look around.
+func _wander_step() -> void:
+	_wander_wait = randf_range(2.0, 4.5)
+	var reachable: Array[Vector2] = []
+	for spot in _wander_spots:
+		var to := spot - mover.position
+		if to != Vector2.ZERO and (is_zero_approx(to.x) or is_zero_approx(to.y)):
+			reachable.append(spot)
+	if reachable.is_empty() or randf() < 0.3:
+		face(Vector2.from_angle(randi_range(0, 3) * PI / 2))
+	else:
+		walk_to(reachable.pick_random())
+
+
 ## What follows each one-shot strip.
 func _on_finished() -> void:
 	match action:
 		"start":
 			_switch("walk", "walk_" + facing)
-		"stop", "hit":
+		"stop", "hit", "reassemble":
+			if action == "reassemble":
+				facing = "front"
 			_switch("idle", "idle_" + facing)
+			if not _approach.is_empty():
+				var queued := _approach
+				_approach = []
+				approach(queued[0], queued[1])
 		"collapse":
 			_switch("remains", "remains_idle")
-		"reassemble":
-			facing = "front"
-			_switch("idle", "idle_front")
 
 
 func _switch(next_action: String, anim: String) -> void:

@@ -48,6 +48,29 @@ func _initialize() -> void:
 	run(0.4)
 	check(visual.action == "idle", "hit returns to idle")
 
+	# Pacing about its grave: only straight-line walks between the spots, never off them.
+	root.position = Vector2(200, 200)
+	var spots: Array[Vector2] = [Vector2(200, 200), Vector2(120, 200), Vector2(120, 240), Vector2(200, 240)]
+	visual.wander(spots)
+	var walks := 0
+	for i in 40:
+		var was := visual.action
+		run(0.5)
+		if visual.action != was and visual.action == "start": walks += 1
+		if visual.action == "idle":
+			check(spots.has(root.position), "rests only on its spots: %s" % root.position)
+	check(walks >= 1, "it walks about instead of only standing")
+	# A fight starts while it is mid-step: it finishes the step, then walks up to the hero.
+	while visual.action != "walk":
+		run(0.02)
+	visual.stop_wander()
+	visual.approach(root.position + Vector2(0, -180), 56)
+	check(visual.action == "walk", "an approach waits for the current walk to finish")
+	run(6.0)
+	check(visual.action == "idle" and visual.facing == "back", "and stands facing the hero")
+	visual.hit()
+	run(0.4)
+
 	visual.present({"mode": "remains"})
 	check(visual.action == "collapse", "falling apart plays the collapse")
 	run(1.1)
@@ -56,8 +79,10 @@ func _initialize() -> void:
 	check(visual.action == "remains", "hits on the remains only shudder")
 	visual.present({"mode": "standing"})
 	check(visual.action == "reassemble" and strip.current == "skeleton_B_reassemble_front_v5", "rising plays the newest reassembly")
+	visual.approach(root.position + Vector2(-50, 0), 56)
+	check(visual.action == "reassemble", "turning to the hero waits until it has risen")
 	run(5.0)
-	check(visual.action == "idle" and visual.facing == "front", "reassembly ends standing, facing front")
+	check(visual.action == "idle" and visual.facing == "left", "after rising it turns to the hero: %s" % visual.facing)
 	visual.present({"mode": "remains"})
 	run(1.1)
 	visual.present({"mode": "cleared"})
