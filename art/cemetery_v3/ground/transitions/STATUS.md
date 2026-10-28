@@ -1,9 +1,7 @@
-# 泥地、碎石泥路与枯草地已通过；旧石板路待验收
+# 泥地、泥路和草地已通过；旧石板路第二版待验收
 
-2026-10-28。用户已通过 `path_texture_01.png`、`grass_texture_01.png`，现在能在 Godot 刷路、刷草和摆贴花，入口已换用这套地面。继续采用“程序画形状＋纹理按世界坐标取色＋编辑器刷”的方法。
+2026-10-28。旧石板第一版未通过，按需求 §9.1 重做并覆盖 `paving_texture_01.png`：大块不规则石板、淡断缝、苔泥填平部分边界，补旧损状态。原生 224×128、32 色、完全不透明；平均约 (85.02,84.02,80.11)，亮度标准差 **12.96**，双向外边界一致。换色比例本轮不作要求。
 
-本轮按需求 §9 新增 `paving_texture_01.png`：224×128，完全不透明，32 色；平均约 (84.95,83.91,79.81)，水平相邻换色约 69.26%，最亮分量上限 (118,116,108)，双向外边界逐像素一致。
+先看 `qc/paving_texture_fill_2x.png`、`qc/paving_with_props_2x.png` 和 `qc/paving_texture_QA.md`，另有对应 1 倍图及左一版／右二版对照。裸铺循环、部分宽苔泥区和塌角辨识的不确定性已写入 QA。
 
-先看 `qc/paving_texture_fill_2x.png`、`qc/paving_with_props_2x.png` 和 `qc/paving_texture_QA.md`。裸铺仍可循缺块／裂纹追踪周期，已如实记录，未自行更换做法。制作索引为 `source/paving_texture/manifest.json`。
-
-已通过地面、20 件贴花、物件、角色以及既有遮罩、着色器、场景均未改。旧 §3 失败瓦片资料保留作历史记录。石板路边缘继续由 Claude 处理，本轮停止，等待用户在游戏里验收。
+本轮新来源为 `source/paving_texture_v2/manifest.json`。第一版原始来源保留，覆盖前恢复包为 `qc/backups/paving_artgroup_before_v2.zip`。已通过其他材质和素材未由本轮修改，路边形状仍由 Claude 处理。停止，等待用户在游戏里验收。

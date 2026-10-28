@@ -4,13 +4,14 @@
     128
   ],
   "mean_rgb": [
-    84.95050920758929,
-    83.910888671875,
-    79.81131417410714
+    85.02423967633929,
+    84.0234375,
+    80.11495535714286
   ],
   "colors": 32,
-  "horizontal_change": 69.26499439461884,
-  "vertical_change": 75.50267154105737,
+  "luma_std": 12.956755487713774,
+  "horizontal_change": 45.280969730941706,
+  "vertical_change": 45.374015748031496,
   "palette_component_max": [
     118,
     116,
@@ -26,8 +27,9 @@
     540
   ],
   "bare_fill_scale": 2,
-  "status": "SECTION9_PAVING_READY_FOR_USER_REVIEW",
-  "sha256": "40ec76731de902452e5154d09fb902c38b834a46a821d129aa774ff3b27644e8",
+  "status": "SECTION9_1_PAVING_V2_READY_FOR_USER_REVIEW",
+  "sha256": "202048aad26bf9554b05693c63b4b25aeb7492221d90e0882e535a51389eb27a",
   "props_preview": "672x384 rectangular material patch on approved mud, native-scale3 tombstones and hero. Hard rectangle is a comparison swatch, not Claude terrain shape. No lighting/fog/shadows added.",
-  "previous_files_unchanged_except_status": true
+  "external_reference_file_changed_during_work": "art/cemetery_v3/ground/rooms/cemetery_entry_reference.png (not read or written by this workflow; hash changed concurrently)",
+  "protected_files_unchanged_excluding_requested_outputs_and_external_reference": true
 }

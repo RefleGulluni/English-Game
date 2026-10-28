@@ -15,12 +15,15 @@ const BASE_TILESET := GROUND + "ground_base_tileset.tres"
 const ROOM := "res://scenes/prototypes/ground_paint/ground_paint_room.tscn"
 const ROOM_SCRIPT := "res://scripts/prototypes/ground_paint/ground_paint_room.gd"
 const PATH_SHADER := "res://scripts/world/v3/ground_path.gdshader"
-## Painted terrains, bottom to top: grass under paths, so a path can cross a meadow.
+## Painted terrains, bottom to top: grass under paths, so a path can cross a meadow; old paving on
+## top, so a paved square can be laid over a mud path.
 const TERRAINS := [
 	{"layer": "Grass", "name": "枯草苔藓地", "masks": "ground_grass_masks_01", "tileset": "ground_grass_tileset.tres",
 		"texture": GROUND + "transitions/grass_texture_01.png", "color": Color(0.5, 0.62, 0.38)},
 	{"layer": "Path", "name": "碎石泥路", "masks": "ground_path_masks_01", "tileset": "ground_path_tileset.tres",
 		"texture": GROUND + "transitions/path_texture_01.png", "color": Color(0.85, 0.72, 0.5)},
+	{"layer": "Paving", "name": "旧石板路", "masks": "ground_paving_masks_01", "tileset": "ground_paving_tileset.tres",
+		"texture": GROUND + "transitions/paving_texture_01.png", "color": Color(0.62, 0.64, 0.68)},
 ]
 const BITS := {
 	"tl": TileSet.CELL_NEIGHBOR_TOP_LEFT_CORNER, "tr": TileSet.CELL_NEIGHBOR_TOP_RIGHT_CORNER,
@@ -35,6 +38,8 @@ const SAMPLE_PATH := [
 const SAMPLE_PATCH := [Vector2(23, 13), Vector2(24, 13), Vector2(23, 14)]
 ## Sample meadows (cell rectangles) painted when the Grass layer is first added.
 const SAMPLE_GRASS := [Rect2i(1, 9, 6, 5), Rect2i(19, 11, 7, 5), Rect2i(17, 1, 5, 4)]
+## A sample paved square (cell rectangle) painted when the Paving layer is first added.
+const SAMPLE_PAVING := Rect2i(2, 1, 5, 4)
 ## Ground decals (scenes from scripts/tools/bake_ground_decals.gd) dropped in when the Decals node
 ## is first added, so the user sees how they sit on the painted ground.
 const DECALS := "res://scenes/props/cemetery/decals/"
@@ -164,6 +169,8 @@ func _add_missing_layers() -> void:
 		ground.move_child(layer, 1 + i) # after Base
 		if t.layer == "Grass":
 			_paint_sample_grass(layer)
+		if t.layer == "Paving":
+			_paint_rect(layer, SAMPLE_PAVING)
 		added = true
 		print("added layer ", t.layer)
 	if not ground.has_node("Decals"):
@@ -193,6 +200,14 @@ func _paint_sample_grass(layer: TileMapLayer) -> void:
 		for y in range(r.position.y, r.end.y):
 			for x in range(r.position.x, r.end.x):
 				cells.append(Vector2i(x, y))
+	layer.set_cells_terrain_connect(cells, 0, 0)
+
+
+func _paint_rect(layer: TileMapLayer, r: Rect2i) -> void:
+	var cells: Array[Vector2i] = []
+	for y in range(r.position.y, r.end.y):
+		for x in range(r.position.x, r.end.x):
+			cells.append(Vector2i(x, y))
 	layer.set_cells_terrain_connect(cells, 0, 0)
 
 

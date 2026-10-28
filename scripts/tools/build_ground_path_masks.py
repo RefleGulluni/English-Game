@@ -1,10 +1,11 @@
-"""Builds the 15 corner tiles of each painted ground terrain (path, grass) as one 128×128 atlas.
+"""Builds the 15 corner tiles of each painted ground terrain (path, grass, paving) as one 128×128 atlas.
 
 The art group paints the path *material* (a big seamless texture); this script draws only the
 *shape*: where the path is, its wet rim, and a few stray pebbles. Every pixel inside the path is
 pure white, and the path shader replaces white with the path texture sampled at world position,
 so the inside of a path never repeats on a 32 px grid. Each terrain has its own edge style: the
-path gets a broken wet-mud rim and stray pebbles, grass gets blade tips poking out into the mud.
+path gets a broken wet-mud rim and stray pebbles, grass gets blade tips poking out into the mud,
+paving gets sunken mud along the slab edge and 2×2 chips of broken slab.
 
 Why the shapes always join: each tile's field is the bilinear blend of its four corners plus a
 noise that repeats every 32 px, plus a per-tile noise that fades to zero at the tile's edges.
@@ -46,6 +47,12 @@ STYLES = {
         "rim": [], "rim_band": 0.0, "rim_chance": 0.0,
         "outside": [(106, 102, 76, 255), (80, 84, 60, 255), (60, 66, 48, 255)],  # blade tips, colours from grass_texture_01
         "outside_band": 0.13, "outside_chance": 0.22, "blade": True,
+    },
+    "paving": {
+        "file": "ground_paving_masks_01", "seed": 80,
+        "rim": [(63, 62, 57, 255), (74, 72, 64, 255)], "rim_band": 0.06, "rim_chance": 0.55,  # mud where the slab edge sank
+        "outside": [(97, 96, 94, 255), (83, 82, 80, 255), (110, 109, 107, 255)],  # broken-off slab chips, from paving_texture_01
+        "outside_band": 0.18, "outside_chance": 0.07, "blade": False, "chunk": True,
     },
 }
 
@@ -104,6 +111,10 @@ def draw_tile(corners: tuple[int, int, int, int], seed: int, shared: list[list[f
                 px[x, y] = rng.choice(style["outside"])
                 if style["blade"] and y > 0 and px[x, y - 1][3] == 0:
                     px[x, y - 1] = px[x, y]  # grass tips are short upright strokes, not dots
+                if style.get("chunk") and x + 1 < TILE and y + 1 < TILE:
+                    for dx, dy in ((1, 0), (0, 1), (1, 1)):  # stone chips are 2×2 lumps, not single dots
+                        if px[x + dx, y + dy][3] == 0:
+                            px[x + dx, y + dy] = px[x, y]
     return img
 
 
