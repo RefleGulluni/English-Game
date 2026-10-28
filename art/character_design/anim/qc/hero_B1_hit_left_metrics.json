@@ -1,0 +1,299 @@
+{
+  "name": "hero_B1_hit_left",
+  "standard_file": "art/character_design/hero_B1_left.png",
+  "standard_png_sha256_before": "616eaf4c56211a1b3ec91a8398e4fd3bcd1c0785ac772e69dd030ed34f04f1c9",
+  "standard_rgba_sha256": "7d71abf2c69353a493a3b4d7cab667a409b708e2cc73f56484f7e942f068083d",
+  "padded_standard_rgba_sha256": "7d71abf2c69353a493a3b4d7cab667a409b708e2cc73f56484f7e942f068083d",
+  "first_frame_rgba_sha256": "7d71abf2c69353a493a3b4d7cab667a409b708e2cc73f56484f7e942f068083d",
+  "last_frame_rgba_sha256": "7d71abf2c69353a493a3b4d7cab667a409b708e2cc73f56484f7e942f068083d",
+  "first_last_exact_standard": true,
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "7d71abf2c69353a493a3b4d7cab667a409b708e2cc73f56484f7e942f068083d",
+      "file_sha256": "616eaf4c56211a1b3ec91a8398e4fd3bcd1c0785ac772e69dd030ed34f04f1c9",
+      "colors": 43,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1731
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 72.87096138996138,
+          "standing_mean_luma": 72.87096138996138,
+          "delta": 0.0,
+          "highlight_gt170_pct": 5.405405405405405,
+          "standing_highlight_gt170_pct": 5.405405405405405
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 74.61916098484849,
+          "standing_mean_luma": 74.61916098484849,
+          "delta": 0.0,
+          "highlight_gt170_pct": 3.5984848484848486,
+          "standing_highlight_gt170_pct": 3.5984848484848486
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 72.50965199161425,
+          "standing_mean_luma": 72.50965199161425,
+          "delta": 0.0,
+          "highlight_gt170_pct": 4.1928721174004195,
+          "standing_highlight_gt170_pct": 4.1928721174004195
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 69.97743040685224,
+          "standing_mean_luma": 69.97743040685224,
+          "delta": 0.0,
+          "highlight_gt170_pct": 0.0,
+          "standing_highlight_gt170_pct": 0.0
+        }
+      ],
+      "changed_pixels_previous": 0
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "2c0daaed265b5b274cc2d2b416ddca23edf8f8dcfd6011e4afbb158d3bd156f8",
+      "file_sha256": "cb00d5c5486e39578e0defd48678684fb36b605ba4b84b0cffbb338ed4d8afe4",
+      "colors": 43,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1731
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 72.87096138996138,
+          "standing_mean_luma": 72.87096138996138,
+          "delta": 0.0,
+          "highlight_gt170_pct": 5.405405405405405,
+          "standing_highlight_gt170_pct": 5.405405405405405
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 74.61916098484849,
+          "standing_mean_luma": 74.61916098484849,
+          "delta": 0.0,
+          "highlight_gt170_pct": 3.5984848484848486,
+          "standing_highlight_gt170_pct": 3.5984848484848486
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 72.50965199161425,
+          "standing_mean_luma": 72.50965199161425,
+          "delta": 0.0,
+          "highlight_gt170_pct": 4.1928721174004195,
+          "standing_highlight_gt170_pct": 4.1928721174004195
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 69.97743040685224,
+          "standing_mean_luma": 69.97743040685224,
+          "delta": 0.0,
+          "highlight_gt170_pct": 0.0,
+          "standing_highlight_gt170_pct": 0.0
+        }
+      ],
+      "changed_pixels_previous": 645
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "f5320c4d2498f46368ea272c0030b516b21c662823d833259490d5cc7ec8c401",
+      "file_sha256": "bba6a62643c9e5250c3ec3ca5df4a45285f773db10bf2fd715bf0d269fe52536",
+      "colors": 42,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1703
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 72.87096138996138,
+          "standing_mean_luma": 72.87096138996138,
+          "delta": 0.0,
+          "highlight_gt170_pct": 5.405405405405405,
+          "standing_highlight_gt170_pct": 5.405405405405405
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 75.01768260038243,
+          "standing_mean_luma": 74.61916098484849,
+          "delta": 0.3985216155339373,
+          "highlight_gt170_pct": 3.632887189292543,
+          "standing_highlight_gt170_pct": 3.5984848484848486
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 74.45244933920704,
+          "standing_mean_luma": 72.50965199161425,
+          "delta": 1.942797347592787,
+          "highlight_gt170_pct": 4.405286343612335,
+          "standing_highlight_gt170_pct": 4.1928721174004195
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 69.97743040685224,
+          "standing_mean_luma": 69.97743040685224,
+          "delta": 0.0,
+          "highlight_gt170_pct": 0.0,
+          "standing_highlight_gt170_pct": 0.0
+        }
+      ],
+      "changed_pixels_previous": 1290
+    },
+    {
+      "frame": 4,
+      "rgba_sha256": "7d71abf2c69353a493a3b4d7cab667a409b708e2cc73f56484f7e942f068083d",
+      "file_sha256": "616eaf4c56211a1b3ec91a8398e4fd3bcd1c0785ac772e69dd030ed34f04f1c9",
+      "colors": 43,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1731
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 72.87096138996138,
+          "standing_mean_luma": 72.87096138996138,
+          "delta": 0.0,
+          "highlight_gt170_pct": 5.405405405405405,
+          "standing_highlight_gt170_pct": 5.405405405405405
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 74.61916098484849,
+          "standing_mean_luma": 74.61916098484849,
+          "delta": 0.0,
+          "highlight_gt170_pct": 3.5984848484848486,
+          "standing_highlight_gt170_pct": 3.5984848484848486
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 72.50965199161425,
+          "standing_mean_luma": 72.50965199161425,
+          "delta": 0.0,
+          "highlight_gt170_pct": 4.1928721174004195,
+          "standing_highlight_gt170_pct": 4.1928721174004195
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 69.97743040685224,
+          "standing_mean_luma": 69.97743040685224,
+          "delta": 0.0,
+          "highlight_gt170_pct": 0.0,
+          "standing_highlight_gt170_pct": 0.0
+        }
+      ],
+      "changed_pixels_previous": 1217
+    }
+  ],
+  "timing": {
+    "frames": 4,
+    "frame_size": [
+      96,
+      96
+    ],
+    "anchor": [
+      48,
+      96
+    ],
+    "durations_ms": [
+      40,
+      70,
+      130,
+      100
+    ],
+    "duration_ms": 340,
+    "loop": false,
+    "sprite_sheet": "hero_B1_hit_left.png",
+    "hit_frame": 1,
+    "hit_frame_index": 0,
+    "key_frame": {
+      "type": "hit",
+      "frame": 1,
+      "frame_index": 0,
+      "time_ms": 0
+    },
+    "frame_numbering": "frame is1-based; frame_index is0-based",
+    "qa": "qc/combat_step2_QA.md"
+  },
+  "gifs_decoded_rgba_and_timing_exact": true
+}

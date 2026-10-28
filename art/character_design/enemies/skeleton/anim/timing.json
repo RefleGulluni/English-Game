@@ -980,6 +980,166 @@
         -70
       ],
       "expected_program_advance_px": 40
+    },
+    "skeleton_B_attack_left": {
+      "frames": 9,
+      "frame_size": [
+        160,
+        96
+      ],
+      "anchor": [
+        80,
+        96
+      ],
+      "durations_ms": [
+        100,
+        130,
+        150,
+        140,
+        60,
+        70,
+        140,
+        120,
+        100
+      ],
+      "duration_ms": 1010,
+      "loop": false,
+      "sprite_sheet": "skeleton_B_attack_left.png",
+      "hit_frame": 5,
+      "hit_frame_index": 4,
+      "key_frame": {
+        "type": "hit",
+        "frame": 5,
+        "frame_index": 4,
+        "time_ms": 520
+      },
+      "frame_numbering": "frame is1-based; frame_index is0-based",
+      "qa": "qc/combat_step2_QA.md",
+      "hit_tip": [
+        14,
+        23
+      ],
+      "hit_tip_offset_from_anchor": [
+        -66,
+        -73
+      ],
+      "expected_program_advance_px": 40
+    },
+    "skeleton_B_attack_right_v2": {
+      "frames": 9,
+      "frame_size": [
+        160,
+        96
+      ],
+      "anchor": [
+        80,
+        96
+      ],
+      "durations_ms": [
+        100,
+        130,
+        150,
+        140,
+        60,
+        70,
+        140,
+        120,
+        100
+      ],
+      "duration_ms": 1010,
+      "loop": false,
+      "sprite_sheet": "skeleton_B_attack_right_v2.png",
+      "hit_frame": 5,
+      "hit_frame_index": 4,
+      "key_frame": {
+        "type": "hit",
+        "frame": 5,
+        "frame_index": 4,
+        "time_ms": 520
+      },
+      "frame_numbering": "frame is1-based; frame_index is0-based",
+      "qa": "qc/combat_step2_QA.md",
+      "hit_tip": [
+        91,
+        31
+      ],
+      "hit_tip_offset_from_anchor": [
+        11,
+        -65
+      ],
+      "expected_program_advance_px_range": [
+        60,
+        80
+      ],
+      "comparison_of": "skeleton_B_attack_right",
+      "modified_frames": [
+        5,
+        6
+      ]
+    },
+    "skeleton_B_dust_left": {
+      "frames": 6,
+      "frame_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        96
+      ],
+      "durations_ms": [
+        100,
+        80,
+        100,
+        140,
+        180,
+        100
+      ],
+      "duration_ms": 700,
+      "loop": false,
+      "sprite_sheet": "skeleton_B_dust_left.png",
+      "shed_frame": 2,
+      "shed_frame_index": 1,
+      "key_frame": {
+        "type": "shed",
+        "frame": 2,
+        "frame_index": 1,
+        "time_ms": 100
+      },
+      "frame_numbering": "frame is1-based; frame_index is0-based",
+      "qa": "qc/combat_step2_QA.md"
+    },
+    "skeleton_B_dust_right": {
+      "frames": 6,
+      "frame_size": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        96
+      ],
+      "durations_ms": [
+        100,
+        80,
+        100,
+        140,
+        180,
+        100
+      ],
+      "duration_ms": 700,
+      "loop": false,
+      "sprite_sheet": "skeleton_B_dust_right.png",
+      "shed_frame": 2,
+      "shed_frame_index": 1,
+      "key_frame": {
+        "type": "shed",
+        "frame": 2,
+        "frame_index": 1,
+        "time_ms": 100
+      },
+      "frame_numbering": "frame is1-based; frame_index is0-based",
+      "qa": "qc/combat_step2_QA.md"
     }
   }
 }

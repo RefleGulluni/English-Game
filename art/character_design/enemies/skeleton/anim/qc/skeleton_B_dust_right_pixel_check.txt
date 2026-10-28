@@ -1,0 +1,9 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+ep2-20261028/delivery/skeleton/skeleton_B_dust_right.png    576x96   OK   46    87    0    95
+28/delivery/skeleton/frames/skeleton_B_dust_right/01.png     96x96   OK   46    87    0    95
+28/delivery/skeleton/frames/skeleton_B_dust_right/02.png     96x96   OK   46    87    0    95
+28/delivery/skeleton/frames/skeleton_B_dust_right/03.png     96x96   OK   46    87    0    95
+28/delivery/skeleton/frames/skeleton_B_dust_right/04.png     96x96   OK   46    87    0    95
+28/delivery/skeleton/frames/skeleton_B_dust_right/05.png     96x96   OK   46    87    0    95
+28/delivery/skeleton/frames/skeleton_B_dust_right/06.png     96x96   OK   46    87    0    95
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

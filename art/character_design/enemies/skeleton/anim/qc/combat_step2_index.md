@@ -1,0 +1,16 @@
+# 战斗动画第2步交付索引
+
+七条均待用户游戏内验收。右侧原版保留。
+
+- [hero_B1_cast_left · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/hero_B1_cast_left_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/hero_B1_cast_left.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/hero_B1_cast_left_contact_4x.png) — 8帧 / 760ms
+- [hero_B1_hit_left · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/hero_B1_hit_left_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/hero_B1_hit_left.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/hero_B1_hit_left_contact_4x.png) — 4帧 / 340ms
+- [hero_B1_hit_right · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/hero_B1_hit_right_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/hero_B1_hit_right.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/hero_B1_hit_right_contact_4x.png) — 4帧 / 340ms
+- [skeleton_B_attack_left · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_attack_left_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/skeleton_B_attack_left.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_attack_left_contact_4x.png) — 9帧 / 1010ms
+- [skeleton_B_attack_right_v2 · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_attack_right_v2_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/skeleton_B_attack_right_v2.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_attack_right_v2_contact_4x.png) — 9帧 / 1010ms
+- [skeleton_B_dust_left · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_dust_left_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/skeleton_B_dust_left.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_dust_left_contact_4x.png) — 6帧 / 700ms
+- [skeleton_B_dust_right · 8倍GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_dust_right_8x.gif) · [PNG](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/skeleton_B_dust_right.png) · [逐帧图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_dust_right_contact_4x.png) — 6帧 / 700ms
+
+- [右侧原版 / 短臂版并排GIF](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_attack_right_v1_v2_compare_8x.gif)
+- [前臂长度标记图](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/qc/skeleton_B_attack_right_v2_forearm_compare_8x.png)
+- [完整QA](/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/qc/combat_step2_QA.md)
+

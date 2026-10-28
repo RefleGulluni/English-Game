@@ -1,0 +1,439 @@
+{
+  "name": "skeleton_B_dust_left",
+  "standard_file": "art/character_design/enemies/skeleton/skeleton_B_left.png",
+  "standard_png_sha256_before": "996fdcf63145199a9bc4a884145c0742af0a7c7bcca3822dfd5f8106935bc2ae",
+  "standard_rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+  "padded_standard_rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+  "first_frame_rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+  "last_frame_rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+  "first_last_exact_standard": true,
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+      "file_sha256": "996fdcf63145199a9bc4a884145c0742af0a7c7bcca3822dfd5f8106935bc2ae",
+      "colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1423
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 137.34181974248926,
+          "standing_mean_luma": 137.34181974248926,
+          "delta": 0.0,
+          "highlight_gt170_pct": 38.62660944206009,
+          "standing_highlight_gt170_pct": 38.62660944206009
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 118.52958186397984,
+          "standing_mean_luma": 118.52958186397984,
+          "delta": 0.0,
+          "highlight_gt170_pct": 19.899244332493705,
+          "standing_highlight_gt170_pct": 19.899244332493705
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 124.08318153846153,
+          "standing_mean_luma": 124.08318153846153,
+          "delta": 0.0,
+          "highlight_gt170_pct": 19.076923076923077,
+          "standing_highlight_gt170_pct": 19.076923076923077
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 117.83370726495724,
+          "standing_mean_luma": 117.83370726495724,
+          "delta": 0.0,
+          "highlight_gt170_pct": 22.00854700854701,
+          "standing_highlight_gt170_pct": 22.00854700854701
+        }
+      ],
+      "changed_pixels_previous": 0
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "39371064aa60e40ca10fed8b1623902a460925e015d36fc398a26f3f08df9561",
+      "file_sha256": "18800bb7eb9d414586b402408e407c65e14be97800c640ef290ba40f0ba184af",
+      "colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1426,
+        5,
+        5
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 137.34181974248926,
+          "standing_mean_luma": 137.34181974248926,
+          "delta": 0.0,
+          "highlight_gt170_pct": 38.62660944206009,
+          "standing_highlight_gt170_pct": 38.62660944206009
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 117.59737777777778,
+          "standing_mean_luma": 118.52958186397984,
+          "delta": -0.9322040862020629,
+          "highlight_gt170_pct": 19.50617283950617,
+          "standing_highlight_gt170_pct": 19.899244332493705
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 123.60340606060605,
+          "standing_mean_luma": 124.08318153846153,
+          "delta": -0.47977547785548325,
+          "highlight_gt170_pct": 18.787878787878785,
+          "standing_highlight_gt170_pct": 19.076923076923077
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 117.83370726495724,
+          "standing_mean_luma": 117.83370726495724,
+          "delta": 0.0,
+          "highlight_gt170_pct": 22.00854700854701,
+          "standing_highlight_gt170_pct": 22.00854700854701
+        }
+      ],
+      "changed_pixels_previous": 349
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "4bbc4ffb0b7f5c67ca9bad669a0002e9361363dde93334a99d057f1ac717f2b9",
+      "file_sha256": "6898418134001bf750a9814caba5ae6e6ffbd3c2b04a70221c4d17025698060a",
+      "colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1408,
+        5,
+        5,
+        5
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 137.61927064220183,
+          "standing_mean_luma": 137.34181974248926,
+          "delta": 0.2774508997125622,
+          "highlight_gt170_pct": 38.99082568807339,
+          "standing_highlight_gt170_pct": 38.62660944206009
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 117.71570895522387,
+          "standing_mean_luma": 118.52958186397984,
+          "delta": -0.8138729087559682,
+          "highlight_gt170_pct": 20.149253731343283,
+          "standing_highlight_gt170_pct": 19.899244332493705
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 123.18996060606058,
+          "standing_mean_luma": 124.08318153846153,
+          "delta": -0.8932209324009506,
+          "highlight_gt170_pct": 18.787878787878785,
+          "standing_highlight_gt170_pct": 19.076923076923077
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 117.56504228329808,
+          "standing_mean_luma": 117.83370726495724,
+          "delta": -0.26866498165915687,
+          "highlight_gt170_pct": 21.775898520084567,
+          "standing_highlight_gt170_pct": 22.00854700854701
+        }
+      ],
+      "changed_pixels_previous": 890
+    },
+    {
+      "frame": 4,
+      "rgba_sha256": "48bc3a898148b1849f59f1a67730120357a05fc9f3357491320bfbfc978efd1e",
+      "file_sha256": "b8e92b4b989f6155782eb9d5a0aca8b98335af0cc32cd3c67c2b8ec1a6d8c5e7",
+      "colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1412,
+        5,
+        5
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 137.61927064220183,
+          "standing_mean_luma": 137.34181974248926,
+          "delta": 0.2774508997125622,
+          "highlight_gt170_pct": 38.99082568807339,
+          "standing_highlight_gt170_pct": 38.62660944206009
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 118.51897979797977,
+          "standing_mean_luma": 118.52958186397984,
+          "delta": -0.010602066000075183,
+          "highlight_gt170_pct": 20.454545454545457,
+          "standing_highlight_gt170_pct": 19.899244332493705
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 123.19717575757574,
+          "standing_mean_luma": 124.08318153846153,
+          "delta": -0.886005780885796,
+          "highlight_gt170_pct": 18.787878787878785,
+          "standing_highlight_gt170_pct": 19.076923076923077
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 117.01656485355646,
+          "standing_mean_luma": 117.83370726495724,
+          "delta": -0.8171424114007806,
+          "highlight_gt170_pct": 21.548117154811717,
+          "standing_highlight_gt170_pct": 22.00854700854701
+        }
+      ],
+      "changed_pixels_previous": 528
+    },
+    {
+      "frame": 5,
+      "rgba_sha256": "7812c7a3770b6272ab4c580e8f7da162652af498d90f557a7cdb25be3f36e07d",
+      "file_sha256": "44ea45ebd415ccee32bce3b91d80ba6e6f4800557d3aa2bbd9f903e36f055439",
+      "colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1423,
+        5,
+        5,
+        5
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 137.34181974248926,
+          "standing_mean_luma": 137.34181974248926,
+          "delta": 0.0,
+          "highlight_gt170_pct": 38.62660944206009,
+          "standing_highlight_gt170_pct": 38.62660944206009
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 118.52958186397984,
+          "standing_mean_luma": 118.52958186397984,
+          "delta": 0.0,
+          "highlight_gt170_pct": 19.899244332493705,
+          "standing_highlight_gt170_pct": 19.899244332493705
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 124.08318153846153,
+          "standing_mean_luma": 124.08318153846153,
+          "delta": 0.0,
+          "highlight_gt170_pct": 19.076923076923077,
+          "standing_highlight_gt170_pct": 19.076923076923077
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 116.48437267080743,
+          "standing_mean_luma": 117.83370726495724,
+          "delta": -1.3493345941498092,
+          "highlight_gt170_pct": 21.325051759834366,
+          "standing_highlight_gt170_pct": 22.00854700854701
+        }
+      ],
+      "changed_pixels_previous": 516
+    },
+    {
+      "frame": 6,
+      "rgba_sha256": "9fec207b461da7298178f6b0714dae6bbc17cb501cf5eb8a8d66a8f14e98bf6d",
+      "file_sha256": "996fdcf63145199a9bc4a884145c0742af0a7c7bcca3822dfd5f8106935bc2ae",
+      "colors": 44,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "lowest_y": 95,
+      "foot_source_rgba_exact": true,
+      "components_sizes": [
+        1423
+      ],
+      "neck_source_pixels_missing": 0,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "mean_luma": 137.34181974248926,
+          "standing_mean_luma": 137.34181974248926,
+          "delta": 0.0,
+          "highlight_gt170_pct": 38.62660944206009,
+          "standing_highlight_gt170_pct": 38.62660944206009
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "mean_luma": 118.52958186397984,
+          "standing_mean_luma": 118.52958186397984,
+          "delta": 0.0,
+          "highlight_gt170_pct": 19.899244332493705,
+          "standing_highlight_gt170_pct": 19.899244332493705
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "mean_luma": 124.08318153846153,
+          "standing_mean_luma": 124.08318153846153,
+          "delta": 0.0,
+          "highlight_gt170_pct": 19.076923076923077,
+          "standing_highlight_gt170_pct": 19.076923076923077
+        },
+        {
+          "y": [
+            65,
+            95
+          ],
+          "mean_luma": 117.83370726495724,
+          "standing_mean_luma": 117.83370726495724,
+          "delta": 0.0,
+          "highlight_gt170_pct": 22.00854700854701,
+          "standing_highlight_gt170_pct": 22.00854700854701
+        }
+      ],
+      "changed_pixels_previous": 15
+    }
+  ],
+  "timing": {
+    "frames": 6,
+    "frame_size": [
+      96,
+      96
+    ],
+    "anchor": [
+      48,
+      96
+    ],
+    "durations_ms": [
+      100,
+      80,
+      100,
+      140,
+      180,
+      100
+    ],
+    "duration_ms": 700,
+    "loop": false,
+    "sprite_sheet": "skeleton_B_dust_left.png",
+    "shed_frame": 2,
+    "shed_frame_index": 1,
+    "key_frame": {
+      "type": "shed",
+      "frame": 2,
+      "frame_index": 1,
+      "time_ms": 100
+    },
+    "frame_numbering": "frame is1-based; frame_index is0-based",
+    "qa": "qc/combat_step2_QA.md"
+  },
+  "gifs_decoded_rgba_and_timing_exact": true
+}

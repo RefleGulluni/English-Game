@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen (no CLI fallback)",
+  "actions": [
+    "cast_left",
+    "hit_left",
+    "hit_right"
+  ],
+  "selected_pixels": {
+    "cast_left": "pose arms2/3/4/6 + approved left standing body",
+    "hit_left": "generated pose study only; final pixels all from left standing, lamp positions in raw study rejected",
+    "hit_right": "generated pose study only; final pixels all from right standing",
+    "attack_left": "far right arm poses3/4/5/6/7 + left standing body; no mirroring",
+    "dust_left": "native small ash fragments from generated frame3/4, body from matching standard",
+    "dust_right": "native small ash fragments from generated frame3/4, body from matching standard",
+    "attack_right_v2": "only frame5 uses short_mid source arm; frame6 uses four-pose source frame3; frames1\u20134,7\u20139 byte-copied from accepted attack"
+  },
+  "unused_studies": [
+    "short_high (overhead pose rejected)",
+    "attack_right_v2 original four-pose source frame2 (insufficient downward arc)"
+  ],
+  "no_art_resizing_rotation_mirror": true,
+  "status": "step2_pending_user_review"
+}

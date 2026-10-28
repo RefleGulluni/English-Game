@@ -1,0 +1,7 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+combat-step2-20261028/delivery/hero/hero_B1_hit_left.png    384x96   OK   43    88    0    95
+p2-20261028/delivery/hero/frames/hero_B1_hit_left/01.png     96x96   OK   43    88    0    95
+p2-20261028/delivery/hero/frames/hero_B1_hit_left/02.png     96x96   OK   43    88    0    95
+p2-20261028/delivery/hero/frames/hero_B1_hit_left/03.png     96x96   OK   42    88    0    95
+p2-20261028/delivery/hero/frames/hero_B1_hit_left/04.png     96x96   OK   43    88    0    95
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

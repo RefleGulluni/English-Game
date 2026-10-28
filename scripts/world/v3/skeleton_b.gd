@@ -21,7 +21,7 @@ const CLEARED_TINT := Color(0.62, 0.62, 0.62)
 ## The node walk_to() moves (the skeleton's root); the strip itself always stays on its feet.
 var mover: Node2D
 var facing := "front"
-## idle · start · walk · stop · hit · collapse · remains · reassemble
+## idle · start · walk · stop · hit · collapse · remains · reassemble · attack · dust
 var action := "idle"
 var _mode := "standing"
 var _strip: SpriteStrip
@@ -47,6 +47,8 @@ var _attack_key := ""
 var _look_after_walk := Vector2.INF
 
 static var _keys := {}
+## "" plays skeleton_B_attack_<side>, "_v2" the character group's comparison version (V in the fight).
+static var attack_variant := ""
 
 
 func _ready() -> void:
@@ -113,6 +115,8 @@ func lunge(toward: Vector2) -> void:
 func attack(toward: Vector2) -> float:
 	var side := "right" if toward.x >= global_position.x else "left"
 	_attack_key = "skeleton_B_attack_" + side
+	if not attack_variant.is_empty() and _keys.has(_attack_key + attack_variant):
+		_attack_key += attack_variant
 	if _mode != "standing" or action != "idle" or not _keys.has(_attack_key):
 		lunge(toward)
 		return 0.0
@@ -120,8 +124,19 @@ func attack(toward: Vector2) -> float:
 	_attack_from = mover.position
 	_attack_dir = 1.0 if side == "right" else -1.0
 	_attack_t = 0.0
-	_switch("attack", "attack_" + side)
+	action = "attack"
+	_strip.load_strip(ANIM, _attack_key) # this exact version, not the newest _vN
 	return float(_keys[_attack_key].key_frame.time_ms) / 1000.0
+
+
+## GRAVE DUST / ERODE / TOXIC DUST: shakes and sheds dust (§6), or leans in when not delivered.
+func shed(toward: Vector2) -> void:
+	var side := "right" if toward.x >= global_position.x else "left"
+	if _mode != "standing" or action != "idle" or not _keys.has("skeleton_B_dust_" + side):
+		lunge(toward)
+		return
+	facing = side
+	_switch("dust", "dust_" + side)
 
 
 ## Turns to look along v (only while standing still).
@@ -220,7 +235,7 @@ func _process(delta: float) -> void:
 		var durations: Array = data.durations_ms
 		var back_from := hit + float(durations[4]) + float(durations[5]) # holds through the follow-through
 		var total := float(data.duration_ms)
-		var advance := float(data.get("expected_program_advance_px", 40))
+		var advance := float(data.get("expected_program_advance_px", data.get("expected_program_advance_px_range", [0, 40])[1]))
 		var share := clampf(_attack_t / hit, 0.0, 1.0) if _attack_t < back_from else 1.0 - clampf((_attack_t - back_from) / (total - back_from), 0.0, 1.0)
 		mover.position = _attack_from + Vector2(_attack_dir * roundf(advance * share), 0)
 	if action == "walk":
@@ -251,7 +266,7 @@ func _on_finished() -> void:
 	match action:
 		"start":
 			_switch("walk", "walk_" + facing)
-		"stop", "hit", "reassemble", "attack":
+		"stop", "hit", "reassemble", "attack", "dust":
 			if action == "reassemble":
 				facing = "front"
 			if action == "attack":

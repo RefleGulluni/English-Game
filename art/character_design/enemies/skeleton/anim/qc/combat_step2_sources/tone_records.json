@@ -1,0 +1,208 @@
+{
+  "hero_B1_cast_left": [
+    {
+      "frame": 2,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": -0.08471814671813149
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": 0.9459752950778437
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": -0.01825868725867963
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -11,
+          "luma_delta_after": 1.035193146686069
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": 1.0062077903870517
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": 1.0062077903870517
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "bands": [
+        {
+          "y": [
+            0,
+            19
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": -0.054629343629329696
+        },
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -10,
+          "luma_delta_after": 1.6432082731020188
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "bands": []
+    }
+  ],
+  "skeleton_B_attack_left": [
+    {
+      "frame": 2,
+      "bands": []
+    },
+    {
+      "frame": 3,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -36,
+          "luma_delta_after": 1.7714293467824689
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -12,
+          "luma_delta_after": 1.5181387242554507
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -22,
+          "luma_delta_after": 1.2647044488692956
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -39,
+          "luma_delta_after": 1.3153582216121436
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": 0,
+          "luma_delta_after": 0.17622884347713352
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "bands": []
+    }
+  ],
+  "skeleton_B_attack_right_v2": [
+    {
+      "frame": 5,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": 3,
+          "luma_delta_after": -1.7366305697919842
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "bands": [
+        {
+          "y": [
+            20,
+            44
+          ],
+          "added_arm_palette_shift": -26,
+          "luma_delta_after": 1.3781500753693052
+        },
+        {
+          "y": [
+            45,
+            64
+          ],
+          "added_arm_palette_shift": -45,
+          "luma_delta_after": 1.782297298764476
+        }
+      ]
+    }
+  ]
+}

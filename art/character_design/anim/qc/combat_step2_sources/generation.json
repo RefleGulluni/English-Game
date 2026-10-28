@@ -1,0 +1,32 @@
+[
+  {
+    "name": "attack_right_v2",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-0e7edcf1-1494-4af4-9001-112a85046be9.png"
+  },
+  {
+    "name": "dust_left",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-58bef146-5c31-412d-8d97-cf02c39a81a4.png"
+  },
+  {
+    "name": "dust_right",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c0bbc7f8-b4d7-42f9-9dcc-7f983361a783.png"
+  },
+  {
+    "name": "hit_left",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-eab37d4a-15f7-4d75-9cf8-485e04887af5.png"
+  },
+  {
+    "name": "hit_right",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c9fcba8d-2bdc-4988-830b-3128881ded76.png"
+  },
+  {
+    "name": "cast_left",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-1f1d12dd-890f-4c08-a5cc-ee7870cf5639.png",
+    "hint": "Generated images are saved to /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896 as /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-1f1d12dd-890f-4c08-a5cc-ee7870cf5639.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "name": "attack_left",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-fad1fb6c-c60b-41fc-96cc-94556c5c2645.png",
+    "hint": "Generated images are saved to /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896 as /Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-fad1fb6c-c60b-41fc-96cc-94556c5c2645.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

@@ -256,8 +256,10 @@ func _bind_rules() -> void:
 			var hit_in := visual.attack(hero.global_position) if str(action.kind) == "physical" else 0.0
 			if hit_in > 0.0:
 				view.enemy_attack(hit_in, 1.05)
-			else:
+			elif str(action.kind) == "physical":
 				visual.lunge(hero.global_position)
+			else:
+				visual.shed(hero.global_position)
 			events.publish(&"enemy_attack_started", {"enemy_id": "enemy.grave_skeleton", "position": skeleton.global_position, "action": action.word, "kind": action.kind}))
 	for word in manager.learning.words.values():
 		word.changed.connect(_word_changed.bind(word.lemma))
@@ -540,6 +542,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("open_run_bag"):
 		if hud.overlay_open: hud.close_overlay()
 		else: hud.show_bag()
+	elif key == KEY_V: # compare the skeleton's two BONE CUT versions (docs/COMBAT_ANIMATION_REQUEST.md §11)
+		SkeletonB.attack_variant = "_v2" if SkeletonB.attack_variant.is_empty() else ""
+		hud.announce("BONE CUT · %s" % ("v2 · short arm" if SkeletonB.attack_variant == "_v2" else "v1 · long reach"))
 	elif key == KEY_SPACE and not hud.overlay_open and not view.busy:
 		turns.end_turn()
 	elif key == KEY_R and (encounter_cleared or turns.phase == TURNS.Phase.DEFEAT):
@@ -571,6 +576,7 @@ func _capture() -> void:
 	var collapsed_shot := false
 	var cast_shots := 0
 	var attack_shot := false
+	var dust_shot := false
 	for i in 4000:
 		if combat.finished:
 			break
@@ -612,12 +618,18 @@ func _capture() -> void:
 					turns.end_turn()
 					if combat.turn_ending and not combat.finished:
 						turns.react(false)
+					if not physical and not dust_shot and not combat.bone_remains and not combat.finished:
+						dust_shot = true # GRAVE DUST and the like: it shakes and sheds dust
+						await get_tree().create_timer(0.3).timeout
+						await _shot(dir + "/02f_dust.png")
 					if physical and not attack_shot:
 						attack_shot = true # the skeleton's BONE CUT: wind-up, then its hit frame
 						await get_tree().create_timer(0.38).timeout
 						await _shot(dir + "/02d_attack_windup.png")
 						await get_tree().create_timer(0.17).timeout
 						await _shot(dir + "/02e_attack_hit.png")
+						await get_tree().create_timer(0.12).timeout
+						await _shot(dir + "/02g_hero_hit.png")
 		elif turns.phase == TURNS.Phase.ENEMY_TURN and combat.turn_ending:
 			turns.react(false)
 		hud.refresh()

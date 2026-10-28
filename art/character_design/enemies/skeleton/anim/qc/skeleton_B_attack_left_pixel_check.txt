@@ -1,0 +1,12 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+p2-20261028/delivery/skeleton/skeleton_B_attack_left.png   1440x96   OK   44    82    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/01.png    160x96   OK   44    83    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/02.png    160x96   OK   44    83    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/03.png    160x96   OK   44    83    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/04.png    160x96   OK   44    83    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/05.png    160x96   OK   44    79    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/06.png    160x96   OK   44    77    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/07.png    160x96   OK   44    83    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/08.png    160x96   OK   44    83    0    95
+8/delivery/skeleton/frames/skeleton_B_attack_left/09.png    160x96   OK   44    83    0    95
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

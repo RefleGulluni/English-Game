@@ -1,0 +1,26 @@
+{
+  "protected_files": 3398,
+  "changed_existing_files": [
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/anim/timing.json",
+    "/Users/mac/Documents/GitHub.nosync/English-Game/art/character_design/enemies/skeleton/anim/timing.json"
+  ],
+  "standard_and_existing_animations_unchanged": true,
+  "original_attack_right_file_unchanged": true,
+  "right_v2_only_modified_frames": [
+    5,
+    6
+  ],
+  "right_v2_other_frame_png_bytes_exact": true,
+  "timing_old_counts": {
+    "hero": 1,
+    "skeleton": 56
+  },
+  "timing_new_counts": {
+    "hero": 4,
+    "skeleton": 60
+  },
+  "all_old_timing_entries_unchanged": true,
+  "new_animations": 7,
+  "total_new_frame_count": 46,
+  "all_gifs_decoded_and_verified": true
+}
