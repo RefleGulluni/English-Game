@@ -1,0 +1,529 @@
+{
+  "status": "STEP2_NINE_GLYPHS_READY_FOR_USER_REVIEW",
+  "glyphs": {
+    "force": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 24,
+      "bbox_xyxy": [
+        1,
+        1,
+        10,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "dc73c7d1cd72be7828d25a8121d8720b29db16be32859112e6e2b067cd85bc89"
+    },
+    "direct": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 17,
+      "bbox_xyxy": [
+        3,
+        1,
+        8,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "1f4fea0d9bce8c951ba6e60c3cc2c132972285222caa2450105a272ab86996b3"
+    },
+    "decay": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 18,
+      "bbox_xyxy": [
+        2,
+        1,
+        9,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "2ae2439239bb0b694716d47c90a26e18e960609a12be55994a63918cde4e1316"
+    },
+    "toxicity": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 33,
+      "bbox_xyxy": [
+        1,
+        1,
+        10,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "6dcdef7d60965fef01f72b4fd335e90f951a6263e6d98f6f2051989b7b4f0972"
+    },
+    "perception": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 27,
+      "bbox_xyxy": [
+        1,
+        1,
+        10,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "ba74cee69c1b2090e216994b010c0d8c5709285fb9418b258e381a42ef9531a0"
+    },
+    "control": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 29,
+      "bbox_xyxy": [
+        1,
+        1,
+        10,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "116259bac452cdeaa67289e843757f4260a2d61658f103c262f527c762400685"
+    },
+    "reaction": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 18,
+      "bbox_xyxy": [
+        1,
+        1,
+        10,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "c171ba57fe622ff13036f7d529368f1e6c7eea3efa4ca68beeb1aff6770dfaac"
+    },
+    "protection": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 27,
+      "bbox_xyxy": [
+        2,
+        1,
+        9,
+        10
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "79705104612eadcdccd40f55d519d3b619092af31db65eb3923e0c258fb8cda3"
+    },
+    "restoration": {
+      "size": [
+        11,
+        11
+      ],
+      "opaque_pixels": 21,
+      "bbox_xyxy": [
+        1,
+        2,
+        10,
+        9
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_rgb": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "sha256": "6f530c0f794a824df5b03c9529fda92a6989702c3ebc93b1b6835e6a219b88a1"
+    }
+  },
+  "pairs": [
+    {
+      "pair": [
+        "force",
+        "direct"
+      ],
+      "same_alignment_different_pixels": 33,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "decay"
+      ],
+      "same_alignment_different_pixels": 34,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "toxicity"
+      ],
+      "same_alignment_different_pixels": 29,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "perception"
+      ],
+      "same_alignment_different_pixels": 35,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "control"
+      ],
+      "same_alignment_different_pixels": 25,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "reaction"
+      ],
+      "same_alignment_different_pixels": 30,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 51,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "force",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 33,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "decay"
+      ],
+      "same_alignment_different_pixels": 23,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "toxicity"
+      ],
+      "same_alignment_different_pixels": 42,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "perception"
+      ],
+      "same_alignment_different_pixels": 34,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "control"
+      ],
+      "same_alignment_different_pixels": 32,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "reaction"
+      ],
+      "same_alignment_different_pixels": 25,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 22,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "direct",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 32,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "decay",
+        "toxicity"
+      ],
+      "same_alignment_different_pixels": 47,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "decay",
+        "perception"
+      ],
+      "same_alignment_different_pixels": 39,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "decay",
+        "control"
+      ],
+      "same_alignment_different_pixels": 31,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "decay",
+        "reaction"
+      ],
+      "same_alignment_different_pixels": 24,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "decay",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 25,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "decay",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 29,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "toxicity",
+        "perception"
+      ],
+      "same_alignment_different_pixels": 38,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "toxicity",
+        "control"
+      ],
+      "same_alignment_different_pixels": 32,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "toxicity",
+        "reaction"
+      ],
+      "same_alignment_different_pixels": 37,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "toxicity",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 44,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "toxicity",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 38,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "perception",
+        "control"
+      ],
+      "same_alignment_different_pixels": 30,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "perception",
+        "reaction"
+      ],
+      "same_alignment_different_pixels": 27,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "perception",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 44,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "perception",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 24,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "control",
+        "reaction"
+      ],
+      "same_alignment_different_pixels": 33,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "control",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 42,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "control",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 28,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "reaction",
+        "protection"
+      ],
+      "same_alignment_different_pixels": 31,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "reaction",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 31,
+      "rotated_or_mirrored_exact_match": false
+    },
+    {
+      "pair": [
+        "protection",
+        "restoration"
+      ],
+      "same_alignment_different_pixels": 44,
+      "rotated_or_mirrored_exact_match": false
+    }
+  ],
+  "protected_files_unchanged": true,
+  "protected_file_count": 65,
+  "runtime_integrated": false,
+  "baked_glow": false,
+  "sheet_native_size": [
+    51,
+    51
+  ],
+  "sheet_scale": 8
+}

@@ -35,6 +35,7 @@ var INK := Color8(222, 206, 176)
 var DIM := Color8(150, 136, 116)
 var HURT := Color8(206, 98, 76)
 var palette := "warm"
+var FAMILY_MARKS := {} # family → rows of "X." read from the glyph files
 const NATIVE := Vector2(960, 540)
 const BAR_TOP := 432.0
 const FONT := preload("res://art/ui/fonts/CormorantGaramond.ttf")
@@ -47,9 +48,14 @@ const SIGIL_FONT := 18
 const SIGIL_H := 40.0
 const DISSOLVE_TIME := 0.55
 const LEAD := 0.45 # the word leaves the bar and reaches the hero before the hero speaks it
-## 11x11 family marks: Claude's placeholders until the art group designs the real nine
-## (docs/WORD_SIGIL_DESIGN_REQUEST.md §2). Keys are CombatContent.SKILLS families.
-const FAMILY_MARKS := {
+## The nine family marks from the art group (art/ui/word_sigil_v3/glyphs/, 11x11 white on
+## transparent, tinted cyan here). Keys are CombatContent.SKILLS families.
+const MARK_FILES := {"FORCE": "force", "DIRECT HP": "direct", "DECAY": "decay", "TOXICITY": "toxicity",
+	"PERCEPTION": "perception", "CONTROL": "control", "REACTION": "reaction", "SEMANTIC PROTECTION": "protection",
+	"RESTORATION": "restoration"}
+const MARK_DIR := "res://art/ui/word_sigil_v3/glyphs/family_%s.png"
+## Claude's earlier placeholders: only used when a file is missing.
+const PLACEHOLDER_MARKS := {
 	"FORCE": [".....X.....", "..X..X..X..", "...X...X...", "....X.X....", ".XX.....XX.", "....X.X....", "...X...X...", "..X..X..X..", ".....X.....", "...........", "..........."],
 	"DIRECT HP": ["...........", "...........", "........X..", ".........X.", "XXXXXXXXXXX", ".........X.", "........X..", "...........", "...........", "...........", "..........."],
 	"PERCEPTION": [".....X.....", "....X.X....", "...X...X...", "..X.....X..", ".X...X...X.", "X...XXX...X", ".X...X...X.", "..X.....X..", "...X...X...", "....X.X....", ".....X....."],
@@ -100,6 +106,7 @@ var _gap: Control
 
 
 func setup(viewport: SubViewport, language: CanvasLayer, world_screen: Control, model: CombatState) -> void:
+	_load_marks()
 	_viewport = viewport
 	_world_screen = world_screen
 	combat = model
@@ -145,6 +152,22 @@ func setup(viewport: SubViewport, language: CanvasLayer, world_screen: Control, 
 	_ui.add_child(_floats)
 	_build_tip()
 	set_palette(palette)
+
+
+func _load_marks() -> void:
+	FAMILY_MARKS = PLACEHOLDER_MARKS.duplicate()
+	for family in MARK_FILES:
+		var path := ProjectSettings.globalize_path(MARK_DIR % MARK_FILES[family])
+		if not FileAccess.file_exists(path):
+			continue
+		var img := Image.load_from_file(path)
+		var rows: Array[String] = []
+		for y in img.get_height():
+			var row := ""
+			for x in img.get_width():
+				row += "X" if img.get_pixel(x, y).a > 0.5 else "."
+			rows.append(row)
+		FAMILY_MARKS[family] = rows
 
 
 func set_palette(name: String) -> void:

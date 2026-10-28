@@ -103,3 +103,11 @@ Claude 的意见：
 Claude 分析：设计稿本身没问题，素是因为①没有发光（规定由程序加）、②词类符号还是占位十字、③静态图看不到动作。在 B 上画了四档对比 `docs/reference/word_sigil_refinement_levels.png`，用户选**第 3 档**：B 基线 + 发光（紧贴的光 + 外层柔光）+ 精密仪器细节（两端节点菱形、中间刻度虚线、下方极淡的第二道线）+ **专注菱形嵌进基线正中** + 悬停时线合拢、光从两端跑向中间、头顶一圈节点。另加用户要求的**用词消失特效**：线向中心收拢 → 字母逐个亮白后散成青蓝像素往上飘 → 中心菱形飞向主角，主角再说出这个词。
 
 已由 Claude 做进游戏（`scripts/world/v3/combat_view.gd` 的 `_draw_sigil` / `_dissolve`），截图 `docs/reference/word_sigil_level3_ingame.png`。第二步（9 个词类符号）照第 3 档的气质设计；游戏里现在的符号是 Claude 的占位。
+
+## 6. 第二步验收：9 个词类符号（2026-10-28，Claude）
+
+交付：`art/ui/word_sigil_v3/glyphs/family_*.png` 9 个，加总表、带标签的 8 倍检查板、词旁示意、逐点几何来源。硬规格全部通过（11×11、纯白 + 透明、alpha 只有 0/255、1 px 线、外圈留空、任意两个至少差 22 像素）。没有用象形（拳头、眼睛、盾牌、十字），是同一套“精密仪器”几何语法：FORCE 四角断开、DIRECT 一根直达的轴、DECAY 逐层变短、TOXICITY 一层层嵌进去、PERCEPTION 两侧开口中间一个采样点、CONTROL 反向扣合、REACTION 入射后折转、PROTECTION 三根轨道对齐、RESTORATION 断口斜线复接。QA 如实写了拿不准的地方。
+
+**已换进游戏**（`combat_view.gd` 直接读这 9 个文件，染青蓝；单词栏和提示框标题都用上了），截图 `docs/reference/word_sigil_family_glyphs_ingame.png`。在第 3 档里看，和基线、菱形节点是一家人，暗状态下 DIRECT / REACTION 细，但仍看得清。
+
+Claude 意见：**通过**（等用户确认）。小留意：FORCE（四角断片）和 PERCEPTION（两侧括号）在 1 倍下都有“框”的感觉，多看几场如果容易混，再请美术组拉开其中一个。

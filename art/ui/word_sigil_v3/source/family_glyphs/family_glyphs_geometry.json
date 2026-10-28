@@ -1,0 +1,685 @@
+{
+  "canvas": [
+    11,
+    11
+  ],
+  "center": [
+    5,
+    5
+  ],
+  "safe_bounds": [
+    1,
+    1,
+    10,
+    10
+  ],
+  "stroke": 1,
+  "axes": "horizontal,vertical,45deg; integer coordinates",
+  "order": [
+    "force",
+    "direct",
+    "decay",
+    "toxicity",
+    "perception",
+    "control",
+    "reaction",
+    "protection",
+    "restoration"
+  ],
+  "designs": {
+    "force": {
+      "word": "SHATTER",
+      "meaning": "向外碎开",
+      "paths": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        [
+          [
+            7,
+            1
+          ],
+          [
+            9,
+            1
+          ],
+          [
+            9,
+            3
+          ]
+        ],
+        [
+          [
+            1,
+            7
+          ],
+          [
+            1,
+            9
+          ],
+          [
+            3,
+            9
+          ]
+        ],
+        [
+          [
+            7,
+            9
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            9,
+            7
+          ]
+        ]
+      ],
+      "points": [
+        [
+          3,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "logic": "Four outward90deg fragments with four detached chips at registered diagonal positions; empty3x3 core. No center spark or radial star."
+    },
+    "direct": {
+      "word": "STRIKE",
+      "meaning": "直达命中",
+      "paths": [
+        [
+          [
+            5,
+            9
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        [
+          [
+            3,
+            3
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        [
+          [
+            3,
+            9
+          ],
+          [
+            7,
+            9
+          ]
+        ]
+      ],
+      "logic": "One uninterrupted axis and pointed terminal; perpendicular datum at the origin."
+    },
+    "decay": {
+      "word": "ERODE",
+      "meaning": "逐层剥落",
+      "paths": [
+        [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            8,
+            3
+          ]
+        ],
+        [
+          [
+            3,
+            5
+          ],
+          [
+            6,
+            5
+          ]
+        ],
+        [
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            7
+          ]
+        ]
+      ],
+      "points": [
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "logic": "Registered material strokes shorten in3 stages; detached end samples retain the erosion direction."
+    },
+    "toxicity": {
+      "word": "TOXIC",
+      "meaning": "逐层渗入",
+      "paths": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            9,
+            1
+          ],
+          [
+            9,
+            9
+          ]
+        ],
+        [
+          [
+            1,
+            4
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        [
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            3,
+            9
+          ]
+        ]
+      ],
+      "logic": "Three nested right-angle ingress channels, spacing3; inward propagation rather than a poison pictogram."
+    },
+    "perception": {
+      "word": "OBSERVE",
+      "meaning": "开口显现",
+      "paths": [
+        [
+          [
+            3,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            3,
+            8
+          ]
+        ],
+        [
+          [
+            7,
+            2
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            9,
+            8
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        [
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        [
+          [
+            5,
+            8
+          ],
+          [
+            5,
+            9
+          ]
+        ]
+      ],
+      "points": [
+        [
+          5,
+          5
+        ]
+      ],
+      "logic": "Two open measurement apertures isolate a single resolved center sample; no eye outline."
+    },
+    "control": {
+      "word": "BIND",
+      "meaning": "反向扣合",
+      "paths": [
+        [
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        [
+          [
+            7,
+            9
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        [
+          [
+            5,
+            3
+          ],
+          [
+            5,
+            7
+          ]
+        ]
+      ],
+      "logic": "Opposing stepped jaws close onto a common locking spine;180deg paired structure, no drawn padlock."
+    },
+    "reaction": {
+      "word": "DEFLECT",
+      "meaning": "转向引开",
+      "paths": [
+        [
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            9,
+            1
+          ]
+        ],
+        [
+          [
+            7,
+            1
+          ],
+          [
+            9,
+            1
+          ],
+          [
+            9,
+            3
+          ]
+        ],
+        [
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        [
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            9
+          ]
+        ]
+      ],
+      "logic": "An incoming straight trace changes direction at the center and leaves on45deg; separated lower normal records the rejected axis, no circular return arrow."
+    },
+    "protection": {
+      "word": "STABILIZE",
+      "meaning": "对齐稳定",
+      "paths": [
+        [
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            9
+          ]
+        ],
+        [
+          [
+            4,
+            1
+          ],
+          [
+            6,
+            1
+          ]
+        ],
+        [
+          [
+            4,
+            9
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            7
+          ]
+        ],
+        [
+          [
+            8,
+            3
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        [
+          [
+            2,
+            5
+          ],
+          [
+            8,
+            5
+          ]
+        ]
+      ],
+      "logic": "Three parallel rails registered by one common transverse axis; center rail has matched end datums. No shield or closed square resembling a written character."
+    },
+    "restoration": {
+      "word": "RESTORE",
+      "meaning": "跨断口复接",
+      "paths": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        [
+          [
+            6,
+            8
+          ],
+          [
+            9,
+            8
+          ],
+          [
+            9,
+            6
+          ]
+        ],
+        [
+          [
+            3,
+            7
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        [
+          [
+            3,
+            6
+          ],
+          [
+            3,
+            8
+          ]
+        ],
+        [
+          [
+            6,
+            3
+          ],
+          [
+            8,
+            3
+          ]
+        ]
+      ],
+      "logic": "Two offset remaining fragments are joined by an ascending coupling trace with registered ends; no medical cross."
+    }
+  },
+  "godot_rows": {
+    "force": [
+      "...........",
+      ".XXX...XXX.",
+      ".X.......X.",
+      ".X.X...X.X.",
+      "...........",
+      "...........",
+      "...........",
+      ".X.X...X.X.",
+      ".X.......X.",
+      ".XXX...XXX.",
+      "..........."
+    ],
+    "direct": [
+      "...........",
+      ".....X.....",
+      "....XXX....",
+      "...X.X.X...",
+      ".....X.....",
+      ".....X.....",
+      ".....X.....",
+      ".....X.....",
+      ".....X.....",
+      "...XXXXX...",
+      "..........."
+    ],
+    "decay": [
+      "...........",
+      "..X........",
+      "..X........",
+      "..XXXXXXX..",
+      "...........",
+      "...XXXX.X..",
+      "...........",
+      "....XX.X...",
+      "...........",
+      ".....X.....",
+      "..........."
+    ],
+    "toxicity": [
+      "...........",
+      ".XXXXXXXXX.",
+      ".........X.",
+      ".........X.",
+      ".XXXXXX..X.",
+      "......X..X.",
+      "......X..X.",
+      ".XXX..X..X.",
+      "...X..X..X.",
+      "...X..X..X.",
+      "..........."
+    ],
+    "perception": [
+      "...........",
+      ".....X.....",
+      ".XXX.X.XXX.",
+      ".X.......X.",
+      ".X.......X.",
+      ".X...X...X.",
+      ".X.......X.",
+      ".X.......X.",
+      ".XXX.X.XXX.",
+      ".....X.....",
+      "..........."
+    ],
+    "control": [
+      "...........",
+      ".XXX.......",
+      ".X.........",
+      ".X...XXXXX.",
+      ".X...X...X.",
+      ".X...X...X.",
+      ".X...X...X.",
+      ".XXXXX...X.",
+      ".........X.",
+      ".......XXX.",
+      "..........."
+    ],
+    "reaction": [
+      "...........",
+      ".......XXX.",
+      "........XX.",
+      ".......X.X.",
+      ".X....X....",
+      ".XXXXX.....",
+      ".X.........",
+      ".....X.....",
+      ".....X.....",
+      ".....X.....",
+      "..........."
+    ],
+    "protection": [
+      "...........",
+      "....XXX....",
+      ".....X.....",
+      "..X..X..X..",
+      "..X..X..X..",
+      "..XXXXXXX..",
+      "..X..X..X..",
+      "..X..X..X..",
+      ".....X.....",
+      "....XXX....",
+      "..........."
+    ],
+    "restoration": [
+      "...........",
+      "...........",
+      ".XXXX......",
+      ".X....XXX..",
+      ".X....X....",
+      ".....X.....",
+      "...XX....X.",
+      "...X.....X.",
+      "...X..XXXX.",
+      "...........",
+      "..........."
+    ]
+  }
+}
