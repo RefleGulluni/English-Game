@@ -1,0 +1,13 @@
+{
+  "art/ui/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "art/ui/word_sigil.gd": "a3a8a3149c39bd64918e7d7c2e2416a36f025dde7834b2167169b92a0d89f5ee",
+  "art/ui/word_sigil.tscn": "dd3a33638c6471845f62485d22e82ed97a8e19c9283c480965ad43b390bf4721",
+  "art/ui/combat_hud_theme.tres": "7ef9d959e31a8bdeaa9b2f0061417a14e46efc707e23f1268afd89c19d9e1dea",
+  "art/ui/word_sigil.gd.uid": "85dcedcf007895e0fdbb492f53340091c1f2729f02a57fef9c1c7919d93342d6",
+  "art/ui/fonts/CormorantGaramond.ttf.import": "4bd908f66165714c75c6850487163951523698c80d281cb226a1b875999ddba6",
+  "art/ui/fonts/OFL.txt": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+  "art/ui/fonts/CormorantGaramond.ttf": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+  "docs/reference/combat_v1_word_shapes.png": "62c97648c7e47c81e05f67a0e69334a08b9ffa0b6a6916e61e30f4a37555491e",
+  "docs/reference/combat_v1_standoff.png": "603eccfd0ca480236966bbea2e03353bf18b940bc368d6a303ff6a30b269a8e0",
+  "docs/reference/combat_v1_preview.png": "0fe0466259dabb5a00b0506db80b5737c710c1b4d0476e3cc4a204cfab43c34f"
+}

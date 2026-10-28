@@ -1,0 +1,1788 @@
+{
+  "samples": [
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "OBSERVE",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        109,
+        40
+      ],
+      "word_ink_size": [
+        77,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "STABILIZE",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        119,
+        40
+      ],
+      "word_ink_size": [
+        87,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "OBSERVE",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "STABILIZE",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        89,
+        40
+      ],
+      "word_ink_size": [
+        57,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "hover",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "hover",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "selected",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "selected",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "retain",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "retain",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "disabled",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "disabled",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "available",
+      "replace": true,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "available",
+      "replace": true,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 1,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 3,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 1,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "A",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 3,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "OBSERVE",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        109,
+        40
+      ],
+      "word_ink_size": [
+        77,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "STABILIZE",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        119,
+        40
+      ],
+      "word_ink_size": [
+        87,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "OBSERVE",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "STABILIZE",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        89,
+        40
+      ],
+      "word_ink_size": [
+        57,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "hover",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "hover",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "selected",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "selected",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "retain",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "retain",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "disabled",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "disabled",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "available",
+      "replace": true,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "available",
+      "replace": true,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 1,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 3,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 1,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "B",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 3,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "OBSERVE",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        109,
+        40
+      ],
+      "word_ink_size": [
+        77,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "STABILIZE",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        119,
+        40
+      ],
+      "word_ink_size": [
+        87,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "OBSERVE",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "STABILIZE",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        89,
+        40
+      ],
+      "word_ink_size": [
+        57,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "hover",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "hover",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "selected",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "selected",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "retain",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "retain",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "disabled",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "disabled",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "serif",
+      "state": "available",
+      "replace": true,
+      "cost": 2,
+      "size": [
+        115,
+        40
+      ],
+      "word_ink_size": [
+        83,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "SHATTER",
+      "font": "pixel",
+      "state": "available",
+      "replace": true,
+      "cost": 2,
+      "size": [
+        79,
+        40
+      ],
+      "word_ink_size": [
+        47,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 1,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "serif",
+      "state": "available",
+      "replace": false,
+      "cost": 3,
+      "size": [
+        74,
+        40
+      ],
+      "word_ink_size": [
+        42,
+        13
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 1,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 2,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    },
+    {
+      "direction": "C",
+      "word": "BIND",
+      "font": "pixel",
+      "state": "available",
+      "replace": false,
+      "cost": 3,
+      "size": [
+        56,
+        40
+      ],
+      "word_ink_size": [
+        24,
+        9
+      ],
+      "glyph_slot": [
+        7,
+        10,
+        11,
+        11
+      ],
+      "word_left": 24
+    }
+  ],
+  "row_probes": [
+    {
+      "direction": "A",
+      "font": "serif",
+      "five_word_total_width": 548,
+      "six_word_probe": [
+        "BIND",
+        "ERODE",
+        "SHATTER",
+        "BIND",
+        "OBSERVE",
+        "BIND"
+      ],
+      "six_word_probe_width": 557,
+      "six_word_gap": 4,
+      "row_available_width": 560
+    },
+    {
+      "direction": "A",
+      "font": "pixel",
+      "five_word_total_width": 408,
+      "six_word_probe": [
+        "BIND",
+        "ERODE",
+        "SHATTER",
+        "BIND",
+        "OBSERVE",
+        "BIND"
+      ],
+      "six_word_probe_width": 441,
+      "six_word_gap": 10,
+      "row_available_width": 560
+    },
+    {
+      "direction": "B",
+      "font": "serif",
+      "five_word_total_width": 548,
+      "six_word_probe": [
+        "BIND",
+        "ERODE",
+        "SHATTER",
+        "BIND",
+        "OBSERVE",
+        "BIND"
+      ],
+      "six_word_probe_width": 557,
+      "six_word_gap": 4,
+      "row_available_width": 560
+    },
+    {
+      "direction": "B",
+      "font": "pixel",
+      "five_word_total_width": 408,
+      "six_word_probe": [
+        "BIND",
+        "ERODE",
+        "SHATTER",
+        "BIND",
+        "OBSERVE",
+        "BIND"
+      ],
+      "six_word_probe_width": 441,
+      "six_word_gap": 10,
+      "row_available_width": 560
+    },
+    {
+      "direction": "C",
+      "font": "serif",
+      "five_word_total_width": 548,
+      "six_word_probe": [
+        "BIND",
+        "ERODE",
+        "SHATTER",
+        "BIND",
+        "OBSERVE",
+        "BIND"
+      ],
+      "six_word_probe_width": 557,
+      "six_word_gap": 4,
+      "row_available_width": 560
+    },
+    {
+      "direction": "C",
+      "font": "pixel",
+      "five_word_total_width": 408,
+      "six_word_probe": [
+        "BIND",
+        "ERODE",
+        "SHATTER",
+        "BIND",
+        "OBSERVE",
+        "BIND"
+      ],
+      "six_word_probe_width": 441,
+      "six_word_gap": 10,
+      "row_available_width": 560
+    }
+  ],
+  "design_native_size": [
+    960,
+    736
+  ],
+  "design_scale": 4,
+  "scene_native_size": [
+    960,
+    540
+  ],
+  "scene_scale": 4,
+  "stroke_width": 1,
+  "category_slot_size": [
+    11,
+    11
+  ],
+  "canonical_color": [
+    107,
+    219,
+    242
+  ],
+  "font_serif": "CormorantGaramond.ttf SemiBold 18; binary native glyph mask",
+  "font_pixel": "Custom partial alphabet,9px high; variable3/5px wide;2px letter space",
+  "screenshot_center_sample": "2880x1620 screenshot ->960x540, one center pixel per3x3; no average",
+  "screenshot_edit_rect": [
+    246,
+    475,
+    790,
+    526
+  ],
+  "placeholder": "one anonymous11x11 placement cross shared by all words, no family semantics yet"
+}

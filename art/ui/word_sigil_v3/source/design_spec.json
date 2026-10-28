@@ -1,0 +1,90 @@
+{
+  "native_viewport": [
+    960,
+    540
+  ],
+  "sigil_width": "max(56,ceil(actual rendered word ink width)+32), must remain<=130 for supplied samples",
+  "sigil_height": 40,
+  "word_centerline_y": 16,
+  "word_x": 24,
+  "glyph_slot": [
+    7,
+    10,
+    11,
+    11
+  ],
+  "text_to_symbol_gap": 6,
+  "framing_region_y": [
+    3,
+    28
+  ],
+  "focus_region_y": [
+    32,
+    39
+  ],
+  "endpoints_x": [
+    "1",
+    "W-2"
+  ],
+  "repeat_segment": "Empty advance/extendable1px baseline only; never repeat bitmap letters or stretch an image",
+  "font_A": {
+    "family": "Cormorant Garamond",
+    "file": "art/ui/fonts/CormorantGaramond.ttf",
+    "weight": "SemiBold",
+    "native_size": 18,
+    "draft_raster": "binary no-antialias at native resolution"
+  },
+  "font_B": {
+    "height": 9,
+    "glyph_widths": [
+      3,
+      5
+    ],
+    "letter_gap": 2,
+    "partial_alphabet_file": "pixel_letters_9px.json"
+  },
+  "state_brightness_multipliers": {
+    "available": 0.86,
+    "hover": 0.95,
+    "selected": 1.0,
+    "retain": 0.86,
+    "disabled": 0.5
+  },
+  "frame_default_brightness": "text strength-.24, minimum .30",
+  "canonical_cyan": "#6BDBF2",
+  "retained_overlay": {
+    "x": "W-21",
+    "y": 0,
+    "size": [
+      7,
+      7
+    ]
+  },
+  "disabled_overlay": {
+    "x": "W-11",
+    "y": 0,
+    "size": [
+      5,
+      5
+    ]
+  },
+  "mulligan_overlay": {
+    "x": "W-13",
+    "y": 0,
+    "size": [
+      8,
+      10
+    ],
+    "phase": "opening hand only; replace is selection to discard this word, not Retain"
+  },
+  "click_box": "transparent40px tall rectangle, stable across states; focus hover excludes visual overflow",
+  "row_layout": {
+    "available_width": 560,
+    "gap": "clamp(floor((560-sum(widths))/(N-1)),4,10)",
+    "five_current_serif_width": 548,
+    "six_mixed_serif_width": 557,
+    "six_mixed_serif_gap": 4,
+    "overflow_policy": "Do not shrink type or exceed130; many long words exceed560. Requires later runtime layout decision, not solved by this first-step drawing."
+  },
+  "runtime_implementation": "None; design/source only. Next step is nine11x11 family symbols after user chooses."
+}
