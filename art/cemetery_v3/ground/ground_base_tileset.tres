@@ -1,7 +1,7 @@
-[gd_resource type="TileSet" format=3]
+[gd_resource type="TileSet" format=3 uid="uid://b6vqst3mf7w51"]
 
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/base/ground_base_01.png" id="1_eliah"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/base/ground_base_02.png" id="2_l1l2x"]
+[ext_resource type="Texture2D" uid="uid://c3jhqevhqnrqv" path="res://art/cemetery_v3/ground/base/ground_base_01.png" id="1_eliah"]
+[ext_resource type="Texture2D" uid="uid://b41ucxbx7mmvr" path="res://art/cemetery_v3/ground/base/ground_base_02.png" id="2_l1l2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbil2"]
 texture = ExtResource("1_eliah")

@@ -1,11 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://nuciofoomhxu"]
 
-[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_koe5g"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/dead_tree_03_base.png" id="2_5eceh"]
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/dead_tree_03.png" id="3_pegqa"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rhpw"]
-size = Vector2(37, 10)
+[ext_resource type="Script" uid="uid://cxp6ae81iw2yl" path="res://scripts/world/v3/cemetery_prop.gd" id="1_koe5g"]
+[ext_resource type="Texture2D" uid="uid://bq8b03siffrjp" path="res://art/cemetery_v3/props/dead_tree_03_base.png" id="2_5eceh"]
+[ext_resource type="Texture2D" uid="uid://birm8lx2evf4a" path="res://art/cemetery_v3/props/dead_tree_03.png" id="3_pegqa"]
 
 [node name="DeadTree03" type="Node2D" unique_id=1938763771]
 script = ExtResource("1_koe5g")
@@ -23,6 +20,5 @@ offset = Vector2(-128, -171)
 
 [node name="Body" type="StaticBody2D" parent="." unique_id=173374862]
 
-[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=944391848]
-position = Vector2(8, -4)
-shape = SubResource("RectangleShape2D_6rhpw")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body" unique_id=1312462923]
+polygon = PackedVector2Array(-76, -8, -48, 5, -25, 8, 6, 12, 25, -2, 38, -7, 7, -28, -47, -36)

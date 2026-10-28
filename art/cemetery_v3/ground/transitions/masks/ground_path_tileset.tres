@@ -1,6 +1,6 @@
-[gd_resource type="TileSet" format=3]
+[gd_resource type="TileSet" format=3 uid="uid://bclgbxcg6y5si"]
 
-[ext_resource type="Texture2D" path="res://art/cemetery_v3/ground/transitions/masks/ground_path_masks_01.png" id="1_pvhrt"]
+[ext_resource type="Texture2D" uid="uid://25uilyjmi3i8" path="res://art/cemetery_v3/ground/transitions/masks/ground_path_masks_01.png" id="1_pvhrt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r3iwf"]
 texture = ExtResource("1_pvhrt")
