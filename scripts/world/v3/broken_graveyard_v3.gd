@@ -543,9 +543,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("open_run_bag"):
 		if hud.overlay_open: hud.close_overlay()
 		else: hud.show_bag()
-	elif key == KEY_V: # compare the skeleton's two BONE CUT versions (docs/COMBAT_ANIMATION_REQUEST.md §11)
-		SkeletonB.attack_variant = "_v2" if SkeletonB.attack_variant.is_empty() else ""
-		hud.announce("BONE CUT · %s" % ("v2 · short arm" if SkeletonB.attack_variant == "_v2" else "v1 · long reach"))
 	elif key == KEY_SPACE and not hud.overlay_open and not view.busy:
 		turns.end_turn()
 	elif key == KEY_R and (encounter_cleared or turns.phase == TURNS.Phase.DEFEAT):

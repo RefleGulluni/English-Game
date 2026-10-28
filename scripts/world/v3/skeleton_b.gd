@@ -47,8 +47,6 @@ var _attack_key := ""
 var _look_after_walk := Vector2.INF
 
 static var _keys := {}
-## "" plays skeleton_B_attack_<side>, "_v2" the character group's comparison version (V in the fight).
-static var attack_variant := ""
 
 
 func _ready() -> void:
@@ -115,8 +113,6 @@ func lunge(toward: Vector2) -> void:
 func attack(toward: Vector2) -> float:
 	var side := "right" if toward.x >= global_position.x else "left"
 	_attack_key = "skeleton_B_attack_" + side
-	if not attack_variant.is_empty() and _keys.has(_attack_key + attack_variant):
-		_attack_key += attack_variant
 	if _mode != "standing" or action != "idle" or not _keys.has(_attack_key):
 		lunge(toward)
 		return 0.0
@@ -125,7 +121,8 @@ func attack(toward: Vector2) -> float:
 	_attack_dir = 1.0 if side == "right" else -1.0
 	_attack_t = 0.0
 	action = "attack"
-	_strip.load_strip(ANIM, _attack_key) # this exact version, not the newest _vN
+	# This exact strip: the user kept v1 (2026-10-28); the newer _v2 comparison must not replace it.
+	_strip.load_strip(ANIM, _attack_key)
 	return float(_keys[_attack_key].key_frame.time_ms) / 1000.0
 
 
