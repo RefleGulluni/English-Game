@@ -55,7 +55,7 @@ f ≥ 0.5 是路；刚过 0.5 的一小圈是湿泥边；刚不到 0.5 的地方
 
 ## 5. 用户怎么刷（中文步骤）
 
-1. 在 Godot 编辑器里打开房间场景（试验房间：`scenes/prototypes/ground_paint/ground_paint_room.tscn`）；
+1. 在 Godot 编辑器里打开房间场景（试验房间：`scenes/prototypes/ground_paint/ground_paint_room.tscn`；第一个正式房间：墓园入口 `scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn`，有半透明参考图 `Reference` 显示物件位置，点小眼睛可藏）；
 2. 左边场景树点 **Ground → Path**（以后草地就点 Ground → Grass）；
 3. 底部 TileMap 面板点 **Terrains**，选 **碎石泥路**；
 4. 在画面上按住左键拖动刷路，右键擦掉；
@@ -85,6 +85,7 @@ f ≥ 0.5 是路；刚过 0.5 的一小圈是湿泥边；刚不到 0.5 的地方
 |---|---|
 | `scripts/tools/build_ground_path_masks.py` | 生成 15 块路的形状（`transitions/masks/ground_path_masks_01.png` + `.json`） |
 | `scripts/tools/build_ground_paint_room.gd` | 生成底子 TileSet、路 TileSet（Match Corners）和试验房间（已有房间只补缺的层和 Decals） |
+| `scripts/tools/build_cemetery_entry_ground.gd` | 给墓园入口灰盒加上四层地面 + 编辑器参考图（只在没有 `Ground` 时生成一次） |
 | `scripts/tools/bake_ground_decals.gd` | 把 `ground/decals/decal_*.png` 做成可拖的贴花积木（已有的不覆盖） |
 | `scripts/world/v3/ground_path.gdshader` | 纯白 → 按世界坐标贴纹理 |
 | `scenes/prototypes/ground_paint/ground_paint_room.tscn` | 刷路试验房间（含用户亲手刷的路） |

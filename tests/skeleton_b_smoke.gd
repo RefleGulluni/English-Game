@@ -54,9 +54,9 @@ func _initialize() -> void:
 	visual.wander(spots)
 	var walks := 0
 	for i in 40:
-		var was := visual.action
+		var was := root.position
 		run(0.5)
-		if visual.action != was and visual.action == "start": walks += 1
+		if root.position != was: walks += 1
 		if visual.action == "idle":
 			check(spots.has(root.position), "rests only on its spots: %s" % root.position)
 	check(walks >= 1, "it walks about instead of only standing")
@@ -84,7 +84,8 @@ func _initialize() -> void:
 	run(5.0)
 	check(visual.action == "idle" and visual.facing == "left", "after rising it turns to the hero: %s" % visual.facing)
 	visual.present({"mode": "remains"})
-	run(1.1)
+	check(visual.action == "collapse" and strip.current == "skeleton_B_collapse_left", "facing left it falls with the left collapse")
+	run(1.4)
 	visual.present({"mode": "cleared"})
 	check(strip.modulate != Color.WHITE and visual.action == "remains", "a cleared skeleton stays as dimmed remains")
 

@@ -8,6 +8,10 @@ extends Node
 ## 地上平躺的东西压得更扁、路往远处收窄、前景更大。
 ## 截图：Godot --path . res://scenes/prototypes/cemetery_entry/cemetery_entry_greybox.tscn -- --capture=<目录>
 ## 换地面试样：-- --plate=<PNG 路径>（960×540）
+## 正式地面（2026-10-28，docs/GROUND_TERRAIN_METHOD.md）：场景里的 Ground（Base 底子 / Grass 草地 / Path 路 / Decals 贴花）
+## 由用户在编辑器里亲手刷；有了它就不再画旧的色块路和积水。Reference 是一张半透明的房间参考图（物件位置），
+## 只在编辑器里看，运行时隐藏。Ground 由 scripts/tools/build_cemetery_entry_ground.gd 第一次生成，之后不再覆盖。
+## 参考图：-- --reference=<PNG 路径>（整个房间 960×1350 一张，不含地面）
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
@@ -87,6 +91,7 @@ var _exits: Array[Node2D] = []
 var _label: Label
 var _note := ""
 var _font := SystemFont.new() # the default font lacks some Chinese characters
+var _painted := false # the user's painted Ground is in use: no colour-block road or puddles
 
 
 func _ready() -> void:
@@ -108,9 +113,27 @@ func _ready() -> void:
 	add_child(_viewport)
 	var layout := LAYOUT.duplicate()
 	layout.props = LAYOUT.props + _yard_graves()
+	var reference := get_node_or_null("Reference")
+	if reference:
+		reference.free() # an editor-only guide to where the props stand
+	var painted: Node2D = get_node_or_null("Ground")
+	if painted and not "--reference" in str(OS.get_cmdline_user_args()):
+		layout.plate_file = "" # the painted ground replaces the old sample plate
+		remove_child(painted)
+		_viewport.add_child(painted)
+		_collect_stray_decals(painted)
+	elif painted:
+		painted.free()
+		painted = null
+	if "--reference" in str(OS.get_cmdline_user_args()):
+		layout.plate_file = "" # props and placeholders only, on a see-through background
+		_viewport.transparent_bg = true
+	_painted = painted != null
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--plate="):
 			layout.plate_file = arg.get_slice("=", 1)
+			if painted:
+				painted.visible = false
 	_room = CemeteryRoom.new(layout)
 	_viewport.add_child(_room)
 	_build_placeholders()
@@ -156,6 +179,8 @@ func _ready() -> void:
 	add_child(_label)
 	if "--capture" in str(OS.get_cmdline_user_args()):
 		_capture()
+	elif "--reference" in str(OS.get_cmdline_user_args()):
+		_save_reference()
 
 
 func _process(_delta: float) -> void:
@@ -179,23 +204,20 @@ func _build_placeholders() -> void:
 	ground.z_index = CemeteryProp.BASE_Z
 	_room.add_child(ground)
 	_room.move_child(ground, 2)
-	var road := ROAD_LEFT.duplicate()
-	for i in range(ROAD_LEFT.size() - 1, -1, -1):
-		var p: Vector2 = ROAD_LEFT[i]
-		road.append(p + Vector2(roundf(lerpf(56, 80, p.y / SIZE.y)), 0))
-	_keep(ground, _poly(road, MUD_PATH), _high)
-	ground.add_child(_poly(AVENUE, MUD_PATH))
-	for side in [1, -1]:
-		ground.add_child(_poly(_branch_polygon(side), MUD_PATH))
+	if not _painted:
+		_keep(ground, _poly(road_polygon(), MUD_PATH), _high)
+		ground.add_child(_poly(AVENUE, MUD_PATH))
+		for side in [1, -1]:
+			ground.add_child(_poly(branch_polygon(side), MUD_PATH))
 	var slabs := [Vector2(482, 1310), Vector2(470, 1250), Vector2(502, 1200), Vector2(486, 1130), Vector2(458, 1060),
 		Vector2(470, 1000), Vector2(500, 938), Vector2(484, 860), Vector2(470, 790), Vector2(492, 688),
 		Vector2(505, 650), Vector2(482, 606), Vector2(478, 570), Vector2(480, 520)]
-	for i in slabs.size(): # old flagstones scattered along the road
+	for i in (0 if _painted else slabs.size()): # old flagstones scattered along the road
 		var slab := Sprite2D.new()
 		slab.texture = PixelArt.texture(PROPS + OLD + "path/old_slab_%02d.png" % (i % 8 + 1))
 		slab.position = slabs[i]
 		_keep(ground, slab, _high)
-	for p in [[Vector2(392, 605), Vector2(26, 7)], [Vector2(568, 712), Vector2(20, 6)], [Vector2(380, 970), Vector2(22, 6)],
+	for p in [] if _painted else [[Vector2(392, 605), Vector2(26, 7)], [Vector2(568, 712), Vector2(20, 6)], [Vector2(380, 970), Vector2(22, 6)],
 			[Vector2(560, 1090), Vector2(28, 8)], [Vector2(540, 1280), Vector2(14, 5)], [Vector2(424, 470), Vector2(14, 4)]]:
 		_keep(ground, _poly(_ellipse(p[0], p[1]), WATER), _high)
 		_keep(ground, _poly(_ellipse(p[0], Vector2(p[1].x * 1.3, maxf(2, p[1].y * 0.45))), WATER), _low)
@@ -304,7 +326,7 @@ func _build_placeholders() -> void:
 			["门里两侧：一排排墓碑", Vector2(60, 300)], ["半开的铁门（占位）", Vector2(330, 516)],
 			["倒下的铁门（占位）", Vector2(556, 562)], ["路边孤坟", Vector2(120, 570)],
 			["倒下的路灯（占位）", Vector2(600, 1276)], ["枯树（旧素材占位）", Vector2(740, 890)],
-			["前景枯枝（占位）", Vector2(8, 1250)], ["泥路（以后换地面贴花）", Vector2(540, 1170)],
+			["前景枯枝（占位）", Vector2(8, 1250)], ["泥路（色块占位，正式地面在 Ground 里刷）", Vector2(540, 1170)],
 			["外圈旧乱石墙（塌了）", Vector2(110, 870)], ["歪倒的路牌（占位）", Vector2(576, 1000)]]:
 		var label := Label.new()
 		label.text = note[0]
@@ -424,12 +446,21 @@ func _near_paths(p: Vector2) -> bool:
 	return false
 
 
-func _mirror(p: Vector2, side: int) -> Vector2:
+static func _mirror(p: Vector2, side: int) -> Vector2:
 	return p if side == 1 else Vector2(SIZE.x - p.x, p.y)
 
 
+## The road from the bottom of the room up to the gate: wider near the viewer, a little narrower far away.
+static func road_polygon() -> PackedVector2Array:
+	var road := PackedVector2Array(ROAD_LEFT)
+	for i in range(ROAD_LEFT.size() - 1, -1, -1):
+		var p: Vector2 = ROAD_LEFT[i]
+		road.append(p + Vector2(roundf(lerpf(56, 80, p.y / SIZE.y)), 0))
+	return road
+
+
 ## The path along BRANCH, 40 px wide.
-func _branch_polygon(side: int) -> PackedVector2Array:
+static func branch_polygon(side: int) -> PackedVector2Array:
 	var left := PackedVector2Array()
 	var right := PackedVector2Array()
 	for p: Vector2 in BRANCH:
@@ -487,6 +518,37 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	elif event.physical_keycode == KEY_F:
 		var win := get_window()
 		win.mode = Window.MODE_WINDOWED if win.mode == Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
+
+
+## Decals dragged onto the scene root instead of Ground/Decals would never be drawn (the root is
+## not in the viewport); move them where they belong, keeping their place.
+func _collect_stray_decals(ground: Node2D) -> void:
+	var decals: Node2D = ground.get_node_or_null("Decals")
+	if decals == null:
+		return
+	for child in get_children():
+		if child is Sprite2D:
+			child.reparent(decals)
+
+
+## The whole room in one picture, without the painted ground: the editor guide for painting.
+func _save_reference() -> void:
+	var path := ""
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--reference="):
+			path = arg.get_slice("=", 1)
+	_labels.visible = true
+	_tint().visible = false
+	_room.player.visible = false
+	_viewport.size = SIZE
+	_camera.position = Vector2(SIZE) / 2
+	_camera.reset_smoothing()
+	set_process(false)
+	for i in 30:
+		await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	_viewport.get_texture().get_image().save_png(path)
+	get_tree().quit()
 
 
 func _capture() -> void:
