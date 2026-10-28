@@ -35,10 +35,10 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ### 新的正式 Broken Graveyard（分支 `feature/broken-graveyard-v3`）
 - `scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`：v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`）。走动 → 原地开战（不黑屏）→ 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 发光区域名）。截图模式 `-- --capture=<目录>` 自动打完一整圈。
-- 零件：`hero_b1.gd` + **可拖入的主角场景 `scenes/player/hero_b1.tscn`**（帧打包在 `hero_b1_frames.tres`，交付新动画后运行 `scripts/tools/bake_hero_b1.gd` 重新打包）；`cemetery_room.gd`（按布局数据建房间，支持 `prop_dir`、物件名带子目录、不给碰撞时按物件的脚自动生成一条）；`room_exit.gd`（出口 + 语言层符号）；`screen_fade.gd`；`skeleton_placeholder.gd`（代码画的灰色占位骷髅）。
-- 灰盒 / 待办：占位骷髅；0.9 战斗 HUD 缩到 0.75 倍并半透明（战斗表现还没设计）；出口路线是写死的（**用户说先不接**随机算法 `cemetery_director`，等用户说再接）；第 2 房间与 Veiled Walk 是占位；凿子掉落物太小；Lexicon 用的是原型的灰盒书（Tab），L 是旧的文字词表。
+- 零件：`hero_b1.gd` + **可拖入的主角场景 `scenes/player/hero_b1.tscn`**（帧打包在 `hero_b1_frames.tres`，交付新动画后运行 `scripts/tools/bake_hero_b1.gd` 重新打包）；`cemetery_room.gd`（按布局数据建房间，支持 `prop_dir`、物件名带子目录、不给碰撞时按物件的脚自动生成一条）；`room_exit.gd`（出口 + 语言层符号）；`screen_fade.gd`；**`skeleton_b.gd`（正式骷髅「余裹者」，2026-10-28 接入）**：待机、开战时朝主角走上来（起步 → 整步走 → 停步，每步 40 px）、受击、散架 → 骨堆 → 重组，打完是变暗的骨堆；攻击暂时还是“往前探一下”，等攻击动画。旧的灰色占位 `skeleton_placeholder.gd` 留作参考。
+- 灰盒 / 待办：0.9 战斗 HUD 缩到 0.75 倍并半透明（战斗表现还没设计）；出口路线是写死的（**用户说先不接**随机算法 `cemetery_director`，等用户说再接）；第 2 房间与 Veiled Walk 是占位；凿子掉落物太小；Lexicon 用的是原型的灰盒书（Tab），L 是旧的文字词表。
 - 960×540 由场景启动时设置，`project.godot` 没改（改了会裁切 1280×720 的 0.8 完整一局；等 `main.tscn` 切到新场景时再一起改）。
-- 28 套 smoke 测试全部通过（`for t in tests/*_smoke.gd; do /Applications/Godot.app/Contents/MacOS/Godot --headless --path . --script res://$t; done`，看输出里的 `: PASS`；macOS 没有 `timeout` 命令）。
+- 29 套 smoke 测试全部通过（`for t in tests/*_smoke.gd; do /Applications/Godot.app/Contents/MacOS/Godot --headless --path . --script res://$t; done`，看输出里的 `: PASS`；macOS 没有 `timeout` 命令）。
 
 ### 关卡结构（知识库 `03_WORLD_AND_LEVELS/English_Game_Scene_Structure_and_Transitions.md`）
 - D-022：场景不无缝拼接，单屏房间；同区域换房间快速淡黑（约 0.4 秒），换区域慢淡黑 + 区域名（约 2～3 秒）；从哪边出去就从对侧进来。
@@ -83,7 +83,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 接下来可以做的事（按建议顺序）
 
 1. **下次开工先做**（2026-10-28 用户收工时，地面和骷髅动画都已通过）：
-   - **把正式骷髅接进游戏**：用 `SpriteStrip` 替换 `scripts/world/v3/skeleton_placeholder.gd`（代码画的灰色占位），走路要用起步 / 走 / 停步，停步要等走完第 8 帧（试看房间已有做法）；散架 / 重组接战斗事件；
+   - ~~把正式骷髅接进游戏~~（2026-10-28 已接，等用户在游戏里看）；入口其余物件的需求已补 §6，**等用户转发给角色组**；
    - **20 件地面贴花做成可拖的积木**（像墓碑一样），再教用户在刷路房间里摆；
    - **墓园入口灰盒换成新地面**：把底子 + 草地 + 路三层放进入口房间，让用户按自己的草图亲手刷；
    - **入口其余物件**（铁门、喷泉、枯树、路灯、路牌、木十字架，`docs/CEMETERY_ENTRY_PROPS_REQUEST.md` 第 2 步）发给角色组；

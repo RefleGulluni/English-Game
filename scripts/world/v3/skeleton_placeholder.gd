@@ -1,4 +1,5 @@
 extends Node2D
+## Replaced in the game by skeleton_b.gd (the real design B, 2026-10-28); kept for reference.
 ## Grey-box Grave Skeleton for the v3 world until the character design group delivers the real
 ## sprites (docs/SKELETON_DESIGN_REQUEST.md). Drawn in code on the native pixel grid: a 96 px
 ## tall standing figure and a low Bone Remains pile, both plain greys (cyan is reserved for the

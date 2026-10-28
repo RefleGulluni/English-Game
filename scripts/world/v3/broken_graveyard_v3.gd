@@ -8,7 +8,7 @@ extends Node
 ## turn controller, skeleton logic, reward controller, world loot, gameplay event bus.
 ## Rooms and exits follow Decision Log D-022 / D-023 (KB: Scene Structure and Transitions).
 ##
-## Grey-box parts: the skeleton is a code-drawn placeholder, the combat HUD is the 0.9 one
+## The skeleton is the real design B (skeleton_b.gd). Grey-box parts: the combat HUD is the 0.9 one
 ## scaled to the 960x540 screen, exit glyphs and room 2 / area 2 contents are stand-ins.
 ##
 ## Keys: WASD move · E interact · Tab Lexicon book · L knowledge list · B run bag ·
@@ -20,7 +20,7 @@ const EVENTS := preload("res://scripts/systems/gameplay_events.gd")
 const INTERACTIONS := preload("res://scripts/world/interaction_system.gd")
 const REWARDS := preload("res://scripts/loot/slice_reward_controller.gd")
 const SKELETON_LOGIC := preload("res://scripts/combat/skeleton_logic.gd")
-const SKELETON_VISUAL := preload("res://scripts/world/v3/skeleton_placeholder.gd")
+const SKELETON_VISUAL := preload("res://scripts/world/v3/skeleton_b.gd")
 const ROOM_EXIT := preload("res://scripts/world/v3/room_exit.gd")
 const SCREEN_FADE := preload("res://scripts/world/v3/screen_fade.gd")
 const LEXICON := preload("res://scripts/prototypes/graveyard_room/lexicon_overlay.gd")
@@ -32,6 +32,7 @@ const CHISEL := preload("res://data/loot/loot_weathered_chisel.tres")
 const NATIVE := Vector2i(960, 540)
 const HUD_DESIGN_SIZE := Vector2(1280, 720) # the 0.9 HUD was laid out for this screen
 const ENCOUNTER_DISTANCE := 110.0
+const SKELETON_KEEPS_AWAY := 56.0 # how close the skeleton walks up to the hero when a fight starts
 
 # Room layouts. Props: [file, origin, collision rect relative to the PNG origin, ellipse?]
 const ROOMS := {
@@ -246,6 +247,7 @@ func start_encounter() -> void:
 	turns.set_phase(TURNS.Phase.COMBAT_ENTER)
 	_update_lock()
 	hero.face_direction(skeleton.global_position - hero.global_position)
+	_skeleton_steps_up()
 	var node := {"id": "broken_graveyard_skeleton", "title": "GRAVE SKELETON", "type": "encounter", "words": ["REASSEMBLE", "REMAINS", "SCATTER", "ERODE", "TOXIC"], "tags": ["RISK", "COMBAT"], "biome": "cemetery", "primary": ""}
 	node.primary = manager.learning.choose_target(node, manager.rng, 0)
 	if not str(node.primary).is_empty():
@@ -398,6 +400,7 @@ func _make_skeleton(at: Vector2) -> Node2D:
 	root.add_child(visual_root)
 	var visual: Node2D = SKELETON_VISUAL.new()
 	visual.name = "Visual"
+	visual.mover = root
 	visual_root.add_child(visual)
 	var anchor := Marker2D.new()
 	anchor.name = "LootAnchor"
@@ -412,6 +415,22 @@ func _make_skeleton(at: Vector2) -> Node2D:
 	body.add_child(shape)
 	root.add_child(body)
 	return root
+
+
+## When the fight starts the skeleton walks up to meet the hero (whole strides, stopping a
+## little short of them), or just turns to face them when they are already close.
+func _skeleton_steps_up() -> void:
+	var visual: Node2D = skeleton.get_node("VisualRoot/Visual")
+	var to := hero.global_position - skeleton.global_position
+	var gap := maxf(0.0, (absf(to.x) if absf(to.x) >= absf(to.y) else absf(to.y)) - SKELETON_KEEPS_AWAY)
+	if gap >= SkeletonB.STRIDE:
+		visual.walk_to(skeleton.position + _axis(to) * minf(gap, 2 * SkeletonB.STRIDE))
+	else:
+		visual.face(to)
+
+
+func _axis(v: Vector2) -> Vector2:
+	return Vector2(signf(v.x), 0) if absf(v.x) >= absf(v.y) else Vector2(0, signf(v.y))
 
 
 func _take_exit(exit: Node2D) -> void:
