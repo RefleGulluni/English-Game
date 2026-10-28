@@ -157,6 +157,8 @@ func _ready() -> void:
 	hud.ui_root.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud.ui_root.size = HUD_DESIGN_SIZE
 	hud.combat_panel.offset_top = -300 # keep the upper half of the screen for the two fighters
+	# When the words need more room than that, the panel grows upward instead of off the screen.
+	hud.combat_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	var panel_style := StyleBoxFlat.new()
 	panel_style.bg_color = Color(0.03, 0.04, 0.05, 0.62) # the fighters stay visible through it
 	for edge in [SIDE_LEFT, SIDE_RIGHT, SIDE_TOP, SIDE_BOTTOM]:
@@ -165,6 +167,9 @@ func _ready() -> void:
 	for node in hud.ui_root.find_children("*", "Label", true, false):
 		if (node as Label).text.begins_with("WASD"):
 			node.text = "WASD move · E interact · TAB Lexicon book · L word list · B Run Bag · F fullscreen"
+	for node in hud.ui_root.find_children("*", "Button", true, false):
+		if (node as Button).text == "RUN BAG [TAB]": # Tab opens the Lexicon book in this scene
+			node.text = "RUN BAG [B]"
 
 	_bind_rules()
 	_load_room("bg_1", "")
