@@ -7,20 +7,13 @@ extends Node2D
 signal taken(exit: Node2D)
 
 const CYAN := Color(0.42, 0.86, 0.95)
-# 11x11 glyphs, one per node type. Placeholders until the exit symbols are designed (KB: Scene
-# Structure §4, open question).
-const GLYPHS := {
-	"combat": ["X.........X", ".X.......X.", "..X.....X..", "...X...X...", "....X.X....", ".....X.....",
-		"....X.X....", "...X...X...", "..X.....X..", ".X.......X.", "X.........X"],
-	"event": ["...XXXXX...", "..X.....X..", ".X.......X.", ".........X.", "........X..", "......XX...",
-		".....X.....", ".....X.....", "...........", ".....X.....", ".....X....."],
-	"rest": [".....X.....", "....X.X....", "....X.X....", "...X...X...", "...X...X...", "..X..X..X..",
-		"..X.X.X.X..", ".X...X...X.", ".X.......X.", "X.........X", "XXXXXXXXXXX"],
-	"elite": ["X....X....X", "XX..XXX..XX", "X.X.X.X.X.X", "X..X...X..X", "X.........X", "XXXXXXXXXXX",
-		"...........", "XXXXXXXXXXX", ".X.......X.", "..X.....X..", "...XXXXX..."],
-	"area": ["XXXXXXXXXXX", "X.........X", "X.........X", "X....X....X", "X.....X...X", "XXXXXXXX..X",
-		"X.....X...X", "X....X....X", "X.........X", "X.........X", "XXXXXXXXXXX"],
-}
+# 15x15 glyphs from the art group (art/ui/exit_glyphs_v3/, approved 2026-10-28), one per node
+# type. All stand on the same threshold line, which tells "a place" apart from the word-family
+# marks in the combat bar. "unknown" is how a node shows while the player has not understood it.
+const GLYPH_DIR := "res://art/ui/exit_glyphs_v3/exit_%s.png"
+const KINDS := ["combat", "elite", "event", "mystery", "relic", "rest", "final", "area", "unknown"]
+const ALIASES := {"encounter": "combat", "boss": "final"} # rule-layer node names
+static var GLYPHS := {}
 
 var zone := Rect2() # world rect the player's feet must enter
 var kind := "combat"
@@ -31,8 +24,27 @@ var enabled := false:
 		enabled = value
 		if is_instance_valid(glyph):
 			glyph.visible = value
+var understood := true # false shows the "unknown" glyph (not wired to the rules yet)
 var glyph: Node2D
 var _time := 0.0
+
+
+static func glyph_rows(node_kind: String) -> Array:
+	if GLYPHS.is_empty():
+		for k in KINDS:
+			var path := ProjectSettings.globalize_path(GLYPH_DIR % k)
+			if not FileAccess.file_exists(path):
+				continue
+			var img := Image.load_from_file(path)
+			var rows: Array[String] = []
+			for y in img.get_height():
+				var row := ""
+				for x in img.get_width():
+					row += "X" if img.get_pixel(x, y).a > 0.5 else "."
+				rows.append(row)
+			GLYPHS[k] = rows
+	var key: String = ALIASES.get(node_kind, node_kind)
+	return GLYPHS.get(key, GLYPHS.get("unknown", []))
 
 
 func setup(data: Dictionary, language_layer: CanvasLayer) -> void:
@@ -64,11 +76,11 @@ func _process(delta: float) -> void:
 
 
 func _draw_glyph() -> void:
-	var rows: Array = GLYPHS.get(kind, GLYPHS.combat)
+	var rows: Array = glyph_rows(kind if understood else "unknown")
 	# Steady breathing glow, whole pixels only: a 1 px bob every second.
 	var bob := Vector2(0, -1 if fmod(_time, 2.0) < 1.0 else 0)
 	var glow := 0.22 + 0.08 * sin(_time * 1.6)
-	var origin := Vector2(-5, -5) + bob
+	var origin := Vector2(-7, -7) + bob
 	for y in rows.size():
 		for x in rows[y].length():
 			if rows[y][x] == "X":

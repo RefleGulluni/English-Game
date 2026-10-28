@@ -1,0 +1,16 @@
+{
+  "art/ui/word_sigil_v3/glyphs/family_force.png": "dc73c7d1cd72be7828d25a8121d8720b29db16be32859112e6e2b067cd85bc89",
+  "art/ui/word_sigil_v3/glyphs/family_perception.png": "ba74cee69c1b2090e216994b010c0d8c5709285fb9418b258e381a42ef9531a0",
+  "art/ui/word_sigil_v3/glyphs/family_reaction.png": "c171ba57fe622ff13036f7d529368f1e6c7eea3efa4ca68beeb1aff6770dfaac",
+  "art/ui/word_sigil_v3/glyphs/family_glyphs_sheet_8x.png": "73c99b0670fe9047eceae1a807249de86c32294f56e7b1ec03020da52e2a6f0a",
+  "art/ui/word_sigil_v3/glyphs/family_direct.png": "1f4fea0d9bce8c951ba6e60c3cc2c132972285222caa2450105a272ab86996b3",
+  "art/ui/word_sigil_v3/glyphs/family_restoration.png": "6f530c0f794a824df5b03c9529fda92a6989702c3ebc93b1b6835e6a219b88a1",
+  "art/ui/word_sigil_v3/glyphs/family_protection.png": "79705104612eadcdccd40f55d519d3b619092af31db65eb3923e0c258fb8cda3",
+  "art/ui/word_sigil_v3/glyphs/family_toxicity.png": "6dcdef7d60965fef01f72b4fd335e90f951a6263e6d98f6f2051989b7b4f0972",
+  "art/ui/word_sigil_v3/glyphs/family_decay.png": "2ae2439239bb0b694716d47c90a26e18e960609a12be55994a63918cde4e1316",
+  "art/ui/word_sigil_v3/glyphs/family_control.png": "116259bac452cdeaa67289e843757f4260a2d61658f103c262f527c762400685",
+  "art/ui/word_sigil_v3/glyphs/family_glyphs_sheet_1x.png": "71363c19fe9ce08783d9272ed1ee3d395cf5e21a58f5e8b5fda24300b3ff6a01",
+  "art/ui/word_sigil_v3/qc/word_sigil_QA.md": "9e3cb09c64d71b10576f2e088648caf017551e17f65b52f467eb6cba97cc9887",
+  "scripts/world/v3/room_exit.gd": "0817f9c8ee2d2fd28f4617011e02b3119e68b20fd597fc948811c760f15e5dad",
+  "docs/reference/combat_v1_standoff.png": "603eccfd0ca480236966bbea2e03353bf18b940bc368d6a303ff6a30b269a8e0"
+}

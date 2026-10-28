@@ -80,7 +80,8 @@ const ROOMS := {
 		"exits": [],
 	},
 }
-const NODE_TITLES := {"event": "EVENT", "rest": "REST", "combat": "COMBAT", "elite": "ELITE"}
+const NODE_TITLES := {"event": "EVENT", "rest": "REST", "combat": "COMBAT", "elite": "ELITE",
+	"mystery": "MYSTERY", "relic": "RELIC", "final": "FINAL"}
 
 @export var seed_value := 9019
 @export var qa_force_chisel := true
@@ -636,6 +637,18 @@ func _capture() -> void:
 		await _frames(2)
 	await _frames(60)
 	await _shot(dir + "/04_after.png")
+	# All nine exit glyphs in a row along the top of the room, to judge them against each other.
+	var lineup: Array[Node2D] = []
+	for i in ROOM_EXIT.KINDS.size():
+		var sample: Node2D = ROOM_EXIT.new()
+		sample.setup({"zone": Rect2(), "kind": ROOM_EXIT.KINDS[i], "target": "", "side": "top", "glyph_at": Vector2(240 + i * 60, 40)}, _language)
+		add_child(sample)
+		sample.enabled = true
+		lineup.append(sample)
+	await _frames(4)
+	await _shot(dir + "/04b_exit_glyphs.png")
+	for sample in lineup:
+		sample.queue_free()
 	print("CAPTURE result finished=%s cleared=%s hp=%s" % [combat.finished, encounter_cleared, combat.hp])
 	if encounter_cleared:
 		hero.position = Vector2(888, 30)

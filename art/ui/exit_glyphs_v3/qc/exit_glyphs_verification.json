@@ -1,0 +1,436 @@
+{
+  "status": "NINE_EXIT_GLYPHS_READY_FOR_USER_REVIEW",
+  "glyphs": {
+    "combat": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 29,
+      "upper_body_pixels": 14,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "ae1ef6a630ebb1b70f164d8c3e7c92c79f2cbd8092bbe7996702e451060f7186"
+    },
+    "elite": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 45,
+      "upper_body_pixels": 30,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "12cf7f0923ef29a4e6edc580e5bd157193f3480ca8d4739070fdcd822053dc6c"
+    },
+    "event": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 31,
+      "upper_body_pixels": 16,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "7e86e0924657805302e778f664984eb9ad7ff7cbfb5cc1ec504ba94a38e59808"
+    },
+    "mystery": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 49,
+      "upper_body_pixels": 34,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "30d7561c444eec285b22575753bfea28c4aeef776c60806523dc607ff260e234"
+    },
+    "relic": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 50,
+      "upper_body_pixels": 35,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "6660c28fb9638b93b8fc6debb72aa3ee85b66d4f062dc729b134e9729c7e8ea6"
+    },
+    "rest": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 37,
+      "upper_body_pixels": 22,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "f58a95ad108699f340082b9ebb08076ed6f76f7b9e41694b08b094b3dff6e2d7"
+    },
+    "final": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 66,
+      "upper_body_pixels": 51,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "4ced5601a064ed21da765b519c4122b7c0c4efe7ffbf652658ec91f870d7f617"
+    },
+    "area": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 44,
+      "upper_body_pixels": 29,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "e9afd8855f7c900ef279fd8ac6144466e3f3c9ef491c340f7ceab93ea6f727da"
+    },
+    "unknown": {
+      "size": [
+        15,
+        15
+      ],
+      "opaque_pixels": 30,
+      "upper_body_pixels": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_color": [
+        255,
+        255,
+        255
+      ],
+      "sha256": "303351c3d5bcbfafe2ab780481cdd9e047f0561c950575bda8918f6e22e0f15e"
+    }
+  },
+  "pair_checks": [
+    {
+      "pair": [
+        "combat",
+        "elite"
+      ],
+      "different_pixels": 16
+    },
+    {
+      "pair": [
+        "combat",
+        "event"
+      ],
+      "different_pixels": 14
+    },
+    {
+      "pair": [
+        "combat",
+        "mystery"
+      ],
+      "different_pixels": 36
+    },
+    {
+      "pair": [
+        "combat",
+        "relic"
+      ],
+      "different_pixels": 41
+    },
+    {
+      "pair": [
+        "combat",
+        "rest"
+      ],
+      "different_pixels": 28
+    },
+    {
+      "pair": [
+        "combat",
+        "final"
+      ],
+      "different_pixels": 37
+    },
+    {
+      "pair": [
+        "combat",
+        "area"
+      ],
+      "different_pixels": 39
+    },
+    {
+      "pair": [
+        "combat",
+        "unknown"
+      ],
+      "different_pixels": 29
+    },
+    {
+      "pair": [
+        "elite",
+        "event"
+      ],
+      "different_pixels": 30
+    },
+    {
+      "pair": [
+        "elite",
+        "mystery"
+      ],
+      "different_pixels": 52
+    },
+    {
+      "pair": [
+        "elite",
+        "relic"
+      ],
+      "different_pixels": 57
+    },
+    {
+      "pair": [
+        "elite",
+        "rest"
+      ],
+      "different_pixels": 44
+    },
+    {
+      "pair": [
+        "elite",
+        "final"
+      ],
+      "different_pixels": 21
+    },
+    {
+      "pair": [
+        "elite",
+        "area"
+      ],
+      "different_pixels": 51
+    },
+    {
+      "pair": [
+        "elite",
+        "unknown"
+      ],
+      "different_pixels": 37
+    },
+    {
+      "pair": [
+        "event",
+        "mystery"
+      ],
+      "different_pixels": 42
+    },
+    {
+      "pair": [
+        "event",
+        "relic"
+      ],
+      "different_pixels": 43
+    },
+    {
+      "pair": [
+        "event",
+        "rest"
+      ],
+      "different_pixels": 32
+    },
+    {
+      "pair": [
+        "event",
+        "final"
+      ],
+      "different_pixels": 43
+    },
+    {
+      "pair": [
+        "event",
+        "area"
+      ],
+      "different_pixels": 41
+    },
+    {
+      "pair": [
+        "event",
+        "unknown"
+      ],
+      "different_pixels": 27
+    },
+    {
+      "pair": [
+        "mystery",
+        "relic"
+      ],
+      "different_pixels": 29
+    },
+    {
+      "pair": [
+        "mystery",
+        "rest"
+      ],
+      "different_pixels": 52
+    },
+    {
+      "pair": [
+        "mystery",
+        "final"
+      ],
+      "different_pixels": 55
+    },
+    {
+      "pair": [
+        "mystery",
+        "area"
+      ],
+      "different_pixels": 47
+    },
+    {
+      "pair": [
+        "mystery",
+        "unknown"
+      ],
+      "different_pixels": 49
+    },
+    {
+      "pair": [
+        "relic",
+        "rest"
+      ],
+      "different_pixels": 43
+    },
+    {
+      "pair": [
+        "relic",
+        "final"
+      ],
+      "different_pixels": 52
+    },
+    {
+      "pair": [
+        "relic",
+        "area"
+      ],
+      "different_pixels": 46
+    },
+    {
+      "pair": [
+        "relic",
+        "unknown"
+      ],
+      "different_pixels": 38
+    },
+    {
+      "pair": [
+        "rest",
+        "final"
+      ],
+      "different_pixels": 61
+    },
+    {
+      "pair": [
+        "rest",
+        "area"
+      ],
+      "different_pixels": 31
+    },
+    {
+      "pair": [
+        "rest",
+        "unknown"
+      ],
+      "different_pixels": 35
+    },
+    {
+      "pair": [
+        "final",
+        "area"
+      ],
+      "different_pixels": 66
+    },
+    {
+      "pair": [
+        "final",
+        "unknown"
+      ],
+      "different_pixels": 40
+    },
+    {
+      "pair": [
+        "area",
+        "unknown"
+      ],
+      "different_pixels": 42
+    }
+  ],
+  "shared_threshold_pixel_count": 15,
+  "scene_source": "docs/reference/combat_v1_standoff.png",
+  "source_size": [
+    2880,
+    1620
+  ],
+  "scene_overlay_native_xy": [
+    898,
+    56
+  ],
+  "scene_unchanged_outside_glyph": true,
+  "protected_file_count": 14,
+  "protected_files_unchanged": true,
+  "runtime_integrated": false,
+  "baked_glow": false
+}
