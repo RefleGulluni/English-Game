@@ -1,0 +1,20 @@
+{
+  "frames": 12,
+  "durations_ms": [
+    100,
+    110,
+    90,
+    80,
+    70,
+    70,
+    70,
+    80,
+    100,
+    130,
+    180,
+    200
+  ],
+  "loop": false,
+  "sprite_sheet": "skeleton_B_collapse_left.png",
+  "hold_last_frame": true
+}

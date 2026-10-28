@@ -4,7 +4,8 @@ extends Node
 ## 中间一排四只站着待机（正 / 背 / 左 / 右），按 H 一起受击；
 ## 右下一只按空格散架 → 骨堆待机 → 重组 → 站回待机。主角站在旁边作比例参照。
 ## 有返修版（`_v2`、`_v3`……）的动画默认播最新一版，V 切回最初版对比；待机各自从随机位置开始，几只不会一起动。
-## 按键：空格 散架 / 重组 · H 受击 · V 新版 / 最初版 · T 开关游戏整体色调 · F 全屏
+## 右下那只按 D 转身（正 → 左 → 背 → 右），朝哪边就用哪个方向的散架（还没有的方向用正面）。
+## 按键：空格 散架 / 重组 · D 转身 · H 受击 · V 新版 / 最初版 · T 开关游戏整体色调 · F 全屏
 ## 截图：Godot --path . res://scenes/prototypes/skeleton_anim/skeleton_anim_preview.tscn -- --capture=<目录>
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
@@ -37,6 +38,7 @@ var _pause := 0.0
 var _stepping := false # 起步 / 停步正在播，期间原地不动
 var _standing: Array[SpriteStrip] = []
 var _faller: SpriteStrip
+var _faller_dir := "front"
 var _label: Label
 var _use_v2 := true
 var _keys := {} # every animation name in timing.json
@@ -123,7 +125,7 @@ func _base(anim: String) -> String:
 
 
 func _update_label() -> void:
-	_label.text = "骷髅动画试看（%s）· 左上：绕圈走 · 中间：四方向待机，H 受击 · 右下：空格 散架 / 重组 · V 新版 / 最初版 · T 色调 · F 全屏" % ("最新返修版" if _use_v2 else "最初版")
+	_label.text = "骷髅动画试看（%s）· 左上：绕圈走 · 中间：四方向待机，H 受击 · 右下：D 转身、空格 散架 / 重组 · V 新版 / 最初版 · T 色调 · F 全屏" % ("最新返修版" if _use_v2 else "最初版")
 
 
 func _process(delta: float) -> void:
@@ -176,17 +178,26 @@ func _dir_name(v: Vector2) -> String:
 ## collapse → remains idle (a few seconds) → reassemble → idle again.
 func _faller_next() -> void:
 	match _base(_faller.current):
-		"skeleton_B_collapse_front":
+		"skeleton_B_collapse_front", "skeleton_B_collapse_left", "skeleton_B_collapse_right", "skeleton_B_collapse_back":
 			_play(_faller, "skeleton_B_remains_idle")
 			await get_tree().create_timer(REMAINS_TIME).timeout
 			_play(_faller, "skeleton_B_reassemble_front")
 		"skeleton_B_reassemble_front":
+			_faller_dir = "front"
 			_play(_faller, "skeleton_B_idle_front")
 
 
 func _collapse() -> void:
-	if _base(_faller.current) == "skeleton_B_idle_front":
-		_play(_faller, "skeleton_B_collapse_front")
+	if _base(_faller.current) == "skeleton_B_idle_" + _faller_dir:
+		var own := "skeleton_B_collapse_" + _faller_dir
+		_play(_faller, own if _keys.has(own) else "skeleton_B_collapse_front")
+
+
+func _turn_faller() -> void:
+	if _base(_faller.current) == "skeleton_B_idle_" + _faller_dir:
+		const TURNS := ["front", "left", "back", "right"]
+		_faller_dir = TURNS[(TURNS.find(_faller_dir) + 1) % TURNS.size()]
+		_play(_faller, "skeleton_B_idle_" + _faller_dir)
 
 
 func _hit() -> void:
@@ -208,6 +219,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_collapse()
 	elif event.physical_keycode == KEY_H:
 		_hit()
+	elif event.physical_keycode == KEY_D:
+		_turn_faller()
 	elif event.physical_keycode == KEY_V:
 		_use_v2 = not _use_v2
 		var strips: Array = [_walk_strip, _faller]
@@ -232,6 +245,7 @@ func _capture() -> void:
 	for i in 20:
 		await get_tree().process_frame
 	_hit()
+	_turn_faller() # the newest collapse direction (left) instead of the front one
 	_collapse()
 	var shots := [["01_hit_peak", 0.12], ["02_collapsing", 0.45], ["03_remains", 1.0],
 		["04_rising", 4.18], ["05_skull_flying", 0.75]]
