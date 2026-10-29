@@ -74,7 +74,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ### Lexicon
 - 实体书；学会的单词永远不会丢失；灰盒已定：大号书、背景压暗、主角转向镜头翻书。
-- **开合动画（D-068，2026-10-29 按用户的翻法修订）**：书升起、封面正对玩家（符印暗刻）→ 符印亮起 → 书往后仰、立在书脊上，封面之间的缝透青蓝光 → **左右封面同时倒下**摊平 → 星座从书脊亮起、词浮现；书脊全程在屏幕正中；翻开约 1.3 秒、合上约 0.5 秒（倒放，最后又看到封面），可随时打断。程序已做：`scripts/prototypes/graveyard_room/lexicon_overlay.gd`（v3 墓园按 Tab；1 / 2 / 3 键快 / 正常 / 慢；截图 `-- --capture=<目录> --lexicon`），书的动作现在是灰盒色块，角色组的干净书、符印遮罩、`lexicon_tip_up.png`（3 帧）、`lexicon_covers_fall.png`（5～6 帧）放进 `art/character_design/lexicon/` 后自动换上。需求 `docs/LEXICON_BOOK_ANIMATION_REQUEST.md`（已按新翻法改好，**等用户转发**）。
+- **开合动画（D-068，2026-10-29 按用户的翻法修订）**：书升起、封面正对玩家（符印暗刻）→ 符印亮起 → 书往后仰、立在书脊上，封面之间的缝透青蓝光 → **左右封面同时倒下**摊平 → 星座从书脊亮起、词浮现；书脊全程在屏幕正中；**用户实机调定：翻开约 2.3 秒、合上约 1.8 秒**（倒放，最后又看到封面；“书出现 / 消失”与其余步骤分开计时，常量 `OPEN_RISE` 等），可随时打断。用户对这本书要“从容、有分量”，以后界面动画起点定慢一些。程序已做：`scripts/prototypes/graveyard_room/lexicon_overlay.gd`（v3 墓园按 Tab；1 / 2 / 3 键快 / 正常 / 慢；截图 `-- --capture=<目录> --lexicon`），书的动作现在是灰盒色块，角色组的干净书、符印遮罩、`lexicon_tip_up.png`（3 帧）、`lexicon_covers_fall.png`（5～6 帧）放进 `art/character_design/lexicon/` 后自动换上。需求 `docs/LEXICON_BOOK_ANIMATION_REQUEST.md`（2026-10-29 定稿，交给用户转发角色组）。
 - 游戏会有 15,000～20,000+ 个单词：星图总览 → 星座 → 单词页 + 搜索 + 按阶段筛选。界面设计见知识库 `02_SYSTEMS/02_Learning/English_Game_Lexicon_Interface_Design.md`（[提案] 尚未确认）。
 
 ### Git 状态

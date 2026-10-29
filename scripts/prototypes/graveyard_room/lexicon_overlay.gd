@@ -34,9 +34,14 @@ const FONT := preload("res://art/ui/fonts/CormorantGaramond.ttf")
 const CYAN := Color(0.42, 0.86, 0.95)
 const INK := Color8(44, 31, 24)
 const PENCIL := Color8(128, 116, 104)
-const OPEN_TIME := 1.3 # user 2026-10-29: 0.7 felt too fast; tipping the book up adds a beat
-const CLOSE_TIME := 0.5
-const PACE := [0.6, 1.0, 1.6] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
+# Seconds for the book appearing / disappearing (the rise stage) and for everything after it.
+# User 2026-10-29: 0.7 s, 1.3 s, 2 s to open and 0.4 s .. 1.5 s to close each felt too fast; then
+# 0.3 s more for the book appearing and for it disappearing.
+const OPEN_RISE := 0.6
+const OPEN_REST := 1.7
+const CLOSE_RISE := 0.53
+const CLOSE_REST := 1.27
+const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
 const P_RISE := 0.15
 const P_SIGIL := 0.32
@@ -127,9 +132,12 @@ func set_open_now(open: bool) -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
-	var duration: float = (OPEN_TIME if is_open else CLOSE_TIME) * PACE[speed]
+	# The rise stage and the rest run at their own speeds, so either can be tuned alone.
+	var in_rise := _t < P_RISE or (_t == P_RISE and not is_open)
+	var seconds: float = ((OPEN_RISE if is_open else CLOSE_RISE) if in_rise else (OPEN_REST if is_open else CLOSE_REST)) * PACE[speed]
+	var share := P_RISE if in_rise else 1.0 - P_RISE
 	var was := _t
-	_t = move_toward(_t, 1.0 if is_open else 0.0, delta / duration)
+	_t = move_toward(_t, 1.0 if is_open else 0.0, delta * share / seconds)
 	if _t > 0.0 or was > 0.0: # one more redraw once fully closed, to clear the last frame
 		queue_redraw()
 
