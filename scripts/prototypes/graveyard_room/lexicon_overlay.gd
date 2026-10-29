@@ -97,6 +97,7 @@ var _turn_from := 0 # the spread a turn started from
 var _warm := 0 # frames left for the viewports to paint before a turn starts moving
 var _spreads: Array[SubViewport] = [] # [the spread turned from, the spread turned to]
 var _spread_page := [0, 0]
+var _spread_unit := 1.0 # screen pixels per book pixel inside the hidden spreads
 var _leaf_len := 0 # columns of paper from the spine to a page's outer edge
 var _paper_rows := {} # book x -> Vector2i(top, bottom) of the paper in that column of the open book
 var _pages: Array = [] # four entries per right page, from the word library
@@ -381,9 +382,12 @@ func turn_page(forward: bool) -> void:
 	_turn = 0.0
 	if live_turn:
 		_spread_page = [_turn_from, _page]
-		var unit := pixel * book_scale
+		# Painted at the window's real resolution, not the game's 960x540: text drawn small and
+		# then enlarged would blur next to the sharp text of the open book.
+		var stretch := maxf(1.0, get_viewport().get_final_transform().get_scale().x)
+		_spread_unit = pixel * book_scale * stretch
 		for spread in _spreads:
-			spread.size = OPEN_BOOK.size * unit
+			spread.size = Vector2i((Vector2(OPEN_BOOK.size) * _spread_unit).round())
 			spread.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 			spread.get_child(0).queue_redraw()
 		_warm = 2
@@ -538,7 +542,7 @@ func _paint_pages(origin: Vector2, unit: float, page: int, sky_clock: float, sky
 	_ci.draw_rect(Rect2(origin + Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
 	_draw_sky(origin, unit, sky_fade, sky_clock)
 	_draw_entries(origin, unit, e, page)
-	var size := int(4.6 * unit)
+	var size := _font_px(4.6, unit)
 	for side in 2: # page numbers, small and centred at the foot of each page
 		var number := str(page * 2 + side + 1)
 		var w := FONT.get_string_size(number, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
@@ -550,7 +554,7 @@ func _paint_pages(origin: Vector2, unit: float, page: int, sky_clock: float, sky
 ## one turned to. The new spread's constellation is still dark: it lights once the page lands.
 func _paint_spread(canvas: Control, which: int) -> void:
 	_ci = canvas
-	var unit := pixel * book_scale
+	var unit := _spread_unit
 	_ci.draw_texture_rect(_open, Rect2(Vector2.ZERO, Vector2(OPEN_BOOK.size) * unit), false)
 	_paint_pages(Vector2.ZERO, unit, _spread_page[which], _sky if which == 0 else 0.0, 1.0, 1.0)
 	_ci = self
@@ -573,7 +577,7 @@ func _draw_leaf(origin: Vector2, unit: float) -> void:
 	var a_part := Rect2i(0, 0, split, h) if from > 0 else Rect2i(split, 0, w - split, h)
 	for part in [[b, b_part], [a, a_part]]:
 		var r: Rect2i = part[1]
-		_ci.draw_texture_rect_region(part[0], Rect2(origin + Vector2(r.position) * unit, Vector2(r.size) * unit), Rect2(Vector2(r.position) * unit, Vector2(r.size) * unit))
+		_ci.draw_texture_rect_region(part[0], Rect2(origin + Vector2(r.position) * unit, Vector2(r.size) * unit), Rect2(Vector2(r.position) * _spread_unit, Vector2(r.size) * _spread_unit))
 
 	var edge := PI * smoothstep(0.0, 1.0 - LEAF_LAG, _turn) # angle of the free edge
 	var root := PI * smoothstep(LEAF_LAG, 1.0, _turn) # angle at the spine
@@ -613,7 +617,7 @@ func _draw_leaf(origin: Vector2, unit: float) -> void:
 	for c in columns:
 		var rows: Vector2i = c[4]
 		var lift := roundi(c[0] * LEAF_LIFT)
-		var src := Rect2(Vector2(c[3], rows.x) * unit, Vector2(1, rows.y - rows.x + 1) * unit)
+		var src := Rect2(Vector2(c[3], rows.x) * _spread_unit, Vector2(1, rows.y - rows.x + 1) * _spread_unit)
 		var dst := Rect2(origin + Vector2(c[1], rows.x - lift) * unit, Vector2(c[2], rows.y - rows.x + 1) * unit)
 		# Old paper in shade goes brown, not grey: blue falls off fastest, green a little faster than red.
 		_ci.draw_texture_rect_region(c[5], dst, src, Color(c[6], pow(c[6], 1.25), pow(c[6], 1.7)))
@@ -702,8 +706,8 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 	var left := origin.x + (RIGHT_PAGE.position.x + 8) * unit
 	var top := origin.y + (RIGHT_PAGE.position.y + 6) * unit
 	var row := 20.0 * unit
-	var word_size := int(7.5 * unit)
-	var note_size := int(4.6 * unit)
+	var word_size := _font_px(7.5, unit)
+	var note_size := _font_px(4.6, unit)
 	var entries := _entries(page)
 	var note_width := (RIGHT_PAGE.size.x - 10) * unit
 	for i in entries.size():
@@ -737,6 +741,13 @@ func _draw_caption(origin: Vector2, unit: float, e: float) -> void:
 	var w := FONT.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size).x
 	_ci.draw_string(FONT, Vector2(screen_rect.get_center().x - w / 2.0, origin.y + OPEN_BOOK.size.y * unit + 18 * pixel), caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size, Color(0.85, 0.82, 0.76, e))
 
+
+
+## A font size in book pixels, sized on the game's grid and then scaled whole, so text painted
+## into a hidden spread at the window's resolution is exactly the open book's text, only sharper.
+func _font_px(book_px: float, unit: float) -> int:
+	var base := pixel * book_scale
+	return int(book_px * base) * maxi(1, roundi(unit / base))
 
 ## Shortens a line, a word at a time, until it fits `width`.
 func _fit(text: String, font_size: int, width: float) -> String:
