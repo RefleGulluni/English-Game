@@ -1,0 +1,97 @@
+{
+  "lemma": "epitaph",
+  "dictionary": {
+    "phonetic": {
+      "uk": "'epitɑ:f",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 墓志铭, 碑文"
+    ],
+    "exam": [
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 18871,
+      "modern_rank": 19769,
+      "collins_stars": 0,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "epitaphs"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-06418268-n",
+        "pos": "noun",
+        "category": "noun.communication",
+        "definition": "an inscription on a tombstone or monument in memory of the person buried there",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "inscription",
+          "lettering"
+        ]
+      },
+      {
+        "synset": "oewn-06418400-n",
+        "pos": "noun",
+        "category": "noun.communication",
+        "definition": "a summary statement of commemoration for a dead person",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "memorial",
+          "commemoration"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "epitaph#tomb_inscription",
+      "pos": "noun",
+      "wordnet": "oewn-06418268-n",
+      "sense": "short words written on a grave about the dead person",
+      "zh": "墓志铭",
+      "role": "thing",
+      "tags": [
+        "BURIAL",
+        "MEMORY",
+        "INSCRIPTION",
+        "DEATH"
+      ],
+      "appears": [
+        "物件：墓碑上的字（被磨平的、被苔藓盖住的）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "墓碑上浮出 ep_t_ph",
+        "RECOGNIZED": "看一眼就知道是“墓志铭”",
+        "UNDERSTOOD": "能读懂一段墓志铭",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "看墓碑上的字，选出 epitaph",
+        "produce": "“Read the ___ before the rain wears it away.” 填空"
+      },
+      "confusable": [
+        "epithet（形近，“绰号”）",
+        "epigraph（形近，“题词”）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "BURIAL",
+      "page_line": "Most epitaphs here say the same thing. One of them says, Do not read me.",
+      "status": "draft"
+    }
+  ]
+}

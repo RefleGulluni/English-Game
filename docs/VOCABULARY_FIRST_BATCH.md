@@ -2,7 +2,9 @@
 
 2026-10-29。方向见知识库决策日志 D-069 与 `02_SYSTEMS/02_Learning/English_Game_Learning_System_Current_Reference.md` §3、§8。名单用户已挑（按 Claude 推荐 + 用户加的 raven、moss、bell）。**词条属性用户已同意（D-070）**，并改为用多个标签匹配地区和事件（D-070 补充）：在第一版字段上加考试标签与常用程度、音标、词的关系、星座、书页上的一句话，能力词再加词类符号。
 
-## 1. 第一批名单（43 个）
+## 1. 第一批名单（38 个）
+
+（2026-10-29 更正：原先写成 43 个是数错了，四组加起来是 38 个。）
 
 | 用途 | 词 |
 |---|---|
@@ -12,7 +14,7 @@
 | 气氛词（5） | grief, silence, memory, hollow, remains |
 
 - 中文是大概意思，不是正式释义；考试标签（四级 / 六级 / 考研 / 雅思）以后由工具从词典数据自动填，不手写。
-- 现有代码里的词（`cemetery_words.gd` 12 个、`combat_content.gd` 的战斗词、`learning_schedule.gd` 的家族）都在这份名单里，迁移时不丢。
+- 现有代码里的词**大部分**在这份名单里。**不在的有 4 个**：`bury`、`echo`（`cemetery_words.gd`）、`toxic`、`stabilize`（`combat_content.gd`，erode 的对策词就是 STABILIZE）。迁移前要用户决定加不加（Claude 建议都加）。
 
 ## 2. 一个词条分两半
 
@@ -182,5 +184,5 @@ status: draft
 
 - 星座怎么分（现在先按主要标签分，等 Lexicon 正式界面时再定）；
 - 标签表本身（一共有哪些标签、每个地区喜欢哪些）；墓园的先用 0.7 的 8 个。
-- 原材料是否用 ECDICT + WordNet；谁写草稿（建议 AI 写、工具检查、用户抽查）；
+- ~~原材料是否用 ECDICT + WordNet~~：**已定（D-071）**，流程见 [VOCABULARY_PIPELINE.md](VOCABULARY_PIPELINE.md)；38 个词的草稿已在 `data/words/entries/`，等用户抽查。
 - 能力词的效果数字由战斗设计定，表里只是举例。

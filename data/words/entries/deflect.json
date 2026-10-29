@@ -1,0 +1,188 @@
+{
+  "lemma": "deflect",
+  "dictionary": {
+    "phonetic": {
+      "uk": "dɪˈflɛkt",
+      "us": null
+    },
+    "zh": [
+      "vt. 转移, 使偏斜",
+      "vi. 偏斜"
+    ],
+    "exam": [
+      "cet6",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 9485,
+      "modern_rank": 9591,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "deflected",
+      "past": "deflected",
+      "ing": "deflecting",
+      "third_person": "deflects"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02458770-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "prevent the occurrence of; prevent from happening; to protect from or to keep away anything undesirable; to ward off",
+        "examples": [
+          "Let's avoid a confrontation",
+          "head off a confrontation"
+        ],
+        "synonyms": [
+          "debar",
+          "forefend",
+          "forfend",
+          "obviate",
+          "avert",
+          "head off",
+          "stave off",
+          "fend off",
+          "avoid",
+          "ward off"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "prevent",
+          "forestall"
+        ]
+      },
+      {
+        "synset": "oewn-02038145-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "turn from a straight course, fixed direction, or line of interest",
+        "examples": [],
+        "synonyms": [
+          "bend",
+          "turn away"
+        ],
+        "antonyms": [],
+        "family": [
+          "deflexion",
+          "deflection",
+          "deflector"
+        ],
+        "broader": [
+          "turn"
+        ]
+      },
+      {
+        "synset": "oewn-02037650-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "turn aside and away from an initial or intended course",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "deflective",
+          "deflexion",
+          "deflection",
+          "deflector"
+        ],
+        "broader": [
+          "turn"
+        ]
+      },
+      {
+        "synset": "oewn-01795785-v",
+        "pos": "verb",
+        "category": "verb.emotion",
+        "definition": "draw someone's attention away from something",
+        "examples": [
+          "The thief distracted the bystanders",
+          "He deflected his competitors"
+        ],
+        "synonyms": [
+          "distract"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "confuse",
+          "flurry"
+        ]
+      },
+      {
+        "synset": "oewn-01149526-v",
+        "pos": "verb",
+        "category": "verb.competition",
+        "definition": "impede the movement of (an opponent or a ball)",
+        "examples": [
+          "block an attack"
+        ],
+        "synonyms": [
+          "parry",
+          "block"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "fence"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "deflect#turn_aside",
+      "pos": "verb",
+      "wordnet": "oewn-02037650-v",
+      "sense": "to make something that is coming at you go another way",
+      "zh": "使偏转；挡开",
+      "role": "ability",
+      "tags": [
+        "REACTION",
+        "PROTECT"
+      ],
+      "appears": [
+        "战斗：骷髅的 BONE CUT 砍下来时",
+        "物件：墓碑上刻的盾形纹章"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "一闪而过的 de___",
+        "RECOGNIZED": "“让冲过来的东西偏开”",
+        "UNDERSTOOD": "反应：这一下物理伤害减少 75%",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看骨刀擦着盾牌滑开，选出 deflect 的意思",
+        "produce": "BONE CUT 正在落下，从 deflect / restore / observe 里选"
+      },
+      "confusable": [
+        "reflect（形近，“反射”）",
+        "defect（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "deflective",
+          "deflexion",
+          "deflection",
+          "deflector"
+        ]
+      },
+      "constellation": "REACTION",
+      "page_line": "You cannot stop every blow. You can choose where it lands.",
+      "sigil": "reaction",
+      "effect": {
+        "type": "reduce_physical",
+        "percent": 75,
+        "cost": 1
+      },
+      "status": "draft"
+    }
+  ]
+}

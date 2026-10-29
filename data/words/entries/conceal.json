@@ -1,0 +1,123 @@
+{
+  "lemma": "conceal",
+  "dictionary": {
+    "phonetic": {
+      "uk": "kənˈsiːl",
+      "us": "kənˈsil"
+    },
+    "zh": [
+      "vt. 隐藏, 掩盖, 隐瞒",
+      "[法] 隐瞒, 隐匿, 保守秘密"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 3994,
+      "modern_rank": 5148,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "concealed",
+      "ing": "concealing",
+      "third_person": "conceals",
+      "past": "concealed"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02149298-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "prevent from being seen or discovered",
+        "examples": [
+          "hide the money"
+        ],
+        "synonyms": [
+          "hide"
+        ],
+        "antonyms": [],
+        "family": [
+          "concealment",
+          "concealing"
+        ],
+        "broader": [
+          "act",
+          "move"
+        ]
+      },
+      {
+        "synset": "oewn-02151220-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "hold back; keep from being perceived by others",
+        "examples": [
+          "She conceals her anger well"
+        ],
+        "synonyms": [
+          "hold back",
+          "hold in"
+        ],
+        "antonyms": [],
+        "family": [
+          "concealment",
+          "concealing"
+        ],
+        "broader": [
+          "keep",
+          "maintain"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "conceal#hide",
+      "pos": "verb",
+      "wordnet": "oewn-02149298-v",
+      "sense": "to hide something so others cannot see or know it",
+      "zh": "隐藏；隐瞒",
+      "role": "enemy",
+      "tags": [
+        "HIDDEN"
+      ],
+      "appears": [
+        "物件：名字被苔藓盖住的墓碑",
+        "敌人意图：飞蛾的 CONCEAL"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "只看到一团雾，雾后面有 con___",
+        "RECOGNIZED": "“把东西藏起来”",
+        "UNDERSTOOD": "遮蔽 +8，敌人得到 6 点雾甲；REVEAL 可以去掉",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看苔藓盖住名字，选出 conceal 的意思",
+        "produce": "敌人要 CONCEAL，选出能抵消它的词"
+      },
+      "confusable": [
+        "cancel（形近）",
+        "reveal（反义）"
+      ],
+      "relations": {
+        "synonyms": [
+          "hide"
+        ],
+        "antonyms": [],
+        "family": [
+          "concealment",
+          "concealing"
+        ]
+      },
+      "constellation": "HIDDEN",
+      "page_line": "Moss does not conceal a name out of malice. It simply grows where no one reads.",
+      "status": "draft"
+    }
+  ]
+}

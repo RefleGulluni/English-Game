@@ -1,0 +1,155 @@
+{
+  "lemma": "haunt",
+  "dictionary": {
+    "phonetic": {
+      "uk": "hɔːnt",
+      "us": null
+    },
+    "zh": [
+      "n. 常到的地方, 生息地",
+      "vt. 常到, 出没于, 萦绕于",
+      "vi. 出没, 作祟"
+    ],
+    "exam": [
+      "cet6",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 6064,
+      "modern_rank": 5014,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "haunted",
+      "third_person": "haunts",
+      "plural": "haunts",
+      "past": "haunted",
+      "ing": "haunting"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-08599031-n",
+        "pos": "noun",
+        "category": "noun.location",
+        "definition": "a frequently visited place",
+        "examples": [],
+        "synonyms": [
+          "hangout",
+          "resort",
+          "repair",
+          "stamping ground"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "area",
+          "country"
+        ]
+      },
+      {
+        "synset": "oewn-02008023-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "follow stealthily or recur constantly and spontaneously to",
+        "examples": [
+          "her ex-boyfriend stalked her",
+          "the ghost of her mother haunted her"
+        ],
+        "synonyms": [
+          "stalk"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "pursue",
+          "follow"
+        ]
+      },
+      {
+        "synset": "oewn-01787033-v",
+        "pos": "verb",
+        "category": "verb.emotion",
+        "definition": "haunt like a ghost; pursue",
+        "examples": [
+          "Fear of illness haunts her"
+        ],
+        "synonyms": [
+          "obsess",
+          "ghost"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "preoccupy"
+        ]
+      },
+      {
+        "synset": "oewn-01848373-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "be a regular or frequent visitor to a certain place",
+        "examples": [
+          "She haunts the ballet"
+        ],
+        "synonyms": [
+          "frequent"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "travel to",
+          "visit"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "haunt#return_as_ghost",
+      "pos": "verb",
+      "wordnet": "oewn-01787033-v",
+      "sense": "to keep coming back to a place, like a ghost or a bad memory",
+      "zh": "萦绕；（鬼魂）出没",
+      "role": "enemy",
+      "tags": [
+        "DEATH",
+        "MEMORY",
+        "CONTINUITY",
+        "FEAR"
+      ],
+      "appears": [
+        "敌人：驱散后又回来的怨灵",
+        "事件：每晚出现在同一个地方的影子"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "h___t，字母像在闪",
+        "RECOGNIZED": "“一次又一次回来”",
+        "UNDERSTOOD": "怨灵驱散后会回来：要撑过守夜，不是打倒它",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "同一个影子每晚都回来，选出 haunt 的意思",
+        "produce": "“Memories of the lost still ___ this place.” 填空"
+      },
+      "confusable": [
+        "hunt（形近）",
+        "linger（近义）"
+      ],
+      "relations": {
+        "synonyms": [
+          "obsess",
+          "ghost"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "DEATH",
+      "page_line": "Nothing haunts a place that nobody remembers.",
+      "status": "draft"
+    }
+  ]
+}

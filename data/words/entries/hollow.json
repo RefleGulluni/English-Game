@@ -1,0 +1,233 @@
+{
+  "lemma": "hollow",
+  "dictionary": {
+    "phonetic": {
+      "uk": "'hɒlәu",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 洞, 窟窿, 山谷",
+      "a. 空的, 虚伪的, 空腹的, 凹的",
+      "vi. 形成空洞",
+      "vt. 挖空"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 7023,
+      "modern_rank": 7413,
+      "collins_stars": 2,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "hollows",
+      "past": "hollowed",
+      "past_participle": "hollowed",
+      "ing": "hollowing",
+      "third_person": "hollows"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02271738-a",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "not solid; having a space or gap or cavity",
+        "examples": [
+          "a hollow wall",
+          "a hollow tree"
+        ],
+        "synonyms": [],
+        "antonyms": [
+          "solid"
+        ],
+        "family": [
+          "hollowness"
+        ],
+        "broader": []
+      },
+      {
+        "synset": "oewn-02017223-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "as if echoing in a hollow space",
+        "examples": [
+          "the hollow sound of footsteps in the empty ballroom"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": []
+      },
+      {
+        "synset": "oewn-01501421-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "devoid of significance or force",
+        "examples": [
+          "empty promises",
+          "a hollow victory"
+        ],
+        "synonyms": [
+          "empty",
+          "vacuous"
+        ],
+        "antonyms": [],
+        "family": [
+          "hollowness"
+        ],
+        "broader": []
+      },
+      {
+        "synset": "oewn-00629437-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "lacking in substance or character",
+        "examples": [
+          "a hollow person"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": []
+      },
+      {
+        "synset": "oewn-13933910-n",
+        "pos": "noun",
+        "category": "noun.shape",
+        "definition": "a cavity or space in something",
+        "examples": [
+          "hunger had caused the hollows in their cheeks"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "cavity",
+          "enclosed space"
+        ]
+      },
+      {
+        "synset": "oewn-09327937-n",
+        "pos": "noun",
+        "category": "noun.object",
+        "definition": "a small valley between mountains",
+        "examples": [
+          "he built himself a cabin in a hollow high up in the Appalachians"
+        ],
+        "synonyms": [
+          "holler"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "valley",
+          "vale"
+        ]
+      },
+      {
+        "synset": "oewn-09327656-n",
+        "pos": "noun",
+        "category": "noun.object",
+        "definition": "a depression hollowed out of solid matter",
+        "examples": [],
+        "synonyms": [
+          "hole"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "natural depression",
+          "depression"
+        ]
+      },
+      {
+        "synset": "oewn-01313320-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "remove the inner part or the core of",
+        "examples": [
+          "the mining company wants to excavate the hillside"
+        ],
+        "synonyms": [
+          "excavate",
+          "dig"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "remove",
+          "take"
+        ]
+      },
+      {
+        "synset": "oewn-01285148-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "remove the interior of",
+        "examples": [
+          "hollow out a tree trunk"
+        ],
+        "synonyms": [
+          "hollow out",
+          "core out"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "empty"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "hollow#empty_inside",
+      "pos": "adjective",
+      "wordnet": "oewn-02271738-a",
+      "sense": "having an empty space inside",
+      "zh": "空心的；空洞的",
+      "role": "mood",
+      "tags": [
+        "SPACE",
+        "REMAINS"
+      ],
+      "appears": [
+        "敌人：空骷髅头敲出的声音",
+        "敌人：没有实体的鬼魂（没有结构可打）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "对白里这个词是糊的",
+        "RECOGNIZED": "“里面是空的”",
+        "UNDERSTOOD": "幽灵是空的：没有结构，打结构的词没用",
+        "USABLE": "对白里能用"
+      },
+      "challenge": {
+        "recognize": "听骷髅头被敲的声音，选出 hollow 的意思",
+        "produce": "“The empty skull is ___.” 填空"
+      },
+      "confusable": [
+        "hallow（形近，“神圣的”）",
+        "follow（形近）",
+        "shallow（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [
+          "solid"
+        ],
+        "family": [
+          "hollowness"
+        ]
+      },
+      "constellation": "SPACE",
+      "page_line": "Knock on a skull and it answers. It is hollow, not empty.",
+      "status": "draft"
+    }
+  ]
+}

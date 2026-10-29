@@ -1,0 +1,160 @@
+{
+  "lemma": "fog",
+  "dictionary": {
+    "phonetic": {
+      "uk": "fɒg",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 雾, 迷惑, (割后的)最生草, 苔藓",
+      "vi. 被雾笼罩, 变模糊",
+      "vt. 使困惑, 以雾笼罩"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 5413,
+      "modern_rank": 4913,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "fogs",
+      "ing": "fogging",
+      "past_participle": "fogged",
+      "past": "fogged",
+      "third_person": "fogs"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-11478731-n",
+        "pos": "noun",
+        "category": "noun.phenomenon",
+        "definition": "droplets of water vapor suspended in the air near the ground",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "foggy"
+        ],
+        "broader": [
+          "aerosol"
+        ]
+      },
+      {
+        "synset": "oewn-14545250-n",
+        "pos": "noun",
+        "category": "noun.state",
+        "definition": "an atmosphere in which visibility is reduced because of a cloud of some substance",
+        "examples": [],
+        "synonyms": [
+          "fogginess",
+          "murk",
+          "murkiness"
+        ],
+        "antonyms": [],
+        "family": [
+          "foggy"
+        ],
+        "broader": [
+          "atmosphere",
+          "atmospheric state"
+        ]
+      },
+      {
+        "synset": "oewn-05692366-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "confusion characterized by lack of clarity",
+        "examples": [],
+        "synonyms": [
+          "daze",
+          "haze"
+        ],
+        "antonyms": [],
+        "family": [
+          "foggy"
+        ],
+        "broader": [
+          "confusion",
+          "mental confusion"
+        ]
+      },
+      {
+        "synset": "oewn-02162161-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "make less visible or unclear",
+        "examples": [
+          "The stars are obscured by the clouds",
+          "the big elm tree obscures our view of the valley"
+        ],
+        "synonyms": [
+          "obscure",
+          "befog",
+          "becloud",
+          "obnubilate",
+          "haze over",
+          "cloud",
+          "mist"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "hide",
+          "conceal"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "fog#mist",
+      "pos": "noun",
+      "wordnet": "oewn-11478731-n",
+      "sense": "thick cloud near the ground that is hard to see through",
+      "zh": "雾",
+      "role": "thing",
+      "tags": [
+        "WEATHER",
+        "HIDDEN",
+        "SILENCE"
+      ],
+      "appears": [
+        "场景：地平线雾、黑雾深处区域",
+        "敌人：雾里的飞蛾"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "雾里浮出 f_g",
+        "RECOGNIZED": "看一眼就知道是“雾”",
+        "UNDERSTOOD": "能分清 fog / mist",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 fog",
+        "produce": "“The ___ hides the names on the stones.” 填空"
+      },
+      "confusable": [
+        "frog（形近）",
+        "mist（近义，更薄）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "foggy"
+        ]
+      },
+      "constellation": "WEATHER",
+      "page_line": "In this cemetery, fog does not roll in. It rises from the ground.",
+      "status": "draft"
+    }
+  ]
+}

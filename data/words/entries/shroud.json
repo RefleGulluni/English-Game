@@ -1,0 +1,181 @@
+{
+  "lemma": "shroud",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ʃraud",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 尸衣, 寿衣, 覆盖物, (船的)横桅索",
+      "vt. 包以尸衣, 遮蔽, 隐藏, 覆盖"
+    ],
+    "exam": [
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 14062,
+      "modern_rank": 12854,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "shrouded",
+      "plural": "shrouds",
+      "ing": "shrouding",
+      "past": "shrouded",
+      "third_person": "shrouds"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-04217790-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a line that suspends the harness from the canopy of a parachute",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "line"
+        ]
+      },
+      {
+        "synset": "oewn-04195411-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "(nautical) a line (rope or chain) that regulates the angle at which a sail is set in relation to the wind",
+        "examples": [],
+        "synonyms": [
+          "sheet",
+          "tack",
+          "mainsheet",
+          "weather sheet"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "line"
+        ]
+      },
+      {
+        "synset": "oewn-03884813-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "burial garment in which a corpse is wrapped",
+        "examples": [],
+        "synonyms": [
+          "pall",
+          "cerement",
+          "winding-sheet",
+          "winding-clothes"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "burial garment"
+        ]
+      },
+      {
+        "synset": "oewn-01585121-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "cover as if with a shroud",
+        "examples": [
+          "The origins of this civilization are shrouded in mystery"
+        ],
+        "synonyms": [
+          "enshroud",
+          "hide",
+          "cover"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "envelop",
+          "enfold"
+        ]
+      },
+      {
+        "synset": "oewn-02755643-v",
+        "pos": "verb",
+        "category": "verb.stative",
+        "definition": "form a cover like a shroud",
+        "examples": [
+          "Mist shrouded the castle"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "cover",
+          "spread over"
+        ]
+      },
+      {
+        "synset": "oewn-01303023-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "wrap in a shroud",
+        "examples": [
+          "shroud the corpses"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "wrap",
+          "wrap up"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "shroud#burial_cloth",
+      "pos": "noun",
+      "wordnet": "oewn-03884813-n",
+      "sense": "a cloth used to wrap a dead body",
+      "zh": "裹尸布；遮蔽物",
+      "role": "thing",
+      "tags": [
+        "BURIAL",
+        "DEATH",
+        "CLOTH",
+        "HIDDEN"
+      ],
+      "appears": [
+        "敌人：余裹者斜披的破裹尸布",
+        "雾：a shroud of fog"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "骷髅身上的布上浮出 shr__d",
+        "RECOGNIZED": "看一眼就知道是“裹尸布”",
+        "UNDERSTOOD": "能读懂 a shroud of fog 这种说法",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "看骷髅身上的布，选出 shroud",
+        "produce": "“The skeleton still wears its torn ___.” 填空"
+      },
+      "confusable": [
+        "shrub（形近）",
+        "cloud（形近，且 shroud of fog 像云）"
+      ],
+      "relations": {
+        "synonyms": [
+          "pall",
+          "cerement",
+          "winding-sheet",
+          "winding-clothes"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "BURIAL",
+      "page_line": "The shroud was meant to hide the dead from the world. Now it hides the world from them.",
+      "status": "draft"
+    }
+  ]
+}

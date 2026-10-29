@@ -1,0 +1,102 @@
+{
+  "lemma": "chapel",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈtʃæ.pəl",
+      "us": "ˈtʃæ.pəl"
+    },
+    "zh": [
+      "n. 小教堂, 礼拜式"
+    ],
+    "exam": [
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 3240,
+      "modern_rank": 7252,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "chapels"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-03010734-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a place of worship that has its own altar",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "place of worship",
+          "house of prayer"
+        ]
+      },
+      {
+        "synset": "oewn-01035056-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "a service conducted in a place of worship that has its own altar",
+        "examples": [
+          "he was late for chapel"
+        ],
+        "synonyms": [
+          "chapel service"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "service",
+          "religious service"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "chapel#small_church",
+      "pos": "noun",
+      "wordnet": "oewn-03010734-n",
+      "sense": "a small church, or a room used for prayer",
+      "zh": "小教堂；礼拜堂",
+      "role": "thing",
+      "tags": [
+        "SACRED",
+        "PLACE",
+        "SILENCE"
+      ],
+      "appears": [
+        "远景：雾中的礼拜堂",
+        "房间：Boss 房 Mourning Chapel"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "远处的礼拜堂上浮出 ch___l",
+        "RECOGNIZED": "看一眼就知道是“礼拜堂”",
+        "UNDERSTOOD": "能读懂和它有关的事件",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张远景里选出 chapel",
+        "produce": "“The bell hangs in the ___ tower.” 填空"
+      },
+      "confusable": [
+        "chapter（形近）",
+        "church（近义，更大）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "SACRED",
+      "page_line": "The chapel can be seen from every corner of the cemetery. No path leads straight to it.",
+      "status": "draft"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "lemma": "mourn",
+  "dictionary": {
+    "phonetic": {
+      "uk": "mʊən",
+      "us": "mʊɹn"
+    },
+    "zh": [
+      "v. 哀悼, 忧伤, 服丧"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 9545,
+      "modern_rank": 6768,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "ing": "mourning",
+      "past": "mourned",
+      "past_participle": "mourned",
+      "third_person": "mourns"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-01801062-v",
+        "pos": "verb",
+        "category": "verb.emotion",
+        "definition": "feel sadness",
+        "examples": [
+          "She is mourning her dead child"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "mourner",
+          "mourning"
+        ],
+        "broader": [
+          "grieve",
+          "sorrow"
+        ]
+      },
+      {
+        "synset": "oewn-01801215-v",
+        "pos": "verb",
+        "category": "verb.emotion",
+        "definition": "observe the customs of mourning after the death of a loved one",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "mourner"
+        ],
+        "broader": [
+          "observe",
+          "celebrate"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "mourn#grieve",
+      "pos": "verb",
+      "wordnet": "oewn-01801215-v",
+      "sense": "to feel or show deep sadness because someone has died",
+      "zh": "哀悼",
+      "role": "enemy",
+      "tags": [
+        "GRIEF",
+        "DEATH"
+      ],
+      "appears": [
+        "物件：喷泉上的哀悼天使",
+        "敌人：Mourning Wraith",
+        "事件：守墓人在朋友墓前"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "mo__n，字母像低着头",
+        "RECOGNIZED": "“为死去的人难过”",
+        "UNDERSTOOD": "MOURNING：墓园压力随回合上升",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看守墓人在墓前低头，选出 mourn 的意思",
+        "produce": "mourn 和 grief 填空，分清动词和名词"
+      },
+      "confusable": [
+        "morn（同音）",
+        "moan（形近）",
+        "grief（同家族，名词）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "mourner"
+        ]
+      },
+      "constellation": "GRIEF",
+      "page_line": "The angel has mourned here longer than anyone it was carved for.",
+      "status": "draft"
+    }
+  ]
+}

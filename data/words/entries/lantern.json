@@ -1,0 +1,86 @@
+{
+  "lemma": "lantern",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈlæn.tən",
+      "us": "ˈlæn.tɚn"
+    },
+    "zh": [
+      "n. 灯笼, 提灯, 航标灯",
+      "vt. 装上提灯"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky"
+    ],
+    "frequency": {
+      "bnc_rank": 10101,
+      "modern_rank": 8338,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "lanterns"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-03646302-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "light in a transparent protective case",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "lamp"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "lantern#lamp",
+      "pos": "noun",
+      "wordnet": "oewn-03646302-n",
+      "sense": "a lamp in a case with a handle, carried or hung",
+      "zh": "提灯；灯笼",
+      "role": "thing",
+      "tags": [
+        "LIGHT",
+        "OBJECT",
+        "MEMORY",
+        "VIGIL"
+      ],
+      "appears": [
+        "物件：倒在路边的路灯 / 守墓人的提灯",
+        "事件：“A lantern still burns on a grave no one visits.”"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "走近时物件上方浮出词形",
+        "RECOGNIZED": "看一眼就知道是“那盏灯”",
+        "UNDERSTOOD": "事件里能读懂和它有关的句子",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "走到物件旁，从 3 张图里选出 lantern",
+        "produce": "守墓人问“What do you need to see in the fog?”"
+      },
+      "confusable": [
+        "lamp（近义）",
+        "candle（同场景）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "LIGHT",
+      "page_line": "Some lanterns are lit not to show the way, but to show that someone still remembers.",
+      "status": "draft"
+    }
+  ]
+}

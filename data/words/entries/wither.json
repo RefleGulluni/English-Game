@@ -1,0 +1,122 @@
+{
+  "lemma": "wither",
+  "dictionary": {
+    "phonetic": {
+      "uk": "'wiðә",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "vt. 使凋谢, 使消亡, 使畏缩",
+      "vi. 枯萎, 衰退"
+    ],
+    "exam": [
+      "cet6",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 11732,
+      "modern_rank": 11891,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past": "withered",
+      "past_participle": "withered",
+      "ing": "withering",
+      "third_person": "withers",
+      "plural": "withers"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-00242575-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "wither, as with a loss of moisture",
+        "examples": [
+          "The fruit dried and shriveled"
+        ],
+        "synonyms": [
+          "shrivel",
+          "shrivel up",
+          "shrink"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "decrease",
+          "diminish"
+        ]
+      },
+      {
+        "synset": "oewn-00422870-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "lose freshness, vigor, or vitality",
+        "examples": [
+          "Her bloom was fading"
+        ],
+        "synonyms": [
+          "fade"
+        ],
+        "antonyms": [],
+        "family": [
+          "withering"
+        ],
+        "broader": [
+          "disappear",
+          "vanish"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "wither#dry_up",
+      "pos": "verb",
+      "wordnet": "oewn-00242575-v",
+      "sense": "to become dry and weak, like a dying plant",
+      "zh": "枯萎；衰弱",
+      "role": "enemy",
+      "tags": [
+        "DECAY",
+        "PLANT",
+        "WEAKEN"
+      ],
+      "appears": [
+        "物件：墓前枯掉的花、入口的枯树",
+        "敌人意图：WITHER"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "头顶只看到 wi___ 和几片落叶",
+        "RECOGNIZED": "“慢慢干掉、没了生气”",
+        "UNDERSTOOD": "腐朽 +8，2 回合内受到的治疗 -25%",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看墓前的花一点点干掉，选出 wither 的意思",
+        "produce": "花为什么没了颜色？从 wither / erode / scatter 里选"
+      },
+      "confusable": [
+        "whither（同音）",
+        "weather（形近）",
+        "erode（同家族，用于石头）"
+      ],
+      "relations": {
+        "synonyms": [
+          "shrivel",
+          "shrivel up",
+          "shrink"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "DECAY",
+      "page_line": "Flowers are left here to wither. That is how the living say they visited.",
+      "status": "draft"
+    }
+  ]
+}

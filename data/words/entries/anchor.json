@@ -1,0 +1,180 @@
+{
+  "lemma": "anchor",
+  "dictionary": {
+    "phonetic": {
+      "uk": "'æŋkә",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 锚",
+      "vt. 抛锚停泊, 使固定",
+      "[计] 锚"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 7686,
+      "modern_rank": 4961,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "anchors",
+      "ing": "anchoring",
+      "third_person": "anchors",
+      "past": "anchored",
+      "past_participle": "anchored"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02712226-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a mechanical device that prevents a vessel from moving",
+        "examples": [],
+        "synonyms": [
+          "ground tackle"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "hook",
+          "claw"
+        ]
+      },
+      {
+        "synset": "oewn-05702197-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "a central cohesive source of support and stability",
+        "examples": [
+          "faith is his anchor",
+          "the keystone of campaign reform was the ban on soft money"
+        ],
+        "synonyms": [
+          "mainstay",
+          "keystone",
+          "backbone",
+          "linchpin",
+          "lynchpin"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "support"
+        ]
+      },
+      {
+        "synset": "oewn-09812410-n",
+        "pos": "noun",
+        "category": "noun.person",
+        "definition": "a television reporter who coordinates a broadcast to which several correspondents contribute",
+        "examples": [],
+        "synonyms": [
+          "anchorperson"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "television reporter",
+          "television newscaster"
+        ]
+      },
+      {
+        "synset": "oewn-01307604-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "fix firmly and stably",
+        "examples": [
+          "anchor the lamppost in concrete"
+        ],
+        "synonyms": [
+          "ground"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "fasten",
+          "fix"
+        ]
+      },
+      {
+        "synset": "oewn-01307376-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "secure a vessel with an anchor",
+        "examples": [
+          "We anchored at Baltimore"
+        ],
+        "synonyms": [
+          "cast anchor",
+          "drop anchor"
+        ],
+        "antonyms": [],
+        "family": [
+          "anchorage"
+        ],
+        "broader": [
+          "fasten",
+          "fix"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "anchor#fix_firmly",
+      "pos": "verb",
+      "wordnet": "oewn-01307604-v",
+      "sense": "to hold something firmly in one place",
+      "zh": "锚定；使固定",
+      "role": "ability",
+      "tags": [
+        "STABLE",
+        "PROTECT"
+      ],
+      "appears": [
+        "地图：每一局出发的“词典锚点”（D-036）",
+        "物件：拴在墓门上的铁环"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "an___r，像一个沉下去的钩子",
+        "RECOGNIZED": "“把东西牢牢定住”",
+        "UNDERSTOOD": "【提案】下一次被侵蚀（护甲减少、结构减少）无效",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看铁环把门拴住，选出 anchor 的意思",
+        "produce": "敌人要 ERODE 你，从 anchor / strike / reveal 里选"
+      },
+      "confusable": [
+        "anger（形近）",
+        "ankle（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "ground"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "STABLE",
+      "page_line": "Every journey here begins at an anchor. Every return finds it waiting.",
+      "sigil": "protection",
+      "effect": {
+        "type": "prevent_next_erosion",
+        "count": 1,
+        "cost": 1,
+        "proposed": true
+      },
+      "status": "draft"
+    }
+  ]
+}

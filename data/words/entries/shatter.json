@@ -1,0 +1,138 @@
+{
+  "lemma": "shatter",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈʃæt.ə(ɹ)",
+      "us": "ˈʃæt.ɚ"
+    },
+    "zh": [
+      "n. 碎片, 粉碎, 落叶, 喷洒",
+      "vt. 打碎, 使散开, 粉碎, 破坏",
+      "vi. 粉碎, 损坏, 脱落"
+    ],
+    "exam": [
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 5979,
+      "modern_rank": 5453,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "shattered",
+      "past": "shattered",
+      "ing": "shattering",
+      "third_person": "shatters"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-00334568-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "break into many pieces",
+        "examples": [
+          "The wine glass shattered"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "shattering"
+        ],
+        "broader": [
+          "burst",
+          "bust"
+        ]
+      },
+      {
+        "synset": "oewn-00334860-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "damage or destroy",
+        "examples": [
+          "The news of her husband's death shattered her life"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "damage"
+        ]
+      },
+      {
+        "synset": "oewn-00334717-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "cause to break into many pieces",
+        "examples": [
+          "shatter the plate"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "shattering"
+        ],
+        "broader": [
+          "break"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "shatter#break_apart",
+      "pos": "verb",
+      "wordnet": "oewn-00334717-v",
+      "sense": "to break something suddenly into many small pieces",
+      "zh": "粉碎；打碎",
+      "role": "ability",
+      "tags": [
+        "BREAK",
+        "FORCE",
+        "PARTS"
+      ],
+      "appears": [
+        "物件：翅膀碎掉的天使雕像",
+        "敌人：骷髅倒下后的骨堆"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "只看到 sha___ 和一道裂纹",
+        "RECOGNIZED": "“打成很多碎片”",
+        "UNDERSTOOD": "结构伤害 8 点；没有结构时护甲 -2 再打 3 点；打骨堆最有效",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看碎掉的天使翅膀，选出 shatter 的意思",
+        "produce": "骨堆马上要重组，从 shatter / strike / mend 里选"
+      },
+      "confusable": [
+        "scatter（形近，且常一起出现）",
+        "shutter（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "shattering"
+        ]
+      },
+      "constellation": "BREAK",
+      "page_line": "What is shattered cannot be put back the same way twice.",
+      "sigil": "force",
+      "effect": {
+        "type": "structure_damage",
+        "amount": 8,
+        "no_structure": {
+          "armor": -2,
+          "damage": 3
+        },
+        "cost": 2
+      },
+      "status": "draft"
+    }
+  ]
+}

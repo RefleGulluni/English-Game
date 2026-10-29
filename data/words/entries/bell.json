@@ -1,0 +1,189 @@
+{
+  "lemma": "bell",
+  "dictionary": {
+    "phonetic": {
+      "uk": "bɛl",
+      "us": null
+    },
+    "zh": [
+      "n. 铃, 钟",
+      "[计] 响铃命令"
+    ],
+    "exam": [
+      "zk",
+      "gk"
+    ],
+    "frequency": {
+      "bnc_rank": 2829,
+      "modern_rank": 2646,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "bells",
+      "past": "belled",
+      "ing": "belling",
+      "third_person": "bells",
+      "past_participle": "belled"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02827590-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a hollow device made of metal that makes a ringing sound when struck",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "acoustic device",
+          "signaling device"
+        ]
+      },
+      {
+        "synset": "oewn-03227219-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a push button at an outer door that gives a ringing or buzzing signal when pushed",
+        "examples": [],
+        "synonyms": [
+          "doorbell",
+          "buzzer"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "push button",
+          "push"
+        ]
+      },
+      {
+        "synset": "oewn-07391844-n",
+        "pos": "noun",
+        "category": "noun.event",
+        "definition": "the sound of a bell being struck",
+        "examples": [
+          "saved by the bell",
+          "she heard the distant toll of church bells"
+        ],
+        "synonyms": [
+          "toll"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "sound"
+        ]
+      },
+      {
+        "synset": "oewn-15252389-n",
+        "pos": "noun",
+        "category": "noun.time",
+        "definition": "(nautical) each of the eight half-hour units of nautical time signaled by strokes of a ship's bell; eight bells signals 4:00, 8:00, or 12:00 o'clock, either a.m. or p.m.",
+        "examples": [],
+        "synonyms": [
+          "ship's bell"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "time unit",
+          "unit of time"
+        ]
+      },
+      {
+        "synset": "oewn-13908953-n",
+        "pos": "noun",
+        "category": "noun.shape",
+        "definition": "the shape of a bell",
+        "examples": [],
+        "synonyms": [
+          "bell shape",
+          "campana"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "curve",
+          "curved shape"
+        ]
+      },
+      {
+        "synset": "oewn-03020822-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a percussion instrument consisting of a set of tuned bells that are struck with a hammer; used as an orchestral instrument",
+        "examples": [],
+        "synonyms": [
+          "chime",
+          "gong"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "percussion instrument",
+          "percussive instrument"
+        ]
+      },
+      {
+        "synset": "oewn-01299860-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "attach a bell to",
+        "examples": [
+          "bell cows"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "attach"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "bell#ringing_metal",
+      "pos": "noun",
+      "wordnet": "oewn-02827590-n",
+      "sense": "a hollow metal object that rings when you hit it",
+      "zh": "钟；铃",
+      "role": "thing",
+      "tags": [
+        "SOUND",
+        "SILENCE",
+        "SACRED",
+        "METAL"
+      ],
+      "appears": [
+        "物件：礼拜堂的钟",
+        "事件：钟声（见 linger）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "钟上浮出 b_ll",
+        "RECOGNIZED": "看一眼就知道是“钟”",
+        "UNDERSTOOD": "能读懂 the bell tolls",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 bell",
+        "produce": "“Strike the ___ three times.” 填空"
+      },
+      "confusable": [
+        "ball（形近）",
+        "belly（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "SOUND",
+      "page_line": "The bell rings once for each new grave. Nobody has heard it in years.",
+      "status": "draft"
+    }
+  ]
+}

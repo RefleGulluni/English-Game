@@ -31,7 +31,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 当前进度（2026-10-29 交接）
 
 ### 一句话
-墓园入口这个房间基本成形，交给用户亲手调：25 + 9 件正式物件都是可拖的积木（入口 9 件 D-060，**用户定为以后素材的质量标准**），地面可刷四层 + 20 件贴花积木，入口的全部物件已放进场景 `Props` 让用户自己增删挪（D-062）。**v3 墓园的战斗已经“能看”了**：场景内战斗（D-063）、第 3 档精致度的单词栏 + 暖色界面 + 9 个词类符号（D-067）、主角施法 / 受击、骷髅 BONE CUT（v1，D-066）/ 抖落骨灰都已接上，出口换成了美术组的 9 个出口符号（D-065），被打中时飞出碎骨 / 骨灰 / 布丝（`reality_fx.gd`）。**Lexicon 书的开合已通过**（D-068：封面亮相 → 符印画圆 → 立起透光 → 两边封面同时倒下 → 星座先星后线；开合都约 2.8 秒）。**正在做词汇数据化**（D-069 方向；D-070 第一批 43 个词 + 一个词有哪些属性 + 用多个标签匹配地区和事件，见 `docs/VOCABULARY_FIRST_BATCH.md`）。
+墓园入口这个房间基本成形，交给用户亲手调：25 + 9 件正式物件都是可拖的积木（入口 9 件 D-060，**用户定为以后素材的质量标准**），地面可刷四层 + 20 件贴花积木，入口的全部物件已放进场景 `Props` 让用户自己增删挪（D-062）。**v3 墓园的战斗已经“能看”了**：场景内战斗（D-063）、第 3 档精致度的单词栏 + 暖色界面 + 9 个词类符号（D-067）、主角施法 / 受击、骷髅 BONE CUT（v1，D-066）/ 抖落骨灰都已接上，出口换成了美术组的 9 个出口符号（D-065），被打中时飞出碎骨 / 骨灰 / 布丝（`reality_fx.gd`）。**Lexicon 书的开合已通过**（D-068：封面亮相 → 符印画圆 → 立起透光 → 两边封面同时倒下 → 星座先星后线；开合都约 2.8 秒）。**正在做词汇数据化**（D-069 方向；D-070 第一批 38 个词 + 一个词有哪些属性 + 用多个标签匹配地区和事件，见 `docs/VOCABULARY_FIRST_BATCH.md`；D-071 词典流水线已跑通，38 个词条草稿在 `data/words/entries/`，等用户抽查）。
 
 ### 新的正式 Broken Graveyard（分支 `feature/broken-graveyard-v3`）
 - `scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`：v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`）。走动 → 原地开战（不黑屏）→ 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 发光区域名）。截图模式 `-- --capture=<目录>` 自动打完一整圈。
@@ -39,7 +39,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 - **战斗表现（D-063 / D-066 / D-067）**：`combat_view.gd` 画全部战斗界面（底部薄单词栏、头顶英文意图、悬停预览、词先出现再飞向敌人、每个词一种像素几何、命中停顿、四周冷雾 `combat_vignette.gdshader`）；骷髅 `stand_off()` 横着走到主角斜对面（左右约 120 px），`hold_for()` 让受击等字打到再播。单词栏 = B 基线 + 衬线字 + 第 3 档（发光、节点菱形、刻度、悬停合拢）+ 用词消失特效；词类符号读 `art/ui/word_sigil_v3/glyphs/`；界面默认暖色、青蓝只给语言（P 切冷色对比）；提示框双细线框。动画：主角 `cast()` 在出手帧放几何、`take_hit()`；骷髅 `attack()` 播 v1（蓄力时整体前移 40 px，命中帧主角受击）、非攻击行动 `shed()` 抖落骨灰；新动画打包：`bake_hero_b1.gd` 的 TIMED 列表（打包后要把 `hero_b1_frames.tres` 头部的 uid 改回 `uid://nlcofgiekvkk`）。截图模式 `--mirror` 让主角站右边。
 - 灰盒 / 待办：出口路线是写死的（**用户说先不接**随机算法 `cemetery_director`，等用户说再接）；第 2 房间与 Veiled Walk 是占位；凿子掉落物太小；Tab 打开的 Lexicon 开合已是正式样子，书里的内容（右页 4 个示例词、左页星座取自设计图）还是灰盒；L 是旧的文字词表。
 - 960×540 由场景启动时设置，`project.godot` 没改（改了会裁切 1280×720 的 0.8 完整一局；等 `main.tscn` 切到新场景时再一起改）。
-- 29 套 smoke 测试全部通过（`for t in tests/*_smoke.gd; do /Applications/Godot.app/Contents/MacOS/Godot --headless --path . --script res://$t; done`，看输出里的 `: PASS`；macOS 没有 `timeout` 命令）。
+- 30 套 smoke 测试全部通过（`for t in tests/*_smoke.gd; do /Applications/Godot.app/Contents/MacOS/Godot --headless --path . --script res://$t; done`，看输出里的 `: PASS`；macOS 没有 `timeout` 命令）。
 
 ### 关卡结构（知识库 `03_WORLD_AND_LEVELS/English_Game_Scene_Structure_and_Transitions.md`）
 - D-022：场景不无缝拼接，单屏房间；同区域换房间快速淡黑（约 0.4 秒），换区域慢淡黑 + 区域名（约 2～3 秒）；从哪边出去就从对侧进来。
@@ -84,7 +84,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 接下来可以做的事（按建议顺序）
 
-1. **词汇数据化（2026-10-29 进行中）**：**D-070 已定**第一批 43 个词和词条属性（`docs/VOCABULARY_FIRST_BATCH.md`，4 个样子：bind / erode / lantern / grief）。下一步建议：定原材料（ECDICT + WordNet，用户还没确认）→ 做把词典变成草稿的工具 → 43 个词的草稿 → 用户抽查 → 换掉三处写死的词。以前的讨论：已定 **D-069**：世界说了算，学会单词是玩着玩着发生的；开局选**学习模式**（弹窗选方向如四级 / 六级 / 考研 / 雅思，或导入自己的词，这些词比重大幅上升）或**沉浸模式**（游戏主导）；不合地区的词不硬塞。Claude 的建议（**用户还没确认**）：开源词典 ECDICT（中文、变形、考试词表标签、词频）+ WordNet（词义、近义关系）当原材料 → AI 写游戏词条草稿 → 检查工具 + 用户抽查 → 跟游戏打包的数据文件；“内容”和“玩家进度”分开；战斗效果写成“效果种类 + 数字”；第一批约 40 个词 = 约 10 个能力词（按好不好玩挑）+ 约 30 个墓园世界词（先按世界观挑，优先考试词表里的）；中文默认不显示、Lexicon 里可点开。下一步：Claude 出约 60 个候选词给用户挑，再做 3～4 个完整词条样子。现在的代码：学习词在 `scripts/run/cemetery_words.gd`，战斗词在 `scripts/combat/combat_content.gd`，概念家族在 `learning_schedule.gd`，三处互不相通（战斗词不用学会就能用）。
+1. **词汇数据化（2026-10-29 进行中）**：D-069 方向（世界说了算；学习模式 / 沉浸模式）、D-070 词条属性 + 多标签、**D-071 原材料 = ECDICT + Open English WordNet，做我们自己的词库**。流水线见 [docs/VOCABULARY_PIPELINE.md](docs/VOCABULARY_PIPELINE.md)：`dict_sources/`（不提交）→ `scripts/tools/vocab/build_word_drafts.py`（`dictionary` 一半每次重生成，`senses` 一半不覆盖）→ AI 写草稿 → `check_words.py --html` 出词卡页 `docs/reference/word_cards_batch01.html` → 用户抽查改 `status` → `tests/word_data_smoke.gd`。**38 个词草稿已全部通过检查，等用户看词卡页**。reveal / anchor / seal / mend 的效果是【提案】。下一步：用户抽查 → 决定 bury / echo / toxic / stabilize 要不要加进名单 → 把三处写死的词（`scripts/run/cemetery_words.gd`、`scripts/combat/combat_content.gd`、`learning_schedule.gd` 的 FAMILIES）换成读词库。
 2. **等各组交付**（需求都已转发，交回后验收、接入）：
    - 角色组：战斗动画第 3 步**已完成**（碎骨通过；骨灰、布丝改亮后通过，`scripts/world/v3/reality_fx.gd` 放在词命中 / BONE CUT 命中 / 抖落骨灰第 2 帧）；
    - 角色组：Lexicon 翻页**第二轮返修**（需求 §7.1，含摊开书本身的修改；第一轮素材在工作区未提交）；

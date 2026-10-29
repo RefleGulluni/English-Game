@@ -1,0 +1,482 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Word Cards</title><style>
+:root{--bg:#16130f;--card:#221d17;--ink:#e9dcc4;--dim:#9c8f78;--cyan:#5fd4e8;--line:#3a3128}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"PingFang SC",sans-serif;padding:24px 16px}
+h1{font:600 22px Georgia,serif;margin:0 0 4px} .intro{color:var(--dim);margin:0 0 16px;max-width:820px}
+.filters button{background:var(--card);color:var(--ink);border:1px solid var(--line);padding:4px 10px;margin:0 6px 12px 0;cursor:pointer}
+.filters button.on{border-color:var(--cyan);color:var(--cyan)}
+main{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+article{background:var(--card);border:1px solid var(--line);padding:12px 14px}
+header{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap} h2{font:600 20px Georgia,serif;margin:0;color:var(--cyan)}
+.pron,.role,.small{color:var(--dim);font-size:12px} .role{margin-left:auto}
+.sense{margin:6px 0 2px} .zh{margin:0 0 6px} .line{font:italic 15px Georgia,serif;margin:6px 0}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--line);padding:0 5px;margin:0 4px 4px 0;color:var(--dim)}
+.tag.hit{border-color:#a08550;color:#e0c48a} .eff{font-size:12px;color:#c9b38a;margin:4px 0}
+details{margin-top:6px} summary{cursor:pointer;color:var(--dim);font-size:13px} ul,ol{padding-left:18px;margin:6px 0;font-size:13px}
+</style>
+<h1>第一批词条草稿</h1>
+<p class="intro">38 个词条。黄色标签 = 墓园喜欢的标签。中文、词典释义、考试标签、音标是词典自动填的；英文释义、标签、书页上的话、阶段、小考、效果是 Claude 写的草稿，等你抽查。点“在哪遇到…”看更多。</p>
+<div class="filters"><button class="on" data-f="all">全部</button><button data-f="ability">能力词</button><button data-f="enemy">敌人词</button><button data-f="thing">墓园里的东西</button><button data-f="mood">气氛词</button></div>
+<main><article data-role="ability">
+<header><h2>strike</h2><span class="pron">/stɹaɪk/</span><span class="role">ability · verb</span></header>
+<p class="sense">to hit something hard and directly</p>
+<p class="zh">打击；击打<span class="small">　词典：n. 罢工, 打击, 殴打 / vt. 打, 撞击, 冲击, 侵袭, 取消, 结算, 打掉, 罢工, 刺透, 使生根, 遇见</span></p>
+<p class="line">“The first word anyone learns to use is the one that hurts.”</p>
+<div class="tags"><span class="tag">FORCE 力量、打击</span><span class="tag">HARM 伤害</span></div>
+<p class="small">墓园重合：cemetery 0　考试：高考 四级 六级 考研 托福 雅思　draft</p><p class="eff">direct · {&quot;type&quot;: &quot;damage&quot;, &quot;amount&quot;: 8, &quot;structure&quot;: 2, &quot;exposed_bonus&quot;: 2, &quot;cost&quot;: 2}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：礼拜堂钟楼上的钟锤</li><li>事件：“Strike the bell three times, and the dead will listen.”</li></ul><ol><li><b>ENCOUNTERED</b> 词形残缺，只看得出 s_r_ke</li><li><b>RECOGNIZED</b> “狠狠打什么东西”</li><li><b>UNDERSTOOD</b> 直接伤害 8 点（护甲先吸收），另打 2 点结构</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看守墓人敲钟的样子，选出 strike 的意思<br>用对：骷髅毫无防备，从 strike / bind / observe 里选最直接的一下</p>
+<p class="small">易混：stroke（形近），hit（近义，更口语）</p>
+<p class="small">一家人 striker, striking</p></details>
+</article><article data-role="ability">
+<header><h2>shatter</h2><span class="pron">/ˈʃæt.ə(ɹ)/</span><span class="role">ability · verb</span></header>
+<p class="sense">to break something suddenly into many small pieces</p>
+<p class="zh">粉碎；打碎<span class="small">　词典：n. 碎片, 粉碎, 落叶, 喷洒 / vt. 打碎, 使散开, 粉碎, 破坏</span></p>
+<p class="line">“What is shattered cannot be put back the same way twice.”</p>
+<div class="tags"><span class="tag">BREAK 打碎、破坏</span><span class="tag">FORCE 力量、打击</span><span class="tag">PARTS 碎片、零件</span></div>
+<p class="small">墓园重合：cemetery 0　考试：六级 考研 托福 雅思　draft</p><p class="eff">force · {&quot;type&quot;: &quot;structure_damage&quot;, &quot;amount&quot;: 8, &quot;no_structure&quot;: {&quot;armor&quot;: -2, &quot;damage&quot;: 3}, &quot;cost&quot;: 2}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：翅膀碎掉的天使雕像</li><li>敌人：骷髅倒下后的骨堆</li></ul><ol><li><b>ENCOUNTERED</b> 只看到 sha___ 和一道裂纹</li><li><b>RECOGNIZED</b> “打成很多碎片”</li><li><b>UNDERSTOOD</b> 结构伤害 8 点；没有结构时护甲 -2 再打 3 点；打骨堆最有效</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看碎掉的天使翅膀，选出 shatter 的意思<br>用对：骨堆马上要重组，从 shatter / strike / mend 里选</p>
+<p class="small">易混：scatter（形近，且常一起出现），shutter（形近）</p>
+<p class="small">一家人 shattering</p></details>
+</article><article data-role="ability">
+<header><h2>deflect</h2><span class="pron">/dɪˈflɛkt/</span><span class="role">ability · verb</span></header>
+<p class="sense">to make something that is coming at you go another way</p>
+<p class="zh">使偏转；挡开<span class="small">　词典：vt. 转移, 使偏斜 / vi. 偏斜</span></p>
+<p class="line">“You cannot stop every blow. You can choose where it lands.”</p>
+<div class="tags"><span class="tag">REACTION 反应、应对</span><span class="tag">PROTECT 保护</span></div>
+<p class="small">墓园重合：cemetery 0　考试：六级 托福 雅思 GRE　draft</p><p class="eff">reaction · {&quot;type&quot;: &quot;reduce_physical&quot;, &quot;percent&quot;: 75, &quot;cost&quot;: 1}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>战斗：骷髅的 BONE CUT 砍下来时</li><li>物件：墓碑上刻的盾形纹章</li></ul><ol><li><b>ENCOUNTERED</b> 一闪而过的 de___</li><li><b>RECOGNIZED</b> “让冲过来的东西偏开”</li><li><b>UNDERSTOOD</b> 反应：这一下物理伤害减少 75%</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看骨刀擦着盾牌滑开，选出 deflect 的意思<br>用对：BONE CUT 正在落下，从 deflect / restore / observe 里选</p>
+<p class="small">易混：reflect（形近，“反射”），defect（形近）</p>
+<p class="small">一家人 deflective, deflexion, deflection, deflector</p></details>
+</article><article data-role="ability">
+<header><h2>bind</h2><span class="pron">/baɪnd/</span><span class="role">ability · verb</span></header>
+<p class="sense">to tie or hold something so it cannot move</p>
+<p class="zh">捆住；束缚<span class="small">　词典：vt. 绑, 约束, 装订, 包扎, 使结合 / vi. 凝固, 有约束力</span></p>
+<p class="line">“Some things are held not by chains, but by the words that name them.”</p>
+<div class="tags"><span class="tag">CONTROL 控制</span><span class="tag">RESTRAINT 束缚</span><span class="tag">CHAIN 锁链</span></div>
+<p class="small">墓园重合：cemetery 0　考试：四级 考研 托福 雅思　draft</p><p class="eff">control · {&quot;type&quot;: &quot;delay_intent&quot;, &quot;turns&quot;: 1, &quot;cost&quot;: 2}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：门柱上缠着锈铁链的铁门（gate）</li><li>墓志铭：“Bound to this ground until the bell is rung.”</li></ul><ol><li><b>ENCOUNTERED</b> 词形残缺，只看得出 b_nd</li><li><b>RECOGNIZED</b> “让什么东西动不了”</li><li><b>UNDERSTOOD</b> 束缚目标：它下一次移动或攻击被推迟</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看铁门的锁链，选出 bind 的意思（4 选 1）<br>用对：骷髅要重组时，从 bind / scatter / echo 里选能阻止它的词</p>
+<p class="small">易混：bend（形近），find（形近），hold（近义但更弱）</p>
+<p class="small">反义 unbind；一家人 bindable, binder</p></details>
+</article><article data-role="ability">
+<header><h2>observe</h2><span class="pron">/əbˈzɜːv/</span><span class="role">ability · verb</span></header>
+<p class="sense">to watch something carefully to understand it</p>
+<p class="zh">观察；注视<span class="small">　词典：vt. 觉察到, 遵守, 注意到, 庆祝 / vi. 注意, 评论</span></p>
+<p class="line">“Most of the dead are not hidden. They are simply not looked at.”</p>
+<div class="tags"><span class="tag">PERCEPTION 感知、看清</span><span class="tag hit">HIDDEN 隐藏、看不见</span></div>
+<p class="small">墓园重合：cemetery 1　考试：高考 四级 六级 考研 托福 雅思　draft</p><p class="eff">perception · {&quot;type&quot;: &quot;reveal_intent&quot;, &quot;levels&quot;: 1, &quot;cost&quot;: 1}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人意图：头顶模糊的英文</li><li>物件：名字被苔藓盖住的墓碑</li></ul><ol><li><b>ENCOUNTERED</b> ob___ve，像一只半睁的眼</li><li><b>RECOGNIZED</b> “仔细地看”</li><li><b>UNDERSTOOD</b> 看清敌人意图的一层</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看主角蹲下细看墓碑，选出 observe 的意思<br>用对：敌人意图是一团看不清的字，从 observe / strike / seal 里选</p>
+<p class="small">易混：obscure（形近，意思相反），preserve（形近），reveal（observe 是你去看，reveal 是让东西显出来）</p>
+<p class="small">一家人 observable, observation, observance</p></details>
+</article><article data-role="ability">
+<header><h2>restore</h2><span class="pron">/ɹɪˈstɔː/</span><span class="role">ability · verb</span></header>
+<p class="sense">to bring something back to how it was before</p>
+<p class="zh">恢复；修复<span class="small">　词典：vt. 回复, 恢复, 归还, 修补, 修复 / vt. 还原</span></p>
+<p class="line">“Restoring a thing is a way of saying it mattered.”</p>
+<div class="tags"><span class="tag">REPAIR 修补</span><span class="tag">RETURN 复原、回来</span></div>
+<p class="small">墓园重合：cemetery 0　考试：四级 六级 考研 托福 雅思 GRE　draft</p><p class="eff">restoration · {&quot;type&quot;: &quot;choose&quot;, &quot;options&quot;: [{&quot;heal&quot;: 8}, {&quot;armor&quot;: 4}], &quot;cost&quot;: 2}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>事件：把倒下的墓碑扶正</li><li>物件：干涸的喷泉</li></ul><ol><li><b>ENCOUNTERED</b> re____e，后半截像被磨掉</li><li><b>RECOGNIZED</b> “让东西回到原来的样子”</li><li><b>UNDERSTOOD</b> 二选一：回 8 点生命，或回 4 点护甲</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看倒下的墓碑被扶正，选出 restore 的意思<br>用对：生命和护甲都很低，从 restore / strike / deflect 里选</p>
+<p class="small">易混：mend（近义，修小的破口），store（形近），restrain（形近）</p>
+<p class="small">近义 reconstruct；一家人 restoration, restorer</p></details>
+</article><article data-role="ability">
+<header><h2>reveal</h2><span class="pron">/ɹəˈviːl/</span><span class="role">ability · verb</span></header>
+<p class="sense">to show something that was hidden</p>
+<p class="zh">揭示；显露<span class="small">　词典：vt. 露出, 显示, 透露, 揭露, 泄露, (神)启示 / n. 窗侧, 门侧</span></p>
+<p class="line">“The fog keeps nothing. It only borrows, and the right word asks for it back.”</p>
+<div class="tags"><span class="tag">PERCEPTION 感知、看清</span><span class="tag hit">HIDDEN 隐藏、看不见</span></div>
+<p class="small">墓园重合：cemetery 1　考试：四级 六级 考研 托福　draft</p><p class="eff">perception · {&quot;type&quot;: &quot;remove_concealment&quot;, &quot;then_reveal_intent&quot;: &quot;full&quot;, &quot;cost&quot;: 1, &quot;proposed&quot;: true}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：雾散开，露出墓碑上的名字</li><li>事件：被磨平的墓志铭重新显出字来</li></ul><ol><li><b>ENCOUNTERED</b> r_v_al，字母一个个藏在雾里</li><li><b>RECOGNIZED</b> “让藏着的东西露出来”</li><li><b>UNDERSTOOD</b> 【提案】去掉敌人的隐藏（CONCEAL、雾甲），下一个意图完全看清</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看雾散开露出名字，选出 reveal 的意思<br>用对：飞蛾躲进雾里加了雾甲，从 reveal / observe / strike 里选</p>
+<p class="small">易混：revel（形近），conceal（反义），observe（见 observe）</p>
+<p class="small">近义 bring out, unveil</p></details>
+</article><article data-role="ability">
+<header><h2>anchor</h2><span class="pron">/&#x27;æŋkә/</span><span class="role">ability · verb</span></header>
+<p class="sense">to hold something firmly in one place</p>
+<p class="zh">锚定；使固定<span class="small">　词典：n. 锚 / vt. 抛锚停泊, 使固定</span></p>
+<p class="line">“Every journey here begins at an anchor. Every return finds it waiting.”</p>
+<div class="tags"><span class="tag">STABLE 稳定、固定</span><span class="tag">PROTECT 保护</span></div>
+<p class="small">墓园重合：cemetery 0　考试：四级 六级 考研 雅思 GRE　draft</p><p class="eff">protection · {&quot;type&quot;: &quot;prevent_next_erosion&quot;, &quot;count&quot;: 1, &quot;cost&quot;: 1, &quot;proposed&quot;: true}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>地图：每一局出发的“词典锚点”（D-036）</li><li>物件：拴在墓门上的铁环</li></ul><ol><li><b>ENCOUNTERED</b> an___r，像一个沉下去的钩子</li><li><b>RECOGNIZED</b> “把东西牢牢定住”</li><li><b>UNDERSTOOD</b> 【提案】下一次被侵蚀（护甲减少、结构减少）无效</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看铁环把门拴住，选出 anchor 的意思<br>用对：敌人要 ERODE 你，从 anchor / strike / reveal 里选</p>
+<p class="small">易混：anger（形近），ankle（形近）</p>
+<p class="small">近义 ground</p></details>
+</article><article data-role="ability">
+<header><h2>seal</h2><span class="pron">/si:l/</span><span class="role">ability · verb</span></header>
+<p class="sense">to close something so nothing can get in or out</p>
+<p class="zh">封住；密封<span class="small">　词典：n. 印章, 封条, 海豹, 海豹皮, 火漆, 封蜡, 玺, 保证, 批准, 象征, 标志 / vt. 封闭, 盖印, 盖章</span></p>
+<p class="line">“Some doors in this place were sealed from the inside.”</p>
+<div class="tags"><span class="tag">SEAL 封住</span><span class="tag">BOUNDARY 边界、内外</span><span class="tag hit">BURIAL 埋葬</span></div>
+<p class="small">墓园重合：cemetery 1　考试：高考 四级 六级 考研 托福 雅思　draft</p><p class="eff">control · {&quot;type&quot;: &quot;pause_reassembly&quot;, &quot;turns&quot;: 2, &quot;cost&quot;: 2, &quot;proposed&quot;: true}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：被封死的墓穴门</li><li>敌人：骨堆（封住就不能重组）</li></ul><ol><li><b>ENCOUNTERED</b> s__l，中间的字母被一道蜡封住</li><li><b>RECOGNIZED</b> “把东西封死”</li><li><b>UNDERSTOOD</b> 【提案】封住骨堆：重组倒数暂停 2 回合</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看石板盖住墓穴、边缘浇上铅，选出 seal 的意思<br>用对：骨堆还有 1 回合就要重组，从 seal / shatter / observe 里选</p>
+<p class="small">易混：seal（名词：海豹，另一个词义），zeal（形近），steal（形近）</p>
+<p class="small">反义 unseal；一家人 sealant, sealer</p></details>
+</article><article data-role="ability">
+<header><h2>mend</h2><span class="pron">/mɛnd/</span><span class="role">ability · verb</span></header>
+<p class="sense">to repair something that is torn or broken</p>
+<p class="zh">修补；缝补<span class="small">　词典：n. 改进, 修补, 好转 / vt. 修改, 改进, 加快, 修理</span></p>
+<p class="line">“The stitches on the shroud are neat. Someone mended it after it was buried.”</p>
+<div class="tags"><span class="tag">REPAIR 修补</span><span class="tag">CLOTH 布</span></div>
+<p class="small">墓园重合：cemetery 0　考试：中考 高考 托福 GRE　draft</p><p class="eff">restoration · {&quot;type&quot;: &quot;heal_and_cleanse&quot;, &quot;heal&quot;: 3, &quot;cleanse&quot;: 1, &quot;cost&quot;: 1, &quot;proposed&quot;: true}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：余裹者裹尸布上的黑色 X 缝线</li><li>事件：守墓人在灯下补一块布</li></ul><ol><li><b>ENCOUNTERED</b> m_nd，像一道没缝完的口子</li><li><b>RECOGNIZED</b> “把破的地方补好”</li><li><b>UNDERSTOOD</b> 【提案】回 3 点生命，并去掉一个负面状态</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看裹尸布上的缝线，选出 mend 的意思<br>用对：你身上有 WITHERED，从 mend / strike / bind 里选</p>
+<p class="small">易混：mind（形近），restore（近义，范围更大）</p>
+<p class="small">近义 repair, fix, bushel, doctor；一家人 mender, mending</p></details>
+</article><article data-role="enemy">
+<header><h2>erode</h2><span class="pron">/ɪˈɹəʊd/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to wear something away slowly</p>
+<p class="zh">侵蚀；慢慢磨掉<span class="small">　词典：vt. 腐蚀, 侵蚀 / vi. 受腐蚀</span></p>
+<p class="line">“Rain is patient. Every name here will be smooth stone one day.”</p>
+<div class="tags"><span class="tag hit">DECAY 腐朽、慢慢坏掉</span><span class="tag">WEAKEN 削弱</span><span class="tag">STRUCTURE 结构</span><span class="tag">GRADUAL 渐进、一点一点</span></div>
+<p class="small">墓园重合：cemetery 1　考试：托福　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：字被磨平的墓碑（epitaph 看不清）</li><li>敌人意图：骷髅头顶的 ERODE</li></ul><ol><li><b>ENCOUNTERED</b> 头顶只看到“er—”和一团灰</li><li><b>RECOGNIZED</b> “它要慢慢削弱什么”</li><li><b>UNDERSTOOD</b> 护甲 -4，腐朽 +12，可以用 STABILIZE 挡</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：墓碑上的字被雨水磨平了——哪个词形容这件事？<br>用对：敌人要 ERODE 你，选出能抵消它的词</p>
+<p class="small">易混：corrode（近义，化学的），wither（同家族，但用于生命）</p>
+<p class="small">近义 gnaw, gnaw at, eat at, wear away；一家人 erosive, erosion</p></details>
+</article><article data-role="enemy">
+<header><h2>wither</h2><span class="pron">/&#x27;wiðә/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to become dry and weak, like a dying plant</p>
+<p class="zh">枯萎；衰弱<span class="small">　词典：vt. 使凋谢, 使消亡, 使畏缩 / vi. 枯萎, 衰退</span></p>
+<p class="line">“Flowers are left here to wither. That is how the living say they visited.”</p>
+<div class="tags"><span class="tag hit">DECAY 腐朽、慢慢坏掉</span><span class="tag">PLANT 植物</span><span class="tag">WEAKEN 削弱</span></div>
+<p class="small">墓园重合：cemetery 1　考试：六级 托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓前枯掉的花、入口的枯树</li><li>敌人意图：WITHER</li></ul><ol><li><b>ENCOUNTERED</b> 头顶只看到 wi___ 和几片落叶</li><li><b>RECOGNIZED</b> “慢慢干掉、没了生气”</li><li><b>UNDERSTOOD</b> 腐朽 +8，2 回合内受到的治疗 -25%</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看墓前的花一点点干掉，选出 wither 的意思<br>用对：花为什么没了颜色？从 wither / erode / scatter 里选</p>
+<p class="small">易混：whither（同音），weather（形近），erode（同家族，用于石头）</p>
+<p class="small">近义 shrivel, shrivel up, shrink</p></details>
+</article><article data-role="enemy">
+<header><h2>conceal</h2><span class="pron">/kənˈsiːl/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to hide something so others cannot see or know it</p>
+<p class="zh">隐藏；隐瞒<span class="small">　词典：vt. 隐藏, 掩盖, 隐瞒 / [法] 隐瞒, 隐匿, 保守秘密</span></p>
+<p class="line">“Moss does not conceal a name out of malice. It simply grows where no one reads.”</p>
+<div class="tags"><span class="tag hit">HIDDEN 隐藏、看不见</span></div>
+<p class="small">墓园重合：cemetery 1　考试：四级 六级 考研 托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：名字被苔藓盖住的墓碑</li><li>敌人意图：飞蛾的 CONCEAL</li></ul><ol><li><b>ENCOUNTERED</b> 只看到一团雾，雾后面有 con___</li><li><b>RECOGNIZED</b> “把东西藏起来”</li><li><b>UNDERSTOOD</b> 遮蔽 +8，敌人得到 6 点雾甲；REVEAL 可以去掉</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看苔藓盖住名字，选出 conceal 的意思<br>用对：敌人要 CONCEAL，选出能抵消它的词</p>
+<p class="small">易混：cancel（形近），reveal（反义）</p>
+<p class="small">近义 hide；一家人 concealment, concealing</p></details>
+</article><article data-role="enemy">
+<header><h2>linger</h2><span class="pron">/ˈlɪŋɡə/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to stay somewhere longer than expected</p>
+<p class="zh">逗留；久久不散<span class="small">　词典：vi. 逗留, 消磨, 徘徊 / vt. 消磨</span></p>
+<p class="line">“The bell has stopped. Its last note lingers, as if waiting to be answered.”</p>
+<div class="tags"><span class="tag">CONTINUITY 延续、不肯离开</span><span class="tag hit">MEMORY 记忆</span><span class="tag">SOUND 声音</span></div>
+<p class="small">墓园重合：cemetery 1　考试：六级 考研 托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>事件：钟停了，钟声还在空中</li><li>敌人：守夜战里被驱散又回来的东西</li></ul><ol><li><b>ENCOUNTERED</b> lin___，后半截拖得很长</li><li><b>RECOGNIZED</b> “比该走的时候待得更久”</li><li><b>UNDERSTOOD</b> 驱散只是暂时的：守夜要撑到结束</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：钟声停了还在响，选出 linger 的意思<br>用对：“The last notes ___ after the bell falls silent.” 填空</p>
+<p class="small">易混：longer（形近），finger（形近），haunt（近义，haunt 会反复回来）</p>
+<p class="small"></p></details>
+</article><article data-role="enemy">
+<header><h2>haunt</h2><span class="pron">/hɔːnt/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to keep coming back to a place, like a ghost or a bad memory</p>
+<p class="zh">萦绕；（鬼魂）出没<span class="small">　词典：n. 常到的地方, 生息地 / vt. 常到, 出没于, 萦绕于</span></p>
+<p class="line">“Nothing haunts a place that nobody remembers.”</p>
+<div class="tags"><span class="tag hit">DEATH 死亡</span><span class="tag hit">MEMORY 记忆</span><span class="tag">CONTINUITY 延续、不肯离开</span><span class="tag">FEAR 恐惧</span></div>
+<p class="small">墓园重合：cemetery 2　考试：六级 托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：驱散后又回来的怨灵</li><li>事件：每晚出现在同一个地方的影子</li></ul><ol><li><b>ENCOUNTERED</b> h___t，字母像在闪</li><li><b>RECOGNIZED</b> “一次又一次回来”</li><li><b>UNDERSTOOD</b> 怨灵驱散后会回来：要撑过守夜，不是打倒它</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：同一个影子每晚都回来，选出 haunt 的意思<br>用对：“Memories of the lost still ___ this place.” 填空</p>
+<p class="small">易混：hunt（形近），linger（近义）</p>
+<p class="small">近义 obsess, ghost</p></details>
+</article><article data-role="enemy">
+<header><h2>mourn</h2><span class="pron">/mʊən/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to feel or show deep sadness because someone has died</p>
+<p class="zh">哀悼<span class="small">　词典：v. 哀悼, 忧伤, 服丧</span></p>
+<p class="line">“The angel has mourned here longer than anyone it was carved for.”</p>
+<div class="tags"><span class="tag hit">GRIEF 悲痛、哀悼</span><span class="tag hit">DEATH 死亡</span></div>
+<p class="small">墓园重合：cemetery 2　考试：高考 四级 六级 考研 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：喷泉上的哀悼天使</li><li>敌人：Mourning Wraith</li><li>事件：守墓人在朋友墓前</li></ul><ol><li><b>ENCOUNTERED</b> mo__n，字母像低着头</li><li><b>RECOGNIZED</b> “为死去的人难过”</li><li><b>UNDERSTOOD</b> MOURNING：墓园压力随回合上升</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看守墓人在墓前低头，选出 mourn 的意思<br>用对：mourn 和 grief 填空，分清动词和名词</p>
+<p class="small">易混：morn（同音），moan（形近），grief（同家族，名词）</p>
+<p class="small">一家人 mourner</p></details>
+</article><article data-role="enemy">
+<header><h2>reassemble</h2><span class="pron">/.ri:ә&#x27;sembl/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to put separate parts back together</p>
+<p class="zh">重新组装；重新聚拢<span class="small">　词典：vt. 重新召集, 重新装配 / vi. 重新集合</span></p>
+<p class="line">“The bones remember their order better than the man did.”</p>
+<div class="tags"><span class="tag hit">REMAINS 遗骸、剩下的部分</span><span class="tag">PARTS 碎片、零件</span><span class="tag">RETURN 复原、回来</span></div>
+<p class="small">墓园重合：cemetery 1　考试：—　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：余裹者的骨堆重组（黑缝线把头骨牵回去）</li></ul><ol><li><b>ENCOUNTERED</b> re_ass_mble，字母自己往一起凑</li><li><b>RECOGNIZED</b> “散开的部分又拼回去”</li><li><b>UNDERSTOOD</b> 骨堆倒数结束会重组：打掉骨堆、封住或延后倒数</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看散开的骨头一块块拼回去，选出 reassemble 的意思<br>用对：骨堆要 REASSEMBLE，选出能阻止它的词</p>
+<p class="small">易混：resemble（形近，“像”），assemble（原词）</p>
+<p class="small"></p></details>
+</article><article data-role="enemy">
+<header><h2>scatter</h2><span class="pron">/ˈskætə/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to throw or spread things over a wide area</p>
+<p class="zh">撒；使散开<span class="small">　词典：n. 消散, 分散, 散播, 散射, 散布, 酒馆 / vi. 散布, 散播, 消散</span></p>
+<p class="line">“They scattered the ashes in the wind, and the wind has kept them ever since.”</p>
+<div class="tags"><span class="tag">PARTS 碎片、零件</span><span class="tag hit">REMAINS 遗骸、剩下的部分</span></div>
+<p class="small">墓园重合：cemetery 1　考试：四级 六级 考研 托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：骷髅散架，骨头撒在路上</li><li>事件：撒骨灰</li></ul><ol><li><b>ENCOUNTERED</b> s_a_t_r，字母散了一地</li><li><b>RECOGNIZED</b> “撒得到处都是”</li><li><b>UNDERSTOOD</b> 骨头散得越开，重组越慢</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看骨头散在路上，选出 scatter 的意思<br>用对：“The blow will ___ the loose bones.” 填空</p>
+<p class="small">易混：shatter（形近），splatter（形近）</p>
+<p class="small">近义 spread, spread out；一家人 scattering</p></details>
+</article><article data-role="enemy">
+<header><h2>decay</h2><span class="pron">/dɪˈkeɪ/</span><span class="role">enemy · verb</span></header>
+<p class="sense">to slowly break down and rot</p>
+<p class="zh">腐烂；衰败<span class="small">　词典：n. 衰退, 腐败 / v. (使)衰退, (使)腐败</span></p>
+<p class="line">“Decay is the cemetery&#x27;s gardener. It never misses a day.”</p>
+<div class="tags"><span class="tag hit">DECAY 腐朽、慢慢坏掉</span><span class="tag hit">DEATH 死亡</span><span class="tag">GRADUAL 渐进、一点一点</span></div>
+<p class="small">墓园重合：cemetery 2　考试：四级 六级 考研 托福 雅思　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：烂掉的木十字架</li><li>敌人意图：腐朽类</li></ul><ol><li><b>ENCOUNTERED</b> de___，字母边缘发黑</li><li><b>RECOGNIZED</b> “慢慢烂掉”</li><li><b>UNDERSTOOD</b> 腐朽每回合累积，到一定程度会让护甲失效</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看木十字架一点点烂掉，选出 decay 的意思<br>用对：decay / delay 二选一填空</p>
+<p class="small">易混：delay（形近，BIND 的效果就是 delay），erode（同家族，石头），decoy（形近）</p>
+<p class="small"></p></details>
+</article><article data-role="enemy">
+<header><h2>crumble</h2><span class="pron">//</span><span class="role">enemy · verb</span></header>
+<p class="sense">to break into small pieces and slowly fall apart</p>
+<p class="zh">崩塌；碎成小块<span class="small">　词典：v. (使)粉碎, (使)成为碎屑, 瓦解, 崩溃, 败落</span></p>
+<p class="line">“The wall did not fall. It crumbled, stone by stone, over a hundred winters.”</p>
+<div class="tags"><span class="tag hit">DECAY 腐朽、慢慢坏掉</span><span class="tag">BREAK 打碎、破坏</span><span class="tag">STRUCTURE 结构</span><span class="tag">COLLAPSE 坍塌</span></div>
+<p class="small">墓园重合：cemetery 1　考试：托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：乱石断墙</li><li>敌人意图：结构一块块掉</li></ul><ol><li><b>ENCOUNTERED</b> cr_mble，最后几个字母在往下掉</li><li><b>RECOGNIZED</b> “一点点碎掉、塌下来”</li><li><b>UNDERSTOOD</b> 【待战斗设计】敌人的结构每回合掉一点</li><li><b>USABLE</b> 能在对白和事件里选它作答</li></ol>
+<p class="small">认出来：看断墙的石头一块块掉，选出 crumble 的意思<br>用对：crumble / shatter：一个慢、一个快，选对</p>
+<p class="small">易混：crumple（形近，“揉皱”），shatter（近义，但是一下子碎）</p>
+<p class="small">近义 fall apart</p></details>
+</article><article data-role="thing">
+<header><h2>grave</h2><span class="pron">/greiv/</span><span class="role">thing · noun</span></header>
+<p class="sense">a place in the ground where a dead person is buried</p>
+<p class="zh">坟墓<span class="small">　词典：n. 墓穴, 坟墓, 终结, 死亡 / a. 庄重的, 严肃的, 重大的, 低沉的</span></p>
+<p class="line">“Every grave here faces the chapel, except one.”</p>
+<div class="tags"><span class="tag hit">BURIAL 埋葬</span><span class="tag hit">DEATH 死亡</span><span class="tag">PLACE 地点</span></div>
+<p class="small">墓园重合：cemetery 2　考试：四级 六级 考研 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓碑与坟</li><li>事件：新挖的坟</li></ul><ol><li><b>ENCOUNTERED</b> 走近时墓碑上方浮出 gr_ve</li><li><b>RECOGNIZED</b> 看一眼就知道是“坟”</li><li><b>UNDERSTOOD</b> 事件里能读懂和它有关的句子；知道 grave 还有“严肃的”意思</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：走到坟边，从 3 张图里选出 grave<br>用对：“A stone marks the person&#x27;s ___.” 填空</p>
+<p class="small">易混：gravel（形近），grave（形容词：严肃的，另一个词义），brave（形近）</p>
+<p class="small">近义 tomb</p></details>
+</article><article data-role="thing">
+<header><h2>shroud</h2><span class="pron">/ʃraud/</span><span class="role">thing · noun</span></header>
+<p class="sense">a cloth used to wrap a dead body</p>
+<p class="zh">裹尸布；遮蔽物<span class="small">　词典：n. 尸衣, 寿衣, 覆盖物, (船的)横桅索 / vt. 包以尸衣, 遮蔽, 隐藏, 覆盖</span></p>
+<p class="line">“The shroud was meant to hide the dead from the world. Now it hides the world from them.”</p>
+<div class="tags"><span class="tag hit">BURIAL 埋葬</span><span class="tag hit">DEATH 死亡</span><span class="tag">CLOTH 布</span><span class="tag hit">HIDDEN 隐藏、看不见</span></div>
+<p class="small">墓园重合：cemetery 3　考试：GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：余裹者斜披的破裹尸布</li><li>雾：a shroud of fog</li></ul><ol><li><b>ENCOUNTERED</b> 骷髅身上的布上浮出 shr__d</li><li><b>RECOGNIZED</b> 看一眼就知道是“裹尸布”</li><li><b>UNDERSTOOD</b> 能读懂 a shroud of fog 这种说法</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：看骷髅身上的布，选出 shroud<br>用对：“The skeleton still wears its torn ___.” 填空</p>
+<p class="small">易混：shrub（形近），cloud（形近，且 shroud of fog 像云）</p>
+<p class="small">近义 pall, cerement, winding-sheet, winding-clothes</p></details>
+</article><article data-role="thing">
+<header><h2>bone</h2><span class="pron">/bәun/</span><span class="role">thing · noun</span></header>
+<p class="sense">one of the hard white parts inside a body</p>
+<p class="zh">骨头<span class="small">　词典：n. 骨头, 骨, 骨制品 / vt. 剔骨</span></p>
+<p class="line">“Bones are the last thing a person owns.”</p>
+<div class="tags"><span class="tag hit">REMAINS 遗骸、剩下的部分</span><span class="tag">BODY 身体</span><span class="tag hit">DEATH 死亡</span></div>
+<p class="small">墓园重合：cemetery 2　考试：高考 四级 考研　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：骷髅、骨堆</li><li>效果：被打中时飞出的碎骨</li></ul><ol><li><b>ENCOUNTERED</b> 碎骨旁浮出 b_ne</li><li><b>RECOGNIZED</b> 看一眼就知道是“骨头”</li><li><b>UNDERSTOOD</b> 能读懂 bone 组成的词：skeleton, bony</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 bone<br>用对：“Only a ___ was left on the path.” 填空</p>
+<p class="small">易混：bond（形近），born（形近）</p>
+<p class="small">近义 os；一家人 bony, boney, bonelet</p></details>
+</article><article data-role="thing">
+<header><h2>lantern</h2><span class="pron">/ˈlæn.tən/</span><span class="role">thing · noun</span></header>
+<p class="sense">a lamp in a case with a handle, carried or hung</p>
+<p class="zh">提灯；灯笼<span class="small">　词典：n. 灯笼, 提灯, 航标灯 / vt. 装上提灯</span></p>
+<p class="line">“Some lanterns are lit not to show the way, but to show that someone still remembers.”</p>
+<div class="tags"><span class="tag">LIGHT 光</span><span class="tag">OBJECT 物件</span><span class="tag hit">MEMORY 记忆</span><span class="tag">VIGIL 守夜、守望</span></div>
+<p class="small">墓园重合：cemetery 1　考试：高考 四级 六级 考研　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：倒在路边的路灯 / 守墓人的提灯</li><li>事件：“A lantern still burns on a grave no one visits.”</li></ul><ol><li><b>ENCOUNTERED</b> 走近时物件上方浮出词形</li><li><b>RECOGNIZED</b> 看一眼就知道是“那盏灯”</li><li><b>UNDERSTOOD</b> 事件里能读懂和它有关的句子</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：走到物件旁，从 3 张图里选出 lantern<br>用对：守墓人问“What do you need to see in the fog?”</p>
+<p class="small">易混：lamp（近义），candle（同场景）</p>
+<p class="small"></p></details>
+</article><article data-role="thing">
+<header><h2>chapel</h2><span class="pron">/ˈtʃæ.pəl/</span><span class="role">thing · noun</span></header>
+<p class="sense">a small church, or a room used for prayer</p>
+<p class="zh">小教堂；礼拜堂<span class="small">　词典：n. 小教堂, 礼拜式</span></p>
+<p class="line">“The chapel can be seen from every corner of the cemetery. No path leads straight to it.”</p>
+<div class="tags"><span class="tag">SACRED 神圣、宗教</span><span class="tag">PLACE 地点</span><span class="tag hit">SILENCE 寂静</span></div>
+<p class="small">墓园重合：cemetery 1　考试：托福 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>远景：雾中的礼拜堂</li><li>房间：Boss 房 Mourning Chapel</li></ul><ol><li><b>ENCOUNTERED</b> 远处的礼拜堂上浮出 ch___l</li><li><b>RECOGNIZED</b> 看一眼就知道是“礼拜堂”</li><li><b>UNDERSTOOD</b> 能读懂和它有关的事件</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张远景里选出 chapel<br>用对：“The bell hangs in the ___ tower.” 填空</p>
+<p class="small">易混：chapter（形近），church（近义，更大）</p>
+<p class="small"></p></details>
+</article><article data-role="thing">
+<header><h2>gate</h2><span class="pron">/geit/</span><span class="role">thing · noun</span></header>
+<p class="sense">a door in a wall or fence, usually outdoors</p>
+<p class="zh">大门；栅门<span class="small">　词典：n. 门, 牌楼, 大门, 通道, 闸 / vt. 装门于</span></p>
+<p class="line">“The gate was never locked. People simply stopped coming through it.”</p>
+<div class="tags"><span class="tag">PASSAGE 通道、出入</span><span class="tag">BOUNDARY 边界、内外</span><span class="tag">PLACE 地点</span></div>
+<p class="small">墓园重合：cemetery 0　考试：中考 高考　draft</p><p class="small">手动加权：{&quot;cemetery&quot;: &quot;entry_room&quot;}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓园入口的铁门（两扇）</li><li>地图：每个出口</li></ul><ol><li><b>ENCOUNTERED</b> 铁门上方浮出 g_te</li><li><b>RECOGNIZED</b> 看一眼就知道是“大门”</li><li><b>UNDERSTOOD</b> 能读懂 gate / door 的区别</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：走到铁门前，从 3 张图里选出 gate<br>用对：“The iron ___ was never locked.” 填空</p>
+<p class="small">易混：gait（同音），date（形近），door（近义，gate 在户外的墙或栏上）</p>
+<p class="small"></p></details>
+</article><article data-role="thing">
+<header><h2>statue</h2><span class="pron">/ˈstætʃ.uː/</span><span class="role">thing · noun</span></header>
+<p class="sense">a figure of a person or animal made of stone or metal</p>
+<p class="zh">雕像<span class="small">　词典：vt. 以雕像装饰 / n. 雕像</span></p>
+<p class="line">“The angel&#x27;s face was carved by someone who had lost a child. You can tell.”</p>
+<div class="tags"><span class="tag">STONE 石头</span><span class="tag">OBJECT 物件</span><span class="tag hit">MEMORY 记忆</span></div>
+<p class="small">墓园重合：cemetery 1　考试：高考 四级 六级 考研 托福 雅思　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：喷泉上的哀悼天使</li></ul><ol><li><b>ENCOUNTERED</b> 天使像旁浮出 st_tue</li><li><b>RECOGNIZED</b> 看一眼就知道是“雕像”</li><li><b>UNDERSTOOD</b> 能读懂和雕像有关的说明文字</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 statue<br>用对：“A stone ___ watches over the fountain.” 填空</p>
+<p class="small">易混：status（形近），statute（形近）</p>
+<p class="small">一家人 statuary, statuette</p></details>
+</article><article data-role="thing">
+<header><h2>fountain</h2><span class="pron">/ˈfaʊn.tn̩/</span><span class="role">thing · noun</span></header>
+<p class="sense">a stone structure that sends water up into the air</p>
+<p class="zh">喷泉<span class="small">　词典：n. 水源, 源, 喷泉, 泉水, 本源 / [医] 泉</span></p>
+<p class="line">“The fountain has been dry for years. Visitors still drop coins into it.”</p>
+<div class="tags"><span class="tag">WATER 水</span><span class="tag">STONE 石头</span><span class="tag">PLACE 地点</span></div>
+<p class="small">墓园重合：cemetery 0　考试：高考 四级 六级 考研 托福 雅思　draft</p><p class="small">手动加权：{&quot;cemetery&quot;: &quot;entry_room&quot;}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓园入口广场中间的干涸喷泉</li></ul><ol><li><b>ENCOUNTERED</b> 喷泉上方浮出 fo_nt_in</li><li><b>RECOGNIZED</b> 看一眼就知道是“喷泉”</li><li><b>UNDERSTOOD</b> 能读懂 dry fountain 这种说法</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 fountain<br>用对：“The ___ has been dry for years.” 填空</p>
+<p class="small">易混：mountain（形近）</p>
+<p class="small"></p></details>
+</article><article data-role="thing">
+<header><h2>fog</h2><span class="pron">/fɒg/</span><span class="role">thing · noun</span></header>
+<p class="sense">thick cloud near the ground that is hard to see through</p>
+<p class="zh">雾<span class="small">　词典：n. 雾, 迷惑, (割后的)最生草, 苔藓 / vi. 被雾笼罩, 变模糊</span></p>
+<p class="line">“In this cemetery, fog does not roll in. It rises from the ground.”</p>
+<div class="tags"><span class="tag">WEATHER 天气、雾气</span><span class="tag hit">HIDDEN 隐藏、看不见</span><span class="tag hit">SILENCE 寂静</span></div>
+<p class="small">墓园重合：cemetery 2　考试：高考 四级 六级 考研 托福　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>场景：地平线雾、黑雾深处区域</li><li>敌人：雾里的飞蛾</li></ul><ol><li><b>ENCOUNTERED</b> 雾里浮出 f_g</li><li><b>RECOGNIZED</b> 看一眼就知道是“雾”</li><li><b>UNDERSTOOD</b> 能分清 fog / mist</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 fog<br>用对：“The ___ hides the names on the stones.” 填空</p>
+<p class="small">易混：frog（形近），mist（近义，更薄）</p>
+<p class="small">一家人 foggy</p></details>
+</article><article data-role="thing">
+<header><h2>epitaph</h2><span class="pron">/&#x27;epitɑ:f/</span><span class="role">thing · noun</span></header>
+<p class="sense">short words written on a grave about the dead person</p>
+<p class="zh">墓志铭<span class="small">　词典：n. 墓志铭, 碑文</span></p>
+<p class="line">“Most epitaphs here say the same thing. One of them says, Do not read me.”</p>
+<div class="tags"><span class="tag hit">BURIAL 埋葬</span><span class="tag hit">MEMORY 记忆</span><span class="tag">INSCRIPTION 铭文、刻字</span><span class="tag hit">DEATH 死亡</span></div>
+<p class="small">墓园重合：cemetery 3　考试：GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓碑上的字（被磨平的、被苔藓盖住的）</li></ul><ol><li><b>ENCOUNTERED</b> 墓碑上浮出 ep_t_ph</li><li><b>RECOGNIZED</b> 看一眼就知道是“墓志铭”</li><li><b>UNDERSTOOD</b> 能读懂一段墓志铭</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：看墓碑上的字，选出 epitaph<br>用对：“Read the ___ before the rain wears it away.” 填空</p>
+<p class="small">易混：epithet（形近，“绰号”），epigraph（形近，“题词”）</p>
+<p class="small"></p></details>
+</article><article data-role="thing">
+<header><h2>raven</h2><span class="pron">/ˈɹeɪvən/</span><span class="role">thing · noun</span></header>
+<p class="sense">a large black bird</p>
+<p class="zh">渡鸦<span class="small">　词典：n. 渡鸦, 掠夺 / a. 乌黑的</span></p>
+<p class="line">“The ravens do not fear the dead. They have learned the dead do not throw stones.”</p>
+<div class="tags"><span class="tag">ANIMAL 动物</span><span class="tag">OMEN 预兆</span><span class="tag hit">DEATH 死亡</span></div>
+<p class="small">墓园重合：cemetery 1　考试：托福　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：枯树上的渡鸦（待做）</li><li>事件：渡鸦叼来一样东西</li></ul><ol><li><b>ENCOUNTERED</b> 枯树上浮出 r_ven</li><li><b>RECOGNIZED</b> 看一眼就知道是“渡鸦”</li><li><b>UNDERSTOOD</b> 能分清 raven / crow</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 raven<br>用对：“A ___ watches from the dead tree.” 填空</p>
+<p class="small">易混：crow（近义，更小），haven（形近），ravine（形近）</p>
+<p class="small">近义 Corvus corax</p></details>
+</article><article data-role="thing">
+<header><h2>moss</h2><span class="pron">/mɒs/</span><span class="role">thing · noun</span></header>
+<p class="sense">a small soft green plant that grows on stones and trees</p>
+<p class="zh">苔藓<span class="small">　词典：n. 苔藓, 泥沼 / vt. 使长满苔藓</span></p>
+<p class="line">“Moss reads every name in the cemetery, slowly, with its whole body.”</p>
+<div class="tags"><span class="tag">PLANT 植物</span><span class="tag hit">HIDDEN 隐藏、看不见</span><span class="tag">GRADUAL 渐进、一点一点</span></div>
+<p class="small">墓园重合：cemetery 1　考试：六级 考研 托福　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓碑上的苔藓（盖住名字）</li><li>地面：苔藓贴花</li></ul><ol><li><b>ENCOUNTERED</b> 墓碑上浮出 m_ss</li><li><b>RECOGNIZED</b> 看一眼就知道是“苔藓”</li><li><b>UNDERSTOOD</b> 能读懂 covered in moss</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 moss<br>用对：“The name is hidden under the ___.” 填空</p>
+<p class="small">易混：mess（形近），moth（形近；雾里的飞蛾）</p>
+<p class="small">一家人 mossy</p></details>
+</article><article data-role="thing">
+<header><h2>bell</h2><span class="pron">/bɛl/</span><span class="role">thing · noun</span></header>
+<p class="sense">a hollow metal object that rings when you hit it</p>
+<p class="zh">钟；铃<span class="small">　词典：n. 铃, 钟 / [计] 响铃命令</span></p>
+<p class="line">“The bell rings once for each new grave. Nobody has heard it in years.”</p>
+<div class="tags"><span class="tag">SOUND 声音</span><span class="tag hit">SILENCE 寂静</span><span class="tag">SACRED 神圣、宗教</span><span class="tag">METAL 金属</span></div>
+<p class="small">墓园重合：cemetery 1　考试：中考 高考　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：礼拜堂的钟</li><li>事件：钟声（见 linger）</li></ul><ol><li><b>ENCOUNTERED</b> 钟上浮出 b_ll</li><li><b>RECOGNIZED</b> 看一眼就知道是“钟”</li><li><b>UNDERSTOOD</b> 能读懂 the bell tolls</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：从 3 张图里选出 bell<br>用对：“Strike the ___ three times.” 填空</p>
+<p class="small">易混：ball（形近），belly（形近）</p>
+<p class="small"></p></details>
+</article><article data-role="mood">
+<header><h2>grief</h2><span class="pron">/ɡɹiːf/</span><span class="role">mood · noun</span></header>
+<p class="sense">deep sadness, especially after someone dies</p>
+<p class="zh">悲痛<span class="small">　词典：n. 伤心, 忧愁, 悲痛, 不幸, 灾难</span></p>
+<p class="line">“The village left. Its grief stayed, and learned the names of every stone.”</p>
+<div class="tags"><span class="tag hit">GRIEF 悲痛、哀悼</span><span class="tag hit">DEATH 死亡</span><span class="tag hit">MEMORY 记忆</span></div>
+<p class="small">墓园重合：cemetery 3　考试：六级 考研 雅思 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>墓志铭：“Here lies the grief of a whole village.”</li><li>哀悼天使雕像的说明文字</li><li>敌人：哀悼者类敌人的描述</li></ul><ol><li><b>ENCOUNTERED</b> 墓志铭里这个词是糊的</li><li><b>RECOGNIZED</b> “一种很重的难过”</li><li><b>UNDERSTOOD</b> 能分清 grief 和 mourn（一个是感情，一个是表达）</li><li><b>USABLE</b> 对白里能用</li></ol>
+<p class="small">认出来：读天使雕像的说明，选出 grief 的意思<br>用对：mourn 和 grief 填空，分清动词和名词</p>
+<p class="small">易混：mourn（同家族，动词），sorrow（近义），greed（形近）</p>
+<p class="small">近义 heartache, heartbreak, brokenheartedness</p></details>
+</article><article data-role="mood">
+<header><h2>silence</h2><span class="pron">/ˈsaɪ.ləns/</span><span class="role">mood · noun</span></header>
+<p class="sense">complete quiet, with no sound at all</p>
+<p class="zh">寂静；沉默<span class="small">　词典：n. 沉默, 无声, 静寂, 湮没, 无声息 / vt. 使缄默</span></p>
+<p class="line">“Silence is not empty here. It is full of people not speaking.”</p>
+<div class="tags"><span class="tag hit">SILENCE 寂静</span><span class="tag">SOUND 声音</span></div>
+<p class="small">墓园重合：cemetery 1　考试：中考 高考 四级 六级 考研 托福 雅思　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>战斗：战斗结束后的那一下寂静</li><li>事件：守墓人不回答</li></ul><ol><li><b>ENCOUNTERED</b> 对白里这个词是糊的</li><li><b>RECOGNIZED</b> “一点声音都没有”</li><li><b>UNDERSTOOD</b> 能分清 silence / silent</li><li><b>USABLE</b> 对白里能用</li></ol>
+<p class="small">认出来：读一段描写，选出 silence 的意思<br>用对：silence / silent 填空，分清名词和形容词</p>
+<p class="small">易混：silent（同一家人，形容词），science（形近）</p>
+<p class="small">近义 quiet；反义 sound；一家人 silent</p></details>
+</article><article data-role="mood">
+<header><h2>memory</h2><span class="pron">/ˈmɛm(ə)ɹi/</span><span class="role">mood · noun</span></header>
+<p class="sense">something you remember from the past</p>
+<p class="zh">记忆；回忆<span class="small">　词典：n. 记忆, 记忆力, 回忆, 纪念, 存储 / n. 内存</span></p>
+<p class="line">“The world forgets. You do not.”</p>
+<div class="tags"><span class="tag hit">MEMORY 记忆</span><span class="tag">TIME 时间</span></div>
+<p class="small">墓园重合：cemetery 1　考试：中考 高考 四级 六级 考研 托福　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>Lexicon：整本书</li><li>事件：一段被找回的回忆</li></ul><ol><li><b>ENCOUNTERED</b> 对白里这个词是糊的</li><li><b>RECOGNIZED</b> “记得的过去的事”</li><li><b>UNDERSTOOD</b> 能分清 memory / memorial</li><li><b>USABLE</b> 对白里能用</li></ol>
+<p class="small">认出来：读一段描写，选出 memory 的意思<br>用对：memory / memorial 填空</p>
+<p class="small">易混：memorial（同一家人，“纪念物”），memo（形近）</p>
+<p class="small">一家人 memorize, memorise</p></details>
+</article><article data-role="mood">
+<header><h2>hollow</h2><span class="pron">/&#x27;hɒlәu/</span><span class="role">mood · adjective</span></header>
+<p class="sense">having an empty space inside</p>
+<p class="zh">空心的；空洞的<span class="small">　词典：n. 洞, 窟窿, 山谷 / a. 空的, 虚伪的, 空腹的, 凹的</span></p>
+<p class="line">“Knock on a skull and it answers. It is hollow, not empty.”</p>
+<div class="tags"><span class="tag">SPACE 空间、空洞</span><span class="tag hit">REMAINS 遗骸、剩下的部分</span></div>
+<p class="small">墓园重合：cemetery 1　考试：四级 六级 考研 托福　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：空骷髅头敲出的声音</li><li>敌人：没有实体的鬼魂（没有结构可打）</li></ul><ol><li><b>ENCOUNTERED</b> 对白里这个词是糊的</li><li><b>RECOGNIZED</b> “里面是空的”</li><li><b>UNDERSTOOD</b> 幽灵是空的：没有结构，打结构的词没用</li><li><b>USABLE</b> 对白里能用</li></ol>
+<p class="small">认出来：听骷髅头被敲的声音，选出 hollow 的意思<br>用对：“The empty skull is ___.” 填空</p>
+<p class="small">易混：hallow（形近，“神圣的”），follow（形近），shallow（形近）</p>
+<p class="small">反义 solid；一家人 hollowness</p></details>
+</article><article data-role="mood">
+<header><h2>remains</h2><span class="pron">/ɹɪˈmeɪnz/</span><span class="role">mood · noun</span></header>
+<p class="sense">what is left of something after the rest is gone, especially a dead body</p>
+<p class="zh">遗骸；残余<span class="small">　词典：n. 剩余物, 废墟, 残余 / [法] 遗体, 尸体, 遗骸</span></p>
+<p class="line">“What remains of a person is mostly what other people kept.”</p>
+<div class="tags"><span class="tag hit">REMAINS 遗骸、剩下的部分</span><span class="tag hit">DEATH 死亡</span><span class="tag">PARTS 碎片、零件</span></div>
+<p class="small">墓园重合：cemetery 2　考试：四级 六级 考研 GRE　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人：骷髅倒下后的骨堆（Bone Remains）</li></ul><ol><li><b>ENCOUNTERED</b> 骨堆上浮出 rem___s</li><li><b>RECOGNIZED</b> “剩下的东西”</li><li><b>UNDERSTOOD</b> 骨堆是单独的目标，打倒骷髅不等于赢</li><li><b>USABLE</b> 对白里能用</li></ol>
+<p class="small">认出来：看骨堆，选出 remains 的意思<br>用对：remain / remains 填空，分清动词和名词</p>
+<p class="small">易混：remain（同形的动词，“留下”），reminds（形近）</p>
+<p class="small">近义 cadaver, corpse, stiff, clay</p></details>
+</article></main>
+<script>
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
+ document.querySelectorAll('article').forEach(a=>a.style.display=(b.dataset.f==='all'||a.dataset.role===b.dataset.f)?'':'none');
+});
+</script></html>

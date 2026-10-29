@@ -1,0 +1,201 @@
+{
+  "lemma": "silence",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈsaɪ.ləns",
+      "us": null
+    },
+    "zh": [
+      "n. 沉默, 无声, 静寂, 湮没, 无声息",
+      "vt. 使缄默",
+      "interj. 安静"
+    ],
+    "exam": [
+      "zk",
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 1653,
+      "modern_rank": 1820,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "past_participle": "silenced",
+      "past": "silenced",
+      "ing": "silencing",
+      "plural": "silences",
+      "third_person": "silences"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-13948583-n",
+        "pos": "noun",
+        "category": "noun.state",
+        "definition": "the state of being silent (as when no one is speaking)",
+        "examples": [
+          "there was a shocked silence",
+          "he gestured for silence"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "silent"
+        ],
+        "broader": [
+          "condition",
+          "status"
+        ]
+      },
+      {
+        "synset": "oewn-04989456-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "the absence of sound",
+        "examples": [
+          "he needed silence in order to sleep",
+          "the street was quiet"
+        ],
+        "synonyms": [
+          "quiet"
+        ],
+        "antonyms": [
+          "sound"
+        ],
+        "family": [
+          "silent"
+        ],
+        "broader": [
+          "sound property"
+        ]
+      },
+      {
+        "synset": "oewn-04659331-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "a refusal to speak when expected",
+        "examples": [
+          "his silence about my contribution was surprising"
+        ],
+        "synonyms": [
+          "muteness"
+        ],
+        "antonyms": [],
+        "family": [
+          "silent"
+        ],
+        "broader": [
+          "uncommunicativeness"
+        ]
+      },
+      {
+        "synset": "oewn-04659534-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "the trait of keeping things secret",
+        "examples": [],
+        "synonyms": [
+          "secrecy",
+          "secretiveness"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "uncommunicativeness"
+        ]
+      },
+      {
+        "synset": "oewn-00462448-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "cause to be quiet or not talk",
+        "examples": [
+          "Please silence the children in the church!"
+        ],
+        "synonyms": [
+          "hush",
+          "quieten",
+          "still",
+          "shut up",
+          "hush up"
+        ],
+        "antonyms": [],
+        "family": [
+          "silencer"
+        ],
+        "broader": [
+          "suppress",
+          "stamp down"
+        ]
+      },
+      {
+        "synset": "oewn-00463920-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "keep from expression, for example by threats or pressure",
+        "examples": [
+          "All dissenters were silenced when the dictator assumed power"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "suppress",
+          "stamp down"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "silence#no_sound",
+      "pos": "noun",
+      "wordnet": "oewn-04989456-n",
+      "sense": "complete quiet, with no sound at all",
+      "zh": "寂静；沉默",
+      "role": "mood",
+      "tags": [
+        "SILENCE",
+        "SOUND"
+      ],
+      "appears": [
+        "战斗：战斗结束后的那一下寂静",
+        "事件：守墓人不回答"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "对白里这个词是糊的",
+        "RECOGNIZED": "“一点声音都没有”",
+        "UNDERSTOOD": "能分清 silence / silent",
+        "USABLE": "对白里能用"
+      },
+      "challenge": {
+        "recognize": "读一段描写，选出 silence 的意思",
+        "produce": "silence / silent 填空，分清名词和形容词"
+      },
+      "confusable": [
+        "silent（同一家人，形容词）",
+        "science（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "quiet"
+        ],
+        "antonyms": [
+          "sound"
+        ],
+        "family": [
+          "silent"
+        ]
+      },
+      "constellation": "SILENCE",
+      "page_line": "Silence is not empty here. It is full of people not speaking.",
+      "status": "draft"
+    }
+  ]
+}

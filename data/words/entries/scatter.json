@@ -1,0 +1,241 @@
+{
+  "lemma": "scatter",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈskætə",
+      "us": "ˈskætɚ"
+    },
+    "zh": [
+      "n. 消散, 分散, 散播, 散射, 散布, 酒馆",
+      "vi. 散布, 散播, 消散",
+      "vt. 使消散, 使分散, 撒, 散布, 散播, 散射",
+      "[计] 散点图"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 4116,
+      "modern_rank": 3754,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "scattered",
+      "ing": "scattering",
+      "past": "scattered",
+      "third_person": "scatters"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-05095531-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "a haphazard distribution in all directions",
+        "examples": [],
+        "synonyms": [
+          "spread"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "distribution",
+          "dispersion"
+        ]
+      },
+      {
+        "synset": "oewn-00369946-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "the act of scattering",
+        "examples": [],
+        "synonyms": [
+          "scattering",
+          "strewing"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "spread",
+          "spreading"
+        ]
+      },
+      {
+        "synset": "oewn-02034269-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "to cause to separate and go in different directions",
+        "examples": [
+          "She waved her hand and scattered the crowds"
+        ],
+        "synonyms": [
+          "disperse",
+          "dissipate",
+          "dispel",
+          "break up"
+        ],
+        "antonyms": [],
+        "family": [
+          "scattering"
+        ],
+        "broader": [
+          "separate",
+          "divide"
+        ]
+      },
+      {
+        "synset": "oewn-02032840-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "move away from each other",
+        "examples": [
+          "The crowds dispersed",
+          "The children scattered in all directions when the teacher approached"
+        ],
+        "synonyms": [
+          "disperse",
+          "dissipate",
+          "spread out"
+        ],
+        "antonyms": [],
+        "family": [
+          "scattering"
+        ],
+        "broader": [
+          "separate",
+          "part"
+        ]
+      },
+      {
+        "synset": "oewn-01378910-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "distribute loosely",
+        "examples": [
+          "He scattered gun powder under the wagon"
+        ],
+        "synonyms": [
+          "sprinkle",
+          "dot",
+          "dust",
+          "disperse"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "discharge"
+        ]
+      },
+      {
+        "synset": "oewn-01504315-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "sow by scattering",
+        "examples": [
+          "scatter seeds"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "scattering"
+        ],
+        "broader": [
+          "sow",
+          "seed"
+        ]
+      },
+      {
+        "synset": "oewn-00331375-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "cause to separate",
+        "examples": [
+          "break up kidney stones",
+          "disperse particles"
+        ],
+        "synonyms": [
+          "break up",
+          "disperse"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "change integrity"
+        ]
+      },
+      {
+        "synset": "oewn-02086937-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "strew or distribute over an area",
+        "examples": [
+          "He spread fertilizer over the lawn",
+          "scatter cards across the table"
+        ],
+        "synonyms": [
+          "spread",
+          "spread out"
+        ],
+        "antonyms": [],
+        "family": [
+          "scattering"
+        ],
+        "broader": [
+          "circulate",
+          "pass around"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "scatter#spread",
+      "pos": "verb",
+      "wordnet": "oewn-02086937-v",
+      "sense": "to throw or spread things over a wide area",
+      "zh": "撒；使散开",
+      "role": "enemy",
+      "tags": [
+        "PARTS",
+        "REMAINS"
+      ],
+      "appears": [
+        "敌人：骷髅散架，骨头撒在路上",
+        "事件：撒骨灰"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "s_a_t_r，字母散了一地",
+        "RECOGNIZED": "“撒得到处都是”",
+        "UNDERSTOOD": "骨头散得越开，重组越慢",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看骨头散在路上，选出 scatter 的意思",
+        "produce": "“The blow will ___ the loose bones.” 填空"
+      },
+      "confusable": [
+        "shatter（形近）",
+        "splatter（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "spread",
+          "spread out"
+        ],
+        "antonyms": [],
+        "family": [
+          "scattering"
+        ]
+      },
+      "constellation": "PARTS",
+      "page_line": "They scattered the ashes in the wind, and the wind has kept them ever since.",
+      "status": "draft"
+    }
+  ]
+}

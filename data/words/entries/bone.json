@@ -1,0 +1,194 @@
+{
+  "lemma": "bone",
+  "dictionary": {
+    "phonetic": {
+      "uk": "bәun",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 骨头, 骨, 骨制品",
+      "vt. 剔骨",
+      "vi. 专心致志"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "ky"
+    ],
+    "frequency": {
+      "bnc_rank": 1934,
+      "modern_rank": 1443,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "bones",
+      "ing": "boning",
+      "past": "boned",
+      "third_person": "bones",
+      "past_participle": "boned"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-00296790-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "consisting of or made up of bone",
+        "examples": [
+          "a bony substance",
+          "the bony framework of the body"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": []
+      },
+      {
+        "synset": "oewn-05277400-n",
+        "pos": "noun",
+        "category": "noun.body",
+        "definition": "rigid connective tissue that makes up the skeleton of vertebrates",
+        "examples": [],
+        "synonyms": [
+          "os"
+        ],
+        "antonyms": [],
+        "family": [
+          "bony",
+          "boney",
+          "bonelet"
+        ],
+        "broader": [
+          "connective tissue"
+        ]
+      },
+      {
+        "synset": "oewn-14782027-n",
+        "pos": "noun",
+        "category": "noun.substance",
+        "definition": "the porous calcified substance from which bones are made",
+        "examples": [],
+        "synonyms": [
+          "osseous tissue"
+        ],
+        "antonyms": [],
+        "family": [
+          "bonelet"
+        ],
+        "broader": [
+          "animal material"
+        ]
+      },
+      {
+        "synset": "oewn-04968508-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "a shade of white the color of bleached bones",
+        "examples": [],
+        "synonyms": [
+          "ivory",
+          "pearl",
+          "off-white"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "white",
+          "whiteness"
+        ]
+      },
+      {
+        "synset": "oewn-00607178-v",
+        "pos": "verb",
+        "category": "verb.cognition",
+        "definition": "study intensively, as before an exam",
+        "examples": [
+          "I had to bone up on my Latin verbs before the final exam"
+        ],
+        "synonyms": [
+          "cram",
+          "grind away",
+          "drum",
+          "bone up",
+          "swot",
+          "get up",
+          "mug up",
+          "swot up"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "study",
+          "hit the books"
+        ]
+      },
+      {
+        "synset": "oewn-00197798-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "remove the bones from",
+        "examples": [
+          "bone the turkey before roasting it"
+        ],
+        "synonyms": [
+          "debone"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "remove",
+          "take"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "bone#skeleton_part",
+      "pos": "noun",
+      "wordnet": "oewn-05277400-n",
+      "sense": "one of the hard white parts inside a body",
+      "zh": "骨头",
+      "role": "thing",
+      "tags": [
+        "REMAINS",
+        "BODY",
+        "DEATH"
+      ],
+      "appears": [
+        "敌人：骷髅、骨堆",
+        "效果：被打中时飞出的碎骨"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "碎骨旁浮出 b_ne",
+        "RECOGNIZED": "看一眼就知道是“骨头”",
+        "UNDERSTOOD": "能读懂 bone 组成的词：skeleton, bony",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 bone",
+        "produce": "“Only a ___ was left on the path.” 填空"
+      },
+      "confusable": [
+        "bond（形近）",
+        "born（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "os"
+        ],
+        "antonyms": [],
+        "family": [
+          "bony",
+          "boney",
+          "bonelet"
+        ]
+      },
+      "constellation": "REMAINS",
+      "page_line": "Bones are the last thing a person owns.",
+      "status": "draft"
+    }
+  ]
+}

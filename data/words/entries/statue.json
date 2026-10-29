@@ -1,0 +1,92 @@
+{
+  "lemma": "statue",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈstætʃ.uː",
+      "us": "ˈstætʃu"
+    },
+    "zh": [
+      "vt. 以雕像装饰",
+      "n. 雕像"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 4519,
+      "modern_rank": 3872,
+      "collins_stars": 2,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "statues"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-04313985-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a sculpture representing a human or animal",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "statuary",
+          "statuette"
+        ],
+        "broader": [
+          "sculpture"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "statue#sculpture",
+      "pos": "noun",
+      "wordnet": "oewn-04313985-n",
+      "sense": "a figure of a person or animal made of stone or metal",
+      "zh": "雕像",
+      "role": "thing",
+      "tags": [
+        "STONE",
+        "OBJECT",
+        "MEMORY"
+      ],
+      "appears": [
+        "物件：喷泉上的哀悼天使"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "天使像旁浮出 st_tue",
+        "RECOGNIZED": "看一眼就知道是“雕像”",
+        "UNDERSTOOD": "能读懂和雕像有关的说明文字",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 statue",
+        "produce": "“A stone ___ watches over the fountain.” 填空"
+      },
+      "confusable": [
+        "status（形近）",
+        "statute（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "statuary",
+          "statuette"
+        ]
+      },
+      "constellation": "STONE",
+      "page_line": "The angel's face was carved by someone who had lost a child. You can tell.",
+      "status": "draft"
+    }
+  ]
+}

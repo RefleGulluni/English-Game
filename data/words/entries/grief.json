@@ -1,0 +1,111 @@
+{
+  "lemma": "grief",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ɡɹiːf",
+      "us": null
+    },
+    "zh": [
+      "n. 伤心, 忧愁, 悲痛, 不幸, 灾难"
+    ],
+    "exam": [
+      "cet6",
+      "ky",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 4332,
+      "modern_rank": 4092,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "griefs"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-07550398-n",
+        "pos": "noun",
+        "category": "noun.feeling",
+        "definition": "intense sorrow caused by loss of a loved one (especially by death)",
+        "examples": [],
+        "synonyms": [
+          "heartache",
+          "heartbreak",
+          "brokenheartedness"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "sorrow"
+        ]
+      },
+      {
+        "synset": "oewn-05842007-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "something that causes great unhappiness",
+        "examples": [
+          "her death was a great grief to John"
+        ],
+        "synonyms": [
+          "sorrow"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "negative stimulus"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "grief#sorrow",
+      "pos": "noun",
+      "wordnet": "oewn-07550398-n",
+      "sense": "deep sadness, especially after someone dies",
+      "zh": "悲痛",
+      "role": "mood",
+      "tags": [
+        "GRIEF",
+        "DEATH",
+        "MEMORY"
+      ],
+      "appears": [
+        "墓志铭：“Here lies the grief of a whole village.”",
+        "哀悼天使雕像的说明文字",
+        "敌人：哀悼者类敌人的描述"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "墓志铭里这个词是糊的",
+        "RECOGNIZED": "“一种很重的难过”",
+        "UNDERSTOOD": "能分清 grief 和 mourn（一个是感情，一个是表达）",
+        "USABLE": "对白里能用"
+      },
+      "challenge": {
+        "recognize": "读天使雕像的说明，选出 grief 的意思",
+        "produce": "mourn 和 grief 填空，分清动词和名词"
+      },
+      "confusable": [
+        "mourn（同家族，动词）",
+        "sorrow（近义）",
+        "greed（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "heartache",
+          "heartbreak",
+          "brokenheartedness"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "GRIEF",
+      "page_line": "The village left. Its grief stayed, and learned the names of every stone.",
+      "status": "draft"
+    }
+  ]
+}

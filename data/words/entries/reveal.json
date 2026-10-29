@@ -1,0 +1,155 @@
+{
+  "lemma": "reveal",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ɹəˈviːl",
+      "us": null
+    },
+    "zh": [
+      "vt. 露出, 显示, 透露, 揭露, 泄露, (神)启示",
+      "n. 窗侧, 门侧"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 968,
+      "modern_rank": 927,
+      "collins_stars": 4,
+      "oxford_3000": true
+    },
+    "forms": {
+      "past_participle": "revealed",
+      "past": "revealed",
+      "third_person": "reveals",
+      "ing": "revealing"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02147756-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "make manifest",
+        "examples": [
+          "Summer brings out bright clothes",
+          "He brings out the best in her"
+        ],
+        "synonyms": [
+          "bring out",
+          "unveil"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "show"
+        ]
+      },
+      {
+        "synset": "oewn-00935783-v",
+        "pos": "verb",
+        "category": "verb.communication",
+        "definition": "make known to the public information that was previously known only to a few people or that was meant to be kept a secret",
+        "examples": [
+          "The auction house would not disclose the price at which the van Gogh had sold",
+          "The actress won't reveal how old she is"
+        ],
+        "synonyms": [
+          "unwrap",
+          "disclose",
+          "let on",
+          "bring out",
+          "discover",
+          "expose",
+          "divulge",
+          "break",
+          "give away",
+          "let out",
+          "uncover"
+        ],
+        "antonyms": [],
+        "family": [
+          "revelation",
+          "revealing"
+        ],
+        "broader": [
+          "tell"
+        ]
+      },
+      {
+        "synset": "oewn-02148706-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "disclose directly or through prophets",
+        "examples": [
+          "God rarely reveals his plans for mankind"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "revelatory",
+          "revelation",
+          "Revelation"
+        ],
+        "broader": [
+          "unwrap",
+          "disclose"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "reveal#show_hidden",
+      "pos": "verb",
+      "wordnet": "oewn-02147756-v",
+      "sense": "to show something that was hidden",
+      "zh": "揭示；显露",
+      "role": "ability",
+      "tags": [
+        "PERCEPTION",
+        "HIDDEN"
+      ],
+      "appears": [
+        "物件：雾散开，露出墓碑上的名字",
+        "事件：被磨平的墓志铭重新显出字来"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "r_v_al，字母一个个藏在雾里",
+        "RECOGNIZED": "“让藏着的东西露出来”",
+        "UNDERSTOOD": "【提案】去掉敌人的隐藏（CONCEAL、雾甲），下一个意图完全看清",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看雾散开露出名字，选出 reveal 的意思",
+        "produce": "飞蛾躲进雾里加了雾甲，从 reveal / observe / strike 里选"
+      },
+      "confusable": [
+        "revel（形近）",
+        "conceal（反义）",
+        "observe（见 observe）"
+      ],
+      "relations": {
+        "synonyms": [
+          "bring out",
+          "unveil"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "PERCEPTION",
+      "page_line": "The fog keeps nothing. It only borrows, and the right word asks for it back.",
+      "sigil": "perception",
+      "effect": {
+        "type": "remove_concealment",
+        "then_reveal_intent": "full",
+        "cost": 1,
+        "proposed": true
+      },
+      "status": "draft"
+    }
+  ]
+}

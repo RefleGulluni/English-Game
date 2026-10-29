@@ -1,0 +1,179 @@
+{
+  "lemma": "gate",
+  "dictionary": {
+    "phonetic": {
+      "uk": "geit",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 门, 牌楼, 大门, 通道, 闸",
+      "vt. 装门于",
+      "[计] 门; 栅"
+    ],
+    "exam": [
+      "zk",
+      "gk"
+    ],
+    "frequency": {
+      "bnc_rank": 1707,
+      "modern_rank": 2010,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "gates",
+      "past": "gated",
+      "ing": "gating",
+      "third_person": "gates",
+      "past_participle": "gated"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-03432206-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a movable barrier in a fence or wall",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "movable barrier"
+        ]
+      },
+      {
+        "synset": "oewn-03432566-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a computer circuit with several inputs but only one output that can be activated by particular combinations of inputs",
+        "examples": [],
+        "synonyms": [
+          "logic gate"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "computer circuit"
+        ]
+      },
+      {
+        "synset": "oewn-13279168-n",
+        "pos": "noun",
+        "category": "noun.possession",
+        "definition": "total admission receipts at a sports event",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "gross",
+          "revenue"
+        ]
+      },
+      {
+        "synset": "oewn-03432819-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "passageway (as in an air terminal) where passengers can embark or disembark",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "passageway"
+        ]
+      },
+      {
+        "synset": "oewn-02358840-v",
+        "pos": "verb",
+        "category": "verb.possession",
+        "definition": "supply with a gate",
+        "examples": [
+          "The house was gated"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "supply",
+          "provide"
+        ]
+      },
+      {
+        "synset": "oewn-01605828-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "control with a valve or other device that functions like a gate",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "operate",
+          "control"
+        ]
+      },
+      {
+        "synset": "oewn-00235091-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "restrict (school boys') movement to the dormitory or campus as a means of punishment",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "restrict",
+          "trammel"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "gate#barrier_door",
+      "pos": "noun",
+      "wordnet": "oewn-03432206-n",
+      "sense": "a door in a wall or fence, usually outdoors",
+      "zh": "大门；栅门",
+      "role": "thing",
+      "tags": [
+        "PASSAGE",
+        "BOUNDARY",
+        "PLACE"
+      ],
+      "appears": [
+        "物件：墓园入口的铁门（两扇）",
+        "地图：每个出口"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "铁门上方浮出 g_te",
+        "RECOGNIZED": "看一眼就知道是“大门”",
+        "UNDERSTOOD": "能读懂 gate / door 的区别",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "走到铁门前，从 3 张图里选出 gate",
+        "produce": "“The iron ___ was never locked.” 填空"
+      },
+      "confusable": [
+        "gait（同音）",
+        "date（形近）",
+        "door（近义，gate 在户外的墙或栏上）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "PASSAGE",
+      "page_line": "The gate was never locked. People simply stopped coming through it.",
+      "region_override": {
+        "cemetery": "entry_room"
+      },
+      "status": "draft"
+    }
+  ]
+}

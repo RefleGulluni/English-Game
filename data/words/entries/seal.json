@@ -1,0 +1,299 @@
+{
+  "lemma": "seal",
+  "dictionary": {
+    "phonetic": {
+      "uk": "si:l",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 印章, 封条, 海豹, 海豹皮, 火漆, 封蜡, 玺, 保证, 批准, 象征, 标志",
+      "vt. 封闭, 盖印, 盖章",
+      "vi. 猎海豹"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 4259,
+      "modern_rank": 4021,
+      "collins_stars": 1,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "seals",
+      "past_participle": "sealed",
+      "past": "sealed",
+      "ing": "sealing",
+      "third_person": "seals"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-04167097-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "fastener consisting of a resinous composition that is plastic when warm; used for sealing documents and parcels and letters",
+        "examples": [],
+        "synonyms": [
+          "sealing wax"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "fastener",
+          "fastening"
+        ]
+      },
+      {
+        "synset": "oewn-04166119-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a device incised to make an impression; used to secure a closing or to authenticate documents",
+        "examples": [],
+        "synonyms": [
+          "stamp"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "device"
+        ]
+      },
+      {
+        "synset": "oewn-14790219-n",
+        "pos": "noun",
+        "category": "noun.substance",
+        "definition": "the pelt or fur (especially the underfur) of a seal",
+        "examples": [
+          "a coat of seal"
+        ],
+        "synonyms": [
+          "sealskin"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "fur",
+          "pelt"
+        ]
+      },
+      {
+        "synset": "oewn-06869035-n",
+        "pos": "noun",
+        "category": "noun.communication",
+        "definition": "a stamp affixed to a document (as to attest to its authenticity or to seal it)",
+        "examples": [
+          "the warrant bore the sheriff's seal"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "stamp",
+          "impression"
+        ]
+      },
+      {
+        "synset": "oewn-06718747-n",
+        "pos": "noun",
+        "category": "noun.communication",
+        "definition": "an indication of approved or superior status",
+        "examples": [],
+        "synonyms": [
+          "cachet",
+          "seal of approval"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "award",
+          "accolade"
+        ]
+      },
+      {
+        "synset": "oewn-04166606-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a finishing coat applied to exclude moisture",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "coating",
+          "coat"
+        ]
+      },
+      {
+        "synset": "oewn-01356709-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "make tight; secure against leakage",
+        "examples": [
+          "seal the windows"
+        ],
+        "synonyms": [
+          "seal off"
+        ],
+        "antonyms": [],
+        "family": [
+          "sealant",
+          "sealer"
+        ],
+        "broader": [
+          "close",
+          "shut"
+        ]
+      },
+      {
+        "synset": "oewn-01356108-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "close with or as if with a seal",
+        "examples": [
+          "She sealed the letter with hot wax"
+        ],
+        "synonyms": [],
+        "antonyms": [
+          "unseal"
+        ],
+        "family": [
+          "sealant",
+          "sealer"
+        ],
+        "broader": [
+          "close",
+          "fill up"
+        ]
+      },
+      {
+        "synset": "oewn-00700498-v",
+        "pos": "verb",
+        "category": "verb.cognition",
+        "definition": "decide irrevocably",
+        "examples": [
+          "sealing dooms"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "decide",
+          "make up one's mind"
+        ]
+      },
+      {
+        "synset": "oewn-01359285-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "affix a seal to",
+        "examples": [
+          "seal the letter"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "sealer"
+        ],
+        "broader": [
+          "affix",
+          "stick on"
+        ]
+      },
+      {
+        "synset": "oewn-01271572-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "cover with varnish",
+        "examples": [],
+        "synonyms": [
+          "varnish"
+        ],
+        "antonyms": [],
+        "family": [
+          "sealant",
+          "sealer",
+          "sealing"
+        ],
+        "broader": [
+          "coat",
+          "surface"
+        ]
+      },
+      {
+        "synset": "oewn-01145964-v",
+        "pos": "verb",
+        "category": "verb.competition",
+        "definition": "hunt seals",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "hunt",
+          "run"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "seal#close_tight",
+      "pos": "verb",
+      "wordnet": "oewn-01356108-v",
+      "sense": "to close something so nothing can get in or out",
+      "zh": "封住；密封",
+      "role": "ability",
+      "tags": [
+        "SEAL",
+        "BOUNDARY",
+        "BURIAL"
+      ],
+      "appears": [
+        "物件：被封死的墓穴门",
+        "敌人：骨堆（封住就不能重组）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "s__l，中间的字母被一道蜡封住",
+        "RECOGNIZED": "“把东西封死”",
+        "UNDERSTOOD": "【提案】封住骨堆：重组倒数暂停 2 回合",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看石板盖住墓穴、边缘浇上铅，选出 seal 的意思",
+        "produce": "骨堆还有 1 回合就要重组，从 seal / shatter / observe 里选"
+      },
+      "confusable": [
+        "seal（名词：海豹，另一个词义）",
+        "zeal（形近）",
+        "steal（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [
+          "unseal"
+        ],
+        "family": [
+          "sealant",
+          "sealer"
+        ]
+      },
+      "constellation": "SEAL",
+      "page_line": "Some doors in this place were sealed from the inside.",
+      "sigil": "control",
+      "effect": {
+        "type": "pause_reassembly",
+        "turns": 2,
+        "cost": 2,
+        "proposed": true
+      },
+      "status": "draft"
+    }
+  ]
+}

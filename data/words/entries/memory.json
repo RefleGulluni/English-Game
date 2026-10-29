@@ -1,0 +1,178 @@
+{
+  "lemma": "memory",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈmɛm(ə)ɹi",
+      "us": null
+    },
+    "zh": [
+      "n. 记忆, 记忆力, 回忆, 纪念, 存储",
+      "n. 内存",
+      "[计] 存储器, 内存, 查看内存实用程序"
+    ],
+    "exam": [
+      "zk",
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 979,
+      "modern_rank": 891,
+      "collins_stars": 4,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "memories"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-05943778-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "something that is remembered",
+        "examples": [
+          "search as he would, the memory was lost"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "memorize",
+          "memorise"
+        ],
+        "broader": [
+          "representation",
+          "mental representation"
+        ]
+      },
+      {
+        "synset": "oewn-05768199-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "the cognitive processes whereby past experience is remembered",
+        "examples": [
+          "he can do it from memory",
+          "he enjoyed remembering his father"
+        ],
+        "synonyms": [
+          "remembering"
+        ],
+        "antonyms": [],
+        "family": [
+          "memorize",
+          "memorise"
+        ],
+        "broader": [
+          "basic cognitive process"
+        ]
+      },
+      {
+        "synset": "oewn-05659244-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "the power of retaining and recalling past experience",
+        "examples": [
+          "he had a good memory when he was younger"
+        ],
+        "synonyms": [
+          "retention",
+          "retentiveness",
+          "retentivity"
+        ],
+        "antonyms": [],
+        "family": [
+          "memorize"
+        ],
+        "broader": [
+          "faculty",
+          "mental faculty"
+        ]
+      },
+      {
+        "synset": "oewn-03749767-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "an electronic memory device",
+        "examples": [
+          "a memory and the CPU form the central part of a computer to which peripherals are attached"
+        ],
+        "synonyms": [
+          "computer memory",
+          "storage",
+          "computer storage",
+          "store",
+          "memory board"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "memory device",
+          "storage device",
+          "hardware",
+          "computer hardware"
+        ]
+      },
+      {
+        "synset": "oewn-06149719-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "the area of cognitive psychology that studies memory processes",
+        "examples": [
+          "he taught a graduate course on learning and memory"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "cognitive psychology"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "memory#remembered",
+      "pos": "noun",
+      "wordnet": "oewn-05943778-n",
+      "sense": "something you remember from the past",
+      "zh": "记忆；回忆",
+      "role": "mood",
+      "tags": [
+        "MEMORY",
+        "TIME"
+      ],
+      "appears": [
+        "Lexicon：整本书",
+        "事件：一段被找回的回忆"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "对白里这个词是糊的",
+        "RECOGNIZED": "“记得的过去的事”",
+        "UNDERSTOOD": "能分清 memory / memorial",
+        "USABLE": "对白里能用"
+      },
+      "challenge": {
+        "recognize": "读一段描写，选出 memory 的意思",
+        "produce": "memory / memorial 填空"
+      },
+      "confusable": [
+        "memorial（同一家人，“纪念物”）",
+        "memo（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "memorize",
+          "memorise"
+        ]
+      },
+      "constellation": "MEMORY",
+      "page_line": "The world forgets. You do not.",
+      "status": "draft"
+    }
+  ]
+}

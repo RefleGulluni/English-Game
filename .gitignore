@@ -8,3 +8,6 @@ output/
 
 # Art team working backups, kept locally only
 art_source/backups/
+
+# Raw dictionaries for the vocabulary tool (how to download: docs/VOCABULARY_PIPELINE.md §1)
+dict_sources/

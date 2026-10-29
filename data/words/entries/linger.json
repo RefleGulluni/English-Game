@@ -1,0 +1,175 @@
+{
+  "lemma": "linger",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈlɪŋɡə",
+      "us": "ˈlɪŋɡɚ"
+    },
+    "zh": [
+      "vi. 逗留, 消磨, 徘徊",
+      "vt. 消磨"
+    ],
+    "exam": [
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 7034,
+      "modern_rank": 5721,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past": "lingered",
+      "third_person": "lingers",
+      "past_participle": "lingered",
+      "ing": "lingering"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02737117-v",
+        "pos": "verb",
+        "category": "verb.stative",
+        "definition": "remain present although waning or gradually dying",
+        "examples": [
+          "Her perfume lingered on"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "stay",
+          "stick"
+        ]
+      },
+      {
+        "synset": "oewn-02645159-v",
+        "pos": "verb",
+        "category": "verb.stative",
+        "definition": "be about a place without any apparent purpose",
+        "examples": [
+          "The high school students like to loiter in the Central Square",
+          "Who is this man that is hanging around the department?"
+        ],
+        "synonyms": [
+          "loiter",
+          "lounge",
+          "footle",
+          "lollygag",
+          "loaf",
+          "lallygag",
+          "hang around",
+          "mess about",
+          "tarry",
+          "lurk",
+          "mill about",
+          "mill around"
+        ],
+        "antonyms": [],
+        "family": [
+          "lingerer"
+        ],
+        "broader": [
+          "wait"
+        ]
+      },
+      {
+        "synset": "oewn-02015412-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "leave slowly and hesitantly",
+        "examples": [],
+        "synonyms": [
+          "tarry"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "leave",
+          "go forth"
+        ]
+      },
+      {
+        "synset": "oewn-02062514-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "take one's time; proceed slowly",
+        "examples": [],
+        "synonyms": [
+          "dawdle"
+        ],
+        "antonyms": [
+          "rush"
+        ],
+        "family": [],
+        "broader": [
+          "move"
+        ]
+      },
+      {
+        "synset": "oewn-02646990-v",
+        "pos": "verb",
+        "category": "verb.stative",
+        "definition": "to hang about in a place beyond the proper or usual time",
+        "examples": [
+          "The shy student lingered in the corner"
+        ],
+        "synonyms": [
+          "hover"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "hesitate",
+          "waver"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "linger#remain",
+      "pos": "verb",
+      "wordnet": "oewn-02737117-v",
+      "sense": "to stay somewhere longer than expected",
+      "zh": "逗留；久久不散",
+      "role": "enemy",
+      "tags": [
+        "CONTINUITY",
+        "MEMORY",
+        "SOUND"
+      ],
+      "appears": [
+        "事件：钟停了，钟声还在空中",
+        "敌人：守夜战里被驱散又回来的东西"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "lin___，后半截拖得很长",
+        "RECOGNIZED": "“比该走的时候待得更久”",
+        "UNDERSTOOD": "驱散只是暂时的：守夜要撑到结束",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "钟声停了还在响，选出 linger 的意思",
+        "produce": "“The last notes ___ after the bell falls silent.” 填空"
+      },
+      "confusable": [
+        "longer（形近）",
+        "finger（形近）",
+        "haunt（近义，haunt 会反复回来）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "CONTINUITY",
+      "page_line": "The bell has stopped. Its last note lingers, as if waiting to be answered.",
+      "status": "draft"
+    }
+  ]
+}

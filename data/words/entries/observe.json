@@ -1,0 +1,225 @@
+{
+  "lemma": "observe",
+  "dictionary": {
+    "phonetic": {
+      "uk": "əbˈzɜːv",
+      "us": "əbˈzɝv"
+    },
+    "zh": [
+      "vt. 觉察到, 遵守, 注意到, 庆祝",
+      "vi. 注意, 评论"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 1288,
+      "modern_rank": 1294,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "past_participle": "observed",
+      "past": "observed",
+      "ing": "observing",
+      "third_person": "observes"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02158938-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "discover or determine the existence, presence, or fact of by perception with the eyes",
+        "examples": [
+          "She detected high levels of lead in her drinking water",
+          "We found traces of lead in the paint"
+        ],
+        "synonyms": [
+          "detect",
+          "find",
+          "discover",
+          "notice"
+        ],
+        "antonyms": [],
+        "family": [
+          "observable",
+          "observant",
+          "observer",
+          "observation",
+          "observance"
+        ],
+        "broader": [
+          "spy",
+          "sight"
+        ]
+      },
+      {
+        "synset": "oewn-01022014-v",
+        "pos": "verb",
+        "category": "verb.communication",
+        "definition": "make mention of",
+        "examples": [
+          "She observed that his presentation took up too much time",
+          "They noted that it was a fine day to go sailing"
+        ],
+        "synonyms": [
+          "note",
+          "mention",
+          "remark"
+        ],
+        "antonyms": [],
+        "family": [
+          "observer",
+          "observation"
+        ],
+        "broader": [
+          "state",
+          "say"
+        ]
+      },
+      {
+        "synset": "oewn-02123398-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "observe with care or pay close attention to",
+        "examples": [
+          "Take note of this chemical reaction"
+        ],
+        "synonyms": [
+          "note",
+          "take note"
+        ],
+        "antonyms": [],
+        "family": [
+          "observable",
+          "observant",
+          "observer",
+          "observation"
+        ],
+        "broader": [
+          "watch",
+          "look on"
+        ]
+      },
+      {
+        "synset": "oewn-02173796-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "watch attentively",
+        "examples": [
+          "Please observe the reaction of these two chemicals"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "observable",
+          "observation",
+          "observance"
+        ],
+        "broader": [
+          "watch"
+        ]
+      },
+      {
+        "synset": "oewn-02462665-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "show respect towards",
+        "examples": [
+          "honor your parents!"
+        ],
+        "synonyms": [
+          "respect",
+          "honor",
+          "honour",
+          "abide by"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "accept"
+        ]
+      },
+      {
+        "synset": "oewn-02584595-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "behave as expected during of holidays or rites",
+        "examples": [
+          "Keep the commandments",
+          "celebrate Christmas"
+        ],
+        "synonyms": [
+          "celebrate",
+          "keep"
+        ],
+        "antonyms": [],
+        "family": [
+          "observant",
+          "observance"
+        ],
+        "broader": [
+          "act",
+          "behave"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "observe#watch",
+      "pos": "verb",
+      "wordnet": "oewn-02173796-v",
+      "sense": "to watch something carefully to understand it",
+      "zh": "观察；注视",
+      "role": "ability",
+      "tags": [
+        "PERCEPTION",
+        "HIDDEN"
+      ],
+      "appears": [
+        "敌人意图：头顶模糊的英文",
+        "物件：名字被苔藓盖住的墓碑"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "ob___ve，像一只半睁的眼",
+        "RECOGNIZED": "“仔细地看”",
+        "UNDERSTOOD": "看清敌人意图的一层",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看主角蹲下细看墓碑，选出 observe 的意思",
+        "produce": "敌人意图是一团看不清的字，从 observe / strike / seal 里选"
+      },
+      "confusable": [
+        "obscure（形近，意思相反）",
+        "preserve（形近）",
+        "reveal（observe 是你去看，reveal 是让东西显出来）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "observable",
+          "observation",
+          "observance"
+        ]
+      },
+      "constellation": "PERCEPTION",
+      "page_line": "Most of the dead are not hidden. They are simply not looked at.",
+      "sigil": "perception",
+      "effect": {
+        "type": "reveal_intent",
+        "levels": 1,
+        "cost": 1
+      },
+      "status": "draft"
+    }
+  ]
+}

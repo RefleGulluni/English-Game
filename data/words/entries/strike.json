@@ -1,0 +1,312 @@
+{
+  "lemma": "strike",
+  "dictionary": {
+    "phonetic": {
+      "uk": "stɹaɪk",
+      "us": null
+    },
+    "zh": [
+      "n. 罢工, 打击, 殴打",
+      "vt. 打, 撞击, 冲击, 侵袭, 取消, 结算, 打掉, 罢工, 刺透, 使生根, 遇见",
+      "vi. 打, 打击, 抓, 罢工, 搏动, 触礁, 敲, 响, 穿透, 打动"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 1294,
+      "modern_rank": 1145,
+      "collins_stars": 4,
+      "oxford_3000": true
+    },
+    "forms": {
+      "past": "struck",
+      "past_participle": "struck",
+      "plural": "strikes",
+      "third_person": "strikes",
+      "ing": "striking"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-01246221-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "a group's refusal to work in protest against low pay or bad work conditions",
+        "examples": [
+          "the strike lasted more than a month before it was settled"
+        ],
+        "synonyms": [
+          "work stoppage"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "job action"
+        ]
+      },
+      {
+        "synset": "oewn-00979387-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "an attack that is intended to seize or inflict damage on or destroy an objective",
+        "examples": [
+          "the strike was scheduled to begin at dawn"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "attack",
+          "onslaught"
+        ]
+      },
+      {
+        "synset": "oewn-07424621-n",
+        "pos": "noun",
+        "category": "noun.event",
+        "definition": "a gentle blow",
+        "examples": [],
+        "synonyms": [
+          "rap",
+          "tap"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "blow",
+          "bump"
+        ]
+      },
+      {
+        "synset": "oewn-00188559-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "a score in tenpins: knocking down all ten with the first ball",
+        "examples": [
+          "he finished with three strikes in the tenth frame"
+        ],
+        "synonyms": [
+          "ten-strike"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "score"
+        ]
+      },
+      {
+        "synset": "oewn-00110234-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "(baseball) a pitch that the batter swings at and misses, or that the batter hits into foul territory, or that the batter does not swing at but the umpire judges to be in the area over home plate and between the batter's knees and shoulders",
+        "examples": [
+          "this pitcher throws more strikes than balls"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "pitch",
+          "delivery"
+        ]
+      },
+      {
+        "synset": "oewn-00065324-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "a conspicuous success",
+        "examples": [
+          "that song was his first hit and marked the beginning of his career",
+          "that new Broadway show is a real smasher"
+        ],
+        "synonyms": [
+          "hit",
+          "smash",
+          "smasher",
+          "bang"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "success"
+        ]
+      },
+      {
+        "synset": "oewn-01412877-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "deliver a sharp blow, as with the hand, fist, or weapon",
+        "examples": [
+          "The teacher struck the child",
+          "the opponent refused to strike"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "striker",
+          "striking"
+        ],
+        "broader": [
+          "touch"
+        ]
+      },
+      {
+        "synset": "oewn-01771801-v",
+        "pos": "verb",
+        "category": "verb.emotion",
+        "definition": "have an emotional or cognitive impact upon",
+        "examples": [
+          "This child impressed me as unusually mature",
+          "This behavior struck me as odd"
+        ],
+        "synonyms": [
+          "affect",
+          "impress",
+          "move"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "affect",
+          "impact"
+        ]
+      },
+      {
+        "synset": "oewn-01238728-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "hit against; come into sudden contact with",
+        "examples": [
+          "The car hit a tree",
+          "He struck the table with his elbow"
+        ],
+        "synonyms": [
+          "hit",
+          "impinge on",
+          "run into",
+          "collide with"
+        ],
+        "antonyms": [],
+        "family": [
+          "striker",
+          "striking"
+        ],
+        "broader": [
+          "touch"
+        ]
+      },
+      {
+        "synset": "oewn-01126313-v",
+        "pos": "verb",
+        "category": "verb.competition",
+        "definition": "make a strategic, offensive, assault against an enemy, opponent, or a target",
+        "examples": [
+          "The Germans struck Poland on Sept. 1, 1939",
+          "We must strike the enemy's oil fields"
+        ],
+        "synonyms": [
+          "hit"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "attack",
+          "assail"
+        ]
+      },
+      {
+        "synset": "oewn-00925593-v",
+        "pos": "verb",
+        "category": "verb.communication",
+        "definition": "indicate (a certain time) by striking",
+        "examples": [
+          "The clock struck midnight",
+          "Just when I entered, the clock struck"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "read",
+          "register"
+        ]
+      },
+      {
+        "synset": "oewn-01211755-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "affect or afflict suddenly, usually adversely",
+        "examples": [
+          "We were hit by really bad weather",
+          "He was stricken with cancer when he was still a teenager"
+        ],
+        "synonyms": [
+          "hit"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "affect",
+          "impact"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "strike#hit",
+      "pos": "verb",
+      "wordnet": "oewn-01412877-v",
+      "sense": "to hit something hard and directly",
+      "zh": "打击；击打",
+      "role": "ability",
+      "tags": [
+        "FORCE",
+        "HARM"
+      ],
+      "appears": [
+        "物件：礼拜堂钟楼上的钟锤",
+        "事件：“Strike the bell three times, and the dead will listen.”"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "词形残缺，只看得出 s_r_ke",
+        "RECOGNIZED": "“狠狠打什么东西”",
+        "UNDERSTOOD": "直接伤害 8 点（护甲先吸收），另打 2 点结构",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看守墓人敲钟的样子，选出 strike 的意思",
+        "produce": "骷髅毫无防备，从 strike / bind / observe 里选最直接的一下"
+      },
+      "confusable": [
+        "stroke（形近）",
+        "hit（近义，更口语）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "striker",
+          "striking"
+        ]
+      },
+      "constellation": "FORCE",
+      "page_line": "The first word anyone learns to use is the one that hurts.",
+      "sigil": "direct",
+      "effect": {
+        "type": "damage",
+        "amount": 8,
+        "structure": 2,
+        "exposed_bonus": 2,
+        "cost": 2
+      },
+      "status": "draft"
+    }
+  ]
+}

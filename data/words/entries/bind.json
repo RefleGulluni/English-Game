@@ -1,0 +1,227 @@
+{
+  "lemma": "bind",
+  "dictionary": {
+    "phonetic": {
+      "uk": "baɪnd",
+      "us": null
+    },
+    "zh": [
+      "vt. 绑, 约束, 装订, 包扎, 使结合",
+      "vi. 凝固, 有约束力",
+      "[计] 赋值, 绑定"
+    ],
+    "exam": [
+      "cet4",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 1888,
+      "modern_rank": 2496,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "bound",
+      "ing": "binding",
+      "past": "bound",
+      "third_person": "binds"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-05697606-n",
+        "pos": "noun",
+        "category": "noun.cognition",
+        "definition": "something that hinders as if with bonds",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "hindrance",
+          "hinderance"
+        ]
+      },
+      {
+        "synset": "oewn-01359453-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "stick to firmly",
+        "examples": [
+          "Will this wallpaper adhere to the wall?"
+        ],
+        "synonyms": [
+          "adhere",
+          "hold fast",
+          "bond",
+          "stick",
+          "stick to"
+        ],
+        "antonyms": [],
+        "family": [
+          "binder",
+          "binding"
+        ],
+        "broader": [
+          "attach"
+        ]
+      },
+      {
+        "synset": "oewn-02543752-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "create social or emotional ties",
+        "examples": [
+          "The grandparents want to bond with the child"
+        ],
+        "synonyms": [
+          "tie",
+          "attach",
+          "bond"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "relate"
+        ]
+      },
+      {
+        "synset": "oewn-01305902-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "make fast; tie or secure, with or as if with a rope",
+        "examples": [
+          "The Chinese would bind the feet of their women"
+        ],
+        "synonyms": [],
+        "antonyms": [
+          "unbind"
+        ],
+        "family": [
+          "bindable",
+          "binder"
+        ],
+        "broader": [
+          "attach"
+        ]
+      },
+      {
+        "synset": "oewn-01306207-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "wrap around with something so as to cover or enclose",
+        "examples": [],
+        "synonyms": [
+          "bandage"
+        ],
+        "antonyms": [],
+        "family": [
+          "bindable",
+          "binding"
+        ],
+        "broader": [
+          "fasten",
+          "fix"
+        ]
+      },
+      {
+        "synset": "oewn-01289516-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "secure with or as if with ropes",
+        "examples": [
+          "tie down the prisoners",
+          "tie up the old newspapers and bring them to the recycling shed"
+        ],
+        "synonyms": [
+          "tie down",
+          "tie up",
+          "truss"
+        ],
+        "antonyms": [],
+        "family": [
+          "bindable"
+        ],
+        "broader": [
+          "restrain",
+          "confine"
+        ]
+      },
+      {
+        "synset": "oewn-00886738-v",
+        "pos": "verb",
+        "category": "verb.communication",
+        "definition": "bind by an obligation; cause to be indebted",
+        "examples": [
+          "He's held by a contract",
+          "I'll hold you by your promise"
+        ],
+        "synonyms": [
+          "oblige",
+          "hold",
+          "obligate"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "relate"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "bind#restrain",
+      "pos": "verb",
+      "wordnet": "oewn-01305902-v",
+      "sense": "to tie or hold something so it cannot move",
+      "zh": "捆住；束缚",
+      "role": "ability",
+      "tags": [
+        "CONTROL",
+        "RESTRAINT",
+        "CHAIN"
+      ],
+      "appears": [
+        "物件：门柱上缠着锈铁链的铁门（gate）",
+        "墓志铭：“Bound to this ground until the bell is rung.”"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "词形残缺，只看得出 b_nd",
+        "RECOGNIZED": "“让什么东西动不了”",
+        "UNDERSTOOD": "束缚目标：它下一次移动或攻击被推迟",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看铁门的锁链，选出 bind 的意思（4 选 1）",
+        "produce": "骷髅要重组时，从 bind / scatter / echo 里选能阻止它的词"
+      },
+      "confusable": [
+        "bend（形近）",
+        "find（形近）",
+        "hold（近义但更弱）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [
+          "unbind"
+        ],
+        "family": [
+          "bindable",
+          "binder"
+        ]
+      },
+      "constellation": "CONTROL",
+      "page_line": "Some things are held not by chains, but by the words that name them.",
+      "sigil": "control",
+      "effect": {
+        "type": "delay_intent",
+        "turns": 1,
+        "cost": 2
+      },
+      "status": "draft"
+    }
+  ]
+}

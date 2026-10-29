@@ -1,0 +1,127 @@
+{
+  "lemma": "erode",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ɪˈɹəʊd",
+      "us": null
+    },
+    "zh": [
+      "vt. 腐蚀, 侵蚀",
+      "vi. 受腐蚀"
+    ],
+    "exam": [
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 7591,
+      "modern_rank": 6821,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "eroded",
+      "past": "eroded",
+      "third_person": "erodes",
+      "ing": "eroding"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-00276052-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "become ground down or deteriorate",
+        "examples": [
+          "Her confidence eroded"
+        ],
+        "synonyms": [
+          "gnaw",
+          "gnaw at",
+          "eat at",
+          "wear away"
+        ],
+        "antonyms": [],
+        "family": [
+          "erosive",
+          "erosion"
+        ],
+        "broader": [
+          "decay",
+          "crumble"
+        ]
+      },
+      {
+        "synset": "oewn-00275523-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "remove soil or rock",
+        "examples": [
+          "Rain eroded the terraces"
+        ],
+        "synonyms": [
+          "eat away",
+          "fret"
+        ],
+        "antonyms": [],
+        "family": [
+          "erosive",
+          "erosion",
+          "eroding"
+        ],
+        "broader": [
+          "damage"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "erode#wear_away",
+      "pos": "verb",
+      "wordnet": "oewn-00276052-v",
+      "sense": "to wear something away slowly",
+      "zh": "侵蚀；慢慢磨掉",
+      "role": "enemy",
+      "tags": [
+        "DECAY",
+        "WEAKEN",
+        "STRUCTURE",
+        "GRADUAL"
+      ],
+      "appears": [
+        "物件：字被磨平的墓碑（epitaph 看不清）",
+        "敌人意图：骷髅头顶的 ERODE"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "头顶只看到“er—”和一团灰",
+        "RECOGNIZED": "“它要慢慢削弱什么”",
+        "UNDERSTOOD": "护甲 -4，腐朽 +12，可以用 STABILIZE 挡",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "墓碑上的字被雨水磨平了——哪个词形容这件事？",
+        "produce": "敌人要 ERODE 你，选出能抵消它的词"
+      },
+      "confusable": [
+        "corrode（近义，化学的）",
+        "wither（同家族，但用于生命）"
+      ],
+      "relations": {
+        "synonyms": [
+          "gnaw",
+          "gnaw at",
+          "eat at",
+          "wear away"
+        ],
+        "antonyms": [],
+        "family": [
+          "erosive",
+          "erosion"
+        ]
+      },
+      "constellation": "DECAY",
+      "page_line": "Rain is patient. Every name here will be smooth stone one day.",
+      "status": "draft"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "lemma": "reassemble",
+  "dictionary": {
+    "phonetic": {
+      "uk": ".ri:ә'sembl",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "vt. 重新召集, 重新装配",
+      "vi. 重新集合"
+    ],
+    "exam": [],
+    "frequency": {
+      "bnc_rank": 18742,
+      "modern_rank": 15828,
+      "collins_stars": 0,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "reassembled",
+      "past": "reassembled",
+      "ing": "reassembling",
+      "third_person": "reassembles"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-01661207-v",
+        "pos": "verb",
+        "category": "verb.creation",
+        "definition": "assemble once again, after taking something apart",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "assemble",
+          "piece"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "reassemble#put_together_again",
+      "pos": "verb",
+      "wordnet": "oewn-01661207-v",
+      "sense": "to put separate parts back together",
+      "zh": "重新组装；重新聚拢",
+      "role": "enemy",
+      "tags": [
+        "REMAINS",
+        "PARTS",
+        "RETURN"
+      ],
+      "appears": [
+        "敌人：余裹者的骨堆重组（黑缝线把头骨牵回去）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "re_ass_mble，字母自己往一起凑",
+        "RECOGNIZED": "“散开的部分又拼回去”",
+        "UNDERSTOOD": "骨堆倒数结束会重组：打掉骨堆、封住或延后倒数",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看散开的骨头一块块拼回去，选出 reassemble 的意思",
+        "produce": "骨堆要 REASSEMBLE，选出能阻止它的词"
+      },
+      "confusable": [
+        "resemble（形近，“像”）",
+        "assemble（原词）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "REMAINS",
+      "page_line": "The bones remember their order better than the man did.",
+      "status": "draft"
+    }
+  ]
+}

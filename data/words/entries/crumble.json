@@ -1,0 +1,134 @@
+{
+  "lemma": "crumble",
+  "dictionary": {
+    "phonetic": {
+      "uk": null,
+      "us": "ˈkɹʌmbəl"
+    },
+    "zh": [
+      "v. (使)粉碎, (使)成为碎屑, 瓦解, 崩溃, 败落"
+    ],
+    "exam": [
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 7539,
+      "modern_rank": 7038,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "ing": "crumbling",
+      "past_participle": "crumbled",
+      "past": "crumbled",
+      "third_person": "crumbles",
+      "plural": "crumbles"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02045722-v",
+        "pos": "verb",
+        "category": "verb.motion",
+        "definition": "fall apart",
+        "examples": [
+          "the building crumbled after the explosion",
+          "Negotiations broke down"
+        ],
+        "synonyms": [
+          "crumple",
+          "tumble",
+          "break down",
+          "collapse"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "change integrity"
+        ]
+      },
+      {
+        "synset": "oewn-00398311-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "break or fall apart into fragments",
+        "examples": [
+          "The cookies crumbled",
+          "The Sphinx is crumbling"
+        ],
+        "synonyms": [
+          "fall apart"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "disintegrate"
+        ]
+      },
+      {
+        "synset": "oewn-00209244-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "fall into decay or ruin",
+        "examples": [
+          "The unoccupied house started to decay"
+        ],
+        "synonyms": [
+          "decay",
+          "dilapidate"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "change"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "crumble#fall_apart",
+      "pos": "verb",
+      "wordnet": "oewn-00398311-v",
+      "sense": "to break into small pieces and slowly fall apart",
+      "zh": "崩塌；碎成小块",
+      "role": "enemy",
+      "tags": [
+        "DECAY",
+        "BREAK",
+        "STRUCTURE",
+        "COLLAPSE"
+      ],
+      "appears": [
+        "物件：乱石断墙",
+        "敌人意图：结构一块块掉"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "cr_mble，最后几个字母在往下掉",
+        "RECOGNIZED": "“一点点碎掉、塌下来”",
+        "UNDERSTOOD": "【待战斗设计】敌人的结构每回合掉一点",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看断墙的石头一块块掉，选出 crumble 的意思",
+        "produce": "crumble / shatter：一个慢、一个快，选对"
+      },
+      "confusable": [
+        "crumple（形近，“揉皱”）",
+        "shatter（近义，但是一下子碎）"
+      ],
+      "relations": {
+        "synonyms": [
+          "fall apart"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "DECAY",
+      "page_line": "The wall did not fall. It crumbled, stone by stone, over a hundred winters.",
+      "status": "draft"
+    }
+  ]
+}

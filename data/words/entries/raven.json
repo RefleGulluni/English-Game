@@ -1,0 +1,158 @@
+{
+  "lemma": "raven",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈɹeɪvən",
+      "us": null
+    },
+    "zh": [
+      "n. 渡鸦, 掠夺",
+      "a. 乌黑的",
+      "v. 掠夺, 狼吞虎咽"
+    ],
+    "exam": [
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 16332,
+      "modern_rank": 14323,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "ravens",
+      "ing": "ravening",
+      "past": "ravened",
+      "third_person": "ravens",
+      "past_participle": "ravened"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-01581901-n",
+        "pos": "noun",
+        "category": "noun.animal",
+        "definition": "large black bird with a straight bill and long wedge-shaped tail",
+        "examples": [],
+        "synonyms": [
+          "Corvus corax"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "corvine bird"
+        ]
+      },
+      {
+        "synset": "oewn-01216472-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "obtain or seize by violence",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "seize"
+        ]
+      },
+      {
+        "synset": "oewn-01206120-v",
+        "pos": "verb",
+        "category": "verb.consumption",
+        "definition": "prey on or hunt for",
+        "examples": [
+          "These mammals predate certain eggs"
+        ],
+        "synonyms": [
+          "prey",
+          "predate"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "forage"
+        ]
+      },
+      {
+        "synset": "oewn-01199186-v",
+        "pos": "verb",
+        "category": "verb.consumption",
+        "definition": "eat greedily",
+        "examples": [
+          "he devoured three sandwiches"
+        ],
+        "synonyms": [
+          "devour",
+          "guttle",
+          "pig"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "eat"
+        ]
+      },
+      {
+        "synset": "oewn-01180154-v",
+        "pos": "verb",
+        "category": "verb.consumption",
+        "definition": "feed greedily",
+        "examples": [
+          "The lions ravened the bodies"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "feed",
+          "eat"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "raven#black_bird",
+      "pos": "noun",
+      "wordnet": "oewn-01581901-n",
+      "sense": "a large black bird",
+      "zh": "渡鸦",
+      "role": "thing",
+      "tags": [
+        "ANIMAL",
+        "OMEN",
+        "DEATH"
+      ],
+      "appears": [
+        "物件：枯树上的渡鸦（待做）",
+        "事件：渡鸦叼来一样东西"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "枯树上浮出 r_ven",
+        "RECOGNIZED": "看一眼就知道是“渡鸦”",
+        "UNDERSTOOD": "能分清 raven / crow",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 raven",
+        "produce": "“A ___ watches from the dead tree.” 填空"
+      },
+      "confusable": [
+        "crow（近义，更小）",
+        "haven（形近）",
+        "ravine（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "Corvus corax"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "ANIMAL",
+      "page_line": "The ravens do not fear the dead. They have learned the dead do not throw stones.",
+      "status": "draft"
+    }
+  ]
+}

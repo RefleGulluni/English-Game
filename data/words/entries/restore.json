@@ -1,0 +1,209 @@
+{
+  "lemma": "restore",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ɹɪˈstɔː",
+      "us": "ɹɪˈstɔɹ"
+    },
+    "zh": [
+      "vt. 回复, 恢复, 归还, 修补, 修复",
+      "vt. 还原",
+      "vi. 还原",
+      "[计] 还原; DOS外部命令:从备份盘中取回文件"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 2217,
+      "modern_rank": 2543,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "past_participle": "restored",
+      "ing": "restoring",
+      "past": "restored",
+      "third_person": "restores"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02558146-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "return to its original or usable and functioning condition",
+        "examples": [
+          "restore the forest to its original pristine condition"
+        ],
+        "synonyms": [
+          "reconstruct"
+        ],
+        "antonyms": [],
+        "family": [
+          "restoration",
+          "restorer"
+        ],
+        "broader": [
+          "regenerate",
+          "renew"
+        ]
+      },
+      {
+        "synset": "oewn-00168396-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "get or give new life or energy; return to life, regain energy, recuperate",
+        "examples": [
+          "The week at the spa restored me"
+        ],
+        "synonyms": [
+          "regenerate",
+          "rejuvenate"
+        ],
+        "antonyms": [],
+        "family": [
+          "restorative",
+          "restoration"
+        ],
+        "broader": [
+          "regenerate",
+          "renew"
+        ]
+      },
+      {
+        "synset": "oewn-02315462-v",
+        "pos": "verb",
+        "category": "verb.possession",
+        "definition": "give or bring back",
+        "examples": [
+          "Restore the stolen painting to its rightful owner"
+        ],
+        "synonyms": [
+          "restitute"
+        ],
+        "antonyms": [],
+        "family": [
+          "restoration"
+        ],
+        "broader": [
+          "refund",
+          "return"
+        ]
+      },
+      {
+        "synset": "oewn-00261534-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "restore by replacing a part or putting together what is torn or broken",
+        "examples": [
+          "She repaired her TV set",
+          "Repair my shoes please"
+        ],
+        "synonyms": [
+          "repair",
+          "mend",
+          "fix",
+          "bushel",
+          "doctor",
+          "furbish up",
+          "touch on"
+        ],
+        "antonyms": [],
+        "family": [
+          "restoration"
+        ],
+        "broader": [
+          "better",
+          "improve"
+        ]
+      },
+      {
+        "synset": "oewn-02431646-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "bring back into original existence, use, function, or position",
+        "examples": [
+          "restore law and order",
+          "reestablish peace in the region"
+        ],
+        "synonyms": [
+          "reinstate",
+          "reestablish"
+        ],
+        "antonyms": [],
+        "family": [
+          "Restoration"
+        ],
+        "broader": [
+          "change",
+          "alter"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "restore#bring_back",
+      "pos": "verb",
+      "wordnet": "oewn-02558146-v",
+      "sense": "to bring something back to how it was before",
+      "zh": "恢复；修复",
+      "role": "ability",
+      "tags": [
+        "REPAIR",
+        "RETURN"
+      ],
+      "appears": [
+        "事件：把倒下的墓碑扶正",
+        "物件：干涸的喷泉"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "re____e，后半截像被磨掉",
+        "RECOGNIZED": "“让东西回到原来的样子”",
+        "UNDERSTOOD": "二选一：回 8 点生命，或回 4 点护甲",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看倒下的墓碑被扶正，选出 restore 的意思",
+        "produce": "生命和护甲都很低，从 restore / strike / deflect 里选"
+      },
+      "confusable": [
+        "mend（近义，修小的破口）",
+        "store（形近）",
+        "restrain（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "reconstruct"
+        ],
+        "antonyms": [],
+        "family": [
+          "restoration",
+          "restorer"
+        ]
+      },
+      "constellation": "REPAIR",
+      "page_line": "Restoring a thing is a way of saying it mattered.",
+      "sigil": "restoration",
+      "effect": {
+        "type": "choose",
+        "options": [
+          {
+            "heal": 8
+          },
+          {
+            "armor": 4
+          }
+        ],
+        "cost": 2
+      },
+      "status": "draft"
+    }
+  ]
+}

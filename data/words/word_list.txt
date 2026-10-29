@@ -1,0 +1,48 @@
+# 要做词条的词：原形  用途  词性（v / n / a / r，WordNet 的写法）
+# 第一批 43 个（D-070，docs/VOCABULARY_FIRST_BATCH.md）。加词就加一行，再跑 scripts/tools/vocab/build_word_drafts.py
+
+# 能力词
+strike   ability v
+shatter  ability v
+deflect  ability v
+bind     ability v
+observe  ability v
+restore  ability v
+reveal   ability v
+anchor   ability v
+seal     ability v
+mend     ability v
+
+# 敌人词
+erode      enemy v
+wither     enemy v
+conceal    enemy v
+linger     enemy v
+haunt      enemy v
+mourn      enemy v
+reassemble enemy v
+scatter    enemy v
+decay      enemy v
+crumble    enemy v
+
+# 墓园里的东西
+grave    thing n
+shroud   thing n
+bone     thing n
+lantern  thing n
+chapel   thing n
+gate     thing n
+statue   thing n
+fountain thing n
+fog      thing n
+epitaph  thing n
+raven    thing n
+moss     thing n
+bell     thing n
+
+# 气氛词
+grief    mood n
+silence  mood n
+memory   mood n
+hollow   mood a
+remains  mood n

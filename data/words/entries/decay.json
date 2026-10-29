@@ -1,0 +1,208 @@
+{
+  "lemma": "decay",
+  "dictionary": {
+    "phonetic": {
+      "uk": "dɪˈkeɪ",
+      "us": "di.ˈkeɪ"
+    },
+    "zh": [
+      "n. 衰退, 腐败",
+      "v. (使)衰退, (使)腐败"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 6007,
+      "modern_rank": 7931,
+      "collins_stars": 2,
+      "oxford_3000": true
+    },
+    "forms": {
+      "ing": "decaying",
+      "past_participle": "decayed",
+      "third_person": "decays",
+      "plural": "decays",
+      "past": "decayed"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-13477888-n",
+        "pos": "noun",
+        "category": "noun.process",
+        "definition": "the process of gradually becoming inferior",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "natural process",
+          "natural action"
+        ]
+      },
+      {
+        "synset": "oewn-13477740-n",
+        "pos": "noun",
+        "category": "noun.process",
+        "definition": "a gradual decrease; as of stored charge or current",
+        "examples": [],
+        "synonyms": [
+          "decline"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "decrease",
+          "decrement"
+        ]
+      },
+      {
+        "synset": "oewn-11464739-n",
+        "pos": "noun",
+        "category": "noun.phenomenon",
+        "definition": "the organic phenomenon of rotting",
+        "examples": [],
+        "synonyms": [
+          "decomposition"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "organic phenomenon"
+        ]
+      },
+      {
+        "synset": "oewn-14584204-n",
+        "pos": "noun",
+        "category": "noun.state",
+        "definition": "an inferior state resulting from the process of decaying",
+        "examples": [
+          "the corpse was in an advanced state of decay",
+          "the house had fallen into a serious state of decay and disrepair"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "unsoundness"
+        ]
+      },
+      {
+        "synset": "oewn-13478072-n",
+        "pos": "noun",
+        "category": "noun.process",
+        "definition": "the spontaneous disintegration of a radioactive substance along with the emission of ionizing radiation",
+        "examples": [],
+        "synonyms": [
+          "radioactive decay",
+          "disintegration"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "nuclear reaction"
+        ]
+      },
+      {
+        "synset": "oewn-00399980-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "lose a stored charge, magnetic flux, or current",
+        "examples": [
+          "the particles disintegrated during the nuclear fission process"
+        ],
+        "synonyms": [
+          "disintegrate",
+          "decompose"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "change integrity"
+        ]
+      },
+      {
+        "synset": "oewn-00209244-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "fall into decay or ruin",
+        "examples": [
+          "The unoccupied house started to decay"
+        ],
+        "synonyms": [
+          "crumble",
+          "dilapidate"
+        ],
+        "antonyms": [],
+        "family": [
+          "decadent"
+        ],
+        "broader": [
+          "change"
+        ]
+      },
+      {
+        "synset": "oewn-00553892-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "undergo decay or decomposition",
+        "examples": [
+          "The body started to decay and needed to be cremated"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "change"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "decay#rot",
+      "pos": "verb",
+      "wordnet": "oewn-00553892-v",
+      "sense": "to slowly break down and rot",
+      "zh": "腐烂；衰败",
+      "role": "enemy",
+      "tags": [
+        "DECAY",
+        "DEATH",
+        "GRADUAL"
+      ],
+      "appears": [
+        "物件：烂掉的木十字架",
+        "敌人意图：腐朽类"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "de___，字母边缘发黑",
+        "RECOGNIZED": "“慢慢烂掉”",
+        "UNDERSTOOD": "腐朽每回合累积，到一定程度会让护甲失效",
+        "USABLE": "能在对白和事件里选它作答"
+      },
+      "challenge": {
+        "recognize": "看木十字架一点点烂掉，选出 decay 的意思",
+        "produce": "decay / delay 二选一填空"
+      },
+      "confusable": [
+        "delay（形近，BIND 的效果就是 delay）",
+        "erode（同家族，石头）",
+        "decoy（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "DECAY",
+      "page_line": "Decay is the cemetery's gardener. It never misses a day.",
+      "status": "draft"
+    }
+  ]
+}

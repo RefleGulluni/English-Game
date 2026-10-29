@@ -1,0 +1,90 @@
+{
+  "lemma": "moss",
+  "dictionary": {
+    "phonetic": {
+      "uk": "mɒs",
+      "us": "mɔs"
+    },
+    "zh": [
+      "n. 苔藓, 泥沼",
+      "vt. 使长满苔藓"
+    ],
+    "exam": [
+      "cet6",
+      "ky",
+      "toefl"
+    ],
+    "frequency": {
+      "bnc_rank": 8864,
+      "modern_rank": 8708,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "mosses",
+      "third_person": "mosses"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-11557957-n",
+        "pos": "noun",
+        "category": "noun.plant",
+        "definition": "tiny leafy-stemmed flowerless plants",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "mossy"
+        ],
+        "broader": [
+          "bryophyte",
+          "nonvascular plant"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "moss#small_plant",
+      "pos": "noun",
+      "wordnet": "oewn-11557957-n",
+      "sense": "a small soft green plant that grows on stones and trees",
+      "zh": "苔藓",
+      "role": "thing",
+      "tags": [
+        "PLANT",
+        "HIDDEN",
+        "GRADUAL"
+      ],
+      "appears": [
+        "物件：墓碑上的苔藓（盖住名字）",
+        "地面：苔藓贴花"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "墓碑上浮出 m_ss",
+        "RECOGNIZED": "看一眼就知道是“苔藓”",
+        "UNDERSTOOD": "能读懂 covered in moss",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 moss",
+        "produce": "“The name is hidden under the ___.” 填空"
+      },
+      "confusable": [
+        "mess（形近）",
+        "moth（形近；雾里的飞蛾）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "mossy"
+        ]
+      },
+      "constellation": "PLANT",
+      "page_line": "Moss reads every name in the cemetery, slowly, with its whole body.",
+      "status": "draft"
+    }
+  ]
+}

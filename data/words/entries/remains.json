@@ -1,0 +1,129 @@
+{
+  "lemma": "remains",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ɹɪˈmeɪnz",
+      "us": null
+    },
+    "zh": [
+      "n. 剩余物, 废墟, 残余",
+      "[法] 遗体, 尸体, 遗骸"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 4358,
+      "modern_rank": 5315,
+      "collins_stars": 0,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "remains"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-09430224-n",
+        "pos": "noun",
+        "category": "noun.object",
+        "definition": "any object that is left unused or still extant",
+        "examples": [
+          "I threw out the remains of my dinner"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "object",
+          "physical object"
+        ]
+      },
+      {
+        "synset": "oewn-09226555-n",
+        "pos": "noun",
+        "category": "noun.object",
+        "definition": "a relic that has been excavated from the soil",
+        "examples": [],
+        "synonyms": [
+          "archeological remains"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "relic"
+        ]
+      },
+      {
+        "synset": "oewn-05225393-n",
+        "pos": "noun",
+        "category": "noun.body",
+        "definition": "the dead body of a human being",
+        "examples": [
+          "the cadaver was intended for dissection",
+          "the end of the police search was the discovery of a corpse"
+        ],
+        "synonyms": [
+          "cadaver",
+          "corpse",
+          "stiff",
+          "clay"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "body",
+          "dead body"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "remains#dead_body",
+      "pos": "noun",
+      "wordnet": "oewn-05225393-n",
+      "sense": "what is left of something after the rest is gone, especially a dead body",
+      "zh": "遗骸；残余",
+      "role": "mood",
+      "tags": [
+        "REMAINS",
+        "DEATH",
+        "PARTS"
+      ],
+      "appears": [
+        "敌人：骷髅倒下后的骨堆（Bone Remains）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "骨堆上浮出 rem___s",
+        "RECOGNIZED": "“剩下的东西”",
+        "UNDERSTOOD": "骨堆是单独的目标，打倒骷髅不等于赢",
+        "USABLE": "对白里能用"
+      },
+      "challenge": {
+        "recognize": "看骨堆，选出 remains 的意思",
+        "produce": "remain / remains 填空，分清动词和名词"
+      },
+      "confusable": [
+        "remain（同形的动词，“留下”）",
+        "reminds（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "cadaver",
+          "corpse",
+          "stiff",
+          "clay"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "REMAINS",
+      "page_line": "What remains of a person is mostly what other people kept.",
+      "status": "draft"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "lemma": "mend",
+  "dictionary": {
+    "phonetic": {
+      "uk": "mɛnd",
+      "us": null
+    },
+    "zh": [
+      "n. 改进, 修补, 好转",
+      "vt. 修改, 改进, 加快, 修理",
+      "vi. 好转, 改善"
+    ],
+    "exam": [
+      "zk",
+      "gk",
+      "toefl",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 7566,
+      "modern_rank": 10849,
+      "collins_stars": 1,
+      "oxford_3000": false
+    },
+    "forms": {
+      "ing": "mending",
+      "past_participle": "mended",
+      "past": "mended",
+      "third_person": "mends",
+      "plural": "mends"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-03750776-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "sewing that repairs a worn or torn hole (especially in a garment)",
+        "examples": [
+          "her stockings had several mends"
+        ],
+        "synonyms": [
+          "patch",
+          "darn"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "sewing",
+          "stitchery"
+        ]
+      },
+      {
+        "synset": "oewn-00267650-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "the act of putting something in working order again",
+        "examples": [],
+        "synonyms": [
+          "repair",
+          "fix",
+          "fixing",
+          "fixture",
+          "mending",
+          "reparation"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "improvement"
+        ]
+      },
+      {
+        "synset": "oewn-00261534-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "restore by replacing a part or putting together what is torn or broken",
+        "examples": [
+          "She repaired her TV set",
+          "Repair my shoes please"
+        ],
+        "synonyms": [
+          "repair",
+          "fix",
+          "bushel",
+          "doctor",
+          "furbish up",
+          "restore",
+          "touch on"
+        ],
+        "antonyms": [],
+        "family": [
+          "mender",
+          "mending"
+        ],
+        "broader": [
+          "better",
+          "improve"
+        ]
+      },
+      {
+        "synset": "oewn-00271360-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "heal or recover",
+        "examples": [
+          "My broken leg is mending"
+        ],
+        "synonyms": [
+          "heal"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "better",
+          "improve"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "mend#repair",
+      "pos": "verb",
+      "wordnet": "oewn-00261534-v",
+      "sense": "to repair something that is torn or broken",
+      "zh": "修补；缝补",
+      "role": "ability",
+      "tags": [
+        "REPAIR",
+        "CLOTH"
+      ],
+      "appears": [
+        "敌人：余裹者裹尸布上的黑色 X 缝线",
+        "事件：守墓人在灯下补一块布"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "m_nd，像一道没缝完的口子",
+        "RECOGNIZED": "“把破的地方补好”",
+        "UNDERSTOOD": "【提案】回 3 点生命，并去掉一个负面状态",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看裹尸布上的缝线，选出 mend 的意思",
+        "produce": "你身上有 WITHERED，从 mend / strike / bind 里选"
+      },
+      "confusable": [
+        "mind（形近）",
+        "restore（近义，范围更大）"
+      ],
+      "relations": {
+        "synonyms": [
+          "repair",
+          "fix",
+          "bushel",
+          "doctor"
+        ],
+        "antonyms": [],
+        "family": [
+          "mender",
+          "mending"
+        ]
+      },
+      "constellation": "REPAIR",
+      "page_line": "The stitches on the shroud are neat. Someone mended it after it was buried.",
+      "sigil": "restoration",
+      "effect": {
+        "type": "heal_and_cleanse",
+        "heal": 3,
+        "cleanse": 1,
+        "cost": 1,
+        "proposed": true
+      },
+      "status": "draft"
+    }
+  ]
+}

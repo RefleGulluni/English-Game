@@ -1,0 +1,236 @@
+{
+  "lemma": "grave",
+  "dictionary": {
+    "phonetic": {
+      "uk": "greiv",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "n. 墓穴, 坟墓, 终结, 死亡",
+      "a. 庄重的, 严肃的, 重大的, 低沉的",
+      "vt. 雕刻"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 3630,
+      "modern_rank": 3358,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "plural": "graves",
+      "superlative": "gravest",
+      "comparative": "graver",
+      "ing": "graving",
+      "past": "graven",
+      "third_person": "graves",
+      "past_participle": "graven"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02126493-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "dignified and somber in manner or character and committed to keeping promises",
+        "examples": [
+          "a grave God-fearing man",
+          "a quiet sedate nature"
+        ],
+        "synonyms": [
+          "sedate",
+          "sober",
+          "solemn"
+        ],
+        "antonyms": [],
+        "family": [
+          "graveness",
+          "gravity"
+        ],
+        "broader": []
+      },
+      {
+        "synset": "oewn-00654061-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "causing fear or anxiety by threatening great harm",
+        "examples": [
+          "a dangerous operation",
+          "a grave situation"
+        ],
+        "synonyms": [
+          "dangerous",
+          "grievous",
+          "serious",
+          "severe",
+          "life-threatening"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": []
+      },
+      {
+        "synset": "oewn-01281533-s",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "of great gravity or crucial import; requiring serious thought",
+        "examples": [
+          "grave responsibilities",
+          "faced a grave decision in a time of crisis"
+        ],
+        "synonyms": [
+          "grievous",
+          "heavy",
+          "weighty"
+        ],
+        "antonyms": [],
+        "family": [
+          "graveness",
+          "gravity"
+        ],
+        "broader": []
+      },
+      {
+        "synset": "oewn-15168686-n",
+        "pos": "noun",
+        "category": "noun.time",
+        "definition": "death of a person",
+        "examples": [
+          "he went to his grave without forgiving me",
+          "from cradle to grave"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "death",
+          "dying"
+        ]
+      },
+      {
+        "synset": "oewn-03459977-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a place for the burial of a corpse (especially beneath the ground and marked by a tombstone)",
+        "examples": [
+          "he put flowers on his mother's grave"
+        ],
+        "synonyms": [
+          "tomb"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "topographic point",
+          "place"
+        ]
+      },
+      {
+        "synset": "oewn-06835587-n",
+        "pos": "noun",
+        "category": "noun.communication",
+        "definition": "a mark (‘) placed above a vowel to indicate pronunciation",
+        "examples": [],
+        "synonyms": [
+          "grave accent"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "accent",
+          "accent mark"
+        ]
+      },
+      {
+        "synset": "oewn-01554653-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "shape (a material like stone or wood) by whittling away at it",
+        "examples": [
+          "She is sculpting the block of marble into an image of her husband"
+        ],
+        "synonyms": [
+          "sculpt",
+          "sculpture"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "carve"
+        ]
+      },
+      {
+        "synset": "oewn-01324555-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "carve, cut, or etch into a material or surface",
+        "examples": [
+          "engrave a pen",
+          "engraved the trophy cup with the winner's name"
+        ],
+        "synonyms": [
+          "scratch",
+          "engrave",
+          "inscribe"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "carve",
+          "chip at"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "grave#burial_place",
+      "pos": "noun",
+      "wordnet": "oewn-03459977-n",
+      "sense": "a place in the ground where a dead person is buried",
+      "zh": "坟墓",
+      "role": "thing",
+      "tags": [
+        "BURIAL",
+        "DEATH",
+        "PLACE"
+      ],
+      "appears": [
+        "物件：墓碑与坟",
+        "事件：新挖的坟"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "走近时墓碑上方浮出 gr_ve",
+        "RECOGNIZED": "看一眼就知道是“坟”",
+        "UNDERSTOOD": "事件里能读懂和它有关的句子；知道 grave 还有“严肃的”意思",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "走到坟边，从 3 张图里选出 grave",
+        "produce": "“A stone marks the person's ___.” 填空"
+      },
+      "confusable": [
+        "gravel（形近）",
+        "grave（形容词：严肃的，另一个词义）",
+        "brave（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "tomb"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "BURIAL",
+      "page_line": "Every grave here faces the chapel, except one.",
+      "status": "draft"
+    }
+  ]
+}

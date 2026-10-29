@@ -1,0 +1,141 @@
+{
+  "lemma": "fountain",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈfaʊn.tn̩",
+      "us": null
+    },
+    "zh": [
+      "n. 水源, 源, 喷泉, 泉水, 本源",
+      "[医] 泉"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 6028,
+      "modern_rank": 5279,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "fountains",
+      "past": "fountained",
+      "ing": "fountaining"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-03392889-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a structure from which an artificially produced jet of water arises",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "structure",
+          "construction"
+        ]
+      },
+      {
+        "synset": "oewn-09466357-n",
+        "pos": "noun",
+        "category": "noun.object",
+        "definition": "a natural flow of ground water",
+        "examples": [],
+        "synonyms": [
+          "spring",
+          "outflow",
+          "outpouring",
+          "natural spring"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "geological formation",
+          "formation"
+        ]
+      },
+      {
+        "synset": "oewn-03392772-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "an artificially produced flow of water",
+        "examples": [],
+        "synonyms": [
+          "jet"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "flow",
+          "flowing"
+        ]
+      },
+      {
+        "synset": "oewn-03392661-n",
+        "pos": "noun",
+        "category": "noun.artifact",
+        "definition": "a plumbing fixture that provides a flow of water",
+        "examples": [],
+        "synonyms": [
+          "fount"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "plumbing fixture"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "fountain#water_structure",
+      "pos": "noun",
+      "wordnet": "oewn-03392889-n",
+      "sense": "a stone structure that sends water up into the air",
+      "zh": "喷泉",
+      "role": "thing",
+      "tags": [
+        "WATER",
+        "STONE",
+        "PLACE"
+      ],
+      "appears": [
+        "物件：墓园入口广场中间的干涸喷泉"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "喷泉上方浮出 fo_nt_in",
+        "RECOGNIZED": "看一眼就知道是“喷泉”",
+        "UNDERSTOOD": "能读懂 dry fountain 这种说法",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "从 3 张图里选出 fountain",
+        "produce": "“The ___ has been dry for years.” 填空"
+      },
+      "confusable": [
+        "mountain（形近）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "WATER",
+      "page_line": "The fountain has been dry for years. Visitors still drop coins into it.",
+      "region_override": {
+        "cemetery": "entry_room"
+      },
+      "status": "draft"
+    }
+  ]
+}
