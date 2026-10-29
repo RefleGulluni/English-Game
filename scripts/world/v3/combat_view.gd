@@ -24,6 +24,7 @@ signal mulligan_confirmed(ids: Array[int])
 signal reaction_answered(deflect: bool)
 
 const CYAN := Color(0.42, 0.86, 0.95)
+const PENCIL := Color8(176, 166, 152) # a word only half known: lent for one use (D-078)
 ## Cyan belongs to language only (Art Bible v3 §8): the words, their shapes, the intent, Focus.
 ## Everything else (numbers, labels, frames, hints) uses a palette of its own. Two to compare
 ## (user 2026-10-28: "all one cyan is a little monotonous"); P switches them in a fight.
@@ -295,8 +296,20 @@ func refresh() -> void:
 	for child in _words.get_children():
 		_words.remove_child(child)
 		child.queue_free()
+	var widths := 0.0
 	for card in combat.deck.hand:
-		_words.add_child(_word_button(card))
+		var button := _word_button(card, combat.deck.hand.size() > 5)
+		widths += button.custom_minimum_size.x
+		_words.add_child(button)
+	# A sixth word (one lent, D-078) would push into END TURN: close the gaps, then spill left
+	# over the empty space beside the vitals rather than right.
+	var count := combat.deck.hand.size()
+	var gap := 12.0 if count < 2 else clampf((500.0 - widths) / (count - 1), 4.0, 12.0)
+	var total := widths + gap * maxf(0, count - 1)
+	_words.add_theme_constant_override("separation", int(gap))
+	_words.size.x = maxf(500.0, total)
+	# past 500 px it grows left, but never further than the vitals' edge (x 222)
+	_words.position.x = roundf(maxf(222.0, 730.0 - total) if total > 500.0 else 230.0)
 	_gap = null
 	if _gap_index >= 0:
 		_gap = Control.new()
@@ -325,13 +338,14 @@ func refresh() -> void:
 	_tag.queue_redraw()
 
 
-func _word_button(card: Dictionary) -> Control:
+## compact: a crowded hand (six words) draws each word a little tighter.
+func _word_button(card: Dictionary, compact := false) -> Control:
 	var uid := int(card.instance_id)
 	var word := str(card.name)
 	var reason := combat.disabled_reason(word, uid)
 	var sigil := Control.new()
 	var text_w := FONT.get_string_size(word, HORIZONTAL_ALIGNMENT_LEFT, -1, SIGIL_FONT).x
-	sigil.custom_minimum_size = Vector2(maxf(56.0, ceilf(text_w) + 36.0), SIGIL_H)
+	sigil.custom_minimum_size = Vector2(maxf(56.0, ceilf(text_w) + (30.0 if compact else 36.0)), SIGIL_H)
 	sigil.mouse_filter = Control.MOUSE_FILTER_STOP
 	sigil.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	var usable := (reason.is_empty() or combat.deck.mulligan_pending) and not busy
@@ -383,6 +397,8 @@ func _press_word(card: Dictionary) -> void:
 func _draw_sigil(sigil: Control, card: Dictionary) -> void:
 	var uid := int(card.instance_id)
 	var word := str(card.name)
+	# A borrowed word (D-078: lent once, in pencil, before it is truly yours) is drawn in pencil grey.
+	var ink := PENCIL if bool(card.get("borrowed", false)) else CYAN
 	var usable := bool(sigil.get_meta("usable", false))
 	var hover := usable and (bool(sigil.get_meta("hover", false)) or uid == forced_hover)
 	var retained := uid in combat.deck.retained_cards
@@ -395,13 +411,13 @@ func _draw_sigil(sigil: Control, card: Dictionary) -> void:
 	var breathe := 0.78 + 0.22 * sin(_clock * 2.2 + uid)
 	# Family mark and the word.
 	var family := str(CombatContent.SKILLS.get(str(card.card_id), {}).get("family", ""))
-	_glyph(sigil, Vector2(6, 9), FAMILY_MARKS.get(family, FAMILY_MARKS[""]), Color(CYAN, a * 0.9))
-	_glow_text(sigil, Vector2(23, 20), word, SIGIL_FONT, Color(CYAN, a))
+	_glyph(sigil, Vector2(6, 9), FAMILY_MARKS.get(family, FAMILY_MARKS[""]), Color(ink, a * 0.9))
+	_glow_text(sigil, Vector2(23, 20), word, SIGIL_FONT, Color(ink, a))
 	# The baseline: two ends and a dotted ruler, or one closed line under the mouse.
-	var c := Color(CYAN, a * 0.85)
+	var c := Color(ink, a * 0.85)
 	var gap := cost * 4.0 + 3.0
 	if hover:
-		_glow_line(sigil, Vector2(1, base), Vector2(w - 2, base), Color(CYAN, a))
+		_glow_line(sigil, Vector2(1, base), Vector2(w - 2, base), Color(ink, a))
 		# Light running in from both ends to the centre.
 		var run := fmod((_clock - float(sigil.get_meta("hover_since", _clock))) * 0.9, 1.0)
 		var reach := (mid - 2.0) * run
@@ -409,39 +425,39 @@ func _draw_sigil(sigil: Control, card: Dictionary) -> void:
 			sigil.draw_rect(Rect2(Vector2(roundf(x) - 1, base - 1), Vector2(3, 3)), Color(1, 1, 1, 0.75 * (1.0 - run)))
 		# A crown of nodes over the word.
 		for dx in [-12, -6, 6, 12]:
-			sigil.draw_rect(Rect2(Vector2(mid + dx, -1 + absi(dx) / 6), Vector2(1, 1)), Color(CYAN, 0.6))
-		_diamond(sigil, Vector2(mid, -3), 1.5, Color(CYAN, 0.95), true)
+			sigil.draw_rect(Rect2(Vector2(mid + dx, -1 + absi(dx) / 6), Vector2(1, 1)), Color(ink, 0.6))
+		_diamond(sigil, Vector2(mid, -3), 1.5, Color(ink, 0.95), true)
 	else:
 		_glow_line(sigil, Vector2(1, base), Vector2(10, base), c)
 		_glow_line(sigil, Vector2(w - 11, base), Vector2(w - 2, base), c)
 		for x in range(12, int(mid - gap), 2):
-			sigil.draw_rect(Rect2(Vector2(x, base), Vector2(1, 1)), Color(CYAN, a * 0.3))
+			sigil.draw_rect(Rect2(Vector2(x, base), Vector2(1, 1)), Color(ink, a * 0.3))
 		for x in range(int(mid + gap) + 1, int(w - 12), 2):
-			sigil.draw_rect(Rect2(Vector2(x, base), Vector2(1, 1)), Color(CYAN, a * 0.3))
+			sigil.draw_rect(Rect2(Vector2(x, base), Vector2(1, 1)), Color(ink, a * 0.3))
 	sigil.draw_line(Vector2(1, base - 3), Vector2(1, base), c, 1.0)
 	sigil.draw_line(Vector2(w - 2, base - 3), Vector2(w - 2, base), c, 1.0)
-	_diamond(sigil, Vector2(1, base), 1.5, Color(CYAN, a), true)
-	_diamond(sigil, Vector2(w - 2, base), 1.5, Color(CYAN, a), true)
-	sigil.draw_line(Vector2(5, base + 2.5), Vector2(w - 6, base + 2.5), Color(CYAN, a * 0.2), 1.0)
+	_diamond(sigil, Vector2(1, base), 1.5, Color(ink, a), true)
+	_diamond(sigil, Vector2(w - 2, base), 1.5, Color(ink, a), true)
+	sigil.draw_line(Vector2(5, base + 2.5), Vector2(w - 6, base + 2.5), Color(ink, a * 0.2), 1.0)
 	# Focus cost: nodes set into the middle of the line, breathing while the word can be used.
 	var left := mid - (cost - 1) * 4.0
 	for i in cost:
 		var node_a := a * (breathe if usable and not hover else 1.0)
-		_halo(sigil, Vector2(left + i * 8, base), 4.0, Color(CYAN, node_a * 0.35))
-		_diamond(sigil, Vector2(left + i * 8, base), 2.5, Color(CYAN, node_a), true)
+		_halo(sigil, Vector2(left + i * 8, base), 4.0, Color(ink, node_a * 0.35))
+		_diamond(sigil, Vector2(left + i * 8, base), 2.5, Color(ink, node_a), true)
 	# Marks at the top right: kept for next turn, cannot be used, chosen to replace.
 	var corner := Vector2(w - 9, 1)
 	if retained:
-		sigil.draw_polyline(PackedVector2Array([corner + Vector2(0, 6), corner, corner + Vector2(6, 0), corner + Vector2(6, 6)]), CYAN, 1.0)
-		sigil.draw_line(corner + Vector2(0, 6), corner + Vector2(3, 4), CYAN, 1.0)
-		sigil.draw_line(corner + Vector2(6, 6), corner + Vector2(3, 4), CYAN, 1.0)
+		sigil.draw_polyline(PackedVector2Array([corner + Vector2(0, 6), corner, corner + Vector2(6, 0), corner + Vector2(6, 6)]), ink, 1.0)
+		sigil.draw_line(corner + Vector2(0, 6), corner + Vector2(3, 4), ink, 1.0)
+		sigil.draw_line(corner + Vector2(6, 6), corner + Vector2(3, 4), ink, 1.0)
 	if blocked:
-		sigil.draw_line(corner + Vector2(2, 1), corner + Vector2(6, 5), Color(CYAN, 0.55), 1.0)
-		sigil.draw_line(corner + Vector2(6, 1), corner + Vector2(2, 5), Color(CYAN, 0.55), 1.0)
+		sigil.draw_line(corner + Vector2(2, 1), corner + Vector2(6, 5), Color(ink, 0.55), 1.0)
+		sigil.draw_line(corner + Vector2(6, 1), corner + Vector2(2, 5), Color(ink, 0.55), 1.0)
 	if uid in selected_mulligan:
-		sigil.draw_polyline(PackedVector2Array([corner + Vector2(6, 0), corner + Vector2(6, 5), corner + Vector2(0, 5)]), CYAN, 1.0)
-		sigil.draw_line(corner + Vector2(0, 5), corner + Vector2(2, 3), CYAN, 1.0)
-		sigil.draw_line(corner + Vector2(0, 5), corner + Vector2(2, 7), CYAN, 1.0)
+		sigil.draw_polyline(PackedVector2Array([corner + Vector2(6, 0), corner + Vector2(6, 5), corner + Vector2(0, 5)]), ink, 1.0)
+		sigil.draw_line(corner + Vector2(0, 5), corner + Vector2(2, 3), ink, 1.0)
+		sigil.draw_line(corner + Vector2(0, 5), corner + Vector2(2, 7), ink, 1.0)
 
 
 ## A used word leaves the bar (about half a second): the line draws in to its centre, the letters
@@ -769,6 +785,8 @@ func _show_word_tip(card: Dictionary, button: Control) -> void:
 	var reason := combat.disabled_reason(word, int(card.instance_id))
 	if not reason.is_empty() and not combat.deck.mulligan_pending:
 		rows.append({"kind": "hint", "text": reason, "color": HURT})
+	if bool(card.get("borrowed", false)):
+		rows.append({"kind": "hint", "text": "BORROWED · half known, lent for one use. Try it on the remains."})
 	if int(card.instance_id) in combat.deck.retained_cards:
 		rows.append({"kind": "hint", "text": "RETAINED · kept for next turn", "color": CYAN})
 	elif combat.retain_disabled_reason(card).is_empty():

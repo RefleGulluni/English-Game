@@ -1,0 +1,19 @@
+{
+	"id": "broken_wing",
+	"word": "shatter",
+	"evidence": "recognition",
+	"prompt": "Look at the angel",
+	"title": "THE BROKEN WING",
+	"text": [
+		"A stone angel kneels over an empty basin.",
+		"One of her wings lies around her in a hundred sharp pieces.",
+		"The wing did not fall. It was [shattered]."
+	],
+	"question": "What happened to the wing?",
+	"options": [
+		{"text": "It was slowly worn away by the rain.", "reply": "Rain wears stone down slowly, and leaves it smooth. These edges are sharp. Look again."},
+		{"text": "It was broken suddenly into many small pieces.", "correct": true, "reply": "Not one crack, but a hundred, all at once. You will know this word when you see it again."},
+		{"text": "Its pieces were spread across the ground.", "reply": "The pieces are spread, yes. But something broke them first. Look at the edges."}
+	],
+	"done": "The angel keeps her one wing."
+}

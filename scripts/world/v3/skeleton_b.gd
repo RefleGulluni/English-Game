@@ -296,9 +296,27 @@ func _switch(next_action: String, anim: String) -> void:
 
 ## Plays the newest returned version of an animation (the highest _vN).
 func _play(anim: String) -> void:
+	_strip.load_strip(ANIM, _newest(anim))
+
+
+func _newest(anim: String) -> String:
 	var key := "skeleton_B_" + anim
 	for n in range(9, 1, -1):
 		if _keys.has("%s_v%d" % [key, n]):
-			_strip.load_strip(ANIM, "%s_v%d" % [key, n])
-			return
-	_strip.load_strip(ANIM, key)
+			return "%s_v%d" % [key, n]
+	return key
+
+
+## D-079: some skeletons wait as a heap of bones until the player comes near.
+func lie_dormant() -> void:
+	stop_wander()
+	_mode = "remains"
+	_switch("remains", "remains_idle")
+	_strip.random_phase()
+
+
+## The heap pulls itself together (the reassembly strip); returns how long that takes.
+func rise() -> float:
+	_mode = "standing"
+	_switch("reassemble", "reassemble_front")
+	return float(_keys.get(_newest("reassemble_front"), {}).get("duration_ms", 1500)) / 1000.0

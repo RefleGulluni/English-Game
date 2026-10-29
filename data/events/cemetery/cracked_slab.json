@@ -1,0 +1,25 @@
+{
+	"id": "cracked_slab",
+	"word": "shatter",
+	"evidence": "production",
+	"prompt": "Kneel by the slab",
+	"title": "THE CRACKED SLAB",
+	"text": [
+		"A stone slab seals this grave. A crack runs across it from end to end.",
+		"Something underneath taps on the stone, slowly, as if it has waited a long time.",
+		"The slab will not lift. It has to be broken apart."
+	],
+	"question": "Which word do you speak?",
+	"options_from": "usable_words",
+	"replies": {
+		"shatter": {"correct": true, "text": "The slab bursts into a hundred pieces. A cold breath leaves the grave, and the tapping stops."},
+		"strike": "A chip flies off. The slab holds: one blow will not break it apart.",
+		"bind": "The slab is held fast. That keeps the grave shut, not open.",
+		"observe": "You see the crack clearly, end to end. Seeing it does not open it.",
+		"stabilize": "The crack steadies. The slab is stronger now, not weaker.",
+		"anchor": "The slab stays where it is. It was not going anywhere.",
+		"_default": "The word does not fit the stone. The slab holds."
+	},
+	"breaks": "grave_slab_01",
+	"done": "Only stone dust and rubble are left where the slab was."
+}

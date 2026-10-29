@@ -55,6 +55,7 @@ const LEAF_LAG := 0.18 # how far the spine side of the leaf trails its free edge
 const LEAF_SHADE := 0.3 # how much the leaf darkens as it stands up, away from the light
 const PAPER_MIN_LUMA := 0.43 # brighter than this is paper (leather and binding are darker)
 const WORDS_DIR := "res://data/words/"
+const WORDS := preload("res://scripts/run/word_library.gd")
 const PAGE_STAGES := ["USABLE", "UNDERSTOOD", "RECOGNIZED", "ENCOUNTERED"] # grey box: no progress yet
 const STAR_GAP := 0.14 # seconds between one star lighting and the next
 const STAR_FLASH := 0.35 # a new star flares, then settles
@@ -199,6 +200,40 @@ func _load_pages() -> void:
 		_pages.append(page)
 	if _pages.is_empty():
 		_pages.append(ENTRIES)
+
+
+## The player's real words (D-078): `known` is lexicon_progress.known_words(), in library order.
+## Only met words appear (D-073 rule 2); a word only encountered shows its first letters and a gap,
+## never its meaning, and a recognized one only its pencilled form.
+func set_progress(known: Array) -> void:
+	_pages.clear()
+	var page: Array = []
+	for item in known:
+		var lemma := str(item.lemma)
+		var stage := str(item.stage)
+		page.append({"word": lemma.to_upper(), "lemma": lemma, "stage": stage,
+			"note": WORDS.sense(lemma) if stage in ["UNDERSTOOD", "USABLE"] else ""})
+		if page.size() == 4:
+			_pages.append(page)
+			page = []
+	if not page.is_empty():
+		_pages.append(page)
+	if _pages.is_empty():
+		_pages.append([{"word": "", "stage": "ENCOUNTERED", "note": ""}])
+	_page = mini(_page, _pages.size() - 1)
+	selected = mini(selected, _entries(_page).size() - 1)
+	queue_redraw()
+
+
+## Opens the spread that holds `lemma` and points at it (the book opens there when a word is learned).
+func show_word(lemma: String) -> void:
+	for p in _pages.size():
+		for i in _pages[p].size():
+			if str(_pages[p][i].get("lemma", "")) == lemma:
+				_page = p
+				selected = i
+				queue_redraw()
+				return
 
 
 ## Takes the cyan (language) pixels off a piece of the sheet, filling them with `fill`; returns
@@ -718,6 +753,9 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 		match entry.stage:
 			"ENCOUNTERED": # only a reserved place: corner brackets around an empty line
 				_brackets(Rect2(Vector2(left, y + unit), Vector2(56, 9) * unit), Color(PENCIL, 0.8 * e), unit)
+				if not str(entry.word).is_empty(): # a real word met in the world: its first letters, then a gap
+					var shown := str(entry.word).left(3) + "_".repeat(maxi(2, str(entry.word).length() - 3))
+					_ci.draw_string(FONT, Vector2(left + 4 * unit, y + 8 * unit), shown, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(PENCIL, 0.45 * e))
 			"RECOGNIZED": # pencil: still, but not yet sure of itself (user 2026-10-29: no wobbling)
 				_pencil(Vector2(left, y + 8 * unit), entry.word, word_size, e, unit)
 			"UNDERSTOOD": # ink, settled

@@ -14,8 +14,8 @@ extends Node
 ## bag pages. Grey-box parts: exit glyphs and room 2 / area 2 contents are stand-ins.
 ##
 ## Keys: WASD move · E interact · Tab Lexicon book · L knowledge list · B run bag ·
-## Space end turn · R replay (after the fight) · F fullscreen · dev: F5 back to the five starting
-## words, F6 every ability word (D-075)
+## Space end turn · R replay (after the fight) · F fullscreen · dev: - (F5) back to the five
+## starting words, = (F6) every ability word (D-075)
 ## Capture: Godot --path . res://scenes/world/broken_graveyard_v3.tscn -- --capture=<abs dir>
 
 const TURNS := preload("res://scripts/combat/slice_turn_controller.gd")
@@ -27,6 +27,7 @@ const SKELETON_VISUAL := preload("res://scripts/world/v3/skeleton_b.gd")
 const ROOM_EXIT := preload("res://scripts/world/v3/room_exit.gd")
 const SCREEN_FADE := preload("res://scripts/world/v3/screen_fade.gd")
 const LEXICON := preload("res://scripts/prototypes/graveyard_room/lexicon_overlay.gd")
+const EVENT_SPOT := preload("res://scripts/world/v3/event_spot.gd")
 const HUD_SCENE := preload("res://scenes/ui/CombatHUD.tscn")
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const SKELETON_DATA := preload("res://data/enemies/enemy_grave_skeleton.tres")
@@ -39,6 +40,9 @@ const STAND_OFF := 120.0 # how far apart, side to side, the two stand in a fight
 
 # Room layouts. Props: [file, origin, collision rect relative to the PNG origin, ellipse?]
 const ROOMS := {
+	# The first word route (D-078, docs/FIRST_WORD_ROUTE_SHATTER.md), fixed until the user says to
+	# connect the random route: a broken stone (seen) → the broken wing (recognised) → a fight where
+	# the word is lent once (understood) → the cracked slab (used) → a fight with it in hand.
 	"bg_1": {
 		"id": "bg_1", "area": "BROKEN GRAVEYARD", "seed": 11, "start": Vector2(60, 470),
 		"props": [
@@ -46,38 +50,78 @@ const ROOMS := {
 			["tombstone_upright_01", Vector2(322, 170), Rect2(-32, -15, 44, 15)],
 			["tombstone_upright_01", Vector2(578, 92), Rect2(-32, -15, 44, 15)],
 			["tombstone_fragment_01", Vector2(645, 124), Rect2(-24, -28, 48, 28)],
+			# A cross broken in two, beside the stepping stones: the first thing in the run that carries a word.
+			["tombstone_cross_01_broken", Vector2(430, 300), null],
 			["tombstone_upright_01", Vector2(892, 272), Rect2(-32, -15, 44, 15)],
 			["open_grave_01", Vector2(815, 328), Rect2(-40, -64, 96, 64)],
 			["tombstone_upright_01", Vector2(82, 444), Rect2(-32, -15, 44, 15)],
 			["tombstone_tilted_01", Vector2(205, 492), Rect2(-32, -18, 48, 18)],
 		],
+		# Words over things: near = where the player has to come, at = where the word hangs.
+		"words": [{"lemma": "shatter", "near": Vector2(430, 310), "at": Vector2(430, 186)}],
 		# World Bible: the skeleton stands by an open grave, not in the middle like a spawn point.
 		"skeleton": Vector2(742, 338),
+		"dormant": true, # D-079: it lies as bones by its grave until you come near
 		"exits": [
 			{"zone": Rect2(836, 0, 104, 26), "side": "top", "kind": "event", "target": "bg_2", "glyph_at": Vector2(888, 40)},
-			{"zone": Rect2(934, 130, 26, 100), "side": "right", "kind": "rest", "target": "bg_2", "glyph_at": Vector2(920, 120)},
 		],
 	},
 	"bg_2": {
 		"id": "bg_2", "area": "BROKEN GRAVEYARD", "seed": 23,
 		"props": [
+			["fountain_dry_01", Vector2(480, 300), null],
 			["tombstone_upright_01", Vector2(160, 150), Rect2(-32, -15, 44, 15)],
-			["tombstone_tilted_01", Vector2(300, 250), Rect2(-32, -18, 48, 18)],
-			["dead_tree_01", Vector2(560, 210), Rect2(-52, -48, 104, 46), true],
-			["tombstone_fragment_01", Vector2(420, 430), Rect2(-24, -28, 48, 28)],
-			["tombstone_upright_01", Vector2(700, 440), Rect2(-32, -15, 44, 15)],
-			["tombstone_upright_01", Vector2(760, 120), Rect2(-32, -15, 44, 15)],
+			["tombstone_tilted_01", Vector2(250, 330), Rect2(-32, -18, 48, 18)],
+			["tombstone_fragment_01", Vector2(700, 440), Rect2(-24, -28, 48, 28)],
+			["tombstone_upright_01", Vector2(780, 140), Rect2(-32, -15, 44, 15)],
 		],
+		"words": [{"lemma": "shatter", "near": Vector2(480, 330), "at": Vector2(480, 104)}],
+		"event": {"card": "res://data/events/cemetery/broken_wing.json", "at": Vector2(480, 322), "mark": Vector2(480, 90)},
+		"hello": "A stone angel kneels by a dry fountain. Go and look [E].",
 		"exits": [
-			{"zone": Rect2(934, 250, 26, 110), "side": "right", "kind": "area", "target": "vw_1", "glyph_at": Vector2(920, 240)},
+			{"zone": Rect2(934, 250, 26, 110), "side": "right", "kind": "combat", "target": "bg_3", "glyph_at": Vector2(920, 240)},
+		],
+	},
+	"bg_3": {
+		"id": "bg_3", "area": "BROKEN GRAVEYARD", "seed": 29,
+		"props": [
+			["tombstone_upright_01", Vector2(200, 160), Rect2(-32, -15, 44, 15)],
+			["dead_tree_01", Vector2(560, 170), Rect2(-52, -48, 104, 46), true],
+			["tombstone_tilted_01", Vector2(320, 450), Rect2(-32, -18, 48, 18)],
+			["open_grave_01", Vector2(760, 330), Rect2(-40, -64, 96, 64)],
+			["tombstone_upright_01", Vector2(860, 470), Rect2(-32, -15, 44, 15)],
+		],
+		"skeleton": Vector2(690, 340),
+		"hello": "Another one waits by its grave.",
+		"exits": [
+			{"zone": Rect2(934, 250, 26, 110), "side": "right", "kind": "event", "target": "vw_1", "glyph_at": Vector2(920, 240)},
 		],
 	},
 	"vw_1": {
 		"id": "vw_1", "area": "VEILED WALK", "seed": 31, "tint": Color(0.56, 0.62, 0.78), "dead_grass": 6,
 		"props": [
-			["tombstone_fragment_01", Vector2(300, 200), Rect2(-24, -28, 48, 28)],
-			["tombstone_tilted_01", Vector2(640, 380), Rect2(-32, -18, 48, 18)],
+			["grave_slab_01", Vector2(480, 300), null],
+			["tombstone_fragment_01", Vector2(260, 200), Rect2(-24, -28, 48, 28)],
+			["tombstone_tilted_01", Vector2(700, 420), Rect2(-32, -18, 48, 18)],
+			["tombstone_upright_01", Vector2(760, 170), Rect2(-32, -15, 44, 15)],
 		],
+		"words": [{"lemma": "shatter", "near": Vector2(480, 312), "at": Vector2(480, 214)}],
+		"event": {"card": "res://data/events/cemetery/cracked_slab.json", "at": Vector2(480, 312), "mark": Vector2(480, 190)},
+		"hello": "Something taps under a cracked slab [E].",
+		"exits": [
+			{"zone": Rect2(934, 250, 26, 110), "side": "right", "kind": "combat", "target": "vw_2", "glyph_at": Vector2(920, 240)},
+		],
+	},
+	"vw_2": {
+		"id": "vw_2", "area": "VEILED WALK", "seed": 37, "tint": Color(0.56, 0.62, 0.78), "dead_grass": 6,
+		"props": [
+			["tombstone_upright_01", Vector2(240, 180), Rect2(-32, -15, 44, 15)],
+			["open_grave_01", Vector2(760, 330), Rect2(-40, -64, 96, 64)],
+			["tombstone_fragment_01", Vector2(380, 440), Rect2(-24, -28, 48, 28)],
+		],
+		"skeleton": Vector2(690, 340),
+		"dormant": true,
+		"hello": "The last one on this walk. Use what you have learned.",
 		"exits": [],
 	},
 }
@@ -95,8 +139,11 @@ var room_id := ""
 var exits: Array[Node2D] = []
 var hero: HeroB1
 var skeleton: Node2D
-var encounter_started := false
-var encounter_cleared := false
+var encounter_started := false # in this room
+var encounter_cleared := false # this room's fight is won
+var cleared_rooms := {} # room id -> true once its fight is won
+var words: WordWorld # words met in the world: floating words, event boxes, notes (D-078)
+var _logic: Node # the skeleton logic of the fight in progress
 var transitioning := false
 var event_trace: Array[Dictionary] = []
 
@@ -155,6 +202,11 @@ func _ready() -> void:
 	_lexicon.pixel = 1 # this scene works in native units; the window scales them
 	_lexicon.size = Vector2(NATIVE)
 	_lexicon.open_changed.connect(hero.set_book_open)
+	words = WordWorld.new()
+	add_child(words)
+	words.hero = hero
+	words.advanced.connect(_word_advanced)
+	_lexicon.open_changed.connect(func(open): words.visible = not open) # the book covers the world, words too
 
 	hud = HUD_SCENE.instantiate()
 	add_child(hud)
@@ -194,7 +246,7 @@ func _ready() -> void:
 	_bind_rules()
 	_load_room("bg_1", "")
 	hud.refresh()
-	hud.announce("Follow the old path. Something stands by the open grave.")
+	hud.announce("Follow the old path. Bones lie by the open grave.")
 	if not manager.learning.load_notice.is_empty():
 		hud.show_overlay("KNOWLEDGE SAVE WARNING", manager.learning.load_notice, [])
 	if "--capture" in str(OS.get_cmdline_user_args()):
@@ -235,6 +287,8 @@ func _bind_rules() -> void:
 		manager.persistence_path = ""
 		progress.save_path = ""
 	progress.load_or_start()
+	words.progress = progress
+	_lexicon.set_progress(progress.known_words())
 	manager.start_cemetery_run(seed_value)
 	manager.state.current_node_id = "scene.cemetery.broken_graveyard"
 	turns.bind(combat, events)
@@ -266,6 +320,9 @@ func _bind_rules() -> void:
 			else:
 				visual.shed(hero.global_position)
 			events.publish(&"enemy_attack_started", {"enemy_id": "enemy.grave_skeleton", "position": skeleton.global_position, "action": action.word, "kind": action.kind}))
+	combat.enemy_collapsed.connect(func():
+		rewards.collapsed(_logic)
+		_lend_word())
 	for word in manager.learning.words.values():
 		word.changed.connect(_word_changed.bind(word.lemma))
 
@@ -280,6 +337,10 @@ func start_encounter() -> void:
 	encounter_started = true
 	turns.set_phase(TURNS.Phase.COMBAT_ENTER)
 	_update_lock()
+	if ROOMS[room_id].get("dormant", false): # the heap rises first, then the fight begins
+		hero.face_direction(Vector2(signf(skeleton.position.x - hero.position.x), 0))
+		hud.announce("The bones are moving.")
+		await get_tree().create_timer(skeleton.get_node("VisualRoot/Visual").rise() + 0.2).timeout
 	_stand_off()
 	var node := {"id": "broken_graveyard_skeleton", "title": "GRAVE SKELETON", "type": "encounter", "words": ["REASSEMBLE", "REMAINS", "SCATTER", "ERODE", "TOXIC"], "tags": ["RISK", "COMBAT"], "biome": "cemetery", "primary": ""}
 	node.primary = manager.learning.choose_target(node, manager.rng, 0)
@@ -290,16 +351,18 @@ func start_encounter() -> void:
 	var snapshot := manager.state.combat_snapshot()
 	snapshot.merge({"enemy_profile": SKELETON_DATA.profile(), "reassembly_rounds": SKELETON_DATA.reassembly_rounds, "remains_integrity": SKELETON_DATA.remains_integrity})
 	snapshot.deck_cards = progress.deck_cards(manager.learning) # only the words this player can use
-	var logic: Node = skeleton.get_node("Logic")
-	logic.bind(combat, events)
-	combat.enemy_collapsed.connect(func(): rewards.collapsed(logic))
+	_logic = skeleton.get_node("Logic")
+	# The new fight first, then the skeleton reads it: bound first, it read the last fight's end
+	# ("cleared") and fell to pieces before rising again.
 	combat.start_battle(7, snapshot)
+	_logic.bind(combat, events)
 	manager.state.prepared_armor = 0
 	hud.set_combat_active(true)
 	hud.combat_panel.hide() # the fight is shown by the combat view
 	for part in _hud_header:
 		part.hide()
 	view.open(hero, skeleton, SKELETON_DATA.display_name)
+	words.note_y = 132.0
 	events.publish(&"combat_started", {"enemy_id": SKELETON_DATA.id, "scene_id": manager.state.current_node_id})
 	# The fight starts where they stand: no black screen, no separate battle page (0.9 spec §10).
 	get_tree().create_timer(0.4).timeout.connect(func():
@@ -320,7 +383,14 @@ func _invoke(uid: int, restore_target: String) -> bool:
 		return false
 	events.publish(&"word_sigil_selected", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
 	var before := view.hold_enemy(uid) # the rules resolve now; the skeleton reacts when the word lands
+	var on_remains := combat.bone_remains
 	if turns.invoke(uid, restore_target):
+		if bool(card.get("borrowed", false)):
+			# Using the lent word where it matters is the proof (D-078 step 3): context evidence.
+			if on_remains:
+				words.evidence(str(card.card_id).to_lower(), "context", "fight:" + room_id)
+			else:
+				hud.announce("It works, a little. A word like this is meant for what has already fallen apart.")
 		events.publish(&"word_sigil_invoked", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
 		if card in combat.deck.exhaust_pile:
 			events.publish(&"word_sigil_exhausted", {"word_id": card.name, "instance_id": uid})
@@ -345,6 +415,7 @@ func _battle_finished(victory: bool) -> void:
 	hud.set_combat_active(false)
 	get_tree().create_timer(0.9).timeout.connect(func(): # let the last word land first
 		view.close()
+		words.note_y = 400.0
 		for part in _hud_header:
 			part.show())
 	if not victory:
@@ -356,6 +427,7 @@ func _battle_finished(victory: bool) -> void:
 		hud.show_overlay("RUN ENDED", "The Grave Skeleton claimed this attempt. Your saved knowledge is preserved.", [{"text": "REPLAY BROKEN GRAVEYARD", "callback": restart}])
 		return
 	encounter_cleared = true
+	cleared_rooms[room_id] = true
 	events.publish(&"enemy_defeated", {"enemy_id": "enemy.grave_skeleton", "position": skeleton.global_position})
 	skeleton.get_node("Logic").unresolved = false
 	rewards.cleared(skeleton.get_node("LootAnchor").global_position)
@@ -368,7 +440,10 @@ func _battle_finished(victory: bool) -> void:
 			exit.enabled = true
 		events.publish(&"combat_ended", {"victory": true})
 		var loot_waiting := room.sorted.get_children().any(func(n): return n.has_method("get_prompt") and n.visible)
-		hud.announce("The bones lie still. Pick up what glints [E], then choose an exit." if loot_waiting else "The bones lie still. Choose an exit.")
+		if exits.is_empty():
+			hud.announce("The bones lie still. The grey-box route ends here: press R to walk it again (the - key forgets the words learned on the way).")
+		else:
+			hud.announce("The bones lie still. Pick up what glints [E], then choose an exit." if loot_waiting else "The bones lie still. Choose an exit.")
 		if not manager.learning.save_error.is_empty():
 			hud.show_overlay("KNOWLEDGE SAVE WARNING", manager.learning.save_error, []))
 
@@ -395,6 +470,86 @@ func _on_event(event_id: StringName, payload: Dictionary) -> void:
 				skeleton.get_node("VisualRoot/Visual").stand_off(skeleton.position.x, hero.position)
 
 
+# --- Words learned in the world (D-078) ------------------------------------------------------
+
+## A word half known is lent for one use in a fight (step 3 of a word route): when the bones fall,
+## a RECOGNIZED ability word that fits the moment appears in the hand, drawn in pencil.
+func _lend_word() -> void:
+	var lemma := "shatter" # the first route; later the route data names its word and its moment
+	if progress.stage(lemma) != "RECOGNIZED" or not CombatContent.SKILLS.has(lemma.to_upper()):
+		return
+	if combat.deck.hand.any(func(c): return bool(c.get("borrowed", false))):
+		return
+	var card := combat.deck.make_card(lemma.to_upper())
+	card["time_properties"].append("EXHAUST")
+	card["temporary"] = true
+	card["exhaust_on_use"] = true
+	card["borrowed"] = true
+	combat.deck.hand.append(card)
+	words.note("A half-known word comes to you  ·  %s" % lemma.to_upper(), WordWorld.PENCIL)
+	hud.announce("SHATTER is in your hand, in pencil: lent for one use. The remains are what it is for.")
+	view.refresh()
+
+
+func _open_event(spot: Node2D) -> void:
+	var card: Dictionary = spot.card
+	var lemma := str(card.get("word", ""))
+	var options: Array = []
+	if str(card.get("options_from", "")) == "usable_words":
+		# Production: the answers are the player's own words, plus the word in question once it is
+		# understood (not yet in their hand, but they know it well enough to try it).
+		var own: Array = progress.usable_abilities(manager.learning)
+		if progress.stage(lemma) == "UNDERSTOOD" and lemma not in own:
+			own.append(lemma)
+		var replies: Dictionary = card.get("replies", {})
+		for word in own:
+			var reply = replies.get(word, replies.get("_default", ""))
+			var correct: bool = reply is Dictionary and bool(reply.get("correct", false))
+			options.append({"label": str(word).to_upper(), "reply": str(reply.text) if reply is Dictionary else str(reply), "correct": correct,
+				"understood": progress.stage(word) == "UNDERSTOOD"}) # known, not yet in hand: drawn in ink
+	else:
+		options = card.get("options", [])
+	words.open_event(card, options, func(result: Dictionary):
+		_update_lock()
+		if result.is_empty():
+			return
+		if bool(result.correct):
+			spot.solved = true
+			interactions.refresh()
+			words.evidence(lemma, str(card.evidence), "event:" + str(card.id))
+			if card.has("breaks"):
+				_break_prop(str(card.breaks), spot.position)
+				words.remove_near(spot.position)
+			hud.announce(str(card.get("done", ""))))
+	_update_lock()
+
+
+## The thing an event was about gives way (the slab shatters): it fades, rubble is left.
+func _break_prop(file: String, at: Vector2) -> void:
+	for node in room.sorted.get_children():
+		if node is CemeteryProp and str(node.scene_file_path).get_file().get_basename() == file and node.position.distance_to(at) < 60:
+			var rubble: Node2D = load(CemeteryRoom.PROP_SCENES + "rubble_pile_01.tscn").instantiate()
+			rubble.position = node.position
+			rubble.modulate.a = 0.0
+			room.sorted.add_child(rubble)
+			var tween := create_tween().set_parallel()
+			tween.tween_property(node, "modulate:a", 0.0, 0.5)
+			tween.tween_property(rubble, "modulate:a", 1.0, 0.5).set_delay(0.2)
+			tween.chain().tween_callback(node.queue_free)
+			return
+
+
+func _word_advanced(lemma: String, stage: String) -> void:
+	_lexicon.set_progress(progress.known_words())
+	events.publish(&"knowledge_stage_changed", {"word_id": lemma, "stage": stage, "message": "world"})
+	if stage == "USABLE" and turns.phase == TURNS.Phase.EXPLORATION:
+		# Only for a new ability: the book opens by itself at its page (D-078 §5).
+		await get_tree().create_timer(1.6).timeout
+		_lexicon.show_word(lemma)
+		if not _lexicon.is_open and hero.book_phase == "" and not words.is_busy():
+			_lexicon.toggle()
+
+
 # --- Rooms, exits and transitions (D-022, D-023) --------------------------------------------
 
 func _load_room(id: String, entered_from: String, exit_zone := Rect2()) -> void:
@@ -412,11 +567,23 @@ func _load_room(id: String, entered_from: String, exit_zone := Rect2()) -> void:
 	room.player = hero
 	hero.position = _entry_point(layout, entered_from, exit_zone)
 	rewards.bind(manager.state, events, hero, room.sorted, interactions)
+	encounter_started = false
+	encounter_cleared = cleared_rooms.has(id)
+	words.set_room_words(layout.get("words", []))
+	if layout.has("event"):
+		var spot: Node2D = EVENT_SPOT.new()
+		spot.setup(layout.event.card, layout.event.at)
+		spot.show_mark(layout.event.get("mark", layout.event.at + Vector2(0, -120)), _language, hero)
+		spot.opened.connect(_open_event)
+		room.add_child(spot)
+		interactions.register(spot)
 	skeleton = null
 	if layout.has("skeleton"):
 		skeleton = _make_skeleton(layout.skeleton)
 		room.sorted.add_child(skeleton)
-		if not encounter_cleared:
+		if not encounter_cleared and layout.get("dormant", false):
+			skeleton.get_node("VisualRoot/Visual").lie_dormant() # a heap of bones until you come near (D-079)
+		elif not encounter_cleared:
 			var home: Vector2 = layout.skeleton
 			# It paces a small loop beside its grave (left of and below it, clear of the stones).
 			skeleton.get_node("VisualRoot/Visual").wander([home, home + Vector2(-80, 0), home + Vector2(-80, 40), home + Vector2(0, 40)] as Array[Vector2])
@@ -503,12 +670,11 @@ func _take_exit(exit: Node2D) -> void:
 		await _fade.write_title(next.area)
 		await _fade.reveal(_fade.AREA_SECONDS)
 		hud.place_label.text = "ENGLISH GAME · %s · v3 GREY-BOX" % next.area
-		hud.announce("The grey-box ends here. Press R to walk it again.")
 	else:
 		await _fade.cover(_fade.ROOM_SECONDS)
 		_load_room(exit.target, side, zone)
 		await _fade.reveal(_fade.ROOM_SECONDS)
-		hud.announce("%s · placeholder room. Walk on through the exit to the east." % NODE_TITLES.get(kind, kind.to_upper()))
+	hud.announce(str(next.get("hello", "%s · walk on." % NODE_TITLES.get(kind, kind.to_upper()))))
 	transitioning = false
 	_update_lock()
 
@@ -528,7 +694,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _update_lock() -> void:
-	var locked: bool = turns.phase != TURNS.Phase.EXPLORATION or hud.overlay_open or transitioning
+	var locked: bool = turns.phase != TURNS.Phase.EXPLORATION or hud.overlay_open or transitioning or words.is_busy()
 	hero.set_input_locked(locked)
 	interactions.enabled = not locked and hero.book_phase == ""
 	interactions.refresh()
@@ -540,7 +706,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	var key: Key = event.physical_keycode
 	if key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open):
 		# The book opens only while exploring; it can always be closed.
-		if _lexicon.is_open or (turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open and hero.book_phase == ""):
+		if _lexicon.is_open or (turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open and not words.is_busy() and hero.book_phase == ""):
 			_lexicon.toggle()
 	elif _lexicon.is_open: # the book's own keys: W / S choose, A / D turn a page, 1 / 2 / 3 pace
 		_lexicon._unhandled_input(event)
@@ -552,11 +718,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		else: hud.show_bag()
 	elif key == KEY_SPACE and not hud.overlay_open and not view.busy:
 		turns.end_turn()
-	elif key == KEY_R and (encounter_cleared or turns.phase == TURNS.Phase.DEFEAT):
+	elif key == KEY_R and ((encounter_cleared and exits.is_empty()) or turns.phase == TURNS.Phase.DEFEAT):
 		restart()
-	elif key in [KEY_F5, KEY_F6] and turns.phase == TURNS.Phase.EXPLORATION: # dev: F5 back to the five starting words, F6 every ability word
-		if key == KEY_F5: progress.reset_to_start()
+	elif key in [KEY_F5, KEY_F6, KEY_MINUS, KEY_EQUAL] and turns.phase == TURNS.Phase.EXPLORATION: # dev: - (or F5) back to the five starting words, = (or F6) every ability word; on a Mac F5 is dictation
+		if key in [KEY_F5, KEY_MINUS]: progress.reset_to_start()
 		else: progress.learn_all_abilities()
+		_lexicon.set_progress(progress.known_words())
 		hud.prompt.text = "Words you can use: " + ", ".join(progress.usable_abilities(manager.learning)).to_upper()
 	elif key == KEY_F:
 		var win := get_window()
@@ -580,6 +747,10 @@ func _capture() -> void:
 			dir = str(arg).get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	await _frames(20)
+	if "--route" in OS.get_cmdline_user_args(): # the SHATTER word route, one picture per step (D-078)
+		await _capture_route(dir)
+		get_tree().quit()
+		return
 	if "--lexicon" in OS.get_cmdline_user_args(): # the book opening and closing, frame by frame (D-068)
 		_lexicon.toggle()
 		for i in 24:
@@ -704,6 +875,97 @@ func _capture() -> void:
 		await get_tree().create_timer(2.5).timeout
 		await _shot(dir + "/08_area2.png")
 	get_tree().quit()
+
+
+## Walks the word route without playing the fights out: each fight is cut short (the bones fall at
+## once, then it is won), so only the learning moments are pictured.
+func _capture_route(dir: String) -> void:
+	var wait := func(t: float): await get_tree().create_timer(t).timeout
+	hero.position = Vector2(560, 240)
+	await wait.call(0.5)
+	await _shot(dir + "/r01_room.png")
+	hero.position = Vector2(250, 420) # across the room: only the glint shows
+	await wait.call(0.8)
+	await _shot(dir + "/r01b_glint.png")
+	hero.position = Vector2(380, 360) # near the broken cross: the word is seen
+	await wait.call(0.35)
+	await _shot(dir + "/r02a_writing.png")
+	await wait.call(1.2)
+	await _shot(dir + "/r02_seen.png")
+	cleared_rooms["bg_1"] = true
+	_load_room("bg_2", "")
+	hero.position = Vector2(200, 480)
+	await wait.call(1.5)
+	await _shot(dir + "/r03a_angel_far.png")
+	hero.position = Vector2(480, 352)
+	await wait.call(1.0)
+	await _shot(dir + "/r03_angel.png")
+	interactions.interact()
+	await wait.call(0.6)
+	await _shot(dir + "/r04_question.png")
+	words._choose(0) # wrong first: worn away
+	await wait.call(0.5)
+	await _shot(dir + "/r05_wrong.png")
+	words._close()
+	await wait.call(0.3)
+	interactions.interact()
+	await wait.call(0.4)
+	words._choose(1)
+	await wait.call(0.5)
+	await _shot(dir + "/r06_right.png")
+	words._close()
+	await wait.call(0.8)
+	await _shot(dir + "/r07_recognized.png")
+	_load_room("bg_3", "")
+	hero.position = skeleton.position + Vector2(-100, 30)
+	await wait.call(2.8)
+	if combat.deck.mulligan_pending:
+		combat.finish_mulligan([])
+	combat._enemy_defeated() # the bones fall: the half-known word is lent
+	hud.refresh()
+	view.refresh()
+	await wait.call(1.4)
+	await _shot(dir + "/r08_lent.png")
+	var lent: Dictionary = combat.deck.hand.filter(func(c): return bool(c.get("borrowed", false))).front()
+	view.forced_hover = int(lent.instance_id)
+	view._show_word_tip(lent, view._words.get_child(combat.deck.hand.find(lent)))
+	await wait.call(0.5)
+	await _shot(dir + "/r09_lent_tip.png")
+	view._hide_tip()
+	view.forced_hover = -1
+	combat.focus = maxi(combat.focus, 3)
+	_invoke(int(lent.instance_id), "hp")
+	await wait.call(1.0)
+	await _shot(dir + "/r10_understood.png")
+	combat._finish_battle(true)
+	await wait.call(1.5)
+	_load_room("vw_1", "")
+	hero.position = Vector2(480, 340)
+	await wait.call(1.0)
+	await _shot(dir + "/r11_slab.png")
+	interactions.interact()
+	await wait.call(0.6)
+	await _shot(dir + "/r12_which_word.png")
+	words._choose(words._answers.size() - 1) # SHATTER comes last: the word just understood
+	await wait.call(0.5)
+	await _shot(dir + "/r13_shattered.png")
+	words._close()
+	await wait.call(0.8)
+	await _shot(dir + "/r14_usable.png")
+	await wait.call(4.0)
+	await _shot(dir + "/r15_book.png")
+	_lexicon.toggle()
+	await wait.call(2.5)
+	_load_room("vw_2", "") # a heap of bones that rises when the hero comes near (D-079)
+	hero.position = Vector2(400, 380)
+	await wait.call(0.8)
+	await _shot(dir + "/r16_bones.png")
+	hero.position = skeleton.position + Vector2(-100, 20)
+	await wait.call(0.9)
+	await _shot(dir + "/r17_rising.png")
+	await wait.call(3.0)
+	await _shot(dir + "/r18_fight.png")
+	print("ROUTE shatter=%s deck=%s" % [progress.stage("shatter"), progress.deck_cards(manager.learning)])
 
 
 func _frames(n: int) -> void:

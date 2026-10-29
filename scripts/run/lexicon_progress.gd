@@ -82,6 +82,40 @@ func deck_cards(schedule = null) -> Array[String]:
 	return cards
 
 
+## Evidence of understanding, from the world (D-078, KB Learning Reference §3.1 / §4): each kind
+## moves a word one stage, and only from the stage just below it (0.8 learning_schedule.evidence):
+## ambient UNKNOWN → ENCOUNTERED; recognition (from UNKNOWN or ENCOUNTERED) → RECOGNIZED;
+## context RECOGNIZED → UNDERSTOOD; production UNDERSTOOD → USABLE.
+## One encounter (a room's event, a fight) moves a word at most one stage: `encounter` names it.
+## Returns the new stage, or "" when nothing moved.
+const EVIDENCE := {"ambient": ["UNKNOWN", "ENCOUNTERED"], "recognition": ["ENCOUNTERED", "RECOGNIZED"],
+	"context": ["RECOGNIZED", "UNDERSTOOD"], "production": ["UNDERSTOOD", "USABLE"]}
+var _moved_in := {} # lemma -> the encounter that last moved it (this session only)
+
+func advance(lemma: String, kind: String, encounter := "") -> String:
+	var id := lemma.to_lower()
+	var step: Array = EVIDENCE.get(kind, [])
+	if step.is_empty():
+		return ""
+	var now := stage(id)
+	var allowed: bool = now == step[0] or (kind == "recognition" and now == "UNKNOWN")
+	if not allowed or (not encounter.is_empty() and kind != "ambient" and _moved_in.get(id, "") == encounter):
+		return ""
+	set_stage(id, step[1])
+	if kind != "ambient":
+		_moved_in[id] = encounter
+	return step[1]
+
+
+## Every word the player has met, in library order, with its stage (for the Lexicon pages).
+func known_words() -> Array:
+	var result := []
+	for lemma in LIBRARY.lemmas():
+		if stage(lemma) != "UNKNOWN":
+			result.append({"lemma": lemma, "stage": stage(lemma)})
+	return result
+
+
 ## Dev: back to the five starting words.
 func reset_to_start() -> void:
 	stages.clear()
