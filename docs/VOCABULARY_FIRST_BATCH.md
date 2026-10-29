@@ -1,6 +1,6 @@
 # 第一批词汇与词条样子（草稿）
 
-2026-10-29。方向见知识库决策日志 D-069 与 `02_SYSTEMS/02_Learning/English_Game_Learning_System_Current_Reference.md` §3、§8。名单用户已挑（按 Claude 推荐 + 用户加的 raven、moss、bell）。**词条属性用户已同意（D-070）**：在第一版字段上加考试标签与常用程度、音标、词的关系、星座、书页上的一句话，能力词再加词类符号。
+2026-10-29。方向见知识库决策日志 D-069 与 `02_SYSTEMS/02_Learning/English_Game_Learning_System_Current_Reference.md` §3、§8。名单用户已挑（按 Claude 推荐 + 用户加的 raven、moss、bell）。**词条属性用户已同意（D-070）**，并改为用多个标签匹配地区和事件（D-070 补充）：在第一版字段上加考试标签与常用程度、音标、词的关系、星座、书页上的一句话，能力词再加词类符号。
 
 ## 1. 第一批名单（43 个）
 
@@ -28,8 +28,8 @@
 | `sense` | 游戏里显示的英文释义：短、白话 |
 | `zh` | 中文：默认不显示，Lexicon 里可以点开 |
 | `role` | ability / enemy / thing / mood |
-| `family` | 概念家族（DECAY、HIDDEN、PARTS……），同家族的词互相带 |
-| `regions` | 在哪些地区出现、比重多少；不合的地区不出现 |
+| `tags` | **多个语义标签**（D-070 补充，沿用 0.7 墓园设计 §8.1 / §9、0.8 的 biomeTags）：说的是“这个词的意思沾哪些边”，如 grave = BURIAL / DEATH / PLACE。原来的概念家族（DECAY、HIDDEN、PARTS……）是标签的一部分 |
+| `region_override` | 一般不写：在哪个地区出现、比重多少由**标签自动算**（见第 4 节）；只有特殊情况才手动加权或排除 |
 | `appears` | 世界里在哪里遇到它（物件、墓志铭、敌人意图、对白） |
 | `stage_lines` | 四个阶段各自看到的样子：没学会时看到的提示越来越清楚 |
 | `challenge` | 推进阶段时的小考：语境里认出来 / 新语境里用对 |
@@ -45,7 +45,23 @@
 
 先不加：常用搭配（以后）、发音音频（以后）、玩家笔记（属于进度，不放词条）。
 
-## 4. 四个样子
+## 4. 地区和事件怎么用标签
+
+词只写“意思沾哪些边”，**地区和事件写自己喜欢哪些标签**，游戏按重合多少算权重：
+
+```
+墓园喜欢：DEATH, MEMORY, HIDDEN, DECAY, REMAINS, SILENCE, GRIEF, BURIAL（0.7 墓园设计 §8.1）
+grave  的标签：BURIAL, DEATH, PLACE   → 和墓园重合 2 个 → 在墓园里常出现
+lantern的标签：LIGHT, OBJECT, MEMORY, VIGIL → 重合 1 个 → 偶尔出现
+legislation 的标签：LAW, SOCIETY       → 重合 0 个 → 墓园里不出现，放进暂存池（D-069）
+```
+
+- 事件同理：一个带 BURIAL 的事件，优先配上 grave、bury 这类词（0.7 §8.1：“现在的内容能不能接得住”）。
+- 学习模式（D-069）在这之上再乘一层：玩家选的考试词表里的词，权重大幅提高——但仍然先要和地区沾边，不硬塞。
+- 加一个新地区，只写它喜欢的标签；几万个词不用改。
+- 标签从哪来：词典的词义分类先自动给一批，AI 补充，用户抽查。
+
+## 5. 四个样子
 
 ### 4.1 bind（能力词）
 
@@ -53,8 +69,9 @@
 id: bind#restrain          lemma: bind   pos: verb   forms: binds, bound, binding
 sense: to tie or hold something so it cannot move
 zh: 捆住；束缚
-role: ability              family: CONTROL（沿用现在战斗代码）
-regions: cemetery 1.0（以后各地区通用）
+role: ability
+tags: CONTROL, RESTRAINT, CHAIN
+region_override: 各地区都可出现（能力词不受地区口味限制）
 appears:
   - 物件：门柱上缠着锈铁链的铁门（gate）
   - 墓志铭：“Bound to this ground until the bell is rung.”
@@ -82,8 +99,8 @@ status: draft
 id: erode#wear_away        lemma: erode  pos: verb   forms: erodes, eroded, eroding
 sense: to wear something away slowly
 zh: 侵蚀；慢慢磨掉
-role: enemy                family: DECAY
-regions: cemetery 1.0（雨水、风化），其他地区少量
+role: enemy
+tags: DECAY, WEAKEN, STRUCTURE, GRADUAL（0.7 原设计的 ERODE 标签）
 appears:
   - 物件：字被磨平的墓碑（epitaph 看不清）
   - 敌人意图：骷髅头顶的 ERODE
@@ -110,8 +127,8 @@ status: draft
 id: lantern#lamp           lemma: lantern  pos: noun   forms: lanterns
 sense: a lamp in a case with a handle, carried or hung
 zh: 提灯；灯笼
-role: thing                family: LIGHT
-regions: cemetery 0.8, abandoned_station 0.5
+role: thing
+tags: LIGHT, OBJECT, MEMORY, VIGIL
 appears:
   - 物件：倒在路边的路灯 / 守墓人的提灯
   - 事件：“A lantern still burns on a grave no one visits.”
@@ -138,8 +155,8 @@ status: draft
 id: grief#sorrow           lemma: grief  pos: noun
 sense: deep sadness, especially after someone dies
 zh: 悲痛
-role: mood                 family: GRIEF（和 mourn 同家族）
-regions: cemetery 1.0
+role: mood
+tags: GRIEF, DEATH, MEMORY（和 mourn 共用 GRIEF）
 appears:
   - 墓志铭：“Here lies the grief of a whole village.”
   - 哀悼天使雕像的说明文字
@@ -161,8 +178,9 @@ effect: —
 status: draft
 ```
 
-## 5. 还没定的
+## 6. 还没定的
 
-- 星座怎么分（现在按概念家族先分，等 Lexicon 正式界面时再定）；
+- 星座怎么分（现在先按主要标签分，等 Lexicon 正式界面时再定）；
+- 标签表本身（一共有哪些标签、每个地区喜欢哪些）；墓园的先用 0.7 的 8 个。
 - 原材料是否用 ECDICT + WordNet；谁写草稿（建议 AI 写、工具检查、用户抽查）；
 - 能力词的效果数字由战斗设计定，表里只是举例。
