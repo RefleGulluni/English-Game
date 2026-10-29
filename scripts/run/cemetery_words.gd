@@ -18,6 +18,14 @@ const DATA := {
 }
 const FORMS := {"mourns": "MOURN", "mourned": "MOURN", "mourning": "MOURN", "lingers": "LINGER", "lingered": "LINGER", "lingering": "LINGER", "conceals": "CONCEAL", "concealed": "CONCEAL", "concealing": "CONCEAL", "reassembles": "REASSEMBLE", "reassembled": "REASSEMBLE", "reassembling": "REASSEMBLE", "erodes": "ERODE", "eroded": "ERODE", "eroding": "ERODE", "buried": "BURY", "buries": "BURY", "burying": "BURY", "haunted": "HAUNT", "haunts": "HAUNT", "haunting": "HAUNT", "withered": "WITHER", "withers": "WITHER", "withering": "WITHER", "scattered": "SCATTER", "scatters": "SCATTER", "scattering": "SCATTER", "graves": "GRAVE", "echoes": "ECHO", "echoed": "ECHO", "echoing": "ECHO"}
 
+## The meaning a player sees once they recognise a word: from the word library (D-071), or the
+## 0.8 line below if the library does not have it. The rest of each DATA row (scenes, combat
+## lines, cloze, mechanism) is 0.8 learning content, kept until the new learning screens.
+static func meaning(lemma_id: String) -> String:
+	var id := lemma(lemma_id)
+	var fallback := str(DATA[id][0]) if id in DATA else ""
+	return preload("res://scripts/run/word_library.gd").sense(id, fallback)
+
 static func lemma(surface: String) -> String:
 	return str(FORMS.get(surface.to_lower(), surface.to_upper()))
 

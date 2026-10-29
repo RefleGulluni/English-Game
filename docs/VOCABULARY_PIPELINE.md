@@ -42,3 +42,7 @@ curl -L -o dict_sources/oewn.xml.gz https://github.com/globalwordnet/english-wor
 - **每个词都必须有书页上的话**（用户定的：把单词和游戏绑在一起），而且必须是原创句子，不引用名人名言、歌词、书里的原文。
 - 词典中文只是参考；游戏里显示的 `zh` 由 AI 按选中的词义重写，默认隐藏、Lexicon 里点开。
 - 同一个词的不同词义（grave 坟墓 / 严肃的）是不同的词条，各自学习；变形（erode / eroded）共享一个学习状态（0.7 墓园设计 §10）。
+
+## 5. 游戏怎么用词库
+
+`scripts/run/word_library.gd`：第一次被问到时把 `data/words/` 整个读进内存，之后只在内存里查（`sense`、`tags`、`primary_tag`、`effect`、`sigil`、`page_line`、`region_overlap`……）。战斗（`combat_state.gd` 的数字、`combat_content.gd` 的花费 / 释义 / 符号）、学习（`cemetery_words.meaning`、`learning_schedule.family`）都问它。词库说“做什么、多少”，战斗代码管“怎么做”。`tests/word_data_smoke.gd` 检查这些值确实来自词库。

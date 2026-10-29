@@ -16,7 +16,21 @@ const MAX_HP := 50
 const BASE_ARMOR := 12
 const BASE_FOCUS := 3
 const MAX_CARRY := 1
-const STABILIZE_AMOUNT := 8
+const WORDS := preload("res://scripts/run/word_library.gd")
+# Ability numbers come from the word library (data/words, D-071); the numbers after them are the
+# fallback if an entry is missing. How each effect works stays here: the library says what and how much.
+static var STABILIZE_AMOUNT := word_number("stabilize", "amount", 8)
+static var STRIKE_DAMAGE := word_number("strike", "amount", 8)
+static var STRIKE_EXPOSED := word_number("strike", "exposed_bonus", 2)
+static var STRIKE_STRUCTURE := word_number("strike", "structure", 2)
+static var SHATTER_STRUCTURE := word_number("shatter", "amount", 8)
+static var SHATTER_DAMAGE := int(WORDS.effect("shatter").get("no_structure", {}).get("damage", 3))
+static var SHATTER_ARMOR := -int(WORDS.effect("shatter").get("no_structure", {}).get("armor", -2))
+static var DEFLECT_KEEP := 1.0 - word_number("deflect", "percent", 75) / 100.0 # share of the blow that still lands
+static var POISON_TURNS := word_number("toxic", "turns", 3)
+static var POISON_TICK := word_number("toxic", "damage_per_turn", 3)
+static var RESTORE_HP := _restore_option("heal", 8)
+static var RESTORE_ARMOR := _restore_option("armor", 4)
 const INATTENTION := preload("res://scripts/combat/inattention_rules.gd")
 var inattention_tier := 0
 var knowledge := preload("res://scripts/run/word_knowledge.gd").new()
@@ -314,14 +328,14 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			focus -= cost
 			shatter_played_this_turn = true
 			if int(enemy["structure"]) > 0:
-				_damage_structure(8, true)
+				_damage_structure(SHATTER_STRUCTURE, true)
 			else:
 				if pacing and not bool(enemy["has_structure"]): _record_target_context("HOLLOW", "no_material_structure")
 				var before_armor := int(enemy["armor"])
-				var armor_chip := mini(2, before_armor)
-				enemy["armor"] = maxi(0, before_armor - 2)
-				_damage_enemy_hp(3)
-				_add_log("%s · Armor chipped %d; direct damage 3 (remaining Armor absorbs)." % ["INCORPOREAL · SHATTER finds no structure" if not bool(enemy["has_structure"]) else "SHATTER", armor_chip])
+				var armor_chip := mini(SHATTER_ARMOR, before_armor)
+				enemy["armor"] = maxi(0, before_armor - SHATTER_ARMOR)
+				_damage_enemy_hp(SHATTER_DAMAGE)
+				_add_log("%s · Armor chipped %d; direct damage %d (remaining Armor absorbs)." % ["INCORPOREAL · SHATTER finds no structure" if not bool(enemy["has_structure"]) else "SHATTER", armor_chip, SHATTER_DAMAGE])
 			if erode_played_this_turn and erosion_turns > 0 and not fractured_this_turn:
 				enemy_effects.apply("EROSION", erosion_turns + 1, 3, "FRACTURED EROSION", "REPLACE")
 				fractured_this_turn = true
@@ -329,7 +343,7 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 				_discover_combo("fractured_erosion", knowledge)
 		"STRIKE":
 			focus -= cost
-			var damage := 8 + (2 if enemy_effects.has("EXPOSED") else 0)
+			var damage := STRIKE_DAMAGE + (STRIKE_EXPOSED if enemy_effects.has("EXPOSED") else 0)
 			if str(enemy["phase_state"]) == "FADED":
 				damage = int(damage / 2)
 				_add_log("FADED · STRIKE effectiveness -50%.")
@@ -339,7 +353,7 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			_add_log("STRIKE · %d direct damage; %d Armor ignored." % [damage, ignored])
 			# The hit reads EXPOSED before its own structural side effect.
 			if int(enemy["structure"]) > 0:
-				_damage_structure(2, false)
+				_damage_structure(STRIKE_STRUCTURE, false)
 			if erode_played_this_turn:
 				_discover_combo("weakened_opening", knowledge)
 				_add_log("WEAKENED OPENING · Armor penetration, not extra damage.")
@@ -385,12 +399,12 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 				return false
 			focus -= cost
 			if restore_target == "hp":
-				var amount := 6 if statuses.has("WITHERED") else 8
+				var amount := int(RESTORE_HP * 0.75) if statuses.has("WITHERED") else RESTORE_HP
 				hp = mini(MAX_HP, hp + amount)
-				_add_log("RESTORE · Recovered %d HP%s." % [amount, " (WITHERED)" if amount < 8 else ""])
+				_add_log("RESTORE · Recovered %d HP%s." % [amount, " (WITHERED)" if amount < RESTORE_HP else ""])
 			else:
-				armor = mini(BASE_ARMOR, armor + 4)
-				_add_log("RESTORE · Rebuilt 4 Armor.")
+				armor = mini(BASE_ARMOR, armor + RESTORE_ARMOR)
+				_add_log("RESTORE · Rebuilt %d Armor." % RESTORE_ARMOR)
 
 	deck.consume(card)
 	if skill_name in ["ERODE", "TOXIC"]:
@@ -479,7 +493,7 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 			_add_log("AWAKENED KEEPER · High Pressure strengthens the strike by 2.")
 		if use_deflect:
 			focus -= reaction_cost()
-			incoming = maxi(1, int(ceil(float(incoming) * 0.25)))
+			incoming = maxi(1, int(ceil(float(incoming) * DEFLECT_KEEP)))
 			metrics["deflect_uses"] += 1
 			metrics["intents_countered"] += 1
 			_add_log("DEFLECT · The strike changes course. Damage reduced to %d." % incoming)
@@ -614,17 +628,17 @@ func _damage_enemy_hp(amount: int, penetration: int = 0) -> void:
 func poison_tick_damage() -> int:
 	if bool(enemy["toxic_immune"]):
 		return 0
-	return maxi(0, int(ceil(3.0 * (1.0 - float(enemy["toxic_resistance"])))))
+	return maxi(0, int(ceil(POISON_TICK * (1.0 - float(enemy["toxic_resistance"])))))
 
 func _apply_poison() -> void:
 	if bool(enemy["toxic_immune"]) or float(enemy["toxic_resistance"]) >= 1.0:
 		_add_log("TARGET IMMUNE · TOXIC has no effect.")
 		return
-	var duration := 4 if "venom_vessel" in relics and not venom_used else 3
+	var duration := POISON_TURNS + 1 if "venom_vessel" in relics and not venom_used else POISON_TURNS
 	venom_used = true
-	enemy_effects.apply("POISONED", duration, 3, "TOXIC")
+	enemy_effects.apply("POISONED", duration, POISON_TICK, "TOXIC")
 	_add_log("POISONED · %d turns, REFRESH not STACK; no immediate HP damage." % duration)
-	if poison_tick_damage() < 3:
+	if poison_tick_damage() < POISON_TICK:
 		_add_log("TOXIC RESISTED · Poison damage reduced to %d." % poison_tick_damage())
 
 func _discover_combo(combo_id: String, word) -> void:
@@ -1007,3 +1021,15 @@ func _check_boss_phase() -> void:
 		if not intent.is_empty() and intent.kind == "physical":
 			intent.damage = 7
 			intent.clear = "7 Physical Damage. DEFLECT can answer."
+
+
+## A number from an ability word's effect in the library, or `fallback`.
+static func word_number(lemma: String, key: String, fallback: int) -> int:
+	return int(WORDS.effect(lemma).get(key, fallback))
+
+
+static func _restore_option(key: String, fallback: int) -> int:
+	for option in WORDS.effect("restore").get("options", []):
+		if option.has(key):
+			return int(option[key])
+	return fallback

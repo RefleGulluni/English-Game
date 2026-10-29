@@ -9,6 +9,9 @@ func _init(id: String = "MOURN") -> void:
 	word_id = id.to_lower()
 	lemma = id.to_upper()
 	concept_family = "CEMETERY"
+	var library_tags: Array = preload("res://scripts/run/word_library.gd").tags(id)
+	if not library_tags.is_empty():
+		semantic_tags = library_tags.duplicate()
 
 func recognize(source: String) -> void:
 	if schedule != null:
@@ -17,7 +20,7 @@ func recognize(source: String) -> void:
 	encounter()
 	if _add_source("recognition:" + source):
 		recognition_evidence += 1
-		known_meaning = str(WORDS.DATA[lemma][0])
+		known_meaning = WORDS.meaning(lemma)
 		_advance()
 
 func context(source: String, correct: bool = true) -> void:

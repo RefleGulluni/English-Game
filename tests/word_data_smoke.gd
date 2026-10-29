@@ -31,6 +31,17 @@ func _initialize() -> void:
 			shared += 1
 	_check(shared == 2, "grave shares two tags with the cemetery")
 	_check("cet4" in grave.dictionary.exam, "dictionary fields are filled in")
+	# Combat and learning read the library (D-071), not their own copies.
+	var words := preload("res://scripts/run/word_library.gd")
+	var strike: Dictionary = words.effect("STRIKE")
+	_check(CombatState.STRIKE_DAMAGE == int(strike.amount), "STRIKE damage comes from the library")
+	_check(int(CombatContent.SKILLS.BIND.cost) == int(words.effect("bind").cost), "BIND cost comes from the library")
+	_check(CombatContent.SKILLS.BIND.sense == words.sense("bind"), "BIND meaning comes from the library")
+	_check(CombatContent.SKILLS.BIND.sigil == "control", "BIND sigil comes from the library")
+	_check(CombatContent.SKILLS.has("ERODE"), "ERODE (no ability effect in the library) keeps its combat values")
+	_check(preload("res://scripts/run/cemetery_words.gd").meaning("mourned") == words.sense("mourn"), "learned meaning comes from the library")
+	_check(preload("res://scripts/run/learning_schedule.gd").new().family("GRAVE") == "BURIAL", "pacing family is the first tag")
+	_check(words.region_overlap("grave", "cemetery") == 2 and words.region_overlap("gate", "cemetery") == 1, "region overlap counts tags, with overrides")
 	if failures.is_empty():
 		print("WORD_DATA_SMOKE: PASS")
 		quit(0)

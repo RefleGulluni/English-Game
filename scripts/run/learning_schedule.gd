@@ -3,6 +3,8 @@ extends RefCounted
 const CONFIG := preload("res://scripts/run/pacing_config.gd")
 const WORDS := preload("res://scripts/run/cemetery_words.gd")
 const KNOWLEDGE_FIELDS := ["current_state", "known_meaning", "recognition_evidence", "context_evidence", "production_evidence", "gameplay_unlocks", "unlocked_cards", "discovered_combos", "enemy_records", "evidence_sources", "transfer_correct"]
+const LIBRARY := preload("res://scripts/run/word_library.gd")
+# 0.8 families, kept as the fallback; a word's family is now its first tag in the library (D-070).
 const FAMILIES := {"MOURN": "GRIEF", "LINGER": "CONTINUITY", "CONCEAL": "HIDDEN", "REASSEMBLE": "PARTS", "REMAINS": "PARTS", "HOLLOW": "SPACE", "BURY": "BURIAL", "HAUNT": "CONTINUITY", "WITHER": "DECAY", "SCATTER": "PARTS", "GRAVE": "BURIAL", "ECHO": "SOUND", "ERODE": "DECAY", "TOXIC": "HARM"}
 var words: Dictionary = {}
 var records: Dictionary = {}
@@ -99,11 +101,15 @@ func eligible(id: String, node: Dictionary) -> bool:
 	return true
 
 func catalog_profile(id: String) -> Dictionary:
-	return {"biome": "cemetery", "min_level": 1, "usefulness": 0.7, "difficulty": 0.7 if id == "REASSEMBLE" else 0.4, "family": FAMILIES.get(id, "UNSUPPORTED")}
+	return {"biome": "cemetery", "min_level": 1, "usefulness": 0.7, "difficulty": 0.7 if id == "REASSEMBLE" else 0.4, "family": family(id)}
+
+## The family a word is paced by: two words from one family in a row are less likely.
+func family(id: String) -> String:
+	return LIBRARY.primary_tag(id, FAMILIES.get(id, "UNSUPPORTED"))
 
 func variety(id: String) -> float:
 	var recent: Array = timeline.filter(func(row): return not str(row.primary).is_empty())
-	if not recent.is_empty() and FAMILIES.get(str(recent.back().primary), "") == FAMILIES.get(id, ""):
+	if not recent.is_empty() and family(str(recent.back().primary)) == family(id):
 		return float(CONFIG.QA.semantic_repeat)
 	return 1.0
 
@@ -190,7 +196,7 @@ func evidence(id: String, kind: String, correct: bool, source: String = "") -> b
 	word._add_source(kind + ":" + str(encounter.source))
 	if kind == "recognition":
 		word.recognition_evidence += 1
-		word.known_meaning = str(WORDS.DATA[id][0]) if id in WORDS.DATA else ("harmful / poisonous" if id == "TOXIC" else "gradual wearing away / weakening")
+		word.known_meaning = WORDS.meaning(id) if id in WORDS.DATA else LIBRARY.sense(id, "harmful / poisonous" if id == "TOXIC" else "gradual wearing away / weakening")
 	elif kind == "context": word.context_evidence += 1
 	else:
 		word.production_evidence += 1

@@ -1,7 +1,25 @@
 class_name CombatContent
 extends RefCounted
 
-const SKILLS := {
+const WORDS := preload("res://scripts/run/word_library.gd")
+## The ability words in combat. Cost, meaning and sigil come from the word library (data/words,
+## D-071); family, accent and the rules text are combat's own. Words the library has no effect for
+## (ERODE, a learned enemy word) keep the values written here.
+static var SKILLS := _skills()
+
+static func _skills() -> Dictionary:
+	var skills := {}
+	for id in _BASE:
+		var skill: Dictionary = _BASE[id].duplicate()
+		var effect := WORDS.effect(id)
+		if not effect.is_empty():
+			skill["cost"] = int(effect.cost)
+			skill["sense"] = WORDS.sense(id, skill["sense"])
+			skill["sigil"] = WORDS.sigil(id)
+		skills[id] = skill
+	return skills
+
+const _BASE := {
 	"STRIKE": {"cost": 2, "family": "DIRECT HP", "sense": "to hit a target directly", "effect": "Kill: 8 direct damage (Armor absorbs), plus 2 Structure damage. EXPOSED adds 2 direct damage.", "accent": Color("dd7777")},
 	"TOXIC": {"cost": 1, "family": "TOXICITY", "sense": "harmful or poisonous", "effect": "Bypass: POISONED for 3 turns; delayed HP -3, bypassing Structure and Armor. Refresh, not Stack.", "accent": Color("92bc62")},
 	"ERODE": {"cost": 1, "family": "DECAY", "sense": "to gradually wear away or weaken something", "effect": "USABLE: Erosion for 3 turns; -2 Structure per tick, or -1 Armor without Structure. No direct HP damage.", "accent": Color("b98c60")},

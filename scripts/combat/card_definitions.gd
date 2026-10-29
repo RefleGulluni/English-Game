@@ -11,9 +11,9 @@ static func definition(card_id: String) -> Dictionary:
 		"card_id": card_id, "name": card_id, "category": "REACTION" if card_id == "DEFLECT" else ("SEMANTIC MODIFIER" if card_id in ["ERODE", "TOXIC"] else "CORE ACTION"),
 		"focus_cost": int(skill["cost"]), "concept_family": skill["family"], "base_effect": skill["effect"],
 		"time_properties": ["REACTION"] if card_id == "DEFLECT" else [], "word_id": card_id.to_lower() if card_id in ["ERODE", "TOXIC"] else "",
-		"base_structure_damage": 8 if card_id == "SHATTER" else (2 if card_id == "STRIKE" else 0),
-		"base_hp_damage": 3 if card_id == "SHATTER" else (8 if card_id == "STRIKE" else 0),
-		"base_armor_damage": 2 if card_id == "SHATTER" else 0,
+		"base_structure_damage": CombatState.SHATTER_STRUCTURE if card_id == "SHATTER" else (CombatState.STRIKE_STRUCTURE if card_id == "STRIKE" else 0),
+		"base_hp_damage": CombatState.SHATTER_DAMAGE if card_id == "SHATTER" else (CombatState.STRIKE_DAMAGE if card_id == "STRIKE" else 0),
+		"base_armor_damage": CombatState.SHATTER_ARMOR if card_id == "SHATTER" else 0,
 		"retained_last_turn": false, "requires_word_state": "USABLE" if card_id in ["ERODE", "TOXIC"] else "",
 		"combo_tags": [card_id], "fleeting": false, "echo": false, "delayed": false, "prepared": false,
 	}
