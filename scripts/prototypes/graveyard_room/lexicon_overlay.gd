@@ -83,6 +83,9 @@ var _sigil_ring: Array[Vector2i] = [] # the circle, clockwise from its top
 # light one by one from the spine outwards, then each line draws itself from star to star.
 var _star_points: Array = [] # one Array[Vector2i] per star, nearest the spine first
 var _line_points: Array = [] # one Array[Vector2i] per line, in drawing order from its first star
+var _seam_x := OPEN_SPINE # the gap between the pages of the standing book
+var _seam_y := Vector2i(BOOK_TOP + 3, BOOK_BOTTOM - 3) # its lit stretch, inside the page block
+var _glow: Texture2D # soft elliptical halo for the seam light
 var _sky := 0.0 # seconds since the book lay fully open (the constellation's own clock)
 var _time := 0.0
 
@@ -104,6 +107,16 @@ func _ready() -> void:
 	_tip_frames = _strip("lexicon_tip_up.png")
 	_fall_frames = _strip("lexicon_covers_fall.png")
 	_turn_frames = _strip("lexicon_page_turn.png")
+	_find_seam()
+	var halo := GradientTexture2D.new()
+	halo.fill = GradientTexture2D.FILL_RADIAL
+	halo.fill_from = Vector2(0.5, 0.5)
+	halo.fill_to = Vector2(1.0, 0.5)
+	halo.gradient = Gradient.new()
+	halo.gradient.set_color(0, Color(CYAN, 0.7))
+	halo.gradient.set_color(1, Color(CYAN, 0.0))
+	halo.gradient.add_point(0.3, Color(CYAN, 0.3))
+	_glow = halo
 	var mask := ProjectSettings.globalize_path(CLEAN_DIR + "lexicon_sigil_mask.png")
 	if FileAccess.file_exists(mask):
 		var img := Image.load_from_file(mask)
@@ -131,6 +144,33 @@ static func _lift_cyan(img: Image, fill: Color) -> Array:
 static func _strip(file: String) -> Texture2D:
 	var path := ProjectSettings.globalize_path(CLEAN_DIR + file)
 	return ImageTexture.create_from_image(Image.load_from_file(path)) if FileAccess.file_exists(path) else null
+
+
+## Where the standing book's pages part: the darkest column near the spine in the last tip
+## frame, lit over the rows where pages are (a few rows in from their ends).
+func _find_seam() -> void:
+	if _tip_frames == null:
+		return
+	var img := _tip_frames.get_image()
+	var cell := img.get_width() / OPEN_BOOK.size.x - 1
+	var darkest := INF
+	for x in range(OPEN_SPINE - 3, OPEN_SPINE + 4):
+		var sum := 0.0
+		for y in range(40, 90):
+			sum += img.get_pixel(cell * OPEN_BOOK.size.x + x, y).get_luminance()
+		if sum < darkest:
+			darkest = sum
+			_seam_x = x
+	var top := -1
+	var bottom := -1
+	for y in OPEN_BOOK.size.y:
+		var c := img.get_pixel(cell * OPEN_BOOK.size.x + _seam_x - 2, y)
+		if c.a > 0.5 and c.get_luminance() > 0.35: # page paper, not the cover's dark edge
+			if top < 0:
+				top = y
+			bottom = y
+	if top >= 0:
+		_seam_y = Vector2i(top + 2, bottom - 2)
 
 
 ## Splits the sigil into its ring and what is inside it (triangle and dot). The ring is the
@@ -368,7 +408,7 @@ func _draw() -> void:
 			if w > 8:
 				_box(origin, unit, OPEN_SPINE - w + 4, w - 4, PAPER)
 				_box(origin, unit, OPEN_SPINE, w - 4, PAPER)
-		_seam(origin, unit, 1.0 - fall)
+		_seam(origin, unit, 1.0 - fall, fall)
 	elif _turn >= 0.0:
 		_draw_frame(_turn_frames, _turn, origin, size)
 		return
@@ -417,12 +457,36 @@ func _box(origin: Vector2, unit: float, x: int, w: int, color: Color) -> void:
 	draw_rect(Rect2(origin + Vector2(x, BOOK_TOP) * unit, Vector2(w, BOOK_BOTTOM - BOOK_TOP) * unit), color)
 
 
-## Light in the seam between the covers while the book stands: language waking inside it.
-func _seam(origin: Vector2, unit: float, strength: float) -> void:
-	var points: Array[Vector2i] = []
-	for y in range(BOOK_TOP + 3, BOOK_BOTTOM - 3):
-		points.append(Vector2i(OPEN_SPINE, y))
-	_draw_pixels(points, origin, unit, CYAN, clampf(strength * 1.5, 0.0, 1.0), 0.3)
+## Light from inside the standing book, leaking through the seam between its pages: language
+## waking inside it. Not a flat bar: brightest at the middle and dying out towards the ends,
+## a slow shimmer running up it, the page edges either side catching some of it, a soft halo
+## (lighting may be smooth; the seam itself stays whole pixels) and a few motes drifting up out
+## of it. `spread` widens the halo as the covers fall open.
+func _seam(origin: Vector2, unit: float, strength: float, spread := 0.0) -> void:
+	strength = clampf(strength, 0.0, 1.0)
+	if strength <= 0.0:
+		return
+	var length := float(_seam_y.y - _seam_y.x)
+	var mid := origin + Vector2(_seam_x + 0.5, (_seam_y.x + _seam_y.y) / 2.0) * unit
+	var halo := Vector2(lerpf(18.0, 70.0, spread), length * lerpf(1.15, 1.0, spread)) * unit
+	draw_texture_rect(_glow, Rect2(mid - halo / 2.0, halo), false, Color(1, 1, 1, strength * (0.9 + 0.1 * sin(_time * 2.1)) * (1.0 - 0.6 * spread)))
+	for y in range(_seam_y.x, _seam_y.y + 1):
+		var along := (y - _seam_y.x) / maxf(1.0, length)
+		var shape := pow(sin(along * PI), 0.6) # bright middle, ends fading out
+		var shimmer := 0.8 + 0.2 * sin(_time * 3.2 - y * 0.22)
+		var i := strength * (0.25 + 0.75 * shape) * shimmer
+		if i < 0.05:
+			continue
+		var at := origin + Vector2(_seam_x, y) * unit
+		draw_rect(Rect2(at, Vector2(unit, unit)), Color(CYAN.lerp(Color.WHITE, 0.45 * i), minf(1.0, i * 1.2)))
+		for side in [-1, 1]: # the page edges either side catch the light
+			draw_rect(Rect2(at + Vector2(side * unit, 0), Vector2(unit, unit)), Color(CYAN, 0.5 * i))
+	for k in 7: # motes rising out of the seam
+		var life := fposmod(_time * 0.45 + k * 0.143, 1.0)
+		var y := roundf(lerpf(_seam_y.y - length * (0.2 + 0.1 * (k % 3)), _seam_y.x - 4.0, life))
+		var x := _seam_x + roundf(sin(_time * 1.3 + k * 2.1) * (1.0 + 2.0 * life + 8.0 * spread))
+		var fade := strength * sin(life * PI)
+		draw_rect(Rect2(origin + Vector2(x, y) * unit, Vector2(unit, unit)), Color(CYAN.lerp(Color.WHITE, 0.5), fade))
 
 
 ## Language pixels: a soft one-pixel glow around each, then the pixel itself.
