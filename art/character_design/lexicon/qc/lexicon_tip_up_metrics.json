@@ -1,0 +1,83 @@
+{
+  "timing": {
+    "frames": 3,
+    "durations_ms": [
+      100,
+      100,
+      100
+    ],
+    "frame_size": [
+      256,
+      128
+    ],
+    "anchor": [
+      128,
+      64
+    ],
+    "spine_x_by_frame": [
+      87,
+      109,
+      128
+    ],
+    "spine_position_notes": "First two are approximate physical left-binding positions; x128 becomes fixed from last tip frame, per user clarification.",
+    "duration_ms": 300,
+    "loop": false,
+    "sprite_sheet": "../lexicon/lexicon_tip_up.png",
+    "qa": "../lexicon/qc/lexicon_book_QA.md",
+    "frame_numbering": "frame is1-based; frame_index is0-based"
+  },
+  "strip_png_sha256": "d7803079939b26e2799d7c3c626d6895a992f9edfe552d7f313bbdd71bcae257",
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "09169ce2d0b2e3acf18a1b10baa5d558b17d31c5c546a8d3a6573e75d9af2a49",
+      "png_sha256": "310175d49a1f11060073992f80db0c4f91a4243ffaf978c2a4311681386ff3d8",
+      "bbox": [
+        79,
+        4,
+        177,
+        124
+      ],
+      "opaque_pixels": 10608,
+      "colors": 38,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 87
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "6b2036a4555c673454543fbe8407494878c8e704f4c8c2b2750ba8c1c33673c7",
+      "png_sha256": "6cb6207bc533ed01011d75f7db79883b518644e6fc7ff036868ab8fbd1727b88",
+      "bbox": [
+        101,
+        3,
+        159,
+        124
+      ],
+      "opaque_pixels": 6190,
+      "colors": 23,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 109
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "d388362be916eea1ef6d83a11190aeff70ea6a1df5c7dab8ab07a64145094a91",
+      "png_sha256": "43960a9d990ada075f41f0799308d1a338036f0369cb29845c30687021e23cd6",
+      "bbox": [
+        121,
+        7,
+        136,
+        119
+      ],
+      "opaque_pixels": 1618,
+      "colors": 23,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    }
+  ]
+}

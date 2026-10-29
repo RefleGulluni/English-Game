@@ -1,0 +1,101 @@
+{
+  "timing": {
+    "frames": 4,
+    "durations_ms": [
+      70,
+      80,
+      80,
+      70
+    ],
+    "frame_size": [
+      256,
+      128
+    ],
+    "anchor": [
+      128,
+      64
+    ],
+    "spine_x_by_frame": [
+      128,
+      128,
+      128,
+      128
+    ],
+    "duration_ms": 300,
+    "loop": false,
+    "sprite_sheet": "../lexicon/lexicon_page_turn.png",
+    "qa": "../lexicon/qc/lexicon_book_QA.md",
+    "frame_numbering": "frame is1-based; frame_index is0-based"
+  },
+  "strip_png_sha256": "0313aea9f356b84bf9edc3cebbf7dd12b2ef8b49b454a9fee6d4a06cde8b5e05",
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+      "png_sha256": "4a4da563c2c48fa97ef762d58ea29142ab27efe4fcfbd0c407f17424f60ea8cf",
+      "bbox": [
+        6,
+        4,
+        249,
+        124
+      ],
+      "opaque_pixels": 26519,
+      "colors": 27,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "e5dcfa81edddbc5b61c54d3b7e8c3cf0f40df9f760152a6fb89b881aa8525d96",
+      "png_sha256": "f23fb94ddad24ac7a0952be2a818f70c912e0eaeb34fc654f4e8199a23d14352",
+      "bbox": [
+        6,
+        0,
+        249,
+        124
+      ],
+      "opaque_pixels": 26564,
+      "colors": 30,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "5dfa6d62d3f0813a3ab26880b7b23a247c2bde9136cc23953a4e83ca9193a999",
+      "png_sha256": "3af1535b9aa883aa0168efd2c0937826c028c886f00009cb3b6642ee21460cdd",
+      "bbox": [
+        6,
+        4,
+        249,
+        124
+      ],
+      "opaque_pixels": 26519,
+      "colors": 28,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 4,
+      "rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+      "png_sha256": "4a4da563c2c48fa97ef762d58ea29142ab27efe4fcfbd0c407f17424f60ea8cf",
+      "bbox": [
+        6,
+        4,
+        249,
+        124
+      ],
+      "opaque_pixels": 26519,
+      "colors": 27,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    }
+  ]
+}

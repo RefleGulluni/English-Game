@@ -1,0 +1,139 @@
+{
+  "timing": {
+    "frames": 6,
+    "durations_ms": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "frame_size": [
+      256,
+      128
+    ],
+    "anchor": [
+      128,
+      64
+    ],
+    "spine_x_by_frame": [
+      128,
+      128,
+      128,
+      128,
+      128,
+      128
+    ],
+    "duration_ms": 600,
+    "loop": false,
+    "sprite_sheet": "../lexicon/lexicon_covers_fall.png",
+    "qa": "../lexicon/qc/lexicon_book_QA.md",
+    "frame_numbering": "frame is1-based; frame_index is0-based"
+  },
+  "strip_png_sha256": "7e4f585fd83e7b6d71c4441591895eb01901686fd33b80250fee318bfe7ed13a",
+  "frames": [
+    {
+      "frame": 1,
+      "rgba_sha256": "d388362be916eea1ef6d83a11190aeff70ea6a1df5c7dab8ab07a64145094a91",
+      "png_sha256": "43960a9d990ada075f41f0799308d1a338036f0369cb29845c30687021e23cd6",
+      "bbox": [
+        121,
+        7,
+        136,
+        119
+      ],
+      "opaque_pixels": 1618,
+      "colors": 23,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "bbb127a9bcadca170ec6480cda2998ed0c3da19e45882a09fe01586114a2c4e1",
+      "png_sha256": "4701c0463f41c60064c78d8510fbe2aed82632b4829d414cb4180e22fdc4631d",
+      "bbox": [
+        94,
+        6,
+        162,
+        119
+      ],
+      "opaque_pixels": 6585,
+      "colors": 28,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "970a3901976cc0061a44e44d4b836ed19d29b2caf427b30c3c85869975d32955",
+      "png_sha256": "f80cea90464209368558053e3ae473a319fb86306f0442dd63f558a7600e4c8a",
+      "bbox": [
+        60,
+        6,
+        197,
+        119
+      ],
+      "opaque_pixels": 14076,
+      "colors": 35,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 4,
+      "rgba_sha256": "0a76463506035862a91142ce572617b3d32acfeb5375bb8c230ebf587a0b7662",
+      "png_sha256": "38d8b46f0ea8cc8c27ca9d0d13d8c6b1b5be38277f3536fd5e6496178ea85d7b",
+      "bbox": [
+        33,
+        6,
+        223,
+        119
+      ],
+      "opaque_pixels": 19390,
+      "colors": 36,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 5,
+      "rgba_sha256": "1dc6c5586a24a81ef6b5b2e05404c502bf901c7aaf0ae4b334a5aed36e0d90b5",
+      "png_sha256": "c9b46bfd00f8892ef0c883f7bdc82d1190e436c5b005a0a6c3fbb48de5fad21b",
+      "bbox": [
+        17,
+        6,
+        239,
+        119
+      ],
+      "opaque_pixels": 23432,
+      "colors": 33,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    },
+    {
+      "frame": 6,
+      "rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+      "png_sha256": "4a4da563c2c48fa97ef762d58ea29142ab27efe4fcfbd0c407f17424f60ea8cf",
+      "bbox": [
+        6,
+        4,
+        249,
+        124
+      ],
+      "opaque_pixels": 26519,
+      "colors": 27,
+      "new_colors": 0,
+      "cyan_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "spine_x": 128
+    }
+  ]
+}

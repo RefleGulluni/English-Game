@@ -537,6 +537,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		# The book opens only while exploring; it can always be closed.
 		if _lexicon.is_open or (turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open and hero.book_phase == ""):
 			_lexicon.toggle()
+	elif _lexicon.is_open: # the book's own keys: W / S choose, A / D turn a page, 1 / 2 / 3 pace
+		_lexicon._unhandled_input(event)
 	elif event.is_action_pressed("open_lexicon"):
 		if hud.overlay_open: hud.close_overlay()
 		else: hud.show_lexicon()
@@ -567,13 +569,18 @@ func _capture() -> void:
 	await _frames(20)
 	if "--lexicon" in OS.get_cmdline_user_args(): # the book opening and closing, frame by frame (D-068)
 		_lexicon.toggle()
-		for i in 15:
+		for i in 24:
 			await _shot(dir + "/lex_open_%02d.png" % i)
+			await get_tree().create_timer(0.1).timeout
+		_lexicon._turn = 0.0 # a page turn
+		for i in 5:
+			await _shot(dir + "/lex_turn_%02d.png" % i)
 			await get_tree().create_timer(0.09).timeout
+		await get_tree().create_timer(0.3).timeout
 		_lexicon.toggle()
-		for i in 8:
+		for i in 20:
 			await _shot(dir + "/lex_close_%02d.png" % i)
-			await get_tree().create_timer(0.08).timeout
+			await get_tree().create_timer(0.1).timeout
 		get_tree().quit()
 		return
 	await _shot(dir + "/01_room.png")

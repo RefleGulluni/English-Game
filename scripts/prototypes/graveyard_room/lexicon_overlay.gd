@@ -41,6 +41,7 @@ const OPEN_RISE := 0.6
 const OPEN_REST := 1.7
 const CLOSE_RISE := 0.53
 const CLOSE_REST := 1.27
+const TURN_TIME := 0.45 # one page turn
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
 const P_RISE := 0.15
@@ -68,6 +69,8 @@ var _closed: Texture2D
 var _open: Texture2D
 var _tip_frames: Texture2D # cover to the player -> standing on its spine; null until delivered
 var _fall_frames: Texture2D # standing -> both covers fallen open; null until delivered
+var _turn_frames: Texture2D # one page turning right to left; null until delivered
+var _turn := -1.0 # 0..1 while a page turns
 var _sigil: Array[Vector2i] = [] # cyan pixels of the cover, in closed-book pixels
 var _stars: Array = [] # [Vector2i, Color] of the constellation, nearest the spine first
 var _time := 0.0
@@ -86,6 +89,7 @@ func _ready() -> void:
 	_open = _clean("lexicon_open_clean.png", open)
 	_tip_frames = _strip("lexicon_tip_up.png")
 	_fall_frames = _strip("lexicon_covers_fall.png")
+	_turn_frames = _strip("lexicon_page_turn.png")
 	var mask := ProjectSettings.globalize_path(CLEAN_DIR + "lexicon_sigil_mask.png")
 	if FileAccess.file_exists(mask):
 		var img := Image.load_from_file(mask)
@@ -136,6 +140,11 @@ func _process(delta: float) -> void:
 	var in_rise := _t < P_RISE or (_t == P_RISE and not is_open)
 	var seconds: float = ((OPEN_RISE if is_open else CLOSE_RISE) if in_rise else (OPEN_REST if is_open else CLOSE_REST)) * PACE[speed]
 	var share := P_RISE if in_rise else 1.0 - P_RISE
+	if _turn >= 0.0:
+		_turn += delta / TURN_TIME
+		if _turn >= 1.0:
+			_turn = -1.0
+		queue_redraw()
 	var was := _t
 	_t = move_toward(_t, 1.0 if is_open else 0.0, delta * share / seconds)
 	if _t > 0.0 or was > 0.0: # one more redraw once fully closed, to clear the last frame
@@ -155,6 +164,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		selected = (selected + ENTRIES.size() - 1) % ENTRIES.size()
 	elif is_open and event.keycode in [KEY_S, KEY_DOWN]:
 		selected = (selected + 1) % ENTRIES.size()
+	elif is_open and _t >= 1.0 and _turn < 0.0 and _turn_frames and event.keycode in [KEY_A, KEY_D, KEY_LEFT, KEY_RIGHT]:
+		_turn = 0.0 # only the motion for now: the pages it turns to come with the Lexicon interface
 	else:
 		return
 	get_viewport().set_input_as_handled()
@@ -190,12 +201,15 @@ func _draw() -> void:
 	elif fall <= 0.0:
 		if _tip_frames:
 			_draw_frame(_tip_frames, tip, origin, size)
+			if tip * (_tip_frames.get_width() / OPEN_BOOK.size.x) < 1.0: # still the cover: keep it lit
+				_draw_pixels(_sigil, origin + Vector2(OPEN_SPINE - CLOSED_BOOK.size.x / 2, 0) * unit, unit, CYAN, 1.0, 0.22)
 		else: # grey box: the cover turns away about the spine, narrowing to the standing book
 			var w := maxi(14, roundi(COVER_W * cos(tip * PI / 2.0)))
 			_box(origin, unit, OPEN_SPINE - w / 2, w, LEATHER)
 			if w < 40:
 				_box(origin, unit, OPEN_SPINE - w / 2 + 3, w - 6, PAPER.darkened(0.25))
-		_seam(origin, unit, tip)
+		# The seam only exists once the book stands: before that x 128 is the middle of the cover.
+		_seam(origin, unit, (tip - 0.67) / 0.33)
 	elif fall < 1.0:
 		if _fall_frames:
 			_draw_frame(_fall_frames, fall, origin, size)
@@ -207,6 +221,9 @@ func _draw() -> void:
 				_box(origin, unit, OPEN_SPINE - w + 4, w - 4, PAPER)
 				_box(origin, unit, OPEN_SPINE, w - 4, PAPER)
 		_seam(origin, unit, 1.0 - fall)
+	elif _turn >= 0.0:
+		_draw_frame(_turn_frames, _turn, origin, size)
+		return
 	else:
 		draw_texture_rect(_open, Rect2(origin, size), false)
 
@@ -282,7 +299,7 @@ func _draw_entries(origin: Vector2, unit: float, e: float) -> void:
 				draw_string(FONT, Vector2(left, y + 14 * unit), entry.note, HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
 
 	var stage: String = ENTRIES[selected].stage
-	var caption := "%s   ·   W/S choose   Tab close   1/2/3 speed   Z size" % stage
+	var caption := "%s   ·   W/S choose   A/D turn   Tab close   1/2/3 speed" % stage
 	var caption_size := int(8 * pixel)
 	var w := FONT.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size).x
 	draw_string(FONT, Vector2(screen_rect.get_center().x - w / 2.0, origin.y + OPEN_BOOK.size.y * unit + 18 * pixel), caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size, Color(0.85, 0.82, 0.76, e))

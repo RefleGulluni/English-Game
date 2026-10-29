@@ -1,0 +1,215 @@
+{
+  "upright_selected_columns": [
+    7,
+    8,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    26,
+    27
+  ],
+  "upright_xy": [
+    121,
+    7
+  ],
+  "upright_binding_reuse": [
+    127,
+    130
+  ],
+  "fall_edits": [
+    {
+      "frame": 2,
+      "source_native": "fall_topdown/02.png",
+      "removed_interior_columns": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
+      ],
+      "source_spine_x_after_cleanup": 34,
+      "integer_xy": [
+        94,
+        6
+      ]
+    },
+    {
+      "frame": 3,
+      "source_native": "fall_topdown/03.png",
+      "removed_interior_columns": [],
+      "source_spine_x_after_cleanup": 68,
+      "integer_xy": [
+        60,
+        6
+      ]
+    },
+    {
+      "frame": 4,
+      "source_native": "fall_topdown/04.png",
+      "removed_interior_columns": [],
+      "source_spine_x_after_cleanup": 95,
+      "integer_xy": [
+        33,
+        6
+      ]
+    },
+    {
+      "frame": 5,
+      "source_native": "fall_topdown/05.png",
+      "removed_interior_columns": [],
+      "source_spine_x_after_cleanup": 111,
+      "integer_xy": [
+        17,
+        6
+      ]
+    }
+  ],
+  "page_leaf_polygons": {
+    "2": [
+      [
+        126,
+        14
+      ],
+      [
+        151,
+        12
+      ],
+      [
+        165,
+        6
+      ],
+      [
+        171,
+        0
+      ],
+      [
+        178,
+        8
+      ],
+      [
+        181,
+        22
+      ],
+      [
+        180,
+        65
+      ],
+      [
+        174,
+        94
+      ],
+      [
+        159,
+        113
+      ],
+      [
+        135,
+        119
+      ],
+      [
+        126,
+        118
+      ]
+    ],
+    "3": [
+      [
+        121,
+        15
+      ],
+      [
+        108,
+        12
+      ],
+      [
+        95,
+        7
+      ],
+      [
+        86,
+        1
+      ],
+      [
+        82,
+        0
+      ],
+      [
+        76,
+        9
+      ],
+      [
+        74,
+        35
+      ],
+      [
+        78,
+        66
+      ],
+      [
+        85,
+        91
+      ],
+      [
+        102,
+        112
+      ],
+      [
+        120,
+        119
+      ]
+    ]
+  },
+  "page_translation_x": {
+    "2": 4
+  },
+  "page_upright": {
+    "frame": 3,
+    "source_native": "page_turn/02.png",
+    "native_crop_xyxy": [
+      129,
+      13,
+      136,
+      116
+    ],
+    "placed_xy": [
+      125,
+      13
+    ],
+    "width": 7
+  },
+  "method": "native cell selection, cleanup and integer placement; source original binding reused; no full-image resize/rotation/mirroring"
+}

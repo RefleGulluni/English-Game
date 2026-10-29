@@ -1,0 +1,27 @@
+{
+  "tip_first_centered_closed_rgba_sha256": "09169ce2d0b2e3acf18a1b10baa5d558b17d31c5c546a8d3a6573e75d9af2a49",
+  "tip_first_actual_rgba_sha256": "09169ce2d0b2e3acf18a1b10baa5d558b17d31c5c546a8d3a6573e75d9af2a49",
+  "tip_last_rgba_sha256": "d388362be916eea1ef6d83a11190aeff70ea6a1df5c7dab8ab07a64145094a91",
+  "fall_first_rgba_sha256": "d388362be916eea1ef6d83a11190aeff70ea6a1df5c7dab8ab07a64145094a91",
+  "open_clean_rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+  "fall_last_rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+  "page_first_rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+  "page_last_rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+  "fixed_binding_x127_through129_rgba_sha256": "bc5b526ce3853ae74239e607aa4aa90073201a3bb55f5103022c87e03bfdca09",
+  "all_fall_binding_pixels_identical": true,
+  "upright_body_width_px": 15,
+  "white_mask_pixels": 522,
+  "opening_gif": {
+    "frames": 9,
+    "duration_ms": 900,
+    "decoded_exact": true,
+    "scale": 3
+  },
+  "page_turn_gif": {
+    "frames": 4,
+    "duration_ms": 300,
+    "decoded_exact": true,
+    "scale": 3
+  },
+  "mask_equals_original_symbol_footprint": true
+}

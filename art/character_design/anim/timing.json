@@ -135,6 +135,93 @@
       },
       "frame_numbering": "frame is1-based; frame_index is0-based",
       "qa": "qc/combat_step2_QA.md"
+    },
+    "lexicon_tip_up": {
+      "frames": 3,
+      "durations_ms": [
+        100,
+        100,
+        100
+      ],
+      "frame_size": [
+        256,
+        128
+      ],
+      "anchor": [
+        128,
+        64
+      ],
+      "spine_x_by_frame": [
+        87,
+        109,
+        128
+      ],
+      "spine_position_notes": "First two are approximate physical left-binding positions; x128 becomes fixed from last tip frame, per user clarification.",
+      "duration_ms": 300,
+      "loop": false,
+      "sprite_sheet": "../lexicon/lexicon_tip_up.png",
+      "qa": "../lexicon/qc/lexicon_book_QA.md",
+      "frame_numbering": "frame is1-based; frame_index is0-based"
+    },
+    "lexicon_covers_fall": {
+      "frames": 6,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "frame_size": [
+        256,
+        128
+      ],
+      "anchor": [
+        128,
+        64
+      ],
+      "spine_x_by_frame": [
+        128,
+        128,
+        128,
+        128,
+        128,
+        128
+      ],
+      "duration_ms": 600,
+      "loop": false,
+      "sprite_sheet": "../lexicon/lexicon_covers_fall.png",
+      "qa": "../lexicon/qc/lexicon_book_QA.md",
+      "frame_numbering": "frame is1-based; frame_index is0-based"
+    },
+    "lexicon_page_turn": {
+      "frames": 4,
+      "durations_ms": [
+        70,
+        80,
+        80,
+        70
+      ],
+      "frame_size": [
+        256,
+        128
+      ],
+      "anchor": [
+        128,
+        64
+      ],
+      "spine_x_by_frame": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "duration_ms": 300,
+      "loop": false,
+      "sprite_sheet": "../lexicon/lexicon_page_turn.png",
+      "qa": "../lexicon/qc/lexicon_book_QA.md",
+      "frame_numbering": "frame is1-based; frame_index is0-based"
     }
   }
 }
