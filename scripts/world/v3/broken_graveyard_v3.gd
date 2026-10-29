@@ -567,12 +567,12 @@ func _capture() -> void:
 	await _frames(20)
 	if "--lexicon" in OS.get_cmdline_user_args(): # the book opening and closing, frame by frame (D-068)
 		_lexicon.toggle()
-		for i in 9:
-			await _shot(dir + "/lex_open_%d.png" % i)
+		for i in 15:
+			await _shot(dir + "/lex_open_%02d.png" % i)
 			await get_tree().create_timer(0.09).timeout
 		_lexicon.toggle()
-		for i in 6:
-			await _shot(dir + "/lex_close_%d.png" % i)
+		for i in 8:
+			await _shot(dir + "/lex_close_%02d.png" % i)
 			await get_tree().create_timer(0.08).timeout
 		get_tree().quit()
 		return
