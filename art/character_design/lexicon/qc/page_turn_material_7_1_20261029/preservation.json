@@ -1,0 +1,14 @@
+{
+  "preexisting_files_checked": 4296,
+  "changed_existing_files": [
+    "art/character_design/lexicon/lexicon_open_clean.png",
+    "art/character_design/lexicon/lexicon_page_turn.png",
+    "art/character_design/lexicon/lexicon_covers_fall.png",
+    "art/character_design/lexicon/qc/lexicon_page_turn_3x.gif",
+    "art/character_design/lexicon/qc/lexicon_opening_3x.gif",
+    "art/character_design/lexicon/qc/lexicon_book_QA.md"
+  ],
+  "missing_files": [],
+  "timing_unchanged": true,
+  "installed_endpoints_exact": true
+}

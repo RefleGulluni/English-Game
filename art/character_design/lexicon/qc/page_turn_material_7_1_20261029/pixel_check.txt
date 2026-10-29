@@ -1,0 +1,5 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+dex/work/lexicon-paper-7_1/staged/lexicon_open_clean.png   256x128   OK   27    26    0   123
+odex/work/lexicon-paper-7_1/staged/lexicon_page_turn.png  1536x128   OK   27    26    0   123
+ex/work/lexicon-paper-7_1/staged/lexicon_covers_fall.png  1536x128   OK   40    45    0   123
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

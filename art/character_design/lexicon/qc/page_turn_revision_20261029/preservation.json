@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-29",
+  "protected_existing_files": 4234,
+  "changed_existing_files": [
+    "art/character_design/anim/timing.json",
+    "art/character_design/lexicon/lexicon_page_turn.png",
+    "art/character_design/lexicon/qc/lexicon_book_QA.md",
+    "art/character_design/lexicon/qc/lexicon_page_turn_3x.gif"
+  ],
+  "only_authorized_four_files_changed": true,
+  "other_timing_entries_equal": true,
+  "all_other_existing_files_byte_identical": true,
+  "installed_strip_sha256": "35661ed83def256dd7d597fa7806c4d613a9fb7e4db2242f52d6b844636cb81a",
+  "installed_gif_sha256": "b3382f6bf421ab5d862aca2f2e2d2a9f96c661d0467bc58ba1358f38ed23c590",
+  "final_strip_metrics": [
+    {
+      "frame": 1,
+      "rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+      "different_from_open_count": 0,
+      "different_from_open_bbox_inclusive": null,
+      "different_from_previous_count": 0,
+      "different_from_previous_bbox_inclusive": null,
+      "left_of_spine_changed_pixels": 0,
+      "on_spine_changed_pixels": 0,
+      "right_of_spine_changed_pixels": 0,
+      "new_colors": 0,
+      "partial_alpha_pixels": 0,
+      "cyan_pixels": 0
+    },
+    {
+      "frame": 2,
+      "rgba_sha256": "3380244b086bee0a51e17189e36cb294df96d23d7a932d728f83459b045308d4",
+      "different_from_open_count": 715,
+      "different_from_open_bbox_inclusive": [
+        128,
+        7,
+        235,
+        111
+      ],
+      "different_from_previous_count": 715,
+      "different_from_previous_bbox_inclusive": [
+        128,
+        7,
+        235,
+        111
+      ],
+      "left_of_spine_changed_pixels": 0,
+      "on_spine_changed_pixels": 102,
+      "right_of_spine_changed_pixels": 613,
+      "new_colors": 0,
+      "partial_alpha_pixels": 0,
+      "cyan_pixels": 0,
+      "hinge_y_inclusive": [
+        10,
+        111
+      ],
+      "hinge_missing_rows": [],
+      "leaf_row_internal_gap_rows": []
+    },
+    {
+      "frame": 3,
+      "rgba_sha256": "d64bf17aff8c152a97d8c6d2556dfd18212d417e7aa990d760c0b370c679622f",
+      "different_from_open_count": 1392,
+      "different_from_open_bbox_inclusive": [
+        128,
+        7,
+        172,
+        105
+      ],
+      "different_from_previous_count": 1412,
+      "different_from_previous_bbox_inclusive": [
+        128,
+        7,
+        235,
+        111
+      ],
+      "left_of_spine_changed_pixels": 0,
+      "on_spine_changed_pixels": 99,
+      "right_of_spine_changed_pixels": 1293,
+      "new_colors": 0,
+      "partial_alpha_pixels": 0,
+      "cyan_pixels": 0,
+      "hinge_y_inclusive": [
+        7,
+        105
+      ],
+      "hinge_missing_rows": [],
+      "leaf_row_internal_gap_rows": []
+    },
+    {
+      "frame": 4,
+      "rgba_sha256": "a10cfdf1a8ecb9b042efab79fe4d53e06924aff9ee3d89a0a3ecd9dbb86f240e",
+      "different_from_open_count": 98,
+      "different_from_open_bbox_inclusive": [
+        128,
+        7,
+        128,
+        104
+      ],
+      "different_from_previous_count": 1294,
+      "different_from_previous_bbox_inclusive": [
+        128,
+        7,
+        172,
+        105
+      ],
+      "left_of_spine_changed_pixels": 0,
+      "on_spine_changed_pixels": 98,
+      "right_of_spine_changed_pixels": 0,
+      "new_colors": 0,
+      "partial_alpha_pixels": 0,
+      "cyan_pixels": 0,
+      "hinge_y_inclusive": [
+        7,
+        104
+      ],
+      "hinge_missing_rows": [],
+      "leaf_row_internal_gap_rows": [],
+      "edge_width_px": 1
+    },
+    {
+      "frame": 5,
+      "rgba_sha256": "d55dd369688d0fb3cf0adba9fa642b2354123477ff6f9b887a0e0ace400ae3f8",
+      "different_from_open_count": 4407,
+      "different_from_open_bbox_inclusive": [
+        74,
+        7,
+        128,
+        110
+      ],
+      "different_from_previous_count": 4426,
+      "different_from_previous_bbox_inclusive": [
+        74,
+        7,
+        128,
+        110
+      ],
+      "left_of_spine_changed_pixels": 4322,
+      "on_spine_changed_pixels": 85,
+      "right_of_spine_changed_pixels": 0,
+      "new_colors": 0,
+      "partial_alpha_pixels": 0,
+      "cyan_pixels": 0,
+      "hinge_y_inclusive": [
+        7,
+        110
+      ],
+      "hinge_missing_rows": [],
+      "leaf_row_internal_gap_rows": []
+    },
+    {
+      "frame": 6,
+      "rgba_sha256": "d3d4d9227f6aaab02abc9b67e35bef104867e07a97db7b3ba211a4d82004f465",
+      "different_from_open_count": 0,
+      "different_from_open_bbox_inclusive": null,
+      "different_from_previous_count": 4407,
+      "different_from_previous_bbox_inclusive": [
+        74,
+        7,
+        128,
+        110
+      ],
+      "left_of_spine_changed_pixels": 0,
+      "on_spine_changed_pixels": 0,
+      "right_of_spine_changed_pixels": 0,
+      "new_colors": 0,
+      "partial_alpha_pixels": 0,
+      "cyan_pixels": 0
+    }
+  ],
+  "backup": "art/character_design/lexicon/qc/backups/before_page_turn_6frame_20261029"
+}

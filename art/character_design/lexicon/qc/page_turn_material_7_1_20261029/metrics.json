@@ -1,0 +1,185 @@
+{
+  "actual_right_page_reference": {
+    "pixels": 10126,
+    "mean_rgb": [
+      202.857,
+      185.183,
+      166.699
+    ],
+    "mean_luma": 188.36,
+    "luma_std": 9.294,
+    "colors": 10
+  },
+  "actual_left_page_reference": {
+    "pixels": 10029,
+    "mean_rgb": [
+      201.486,
+      182.891,
+      163.602
+    ],
+    "mean_luma": 186.252,
+    "luma_std": 11.841,
+    "colors": 9
+  },
+  "reference_region_method": "right x135..234 / left x26..124, y8..109 inclusive; exclude leather pixels with luma<110; include stains and aged paper margins",
+  "frames": [
+    {
+      "frame": 1,
+      "diff_pixels": 0,
+      "bbox_inclusive": null,
+      "rgba_sha256": "76223ff72488ee480767c56fee46b5b9142c2730a8427f18b90b8a194d24cf05"
+    },
+    {
+      "frame": 2,
+      "diff_pixels": 360,
+      "bbox_inclusive": [
+        212,
+        2,
+        235,
+        33
+      ],
+      "rgba_sha256": "f242d2bd00fa07b17472c2756beaa011c95298e24920c047dbe19d5c3f20373d",
+      "leaf_material": {
+        "pixels": 671,
+        "mean_rgb": [
+          192.155,
+          169.249,
+          146.286
+        ],
+        "mean_luma": 173.48,
+        "luma_std": 25.062,
+        "colors": 11
+      },
+      "hinge_y_range": [
+        14,
+        109
+      ],
+      "hinge_missing_rows": []
+    },
+    {
+      "frame": 3,
+      "diff_pixels": 1401,
+      "bbox_inclusive": [
+        128,
+        7,
+        172,
+        105
+      ],
+      "rgba_sha256": "6d60fdfc05b9171dbff945e6c920e0fde66af5267fb1dc028b4abcc17683e198",
+      "leaf_material": {
+        "pixels": 3782,
+        "mean_rgb": [
+          201.597,
+          183.096,
+          163.883
+        ],
+        "mean_luma": 186.438,
+        "luma_std": 12.074,
+        "colors": 10
+      },
+      "hinge_y_range": [
+        7,
+        105
+      ],
+      "hinge_missing_rows": []
+    },
+    {
+      "frame": 4,
+      "diff_pixels": 92,
+      "bbox_inclusive": [
+        128,
+        7,
+        128,
+        104
+      ],
+      "rgba_sha256": "0e6ff1d2cb43ba0fcb3ff4655b6b92684fc6fac47caacf8e360287f5da3a1e4b",
+      "leaf_material": {
+        "pixels": 98,
+        "mean_rgb": [
+          191.418,
+          167.673,
+          143.684
+        ],
+        "mean_luma": 172.038,
+        "luma_std": 22.092,
+        "colors": 6
+      },
+      "hinge_y_range": [
+        7,
+        104
+      ],
+      "hinge_missing_rows": []
+    },
+    {
+      "frame": 5,
+      "diff_pixels": 4468,
+      "bbox_inclusive": [
+        74,
+        7,
+        128,
+        110
+      ],
+      "rgba_sha256": "766f2c45966e819d55943adf4916921e95313f421c524c0612c5ebb19f4df87d",
+      "leaf_material": {
+        "pixels": 4940,
+        "mean_rgb": [
+          190.074,
+          163.163,
+          136.633
+        ],
+        "mean_luma": 168.185,
+        "luma_std": 14.062,
+        "colors": 4
+      },
+      "hinge_y_range": [
+        7,
+        110
+      ],
+      "hinge_missing_rows": []
+    },
+    {
+      "frame": 6,
+      "diff_pixels": 0,
+      "bbox_inclusive": null,
+      "rgba_sha256": "76223ff72488ee480767c56fee46b5b9142c2730a8427f18b90b8a194d24cf05"
+    }
+  ],
+  "right_page_paper_reference": {
+    "pixels": 10200,
+    "mean_rgb": [
+      202.738,
+      185.012,
+      166.476
+    ],
+    "mean_luma": 188.199,
+    "luma_std": 9.71,
+    "colors": 10
+  },
+  "left_page_paper_reference": {
+    "pixels": 10098,
+    "mean_rgb": [
+      201.363,
+      182.725,
+      163.383
+    ],
+    "mean_luma": 186.093,
+    "luma_std": 12.184,
+    "colors": 9
+  },
+  "open_rgba_sha256": "76223ff72488ee480767c56fee46b5b9142c2730a8427f18b90b8a194d24cf05",
+  "bottom_paper_row": 109,
+  "spine_x": 128,
+  "durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "new_colors": 0,
+  "partial_alpha": 0,
+  "fall_frame5_changed_pixels": 10,
+  "fall_first4_unchanged": true,
+  "gif_decoded_exact": true
+}

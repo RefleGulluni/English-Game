@@ -1,0 +1,9 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+icon-page-revision-20261029/staged/lexicon_page_turn.png  1536x128   OK   27    26    0   123
+1029/staged/qc/page_turn_revision_20261029/frames/01.png   256x128   OK   27    26    0   123
+1029/staged/qc/page_turn_revision_20261029/frames/02.png   256x128   OK   27    25    0   123
+1029/staged/qc/page_turn_revision_20261029/frames/03.png   256x128   OK   25    25    0   123
+1029/staged/qc/page_turn_revision_20261029/frames/04.png   256x128   OK   27    26    0   123
+1029/staged/qc/page_turn_revision_20261029/frames/05.png   256x128   OK   27    24    0   123
+1029/staged/qc/page_turn_revision_20261029/frames/06.png   256x128   OK   27    26    0   123
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95
