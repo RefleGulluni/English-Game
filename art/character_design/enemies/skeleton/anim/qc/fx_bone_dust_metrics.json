@@ -49,21 +49,23 @@
         4
       ],
       "opaque_pixels": 15,
-      "colors": 10,
+      "colors": 6,
       "alpha_values": [
         0,
         255
       ],
       "cyan_pixels": 0,
       "new_colors": 0,
-      "mean_luma": 77.04873333333333,
-      "max_luma": 117.868,
+      "mean_luma": 136.51286666666664,
+      "max_luma": 161.98199999999997,
       "component_pixel_counts": [
-        14,
-        1
+        1,
+        14
       ],
-      "rgba_sha256": "ec7ace7d15224eb184cde62d70da0e79cd9c920269f79cc3e06e66ce8a17c1cb",
-      "png_sha256": "a13ac6061bcdf7a637c1e6e890099d717edb910c2f9c16ef6d13840d941001ad"
+      "rgba_sha256": "21cb97cd9b71f002044fe301864c4f6d472068078141f4d16d2c364713de2d1f",
+      "png_sha256": "0bcfe5dfcf5255e20a69290c60570a086f0f3f2ddb77e41581aabc14ba7c31ad",
+      "min_luma": 107.74799999999999,
+      "median_luma": 138.423
     },
     {
       "frame": 2,
@@ -78,33 +80,35 @@
         17
       ],
       "opaque_pixels": 76,
-      "colors": 14,
+      "colors": 6,
       "alpha_values": [
         0,
         255
       ],
       "cyan_pixels": 0,
       "new_colors": 0,
-      "mean_luma": 73.14522368421052,
-      "max_luma": 117.868,
+      "mean_luma": 135.94546052631577,
+      "max_luma": 161.98199999999997,
       "component_pixel_counts": [
         1,
-        15,
-        7,
-        19,
-        17,
         9,
         1,
+        15,
         1,
         1,
+        19,
         1,
         1,
+        17,
         1,
         1,
+        7,
         1
       ],
-      "rgba_sha256": "da5eac4c25fa027e2fe774b1378d6e84ac8ebfdfd95581c89d37b335112c9db7",
-      "png_sha256": "1f53a157bf31103fdab565b95ced813e49ea2ea2d5ca0b6d200577fb4aff36e5"
+      "rgba_sha256": "c0c84192fd5effdbc4d5a024da31235fe7fda44d2c4560e3848727e2039ce687",
+      "png_sha256": "11a07bcf0201ac3935c0b841a68967a310eb405107e91cf53d793843552b806e",
+      "min_luma": 107.74799999999999,
+      "median_luma": 138.423
     },
     {
       "frame": 3,
@@ -119,40 +123,42 @@
         24
       ],
       "opaque_pixels": 222,
-      "colors": 16,
+      "colors": 6,
       "alpha_values": [
         0,
         255
       ],
       "cyan_pixels": 0,
       "new_colors": 0,
-      "mean_luma": 76.76517117117116,
-      "max_luma": 117.868,
+      "mean_luma": 138.17426576576577,
+      "max_luma": 161.98199999999997,
       "component_pixel_counts": [
-        13,
-        46,
-        23,
+        26,
+        1,
+        1,
         51,
+        1,
+        1,
+        1,
+        23,
+        1,
+        18,
         25,
         1,
-        26,
-        18,
+        1,
+        1,
+        46,
+        1,
+        1,
         7,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        13,
         1
       ],
-      "rgba_sha256": "f4b2fe8d8b00900e8a6e2cd1a1a7567447663ecd02cc1c6754090d93f2d40624",
-      "png_sha256": "6b82ebbe3ad80efc7cd05e81a2f877eb6fae00ae2db55bc2e49388a745334135"
+      "rgba_sha256": "06e071047edc953e13c29e484a9370f0023dc541db080d1dfca8c83538c71a5d",
+      "png_sha256": "0d3c4daa876cdd64a764fb47a5978008cf742d20d8e869b75b2fb8abf326dc9a",
+      "min_luma": 107.74799999999999,
+      "median_luma": 138.423
     },
     {
       "frame": 4,
@@ -167,41 +173,43 @@
         23
       ],
       "opaque_pixels": 81,
-      "colors": 11,
+      "colors": 6,
       "alpha_values": [
         0,
         255
       ],
       "cyan_pixels": 0,
       "new_colors": 0,
-      "mean_luma": 79.95206172839505,
-      "max_luma": 117.868,
+      "mean_luma": 138.64541975308643,
+      "max_luma": 161.98199999999997,
       "component_pixel_counts": [
-        9,
-        10,
         1,
         14,
         1,
-        4,
         1,
         14,
-        9,
         4,
+        1,
+        1,
+        4,
+        1,
+        1,
+        9,
+        1,
+        9,
+        1,
         1,
         1,
         3,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        10,
         1,
         1
       ],
-      "rgba_sha256": "1b07717b867eadcccea91c4a2c27f6245d7b43db4fc174ce0e7ab8bc24264067",
-      "png_sha256": "9d12152d68116a8a33d5fc55a52dbf9ddad5931661bcca6459a85531708bd7e8"
+      "rgba_sha256": "ea4e755acd9fb0f533508303c34c0d66fcc381ae81f44f30eaf2eddca1ebfb00",
+      "png_sha256": "e25de21cc55cb0e8ef257db0b404d050f82e7a40f7568f6bdaba841b719cd397",
+      "min_luma": 107.74799999999999,
+      "median_luma": 138.423
     },
     {
       "frame": 5,
@@ -216,30 +224,32 @@
         18
       ],
       "opaque_pixels": 24,
-      "colors": 8,
+      "colors": 6,
       "alpha_values": [
         0,
         255
       ],
       "cyan_pixels": 0,
       "new_colors": 0,
-      "mean_luma": 83.734,
-      "max_luma": 117.868,
+      "mean_luma": 140.64091666666667,
+      "max_luma": 161.98199999999997,
       "component_pixel_counts": [
+        1,
+        3,
+        1,
         5,
         4,
         1,
-        3,
+        1,
+        1,
         5,
-        1,
-        1,
-        1,
-        1,
         1,
         1
       ],
-      "rgba_sha256": "f0086bc6f65471a001e281603e2bd075994507d9b9914a1de388c9c6c99f2101",
-      "png_sha256": "8b18e7775b5d947af5428a86dd89eeba016328ed3817eddeed0e2ab1c9677568"
+      "rgba_sha256": "2bcb7fa65a90c889a35bb18f05e5fb199c11b94b6757a799bf4824dd1947c386",
+      "png_sha256": "80a19d80b9454613ac112b1903988adc5641655d84d43b4cd842db67977a9306",
+      "min_luma": 107.74799999999999,
+      "median_luma": 146.053
     },
     {
       "frame": 6,
@@ -259,12 +269,17 @@
       "max_luma": null,
       "component_pixel_counts": [],
       "rgba_sha256": "fd9243e1ba57263ed469c3bdbd7ade6ec5254e7ed924a9f5737fa44749933cc0",
-      "png_sha256": "8c24351f19ce889f11bdf402cbe95a4fab8f495756d027259c90c41c6e8f1a67"
+      "png_sha256": "8c24351f19ce889f11bdf402cbe95a4fab8f495756d027259c90c41c6e8f1a67",
+      "min_luma": null,
+      "median_luma": null
     }
   ],
   "gif_decoded_exact": true,
   "palette_existing_only": true,
   "no_cyan": true,
   "last_frame_fully_transparent": true,
-  "strip_png_sha256": "dbbb5d9eaab80b1bafe62f6d6f42760ec2c02dab867eaa6a4feb2a033a5b29c3"
+  "strip_png_sha256": "e083eb6286a5c70312458270f7413823c72a7a1c9ce2e4728e962ed96d8867c7",
+  "revision": "2026-10-29 brightening: colors only; threads extended by two endpoint pixels",
+  "brightness_formula": "0.299R+0.587G+0.114B",
+  "shape_preserved_except_thread_endpoint_extension": true
 }

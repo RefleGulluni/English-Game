@@ -1,9 +1,9 @@
 文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
-/tmp/english-combat-fx-20261028/staged/fx_bone_dust.png     288x32   OK   16    89    0    31
-ish-combat-fx-20261028/staged/frames/fx_bone_dust/01.png     48x32   OK   10   100    0    31
-ish-combat-fx-20261028/staged/frames/fx_bone_dust/02.png     48x32   OK   14    96    0    30
-ish-combat-fx-20261028/staged/frames/fx_bone_dust/03.png     48x32   OK   16    89    0    29
-ish-combat-fx-20261028/staged/frames/fx_bone_dust/04.png     48x32   OK   11    81    0    27
-ish-combat-fx-20261028/staged/frames/fx_bone_dust/05.png     48x32   OK    8   100    0    23
-ish-combat-fx-20261028/staged/frames/fx_bone_dust/06.png     48x32   OK    0     0    0    -1
+tmp/english-fx-brighter-20261029/staged/fx_bone_dust.png    288x32   OK    6    81    0    31
+h-fx-brighter-20261029/staged/frames/fx_bone_dust/01.png     48x32   OK    6    90    0    31
+h-fx-brighter-20261029/staged/frames/fx_bone_dust/02.png     48x32   OK    6    96    0    30
+h-fx-brighter-20261029/staged/frames/fx_bone_dust/03.png     48x32   OK    6    79    0    29
+h-fx-brighter-20261029/staged/frames/fx_bone_dust/04.png     48x32   OK    6    67    0    27
+h-fx-brighter-20261029/staged/frames/fx_bone_dust/05.png     48x32   OK    6    86    0    23
+h-fx-brighter-20261029/staged/frames/fx_bone_dust/06.png     48x32   OK    0     0    0    -1
 对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

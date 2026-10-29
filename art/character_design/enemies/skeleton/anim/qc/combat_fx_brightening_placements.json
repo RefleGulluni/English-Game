@@ -1,0 +1,34 @@
+{
+  "screenshot": "docs/reference/reality_fx_ingame_v1.png",
+  "capture_crop": [
+    0,
+    0,
+    800,
+    760
+  ],
+  "capture_presentation_size": [
+    400,
+    380
+  ],
+  "sprite_scale": 3,
+  "nearest_only": true,
+  "placements": [
+    {
+      "asset": "fx_bone_dust",
+      "frame": 3,
+      "xy": [
+        172,
+        174
+      ]
+    },
+    {
+      "asset": "fx_shroud_threads",
+      "frame": 3,
+      "xy": [
+        188,
+        115
+      ]
+    }
+  ],
+  "notes": "Capture shows ~6 capture pixels/native pixel. Its first panel is presented at half size so effects and skeleton both use 3x native size. Positions are in the 400x380 panel, before header."
+}
