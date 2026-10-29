@@ -134,6 +134,11 @@ func shed(toward: Vector2) -> void:
 		return
 	facing = side
 	_switch("dust", "dust_" + side)
+	# The shake lands on frame 2: ash falls off it there (the drawn grains alone are too fine to see).
+	var first: float = float(_keys["skeleton_B_dust_" + side].durations_ms[0]) / 1000.0
+	get_tree().create_timer(first).timeout.connect(func():
+		if is_instance_valid(self) and action == "dust":
+			RealityFx.dust(RealityFx.layer_for(self), global_position + Vector2(0, 2), 40.0))
 
 
 ## Turns to look along v (only while standing still).

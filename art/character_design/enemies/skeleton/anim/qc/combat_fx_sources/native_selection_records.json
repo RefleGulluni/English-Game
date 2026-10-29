@@ -1,0 +1,2400 @@
+{
+  "fx_bone_chip_a": [
+    {
+      "frame": 1,
+      "source_native": "native/fx_bone_chip_a/01.png",
+      "selected_broken_piece_xyxy": [
+        0,
+        1,
+        8,
+        6
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        4,
+        6
+      ],
+      "meaning": "one knobby bone terminal and short broken shaft"
+    },
+    {
+      "frame": 2,
+      "source_native": "native/fx_bone_chip_a/02.png",
+      "selected_broken_piece_xyxy": [
+        1,
+        1,
+        8,
+        8
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        5,
+        5
+      ],
+      "meaning": "one knobby bone terminal and short broken shaft"
+    },
+    {
+      "frame": 3,
+      "source_native": "native/fx_bone_chip_a/03.png",
+      "selected_broken_piece_xyxy": [
+        1,
+        0,
+        6,
+        8
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        6,
+        4
+      ],
+      "meaning": "one knobby bone terminal and short broken shaft"
+    },
+    {
+      "frame": 4,
+      "source_native": "native/fx_bone_chip_a/04.png",
+      "selected_broken_piece_xyxy": [
+        7,
+        5,
+        15,
+        11
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        5,
+        6
+      ],
+      "meaning": "one knobby bone terminal and short broken shaft"
+    }
+  ],
+  "fx_bone_chip_b": [
+    {
+      "frame": 1,
+      "source_native": "native/fx_bone_chip_b/01.png",
+      "selected_broken_piece_xyxy": [
+        0,
+        5,
+        8,
+        13
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        4,
+        5
+      ],
+      "meaning": "a curved corner broken off the rib, preserving inner concavity"
+    },
+    {
+      "frame": 2,
+      "source_native": "native/fx_bone_chip_b/02.png",
+      "selected_broken_piece_xyxy": [
+        0,
+        0,
+        8,
+        8
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        4,
+        4
+      ],
+      "meaning": "a curved corner broken off the rib, preserving inner concavity"
+    },
+    {
+      "frame": 3,
+      "source_native": "native/fx_bone_chip_b/03.png",
+      "selected_broken_piece_xyxy": [
+        0,
+        4,
+        8,
+        12
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        4,
+        5
+      ],
+      "meaning": "a curved corner broken off the rib, preserving inner concavity"
+    },
+    {
+      "frame": 4,
+      "source_native": "native/fx_bone_chip_b/04.png",
+      "selected_broken_piece_xyxy": [
+        6,
+        17,
+        14,
+        25
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        5,
+        5
+      ],
+      "meaning": "a curved corner broken off the rib, preserving inner concavity"
+    }
+  ],
+  "fx_bone_chip_c": [
+    {
+      "frame": 1,
+      "source_native": "native/fx_bone_chip_c/01.png",
+      "selected_broken_piece_xyxy": [
+        3,
+        0,
+        9,
+        6
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        6,
+        5
+      ],
+      "meaning": "angular porous fracture corner; no whole-bone scaling"
+    },
+    {
+      "frame": 2,
+      "source_native": "native/fx_bone_chip_c/02.png",
+      "selected_broken_piece_xyxy": [
+        0,
+        0,
+        6,
+        6
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        5,
+        5
+      ],
+      "meaning": "angular porous fracture corner; no whole-bone scaling"
+    },
+    {
+      "frame": 3,
+      "source_native": "native/fx_bone_chip_c/03.png",
+      "selected_broken_piece_xyxy": [
+        1,
+        2,
+        7,
+        8
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        6,
+        6
+      ],
+      "meaning": "angular porous fracture corner; no whole-bone scaling"
+    },
+    {
+      "frame": 4,
+      "source_native": "native/fx_bone_chip_c/04.png",
+      "selected_broken_piece_xyxy": [
+        0,
+        0,
+        7,
+        6
+      ],
+      "largest_component_only": true,
+      "integer_placement": [
+        4,
+        6
+      ],
+      "meaning": "angular porous fracture corner; no whole-bone scaling"
+    }
+  ],
+  "fx_bone_dust": [
+    {
+      "frame": 1,
+      "source_native": "native/fx_bone_dust/01.png",
+      "source_to_emission_offset": [
+        21,
+        28
+      ],
+      "actual_bbox": [
+        21,
+        28,
+        28,
+        32
+      ],
+      "components": [
+        {
+          "source_component_bbox": [
+            1,
+            0,
+            7,
+            4
+          ],
+          "integer_translation": [
+            21,
+            28
+          ],
+          "size": 14,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "integer_translation": [
+            21,
+            28
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        }
+      ],
+      "palette_luma_cap": 120
+    },
+    {
+      "frame": 2,
+      "source_native": "native/fx_bone_dust/02.png",
+      "source_to_emission_offset": [
+        11,
+        14
+      ],
+      "actual_bbox": [
+        11,
+        14,
+        37,
+        31
+      ],
+      "components": [
+        {
+          "source_component_bbox": [
+            10,
+            11,
+            16,
+            17
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 19,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            18,
+            5,
+            23,
+            10
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 17,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            5,
+            2,
+            10,
+            7
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 15,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            2,
+            10,
+            6,
+            13
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 9,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            22,
+            11,
+            26,
+            14
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 7,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            25,
+            3,
+            26,
+            4
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            9,
+            10,
+            10,
+            11
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            19,
+            0,
+            20,
+            1
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            19,
+            15,
+            20,
+            16
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            15,
+            7,
+            16,
+            8
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            17,
+            12,
+            18,
+            13
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            8,
+            14,
+            9,
+            15
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            3,
+            0,
+            4,
+            1
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            0,
+            6,
+            1,
+            7
+          ],
+          "integer_translation": [
+            11,
+            14
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        }
+      ],
+      "palette_luma_cap": 120
+    },
+    {
+      "frame": 3,
+      "source_native": "native/fx_bone_dust/03.png",
+      "source_to_emission_offset": [
+        4,
+        6
+      ],
+      "actual_bbox": [
+        5,
+        6,
+        45,
+        30
+      ],
+      "components": [
+        {
+          "source_component_bbox": [
+            3,
+            4,
+            14,
+            13
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 51,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            27,
+            9,
+            37,
+            19
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 46,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            0,
+            14,
+            7,
+            19
+          ],
+          "integer_translation": [
+            5,
+            6
+          ],
+          "size": 26,
+          "native_outlier_nudge": [
+            1,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            19,
+            0,
+            25,
+            8
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 25,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            14,
+            14,
+            20,
+            20
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 23,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            18,
+            20,
+            23,
+            25
+          ],
+          "integer_translation": [
+            4,
+            5
+          ],
+          "size": 18,
+          "native_outlier_nudge": [
+            0,
+            -1
+          ]
+        },
+        {
+          "source_component_bbox": [
+            36,
+            16,
+            42,
+            21
+          ],
+          "integer_translation": [
+            3,
+            6
+          ],
+          "size": 13,
+          "native_outlier_nudge": [
+            -1,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            31,
+            6,
+            34,
+            9
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 7,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            40,
+            10,
+            41,
+            11
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            34,
+            21,
+            35,
+            22
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            27,
+            8,
+            28,
+            9
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            16,
+            9,
+            17,
+            10
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            1,
+            6,
+            2,
+            7
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            27,
+            22,
+            28,
+            23
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            1,
+            10,
+            2,
+            11
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            25,
+            1,
+            26,
+            2
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            13,
+            22,
+            14,
+            23
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            11,
+            1,
+            12,
+            2
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            22,
+            11,
+            23,
+            12
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            9,
+            20,
+            10,
+            21
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            24,
+            17,
+            25,
+            18
+          ],
+          "integer_translation": [
+            4,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        }
+      ],
+      "palette_luma_cap": 120
+    },
+    {
+      "frame": 4,
+      "source_native": "native/fx_bone_dust/04.png",
+      "source_to_emission_offset": [
+        3,
+        5
+      ],
+      "actual_bbox": [
+        4,
+        5,
+        44,
+        28
+      ],
+      "components": [
+        {
+          "source_component_bbox": [
+            9,
+            2,
+            14,
+            7
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 14,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            3,
+            8,
+            8,
+            13
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 14,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            36,
+            8,
+            39,
+            13
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 10,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            24,
+            11,
+            27,
+            15
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 9,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            28,
+            2,
+            31,
+            6
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 9,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            18,
+            17,
+            20,
+            20
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 4,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            10,
+            11,
+            12,
+            14
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 4,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            32,
+            14,
+            34,
+            16
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 3,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            28,
+            18,
+            29,
+            19
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            8,
+            1,
+            9,
+            2
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            21,
+            22,
+            22,
+            23
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            36,
+            19,
+            37,
+            20
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            25,
+            1,
+            26,
+            2
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            3,
+            12,
+            4,
+            13
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            35,
+            4,
+            36,
+            5
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            31,
+            0,
+            32,
+            1
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            17,
+            21,
+            18,
+            22
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            21,
+            8,
+            22,
+            9
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            40,
+            7,
+            41,
+            8
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            31,
+            9,
+            32,
+            10
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            16,
+            4,
+            17,
+            5
+          ],
+          "integer_translation": [
+            3,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            0,
+            6,
+            1,
+            7
+          ],
+          "integer_translation": [
+            4,
+            5
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            1,
+            0
+          ]
+        }
+      ],
+      "palette_luma_cap": 120
+    },
+    {
+      "frame": 5,
+      "source_native": "native/fx_bone_dust/05.png",
+      "source_to_emission_offset": [
+        8,
+        6
+      ],
+      "actual_bbox": [
+        8,
+        6,
+        40,
+        24
+      ],
+      "components": [
+        {
+          "source_component_bbox": [
+            25,
+            6,
+            28,
+            9
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 5,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            5,
+            3,
+            8,
+            6
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 5,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            14,
+            13,
+            17,
+            15
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 4,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            3,
+            10,
+            5,
+            12
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 3,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            30,
+            15,
+            31,
+            16
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            21,
+            4,
+            22,
+            5
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            15,
+            8,
+            16,
+            9
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            31,
+            7,
+            32,
+            8
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            0,
+            7,
+            1,
+            8
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            16,
+            17,
+            17,
+            18
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        },
+        {
+          "source_component_bbox": [
+            3,
+            0,
+            4,
+            1
+          ],
+          "integer_translation": [
+            8,
+            6
+          ],
+          "size": 1,
+          "native_outlier_nudge": [
+            0,
+            0
+          ]
+        }
+      ],
+      "palette_luma_cap": 120
+    },
+    {
+      "frame": 6,
+      "transparent": true
+    }
+  ],
+  "fx_shroud_threads": [
+    {
+      "frame": 1,
+      "fibers": [
+        {
+          "fiber": 1,
+          "source_native_points_yx": [
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              10,
+              5
+            ],
+            [
+              11,
+              6
+            ]
+          ],
+          "source_bbox": [
+            1,
+            3,
+            7,
+            12
+          ],
+          "integer_placement": [
+            2,
+            7
+          ],
+          "pixel_length": 9
+        },
+        {
+          "fiber": 2,
+          "source_native_points_yx": [
+            [
+              17,
+              8
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              15,
+              11
+            ],
+            [
+              14,
+              12
+            ],
+            [
+              13,
+              13
+            ]
+          ],
+          "source_bbox": [
+            8,
+            13,
+            14,
+            18
+          ],
+          "integer_placement": [
+            9,
+            8
+          ],
+          "pixel_length": 6
+        },
+        {
+          "fiber": 3,
+          "source_native_points_yx": [
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              6,
+              12
+            ],
+            [
+              7,
+              13
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              9,
+              15
+            ],
+            [
+              9,
+              16
+            ]
+          ],
+          "source_bbox": [
+            11,
+            3,
+            17,
+            10
+          ],
+          "integer_placement": [
+            17,
+            7
+          ],
+          "pixel_length": 8
+        },
+        {
+          "fiber": 4,
+          "source_native_points_yx": [
+            [
+              11,
+              23
+            ],
+            [
+              12,
+              23
+            ],
+            [
+              13,
+              22
+            ],
+            [
+              14,
+              22
+            ],
+            [
+              15,
+              22
+            ],
+            [
+              16,
+              21
+            ],
+            [
+              17,
+              21
+            ],
+            [
+              18,
+              21
+            ],
+            [
+              19,
+              20
+            ]
+          ],
+          "source_bbox": [
+            20,
+            11,
+            24,
+            20
+          ],
+          "integer_placement": [
+            25,
+            8
+          ],
+          "pixel_length": 9
+        }
+      ],
+      "component_pixel_lengths": [
+        9,
+        9,
+        8,
+        6
+      ],
+      "no_2x2_filled_blocks": true
+    },
+    {
+      "frame": 2,
+      "fibers": [
+        {
+          "fiber": 1,
+          "source_native_points_yx": [
+            [
+              5,
+              0
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              9,
+              2
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              11,
+              3
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              13,
+              4
+            ],
+            [
+              14,
+              4
+            ]
+          ],
+          "source_bbox": [
+            0,
+            5,
+            5,
+            15
+          ],
+          "integer_placement": [
+            3,
+            10
+          ],
+          "pixel_length": 10
+        },
+        {
+          "fiber": 2,
+          "source_native_points_yx": [
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              14
+            ],
+            [
+              17,
+              13
+            ],
+            [
+              18,
+              13
+            ],
+            [
+              19,
+              12
+            ],
+            [
+              20,
+              11
+            ],
+            [
+              21,
+              10
+            ],
+            [
+              22,
+              9
+            ]
+          ],
+          "source_bbox": [
+            9,
+            15,
+            15,
+            23
+          ],
+          "integer_placement": [
+            9,
+            11
+          ],
+          "pixel_length": 8
+        },
+        {
+          "fiber": 3,
+          "source_native_points_yx": [
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              12
+            ],
+            [
+              5,
+              13
+            ],
+            [
+              6,
+              13
+            ],
+            [
+              7,
+              13
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              9,
+              15
+            ]
+          ],
+          "source_bbox": [
+            10,
+            2,
+            16,
+            10
+          ],
+          "integer_placement": [
+            17,
+            10
+          ],
+          "pixel_length": 8
+        },
+        {
+          "fiber": 4,
+          "source_native_points_yx": [
+            [
+              11,
+              23
+            ],
+            [
+              12,
+              24
+            ],
+            [
+              13,
+              24
+            ],
+            [
+              14,
+              25
+            ],
+            [
+              15,
+              25
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              17,
+              25
+            ],
+            [
+              18,
+              24
+            ],
+            [
+              19,
+              24
+            ],
+            [
+              20,
+              24
+            ]
+          ],
+          "source_bbox": [
+            23,
+            11,
+            26,
+            21
+          ],
+          "integer_placement": [
+            26,
+            11
+          ],
+          "pixel_length": 10
+        }
+      ],
+      "component_pixel_lengths": [
+        10,
+        10,
+        8,
+        8
+      ],
+      "no_2x2_filled_blocks": true
+    },
+    {
+      "frame": 3,
+      "fibers": [
+        {
+          "fiber": 1,
+          "source_native_points_yx": [
+            [
+              6,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              9,
+              1
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              12,
+              3
+            ],
+            [
+              13,
+              3
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              15,
+              2
+            ]
+          ],
+          "source_bbox": [
+            0,
+            6,
+            4,
+            16
+          ],
+          "integer_placement": [
+            3,
+            14
+          ],
+          "pixel_length": 10
+        },
+        {
+          "fiber": 2,
+          "source_native_points_yx": [
+            [
+              9,
+              12
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              8
+            ]
+          ],
+          "source_bbox": [
+            8,
+            2,
+            13,
+            10
+          ],
+          "integer_placement": [
+            10,
+            15
+          ],
+          "pixel_length": 9
+        },
+        {
+          "fiber": 3,
+          "source_native_points_yx": [
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              14
+            ],
+            [
+              17,
+              13
+            ],
+            [
+              18,
+              13
+            ],
+            [
+              19,
+              13
+            ],
+            [
+              20,
+              12
+            ],
+            [
+              21,
+              12
+            ],
+            [
+              22,
+              12
+            ],
+            [
+              23,
+              11
+            ],
+            [
+              24,
+              10
+            ]
+          ],
+          "source_bbox": [
+            10,
+            15,
+            15,
+            25
+          ],
+          "integer_placement": [
+            18,
+            14
+          ],
+          "pixel_length": 10
+        },
+        {
+          "fiber": 4,
+          "source_native_points_yx": [
+            [
+              20,
+              27
+            ],
+            [
+              19,
+              26
+            ],
+            [
+              18,
+              26
+            ],
+            [
+              17,
+              25
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              15,
+              23
+            ],
+            [
+              14,
+              23
+            ],
+            [
+              13,
+              23
+            ],
+            [
+              12,
+              24
+            ],
+            [
+              11,
+              24
+            ]
+          ],
+          "source_bbox": [
+            23,
+            11,
+            28,
+            21
+          ],
+          "integer_placement": [
+            25,
+            15
+          ],
+          "pixel_length": 10
+        }
+      ],
+      "component_pixel_lengths": [
+        10,
+        10,
+        10,
+        9
+      ],
+      "no_2x2_filled_blocks": true
+    },
+    {
+      "frame": 4,
+      "fibers": [
+        {
+          "fiber": 1,
+          "source_native_points_yx": [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              10,
+              5
+            ]
+          ],
+          "source_bbox": [
+            0,
+            1,
+            6,
+            11
+          ],
+          "integer_placement": [
+            4,
+            20
+          ],
+          "pixel_length": 10
+        },
+        {
+          "fiber": 2,
+          "source_native_points_yx": [
+            [
+              15,
+              16
+            ],
+            [
+              14,
+              15
+            ],
+            [
+              13,
+              15
+            ],
+            [
+              12,
+              14
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              10,
+              14
+            ],
+            [
+              9,
+              14
+            ],
+            [
+              8,
+              13
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              6,
+              11
+            ]
+          ],
+          "source_bbox": [
+            11,
+            6,
+            17,
+            16
+          ],
+          "integer_placement": [
+            13,
+            21
+          ],
+          "pixel_length": 10
+        },
+        {
+          "fiber": 3,
+          "source_native_points_yx": [
+            [
+              5,
+              24
+            ],
+            [
+              6,
+              25
+            ],
+            [
+              7,
+              26
+            ],
+            [
+              8,
+              27
+            ],
+            [
+              9,
+              28
+            ],
+            [
+              10,
+              29
+            ],
+            [
+              11,
+              29
+            ]
+          ],
+          "source_bbox": [
+            24,
+            5,
+            30,
+            12
+          ],
+          "integer_placement": [
+            22,
+            20
+          ],
+          "pixel_length": 7
+        }
+      ],
+      "component_pixel_lengths": [
+        10,
+        10,
+        7
+      ],
+      "no_2x2_filled_blocks": true
+    },
+    {
+      "frame": 5,
+      "fibers": [
+        {
+          "fiber": 1,
+          "source_native_points_yx": [
+            [
+              7,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          "source_bbox": [
+            0,
+            2,
+            3,
+            8
+          ],
+          "integer_placement": [
+            10,
+            25
+          ],
+          "pixel_length": 6
+        },
+        {
+          "fiber": 2,
+          "source_native_points_yx": [
+            [
+              7,
+              16
+            ],
+            [
+              6,
+              16
+            ],
+            [
+              5,
+              17
+            ],
+            [
+              4,
+              17
+            ],
+            [
+              3,
+              18
+            ],
+            [
+              2,
+              18
+            ]
+          ],
+          "source_bbox": [
+            16,
+            2,
+            19,
+            8
+          ],
+          "integer_placement": [
+            22,
+            26
+          ],
+          "pixel_length": 6
+        }
+      ],
+      "component_pixel_lengths": [
+        6,
+        6
+      ],
+      "no_2x2_filled_blocks": true
+    },
+    {
+      "frame": 6,
+      "transparent": true
+    }
+  ]
+}

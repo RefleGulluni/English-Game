@@ -1,0 +1,7 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+tmp/english-combat-fx-20261028/staged/fx_bone_chip_c.png     64x16   OK   15    74    0    11
+h-combat-fx-20261028/staged/frames/fx_bone_chip_c/01.png     16x16   OK   11    77    0    10
+h-combat-fx-20261028/staged/frames/fx_bone_chip_c/02.png     16x16   OK    8    61    0    10
+h-combat-fx-20261028/staged/frames/fx_bone_chip_c/03.png     16x16   OK   12    92    0    11
+h-combat-fx-20261028/staged/frames/fx_bone_chip_c/04.png     16x16   OK    9    64    0    11
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

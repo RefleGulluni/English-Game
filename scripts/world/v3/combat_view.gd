@@ -950,6 +950,28 @@ func _impact(word: String, before: Dictionary) -> void:
 	_last_hero_hp = combat.hp
 	if shook:
 		_shake(0.12)
+	_reality(word, shook, bool(a.remains) and not bool(b.remains))
+
+
+## The world answers the word (§7 of the combat animation request): bone chips fly off away from
+## the hero, a puff of bone ash rises; words that cut (SHATTER, STRIKE) also tear shroud threads;
+## a collapse throws more bone and raises the ash from the ground.
+func _reality(word: String, hurt: bool, collapsed: bool) -> void:
+	if not is_instance_valid(enemy) or not (hurt or collapsed):
+		return
+	var ground := enemy.global_position
+	var away := signf(enemy.global_position.x - hero.global_position.x) if is_instance_valid(hero) else 1.0
+	var parent := enemy.get_parent()
+	if collapsed:
+		RealityFx.chips(parent, ground, 30.0, away, 4)
+		RealityFx.dust(parent, ground + Vector2(0, 2))
+		return
+	# Knocked out of the far side of the body, over the ground: drawn over the skeleton itself the
+	# ash and threads vanish into the bone and shroud of the same colours.
+	RealityFx.chips(parent, ground, 46.0, away, randi_range(2, 3))
+	RealityFx.dust(parent, ground + Vector2(away * 22, 2), 26.0)
+	if word in ["SHATTER", "STRIKE"]:
+		RealityFx.threads(parent, ground + Vector2(away * 24, 3), 50.0)
 
 
 ## The enemy's attack is under way: hold the hero's hit until its hit frame, and keep the bar
@@ -964,6 +986,9 @@ func enemy_attack(hit_in: float, total: float) -> void:
 			_shake(0.14)
 		if hero.has_method("take_hit"):
 			hero.take_hit()
+		if is_instance_valid(enemy): # BONE CUT: splinters off the bone blade where it meets the hero
+			var toward := signf(hero.global_position.x - enemy.global_position.x)
+			RealityFx.chips(enemy.get_parent(), hero.global_position + Vector2(-toward * 14, 2), 52.0, toward, 2)
 	_last_hero_hp = combat.hp
 	await get_tree().create_timer(maxf(0.0, total - hit_in)).timeout
 	busy = false

@@ -1,0 +1,228 @@
+[
+  {
+    "frame": 1,
+    "source_cell": [
+      0,
+      0,
+      627,
+      627
+    ],
+    "observed_painted_pitch": [
+      20,
+      21
+    ],
+    "x_boundaries": [
+      155,
+      175,
+      196,
+      218,
+      239,
+      260,
+      280,
+      300,
+      319,
+      339,
+      357,
+      375,
+      393,
+      413,
+      432,
+      451,
+      469,
+      487
+    ],
+    "y_boundaries": [
+      232,
+      254,
+      275,
+      296,
+      317,
+      337,
+      356,
+      375,
+      395
+    ],
+    "crop_after_restore": [
+      0,
+      0,
+      17,
+      8
+    ],
+    "native_size": [
+      17,
+      8
+    ],
+    "method": "Observed painted square cell -> center source pixel -> one native pixel. No wholeimage resize or averaging."
+  },
+  {
+    "frame": 2,
+    "source_cell": [
+      627,
+      0,
+      1254,
+      627
+    ],
+    "observed_painted_pitch": [
+      20,
+      21
+    ],
+    "x_boundaries": [
+      159,
+      178,
+      199,
+      218,
+      238,
+      257,
+      278,
+      297,
+      318,
+      338,
+      358,
+      376,
+      396,
+      416,
+      436,
+      456
+    ],
+    "y_boundaries": [
+      189,
+      210,
+      231,
+      252,
+      273,
+      294,
+      315,
+      337,
+      357,
+      377,
+      398,
+      419,
+      440,
+      460
+    ],
+    "crop_after_restore": [
+      0,
+      1,
+      15,
+      13
+    ],
+    "native_size": [
+      15,
+      12
+    ],
+    "method": "Observed painted square cell -> center source pixel -> one native pixel. No wholeimage resize or averaging."
+  },
+  {
+    "frame": 3,
+    "source_cell": [
+      0,
+      627,
+      627,
+      1254
+    ],
+    "observed_painted_pitch": [
+      20,
+      21
+    ],
+    "x_boundaries": [
+      243,
+      262,
+      281,
+      300,
+      318,
+      336,
+      354,
+      375,
+      395
+    ],
+    "y_boundaries": [
+      100,
+      119,
+      142,
+      163,
+      183,
+      203,
+      223,
+      244,
+      264,
+      284,
+      305,
+      325,
+      344,
+      363,
+      382,
+      403,
+      423,
+      442,
+      463
+    ],
+    "crop_after_restore": [
+      0,
+      0,
+      8,
+      18
+    ],
+    "native_size": [
+      8,
+      18
+    ],
+    "method": "Observed painted square cell -> center source pixel -> one native pixel. No wholeimage resize or averaging."
+  },
+  {
+    "frame": 4,
+    "source_cell": [
+      627,
+      627,
+      1254,
+      1254
+    ],
+    "observed_painted_pitch": [
+      20,
+      21
+    ],
+    "x_boundaries": [
+      159,
+      178,
+      198,
+      218,
+      238,
+      257,
+      278,
+      298,
+      318,
+      338,
+      358,
+      376,
+      395,
+      414,
+      436,
+      456
+    ],
+    "y_boundaries": [
+      175,
+      194,
+      217,
+      238,
+      259,
+      280,
+      301,
+      322,
+      343,
+      363,
+      383,
+      403,
+      423
+    ],
+    "crop_after_restore": [
+      0,
+      0,
+      15,
+      12
+    ],
+    "native_size": [
+      15,
+      12
+    ],
+    "method": "Observed painted square cell -> center source pixel -> one native pixel. No wholeimage resize or averaging."
+  }
+]

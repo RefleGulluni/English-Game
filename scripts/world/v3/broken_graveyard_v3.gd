@@ -609,6 +609,8 @@ func _capture() -> void:
 								await _shot(dir + "/02%s_leave_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
 								await get_tree().create_timer(view.LEAD + view.IMPACT_AT - 0.22).timeout
 								await _shot(dir + "/02%s_cast_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
+								await get_tree().create_timer(0.05).timeout # just after it lands: bone chips, ash, threads
+								await _shot(dir + "/02%s_hit_%s.png" % ["abc"[cast_shots], str(card.name).to_lower()])
 								cast_shots += 1
 							break
 				if not played:

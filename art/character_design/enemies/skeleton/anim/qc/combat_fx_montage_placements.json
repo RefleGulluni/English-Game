@@ -1,0 +1,55 @@
+{
+  "native_scene": [
+    256,
+    160
+  ],
+  "scale": 3,
+  "ground": "art/cemetery_v3/ground/base/ground_base_01.png",
+  "skeleton": "art/character_design/enemies/skeleton/skeleton_B.png",
+  "skeleton_xy": [
+    80,
+    40
+  ],
+  "placements": [
+    {
+      "asset": "fx_bone_chip_a",
+      "frame": 2,
+      "xy": [
+        83,
+        57
+      ]
+    },
+    {
+      "asset": "fx_bone_chip_b",
+      "frame": 4,
+      "xy": [
+        153,
+        72
+      ]
+    },
+    {
+      "asset": "fx_bone_chip_c",
+      "frame": 1,
+      "xy": [
+        87,
+        91
+      ]
+    },
+    {
+      "asset": "fx_bone_dust",
+      "frame": 3,
+      "xy": [
+        55,
+        110
+      ]
+    },
+    {
+      "asset": "fx_shroud_threads",
+      "frame": 3,
+      "xy": [
+        147,
+        74
+      ]
+    }
+  ]
+}

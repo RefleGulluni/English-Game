@@ -1,0 +1,161 @@
+{
+  "timing": {
+    "frame_size": [
+      16,
+      16
+    ],
+    "anchor": [
+      8,
+      8
+    ],
+    "frames": 4,
+    "durations_ms": [
+      80,
+      80,
+      80,
+      80
+    ],
+    "loop": true,
+    "role": "thin curved rib wall fragment",
+    "sprite_sheet": "fx_bone_chip_b.png",
+    "duration_ms": 320,
+    "qa": "qc/combat_fx_QA.md",
+    "frame_numbering": "frame is1-based; frame_index is0-based",
+    "pixel_only_rotation_frames": true
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "bbox": [
+        4,
+        5,
+        12,
+        12
+      ],
+      "visible_size": [
+        8,
+        7
+      ],
+      "opaque_pixels": 22,
+      "colors": 7,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "new_colors": 0,
+      "mean_luma": 153.84022727272728,
+      "max_luma": 195.556,
+      "component_pixel_counts": [
+        22
+      ],
+      "rgba_sha256": "cf1c4b4ecbca876fea3db69a53337ca991d0eafb1c99c91e84bf80327022bb03",
+      "png_sha256": "d84c234a25788de2985e02415027a4caf021c3f6caa28953d266fa6fb7e73c91",
+      "centroid_xy": [
+        7.818181818181818,
+        8.409090909090908
+      ]
+    },
+    {
+      "frame": 2,
+      "bbox": [
+        5,
+        5,
+        12,
+        12
+      ],
+      "visible_size": [
+        7,
+        7
+      ],
+      "opaque_pixels": 19,
+      "colors": 5,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "new_colors": 0,
+      "mean_luma": 229.62305263157887,
+      "max_luma": 238.05599999999998,
+      "component_pixel_counts": [
+        19
+      ],
+      "rgba_sha256": "98b6ac0a2610a6c43b68784b21d4cc66225a1426b452b5ca47d773b11a7dcdad",
+      "png_sha256": "28e259c80e140a880889448bc26762fb551e2b09e17c647757005dced6968c9b",
+      "centroid_xy": [
+        8.368421052631579,
+        8.263157894736842
+      ]
+    },
+    {
+      "frame": 3,
+      "bbox": [
+        5,
+        5,
+        12,
+        11
+      ],
+      "visible_size": [
+        7,
+        6
+      ],
+      "opaque_pixels": 20,
+      "colors": 7,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "new_colors": 0,
+      "mean_luma": 161.40915,
+      "max_luma": 237.44299999999998,
+      "component_pixel_counts": [
+        20
+      ],
+      "rgba_sha256": "5eef6e45357fe131ae0ade6fdca4980dac55eb6ce97c51bbab441c198ed09e6f",
+      "png_sha256": "6c8c9c6458811316b918f3996419ebd1ff2ec79f3105bca1343f7624c34a4ab3",
+      "centroid_xy": [
+        8.15,
+        7.75
+      ]
+    },
+    {
+      "frame": 4,
+      "bbox": [
+        5,
+        5,
+        12,
+        13
+      ],
+      "visible_size": [
+        7,
+        8
+      ],
+      "opaque_pixels": 22,
+      "colors": 7,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "cyan_pixels": 0,
+      "new_colors": 0,
+      "mean_luma": 148.3659545454545,
+      "max_luma": 173.85099999999997,
+      "component_pixel_counts": [
+        22
+      ],
+      "rgba_sha256": "bb3a3ee96ad0d70ab4d52d1c2bc4417f69ef81af6f67a7fc0a1759b8f4840636",
+      "png_sha256": "327c4a405bae97e4864cec3fa67f90cd31c5f07f3c6148cc79e0bb680a4d3d8a",
+      "centroid_xy": [
+        8.272727272727273,
+        8.181818181818182
+      ]
+    }
+  ],
+  "gif_decoded_exact": true,
+  "palette_existing_only": true,
+  "no_cyan": true,
+  "last_frame_fully_transparent": false,
+  "strip_png_sha256": "7013da87ccaeb16825fcf888205a18f6b628e8aac6cdefcd0196454ae1d7e296"
+}
