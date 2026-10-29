@@ -565,6 +565,17 @@ func _capture() -> void:
 			dir = str(arg).get_slice("=", 1)
 	DirAccess.make_dir_recursive_absolute(dir)
 	await _frames(20)
+	if "--lexicon" in OS.get_cmdline_user_args(): # the book opening and closing, frame by frame (D-068)
+		_lexicon.toggle()
+		for i in 9:
+			await _shot(dir + "/lex_open_%d.png" % i)
+			await get_tree().create_timer(0.09).timeout
+		_lexicon.toggle()
+		for i in 6:
+			await _shot(dir + "/lex_close_%d.png" % i)
+			await get_tree().create_timer(0.08).timeout
+		get_tree().quit()
+		return
 	await _shot(dir + "/01_room.png")
 	# --mirror: meet it from the right (it then swings to the right; until both sides are delivered).
 	hero.position = skeleton.position + (Vector2(100, 30) if "--mirror" in OS.get_cmdline_user_args() else Vector2(-100, 30))
