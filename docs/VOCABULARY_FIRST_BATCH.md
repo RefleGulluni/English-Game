@@ -14,7 +14,7 @@
 | 气氛词（5） | grief, silence, memory, hollow, remains |
 
 - 中文是大概意思，不是正式释义；考试标签（四级 / 六级 / 考研 / 雅思）以后由工具从词典数据自动填，不手写。
-- 现有代码里的词**大部分**在这份名单里。**不在的有 4 个**：`bury`、`echo`（`cemetery_words.gd`）、`toxic`、`stabilize`（`combat_content.gd`，erode 的对策词就是 STABILIZE）。迁移前要用户决定加不加（Claude 建议都加）。
+- 现有代码里的词**大部分**在这份名单里。**不在的有 4 个**：`bury`、`echo`（`cemetery_words.gd`）、`toxic`、`stabilize`（`combat_content.gd`，erode 的对策词就是 STABILIZE）。**用户同意，已加入（D-071 补充）**：toxic、stabilize 是能力词，bury、echo 是世界词，第一批变为 42 个。
 
 ## 2. 一个词条分两半
 
@@ -41,7 +41,7 @@
 | `phonetic` | 音标（发音音频以后再加）。**词典自动填** |
 | `relations` | 近义、反义、同一家人（erode → erosion）：Lexicon 星座的线靠它连。词典给底子，AI 整理 |
 | `constellation` | 学会后亮在书里哪一片星座 |
-| `page_line` | Lexicon 单词页上一句世界口吻的话。AI 写草稿，用户挑 |
+| `page_line` | Lexicon 单词页最下面一句世界口吻的原创短句。**每个词都必须有**（用户，D-071 补充）。AI 写草稿，用户挑 |
 | `sigil` | 只有能力词有：单词栏上的词类符号（9 个之一，D-067），出手时的几何 |
 | `status` | draft（AI 写的草稿）/ approved（检查过） |
 

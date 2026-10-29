@@ -1,0 +1,197 @@
+{
+  "lemma": "bury",
+  "dictionary": {
+    "phonetic": {
+      "uk": "'beri",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "vt. 埋葬, 埋藏"
+    ],
+    "exam": [
+      "gk",
+      "cet4",
+      "ky"
+    ],
+    "frequency": {
+      "bnc_rank": 2650,
+      "modern_rank": 2398,
+      "collins_stars": 3,
+      "oxford_3000": true
+    },
+    "forms": {
+      "past_participle": "buried",
+      "ing": "burying",
+      "past": "buried",
+      "third_person": "buries"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02151896-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "cover from sight",
+        "examples": [
+          "Afghani women buried under their burkas"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "hide",
+          "conceal"
+        ]
+      },
+      {
+        "synset": "oewn-02461925-v",
+        "pos": "verb",
+        "category": "verb.social",
+        "definition": "place in a grave or tomb",
+        "examples": [
+          "Stalin was buried behind the Kremlin wall on Red Square",
+          "The pharaohs were entombed in the pyramids"
+        ],
+        "synonyms": [
+          "entomb",
+          "inhume",
+          "inter",
+          "lay to rest"
+        ],
+        "antonyms": [],
+        "family": [
+          "burial"
+        ],
+        "broader": [
+          "lay",
+          "put down"
+        ]
+      },
+      {
+        "synset": "oewn-01237189-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "place in the earth and cover with soil",
+        "examples": [
+          "They buried the stolen goods"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [
+          "burial"
+        ],
+        "broader": [
+          "situate",
+          "fix"
+        ]
+      },
+      {
+        "synset": "oewn-01585330-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "enclose or envelop completely, as if by swallowing",
+        "examples": [
+          "The huge waves swallowed the small boat and it sank shortly thereafter"
+        ],
+        "synonyms": [
+          "immerse",
+          "swallow",
+          "swallow up",
+          "eat up"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "enclose",
+          "close in"
+        ]
+      },
+      {
+        "synset": "oewn-01532886-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "embed deeply",
+        "examples": [
+          "She sank her fingers into the soft sand",
+          "He buried his head in her lap"
+        ],
+        "synonyms": [
+          "sink"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "implant",
+          "engraft"
+        ]
+      },
+      {
+        "synset": "oewn-00611721-v",
+        "pos": "verb",
+        "category": "verb.cognition",
+        "definition": "dismiss from the mind; stop remembering",
+        "examples": [
+          "I tried to bury these unpleasant memories"
+        ],
+        "synonyms": [
+          "forget"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "lose"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "bury#put_in_grave",
+      "pos": "verb",
+      "wordnet": "oewn-02461925-v",
+      "sense": "to put a dead body in the ground and cover it",
+      "zh": "埋葬；掩埋",
+      "role": "thing",
+      "tags": [
+        "BURIAL",
+        "DEATH",
+        "HIDDEN"
+      ],
+      "appears": [
+        "事件：守墓人给棺材盖土",
+        "物件：新翻过土的坟"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "新土上浮出 b_ry",
+        "RECOGNIZED": "“埋到土里”",
+        "UNDERSTOOD": "能读懂 buried / burial；知道 bury 也能说“把回忆埋起来”",
+        "USABLE": "对白里能用它回答"
+      },
+      "challenge": {
+        "recognize": "看守墓人往棺材上盖土，选出 bury 的意思",
+        "produce": "“They ___ the coffin beneath the earth.” 填空"
+      },
+      "confusable": [
+        "berry（同音）",
+        "burial（同一家人，名词）",
+        "marry（形近的拼写规律：buried / married）"
+      ],
+      "relations": {
+        "synonyms": [
+          "entomb",
+          "inhume",
+          "inter",
+          "lay to rest"
+        ],
+        "antonyms": [],
+        "family": [
+          "burial"
+        ]
+      },
+      "constellation": "BURIAL",
+      "page_line": "The caretaker buries the dead at dawn, so that no one has to watch.",
+      "status": "draft"
+    }
+  ]
+}

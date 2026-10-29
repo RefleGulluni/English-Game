@@ -1,0 +1,108 @@
+{
+  "lemma": "toxic",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈtɒk.sɪk",
+      "us": "ˈtɑk.sɪk"
+    },
+    "zh": [
+      "a. 有毒的, 中毒的",
+      "[医] 中毒的, 毒物的"
+    ],
+    "exam": [
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts",
+      "gre"
+    ],
+    "frequency": {
+      "bnc_rank": 5147,
+      "modern_rank": 4090,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "plural": "toxics"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-02458503-a",
+        "pos": "adjective",
+        "category": "adj.all",
+        "definition": "of or relating to or caused by a toxin or poison",
+        "examples": [
+          "suffering from exposure to toxic substances"
+        ],
+        "synonyms": [],
+        "antonyms": [
+          "nontoxic"
+        ],
+        "family": [
+          "toxin",
+          "toxicity"
+        ],
+        "broader": []
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "toxic#poisonous",
+      "pos": "adjective",
+      "wordnet": "oewn-02458503-a",
+      "sense": "harmful because it contains poison",
+      "zh": "有毒的",
+      "role": "ability",
+      "tags": [
+        "TOXIN",
+        "HARM",
+        "GRADUAL"
+      ],
+      "appears": [
+        "物件：墓边颜色发怪的积水",
+        "敌人意图：TOXIC LEAK（有毒的东西漏出来）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "t_x_c，字母边上冒着绿气",
+        "RECOGNIZED": "“有毒的”",
+        "UNDERSTOOD": "中毒 3 回合：每回合 -3 生命，绕过结构和护甲；再用只会刷新、不会叠加",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看枯掉的草围着一滩积水，选出 toxic 的意思",
+        "produce": "敌人护甲很厚，从 toxic / strike / shatter 里选能绕过护甲的词"
+      },
+      "confusable": [
+        "toxin（同一家人，名词“毒素”）",
+        "tonic（形近，意思几乎相反）"
+      ],
+      "relations": {
+        "synonyms": [],
+        "antonyms": [
+          "nontoxic"
+        ],
+        "family": [
+          "toxin",
+          "toxicity"
+        ]
+      },
+      "constellation": "TOXIN",
+      "page_line": "Nothing grows near the old well. The water remembers what was poured into it.",
+      "sigil": "toxicity",
+      "effect": {
+        "type": "poison",
+        "turns": 3,
+        "damage_per_turn": 3,
+        "bypass": [
+          "structure",
+          "armor"
+        ],
+        "refresh_not_stack": true,
+        "cost": 1
+      },
+      "status": "draft"
+    }
+  ]
+}

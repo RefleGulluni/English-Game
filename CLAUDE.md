@@ -31,7 +31,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 ## 当前进度（2026-10-29 交接）
 
 ### 一句话
-墓园入口这个房间基本成形，交给用户亲手调：25 + 9 件正式物件都是可拖的积木（入口 9 件 D-060，**用户定为以后素材的质量标准**），地面可刷四层 + 20 件贴花积木，入口的全部物件已放进场景 `Props` 让用户自己增删挪（D-062）。**v3 墓园的战斗已经“能看”了**：场景内战斗（D-063）、第 3 档精致度的单词栏 + 暖色界面 + 9 个词类符号（D-067）、主角施法 / 受击、骷髅 BONE CUT（v1，D-066）/ 抖落骨灰都已接上，出口换成了美术组的 9 个出口符号（D-065），被打中时飞出碎骨 / 骨灰 / 布丝（`reality_fx.gd`）。**Lexicon 书的开合已通过**（D-068：封面亮相 → 符印画圆 → 立起透光 → 两边封面同时倒下 → 星座先星后线；开合都约 2.8 秒）。**正在做词汇数据化**（D-069 方向；D-070 第一批 38 个词 + 一个词有哪些属性 + 用多个标签匹配地区和事件，见 `docs/VOCABULARY_FIRST_BATCH.md`；D-071 词典流水线已跑通，38 个词条草稿在 `data/words/entries/`，等用户抽查）。
+墓园入口这个房间基本成形，交给用户亲手调：25 + 9 件正式物件都是可拖的积木（入口 9 件 D-060，**用户定为以后素材的质量标准**），地面可刷四层 + 20 件贴花积木，入口的全部物件已放进场景 `Props` 让用户自己增删挪（D-062）。**v3 墓园的战斗已经“能看”了**：场景内战斗（D-063）、第 3 档精致度的单词栏 + 暖色界面 + 9 个词类符号（D-067）、主角施法 / 受击、骷髅 BONE CUT（v1，D-066）/ 抖落骨灰都已接上，出口换成了美术组的 9 个出口符号（D-065），被打中时飞出碎骨 / 骨灰 / 布丝（`reality_fx.gd`）。**Lexicon 书的开合已通过**（D-068：封面亮相 → 符印画圆 → 立起透光 → 两边封面同时倒下 → 星座先星后线；开合都约 2.8 秒）。**正在做词汇数据化**（D-069 方向；D-070 第一批 38 个词 + 一个词有哪些属性 + 用多个标签匹配地区和事件，见 `docs/VOCABULARY_FIRST_BATCH.md`；D-071 词典流水线已跑通，42 个词条草稿在 `data/words/entries/`，等用户抽查）。
 
 ### 新的正式 Broken Graveyard（分支 `feature/broken-graveyard-v3`）
 - `scenes/world/broken_graveyard_v3.tscn` + `scripts/world/v3/`：v3 画面层 + 0.9 的规则接线（照搬 `scripts/world/broken_graveyard.gd`）。走动 → 原地开战（不黑屏）→ 骨堆 → 掉落 → 出口选路 → 换房间（快速淡黑）→ 换区域（慢淡黑 + 发光区域名）。截图模式 `-- --capture=<目录>` 自动打完一整圈。
@@ -84,7 +84,7 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 
 ## 接下来可以做的事（按建议顺序）
 
-1. **词汇数据化（2026-10-29 进行中）**：D-069 方向（世界说了算；学习模式 / 沉浸模式）、D-070 词条属性 + 多标签、**D-071 原材料 = ECDICT + Open English WordNet，做我们自己的词库**。流水线见 [docs/VOCABULARY_PIPELINE.md](docs/VOCABULARY_PIPELINE.md)：`dict_sources/`（不提交）→ `scripts/tools/vocab/build_word_drafts.py`（`dictionary` 一半每次重生成，`senses` 一半不覆盖）→ AI 写草稿 → `check_words.py --html` 出词卡页 `docs/reference/word_cards_batch01.html` → 用户抽查改 `status` → `tests/word_data_smoke.gd`。**38 个词草稿已全部通过检查，等用户看词卡页**。reveal / anchor / seal / mend 的效果是【提案】。下一步：用户抽查 → 决定 bury / echo / toxic / stabilize 要不要加进名单 → 把三处写死的词（`scripts/run/cemetery_words.gd`、`scripts/combat/combat_content.gd`、`learning_schedule.gd` 的 FAMILIES）换成读词库。
+1. **词汇数据化（2026-10-29 进行中）**：D-069 方向（世界说了算；学习模式 / 沉浸模式）、D-070 词条属性 + 多标签、**D-071 原材料 = ECDICT + Open English WordNet，做我们自己的词库**。流水线见 [docs/VOCABULARY_PIPELINE.md](docs/VOCABULARY_PIPELINE.md)：`dict_sources/`（不提交）→ `scripts/tools/vocab/build_word_drafts.py`（`dictionary` 一半每次重生成，`senses` 一半不覆盖）→ AI 写草稿 → `check_words.py --html` 出词卡页 `docs/reference/word_cards_batch01.html` → 用户抽查改 `status` → `tests/word_data_smoke.gd`。**42 个词草稿（第一批 38 + 代码里原有的 bury / echo / toxic / stabilize）已全部通过检查，等用户看词卡页**；**每个词都必须有书页上的话**（用户定的）。词库面向游戏、不面向玩家：单词栏、敌人意图、物件旁的词、事件对白、Lexicon 书页、学习模式都从这里取（给用户讲解时照这个说）。reveal / anchor / seal / mend 的效果是【提案】。下一步：用户抽查 → 把三处写死的词（`scripts/run/cemetery_words.gd`、`scripts/combat/combat_content.gd`、`learning_schedule.gd` 的 FAMILIES）换成读词库。
 2. **等各组交付**（需求都已转发，交回后验收、接入）：
    - 角色组：战斗动画第 3 步**已完成**（碎骨通过；骨灰、布丝改亮后通过，`scripts/world/v3/reality_fx.gd` 放在词命中 / BONE CUT 命中 / 抖落骨灰第 2 帧）；
    - 角色组：Lexicon 翻页**第二轮返修**（需求 §7.1，含摊开书本身的修改；第一轮素材在工作区未提交）；

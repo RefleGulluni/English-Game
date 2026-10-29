@@ -9,9 +9,9 @@
     "SILENCE": "寂静",
     "GRIEF": "悲痛、哀悼",
     "BURIAL": "埋葬",
-
     "FORCE": "力量、打击",
     "HARM": "伤害",
+    "TOXIN": "毒",
     "BREAK": "打碎、破坏",
     "PARTS": "碎片、零件",
     "CONTROL": "控制",
@@ -25,14 +25,12 @@
     "STABLE": "稳定、固定",
     "SEAL": "封住",
     "BOUNDARY": "边界、内外",
-
     "WEAKEN": "削弱",
     "STRUCTURE": "结构",
     "GRADUAL": "渐进、一点一点",
     "COLLAPSE": "坍塌",
     "CONTINUITY": "延续、不肯离开",
     "FEAR": "恐惧",
-
     "PLACE": "地点",
     "OBJECT": "物件",
     "PASSAGE": "通道、出入",
@@ -54,6 +52,15 @@
     "TIME": "时间"
   },
   "regions": {
-    "cemetery": ["DEATH", "MEMORY", "HIDDEN", "DECAY", "REMAINS", "SILENCE", "GRIEF", "BURIAL"]
+    "cemetery": [
+      "DEATH",
+      "MEMORY",
+      "HIDDEN",
+      "DECAY",
+      "REMAINS",
+      "SILENCE",
+      "GRIEF",
+      "BURIAL"
+    ]
   }
 }

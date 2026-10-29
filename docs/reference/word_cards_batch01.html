@@ -15,7 +15,7 @@ header{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap} h2{font:600 20p
 details{margin-top:6px} summary{cursor:pointer;color:var(--dim);font-size:13px} ul,ol{padding-left:18px;margin:6px 0;font-size:13px}
 </style>
 <h1>第一批词条草稿</h1>
-<p class="intro">38 个词条。黄色标签 = 墓园喜欢的标签。中文、词典释义、考试标签、音标是词典自动填的；英文释义、标签、书页上的话、阶段、小考、效果是 Claude 写的草稿，等你抽查。点“在哪遇到…”看更多。</p>
+<p class="intro">42 个词条。黄色标签 = 墓园喜欢的标签。中文、词典释义、考试标签、音标是词典自动填的；英文释义、标签、书页上的话、阶段、小考、效果是 Claude 写的草稿，等你抽查。点“在哪遇到…”看更多。</p>
 <div class="filters"><button class="on" data-f="all">全部</button><button data-f="ability">能力词</button><button data-f="enemy">敌人词</button><button data-f="thing">墓园里的东西</button><button data-f="mood">气氛词</button></div>
 <main><article data-role="ability">
 <header><h2>strike</h2><span class="pron">/stɹaɪk/</span><span class="role">ability · verb</span></header>
@@ -137,6 +137,30 @@ details{margin-top:6px} summary{cursor:pointer;color:var(--dim);font-size:13px} 
 <p class="small">认出来：看裹尸布上的缝线，选出 mend 的意思<br>用对：你身上有 WITHERED，从 mend / strike / bind 里选</p>
 <p class="small">易混：mind（形近），restore（近义，范围更大）</p>
 <p class="small">近义 repair, fix, bushel, doctor；一家人 mender, mending</p></details>
+</article><article data-role="ability">
+<header><h2>stabilize</h2><span class="pron">/&#x27;steibilaiz/</span><span class="role">ability · verb</span></header>
+<p class="sense">to make something steady so it stops changing</p>
+<p class="zh">使稳定；使稳固<span class="small">　词典：vt. 使安定, 使稳固 / vi. 稳定, 安定</span></p>
+<p class="line">“The cemetery is never still. The only steady thing in it is what you decide to hold.”</p>
+<div class="tags"><span class="tag">STABLE 稳定、固定</span><span class="tag">PROTECT 保护</span></div>
+<p class="small">墓园重合：cemetery 0　考试：六级 托福 雅思　draft</p><p class="eff">protection · {&quot;type&quot;: &quot;reduce_corruption&quot;, &quot;target&quot;: &quot;dominant&quot;, &quot;amount&quot;: 8, &quot;cost&quot;: 1}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>敌人意图：骷髅的 ERODE（stabilize 是它的克制词）</li><li>事件：扶住快倒的墓碑</li></ul><ol><li><b>ENCOUNTERED</b> st_b_l_ze，字母在轻轻晃</li><li><b>RECOGNIZED</b> “让晃动的东西稳下来”</li><li><b>UNDERSTOOD</b> 压下你身上最重的那一种侵蚀 8 点</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看守墓人用木棍撑住歪掉的墓碑，选出 stabilize 的意思<br>用对：敌人要 ERODE 你，从 stabilize / strike / scatter 里选</p>
+<p class="small">易混：anchor（近义：anchor 是定住位置，stabilize 是让状态不再变），stable（同一家人，形容词）</p>
+<p class="small">近义 stabilise；反义 destabilize；一家人 stabilization, stabilizer</p></details>
+</article><article data-role="ability">
+<header><h2>toxic</h2><span class="pron">/ˈtɒk.sɪk/</span><span class="role">ability · adjective</span></header>
+<p class="sense">harmful because it contains poison</p>
+<p class="zh">有毒的<span class="small">　词典：a. 有毒的, 中毒的 / [医] 中毒的, 毒物的</span></p>
+<p class="line">“Nothing grows near the old well. The water remembers what was poured into it.”</p>
+<div class="tags"><span class="tag">TOXIN 毒</span><span class="tag">HARM 伤害</span><span class="tag">GRADUAL 渐进、一点一点</span></div>
+<p class="small">墓园重合：cemetery 0　考试：六级 考研 托福 雅思 GRE　draft</p><p class="eff">toxicity · {&quot;type&quot;: &quot;poison&quot;, &quot;turns&quot;: 3, &quot;damage_per_turn&quot;: 3, &quot;bypass&quot;: [&quot;structure&quot;, &quot;armor&quot;], &quot;refresh_not_stack&quot;: true, &quot;cost&quot;: 1}</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>物件：墓边颜色发怪的积水</li><li>敌人意图：TOXIC LEAK（有毒的东西漏出来）</li></ul><ol><li><b>ENCOUNTERED</b> t_x_c，字母边上冒着绿气</li><li><b>RECOGNIZED</b> “有毒的”</li><li><b>UNDERSTOOD</b> 中毒 3 回合：每回合 -3 生命，绕过结构和护甲；再用只会刷新、不会叠加</li><li><b>USABLE</b> 可以出手</li></ol>
+<p class="small">认出来：看枯掉的草围着一滩积水，选出 toxic 的意思<br>用对：敌人护甲很厚，从 toxic / strike / shatter 里选能绕过护甲的词</p>
+<p class="small">易混：toxin（同一家人，名词“毒素”），tonic（形近，意思几乎相反）</p>
+<p class="small">反义 nontoxic；一家人 toxin, toxicity</p></details>
 </article><article data-role="enemy">
 <header><h2>erode</h2><span class="pron">/ɪˈɹəʊd/</span><span class="role">enemy · verb</span></header>
 <p class="sense">to wear something away slowly</p>
@@ -413,6 +437,18 @@ details{margin-top:6px} summary{cursor:pointer;color:var(--dim);font-size:13px} 
 <p class="small">认出来：从 3 张图里选出 bell<br>用对：“Strike the ___ three times.” 填空</p>
 <p class="small">易混：ball（形近），belly（形近）</p>
 <p class="small"></p></details>
+</article><article data-role="thing">
+<header><h2>bury</h2><span class="pron">/&#x27;beri/</span><span class="role">thing · verb</span></header>
+<p class="sense">to put a dead body in the ground and cover it</p>
+<p class="zh">埋葬；掩埋<span class="small">　词典：vt. 埋葬, 埋藏</span></p>
+<p class="line">“The caretaker buries the dead at dawn, so that no one has to watch.”</p>
+<div class="tags"><span class="tag hit">BURIAL 埋葬</span><span class="tag hit">DEATH 死亡</span><span class="tag hit">HIDDEN 隐藏、看不见</span></div>
+<p class="small">墓园重合：cemetery 3　考试：高考 四级 考研　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>事件：守墓人给棺材盖土</li><li>物件：新翻过土的坟</li></ul><ol><li><b>ENCOUNTERED</b> 新土上浮出 b_ry</li><li><b>RECOGNIZED</b> “埋到土里”</li><li><b>UNDERSTOOD</b> 能读懂 buried / burial；知道 bury 也能说“把回忆埋起来”</li><li><b>USABLE</b> 对白里能用它回答</li></ol>
+<p class="small">认出来：看守墓人往棺材上盖土，选出 bury 的意思<br>用对：“They ___ the coffin beneath the earth.” 填空</p>
+<p class="small">易混：berry（同音），burial（同一家人，名词），marry（形近的拼写规律：buried / married）</p>
+<p class="small">近义 entomb, inhume, inter, lay to rest；一家人 burial</p></details>
 </article><article data-role="mood">
 <header><h2>grief</h2><span class="pron">/ɡɹiːf/</span><span class="role">mood · noun</span></header>
 <p class="sense">deep sadness, especially after someone dies</p>
@@ -473,6 +509,18 @@ details{margin-top:6px} summary{cursor:pointer;color:var(--dim);font-size:13px} 
 <p class="small">认出来：看骨堆，选出 remains 的意思<br>用对：remain / remains 填空，分清动词和名词</p>
 <p class="small">易混：remain（同形的动词，“留下”），reminds（形近）</p>
 <p class="small">近义 cadaver, corpse, stiff, clay</p></details>
+</article><article data-role="mood">
+<header><h2>echo</h2><span class="pron">/ˈɛkəʊ/</span><span class="role">mood · noun</span></header>
+<p class="sense">a sound you hear again when it bounces back from a wall</p>
+<p class="zh">回声；回音<span class="small">　词典：n. 回声, 回音, 回波 / vi. 发回声, 随声附和</span></p>
+<p class="line">“Call a name in the chapel and an echo answers. It is never quite your voice.”</p>
+<div class="tags"><span class="tag">SOUND 声音</span><span class="tag hit">MEMORY 记忆</span><span class="tag">CONTINUITY 延续、不肯离开</span><span class="tag hit">SILENCE 寂静</span></div>
+<p class="small">墓园重合：cemetery 2　考试：四级 六级 考研 托福 雅思　draft</p>
+<details><summary>在哪遇到 · 四个阶段 · 小考 · 易混</summary>
+<ul><li>事件：钟声从石墙传回来</li><li>战斗：Echo 复制一个学会的词（用一次就消失）</li></ul><ol><li><b>ENCOUNTERED</b> 对白里这个词是糊的</li><li><b>RECOGNIZED</b> “被墙弹回来的声音”</li><li><b>UNDERSTOOD</b> 能读懂 echo 的比喻用法：一件事的回响</li><li><b>USABLE</b> 对白里能用</li></ol>
+<p class="small">认出来：听钟声从墙上传回来，选出 echo 的意思<br>用对：“An ___ answers the bell from the walls.” 填空</p>
+<p class="small">易混：linger（近义：linger 是还在，echo 是又回来），ego（形近）</p>
+<p class="small">近义 reverberation, sound reflection, replication</p></details>
 </article></main>
 <script>
 document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{

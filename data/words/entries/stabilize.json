@@ -1,0 +1,154 @@
+{
+  "lemma": "stabilize",
+  "dictionary": {
+    "phonetic": {
+      "uk": "'steibilaiz",
+      "us": null,
+      "note": "ECDICT 旧式音标"
+    },
+    "zh": [
+      "vt. 使安定, 使稳固",
+      "vi. 稳定, 安定"
+    ],
+    "exam": [
+      "cet6",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 12696,
+      "modern_rank": 5723,
+      "collins_stars": 2,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past_participle": "stabilized",
+      "ing": "stabilizing",
+      "past": "stabilized",
+      "third_person": "stabilizes"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-00271625-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "make stable and keep from fluctuating or put into an equilibrium",
+        "examples": [
+          "The drug stabilized her blood pressure",
+          "stabilize prices"
+        ],
+        "synonyms": [
+          "stabilise"
+        ],
+        "antonyms": [
+          "destabilize"
+        ],
+        "family": [
+          "stabilization",
+          "stabilizer"
+        ],
+        "broader": [
+          "change",
+          "alter"
+        ]
+      },
+      {
+        "synset": "oewn-01222557-v",
+        "pos": "verb",
+        "category": "verb.contact",
+        "definition": "support or hold steady and make steadfast, with or as if with a brace",
+        "examples": [
+          "brace your elbows while working on the potter's wheel"
+        ],
+        "synonyms": [
+          "brace",
+          "steady",
+          "stabilise"
+        ],
+        "antonyms": [],
+        "family": [
+          "stabilization"
+        ],
+        "broader": [
+          "strengthen",
+          "beef up"
+        ]
+      },
+      {
+        "synset": "oewn-00272745-v",
+        "pos": "verb",
+        "category": "verb.change",
+        "definition": "become stable or more stable",
+        "examples": [
+          "The economy stabilized"
+        ],
+        "synonyms": [
+          "stabilise"
+        ],
+        "antonyms": [
+          "destabilize",
+          "destabilise"
+        ],
+        "family": [],
+        "broader": [
+          "change"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "stabilize#make_steady",
+      "pos": "verb",
+      "wordnet": "oewn-00271625-v",
+      "sense": "to make something steady so it stops changing",
+      "zh": "使稳定；使稳固",
+      "role": "ability",
+      "tags": [
+        "STABLE",
+        "PROTECT"
+      ],
+      "appears": [
+        "敌人意图：骷髅的 ERODE（stabilize 是它的克制词）",
+        "事件：扶住快倒的墓碑"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "st_b_l_ze，字母在轻轻晃",
+        "RECOGNIZED": "“让晃动的东西稳下来”",
+        "UNDERSTOOD": "压下你身上最重的那一种侵蚀 8 点",
+        "USABLE": "可以出手"
+      },
+      "challenge": {
+        "recognize": "看守墓人用木棍撑住歪掉的墓碑，选出 stabilize 的意思",
+        "produce": "敌人要 ERODE 你，从 stabilize / strike / scatter 里选"
+      },
+      "confusable": [
+        "anchor（近义：anchor 是定住位置，stabilize 是让状态不再变）",
+        "stable（同一家人，形容词）"
+      ],
+      "relations": {
+        "synonyms": [
+          "stabilise"
+        ],
+        "antonyms": [
+          "destabilize"
+        ],
+        "family": [
+          "stabilization",
+          "stabilizer"
+        ]
+      },
+      "constellation": "STABLE",
+      "page_line": "The cemetery is never still. The only steady thing in it is what you decide to hold.",
+      "sigil": "protection",
+      "effect": {
+        "type": "reduce_corruption",
+        "target": "dominant",
+        "amount": 8,
+        "cost": 1
+      },
+      "status": "draft"
+    }
+  ]
+}

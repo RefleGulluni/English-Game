@@ -1,5 +1,5 @@
 # 要做词条的词：原形  用途  词性（v / n / a / r，WordNet 的写法）
-# 第一批 43 个（D-070，docs/VOCABULARY_FIRST_BATCH.md）。加词就加一行，再跑 scripts/tools/vocab/build_word_drafts.py
+# 第一批 38 个 + 现有代码里的 4 个（D-070 / D-071，docs/VOCABULARY_FIRST_BATCH.md）。加词就加一行，再跑 scripts/tools/vocab/build_word_drafts.py
 
 # 能力词
 strike   ability v
@@ -12,6 +12,8 @@ reveal   ability v
 anchor   ability v
 seal     ability v
 mend     ability v
+stabilize ability v
+toxic    ability a
 
 # 敌人词
 erode      enemy v
@@ -40,9 +42,13 @@ raven    thing n
 moss     thing n
 bell     thing n
 
+# 墓园里的动作
+bury     thing v
+
 # 气氛词
 grief    mood n
 silence  mood n
 memory   mood n
 hollow   mood a
 remains  mood n
+echo     mood n

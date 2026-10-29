@@ -1,0 +1,219 @@
+{
+  "lemma": "echo",
+  "dictionary": {
+    "phonetic": {
+      "uk": "ˈɛkəʊ",
+      "us": "ˈɛkoʊ"
+    },
+    "zh": [
+      "n. 回声, 回音, 回波",
+      "vi. 发回声, 随声附和",
+      "vt. 摹仿, 重复, 反射",
+      "[计] 回显; DOS批处理命令:控制MS-DOS命令是否在屏幕上显示"
+    ],
+    "exam": [
+      "cet4",
+      "cet6",
+      "ky",
+      "toefl",
+      "ielts"
+    ],
+    "frequency": {
+      "bnc_rank": 3517,
+      "modern_rank": 3424,
+      "collins_stars": 3,
+      "oxford_3000": false
+    },
+    "forms": {
+      "past": "echoed",
+      "plural": "echoes",
+      "past_participle": "echoed",
+      "ing": "echoing",
+      "third_person": "echoes"
+    },
+    "wordnet": [
+      {
+        "synset": "oewn-05017985-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "the repetition of a sound resulting from reflection of the sound waves",
+        "examples": [
+          "she could hear echoes of her own footsteps"
+        ],
+        "synonyms": [
+          "reverberation",
+          "sound reflection",
+          "replication"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "reflection",
+          "reflexion"
+        ]
+      },
+      {
+        "synset": "oewn-07214950-n",
+        "pos": "noun",
+        "category": "noun.communication",
+        "definition": "a reply that repeats what has just been said",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "reply",
+          "response"
+        ]
+      },
+      {
+        "synset": "oewn-05018346-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "a reflected television or radio or radar beam",
+        "examples": [],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "reflection",
+          "reflexion"
+        ]
+      },
+      {
+        "synset": "oewn-04753847-n",
+        "pos": "noun",
+        "category": "noun.attribute",
+        "definition": "a close parallel of a feeling, idea, style, etc.",
+        "examples": [
+          "his contention contains more than an echo of Rousseau",
+          "Napoleon III was an echo of the mighty Emperor but an infinitely better man"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "analogue",
+          "analog"
+        ]
+      },
+      {
+        "synset": "oewn-01023061-n",
+        "pos": "noun",
+        "category": "noun.act",
+        "definition": "an imitation or repetition",
+        "examples": [
+          "the flower arrangement was created as an echo of a client's still life"
+        ],
+        "synonyms": [],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "imitation"
+        ]
+      },
+      {
+        "synset": "oewn-00959711-v",
+        "pos": "verb",
+        "category": "verb.communication",
+        "definition": "to say again or imitate",
+        "examples": [
+          "followers echoing the cries of their leaders"
+        ],
+        "synonyms": [
+          "repeat"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "utter",
+          "emit"
+        ]
+      },
+      {
+        "synset": "oewn-02188233-v",
+        "pos": "verb",
+        "category": "verb.perception",
+        "definition": "ring or echo with sound",
+        "examples": [
+          "the hall resounded with laughter"
+        ],
+        "synonyms": [
+          "resound",
+          "ring",
+          "reverberate"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "sound",
+          "go"
+        ]
+      },
+      {
+        "synset": "oewn-02681269-v",
+        "pos": "verb",
+        "category": "verb.stative",
+        "definition": "bring to mind",
+        "examples": [
+          "His words echoed John F. Kennedy"
+        ],
+        "synonyms": [
+          "recall"
+        ],
+        "antonyms": [],
+        "family": [],
+        "broader": [
+          "resemble"
+        ]
+      }
+    ],
+    "missing": []
+  },
+  "senses": [
+    {
+      "id": "echo#reflected_sound",
+      "pos": "noun",
+      "wordnet": "oewn-05017985-n",
+      "sense": "a sound you hear again when it bounces back from a wall",
+      "zh": "回声；回音",
+      "role": "mood",
+      "tags": [
+        "SOUND",
+        "MEMORY",
+        "CONTINUITY",
+        "SILENCE"
+      ],
+      "appears": [
+        "事件：钟声从石墙传回来",
+        "战斗：Echo 复制一个学会的词（用一次就消失）"
+      ],
+      "stage_lines": {
+        "ENCOUNTERED": "对白里这个词是糊的",
+        "RECOGNIZED": "“被墙弹回来的声音”",
+        "UNDERSTOOD": "能读懂 echo 的比喻用法：一件事的回响",
+        "USABLE": "对白里能用"
+      },
+      "challenge": {
+        "recognize": "听钟声从墙上传回来，选出 echo 的意思",
+        "produce": "“An ___ answers the bell from the walls.” 填空"
+      },
+      "confusable": [
+        "linger（近义：linger 是还在，echo 是又回来）",
+        "ego（形近）"
+      ],
+      "relations": {
+        "synonyms": [
+          "reverberation",
+          "sound reflection",
+          "replication"
+        ],
+        "antonyms": [],
+        "family": []
+      },
+      "constellation": "SOUND",
+      "page_line": "Call a name in the chapel and an echo answers. It is never quite your voice.",
+      "status": "draft"
+    }
+  ]
+}
