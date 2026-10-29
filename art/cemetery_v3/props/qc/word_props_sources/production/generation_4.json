@@ -1,0 +1,17 @@
+[
+  {
+    "name": "bell_frame_01_regen",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-e53ee8f7-559a-4f90-90c1-1b68261ca390.png",
+    "prompt": "Redraw SAME bellframe as native76x136 game sprite displayed at8x. Only about130 square cells from roof to wooden foot; ONLY76 from left post to right. Make EACH pixelcell approximately10sourcepixels wide, double current cell size. 2 posts of graybrown old wood with real cracks, crossbeam, tiny cap, bronze bell, frayed rope. Richly shaded individual pixels with muted palette, upperleft light, no flat icon styling. This should fit next to a96pxhero, NOT be250pixelstall! Graybrown dirt below feet, pressed grass darkgreenbrown. Magenta #FF00FF background, no cast shadow, letters, cyan, glow. Every square flat, no smaller detailed cells inside."
+  },
+  {
+    "name": "old_well_01_regen",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-e9e4feb4-6e5d-42be-9827-cc5c29b7f28e.png",
+    "prompt": "Redraw SAME well as a small native80x110 game sprite displayed at10x. Only100 square cells from wooden top to ground, 68 cells across stone ring. Each giant pixel square approximately11sourcepixels, aboutdouble current pixelsize. 3/4 overhead. Keep leaning woodframe, knotted rope and old bucket infront, chipped weathered graysandstone same material, dark OILY nearlyblack brownolive water without glow. NO plants at all on well or graybrown dead-earth ring. NO tiny grass. Oil is dull and subtle not greenpool. Rich individually shaded native pixels, not flat cartoonicon. Uniform magenta #FF00FF background, no shadow, letters, cyan. Strong coarse grid, no microtexture inside squares."
+  },
+  {
+    "name": "fresh_grave_mound_01_regen",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-f8be0f69-0bab-4f31-9e63-973d00ecce98.png",
+    "prompt": "Redraw SAME mound/shovel as VERY SMALL native80x64 game sprite displayed huge about16x. Mound ONLY65 logicalpixels long. Visible shovel ONLY39 logicalpixelstall. Each giant square pixel around16to20sourcepixels across, about3x current cellsize. Fewer earth clods each containing2to4logicalpixels, damp dark graybrown earth (55,54,46), lighter tamp marks and wet tiny highlights. No orange earth. Shovel worn woodDgrip andrust iron spade partly in soil, angled a little. Readable silhouette, mature gamepixelart richly shaded, not flat cartoon. Magenta #FF00FF background. No shadow, letters, cyan, glow. NO smaller pixels inside cells, ONLY80 squares wide entire mound."
+  }
+]

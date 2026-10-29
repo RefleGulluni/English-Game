@@ -837,6 +837,189 @@
       "qa": "qc/entry_props_QA.md",
       "status": "accepted_D-060",
       "flat_base_only": false
+    },
+    "raven_ground_01": {
+      "prop": "raven_ground_01.png",
+      "base": "raven_ground_01_base.png",
+      "canvas": [
+        64,
+        48
+      ],
+      "origin": [
+        32,
+        48
+      ],
+      "visible_height_px": 28,
+      "family": "raven",
+      "vocabulary": [
+        "raven"
+      ],
+      "source_record": "qc/word_props_sources/raven_ground_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "tombstone_raven_01": {
+      "prop": "tombstone_raven_01.png",
+      "base": "tombstone_raven_01_base.png",
+      "canvas": [
+        96,
+        160
+      ],
+      "origin": [
+        48,
+        160
+      ],
+      "visible_height_px": 105,
+      "family": "stone_and_raven",
+      "vocabulary": [
+        "raven"
+      ],
+      "source_record": "qc/word_props_sources/tombstone_raven_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "tombstone_mossy_01": {
+      "prop": "tombstone_mossy_01.png",
+      "base": "tombstone_mossy_01_base.png",
+      "canvas": [
+        96,
+        96
+      ],
+      "origin": [
+        48,
+        96
+      ],
+      "visible_height_px": 51,
+      "family": "stone_moss",
+      "vocabulary": [
+        "moss",
+        "conceal",
+        "epitaph"
+      ],
+      "source_record": "qc/word_props_sources/tombstone_mossy_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "grave_bell_01": {
+      "prop": "grave_bell_01.png",
+      "base": "grave_bell_01_base.png",
+      "canvas": [
+        64,
+        80
+      ],
+      "origin": [
+        32,
+        80
+      ],
+      "visible_height_px": 40,
+      "family": "iron_bronze",
+      "vocabulary": [
+        "bell",
+        "bury",
+        "linger"
+      ],
+      "source_record": "qc/word_props_sources/grave_bell_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "bell_frame_01": {
+      "prop": "bell_frame_01.png",
+      "base": "bell_frame_01_base.png",
+      "canvas": [
+        160,
+        160
+      ],
+      "origin": [
+        80,
+        160
+      ],
+      "visible_height_px": 115,
+      "family": "wood_bronze",
+      "vocabulary": [
+        "bell",
+        "echo",
+        "silence"
+      ],
+      "source_record": "qc/word_props_sources/bell_frame_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "crypt_sealed_01": {
+      "prop": "crypt_sealed_01.png",
+      "base": "crypt_sealed_01_base.png",
+      "canvas": [
+        224,
+        176
+      ],
+      "origin": [
+        112,
+        176
+      ],
+      "visible_height_px": 129,
+      "family": "B_ashlar_iron",
+      "vocabulary": [
+        "seal",
+        "bind"
+      ],
+      "source_record": "qc/word_props_sources/crypt_sealed_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "old_well_01": {
+      "prop": "old_well_01.png",
+      "base": "old_well_01_base.png",
+      "canvas": [
+        128,
+        144
+      ],
+      "origin": [
+        64,
+        144
+      ],
+      "visible_height_px": 105,
+      "family": "stone_wood",
+      "vocabulary": [
+        "toxic"
+      ],
+      "source_record": "qc/word_props_sources/old_well_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "fresh_grave_mound_01": {
+      "prop": "fresh_grave_mound_01.png",
+      "base": "fresh_grave_mound_01_base.png",
+      "canvas": [
+        128,
+        96
+      ],
+      "origin": [
+        64,
+        96
+      ],
+      "visible_height_px": 43,
+      "family": "wet_earth_shovel",
+      "vocabulary": [
+        "bury"
+      ],
+      "source_record": "qc/word_props_sources/fresh_grave_mound_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
     }
   },
   "wall_families": {
@@ -982,5 +1165,23 @@
     "ground": "art/cemetery_v3/ground/base/ground_base_01.png",
     "qa": "qc/entry_props_QA.md",
     "status": "pending_user_review"
+  },
+  "cemetery_word_props_batch1": {
+    "items": [
+      "raven_ground_01",
+      "tombstone_raven_01",
+      "tombstone_mossy_01",
+      "grave_bell_01",
+      "bell_frame_01",
+      "crypt_sealed_01",
+      "old_well_01",
+      "fresh_grave_mound_01"
+    ],
+    "count": 8,
+    "ground": "art/cemetery_v3/ground/base/ground_base_01.png",
+    "qa": "qc/word_props_QA.md",
+    "status": "pending_user_review",
+    "production": "built-in image_gen single props / painted-cell center restoration / native cleanup and integer assembly",
+    "no_whole_image_resize": true
   }
 }

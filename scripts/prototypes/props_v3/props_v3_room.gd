@@ -4,6 +4,7 @@ extends Node
 ## 按键：WASD 走路 · T 开关游戏整体色调 · F 全屏
 ## 截图：Godot --path . res://scenes/prototypes/props_v3/props_v3_room.tscn -- --capture=<目录>
 ## 换地面试样：-- --plate=<PNG 路径>（960×540）
+## 词汇物件（D-074）：-- --words 换成第三批 8 件，旁边摆几件已通过的物件对照
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const PROPS := "res://art/cemetery_v3/props/"
@@ -56,6 +57,26 @@ const LAYOUT := {
 	],
 }
 
+## 第三批：词汇物件 8 件（docs/CEMETERY_WORD_PROPS_REQUEST.md），和喷泉、枯树、墓碑摆在一起看是不是同一个世界
+const WORD_PROPS_LAYOUT := {
+	"id": "word_props", "seed": 11, "dead_grass": 8, "prop_dir": PROPS,
+	"props": [
+		["crypt_sealed_01", Vector2(170, 230), null],
+		["bell_frame_01", Vector2(400, 215), null],
+		["dead_tree_02", Vector2(560, 200), null],
+		["old_well_01", Vector2(700, 260), null],
+		["tombstone_raven_01", Vector2(880, 250), null],
+		["tombstone_upright_02", Vector2(60, 380), null],
+		["tombstone_mossy_01", Vector2(130, 400), null],
+		["grave_bell_01", Vector2(250, 405), false],
+		["fresh_grave_mound_01", Vector2(330, 470), false],
+		["raven_ground_01", Vector2(580, 455), false],
+		["tombstone_pointed_01", Vector2(760, 430), null],
+		["open_grave_01", Vector2(860, 500), null],
+		["grave_lantern_01", Vector2(700, 515), false],
+	],
+}
+
 var _viewport: SubViewport
 var _room: CemeteryRoom
 var _label: Label
@@ -77,7 +98,7 @@ func _ready() -> void:
 	_viewport.snap_2d_transforms_to_pixel = true
 	_viewport.snap_2d_vertices_to_pixel = true
 	add_child(_viewport)
-	var layout := LAYOUT.duplicate()
+	var layout := (WORD_PROPS_LAYOUT if "--words" in OS.get_cmdline_user_args() else LAYOUT).duplicate()
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--plate="):
 			layout.plate_file = arg.get_slice("=", 1)

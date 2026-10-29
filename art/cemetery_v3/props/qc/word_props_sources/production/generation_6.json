@@ -1,0 +1,7 @@
+[
+  {
+    "name": "raven_final",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c192a9cb-bc20-4e1d-a623-4da28092063b.png",
+    "prompt": "Edit same raven design into a TINY native24x18 pixel sprite then display it massively enlarged. Important: use a much coarser grid: approximately38to45 OUTPUT pixels per single logical square. Current bird has~44x33cells; redraw into FEWER~30x23cells maximum. Body horizontal length at most32logicalcells. All tiny feather details grouped into4or5large clusters, EACH cell flat color. Keep upperleft highlights dull grayviolet, body nearblack NOT pureblack, shaggythroat, heavy shortbeak and wedge tail. Eye one dim graypixel, NOT brightwhite. Two feet grounded on a fewgraybrownsoilpixels. Uniform #FF00FF magenta. No shadow,text,cyan,glow. Only ONE standing bird. Readable small atmospheric raven sprite. Need bigger pixels, not finer pixels."
+  }
+]

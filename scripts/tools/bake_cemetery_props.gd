@@ -23,7 +23,7 @@ const FLAT := ["grave_slab_01", "iron_gate_leaf_fallen_01", "fallen_lamp_post_01
 ## corner): an ellipse inside this box, relative to the foot, measured from the pool's widest rows.
 const POOLS := {"fountain_dry_01": Rect2(-92, -92, 186, 84)}
 ## Too small to block the way; the shape is there but switched off.
-const WALK_OVER := ["rubble_pile_01", "grave_vase_01", "candles_01", "grave_lantern_01"]
+const WALK_OVER := ["rubble_pile_01", "grave_vase_01", "candles_01", "grave_lantern_01", "raven_ground_01", "grave_bell_01", "fresh_grave_mound_01"]
 
 
 func _init() -> void:

@@ -1,0 +1,5 @@
+{
+  "name": "raven_ground_01_regen",
+  "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-2293aa71-75d0-4c9e-ac0c-bb9d90430a9e.png",
+  "prompt": "Redraw this SAME raven as an extremely low-resolution 32x24 game sprite, enlarged to huge hard square pixels. ONLY 32 square pixels from tail to beak, ONLY 24 from head to toes. At output size each pixel should be about35 pixels across, NOT 10 or14. It must look like a SMALL pixel-game raven, not a large illustration. Keep shaggy throat, heavy beak, wedge tail, two feet, gray violet feather highlights with near-black shadows; reduce feather groups to a handful of tiny readable clusters. Flat uniform colors inside EACH giant square. No subpixel details. Solid #FF00FF background. Single raven with few graybrown soil pixels under feet. No text, glow, cyan, or shadow. Main goal: reduce the NUMBER of pixels by about a factor of3 in each axis, by REDRAWING the image into much bigger logical blocks. Do not merely draw it smaller with fine pixels."
+}

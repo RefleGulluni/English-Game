@@ -87,9 +87,9 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 1. **词汇数据化（2026-10-29 进行中）**：D-069 方向（世界说了算；学习模式 / 沉浸模式）、D-070 词条属性 + 多标签、**D-071 原材料 = ECDICT + Open English WordNet，做我们自己的词库**。流水线见 [docs/VOCABULARY_PIPELINE.md](docs/VOCABULARY_PIPELINE.md)：`dict_sources/`（不提交）→ `scripts/tools/vocab/build_word_drafts.py`（`dictionary` 一半每次重生成，`senses` 一半不覆盖）→ AI 写草稿 → `check_words.py --html` 出词卡页 `docs/reference/word_cards_batch01.html` → 用户抽查改 `status` → `tests/word_data_smoke.gd`。**42 个词草稿（第一批 38 + 代码里原有的 bury / echo / toxic / stabilize）已全部通过检查，等用户看词卡页**；**每个词都必须有书页上的话**（用户定的）。词库面向游戏、不面向玩家：单词栏、敌人意图、物件旁的词、事件对白、Lexicon 书页、学习模式都从这里取（给用户讲解时照这个说）。reveal / anchor / seal / mend 的效果是【提案】。**D-075 起始词**：开局一个词都不会，序章五站各学一个（火车站 OBSERVE / 裂开的通道 STABILIZE / Eleanor BIND / 锚点 ANCHOR / Redactor STRIKE），抹除时变空白、重生时按顺序写回；单词栏只放 USABLE 的能力词（序章做出来前开发版默认这 5 个已学会）。**词库已接入游戏**：`scripts/run/word_library.gd` 首次使用时读入内存；战斗的花费 / 释义 / 符号 / 数字（`CombatState.STRIKE_DAMAGE` 等 static var，`CombatContent.SKILLS` 由 `_BASE` + 词库合成）、学会后的释义（`cemetery_words.meaning`）、排程家族（第一个标签）都读词库，数字与原来一致。下一步：单词栏只放 USABLE 能力词、开局 5 个起始词（D-075，会改变战斗难度和测试，单独做）；0.8 学习界面的例句 / 填空以后换成词库的 `appears` / `challenge`；ERODE“学会后变修饰牌”在词库里怎么表示待定。用户还没抽查词卡页。
 2. **等各组交付**（需求都已转发，交回后验收、接入）：
    - 角色组：战斗动画第 3 步**已完成**（碎骨通过；骨灰、布丝改亮后通过，`scripts/world/v3/reality_fx.gd` 放在词命中 / BONE CUT 命中 / 抖落骨灰第 2 帧）；
-   - 角色组：**墓园词汇物件 8 件**（D-074，`docs/CEMETERY_WORD_PROPS_REQUEST.md`：渡鸦两种、苔藓盖名墓碑、坟头小铃、钟架、封死的墓室、老井、新坟 + 铁锹）；之后排 Veil Ghost 设计稿（等用户说）；
-   - 美术组：**雾中墓径厚苔藓地纹理** `moss_texture_01`（D-074，`docs/VEILED_WALK_MOSS_GROUND_REQUEST.md`）；交回后 Claude 照 `docs/GROUND_TERRAIN_METHOD.md` §6 做形状、接进刷路房间。“碎骨 + 翻土坟坑贴花”用户说**先不做**；
-   - **两份需求写好了，等用户转发**（不要默认已发出）。
+   - 角色组：**词汇物件返修 2 件**（D-076，需求 §5）：封死的墓室按主角比例放大（门 ≥ 100～110 px，整座约 180～200）、新坟换成深湿暖褐的隆起松土。通过的 6 件（渡鸦两种、苔藓墓碑、坟头小铃、钟架、老井）已提交并做成积木；试看：`props_v3_room.tscn -- --words`。返修交回后积木要用 `bake_cemetery_props.gd -- --force=<名字>` 重建（尺寸变了）。之后排 Veil Ghost 设计稿（等用户说）；
+   - 美术组：**苔藓地第二版**（D-076，需求 §3：平软、深浅斑块过渡、看不出单位）；第一版候选在工作区未提交。Claude 待做：地面着色器加大范围明暗起伏，藏住 224×128 的重复。“碎骨 + 翻土坟坑贴花”用户说**先不做**；
+   - **两份返修需求写好了，等用户转发**（不要默认已发出）。
 3. **Lexicon**：开合（D-068）、程序翻页（D-072）、三层结构四条规则（D-073）都已定；下一步正式界面第一版：星图总览 / 星座 / 单词页的样子（先出草图给用户看）。
 4. **入口房间**：用户可能还会继续调地面 / 物件 / 碰撞，调完检查再提交（上次 c3009b5）。
 5. 新墓园：接随机路线算法（**用户说等他说再接**）；出口符号的“未理解”版（`room_exit.gd` 的 `understood`）接到规则；第 2 房间、Veiled Walk 还是占位。

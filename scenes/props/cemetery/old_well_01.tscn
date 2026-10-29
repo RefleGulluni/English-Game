@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_ph7ml"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/old_well_01_base.png" id="2_bejk8"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/old_well_01.png" id="3_b0wxh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obcrq"]
+size = Vector2(48, 10)
+
+[node name="OldWell01" type="Node2D" unique_id=1978035654]
+script = ExtResource("1_ph7ml")
+ground_gap = 11
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1258768715]
+texture = ExtResource("2_bejk8")
+centered = false
+offset = Vector2(-64, -133)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1721190825]
+texture = ExtResource("3_b0wxh")
+centered = false
+offset = Vector2(-64, -133)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=710551729]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=2000297004]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_obcrq")

@@ -1,0 +1,58 @@
+{
+  "canvas": [
+    96,
+    160
+  ],
+  "origin": [
+    48,
+    160
+  ],
+  "parent": "tombstone_upright_01",
+  "parent_offset": [
+    0,
+    48
+  ],
+  "raven_source": "raven_ground_01",
+  "bird_offset": [
+    20,
+    42
+  ],
+  "perch_contact_cleanup": [
+    [
+      36,
+      70
+    ],
+    [
+      42,
+      68
+    ],
+    [
+      43,
+      68
+    ],
+    [
+      44,
+      68
+    ],
+    [
+      47,
+      68
+    ]
+  ],
+  "parent_pixels_preserved": true,
+  "prop_bbox": [
+    20,
+    42,
+    74,
+    147
+  ],
+  "base_bbox": [
+    9,
+    134,
+    86,
+    159
+  ],
+  "no_scale_rotation_mirror": true,
+  "visible_height": 105,
+  "combined_color_count": 103
+}

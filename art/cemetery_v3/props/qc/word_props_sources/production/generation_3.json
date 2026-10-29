@@ -1,0 +1,17 @@
+[
+  {
+    "name": "raven_ground_01_regen",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-2293aa71-75d0-4c9e-ac0c-bb9d90430a9e.png",
+    "prompt": "Redraw this SAME raven as an extremely low-resolution 32x24 game sprite, enlarged to huge hard square pixels. ONLY 32 square pixels from tail to beak, ONLY 24 from head to toes. At output size each pixel should be about35 pixels across, NOT 10 or14. It must look like a SMALL pixel-game raven, not a large illustration. Keep shaggy throat, heavy beak, wedge tail, two feet, gray violet feather highlights with near-black shadows; reduce feather groups to a handful of tiny readable clusters. Flat uniform colors inside EACH giant square. No subpixel details. Solid #FF00FF background. Single raven with few graybrown soil pixels under feet. No text, glow, cyan, or shadow. Main goal: reduce the NUMBER of pixels by about a factor of3 in each axis, by REDRAWING the image into much bigger logical blocks. Do not merely draw it smaller with fine pixels."
+  },
+  {
+    "name": "tombstone_mossy_01_regen",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-765956bd-0126-4094-bc08-9404fe02e10b.png",
+    "prompt": "Redraw SAME cemetery tombstone as a SMALL 40x64 native game sprite displayed enlarged16x with HUGE square flat pixel cells, about16to20 source pixels across. Not the current fine grid! Top to stone foot ONLY60 logical square cells. Preserve weathered muted sandstone identity, upper-left light, tiny irregular chips and rain stains. Crucial: thick low-saturation graygreen MOSS visibly covers HALF of the central incised inscription area, from lower half and left side, hiding the scars. NO readable letters. Native moss tufts only 2to4 cells each. A few clusters of pale lichen. Mud foot64logicalpixelswide, no orange grass. Solid #FF00FF. No outlines, no shadow, no cyan. ONLY60cells tall stone, not130. Redraw in half as many squares per axis."
+  },
+  {
+    "name": "grave_bell_01_regen",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-3b3c4c8b-8ea0-4402-a999-26a37ff781a5.png",
+    "prompt": "Redraw SAME burial safety bell as SMALL LOW-RES game sprite ONLY48 logical pixels tall from hook to ground; metal rod2pixelsthick, bell9pixelswide and10pixelshigh, thin rope1pixel. Display each square logical pixel huge, about20sourcepixels across. Fewer squares than current image. Keep old bronze bell clearly readable, rusty crooked pole, rope disappearing into a hole in compact graybrown dirt. Background solid #FF00FF. Dull aged metal and rubbed wood/tan rope tones, meaningful pixel highlights, upper-left light. Earth darkgraybrown and dark pressedgrass, no orange halo, no glow or cyan. This is a 40x56 tile sprite enlarged around20x, not an illustration. Every cell flat color, no smaller pixels inside."
+  }
+]

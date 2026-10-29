@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_a1nb0"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/bell_frame_01_base.png" id="2_mbasa"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/bell_frame_01.png" id="3_gq60f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws670"]
+size = Vector2(15, 10)
+
+[node name="BellFrame01" type="Node2D" unique_id=1159071004]
+script = ExtResource("1_a1nb0")
+ground_gap = 12
+
+[node name="Base" type="Sprite2D" parent="." unique_id=676453669]
+texture = ExtResource("2_mbasa")
+centered = false
+offset = Vector2(-80, -148)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=806928123]
+texture = ExtResource("3_gq60f")
+centered = false
+offset = Vector2(-80, -148)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1879233770]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=54941327]
+position = Vector2(40, -4)
+shape = SubResource("RectangleShape2D_ws670")
