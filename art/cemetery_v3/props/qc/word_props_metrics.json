@@ -216,46 +216,49 @@
   },
   "crypt_sealed_01": {
     "prop": {
-      "size": "224x176",
+      "size": "256x256",
       "alpha_ok": true,
       "colors": 48,
-      "change": 87,
+      "change": 89,
       "cyan": 0,
-      "lowest": 163,
-      "png_sha256": "d456c9d580ac45585aed3ae511891f950e3469b9899c13121db11530b6d19ba0",
+      "lowest": 236,
+      "png_sha256": "3221e3c3a82f835ebfe00a5d845cfe86adf30987a7034181be111dd7633d3cbc",
+      "rgba_sha256": "106012b8aaa8e664091720d90d760cd38231edaa7c7fc4082a6277421498103a",
       "bbox": [
-        38,
-        35,
-        187,
-        164
+        41,
+        46,
+        217,
+        237
       ]
     },
     "base": {
-      "size": "224x176",
+      "size": "256x256",
       "alpha_ok": true,
-      "colors": 6,
-      "change": 60,
+      "colors": 47,
+      "change": 86,
       "cyan": 0,
-      "lowest": 171,
-      "png_sha256": "7d5e0cdefd29a18688db7792fdbf79bb26480b1547c51909f8dd315339c546a2",
+      "lowest": 251,
+      "png_sha256": "162aa51c0a370cdba90953e0f0d3862781c143f3bb21eec8e45e693b12fbfc60",
+      "rgba_sha256": "eb8368f9f897edff155a88bacfc0c8d584fe85a486baa565be573143dcc78e58",
       "bbox": [
-        23,
-        128,
-        201,
-        172
+        25,
+        208,
+        231,
+        252
       ]
     },
     "canvas": [
-      224,
-      176
+      256,
+      256
     ],
     "origin": [
-      112,
-      176
+      128,
+      256
     ],
-    "visible_height_px": 129,
-    "source": "crypt_sealed_01_regen",
-    "no_scale_rotation_mirror": true
+    "visible_height_px": 191,
+    "source": "qc/word_props_revision_sources/crypt2",
+    "no_scale_rotation_mirror": true,
+    "revision": 2
   },
   "old_well_01": {
     "prop": {
@@ -309,6 +312,7 @@
       "cyan": 0,
       "lowest": 82,
       "png_sha256": "54a2a8361ff030df0fd843b2e0bb412552f9a8e4e6d1fb57639cefb9c0911b83",
+      "rgba_sha256": "c537bd2f05e52a37933a80bd5324b1b944ae8a8829b987428566b3d99fda506e",
       "bbox": [
         76,
         40,
@@ -319,15 +323,16 @@
     "base": {
       "size": "128x96",
       "alpha_ok": true,
-      "colors": 37,
+      "colors": 40,
       "change": 88,
       "cyan": 0,
       "lowest": 91,
-      "png_sha256": "8e9fe6c9666519f6ead927ac167b31f908f133fc49634f5f6d5127584148b184",
+      "png_sha256": "8e2d3a62f5a8ac7b5227af6080facae046d2de61d0679adc19d8ce1985899b45",
+      "rgba_sha256": "fc827841da1f0a0bfd06bc07ad3d7107323ae2af68a18df2a81a87d13167e11a",
       "bbox": [
-        22,
-        69,
-        102,
+        24,
+        66,
+        104,
         92
       ]
     },
@@ -340,7 +345,8 @@
       96
     ],
     "visible_height_px": 43,
-    "source": "fresh_grave_mound_01_regen",
-    "no_scale_rotation_mirror": true
+    "source": "qc/word_props_revision_sources/mound2",
+    "no_scale_rotation_mirror": true,
+    "revision": 2
   }
 }

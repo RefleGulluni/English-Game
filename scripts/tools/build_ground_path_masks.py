@@ -1,4 +1,4 @@
-"""Builds the 15 corner tiles of each painted ground terrain (path, grass, paving) as one 128×128 atlas.
+"""Builds the 15 corner tiles of each painted ground terrain (path, grass, paving, moss) as one 128×128 atlas.
 
 The art group paints the path *material* (a big seamless texture); this script draws only the
 *shape*: where the path is, its wet rim, and a few stray pebbles. Every pixel inside the path is
@@ -21,6 +21,7 @@ corners of every cell for the Godot TileSet builder.
 Full method: docs/GROUND_TERRAIN_METHOD.md.
 """
 import json
+import sys
 import math
 import random
 from pathlib import Path
@@ -53,6 +54,12 @@ STYLES = {
         "rim": [(63, 62, 57, 255), (74, 72, 64, 255)], "rim_band": 0.06, "rim_chance": 0.55,  # mud where the slab edge sank
         "outside": [(97, 96, 94, 255), (83, 82, 80, 255), (110, 109, 107, 255)],  # broken-off slab chips, from paving_texture_01
         "outside_band": 0.18, "outside_chance": 0.07, "blade": False, "chunk": True,
+    },
+    "moss": {  # the Veiled Walk's thick wet moss (D-076): a soft damp edge, small tufts creeping out
+        "file": "ground_moss_masks_01", "seed": 120,
+        "rim": [(44, 52, 41, 255), (49, 58, 46, 255)], "rim_band": 0.06, "rim_chance": 0.5,  # wet, darker moss at the edge
+        "outside": [(52, 62, 49, 255), (60, 71, 57, 255), (46, 55, 43, 255)],  # tufts, colours from moss_texture_01
+        "outside_band": 0.15, "outside_chance": 0.16, "blade": False, "tuft": True,
     },
 }
 
@@ -111,6 +118,8 @@ def draw_tile(corners: tuple[int, int, int, int], seed: int, shared: list[list[f
                 px[x, y] = rng.choice(style["outside"])
                 if style["blade"] and y > 0 and px[x, y - 1][3] == 0:
                     px[x, y - 1] = px[x, y]  # grass tips are short upright strokes, not dots
+                if style.get("tuft") and x + 1 < TILE and px[x + 1, y][3] == 0:
+                    px[x + 1, y] = px[x, y]  # moss creeps out in low, wide tufts
                 if style.get("chunk") and x + 1 < TILE and y + 1 < TILE:
                     for dx, dy in ((1, 0), (0, 1), (1, 1)):  # stone chips are 2×2 lumps, not single dots
                         if px[x + dx, y + dy][3] == 0:
@@ -136,8 +145,10 @@ def build(style: dict) -> None:
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    for style in STYLES.values():
-        build(style)
+    only = set(sys.argv[1:])  # e.g. `moss`: rebuild just that terrain
+    for name, style in STYLES.items():
+        if not only or name in only:
+            build(style)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,23 @@
+{
+  "existing_files_checked": 5849,
+  "changed_existing_files": [
+    "art/cemetery_v3/props/crypt_sealed_01_base.png",
+    "art/cemetery_v3/props/fresh_grave_mound_01_base.png",
+    "art/cemetery_v3/props/props_manifest.json",
+    "art/cemetery_v3/props/crypt_sealed_01.png",
+    "art/cemetery_v3/props/qc/crypt_sealed_01_vs_hero_6x.png",
+    "art/cemetery_v3/props/qc/word_props_lineup_1x.png",
+    "art/cemetery_v3/props/qc/crypt_sealed_01_vs_hero_1x.png",
+    "art/cemetery_v3/props/qc/word_props_pixel_check.txt",
+    "art/cemetery_v3/props/qc/fresh_grave_mound_01_vs_hero_6x.png",
+    "art/cemetery_v3/props/qc/word_props_QA.md",
+    "art/cemetery_v3/props/qc/word_props_lineup_2x.png",
+    "art/cemetery_v3/props/qc/word_props_metrics.json",
+    "art/cemetery_v3/props/qc/fresh_grave_mound_01_vs_hero_1x.png"
+  ],
+  "missing_files": [],
+  "six_accepted_items_12_pngs_unchanged": true,
+  "shovel_png_unchanged": true,
+  "other_manifest_entries_unchanged": true,
+  "installed_pngs_exact_match_measured": true
+}

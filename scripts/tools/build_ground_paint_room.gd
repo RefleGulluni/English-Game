@@ -20,6 +20,8 @@ const PATH_SHADER := "res://scripts/world/v3/ground_path.gdshader"
 const TERRAINS := [
 	{"layer": "Grass", "name": "枯草苔藓地", "masks": "ground_grass_masks_01", "tileset": "ground_grass_tileset.tres",
 		"texture": GROUND + "transitions/grass_texture_01.png", "color": Color(0.5, 0.62, 0.38)},
+	{"layer": "Moss", "name": "厚苔藓地（雾中墓径）", "masks": "ground_moss_masks_01", "tileset": "ground_moss_tileset.tres",
+		"texture": GROUND + "transitions/moss_texture_01.png", "color": Color(0.36, 0.5, 0.4), "macro": 0.08},
 	{"layer": "Path", "name": "碎石泥路", "masks": "ground_path_masks_01", "tileset": "ground_path_tileset.tres",
 		"texture": GROUND + "transitions/path_texture_01.png", "color": Color(0.85, 0.72, 0.5)},
 	{"layer": "Paving", "name": "旧石板路", "masks": "ground_paving_masks_01", "tileset": "ground_paving_tileset.tres",
@@ -40,6 +42,9 @@ const SAMPLE_PATCH := [Vector2(23, 13), Vector2(24, 13), Vector2(23, 14)]
 const SAMPLE_GRASS := [Rect2i(1, 9, 6, 5), Rect2i(19, 11, 7, 5), Rect2i(17, 1, 5, 4)]
 ## A sample paved square (cell rectangle) painted when the Paving layer is first added.
 const SAMPLE_PAVING := Rect2i(2, 1, 5, 4)
+## A sample moss bed (cell rectangle) painted when the Moss layer is first added: wide enough to
+## judge the texture's repeat (D-076).
+const SAMPLE_MOSS := Rect2i(17, 9, 11, 7)
 ## Ground decals (scenes from scripts/tools/bake_ground_decals.gd) dropped in when the Decals node
 ## is first added, so the user sees how they sit on the painted ground.
 const DECALS := "res://scenes/props/cemetery/decals/"
@@ -103,6 +108,7 @@ func _terrain_layer(t: Dictionary) -> TileMapLayer:
 	var mat := ShaderMaterial.new()
 	mat.shader = load(PATH_SHADER)
 	mat.set_shader_parameter("path_texture", load(t.texture))
+	mat.set_shader_parameter("macro_strength", float(t.get("macro", 0.0)))
 	layer.material = mat
 	return layer
 
@@ -171,6 +177,8 @@ func _add_missing_layers() -> void:
 			_paint_sample_grass(layer)
 		if t.layer == "Paving":
 			_paint_rect(layer, SAMPLE_PAVING)
+		if t.layer == "Moss":
+			_paint_rect(layer, SAMPLE_MOSS)
 		added = true
 		print("added layer ", t.layer)
 	if not ground.has_node("Decals"):

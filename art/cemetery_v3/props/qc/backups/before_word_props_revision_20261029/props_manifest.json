@@ -1,0 +1,1187 @@
+{
+  "version": 3,
+  "origin": "bottom_center",
+  "no_auto_trim": true,
+  "base_layer": "ground decal / no Y-sort / below actors",
+  "prop_layer": "Y-sort / occluding",
+  "items": {
+    "tombstone_upright_01": {
+      "prop": "tombstone_upright_01.png",
+      "base": "tombstone_upright_01_base.png",
+      "canvas": [
+        96,
+        112
+      ],
+      "origin": [
+        48,
+        112
+      ],
+      "join": null,
+      "native_edit": null
+    },
+    "tombstone_upright_02": {
+      "prop": "tombstone_upright_02.png",
+      "base": "tombstone_upright_02_base.png",
+      "canvas": [
+        96,
+        112
+      ],
+      "origin": [
+        48,
+        112
+      ],
+      "join": null,
+      "native_edit": null
+    },
+    "tombstone_cross_01": {
+      "prop": "tombstone_cross_01.png",
+      "base": "tombstone_cross_01_base.png",
+      "canvas": [
+        96,
+        128
+      ],
+      "origin": [
+        48,
+        128
+      ],
+      "join": null,
+      "native_edit": null
+    },
+    "open_grave_01": {
+      "prop": "open_grave_01.png",
+      "base": "open_grave_01_base.png",
+      "canvas": [
+        224,
+        144
+      ],
+      "origin": [
+        112,
+        144
+      ],
+      "join": null,
+      "native_edit": {
+        "removed_middle_span_vector": [
+          12,
+          7
+        ],
+        "cut_projection": 1250,
+        "reason": "Shorten one central rim section by integer translation; pit long edge becomes human length without rescaling."
+      }
+    },
+    "grave_lid_01": {
+      "prop": "grave_lid_01.png",
+      "base": "grave_lid_01_base.png",
+      "canvas": [
+        160,
+        144
+      ],
+      "origin": [
+        80,
+        144
+      ],
+      "join": null,
+      "native_edit": {
+        "removed_middle_span_vector": [
+          8,
+          10
+        ],
+        "cut_projection": 1040,
+        "reason": "Shorten slab middle by integer translation to match grave; no rotation or scaling."
+      }
+    },
+    "low_wall_01": {
+      "prop": "low_wall_01.png",
+      "base": "low_wall_01_base.png",
+      "canvas": [
+        192,
+        96
+      ],
+      "origin": [
+        96,
+        96
+      ],
+      "join": {
+        "stride": 148,
+        "canvas_core_x": [
+          21,
+          168
+        ],
+        "endpoint_rgba_equal": true,
+        "method": "Trim generated terminal side faces, copy two native contour columns across end. No texture synthesis."
+      },
+      "native_edit": null
+    },
+    "low_wall_broken_01": {
+      "prop": "low_wall_broken_01.png",
+      "base": "low_wall_broken_01_base.png",
+      "canvas": [
+        176,
+        96
+      ],
+      "origin": [
+        88,
+        96
+      ],
+      "join": {
+        "left_join_x": 21,
+        "left_profile_rgba_equal_to_wall": true,
+        "method": "Use shared50-color wall-family ramp, copy two generated contour columns to match full-wall end; remainder unique broken source art."
+      },
+      "native_edit": null
+    },
+    "wall_pillar_01": {
+      "prop": "wall_pillar_01.png",
+      "base": "wall_pillar_01_base.png",
+      "canvas": [
+        96,
+        128
+      ],
+      "origin": [
+        48,
+        128
+      ],
+      "join": null,
+      "native_edit": {
+        "removed_native_rows": [
+          43,
+          63
+        ],
+        "reason": "Remove one complete central stone course at the mortar joint, integer movement only, pillar higher than wall but below hero height."
+      }
+    },
+    "iron_fence_01": {
+      "prop": "iron_fence_01.png",
+      "base": "iron_fence_01_base.png",
+      "canvas": [
+        160,
+        104
+      ],
+      "origin": [
+        80,
+        104
+      ],
+      "join": {
+        "stride": 132,
+        "canvas_core_x": [
+          12,
+          143
+        ],
+        "endpoint_rgba_equal": true,
+        "method": "Trim terminal knobs, copy one generated native connector column. Six bars keep their world left/right lighting."
+      },
+      "native_edit": null
+    },
+    "low_wall_rubble_broken_01": {
+      "prop": "low_wall_rubble_broken_01.png",
+      "base": "low_wall_rubble_broken_01_base.png",
+      "canvas": [
+        192,
+        96
+      ],
+      "origin": [
+        96,
+        96
+      ],
+      "family": "A_rubble",
+      "parent": "low_wall_01",
+      "joins": {
+        "left": 21,
+        "parent_right": 168,
+        "root_dx_after_parent": 148
+      },
+      "derivation_recipe": "qc/wall_family_sources/low_wall_rubble_broken_01/derivation_recipe.json"
+    },
+    "low_wall_rubble_pillar_01": {
+      "prop": "low_wall_rubble_pillar_01.png",
+      "base": "low_wall_rubble_pillar_01_base.png",
+      "canvas": [
+        192,
+        128
+      ],
+      "origin": [
+        96,
+        128
+      ],
+      "family": "A_rubble",
+      "parent": "low_wall_01",
+      "joins": {
+        "left": 21,
+        "right": 168,
+        "stride": 148
+      },
+      "derivation_recipe": "qc/wall_family_sources/low_wall_rubble_pillar_01/derivation_recipe.json"
+    },
+    "low_wall_ashlar_01": {
+      "prop": "low_wall_ashlar_01.png",
+      "base": "low_wall_ashlar_01_base.png",
+      "canvas": [
+        176,
+        96
+      ],
+      "origin": [
+        88,
+        96
+      ],
+      "family": "B_ashlar",
+      "parent": "low_wall_broken_01",
+      "joins": {
+        "left": 21,
+        "right": 148,
+        "stride": 128,
+        "parent_broken_left": 21,
+        "root_dx_to_parent_broken": 128
+      },
+      "derivation_recipe": "qc/wall_family_sources/low_wall_ashlar_01/derivation_recipe.json"
+    },
+    "low_wall_ashlar_02": {
+      "prop": "low_wall_ashlar_02.png",
+      "base": "low_wall_ashlar_02_base.png",
+      "canvas": [
+        288,
+        96
+      ],
+      "origin": [
+        144,
+        96
+      ],
+      "family": "B_ashlar",
+      "role": "primary_complete_variant",
+      "join": {
+        "canvas_core_x": [
+          24,
+          263
+        ],
+        "stride": 240,
+        "reference": "low_wall_broken_01 column21",
+        "root_delta_x_to_self": 240,
+        "root_delta_x_to_broken01": 187,
+        "root_delta_x_to_ashlar01": 187,
+        "root_delta_x_from_ashlar01": 181
+      },
+      "masonry": {
+        "visible_height": 54,
+        "coping_and_upper_bevel_y": [
+          36,
+          45
+        ],
+        "upper_face_y": [
+          46,
+          65
+        ],
+        "main_mortar_y": 66,
+        "lower_face_y": [
+          67,
+          89
+        ]
+      },
+      "source_record": "qc/ashlar_02_sources/generation.json"
+    },
+    "tombstone_flat_01": {
+      "prop": "tombstone_flat_01.png",
+      "base": "tombstone_flat_01_base.png",
+      "canvas": [
+        112,
+        112
+      ],
+      "origin": [
+        56,
+        112
+      ],
+      "visible_height_px": 72,
+      "join": null,
+      "native_edit": null,
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md"
+    },
+    "tombstone_pointed_01": {
+      "prop": "tombstone_pointed_01.png",
+      "base": "tombstone_pointed_01_base.png",
+      "canvas": [
+        96,
+        112
+      ],
+      "origin": [
+        48,
+        112
+      ],
+      "visible_height_px": 85,
+      "join": null,
+      "native_edit": {
+        "remove_native_rows": [
+          63,
+          71
+        ],
+        "reason": "Shorten unlettered shaft by8px, preserve pointed crown and carved marks."
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md"
+    },
+    "tombstone_small_01": {
+      "prop": "tombstone_small_01.png",
+      "base": "tombstone_small_01_base.png",
+      "canvas": [
+        80,
+        64
+      ],
+      "origin": [
+        40,
+        64
+      ],
+      "visible_height_px": 39,
+      "join": null,
+      "native_edit": {
+        "remove_native_rows": [
+          29,
+          34
+        ],
+        "reason": "Shorten one blank panel strip, no scaling."
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md"
+    },
+    "obelisk_01": {
+      "prop": "obelisk_01.png",
+      "base": "obelisk_01_base.png",
+      "canvas": [
+        112,
+        160
+      ],
+      "origin": [
+        56,
+        160
+      ],
+      "visible_height_px": 121,
+      "join": null,
+      "native_edit": {
+        "remove_native_rows": [
+          40,
+          78
+        ],
+        "reason": "Remove38native shaft rows, retaining apex, long cracks, taper and all plinth courses."
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md"
+    },
+    "grave_slab_01": {
+      "prop": "grave_slab_01.png",
+      "base": "grave_slab_01_base.png",
+      "canvas": [
+        192,
+        112
+      ],
+      "origin": [
+        96,
+        112
+      ],
+      "visible_height_px": 9,
+      "join": null,
+      "native_edit": null,
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "side_thickness_px": [
+        8,
+        9
+      ],
+      "projection_bbox_height_px": 61,
+      "required_side_thickness_px": [
+        6,
+        12
+      ]
+    },
+    "rubble_pile_01": {
+      "prop": "rubble_pile_01.png",
+      "base": "rubble_pile_01_base.png",
+      "canvas": [
+        80,
+        48
+      ],
+      "origin": [
+        40,
+        48
+      ],
+      "visible_height_px": 17,
+      "join": null,
+      "native_edit": null,
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "collision": false
+    },
+    "grave_vase_01": {
+      "prop": "grave_vase_01.png",
+      "base": "grave_vase_01_base.png",
+      "canvas": [
+        48,
+        64
+      ],
+      "origin": [
+        24,
+        64
+      ],
+      "visible_height_px": 26,
+      "join": null,
+      "native_edit": {
+        "remove_native_rows": [
+          9,
+          16
+        ],
+        "contact_decal_from": "tombstone_upright_01_base.png",
+        "crop": [
+          32,
+          96,
+          62,
+          105
+        ],
+        "decal_offset": [
+          9,
+          48
+        ]
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "collision": false
+    },
+    "candles_01": {
+      "prop": "candles_01.png",
+      "base": "candles_01_base.png",
+      "canvas": [
+        64,
+        48
+      ],
+      "origin": [
+        32,
+        48
+      ],
+      "visible_height_px": 16,
+      "join": null,
+      "native_edit": {
+        "remove_native_rows": null,
+        "contact_decal_from": "tombstone_upright_01_base.png",
+        "crop": [
+          19,
+          98,
+          68,
+          108
+        ],
+        "decal_offset": [
+          7,
+          32
+        ]
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "collision": false
+    },
+    "grave_lantern_01": {
+      "prop": "grave_lantern_01.png",
+      "base": "grave_lantern_01_base.png",
+      "canvas": [
+        48,
+        64
+      ],
+      "origin": [
+        24,
+        64
+      ],
+      "visible_height_px": 32,
+      "join": null,
+      "native_edit": {
+        "remove_native_rows": [
+          20,
+          22
+        ],
+        "contact_decal_from": "tombstone_cross_01_base.png",
+        "crop": [
+          31,
+          113,
+          63,
+          123
+        ],
+        "decal_offset": [
+          8,
+          44
+        ]
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "collision": false
+    },
+    "tombstone_upright_02_broken": {
+      "prop": "tombstone_upright_02_broken.png",
+      "base": "tombstone_upright_02_broken_base.png",
+      "canvas": [
+        144,
+        144
+      ],
+      "origin": [
+        72,
+        144
+      ],
+      "visible_height_px": 42,
+      "join": null,
+      "native_edit": {
+        "fracture_y": [
+          64,
+          64,
+          63,
+          63,
+          64,
+          65,
+          65,
+          64,
+          63,
+          62,
+          62,
+          63,
+          63,
+          64,
+          65,
+          65,
+          64,
+          64,
+          63,
+          63,
+          64,
+          64,
+          65,
+          64,
+          63,
+          63,
+          64,
+          65,
+          65,
+          64,
+          64,
+          63,
+          63,
+          64,
+          65,
+          65,
+          64,
+          64,
+          64,
+          65
+        ],
+        "fracture_lip_parent_crop": [
+          30,
+          33,
+          68,
+          35
+        ],
+        "fragment_remove_native_rows": [
+          13,
+          25
+        ],
+        "fragment_offset": [
+          4,
+          111
+        ]
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "ground_fragment_in_base": true,
+      "parent": "tombstone_upright_02"
+    },
+    "tombstone_cross_01_broken": {
+      "prop": "tombstone_cross_01_broken.png",
+      "base": "tombstone_cross_01_broken_base.png",
+      "canvas": [
+        112,
+        144
+      ],
+      "origin": [
+        56,
+        144
+      ],
+      "visible_height_px": 95,
+      "join": null,
+      "native_edit": {
+        "remove_arm_rect": [
+          0,
+          39,
+          38,
+          72
+        ],
+        "root_edit_x": 38,
+        "fragment_remove_columns": [
+          24,
+          51
+        ],
+        "fragment_right_translation_y": -6,
+        "fragment_offset": [
+          14,
+          113
+        ]
+      },
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "ground_fragment_in_base": true,
+      "parent": "tombstone_cross_01"
+    },
+    "tombstone_upright_01_tilted": {
+      "prop": "tombstone_upright_01_tilted.png",
+      "base": "tombstone_upright_01_tilted_base.png",
+      "canvas": [
+        112,
+        112
+      ],
+      "origin": [
+        56,
+        112
+      ],
+      "visible_height_px": 79,
+      "join": null,
+      "native_edit": null,
+      "batch": "cemetery_props_batch2",
+      "qa": "qc/batch2_QA.md",
+      "lean_degrees": 11.257134166552152,
+      "digital_rotation_or_shear": false
+    },
+    "gate_pillar_tall_01": {
+      "prop": "gate_pillar_tall_01.png",
+      "base": "gate_pillar_tall_01_base.png",
+      "canvas": [
+        96,
+        192
+      ],
+      "origin": [
+        48,
+        192
+      ],
+      "visible_height_px": 161,
+      "family": "B_ashlar",
+      "parent_material": "wall_pillar_01 / low_wall_ashlar_02",
+      "palette_parent": "wall_pillar_01",
+      "join": {
+        "gate_center_spacing": 144,
+        "minimum_stone_clear_gap_px": 92,
+        "fence_endpoint_columns": [
+          12,
+          143
+        ],
+        "assembly": "qc/entry_gate_assembly_2x.png"
+      },
+      "source_record": "qc/entry_gate_sources/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-044"
+    },
+    "iron_gate_leaf_open_01": {
+      "prop": "iron_gate_leaf_open_01.png",
+      "base": "iron_gate_leaf_open_01_base.png",
+      "canvas": [
+        96,
+        112
+      ],
+      "origin": [
+        48,
+        112
+      ],
+      "visible_height_px": 79,
+      "family": "iron",
+      "source_record": "qc/entry_step2_sources/iron_gate_leaf_open_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false,
+      "join": {
+        "unfolded_design_width_range": [
+          44,
+          46
+        ],
+        "projected_axis_span_px": 31,
+        "estimated_unfolded_axis_span_px": 43.84,
+        "clear_opening_px": 92,
+        "assembly": "qc/entry_gate_assembly_2x.png"
+      }
+    },
+    "iron_gate_leaf_fallen_01": {
+      "prop": "iron_gate_leaf_fallen_01.png",
+      "base": "iron_gate_leaf_fallen_01_base.png",
+      "canvas": [
+        96,
+        80
+      ],
+      "origin": [
+        48,
+        80
+      ],
+      "visible_height_px": 0,
+      "family": "iron",
+      "source_record": "qc/entry_step2_sources/iron_gate_leaf_fallen_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": true
+    },
+    "fountain_dry_01": {
+      "prop": "fountain_dry_01.png",
+      "base": "fountain_dry_01_base.png",
+      "canvas": [
+        256,
+        256
+      ],
+      "origin": [
+        128,
+        256
+      ],
+      "visible_height_px": 177,
+      "family": "stone",
+      "source_record": "qc/entry_step2_sources/fountain_fullsize_revision/composition.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false,
+      "pool_width_px": 194,
+      "angel_with_pedestal_height_px": 138
+    },
+    "dead_tree_02": {
+      "prop": "dead_tree_02.png",
+      "base": "dead_tree_02_base.png",
+      "canvas": [
+        224,
+        224
+      ],
+      "origin": [
+        112,
+        224
+      ],
+      "visible_height_px": 169,
+      "family": "bark",
+      "source_record": "qc/entry_step2_sources/dead_tree_02/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false
+    },
+    "dead_tree_03": {
+      "prop": "dead_tree_03.png",
+      "base": "dead_tree_03_base.png",
+      "canvas": [
+        256,
+        192
+      ],
+      "origin": [
+        128,
+        192
+      ],
+      "visible_height_px": 145,
+      "family": "bark",
+      "source_record": "qc/entry_step2_sources/dead_tree_03/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false
+    },
+    "fallen_lamp_post_01": {
+      "prop": "fallen_lamp_post_01.png",
+      "base": "fallen_lamp_post_01_base.png",
+      "canvas": [
+        128,
+        80
+      ],
+      "origin": [
+        64,
+        80
+      ],
+      "visible_height_px": 0,
+      "family": "iron",
+      "source_record": "qc/entry_step2_sources/fallen_lamp_post_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": true
+    },
+    "signpost_01": {
+      "prop": "signpost_01.png",
+      "base": "signpost_01_base.png",
+      "canvas": [
+        96,
+        80
+      ],
+      "origin": [
+        48,
+        80
+      ],
+      "visible_height_px": 55,
+      "family": "wood",
+      "source_record": "qc/entry_step2_sources/signpost_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false
+    },
+    "wooden_cross_01": {
+      "prop": "wooden_cross_01.png",
+      "base": "wooden_cross_01_base.png",
+      "canvas": [
+        80,
+        80
+      ],
+      "origin": [
+        40,
+        80
+      ],
+      "visible_height_px": 45,
+      "family": "wood",
+      "source_record": "qc/entry_step2_sources/wooden_cross_01/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false
+    },
+    "wooden_cross_02": {
+      "prop": "wooden_cross_02.png",
+      "base": "wooden_cross_02_base.png",
+      "canvas": [
+        80,
+        80
+      ],
+      "origin": [
+        40,
+        80
+      ],
+      "visible_height_px": 49,
+      "family": "wood",
+      "source_record": "qc/entry_step2_sources/wooden_cross_02/generation.json",
+      "qa": "qc/entry_props_QA.md",
+      "status": "accepted_D-060",
+      "flat_base_only": false
+    },
+    "raven_ground_01": {
+      "prop": "raven_ground_01.png",
+      "base": "raven_ground_01_base.png",
+      "canvas": [
+        64,
+        48
+      ],
+      "origin": [
+        32,
+        48
+      ],
+      "visible_height_px": 28,
+      "family": "raven",
+      "vocabulary": [
+        "raven"
+      ],
+      "source_record": "qc/word_props_sources/raven_ground_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "tombstone_raven_01": {
+      "prop": "tombstone_raven_01.png",
+      "base": "tombstone_raven_01_base.png",
+      "canvas": [
+        96,
+        160
+      ],
+      "origin": [
+        48,
+        160
+      ],
+      "visible_height_px": 105,
+      "family": "stone_and_raven",
+      "vocabulary": [
+        "raven"
+      ],
+      "source_record": "qc/word_props_sources/tombstone_raven_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "tombstone_mossy_01": {
+      "prop": "tombstone_mossy_01.png",
+      "base": "tombstone_mossy_01_base.png",
+      "canvas": [
+        96,
+        96
+      ],
+      "origin": [
+        48,
+        96
+      ],
+      "visible_height_px": 51,
+      "family": "stone_moss",
+      "vocabulary": [
+        "moss",
+        "conceal",
+        "epitaph"
+      ],
+      "source_record": "qc/word_props_sources/tombstone_mossy_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "grave_bell_01": {
+      "prop": "grave_bell_01.png",
+      "base": "grave_bell_01_base.png",
+      "canvas": [
+        64,
+        80
+      ],
+      "origin": [
+        32,
+        80
+      ],
+      "visible_height_px": 40,
+      "family": "iron_bronze",
+      "vocabulary": [
+        "bell",
+        "bury",
+        "linger"
+      ],
+      "source_record": "qc/word_props_sources/grave_bell_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "bell_frame_01": {
+      "prop": "bell_frame_01.png",
+      "base": "bell_frame_01_base.png",
+      "canvas": [
+        160,
+        160
+      ],
+      "origin": [
+        80,
+        160
+      ],
+      "visible_height_px": 115,
+      "family": "wood_bronze",
+      "vocabulary": [
+        "bell",
+        "echo",
+        "silence"
+      ],
+      "source_record": "qc/word_props_sources/bell_frame_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "crypt_sealed_01": {
+      "prop": "crypt_sealed_01.png",
+      "base": "crypt_sealed_01_base.png",
+      "canvas": [
+        224,
+        176
+      ],
+      "origin": [
+        112,
+        176
+      ],
+      "visible_height_px": 129,
+      "family": "B_ashlar_iron",
+      "vocabulary": [
+        "seal",
+        "bind"
+      ],
+      "source_record": "qc/word_props_sources/crypt_sealed_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "old_well_01": {
+      "prop": "old_well_01.png",
+      "base": "old_well_01_base.png",
+      "canvas": [
+        128,
+        144
+      ],
+      "origin": [
+        64,
+        144
+      ],
+      "visible_height_px": 105,
+      "family": "stone_wood",
+      "vocabulary": [
+        "toxic"
+      ],
+      "source_record": "qc/word_props_sources/old_well_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    },
+    "fresh_grave_mound_01": {
+      "prop": "fresh_grave_mound_01.png",
+      "base": "fresh_grave_mound_01_base.png",
+      "canvas": [
+        128,
+        96
+      ],
+      "origin": [
+        64,
+        96
+      ],
+      "visible_height_px": 43,
+      "family": "wet_earth_shovel",
+      "vocabulary": [
+        "bury"
+      ],
+      "source_record": "qc/word_props_sources/fresh_grave_mound_01/cleanup.json",
+      "qa": "qc/word_props_QA.md",
+      "status": "pending_user_review",
+      "flat_base_only": false,
+      "no_auto_trim": true
+    }
+  },
+  "wall_families": {
+    "A_rubble": {
+      "complete": "low_wall_01",
+      "broken": "low_wall_rubble_broken_01",
+      "embedded_pillar": "low_wall_rubble_pillar_01",
+      "stride": 148,
+      "assembly_roots": [
+        [
+          "low_wall_01",
+          [
+            120,
+            140
+          ]
+        ],
+        [
+          "low_wall_rubble_pillar_01",
+          [
+            268,
+            140
+          ]
+        ],
+        [
+          "low_wall_01",
+          [
+            416,
+            140
+          ]
+        ],
+        [
+          "low_wall_rubble_broken_01",
+          [
+            564,
+            140
+          ]
+        ]
+      ]
+    },
+    "B_ashlar": {
+      "complete": "low_wall_ashlar_01",
+      "broken": "low_wall_broken_01",
+      "gate_pillar": "wall_pillar_01",
+      "iron": "iron_fence_01",
+      "complete_stride": 128,
+      "masonry_assembly_roots": [
+        [
+          "wall_pillar_01",
+          [
+            60,
+            140
+          ]
+        ],
+        [
+          "low_wall_ashlar_01",
+          [
+            131,
+            140
+          ]
+        ],
+        [
+          "low_wall_ashlar_01",
+          [
+            259,
+            140
+          ]
+        ],
+        [
+          "low_wall_broken_01",
+          [
+            387,
+            140
+          ]
+        ]
+      ],
+      "iron_assembly_roots": [
+        [
+          "wall_pillar_01",
+          [
+            50,
+            300
+          ]
+        ],
+        [
+          "iron_fence_01",
+          [
+            131,
+            300
+          ]
+        ],
+        [
+          "wall_pillar_01",
+          [
+            202,
+            300
+          ]
+        ]
+      ],
+      "primary_complete": "low_wall_ashlar_02",
+      "secondary_complete": "low_wall_ashlar_01",
+      "primary_stride": 240,
+      "complete_variants": [
+        "low_wall_ashlar_02",
+        "low_wall_ashlar_01"
+      ]
+    },
+    "do_not_mix_families_in_one_run": true
+  },
+  "cemetery_props_batch2": {
+    "items": [
+      "tombstone_flat_01",
+      "tombstone_pointed_01",
+      "tombstone_small_01",
+      "obelisk_01",
+      "grave_slab_01",
+      "rubble_pile_01",
+      "grave_vase_01",
+      "candles_01",
+      "grave_lantern_01",
+      "tombstone_upright_02_broken",
+      "tombstone_cross_01_broken",
+      "tombstone_upright_01_tilted"
+    ],
+    "count": 12,
+    "qc": "qc/batch2_QA.md",
+    "status": "accepted_D-044",
+    "production": "single built-in image generation / detected cell center sampling / native selections and integer translations / inherited stone palettes",
+    "no_whole_image_resize": true
+  },
+  "cemetery_entry_step2": {
+    "items": [
+      "iron_gate_leaf_open_01",
+      "iron_gate_leaf_fallen_01",
+      "fountain_dry_01",
+      "dead_tree_02",
+      "dead_tree_03",
+      "fallen_lamp_post_01",
+      "signpost_01",
+      "wooden_cross_01",
+      "wooden_cross_02"
+    ],
+    "count": 9,
+    "ground": "art/cemetery_v3/ground/base/ground_base_01.png",
+    "qa": "qc/entry_props_QA.md",
+    "status": "pending_user_review"
+  },
+  "cemetery_word_props_batch1": {
+    "items": [
+      "raven_ground_01",
+      "tombstone_raven_01",
+      "tombstone_mossy_01",
+      "grave_bell_01",
+      "bell_frame_01",
+      "crypt_sealed_01",
+      "old_well_01",
+      "fresh_grave_mound_01"
+    ],
+    "count": 8,
+    "ground": "art/cemetery_v3/ground/base/ground_base_01.png",
+    "qa": "qc/word_props_QA.md",
+    "status": "pending_user_review",
+    "production": "built-in image_gen single props / painted-cell center restoration / native cleanup and integer assembly",
+    "no_whole_image_resize": true
+  }
+}

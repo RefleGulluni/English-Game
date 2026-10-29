@@ -1,0 +1,346 @@
+{
+  "raven_ground_01": {
+    "prop": {
+      "size": "64x48",
+      "alpha_ok": true,
+      "colors": 24,
+      "change": 85,
+      "cyan": 0,
+      "lowest": 42,
+      "png_sha256": "aa454659d34c4bee7cd631b16cdd7915ca383c8e8346bbce02292becb26340c0",
+      "bbox": [
+        14,
+        15,
+        49,
+        43
+      ]
+    },
+    "base": {
+      "size": "64x48",
+      "alpha_ok": true,
+      "colors": 3,
+      "change": 20,
+      "cyan": 0,
+      "lowest": 43,
+      "png_sha256": "774bdb1a772c4d46f9267e59665f66db62f4ca3b4320a4351b61ab24cedaea3b",
+      "bbox": [
+        26,
+        40,
+        44,
+        44
+      ]
+    },
+    "canvas": [
+      64,
+      48
+    ],
+    "origin": [
+      32,
+      48
+    ],
+    "visible_height_px": 28,
+    "source": "raven_final",
+    "no_scale_rotation_mirror": true
+  },
+  "tombstone_raven_01": {
+    "prop": {
+      "size": "96x160",
+      "alpha_ok": true,
+      "colors": 68,
+      "change": 86,
+      "cyan": 0,
+      "lowest": 146,
+      "png_sha256": "04f140a5f5a35b9ac11f82338a645ba78505f8a68a9a19ddaa5e8fecc1cd31f8",
+      "bbox": [
+        20,
+        42,
+        74,
+        147
+      ]
+    },
+    "base": {
+      "size": "96x160",
+      "alpha_ok": true,
+      "colors": 35,
+      "change": 85,
+      "cyan": 0,
+      "lowest": 158,
+      "png_sha256": "ee200f92480a0d5c74a70773920fae1c91216adcf31a1628f54a9fa2c4835aa2",
+      "bbox": [
+        9,
+        134,
+        86,
+        159
+      ]
+    },
+    "canvas": [
+      96,
+      160
+    ],
+    "origin": [
+      48,
+      160
+    ],
+    "visible_height_px": 105,
+    "source": "tombstone_upright_01",
+    "no_scale_rotation_mirror": true
+  },
+  "tombstone_mossy_01": {
+    "prop": {
+      "size": "96x96",
+      "alpha_ok": true,
+      "colors": 40,
+      "change": 81,
+      "cyan": 0,
+      "lowest": 84,
+      "png_sha256": "a22c01c6ac4477fc22ae035fd51d43b2f6b121c3387f1167b7e39fc784831749",
+      "bbox": [
+        29,
+        34,
+        65,
+        85
+      ]
+    },
+    "base": {
+      "size": "96x96",
+      "alpha_ok": true,
+      "colors": 21,
+      "change": 71,
+      "cyan": 0,
+      "lowest": 91,
+      "png_sha256": "4823d32854bc6dfa0fc27c09b80b84ff8fe33ba82ab5c2a95c18ec76d3f90b89",
+      "bbox": [
+        24,
+        77,
+        72,
+        92
+      ]
+    },
+    "canvas": [
+      96,
+      96
+    ],
+    "origin": [
+      48,
+      96
+    ],
+    "visible_height_px": 51,
+    "source": "tombstone_mossy_01_regen",
+    "no_scale_rotation_mirror": true
+  },
+  "grave_bell_01": {
+    "prop": {
+      "size": "64x80",
+      "alpha_ok": true,
+      "colors": 35,
+      "change": 94,
+      "cyan": 0,
+      "lowest": 69,
+      "png_sha256": "b82301121688789448134750daf2776afea9f786219659e8a4c94a3fb0c420e6",
+      "bbox": [
+        22,
+        30,
+        44,
+        70
+      ]
+    },
+    "base": {
+      "size": "64x80",
+      "alpha_ok": true,
+      "colors": 13,
+      "change": 75,
+      "cyan": 0,
+      "lowest": 75,
+      "png_sha256": "7f6d9a7487228a11970dd18ca54ebaeee87af37d89e58aa5eb519a6f4a543ccc",
+      "bbox": [
+        16,
+        65,
+        48,
+        76
+      ]
+    },
+    "canvas": [
+      64,
+      80
+    ],
+    "origin": [
+      32,
+      80
+    ],
+    "visible_height_px": 40,
+    "source": "grave_bell_01_regen",
+    "no_scale_rotation_mirror": true
+  },
+  "bell_frame_01": {
+    "prop": {
+      "size": "160x160",
+      "alpha_ok": true,
+      "colors": 46,
+      "change": 86,
+      "cyan": 0,
+      "lowest": 147,
+      "png_sha256": "6854fdcdef1e7e37a9c5287030906803f92151e4e159d6882dc06e86136eb298",
+      "bbox": [
+        26,
+        33,
+        132,
+        148
+      ]
+    },
+    "base": {
+      "size": "160x160",
+      "alpha_ok": true,
+      "colors": 5,
+      "change": 64,
+      "cyan": 0,
+      "lowest": 155,
+      "png_sha256": "09453d31e245be8c03b7609bd568888ff820464eaa3894058d81b3d44f74f4f4",
+      "bbox": [
+        20,
+        129,
+        139,
+        156
+      ]
+    },
+    "canvas": [
+      160,
+      160
+    ],
+    "origin": [
+      80,
+      160
+    ],
+    "visible_height_px": 115,
+    "source": "bell_frame_01_regen",
+    "no_scale_rotation_mirror": true
+  },
+  "crypt_sealed_01": {
+    "prop": {
+      "size": "224x176",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 87,
+      "cyan": 0,
+      "lowest": 163,
+      "png_sha256": "d456c9d580ac45585aed3ae511891f950e3469b9899c13121db11530b6d19ba0",
+      "bbox": [
+        38,
+        35,
+        187,
+        164
+      ]
+    },
+    "base": {
+      "size": "224x176",
+      "alpha_ok": true,
+      "colors": 6,
+      "change": 60,
+      "cyan": 0,
+      "lowest": 171,
+      "png_sha256": "7d5e0cdefd29a18688db7792fdbf79bb26480b1547c51909f8dd315339c546a2",
+      "bbox": [
+        23,
+        128,
+        201,
+        172
+      ]
+    },
+    "canvas": [
+      224,
+      176
+    ],
+    "origin": [
+      112,
+      176
+    ],
+    "visible_height_px": 129,
+    "source": "crypt_sealed_01_regen",
+    "no_scale_rotation_mirror": true
+  },
+  "old_well_01": {
+    "prop": {
+      "size": "128x144",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 80,
+      "cyan": 0,
+      "lowest": 132,
+      "png_sha256": "55595c5d86adb5421b32002f5beaa99f7973c13bea1a26399126e39db5f53157",
+      "bbox": [
+        20,
+        28,
+        108,
+        133
+      ]
+    },
+    "base": {
+      "size": "128x144",
+      "alpha_ok": true,
+      "colors": 6,
+      "change": 58,
+      "cyan": 0,
+      "lowest": 139,
+      "png_sha256": "acc679b12be2851fc2e349e48d855e1bb992ab1d0ef1e85330941f37181b5b56",
+      "bbox": [
+        19,
+        111,
+        108,
+        140
+      ]
+    },
+    "canvas": [
+      128,
+      144
+    ],
+    "origin": [
+      64,
+      144
+    ],
+    "visible_height_px": 105,
+    "source": "old_well_01_regen",
+    "no_scale_rotation_mirror": true
+  },
+  "fresh_grave_mound_01": {
+    "prop": {
+      "size": "128x96",
+      "alpha_ok": true,
+      "colors": 25,
+      "change": 91,
+      "cyan": 0,
+      "lowest": 82,
+      "png_sha256": "54a2a8361ff030df0fd843b2e0bb412552f9a8e4e6d1fb57639cefb9c0911b83",
+      "bbox": [
+        76,
+        40,
+        98,
+        83
+      ]
+    },
+    "base": {
+      "size": "128x96",
+      "alpha_ok": true,
+      "colors": 37,
+      "change": 88,
+      "cyan": 0,
+      "lowest": 91,
+      "png_sha256": "8e9fe6c9666519f6ead927ac167b31f908f133fc49634f5f6d5127584148b184",
+      "bbox": [
+        22,
+        69,
+        102,
+        92
+      ]
+    },
+    "canvas": [
+      128,
+      96
+    ],
+    "origin": [
+      64,
+      96
+    ],
+    "visible_height_px": 43,
+    "source": "fresh_grave_mound_01_regen",
+    "no_scale_rotation_mirror": true
+  }
+}

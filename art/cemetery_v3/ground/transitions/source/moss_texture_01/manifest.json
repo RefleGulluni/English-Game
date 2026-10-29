@@ -1,0 +1,7 @@
+{
+  "current_source": "round2/manifest.json",
+  "current_status": "ROUND2_STOPPED_3X3_PATCH_REPETITION",
+  "round1_history": "manifest_round1.json",
+  "round1_backup": "../../qc/backups/moss_round1_before_round2.zip",
+  "notes": "Root moss_texture_01.png and moss QC now contain round2. Round1 raw/prompt/grid/scripts remain as history;use round2 for current candidate."
+}

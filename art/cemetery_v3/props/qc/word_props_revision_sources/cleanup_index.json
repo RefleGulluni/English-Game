@@ -1,0 +1,80 @@
+{
+  "fresh_grave_mound_01": {
+    "source": "mound2",
+    "native_mound_size": [
+      80,
+      26
+    ],
+    "placement": [
+      24,
+      66
+    ],
+    "canvas": [
+      128,
+      96
+    ],
+    "origin": [
+      64,
+      96
+    ],
+    "mean_rgb": [
+      64.514,
+      49.564,
+      37.556
+    ],
+    "mean_luma": 52.665,
+    "luma_std": 16.709,
+    "max_rgb": [
+      91,
+      82,
+      68
+    ],
+    "max_luma": 83.095,
+    "shovel_png_sha256": "54a2a8361ff030df0fd843b2e0bb412552f9a8e4e6d1fb57639cefb9c0911b83",
+    "shovel_changed": false
+  },
+  "crypt_sealed_01": {
+    "source": "crypt2",
+    "native_size": [
+      206,
+      206
+    ],
+    "placement": [
+      25,
+      46
+    ],
+    "canvas": [
+      256,
+      256
+    ],
+    "origin": [
+      128,
+      256
+    ],
+    "door_source_bbox_exclusive": [
+      69,
+      63,
+      126,
+      165
+    ],
+    "door_canvas_bbox_exclusive": [
+      94,
+      109,
+      151,
+      211
+    ],
+    "prop_bbox": [
+      41,
+      46,
+      217,
+      237
+    ],
+    "base_bbox": [
+      25,
+      208,
+      231,
+      252
+    ],
+    "no_resize_rotation_mirror": true
+  }
+}

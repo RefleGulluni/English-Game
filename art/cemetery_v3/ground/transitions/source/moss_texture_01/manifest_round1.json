@@ -1,0 +1,66 @@
+{
+  "task": "VEILED_WALK_MOSS_GROUND_REQUEST",
+  "status": "STOPPED_VISIBLE_REPETITION_NOT_ACCEPTED",
+  "tool": "built-in image_gen;no CLI fallback",
+  "final_candidate": "../../moss_texture_01.png",
+  "native_size": [
+    224,
+    128
+  ],
+  "sources": [
+    {
+      "prompt": "01_material.prompt.txt",
+      "raw": "01_material_generated.png",
+      "grid": "01_material_grid.json",
+      "restored": "01_material_restored_cells.png",
+      "use": "Initial candidate only;some cushions and lichen groups oversized."
+    },
+    {
+      "prompt": "02_refine_material.prompt.txt",
+      "reference": "01_material_generated.png",
+      "raw": "02_material_generated.png",
+      "grid": "02_material_grid.json",
+      "restored": "02_material_restored_cells.png",
+      "restored_size": [
+        248,
+        140
+      ],
+      "crop": [
+        12,
+        6,
+        236,
+        134
+      ],
+      "use": "Source of selected moss material."
+    },
+    {
+      "prompt": "05_cross_repair.prompt.txt",
+      "reference": "04_half_offset_6x.png",
+      "raw": "05_cross_repair_generated.png",
+      "grid": "05_cross_repair_grid.json",
+      "restored": "05_cross_repair_restored_cells.png",
+      "restored_size": [
+        224,
+        128
+      ],
+      "use": "Irregular center-cross only after half-offset112,64."
+    }
+  ],
+  "processing": [
+    "material_ops.py",
+    "prepare_moss.py",
+    "03_cleanup_metadata.json",
+    "finish_moss.py",
+    "06_assembly.json",
+    "06_final_palette.json"
+  ],
+  "ai_repair_selected_pixels": 10108,
+  "lichen_native_source_pixels": 78,
+  "lichen_native_retained_before_seam": 51,
+  "method": "Observed grid center sampling only,no artwork resampling;30-color moss+2lichen shades;lichen components reduced to1–2 existing native pixels,other gray edges copied from adjacent moss;near-shade component cleanup;palette remap for59,69,55 andstd11.5;native half-offset/cross selection;1px opposite textured profiles paired. No synthesized moss forms, added grain, blending, smoothing, random tile variation or mirroring.",
+  "qa": "../../qc/moss_texture_QA.md",
+  "checks": "../../qc/moss_texture_verification.json",
+  "not_runtime_approved": true,
+  "stopping_reason": "Bare480x270 screen shows obvious repeated recognizable cushion groupings and a pebble-like material risk. User request explicitly says stop and report instead of changing approach.",
+  "additional_stop_issue": "Wrapped lichen component reaches3px despite flat tile max2px, due to1px paired edge profile."
+}

@@ -61,7 +61,7 @@ const LAYOUT := {
 const WORD_PROPS_LAYOUT := {
 	"id": "word_props", "seed": 11, "dead_grass": 8, "prop_dir": PROPS,
 	"props": [
-		["crypt_sealed_01", Vector2(170, 230), null],
+		["crypt_sealed_01", Vector2(170, 260), null],
 		["bell_frame_01", Vector2(400, 215), null],
 		["dead_tree_02", Vector2(560, 200), null],
 		["old_well_01", Vector2(700, 260), null],

@@ -1,0 +1,29 @@
+{
+  "removed_into_adjacent_moss_xy_source_xy": [
+    [
+      0,
+      50,
+      0,
+      49
+    ],
+    [
+      223,
+      50,
+      223,
+      49
+    ],
+    [
+      223,
+      115,
+      223,
+      114
+    ],
+    [
+      223,
+      116,
+      223,
+      115
+    ]
+  ],
+  "method": "Remove only oversized or boundary gray lichen pixels by copying adjacent native moss labels before opposite-profile pairing;no new dots or uniform border."
+}

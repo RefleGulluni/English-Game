@@ -1,0 +1,7 @@
+[
+  {
+    "name": "crypt2",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c1bcffd7-f93b-47e5-9cc2-6a18d823bc77.png",
+    "prompt": "Redraw this EXACT same crypt design in pixel art, keeping current total height and all stone and metal materials. Correct ONE proportion: door is TOO NARROW. Make door50percent WIDER while keeping its current height unchanged. Door opening should be about60nativepixels wide and108high, height/width1.8, not the current2.5. Broaden whole facade slightly as needed to fit width190nativepixels; keep overallheight194nativepixels. Low gable, two chunky square pilasters, two steps, same iron bars, double chains and hugepadlock, graybrown chipped stone. Door must fit a96px tall human and be comfortably wider than his shoulders. Door topabouty60, bottomy168 in native sprite. Preserve fresh dense nativepixel details instead of scaling old cells, every square cellflat, about5to6sourcepixels square. Lintel must be BARE worn stone with only3broken shallow chiselgouges: absolutely NO individual letter shapes or glyphrow. No readable letters, symbols, glow,cyan, groundshadow. One isolated wholecrypt on perfectlyuniform #FF00FF background with margins. Same upperleftlighting and slight3/4 topdown as reference. All new raw pixels, no enlargement of old pixels. Tall doorway is central, roof and stairs must not steal its height. SQUARE IMAGE."
+  }
+]

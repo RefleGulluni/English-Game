@@ -5,6 +5,7 @@ extends Node
 ## 贴花：先点 Ground/Decals，再从左下文件栏 scenes/props/cemetery/decals/ 把贴花拖进画面（拖错地方也没关系，运行时会自动收进 Decals）。
 ## 瓦片集和本场景由 scripts/tools/build_ground_paint_room.gd 生成；本场景已存在时不会被覆盖。
 ## 截图：Godot --path . res://scenes/prototypes/ground_paint/ground_paint_room.tscn -- --capture=<目录>
+## M：所有刷出来的地面一起开 / 关“大范围明暗起伏”（D-076，苔藓地默认开，其余默认关，用来对比）
 
 const HERO_SCENE := preload("res://scenes/player/hero_b1.tscn")
 const NATIVE := Vector2i(960, 540)
@@ -20,6 +21,7 @@ const LAYOUT := {
 var _viewport: SubViewport
 var _room: CemeteryRoom
 var _label: Label
+var _macro_all := false # M: the large-scale light on every painted terrain, not just the moss
 
 
 func _ready() -> void:
@@ -58,8 +60,8 @@ func _ready() -> void:
 	_label.add_theme_font_size_override("font_size", 11)
 	_label.add_theme_constant_override("outline_size", 3)
 	_label.add_theme_color_override("font_outline_color", Color.BLACK)
-	_label.text = "地面刷路试验 · WASD 走路 · T 游戏色调 · F 全屏 · 在编辑器里刷：Ground/Path 碎石泥路 · Ground/Grass 枯草苔藓地 · 贴花拖进 Ground/Decals"
 	add_child(_label)
+	_update_label()
 	if "--capture" in str(OS.get_cmdline_user_args()):
 		_capture()
 
@@ -82,9 +84,19 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		for child in _room.get_children():
 			if child is CanvasModulate:
 				child.visible = not child.visible
+	elif event.physical_keycode == KEY_M:
+		_macro_all = not _macro_all
+		for layer in _viewport.get_node("Ground").get_children():
+			if layer is TileMapLayer and layer.material is ShaderMaterial and layer.name != "Moss":
+				layer.material.set_shader_parameter("macro_strength", 0.08 if _macro_all else 0.0)
+		_update_label()
 	elif event.physical_keycode == KEY_F:
 		var win := get_window()
 		win.mode = Window.MODE_WINDOWED if win.mode == Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
+
+
+func _update_label() -> void:
+	_label.text = "地面刷路试验 · WASD 走路 · T 游戏色调 · F 全屏 · M 大范围明暗：%s · 在编辑器里刷：Ground/Path 碎石泥路 · Grass 枯草苔藓地 · Moss 厚苔藓地 · 贴花拖进 Ground/Decals" % ("全部地面" if _macro_all else "只有苔藓地")
 
 
 func _capture() -> void:

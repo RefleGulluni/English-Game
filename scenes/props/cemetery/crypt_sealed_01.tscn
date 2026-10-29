@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/v3/cemetery_prop.gd" id="1_uq871"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/crypt_sealed_01_base.png" id="2_rkqi6"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/crypt_sealed_01.png" id="3_opoel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hahyl"]
+size = Vector2(100, 10)
+
+[node name="CryptSealed01" type="Node2D" unique_id=1543046185]
+script = ExtResource("1_uq871")
+ground_gap = 19
+
+[node name="Base" type="Sprite2D" parent="." unique_id=195999813]
+texture = ExtResource("2_rkqi6")
+centered = false
+offset = Vector2(-128, -237)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=929500077]
+texture = ExtResource("3_opoel")
+centered = false
+offset = Vector2(-128, -237)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=2107179871]
+
+[node name="Shape" type="CollisionShape2D" parent="Body" unique_id=949256630]
+position = Vector2(-9, -4)
+shape = SubResource("RectangleShape2D_hahyl")

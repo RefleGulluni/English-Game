@@ -1,0 +1,158 @@
+{
+  "crypt_sealed_01": {
+    "prop": {
+      "size": "256x256",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 89,
+      "cyan": 0,
+      "lowest": 236,
+      "png_sha256": "3221e3c3a82f835ebfe00a5d845cfe86adf30987a7034181be111dd7633d3cbc",
+      "rgba_sha256": "106012b8aaa8e664091720d90d760cd38231edaa7c7fc4082a6277421498103a",
+      "bbox": [
+        41,
+        46,
+        217,
+        237
+      ]
+    },
+    "base": {
+      "size": "256x256",
+      "alpha_ok": true,
+      "colors": 47,
+      "change": 86,
+      "cyan": 0,
+      "lowest": 251,
+      "png_sha256": "162aa51c0a370cdba90953e0f0d3862781c143f3bb21eec8e45e693b12fbfc60",
+      "rgba_sha256": "eb8368f9f897edff155a88bacfc0c8d584fe85a486baa565be573143dcc78e58",
+      "bbox": [
+        25,
+        208,
+        231,
+        252
+      ]
+    },
+    "details": {
+      "source": "crypt2",
+      "native_size": [
+        206,
+        206
+      ],
+      "placement": [
+        25,
+        46
+      ],
+      "canvas": [
+        256,
+        256
+      ],
+      "origin": [
+        128,
+        256
+      ],
+      "door_source_bbox_exclusive": [
+        69,
+        63,
+        126,
+        165
+      ],
+      "door_canvas_bbox_exclusive": [
+        94,
+        109,
+        151,
+        211
+      ],
+      "prop_bbox": [
+        41,
+        46,
+        217,
+        237
+      ],
+      "base_bbox": [
+        25,
+        208,
+        231,
+        252
+      ],
+      "no_resize_rotation_mirror": true
+    }
+  },
+  "fresh_grave_mound_01": {
+    "prop": {
+      "size": "128x96",
+      "alpha_ok": true,
+      "colors": 25,
+      "change": 91,
+      "cyan": 0,
+      "lowest": 82,
+      "png_sha256": "54a2a8361ff030df0fd843b2e0bb412552f9a8e4e6d1fb57639cefb9c0911b83",
+      "rgba_sha256": "c537bd2f05e52a37933a80bd5324b1b944ae8a8829b987428566b3d99fda506e",
+      "bbox": [
+        76,
+        40,
+        98,
+        83
+      ]
+    },
+    "base": {
+      "size": "128x96",
+      "alpha_ok": true,
+      "colors": 40,
+      "change": 88,
+      "cyan": 0,
+      "lowest": 91,
+      "png_sha256": "8e2d3a62f5a8ac7b5227af6080facae046d2de61d0679adc19d8ce1985899b45",
+      "rgba_sha256": "fc827841da1f0a0bfd06bc07ad3d7107323ae2af68a18df2a81a87d13167e11a",
+      "bbox": [
+        24,
+        66,
+        104,
+        92
+      ]
+    },
+    "details": {
+      "source": "mound2",
+      "native_mound_size": [
+        80,
+        26
+      ],
+      "placement": [
+        24,
+        66
+      ],
+      "canvas": [
+        128,
+        96
+      ],
+      "origin": [
+        64,
+        96
+      ],
+      "mean_rgb": [
+        64.514,
+        49.564,
+        37.556
+      ],
+      "mean_luma": 52.665,
+      "luma_std": 16.709,
+      "max_rgb": [
+        91,
+        82,
+        68
+      ],
+      "max_luma": 83.095,
+      "shovel_png_sha256": "54a2a8361ff030df0fd843b2e0bb412552f9a8e4e6d1fb57639cefb9c0911b83",
+      "shovel_changed": false
+    }
+  },
+  "path_sample": {
+    "source": "docs/reference/ground_paint_room_grass_01.png",
+    "native_reconstruction": "select source[1::3,1::3] because screenshot is exactly3x native; QC only",
+    "native_crop_xyxy": [
+      330,
+      230,
+      610,
+      390
+    ]
+  }
+}

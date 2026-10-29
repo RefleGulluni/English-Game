@@ -958,24 +958,38 @@
       "prop": "crypt_sealed_01.png",
       "base": "crypt_sealed_01_base.png",
       "canvas": [
-        224,
-        176
+        256,
+        256
       ],
       "origin": [
-        112,
-        176
+        128,
+        256
       ],
-      "visible_height_px": 129,
+      "visible_height_px": 191,
       "family": "B_ashlar_iron",
       "vocabulary": [
         "seal",
         "bind"
       ],
-      "source_record": "qc/word_props_sources/crypt_sealed_01/cleanup.json",
+      "source_record": "qc/word_props_revision_sources/cleanup_index.json",
       "qa": "qc/word_props_QA.md",
       "status": "pending_user_review",
       "flat_base_only": false,
-      "no_auto_trim": true
+      "no_auto_trim": true,
+      "revision": 2,
+      "door_aperture": {
+        "bbox_exclusive": [
+          94,
+          109,
+          151,
+          211
+        ],
+        "size": [
+          57,
+          102
+        ],
+        "measurement": "between inside lintel and threshold; frame exterior approx70x108; no sprite scaling"
+      }
     },
     "old_well_01": {
       "prop": "old_well_01.png",
@@ -1015,11 +1029,12 @@
       "vocabulary": [
         "bury"
       ],
-      "source_record": "qc/word_props_sources/fresh_grave_mound_01/cleanup.json",
+      "source_record": "qc/word_props_revision_sources/cleanup_index.json",
       "qa": "qc/word_props_QA.md",
       "status": "pending_user_review",
       "flat_base_only": false,
-      "no_auto_trim": true
+      "no_auto_trim": true,
+      "revision": 2
     }
   },
   "wall_families": {

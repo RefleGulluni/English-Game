@@ -1,0 +1,10 @@
+{
+  "existing_files_checked": 5452,
+  "changed_existing_files": [
+    "art/cemetery_v3/props/props_manifest.json"
+  ],
+  "missing_files": [],
+  "old_manifest_entries_unchanged": true,
+  "new_runtime_pngs": 16,
+  "delivered_hashes_match_metrics": true
+}
