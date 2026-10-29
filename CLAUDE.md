@@ -87,7 +87,9 @@ Godot 4.7 项目。一款以“理解即力量”为核心的回合制 Roguelike
 1. **词汇数据化（2026-10-29 进行中）**：D-069 方向（世界说了算；学习模式 / 沉浸模式）、D-070 词条属性 + 多标签、**D-071 原材料 = ECDICT + Open English WordNet，做我们自己的词库**。流水线见 [docs/VOCABULARY_PIPELINE.md](docs/VOCABULARY_PIPELINE.md)：`dict_sources/`（不提交）→ `scripts/tools/vocab/build_word_drafts.py`（`dictionary` 一半每次重生成，`senses` 一半不覆盖）→ AI 写草稿 → `check_words.py --html` 出词卡页 `docs/reference/word_cards_batch01.html` → 用户抽查改 `status` → `tests/word_data_smoke.gd`。**42 个词草稿（第一批 38 + 代码里原有的 bury / echo / toxic / stabilize）已全部通过检查，等用户看词卡页**；**每个词都必须有书页上的话**（用户定的）。词库面向游戏、不面向玩家：单词栏、敌人意图、物件旁的词、事件对白、Lexicon 书页、学习模式都从这里取（给用户讲解时照这个说）。reveal / anchor / seal / mend 的效果是【提案】。下一步：用户抽查 → 把三处写死的词（`scripts/run/cemetery_words.gd`、`scripts/combat/combat_content.gd`、`learning_schedule.gd` 的 FAMILIES）换成读词库。
 2. **等各组交付**（需求都已转发，交回后验收、接入）：
    - 角色组：战斗动画第 3 步**已完成**（碎骨通过；骨灰、布丝改亮后通过，`scripts/world/v3/reality_fx.gd` 放在词命中 / BONE CUT 命中 / 抖落骨灰第 2 帧）；
-   - 美术组：空闲。可做的“碎骨 + 翻土坟坑贴花”用户说**先不做**。
+   - 角色组：**墓园词汇物件 8 件**（D-074，`docs/CEMETERY_WORD_PROPS_REQUEST.md`：渡鸦两种、苔藓盖名墓碑、坟头小铃、钟架、封死的墓室、老井、新坟 + 铁锹）；之后排 Veil Ghost 设计稿（等用户说）；
+   - 美术组：**雾中墓径厚苔藓地纹理** `moss_texture_01`（D-074，`docs/VEILED_WALK_MOSS_GROUND_REQUEST.md`）；交回后 Claude 照 `docs/GROUND_TERRAIN_METHOD.md` §6 做形状、接进刷路房间。“碎骨 + 翻土坟坑贴花”用户说**先不做**；
+   - **两份需求写好了，等用户转发**（不要默认已发出）。
 3. **Lexicon**：开合（D-068）、程序翻页（D-072）、三层结构四条规则（D-073）都已定；下一步正式界面第一版：星图总览 / 星座 / 单词页的样子（先出草图给用户看）。
 4. **入口房间**：用户可能还会继续调地面 / 物件 / 碰撞，调完检查再提交（上次 c3009b5）。
 5. 新墓园：接随机路线算法（**用户说等他说再接**）；出口符号的“未理解”版（`room_exit.gd` 的 `understood`）接到规则；第 2 房间、Veiled Walk 还是占位。
