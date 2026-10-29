@@ -38,7 +38,7 @@ const PENCIL := Color8(128, 116, 104)
 # User 2026-10-29: 0.7 s, 1.3 s, 2 s to open and 0.4 s .. 1.5 s to close each felt too fast; then
 # 0.3 s more for the book appearing and for it disappearing.
 const OPEN_RISE := 0.6
-const OPEN_REST := 1.7
+const OPEN_REST := 2.2 # +0.5 s for the sigil ring drawing itself (user 2026-10-29)
 const CLOSE_RISE := 0.53
 const CLOSE_REST := 1.27
 const TURN_TIME := 0.6 # one page turn (user: 0.15 s slower than 0.45)
@@ -50,9 +50,9 @@ const LINE_GAP := 0.16 # between the starts of two lines
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
 const P_RISE := 0.15
-const P_SIGIL := 0.32
-const P_TIP := 0.48
-const P_FALL := 0.78
+const P_SIGIL := 0.48 # the sigil wakes: triangle and dot, then the ring drawn clockwise
+const P_TIP := 0.60
+const P_FALL := 0.83
 const RISE := 24 # native pixels the book travels up while rising
 # One entry per learning stage (World Bible §10). Encountered and recognized words never show
 # their meaning: the book must not leak answers that have not been learned.
@@ -77,6 +77,8 @@ var _fall_frames: Texture2D # standing -> both covers fallen open; null until de
 var _turn_frames: Texture2D # one page turning right to left; null until delivered
 var _turn := -1.0 # 0..1 while a page turns
 var _sigil: Array[Vector2i] = [] # cyan pixels of the cover, in closed-book pixels
+var _sigil_core: Array[Vector2i] = [] # the triangle and the dot inside it
+var _sigil_ring: Array[Vector2i] = [] # the circle, clockwise from its top
 # The constellation, split into stars (the dense knots) and the lines between them. The stars
 # light one by one from the spine outwards, then each line draws itself from star to star.
 var _star_points: Array = [] # one Array[Vector2i] per star, nearest the spine first
@@ -110,6 +112,7 @@ func _ready() -> void:
 			for x in img.get_width():
 				if img.get_pixel(x, y).a > 0.5:
 					_sigil.append(Vector2i(x, y))
+	_split_sigil()
 
 
 ## Takes the cyan (language) pixels off a piece of the sheet, filling them with `fill`; returns
@@ -128,6 +131,41 @@ static func _lift_cyan(img: Image, fill: Color) -> Array:
 static func _strip(file: String) -> Texture2D:
 	var path := ProjectSettings.globalize_path(CLEAN_DIR + file)
 	return ImageTexture.create_from_image(Image.load_from_file(path)) if FileAccess.file_exists(path) else null
+
+
+## Splits the sigil into its ring and what is inside it (triangle and dot). The ring is the
+## outermost stroke in every direction from the centre: a pixel within 3 px of the farthest lit
+## pixel at its angle belongs to it. (A plain distance cut fails: the hand-drawn ring is thicker
+## at the top than the triangle's corners are far from the centre, and the corners touch the
+## ring, so it is not a separate stroke either.) The ring is ordered clockwise from the top.
+func _split_sigil() -> void:
+	var lo := Vector2(INF, INF)
+	var hi := -lo
+	for p in _sigil:
+		lo = lo.min(Vector2(p))
+		hi = hi.max(Vector2(p))
+	var centre := (lo + hi) / 2.0
+	const BINS := 48
+	var turn := func(p: Vector2i) -> float: # 0 at the top, growing clockwise on screen
+		var d := Vector2(p) - centre
+		return fposmod(atan2(d.x, -d.y), TAU)
+	var bin := func(p: Vector2i) -> int:
+		return int(turn.call(p) / TAU * BINS) % BINS
+	var farthest := []
+	farthest.resize(BINS)
+	farthest.fill(0.0)
+	for p in _sigil:
+		farthest[bin.call(p)] = maxf(farthest[bin.call(p)], (Vector2(p) - centre).length())
+	_sigil_core.clear()
+	_sigil_ring.clear()
+	for p in _sigil:
+		var b: int = bin.call(p)
+		var edge := maxf(farthest[b], maxf(farthest[(b + BINS - 1) % BINS], farthest[(b + 1) % BINS]))
+		if (Vector2(p) - centre).length() >= edge - 3.0:
+			_sigil_ring.append(p)
+		else:
+			_sigil_core.append(p)
+	_sigil_ring.sort_custom(func(a, b): return turn.call(a) < turn.call(b))
 
 
 ## Splits the constellation's pixels into stars and lines. Stars are the knots: pixels with four
@@ -293,9 +331,21 @@ func _draw() -> void:
 		var at := origin + Vector2(OPEN_SPINE - CLOSED_BOOK.size.x / 2, 0) * unit
 		draw_texture_rect(_closed, Rect2(at, Vector2(CLOSED_BOOK.size) * unit), false, Color(1, 1, 1, minf(1.0, rise_t * 2.0)))
 		# The sigil wakes: a flash that settles into a steady glow.
+		# The sigil wakes: the triangle and its dot light together, then the ring draws itself
+		# clockwise from the top like a pen going round, and the whole sigil flares as it closes.
 		var wake := _stage(P_RISE, P_SIGIL)
 		if wake > 0.0:
-			_draw_pixels(_sigil, at, unit, CYAN, wake, 0.22 * (1.0 + 0.8 * sin(wake * PI)))
+			var core := clampf(wake / 0.22, 0.0, 1.0)
+			var ring := clampf((wake - 0.25) / 0.6, 0.0, 1.0)
+			var close_flash := clampf(1.0 - absf(wake - 0.9) / 0.08, 0.0, 1.0)
+			_draw_pixels(_sigil_core, at, unit, CYAN.lerp(Color.WHITE, 0.4 * sin(core * PI)), core, 0.22 + 0.3 * sin(core * PI) + 0.3 * close_flash)
+			var drawn: Array[Vector2i] = []
+			drawn.assign(_sigil_ring.slice(0, ceili(ring * _sigil_ring.size())))
+			_draw_pixels(drawn, at, unit, CYAN, 1.0, 0.22 + 0.3 * close_flash)
+			if ring > 0.0 and ring < 1.0: # the pen's tip
+				var tip_px: Array[Vector2i] = []
+				tip_px.assign(drawn.slice(maxi(0, drawn.size() - 4)))
+				_draw_pixels(tip_px, at, unit, Color.WHITE, 1.0, 0.5)
 	elif fall <= 0.0:
 		if _tip_frames:
 			_draw_frame(_tip_frames, tip, origin, size)
