@@ -14,7 +14,8 @@ extends Node
 ## bag pages. Grey-box parts: exit glyphs and room 2 / area 2 contents are stand-ins.
 ##
 ## Keys: WASD move · E interact · Tab Lexicon book · L knowledge list · B run bag ·
-## Space end turn · R replay (after the fight) · F fullscreen
+## Space end turn · R replay (after the fight) · F fullscreen · dev: F5 back to the five starting
+## words, F6 every ability word (D-075)
 ## Capture: Godot --path . res://scenes/world/broken_graveyard_v3.tscn -- --capture=<abs dir>
 
 const TURNS := preload("res://scripts/combat/slice_turn_controller.gd")
@@ -87,6 +88,7 @@ const NODE_TITLES := {"event": "EVENT", "rest": "REST", "combat": "COMBAT", "eli
 @export var qa_force_chisel := true
 
 var manager := RunManager.new()
+var progress := preload("res://scripts/run/lexicon_progress.gd").new() # which ability words this player can use (D-075)
 var combat := CombatState.new()
 var room: CemeteryRoom
 var room_id := ""
@@ -229,8 +231,10 @@ func _install_input() -> void:
 func _bind_rules() -> void:
 	if get_tree().has_meta("slice_seed"):
 		seed_value = int(get_tree().get_meta("slice_seed"))
-	if bool(get_tree().get_meta("slice_qa_no_save", false)):
+	if bool(get_tree().get_meta("slice_qa_no_save", false)) or _capturing():
 		manager.persistence_path = ""
+		progress.save_path = ""
+	progress.load_or_start()
 	manager.start_cemetery_run(seed_value)
 	manager.state.current_node_id = "scene.cemetery.broken_graveyard"
 	turns.bind(combat, events)
@@ -285,6 +289,7 @@ func start_encounter() -> void:
 	manager.learning.begin(node, 1)
 	var snapshot := manager.state.combat_snapshot()
 	snapshot.merge({"enemy_profile": SKELETON_DATA.profile(), "reassembly_rounds": SKELETON_DATA.reassembly_rounds, "remains_integrity": SKELETON_DATA.remains_integrity})
+	snapshot.deck_cards = progress.deck_cards(manager.learning) # only the words this player can use
 	var logic: Node = skeleton.get_node("Logic")
 	logic.bind(combat, events)
 	combat.enemy_collapsed.connect(func(): rewards.collapsed(logic))
@@ -549,6 +554,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		turns.end_turn()
 	elif key == KEY_R and (encounter_cleared or turns.phase == TURNS.Phase.DEFEAT):
 		restart()
+	elif key in [KEY_F5, KEY_F6] and turns.phase == TURNS.Phase.EXPLORATION: # dev: F5 back to the five starting words, F6 every ability word
+		if key == KEY_F5: progress.reset_to_start()
+		else: progress.learn_all_abilities()
+		hud.prompt.text = "Words you can use: " + ", ".join(progress.usable_abilities(manager.learning)).to_upper()
 	elif key == KEY_F:
 		var win := get_window()
 		win.mode = Window.MODE_WINDOWED if win.mode == Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
@@ -559,6 +568,10 @@ func restart() -> void:
 
 
 # --- Capture mode: scripted walk-through with screenshots ------------------------------------
+
+func _capturing() -> bool:
+	return Array(OS.get_cmdline_user_args()).any(func(arg): return str(arg).begins_with("--capture="))
+
 
 func _capture() -> void:
 	var dir := ""
@@ -601,7 +614,7 @@ func _capture() -> void:
 	var cast_shots := 0
 	var attack_shot := false
 	var dust_shot := false
-	for i in 4000:
+	for i in 20000: # a five-word deck makes for longer fights (D-075)
 		if combat.finished:
 			break
 		if combat.bone_remains and not collapsed_shot:
@@ -613,7 +626,9 @@ func _capture() -> void:
 				combat.finish_mulligan([])
 			else:
 				var played := false
-				for card in combat.deck.hand.duplicate():
+				var order := combat.deck.hand.duplicate() # attacks first, so a small deck still finishes the fight
+				order.sort_custom(func(a, b): return int(str(a.name) in ["SHATTER", "STRIKE"]) > int(str(b.name) in ["SHATTER", "STRIKE"]))
+				for card in order:
 					if combat.card_cost(card) <= combat.focus and combat.disabled_reason(str(card.name), int(card.instance_id)).is_empty():
 						if cast_shots < 3: # the word, its hover preview, it leaving the bar, then its shape on the way
 							view.forced_hover = int(card.instance_id)

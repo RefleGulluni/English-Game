@@ -1,0 +1,95 @@
+extends RefCounted
+## What this player has learned of the ability words (D-075): one stage per word, kept in their
+## save and never lost between runs ("The world forgets. You do not."). Only USABLE ability words
+## go into the word bar. Content lives in the word library; this is progress only.
+##
+## The learning words of the 0.8 schedule (MOURN, ERODE, TOXIC ...) keep their own records in
+## learning_schedule.gd; ERODE and TOXIC join the word bar when that schedule makes them USABLE.
+
+const LIBRARY := preload("res://scripts/run/word_library.gd")
+const STAGES := ["UNKNOWN", "ENCOUNTERED", "RECOGNIZED", "UNDERSTOOD", "USABLE"]
+## Learned in the prologue, one per stop (D-075). Until the prologue exists every new save starts
+## with them; the prologue will grant them one at a time instead.
+const STARTING_WORDS := ["observe", "stabilize", "bind", "anchor", "strike"]
+## Cards each USABLE word adds to the deck; a word not listed adds one.
+const COPIES := {"strike": 3, "observe": 2, "bind": 2}
+## Ability words that only work through the 0.8 learning schedule.
+const SCHEDULED := ["erode", "toxic"]
+
+var save_path := "user://lexicon_progress.json" # empty: nothing is saved (QA and tests)
+var stages := {} # lemma -> stage
+
+
+## Reads the save; a player with no save starts as if they had just come through the prologue.
+func load_or_start() -> void:
+	stages.clear()
+	if not save_path.is_empty() and FileAccess.file_exists(save_path):
+		var data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
+		if data is Dictionary:
+			stages = data.get("stages", {})
+	if stages.is_empty():
+		grant_starting_words()
+
+
+func grant_starting_words() -> void:
+	for lemma in STARTING_WORDS:
+		set_stage(lemma, "USABLE")
+
+
+func stage(lemma: String) -> String:
+	return str(stages.get(lemma.to_lower(), "UNKNOWN"))
+
+
+## Moves a word to `value`. Learning only goes forward (a word is never unlearned) unless `force`.
+func set_stage(lemma: String, value: String, force := false) -> void:
+	var id := lemma.to_lower()
+	if force or STAGES.find(value) > STAGES.find(stage(id)):
+		stages[id] = value
+		save()
+
+
+func save() -> void:
+	if save_path.is_empty():
+		return
+	var file := FileAccess.open(save_path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify({"version": 1, "stages": stages}, "\t"))
+
+
+## The ability words this player can use, in library order.
+func usable_abilities(schedule = null) -> Array[String]:
+	var result: Array[String] = []
+	for lemma in LIBRARY.lemmas():
+		if LIBRARY.role(lemma) != "ability" and lemma not in SCHEDULED:
+			continue
+		var learned := stage(lemma) == "USABLE"
+		if lemma in SCHEDULED and schedule != null and schedule.words.has(lemma.to_upper()):
+			learned = schedule.words[lemma.to_upper()].current_state == "USABLE"
+		if learned:
+			result.append(lemma)
+	return result
+
+
+## The deck for the next fight: each usable word that combat knows how to play, in copies.
+func deck_cards(schedule = null) -> Array[String]:
+	var cards: Array[String] = []
+	for lemma in usable_abilities(schedule):
+		var id := lemma.to_upper()
+		if not CombatContent.SKILLS.has(id):
+			continue # learned, but its combat effect is not built yet (REVEAL, SEAL, MEND ...)
+		for i in int(COPIES.get(lemma, 1)):
+			cards.append(id)
+	return cards
+
+
+## Dev: back to the five starting words.
+func reset_to_start() -> void:
+	stages.clear()
+	grant_starting_words()
+
+
+## Dev: every ability word usable at once.
+func learn_all_abilities() -> void:
+	for lemma in LIBRARY.lemmas():
+		if LIBRARY.role(lemma) == "ability":
+			set_stage(lemma, "USABLE")

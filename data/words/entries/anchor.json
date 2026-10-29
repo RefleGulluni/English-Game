@@ -147,7 +147,7 @@
       "stage_lines": {
         "ENCOUNTERED": "an___r，像一个沉下去的钩子",
         "RECOGNIZED": "“把东西牢牢定住”",
-        "UNDERSTOOD": "【提案】下一次被侵蚀（护甲减少、结构减少）无效",
+        "UNDERSTOOD": "下一次被侵蚀（腐朽、护甲减少）无效",
         "USABLE": "可以出手"
       },
       "challenge": {
@@ -171,8 +171,7 @@
       "effect": {
         "type": "prevent_next_erosion",
         "count": 1,
-        "cost": 1,
-        "proposed": true
+        "cost": 1
       },
       "status": "draft"
     }

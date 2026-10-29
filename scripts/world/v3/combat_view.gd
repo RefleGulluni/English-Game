@@ -832,13 +832,15 @@ func preview(card: Dictionary) -> Array[String]:
 			"ERODE":
 				lines.append("EROSION 3 turns  ·  STRUCTURE -2 each turn")
 			"TOXIC":
-				lines.append("POISONED 3 turns  ·  HP -3 each turn")
+				lines.append("POISONED %d turns  ·  HP -%d each turn" % [CombatState.POISON_TURNS, CombatState.POISON_TICK])
 			"STABILIZE":
 				var family := combat.dominant_corruption_family()
 				if not family.is_empty():
 					lines.append("%s %d → %d" % [family.to_upper(), int(combat.corruption[family]), maxi(0, int(combat.corruption[family]) - CombatState.STABILIZE_AMOUNT)])
 			"RESTORE":
-				lines.append("HP %d → %d" % [combat.hp, mini(CombatState.MAX_HP, combat.hp + (6 if combat.statuses.has("WITHERED") else 8))] if combat.hp < CombatState.MAX_HP else "ARMOR %d → %d" % [combat.armor, mini(CombatState.BASE_ARMOR, combat.armor + 4)])
+				lines.append("HP %d → %d" % [combat.hp, mini(CombatState.MAX_HP, combat.hp + (int(CombatState.RESTORE_HP * 0.75) if combat.statuses.has("WITHERED") else CombatState.RESTORE_HP))] if combat.hp < CombatState.MAX_HP else "ARMOR %d → %d" % [combat.armor, mini(CombatState.BASE_ARMOR, combat.armor + CombatState.RESTORE_ARMOR)])
+			"ANCHOR":
+				lines.append("Next wearing-away (Decay, Armor loss) prevented")
 			"DEFLECT":
 				lines.append("Answers an attack as it comes")
 	if word != "DEFLECT":

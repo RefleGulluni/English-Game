@@ -11,7 +11,8 @@ var next_id := 0
 var mulligan_pending := true
 var mulligan_used := false
 
-func reset(seed_value: int, temporary_cards: Array = []) -> void:
+## `cards`: the deck to build (the player's USABLE words, D-075); empty = the 0.8 starter deck.
+func reset(seed_value: int, temporary_cards: Array = [], cards: Array = []) -> void:
 	for pile in [draw_pile, hand, discard_pile, exhaust_pile]:
 		pile.clear()
 	retained_cards.clear()
@@ -19,7 +20,7 @@ func reset(seed_value: int, temporary_cards: Array = []) -> void:
 	rng.seed = seed_value
 	mulligan_pending = true
 	mulligan_used = false
-	for card_id in CARDS.STARTER:
+	for card_id in (cards if not cards.is_empty() else CARDS.STARTER):
 		draw_pile.append(make_card(card_id))
 	for card_id in temporary_cards:
 		var card := make_card(str(card_id))

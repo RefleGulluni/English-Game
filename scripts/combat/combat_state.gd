@@ -84,6 +84,7 @@ var intent: Dictionary = {}
 var intent_clarity := 0
 var intent_bound_once := false
 var delayed_this_turn := false
+var anchored := false # ANCHOR: the next wearing-away (Decay, Armor loss) finds nothing to move
 var next_intent_penalty := 0
 var action_cursor := 0
 var corruption := {"Decay": 0, "Obscurity": 0, "Inattention": 0}
@@ -131,6 +132,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 	finished = false
 	turn_ending = false
 	delayed_this_turn = false
+	anchored = false
 	pending_counter = false
 	completed_rounds = 0
 	biome_id = str(run_snapshot.get("biome_id", ""))
@@ -206,7 +208,7 @@ func start_battle(index: int, run_snapshot: Dictionary = {}, elite: bool = false
 			enemy["toxic_immune"] = true
 	enemy["max_hp"] = int(enemy["hp"])
 	enemy["max_structure"] = int(enemy["structure"])
-	deck.reset(int(run_snapshot.get("deck_seed", 5050)) + index * 97, run_snapshot.get("temporary_cards", []))
+	deck.reset(int(run_snapshot.get("deck_seed", 5050)) + index * 97, run_snapshot.get("temporary_cards", []), run_snapshot.get("deck_cards", []))
 	if is_elite:
 		_add_corruption("Inattention", 10)
 	_update_threshold_statuses()
@@ -234,6 +236,8 @@ func disabled_reason(skill_name: String, instance_id: int = -1) -> String:
 		return "CURRENT INTENT ALREADY BOUND"
 	if skill_name == "STABILIZE" and dominant_corruption_family().is_empty():
 		return "NO ACTIVE CORRUPTION"
+	if skill_name == "ANCHOR" and anchored:
+		return "ALREADY ANCHORED"
 	if skill_name == "TOXIC" and (bool(enemy["toxic_immune"]) or float(enemy["toxic_resistance"]) >= 1.0):
 		return "TARGET IMMUNE"
 	if skill_name == "ERODE" and int(enemy["structure"]) <= 0 and int(enemy["armor"]) <= 0:
@@ -394,6 +398,10 @@ func use_skill(skill_name: String, restore_target: String = "", instance_id: int
 			metrics["intents_countered"] += 1
 			_add_log("STABILIZE · %s %d → %d." % [family, before, int(corruption[family])])
 			_update_threshold_statuses()
+		"ANCHOR":
+			focus -= cost
+			anchored = true
+			_add_log("ANCHOR · You hold fast. The next thing that wears you away finds nothing to move.")
 		"RESTORE":
 			if restore_target.is_empty():
 				return false
@@ -501,6 +509,10 @@ func resolve_enemy_action(use_deflect: bool) -> void:
 		if action.has("physical_corruption"):
 			_add_corruption(str(action["family"]), int(action["physical_corruption"]))
 			_add_log("%s · %s +%d." % [action["word"], action["family"], action["physical_corruption"]])
+	elif anchored and (str(action["family"]) == "Decay" or action.has("armor_damage")):
+		anchored = false
+		metrics["intents_countered"] += 1
+		_add_log("ANCHOR · %s finds nothing to wear away." % action["word"])
 	else:
 		var family := str(action["family"])
 		_add_corruption(family, int(action["corruption"]))

@@ -58,6 +58,13 @@ const _BASE := {
 		"effect": "Reduce the dominant Corruption family by 8.",
 		"accent": Color("68c99b"),
 	},
+	"ANCHOR": {
+		"cost": 1,
+		"family": "SEMANTIC PROTECTION",
+		"sense": "to hold something firmly in one place",
+		"effect": "The next wearing-away (Decay, Armor loss) is prevented.",
+		"accent": Color("8fb3c9"),
+	},
 	"RESTORE": {
 		"cost": 2,
 		"family": "RESTORATION",
