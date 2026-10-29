@@ -13,6 +13,13 @@ extends Control
 ## the seam light, the constellation and the words are drawn here. Until the character group
 ## delivers the clean book and its frames (docs/LEXICON_BOOK_ANIMATION_REQUEST.md) the clean
 ## versions are lifted off the design sheet, and tipping and falling are flat grey-box shapes.
+##
+## Turning a page (A / D) is computed, not a drawn strip (user 2026-10-29: smoother, and the words
+## must turn with the paper, like a real book). Both spreads are painted into hidden viewports;
+## the leaf is then drawn one book-pixel column at a time, each column projected round the spine
+## on a bending curve, so the motion runs at the frame rate yet stays on the book's pixel grid.
+## Past upright the leaf shows its back, which is the next spread's facing page. V switches back
+## to the character group's six drawn frames, to compare.
 
 signal open_changed(is_open: bool)
 
@@ -42,6 +49,13 @@ const OPEN_REST := 2.2 # +0.5 s for the sigil ring drawing itself (user 2026-10-
 const CLOSE_RISE := OPEN_RISE # user 2026-10-29: closing as slow as opening
 const CLOSE_REST := OPEN_REST
 const TURN_TIME := 0.6 # one page turn (user: 0.15 s slower than 0.45)
+const LIVE_TURN_TIME := 0.8 # the computed turn: nothing to count frames on, so a touch more leisurely
+const LEAF_LIFT := 0.06 # book pixels the leaf rises on screen per book pixel of height above the page
+const LEAF_LAG := 0.18 # how far the spine side of the leaf trails its free edge (share of the turn)
+const LEAF_SHADE := 0.3 # how much the leaf darkens as it stands up, away from the light
+const PAPER_MIN_LUMA := 0.43 # brighter than this is paper (leather and binding are darker)
+const WORDS_DIR := "res://data/words/"
+const PAGE_STAGES := ["USABLE", "UNDERSTOOD", "RECOGNIZED", "ENCOUNTERED"] # grey box: no progress yet
 const STAR_GAP := 0.14 # seconds between one star lighting and the next
 const STAR_FLASH := 0.35 # a new star flares, then settles
 const LINE_PAUSE := 0.15 # after the last star, before the first line
@@ -77,6 +91,16 @@ var _fall_frames: Texture2D # standing -> both covers fallen open; null until de
 var _turn_frames: Texture2D # one page turning right to left; null until delivered
 var _turn := -1.0 # 0..1 while a page turns
 var _turn_back := false # A: the page comes back from the left (the strip played backwards)
+var live_turn := true # V: false plays the six drawn frames instead
+var _page := 0 # which spread is open
+var _turn_from := 0 # the spread a turn started from
+var _warm := 0 # frames left for the viewports to paint before a turn starts moving
+var _spreads: Array[SubViewport] = [] # [the spread turned from, the spread turned to]
+var _spread_page := [0, 0]
+var _leaf_len := 0 # columns of paper from the spine to a page's outer edge
+var _paper_rows := {} # book x -> Vector2i(top, bottom) of the paper in that column of the open book
+var _pages: Array = [] # four entries per right page, from the word library
+var _ci: CanvasItem = self # where the helpers draw: this overlay, or one of the hidden spreads
 var _sigil: Array[Vector2i] = [] # cyan pixels of the cover, in closed-book pixels
 var _sigil_core: Array[Vector2i] = [] # the triangle and the dot inside it
 var _sigil_ring: Array[Vector2i] = [] # the circle, clockwise from its top
@@ -127,6 +151,53 @@ func _ready() -> void:
 				if img.get_pixel(x, y).a > 0.5:
 					_sigil.append(Vector2i(x, y))
 	_split_sigil()
+	_find_paper(_open.get_image())
+	_load_pages()
+	for i in 2:
+		var spread := SubViewport.new()
+		spread.transparent_bg = true
+		spread.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+		spread.render_target_update_mode = SubViewport.UPDATE_DISABLED
+		var canvas := Control.new()
+		canvas.draw.connect(_paint_spread.bind(canvas, i))
+		spread.add_child(canvas)
+		add_child(spread)
+		_spreads.append(spread)
+
+
+## Where the paper is in each column of the open book: the rows a turning leaf is made of.
+func _find_paper(img: Image) -> void:
+	for x in img.get_width():
+		var rows := Vector2i(-1, -1)
+		for y in img.get_height():
+			var c := img.get_pixel(x, y)
+			if c.a > 0.5 and c.get_luminance() >= PAPER_MIN_LUMA:
+				rows = Vector2i(y if rows.x < 0 else rows.x, y)
+		if rows.y - rows.x > 60: # a page column, not a lit rivet or clasp
+			_paper_rows[x] = rows
+	while _paper_rows.has(OPEN_SPINE + _leaf_len + 1) or _leaf_len < 3: # the groove at the spine has no paper
+		_leaf_len += 1
+
+
+## Grey box until the Lexicon interface: the word library in list order, four to a page, each
+## shown at a stage in turn (there is no player progress yet).
+func _load_pages() -> void:
+	var list := FileAccess.get_file_as_string(WORDS_DIR + "word_list.txt")
+	var page: Array = []
+	for line in list.split("\n"):
+		var lemma := line.get_slice("#", 0).strip_edges().get_slice(" ", 0)
+		var data = JSON.parse_string(FileAccess.get_file_as_string(WORDS_DIR + "entries/%s.json" % lemma)) if lemma else null
+		if not data is Dictionary:
+			continue
+		var stage: String = PAGE_STAGES[(page.size() + _pages.size()) % PAGE_STAGES.size()]
+		page.append({"word": lemma.to_upper() if stage != "ENCOUNTERED" else "", "stage": stage, "note": data.senses[0].sense})
+		if page.size() == 4:
+			_pages.append(page)
+			page = []
+	if not page.is_empty():
+		_pages.append(page)
+	if _pages.is_empty():
+		_pages.append(ENTRIES)
 
 
 ## Takes the cyan (language) pixels off a piece of the sheet, filling them with `fill`; returns
@@ -300,6 +371,29 @@ func toggle() -> void:
 	open_changed.emit(is_open)
 
 
+## A / D: turn to the next or the previous spread (none before the first).
+func turn_page(forward: bool) -> void:
+	if not (is_open and _t >= 1.0 and _turn < 0.0) or (not forward and _page == 0):
+		return
+	_turn_from = _page
+	_page += 1 if forward else -1
+	_turn_back = not forward
+	_turn = 0.0
+	if live_turn:
+		_spread_page = [_turn_from, _page]
+		var unit := pixel * book_scale
+		for spread in _spreads:
+			spread.size = OPEN_BOOK.size * unit
+			spread.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+			spread.get_child(0).queue_redraw()
+		_warm = 2
+	queue_redraw()
+
+
+func _entries(page: int) -> Array:
+	return _pages[page % _pages.size()]
+
+
 func set_open_now(open: bool) -> void:
 	is_open = open
 	_t = 1.0 if open else 0.0
@@ -313,10 +407,18 @@ func _process(delta: float) -> void:
 	var seconds: float = ((OPEN_RISE if is_open else CLOSE_RISE) if in_rise else (OPEN_REST if is_open else CLOSE_REST)) * PACE[speed]
 	var share := P_RISE if in_rise else 1.0 - P_RISE
 	if _turn >= 0.0:
-		_turn += delta / TURN_TIME
+		if _warm > 0:
+			_warm -= 1 # the hidden spreads paint first, so the leaf never shows an empty frame
+		else:
+			_turn += delta / ((LIVE_TURN_TIME * PACE[speed]) if live_turn else TURN_TIME)
 		if _turn >= 1.0:
 			_turn = -1.0
 			_sky = 0.0 # a new page: its constellation draws itself again
+			for spread in _spreads:
+				spread.render_target_update_mode = SubViewport.UPDATE_DISABLED
+		else:
+			for spread in _spreads:
+				spread.get_child(0).queue_redraw()
 		queue_redraw()
 	if is_open and _t >= 1.0 and _turn < 0.0:
 		_sky += delta
@@ -337,13 +439,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		speed = event.keycode - KEY_1
 	elif event.keycode == KEY_Z:
 		book_scale = 5 - book_scale
+	elif event.keycode == KEY_V:
+		live_turn = not live_turn
 	elif is_open and event.keycode in [KEY_W, KEY_UP]:
-		selected = (selected + ENTRIES.size() - 1) % ENTRIES.size()
+		selected = (selected + _entries(_page).size() - 1) % _entries(_page).size()
 	elif is_open and event.keycode in [KEY_S, KEY_DOWN]:
-		selected = (selected + 1) % ENTRIES.size()
-	elif is_open and _t >= 1.0 and _turn < 0.0 and _turn_frames and event.keycode in [KEY_A, KEY_D, KEY_LEFT, KEY_RIGHT]:
-		_turn = 0.0 # only the motion for now: the pages it turns to come with the Lexicon interface
-		_turn_back = event.keycode in [KEY_A, KEY_LEFT]
+		selected = (selected + 1) % _entries(_page).size()
+	elif is_open and event.keycode in [KEY_A, KEY_D, KEY_LEFT, KEY_RIGHT]:
+		turn_page(event.keycode in [KEY_D, KEY_RIGHT])
 	else:
 		return
 	get_viewport().set_input_as_handled()
@@ -356,10 +459,11 @@ func _stage(a: float, b: float) -> float:
 
 
 func _draw() -> void:
+	_ci = self
 	if _t <= 0.0:
 		return
 	var rise_t := ease(_stage(0.0, P_RISE), -2.0)
-	draw_rect(screen_rect, Color(0.02, 0.02, 0.04, 0.62 * ease(_stage(0.0, P_SIGIL), -2.0)))
+	_ci.draw_rect(screen_rect, Color(0.02, 0.02, 0.04, 0.62 * ease(_stage(0.0, P_SIGIL), -2.0)))
 
 	var unit := pixel * book_scale # window pixels per book pixel
 	var size := Vector2(OPEN_BOOK.size) * unit
@@ -371,7 +475,7 @@ func _draw() -> void:
 
 	if tip <= 0.0:
 		var at := origin + Vector2(OPEN_SPINE - CLOSED_BOOK.size.x / 2, 0) * unit
-		draw_texture_rect(_closed, Rect2(at, Vector2(CLOSED_BOOK.size) * unit), false, Color(1, 1, 1, minf(1.0, rise_t * 2.0)))
+		_ci.draw_texture_rect(_closed, Rect2(at, Vector2(CLOSED_BOOK.size) * unit), false, Color(1, 1, 1, minf(1.0, rise_t * 2.0)))
 		# The sigil wakes: a flash that settles into a steady glow.
 		# The sigil wakes: the triangle and its dot light together, then the ring draws itself
 		# clockwise from the top like a pen going round, and the whole sigil flares as it closes.
@@ -411,25 +515,116 @@ func _draw() -> void:
 				_box(origin, unit, OPEN_SPINE - w + 4, w - 4, PAPER)
 				_box(origin, unit, OPEN_SPINE, w - 4, PAPER)
 		_seam(origin, unit, 1.0 - fall, fall)
-	elif _turn >= 0.0:
+	elif _turn >= 0.0 and live_turn and _warm == 0:
+		_draw_leaf(origin, unit)
+		_draw_caption(origin, unit, 1.0)
+		return
+	elif _turn >= 0.0 and not live_turn and _turn_frames:
 		_draw_frame(_turn_frames, 1.0 - _turn if _turn_back else _turn, origin, size)
 		return
 	else:
-		draw_texture_rect(_open, Rect2(origin, size), false)
+		_ci.draw_texture_rect(_open, Rect2(origin, size), false)
 
 	if fall < 1.0:
 		return
-	draw_rect(Rect2(origin + Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
-	_draw_sky(origin, unit, _stage(P_FALL, 1.0))
-	_draw_entries(origin, unit, _stage(0.88, 1.0))
+	var page := _turn_from if _turn >= 0.0 else _page # still warming up: the old spread
+	_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
+	_draw_caption(origin, unit, _stage(0.88, 1.0))
+
+
+## Everything printed on a spread: the right page's paper, the constellation (on its own clock),
+## the entries and the page numbers.
+func _paint_pages(origin: Vector2, unit: float, page: int, sky_clock: float, sky_fade: float, e: float) -> void:
+	_ci.draw_rect(Rect2(origin + Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
+	_draw_sky(origin, unit, sky_fade, sky_clock)
+	_draw_entries(origin, unit, e, page)
+	var size := int(4.6 * unit)
+	for side in 2: # page numbers, small and centred at the foot of each page
+		var number := str(page * 2 + side + 1)
+		var w := FONT.get_string_size(number, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+		var centre := 75.0 if side == 0 else 185.0
+		_ci.draw_string(FONT, origin + Vector2(centre * unit - w / 2.0, 104 * unit), number, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(INK, 0.7 * e))
+
+
+## One hidden spread, painted at the size it shows on screen: [0] the spread turned from, [1] the
+## one turned to. The new spread's constellation is still dark: it lights once the page lands.
+func _paint_spread(canvas: Control, which: int) -> void:
+	_ci = canvas
+	var unit := pixel * book_scale
+	_ci.draw_texture_rect(_open, Rect2(Vector2.ZERO, Vector2(OPEN_BOOK.size) * unit), false)
+	_paint_pages(Vector2.ZERO, unit, _spread_page[which], _sky if which == 0 else 0.0, 1.0, 1.0)
+	_ci = self
+
+
+## The leaf turning, from the spread turned from (A) to the spread turned to (B). On the side it
+## leaves, B already shows underneath; on the side it heads for, A shows until the leaf covers it.
+## The leaf is the paper columns of A's page on its front and of B's facing page on its back.
+## Each column turns about the spine by its own angle: the free edge leads, the spine side trails,
+## so the paper bends. Columns are placed on whole book pixels and drawn nearest the eye last.
+func _draw_leaf(origin: Vector2, unit: float) -> void:
+	var a := _spreads[0].get_texture()
+	var b := _spreads[1].get_texture()
+	var from := -1 if _turn_back else 1 # the side the leaf leaves: +1 right (D), -1 left (A)
+	var pivot := OPEN_SPINE + 0.5
+	var split := OPEN_SPINE if from > 0 else OPEN_SPINE + 1
+	var w := OPEN_BOOK.size.x
+	var h := OPEN_BOOK.size.y
+	var b_part := Rect2i(split, 0, w - split, h) if from > 0 else Rect2i(0, 0, split, h)
+	var a_part := Rect2i(0, 0, split, h) if from > 0 else Rect2i(split, 0, w - split, h)
+	for part in [[b, b_part], [a, a_part]]:
+		var r: Rect2i = part[1]
+		_ci.draw_texture_rect_region(part[0], Rect2(origin + Vector2(r.position) * unit, Vector2(r.size) * unit), Rect2(Vector2(r.position) * unit, Vector2(r.size) * unit))
+
+	var edge := PI * smoothstep(0.0, 1.0 - LEAF_LAG, _turn) # angle of the free edge
+	var root := PI * smoothstep(LEAF_LAG, 1.0, _turn) # angle at the spine
+	var angle := func(u: float) -> float: return lerpf(root, edge, pow(u / _leaf_len, 1.3))
+	# Where each column boundary lands (distance from the spine along the book) and how high it is.
+	var along: Array[float] = [0.5 * cos(angle.call(0.25))]
+	var height: Array[float] = [0.5 * sin(angle.call(0.25))]
+	for d in range(1, _leaf_len + 1):
+		along.append(along[d - 1] + cos(angle.call(d)))
+		height.append(height[d - 1] + sin(angle.call(d)))
+	var columns := []
+	for d in range(1, _leaf_len + 1):
+		var x0 := roundi(pivot + from * along[d - 1])
+		var x1 := roundi(pivot + from * along[d])
+		if x0 == x1:
+			continue
+		var front := (x1 - x0) * from > 0
+		var source := OPEN_SPINE + from * d if front else OPEN_SPINE - from * d
+		if not _paper_rows.has(source):
+			continue
+		var rows: Vector2i = _paper_rows[source]
+		var shade := 1.0 - LEAF_SHADE * absf(sin(angle.call(d)))
+		columns.append([(height[d - 1] + height[d]) / 2.0, mini(x0, x1), absi(x1 - x0), source, rows, a if front else b, shade])
+	columns.sort_custom(func(p, q): return p[0] < q[0])
+
+	# The leaf's shadow on the page beyond its free edge, deepest while it stands highest.
+	var edge_x := roundi(pivot + from * along[_leaf_len])
+	var side := signi(edge_x - OPEN_SPINE) if edge_x != OPEN_SPINE else from
+	var depth := sin(edge)
+	for band in 3:
+		var reach := roundi((2.0 + 7.0 * depth) * (band + 1) / 3.0)
+		for x in range(edge_x, edge_x + side * reach, side):
+			if _paper_rows.has(x):
+				var rows: Vector2i = _paper_rows[x]
+				_ci.draw_rect(Rect2(origin + Vector2(x, rows.x) * unit, Vector2(1, rows.y - rows.x + 1) * unit), Color(0.12, 0.07, 0.04, 0.12 * depth))
+
+	for c in columns:
+		var rows: Vector2i = c[4]
+		var lift := roundi(c[0] * LEAF_LIFT)
+		var src := Rect2(Vector2(c[3], rows.x) * unit, Vector2(1, rows.y - rows.x + 1) * unit)
+		var dst := Rect2(origin + Vector2(c[1], rows.x - lift) * unit, Vector2(c[2], rows.y - rows.x + 1) * unit)
+		# Old paper in shade goes brown, not grey: blue falls off fastest, green a little faster than red.
+		_ci.draw_texture_rect_region(c[5], dst, src, Color(c[6], pow(c[6], 1.25), pow(c[6], 1.7)))
 
 
 ## The constellation on its own clock: stars light one by one (each flares, then settles), then
 ## each line draws itself from its first star to the next. `fade` dims it all while closing.
-func _draw_sky(origin: Vector2, unit: float, fade: float) -> void:
+func _draw_sky(origin: Vector2, unit: float, fade: float, clock: float) -> void:
 	var calm := 0.18 + 0.05 * sin(_time * 1.6)
 	for i in _star_points.size():
-		var age := _sky - i * STAR_GAP
+		var age := clock - i * STAR_GAP
 		if age <= 0.0:
 			continue
 		var flare := clampf(1.0 - age / STAR_FLASH, 0.0, 1.0)
@@ -438,7 +633,7 @@ func _draw_sky(origin: Vector2, unit: float, fade: float) -> void:
 		_draw_pixels(star, origin, unit, CYAN.lerp(Color.WHITE, 0.5 * flare), fade * minf(1.0, age / 0.08), calm + 0.45 * flare)
 	var start := _star_points.size() * STAR_GAP + LINE_PAUSE
 	for j in _line_points.size():
-		var progress := clampf((_sky - start - j * LINE_GAP) / LINE_TIME, 0.0, 1.0)
+		var progress := clampf((clock - start - j * LINE_GAP) / LINE_TIME, 0.0, 1.0)
 		if progress <= 0.0:
 			continue
 		var line: Array = _line_points[j]
@@ -451,12 +646,12 @@ func _draw_sky(origin: Vector2, unit: float, fade: float) -> void:
 func _draw_frame(strip: Texture2D, progress: float, origin: Vector2, size: Vector2) -> void:
 	var count := strip.get_width() / OPEN_BOOK.size.x
 	var frame := mini(int(progress * count), count - 1)
-	draw_texture_rect_region(strip, Rect2(origin, size), Rect2(frame * OPEN_BOOK.size.x, 0, OPEN_BOOK.size.x, OPEN_BOOK.size.y))
+	_ci.draw_texture_rect_region(strip, Rect2(origin, size), Rect2(frame * OPEN_BOOK.size.x, 0, OPEN_BOOK.size.x, OPEN_BOOK.size.y))
 
 
 ## Grey box: a full-height band of the book, x and width in book pixels.
 func _box(origin: Vector2, unit: float, x: int, w: int, color: Color) -> void:
-	draw_rect(Rect2(origin + Vector2(x, BOOK_TOP) * unit, Vector2(w, BOOK_BOTTOM - BOOK_TOP) * unit), color)
+	_ci.draw_rect(Rect2(origin + Vector2(x, BOOK_TOP) * unit, Vector2(w, BOOK_BOTTOM - BOOK_TOP) * unit), color)
 
 
 ## Light from inside the standing book, leaking through the seam between its pages: language
@@ -471,7 +666,7 @@ func _seam(origin: Vector2, unit: float, strength: float, spread := 0.0) -> void
 	var length := float(_seam_y.y - _seam_y.x)
 	var mid := origin + Vector2(_seam_x + 0.5, (_seam_y.x + _seam_y.y) / 2.0) * unit
 	var halo := Vector2(lerpf(18.0, 70.0, spread), length * lerpf(1.15, 1.0, spread)) * unit
-	draw_texture_rect(_glow, Rect2(mid - halo / 2.0, halo), false, Color(1, 1, 1, strength * (0.9 + 0.1 * sin(_time * 2.1)) * (1.0 - 0.6 * spread)))
+	_ci.draw_texture_rect(_glow, Rect2(mid - halo / 2.0, halo), false, Color(1, 1, 1, strength * (0.9 + 0.1 * sin(_time * 2.1)) * (1.0 - 0.6 * spread)))
 	for y in range(_seam_y.x, _seam_y.y + 1):
 		var along := (y - _seam_y.x) / maxf(1.0, length)
 		var shape := pow(sin(along * PI), 0.6) # bright middle, ends fading out
@@ -480,27 +675,27 @@ func _seam(origin: Vector2, unit: float, strength: float, spread := 0.0) -> void
 		if i < 0.05:
 			continue
 		var at := origin + Vector2(_seam_x, y) * unit
-		draw_rect(Rect2(at, Vector2(unit, unit)), Color(CYAN.lerp(Color.WHITE, 0.45 * i), minf(1.0, i * 1.2)))
+		_ci.draw_rect(Rect2(at, Vector2(unit, unit)), Color(CYAN.lerp(Color.WHITE, 0.45 * i), minf(1.0, i * 1.2)))
 		for side in [-1, 1]: # the page edges either side catch the light
-			draw_rect(Rect2(at + Vector2(side * unit, 0), Vector2(unit, unit)), Color(CYAN, 0.5 * i))
+			_ci.draw_rect(Rect2(at + Vector2(side * unit, 0), Vector2(unit, unit)), Color(CYAN, 0.5 * i))
 	for k in 7: # motes rising out of the seam
 		var life := fposmod(_time * 0.45 + k * 0.143, 1.0)
 		var y := roundf(lerpf(_seam_y.y - length * (0.2 + 0.1 * (k % 3)), _seam_y.x - 4.0, life))
 		var x := _seam_x + roundf(sin(_time * 1.3 + k * 2.1) * (1.0 + 2.0 * life + 8.0 * spread))
 		var fade := strength * sin(life * PI)
-		draw_rect(Rect2(origin + Vector2(x, y) * unit, Vector2(unit, unit)), Color(CYAN.lerp(Color.WHITE, 0.5), fade))
+		_ci.draw_rect(Rect2(origin + Vector2(x, y) * unit, Vector2(unit, unit)), Color(CYAN.lerp(Color.WHITE, 0.5), fade))
 
 
 ## Language pixels: a soft one-pixel glow around each, then the pixel itself.
 func _draw_pixels(points: Array[Vector2i], at: Vector2, unit: float, color: Color, alpha: float, glow: float) -> void:
 	for p in points:
 		for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
-			draw_rect(Rect2(at + (Vector2(p) + o) * unit, Vector2(unit, unit)), Color(CYAN, glow * alpha))
+			_ci.draw_rect(Rect2(at + (Vector2(p) + o) * unit, Vector2(unit, unit)), Color(CYAN, glow * alpha))
 	for p in points:
-		draw_rect(Rect2(at + Vector2(p) * unit, Vector2(unit, unit)), Color(color, alpha))
+		_ci.draw_rect(Rect2(at + Vector2(p) * unit, Vector2(unit, unit)), Color(color, alpha))
 
 
-func _draw_entries(origin: Vector2, unit: float, e: float) -> void:
+func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 	if e <= 0.0:
 		return
 	# Entries on the right page: one line per word, its meaning underneath once understood.
@@ -509,32 +704,47 @@ func _draw_entries(origin: Vector2, unit: float, e: float) -> void:
 	var row := 20.0 * unit
 	var word_size := int(7.5 * unit)
 	var note_size := int(4.6 * unit)
-	for i in ENTRIES.size():
-		var entry: Dictionary = ENTRIES[i]
+	var entries := _entries(page)
+	var note_width := (RIGHT_PAGE.size.x - 10) * unit
+	for i in entries.size():
+		var entry: Dictionary = entries[i]
 		var y := top + i * row
 		if i == selected:
-			draw_rect(Rect2(Vector2(left - 5 * unit, y + 2 * unit), Vector2(2, 2) * unit), Color(INK, e))
+			_ci.draw_rect(Rect2(Vector2(left - 5 * unit, y + 2 * unit), Vector2(2, 2) * unit), Color(INK, e))
 		match entry.stage:
 			"ENCOUNTERED": # only a reserved place: corner brackets around an empty line
 				_brackets(Rect2(Vector2(left, y + unit), Vector2(56, 9) * unit), Color(PENCIL, 0.8 * e), unit)
 			"RECOGNIZED": # pencil sketch, slightly unsteady
 				var jitter := Vector2(0, roundf(sin(_time * 2.0)) * 0.5 * unit)
-				draw_string(FONT, Vector2(left, y + 8 * unit) + jitter, entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(PENCIL, 0.75 * e))
+				_ci.draw_string(FONT, Vector2(left, y + 8 * unit) + jitter, entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(PENCIL, 0.75 * e))
 			"UNDERSTOOD": # ink, settled
-				draw_string(FONT, Vector2(left, y + 8 * unit), entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(INK, e))
-				draw_string(FONT, Vector2(left, y + 14 * unit), entry.note, HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
+				_ci.draw_string(FONT, Vector2(left, y + 8 * unit), entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(INK, e))
+				_ci.draw_string(FONT, Vector2(left, y + 14 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
 			"USABLE": # cyan, steady glow: language
 				var glow := 0.18 + 0.06 * sin(_time * 1.6)
 				for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
-					draw_string(FONT, Vector2(left, y + 8 * unit) + o * unit * 0.6, entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(CYAN, glow * e))
-				draw_string(FONT, Vector2(left, y + 8 * unit), entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(CYAN.darkened(0.25), e))
-				draw_string(FONT, Vector2(left, y + 14 * unit), entry.note, HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
+					_ci.draw_string(FONT, Vector2(left, y + 8 * unit) + o * unit * 0.6, entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(CYAN, glow * e))
+				_ci.draw_string(FONT, Vector2(left, y + 8 * unit), entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(CYAN.darkened(0.25), e))
+				_ci.draw_string(FONT, Vector2(left, y + 14 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
 
-	var stage: String = ENTRIES[selected].stage
-	var caption := "%s   ·   W/S choose   A/D turn   Tab close   1/2/3 speed" % stage
+
+
+## The line under the book: the selected entry's stage and the keys.
+func _draw_caption(origin: Vector2, unit: float, e: float) -> void:
+	var stage: String = _entries(_page)[mini(selected, _entries(_page).size() - 1)].stage
+	var caption := "%s   ·   W/S choose   A/D turn   V %s   Tab close   1/2/3 speed" % [stage, "live turn" if live_turn else "6 frames"]
 	var caption_size := int(8 * pixel)
 	var w := FONT.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size).x
-	draw_string(FONT, Vector2(screen_rect.get_center().x - w / 2.0, origin.y + OPEN_BOOK.size.y * unit + 18 * pixel), caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size, Color(0.85, 0.82, 0.76, e))
+	_ci.draw_string(FONT, Vector2(screen_rect.get_center().x - w / 2.0, origin.y + OPEN_BOOK.size.y * unit + 18 * pixel), caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size, Color(0.85, 0.82, 0.76, e))
+
+
+## Shortens a line, a word at a time, until it fits `width`.
+func _fit(text: String, font_size: int, width: float) -> String:
+	var words := text.split(" ")
+	while words.size() > 1 and FONT.get_string_size(" ".join(words), HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > width:
+		words.resize(words.size() - 1)
+		words[-1] = words[-1].trim_suffix(",") + "…"
+	return " ".join(words)
 
 
 func _brackets(r: Rect2, color: Color, unit: float) -> void:
@@ -543,5 +753,5 @@ func _brackets(r: Rect2, color: Color, unit: float) -> void:
 	for corner in [r.position, Vector2(r.end.x, r.position.y), Vector2(r.position.x, r.end.y), r.end]:
 		var sx := 1.0 if corner.x == r.position.x else -1.0
 		var sy := 1.0 if corner.y == r.position.y else -1.0
-		draw_rect(Rect2(corner + Vector2(minf(0, sx * l), minf(0, sy * w)), Vector2(l, w)), color)
-		draw_rect(Rect2(corner + Vector2(minf(0, sx * w), minf(0, sy * l)), Vector2(w, l)), color)
+		_ci.draw_rect(Rect2(corner + Vector2(minf(0, sx * l), minf(0, sy * w)), Vector2(l, w)), color)
+		_ci.draw_rect(Rect2(corner + Vector2(minf(0, sx * w), minf(0, sy * l)), Vector2(w, l)), color)
