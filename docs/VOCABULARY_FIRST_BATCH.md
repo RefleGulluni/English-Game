@@ -13,6 +13,7 @@
 | 墓园里的东西（13） | grave, shroud, bone, lantern, chapel, gate, statue, fountain, fog, epitaph, raven, moss, bell |
 | 气氛词（5） | grief, silence, memory, hollow, remains |
 
+- **起始词（D-075）**：主角开局一个词都不会。序章五站各学会一个能力词：火车站 OBSERVE、裂开的通道 STABILIZE、Eleanor 的店 BIND、Lexicon 锚点 ANCHOR、Redactor STRIKE。单词栏只放学到 USABLE 的能力词，所以这 5 个就是墓园第一局的起始单词栏；其余能力词在墓园各局里学会。序章做出来之前，开发版默认这 5 个已学会。
 - 中文是大概意思，不是正式释义；考试标签（四级 / 六级 / 考研 / 雅思）以后由工具从词典数据自动填，不手写。
 - 现有代码里的词**大部分**在这份名单里。**不在的有 4 个**：`bury`、`echo`（`cemetery_words.gd`）、`toxic`、`stabilize`（`combat_content.gd`，erode 的对策词就是 STABILIZE）。**用户同意，已加入（D-071 补充）**：toxic、stabilize 是能力词，bury、echo 是世界词，第一批变为 42 个。
 
