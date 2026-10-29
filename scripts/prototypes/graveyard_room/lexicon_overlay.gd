@@ -718,9 +718,8 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 		match entry.stage:
 			"ENCOUNTERED": # only a reserved place: corner brackets around an empty line
 				_brackets(Rect2(Vector2(left, y + unit), Vector2(56, 9) * unit), Color(PENCIL, 0.8 * e), unit)
-			"RECOGNIZED": # pencil sketch, slightly unsteady
-				var jitter := Vector2(0, roundf(sin(_time * 2.0)) * 0.5 * unit)
-				_ci.draw_string(FONT, Vector2(left, y + 8 * unit) + jitter, entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(PENCIL, 0.75 * e))
+			"RECOGNIZED": # pencil: still, but not yet sure of itself (user 2026-10-29: no wobbling)
+				_pencil(Vector2(left, y + 8 * unit), entry.word, word_size, e, unit)
 			"UNDERSTOOD": # ink, settled
 				_ci.draw_string(FONT, Vector2(left, y + 8 * unit), entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(INK, e))
 				_ci.draw_string(FONT, Vector2(left, y + 14 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
@@ -732,6 +731,29 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 				_ci.draw_string(FONT, Vector2(left, y + 14 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
 
 
+
+
+## A word written in pencil by someone not yet sure of it. Nothing moves: the doubt is in the
+## drawing. Each letter takes the pencil a little differently (lighter, darker), a faint second
+## pass sits just off the first as if the word were gone over again, and the grain of the paper
+## breaks a few strokes. All of it is seeded by the word, so it looks the same every time.
+func _pencil(at: Vector2, word: String, size: int, e: float, unit: float) -> void:
+	var salt := word.hash()
+	var pick := func(i: int) -> float: return float(hash(salt + i * 7919) & 0xffff) / 65535.0
+	var x := at.x
+	for i in word.length():
+		var letter := word[i]
+		var pressure := lerpf(0.5, 0.85, pick.call(i))
+		_ci.draw_string(FONT, Vector2(x, at.y), letter, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(PENCIL, pressure * e))
+		if pick.call(i + 100) > 0.45: # gone over again, not quite on the first line
+			var drift := Vector2(pick.call(i + 500) - 0.5, (pick.call(i + 600) - 0.5) * 0.5) * unit * 0.7
+			_ci.draw_string(FONT, Vector2(x, at.y) + drift, letter, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(PENCIL, 0.16 * e))
+		x += FONT.get_string_size(letter, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+	var width := x - at.x
+	var cap := size * 0.62 # roughly the height of a capital
+	for k in 14: # the paper's grain skipping under the pencil: short breaks in the strokes
+		var gap := Vector2(at.x + pick.call(200 + k) * width, at.y - pick.call(300 + k) * cap)
+		_ci.draw_rect(Rect2(gap, Vector2(lerpf(1.0, 2.5, pick.call(400 + k)), 0.55) * unit), Color(PAPER, 0.95 * e))
 
 ## The line under the book: the selected entry's stage and the keys.
 func _draw_caption(origin: Vector2, unit: float, e: float) -> void:
