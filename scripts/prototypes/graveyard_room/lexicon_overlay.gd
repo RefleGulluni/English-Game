@@ -39,8 +39,8 @@ const PENCIL := Color8(128, 116, 104)
 # 0.3 s more for the book appearing and for it disappearing.
 const OPEN_RISE := 0.6
 const OPEN_REST := 2.2 # +0.5 s for the sigil ring drawing itself (user 2026-10-29)
-const CLOSE_RISE := 0.53
-const CLOSE_REST := 1.27
+const CLOSE_RISE := OPEN_RISE # user 2026-10-29: closing as slow as opening
+const CLOSE_REST := OPEN_REST
 const TURN_TIME := 0.6 # one page turn (user: 0.15 s slower than 0.45)
 const STAR_GAP := 0.14 # seconds between one star lighting and the next
 const STAR_FLASH := 0.35 # a new star flares, then settles
