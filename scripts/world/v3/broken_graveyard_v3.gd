@@ -572,6 +572,9 @@ func _capture() -> void:
 		for i in 24:
 			await _shot(dir + "/lex_open_%02d.png" % i)
 			await get_tree().create_timer(0.1).timeout
+		for i in 10: # the constellation drawing itself
+			await _shot(dir + "/lex_sky_%02d.png" % i)
+			await get_tree().create_timer(0.18).timeout
 		_lexicon._turn = 0.0 # a page turn
 		for i in 5:
 			await _shot(dir + "/lex_turn_%02d.png" % i)

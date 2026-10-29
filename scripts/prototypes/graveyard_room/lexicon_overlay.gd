@@ -41,7 +41,12 @@ const OPEN_RISE := 0.6
 const OPEN_REST := 1.7
 const CLOSE_RISE := 0.53
 const CLOSE_REST := 1.27
-const TURN_TIME := 0.45 # one page turn
+const TURN_TIME := 0.6 # one page turn (user: 0.15 s slower than 0.45)
+const STAR_GAP := 0.14 # seconds between one star lighting and the next
+const STAR_FLASH := 0.35 # a new star flares, then settles
+const LINE_PAUSE := 0.15 # after the last star, before the first line
+const LINE_TIME := 0.35 # one line drawing itself from star to star
+const LINE_GAP := 0.16 # between the starts of two lines
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
 const P_RISE := 0.15
@@ -72,7 +77,11 @@ var _fall_frames: Texture2D # standing -> both covers fallen open; null until de
 var _turn_frames: Texture2D # one page turning right to left; null until delivered
 var _turn := -1.0 # 0..1 while a page turns
 var _sigil: Array[Vector2i] = [] # cyan pixels of the cover, in closed-book pixels
-var _stars: Array = [] # [Vector2i, Color] of the constellation, nearest the spine first
+# The constellation, split into stars (the dense knots) and the lines between them. The stars
+# light one by one from the spine outwards, then each line draws itself from star to star.
+var _star_points: Array = [] # one Array[Vector2i] per star, nearest the spine first
+var _line_points: Array = [] # one Array[Vector2i] per line, in drawing order from its first star
+var _sky := 0.0 # seconds since the book lay fully open (the constellation's own clock)
 var _time := 0.0
 
 
@@ -83,8 +92,11 @@ func _ready() -> void:
 	var closed := sheet.get_region(CLOSED_BOOK)
 	var open := sheet.get_region(OPEN_BOOK)
 	_sigil.assign(_lift_cyan(closed, ENGRAVED).map(func(p): return p[0]))
-	_stars = _lift_cyan(open, PAPER).filter(func(p): return not RIGHT_PAGE.has_point(p[0]))
-	_stars.sort_custom(func(a, b): return absi(a[0].x - OPEN_SPINE) < absi(b[0].x - OPEN_SPINE))
+	var sky: Array[Vector2i] = []
+	for p in _lift_cyan(open, PAPER):
+		if not RIGHT_PAGE.has_point(p[0]):
+			sky.append(p[0])
+	_split_sky(sky)
 	_closed = _clean("lexicon_closed_clean.png", closed)
 	_open = _clean("lexicon_open_clean.png", open)
 	_tip_frames = _strip("lexicon_tip_up.png")
@@ -118,6 +130,87 @@ static func _strip(file: String) -> Texture2D:
 	return ImageTexture.create_from_image(Image.load_from_file(path)) if FileAccess.file_exists(path) else null
 
 
+## Splits the constellation's pixels into stars and lines. Stars are the knots: pixels with four
+## or more lit neighbours, grown by two pixels to take in their points. What is left falls into
+## lines; each is ordered outwards from the star nearer the spine.
+func _split_sky(sky: Array[Vector2i]) -> void:
+	var lit := {}
+	for p in sky:
+		lit[p] = true
+	var around := func(p: Vector2i, reach: int) -> Array[Vector2i]:
+		var out: Array[Vector2i] = []
+		for dy in range(-reach, reach + 1):
+			for dx in range(-reach, reach + 1):
+				if (dx != 0 or dy != 0) and lit.has(p + Vector2i(dx, dy)):
+					out.append(p + Vector2i(dx, dy))
+		return out
+	var dense := {}
+	for p in sky:
+		if around.call(p, 1).size() >= 4:
+			dense[p] = true
+	var taken := {}
+	for p in dense:
+		if taken.has(p):
+			continue
+		var knot := _flood(p, dense, 1)
+		var star: Array[Vector2i] = []
+		for q in knot:
+			for r in around.call(q, 2) + [q]:
+				if not taken.has(r):
+					taken[r] = true
+					star.append(r)
+		_star_points.append(star)
+	var centre := func(points: Array) -> Vector2:
+		var c := Vector2.ZERO
+		for q in points:
+			c += Vector2(q)
+		return c / maxf(1.0, points.size())
+	_star_points.sort_custom(func(a, b): return absf(centre.call(a).x - OPEN_SPINE) < absf(centre.call(b).x - OPEN_SPINE))
+	var rest := {}
+	for p in sky:
+		if not taken.has(p):
+			rest[p] = true
+	var lines := []
+	for p in rest:
+		if taken.has(p):
+			continue
+		var line := _flood(p, rest, 3) # lines may be drawn with small gaps
+		for q in line:
+			taken[q] = true
+		# Start at the end touching the earliest star (or any end), then walk the line outwards.
+		var start: Vector2i = line[0]
+		var first := _star_points.size()
+		for q in line:
+			for i in _star_points.size():
+				if i < first and _star_points[i].any(func(s): return absi(s.x - q.x) <= 2 and absi(s.y - q.y) <= 2):
+					first = i
+					start = q
+		var inside := {}
+		for q in line:
+			inside[q] = true
+		lines.append([first, _flood(start, inside, 3)])
+	lines.sort_custom(func(a, b): return a[0] < b[0])
+	for l in lines:
+		_line_points.append(l[1])
+
+
+## Pixels of `pool` connected to `from` (8-way within `reach`), in breadth-first order.
+static func _flood(from: Vector2i, pool: Dictionary, reach: int) -> Array[Vector2i]:
+	var order: Array[Vector2i] = [from]
+	var seen := {from: true}
+	var i := 0
+	while i < order.size():
+		var p := order[i]
+		i += 1
+		for dy in range(-reach, reach + 1):
+			for dx in range(-reach, reach + 1):
+				var q := p + Vector2i(dx, dy)
+				if pool.has(q) and not seen.has(q):
+					seen[q] = true
+					order.append(q)
+	return order
+
+
 func _clean(file: String, derived: Image) -> Texture2D:
 	var path := ProjectSettings.globalize_path(CLEAN_DIR + file)
 	return ImageTexture.create_from_image(Image.load_from_file(path) if FileAccess.file_exists(path) else derived)
@@ -144,7 +237,12 @@ func _process(delta: float) -> void:
 		_turn += delta / TURN_TIME
 		if _turn >= 1.0:
 			_turn = -1.0
+			_sky = 0.0 # a new page: its constellation draws itself again
 		queue_redraw()
+	if is_open and _t >= 1.0 and _turn < 0.0:
+		_sky += delta
+	elif _t < P_FALL:
+		_sky = 0.0
 	var was := _t
 	_t = move_toward(_t, 1.0 if is_open else 0.0, delta * share / seconds)
 	if _t > 0.0 or was > 0.0: # one more redraw once fully closed, to clear the last frame
@@ -230,13 +328,31 @@ func _draw() -> void:
 	if fall < 1.0:
 		return
 	draw_rect(Rect2(origin + Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
-	# The constellation lights up from the spine outwards.
-	var lit := int(round(_stage(P_FALL, 1.0) * _stars.size()))
-	var stars: Array[Vector2i] = []
-	for i in lit:
-		stars.append(_stars[i][0])
-	_draw_pixels(stars, origin, unit, CYAN.darkened(0.15), 1.0, 0.18 + 0.05 * sin(_time * 1.6))
+	_draw_sky(origin, unit, _stage(P_FALL, 1.0))
 	_draw_entries(origin, unit, _stage(0.88, 1.0))
+
+
+## The constellation on its own clock: stars light one by one (each flares, then settles), then
+## each line draws itself from its first star to the next. `fade` dims it all while closing.
+func _draw_sky(origin: Vector2, unit: float, fade: float) -> void:
+	var calm := 0.18 + 0.05 * sin(_time * 1.6)
+	for i in _star_points.size():
+		var age := _sky - i * STAR_GAP
+		if age <= 0.0:
+			continue
+		var flare := clampf(1.0 - age / STAR_FLASH, 0.0, 1.0)
+		var star: Array[Vector2i] = []
+		star.assign(_star_points[i])
+		_draw_pixels(star, origin, unit, CYAN.lerp(Color.WHITE, 0.5 * flare), fade * minf(1.0, age / 0.08), calm + 0.45 * flare)
+	var start := _star_points.size() * STAR_GAP + LINE_PAUSE
+	for j in _line_points.size():
+		var progress := clampf((_sky - start - j * LINE_GAP) / LINE_TIME, 0.0, 1.0)
+		if progress <= 0.0:
+			continue
+		var line: Array = _line_points[j]
+		var drawn: Array[Vector2i] = []
+		drawn.assign(line.slice(0, ceili(progress * line.size())))
+		_draw_pixels(drawn, origin, unit, CYAN.darkened(0.15), fade * 0.9, calm)
 
 
 ## One cell of a 256x128 strip, picked by 0..1 progress.
