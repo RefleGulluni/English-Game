@@ -28,7 +28,7 @@ const FONT := preload("res://art/ui/fonts/CormorantGaramond.ttf")
 const CYAN := Color(0.42, 0.86, 0.95)
 const INK := Color8(44, 31, 24)
 const PENCIL := Color8(128, 116, 104)
-const OPEN_TIME := 0.7
+const OPEN_TIME := 1.1 # user 2026-10-29: 0.7 felt too fast
 const CLOSE_TIME := 0.4
 const PACE := [0.6, 1.0, 1.6] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
