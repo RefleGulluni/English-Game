@@ -76,6 +76,7 @@ var _tip_frames: Texture2D # cover to the player -> standing on its spine; null 
 var _fall_frames: Texture2D # standing -> both covers fallen open; null until delivered
 var _turn_frames: Texture2D # one page turning right to left; null until delivered
 var _turn := -1.0 # 0..1 while a page turns
+var _turn_back := false # A: the page comes back from the left (the strip played backwards)
 var _sigil: Array[Vector2i] = [] # cyan pixels of the cover, in closed-book pixels
 var _sigil_core: Array[Vector2i] = [] # the triangle and the dot inside it
 var _sigil_ring: Array[Vector2i] = [] # the circle, clockwise from its top
@@ -342,6 +343,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		selected = (selected + 1) % ENTRIES.size()
 	elif is_open and _t >= 1.0 and _turn < 0.0 and _turn_frames and event.keycode in [KEY_A, KEY_D, KEY_LEFT, KEY_RIGHT]:
 		_turn = 0.0 # only the motion for now: the pages it turns to come with the Lexicon interface
+		_turn_back = event.keycode in [KEY_A, KEY_LEFT]
 	else:
 		return
 	get_viewport().set_input_as_handled()
@@ -410,7 +412,7 @@ func _draw() -> void:
 				_box(origin, unit, OPEN_SPINE, w - 4, PAPER)
 		_seam(origin, unit, 1.0 - fall, fall)
 	elif _turn >= 0.0:
-		_draw_frame(_turn_frames, _turn, origin, size)
+		_draw_frame(_turn_frames, 1.0 - _turn if _turn_back else _turn, origin, size)
 		return
 	else:
 		draw_texture_rect(_open, Rect2(origin, size), false)
