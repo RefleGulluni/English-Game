@@ -737,21 +737,34 @@ func _draw_view(origin: Vector2, unit: float, level: int, path: Array, choice: i
 				_text(origin, unit, under + Vector2(0, 5), "%s  ·  %s" % [_count(SKY.words_in(region).size(), "word"), how], 3.2, PENCIL, shown, true)
 			else:
 				_text(origin, unit, under, str(region.name), 3.8, PENCIL, shown * 0.85, true)
-	else: # each thing as a small figure (its best-known constellation) with its name under it
+	else: # each thing a wash with stars inside, one star per thing in it (the next level down):
+		# a region's clusters show their constellations, a cluster's constellations their best words.
+		# The amount learned is the ink's depth, never the number of stars, so a page never fills up.
 		for i in items.size():
-			var best := SKY.brightest(items[i])
-			var words: Array = best.words.slice(0, 5)
-			var figure := SKY.figure(str(best.id), words.size(), points[i] + Vector2(0, -2), 6.0)
+			var item: Dictionary = items[i]
+			var r := sky.radius(level, path, i)
+			var name := str(item.get("name", item.get("id", "")))
 			var born := 0.3 + i * STAR_GAP * 2.0
-			for k in range(1, words.size()):
-				_link(origin, unit, figure[k - 1], figure[k], words[k - 1].stage, words[k].stage, (clock - born - 0.2 - k * 0.1) / LINE_TIME, e)
-			for k in words.size():
-				_star(origin, unit, figure[k], str(words[k].stage), clock - born - k * 0.05, e)
-			var name := str(items[i].get("name", items[i].get("id", "")))
-			_text(origin, unit, points[i] + Vector2(0, 9), name, 4.2, INK if i == choice else PENCIL, shown * (1.0 if i == choice else 0.85), true, i == choice)
+			if level == 2:
+				var parts: Array = item.constellations.duplicate()
+				parts.sort_custom(func(a, b): return SKY.STAGES.find(SKY.best_stage(a)) > SKY.STAGES.find(SKY.best_stage(b)))
+				parts = parts.slice(0, 8)
+				var spots := SKY.scatter(name, parts.size(), points[i], r * 0.8, str(item.kind))
+				for k in parts.size():
+					_star(origin, unit, spots[k], SKY.best_stage(parts[k]), clock - born - k * 0.05, e)
+			else:
+				var words: Array = item.words.duplicate()
+				words.sort_custom(func(a, b): return SKY.STAGES.find(str(a.stage)) > SKY.STAGES.find(str(b.stage)))
+				words = words.slice(0, 6)
+				var figure := SKY.figure(str(item.id), words.size(), points[i], r * 0.6)
+				for k in range(1, words.size()):
+					_link(origin, unit, figure[k - 1], figure[k], words[k - 1].stage, words[k].stage, (clock - born - 0.2 - k * 0.1) / LINE_TIME, e)
+				for k in words.size():
+					_star(origin, unit, figure[k], str(words[k].stage), clock - born - k * 0.05, e)
+			_text(origin, unit, points[i] + Vector2(0, r * 0.85 + 5), name, 4.2 if r < 16 else 5.0, INK if i == choice else PENCIL, shown * (1.0 if i == choice else 0.85), true, i == choice)
 	if _ci == self:
 		for i in points.size():
-			var reach: float = items[i].r + 3 if level == 1 else 10.0
+			var reach: float = sky.radius(level, path, i) + 3
 			var box := Rect2(points[i] - Vector2(reach, reach), Vector2(reach, reach) * 2) if level < 4 else Rect2(points[i] - Vector2(3, 5), Vector2(30, 9))
 			_hits.append([Rect2(origin + box.position * unit, box.size * unit), i])
 	if level > 1: # on the whole sky the right page is sky too
@@ -907,9 +920,11 @@ func _wash(level: int, path: Array, points: Array[Vector2]) -> Texture2D:
 		var here := sky.node(4, path)
 		spots.append([SKY.PAGE.get_center(), 30.0, str(here.kind), mini(SKY.state(here), 1), hash(str(here.id)) % 100000])
 	else:
+		if level > 1: # inside a region: its own shape, large and faint, behind everything
+			var kind := str(sky.node(level, path).kind)
+			spots.append([SKY.PAGE.get_center(), SKY.BACKDROP, kind, -1, hash(kind) % 100000])
 		for i in items.size():
-			var r: float = items[i].r if level == 1 else (10.0 if level == 2 else 9.0)
-			spots.append([points[i], r, str(items[i].kind), SKY.state(items[i]), hash(str(items[i].get("name", items[i].get("id", "")))) % 100000])
+			spots.append([points[i], sky.radius(level, path, i), str(items[i].kind), SKY.state(items[i]), hash(str(items[i].get("name", items[i].get("id", "")))) % 100000])
 	if level == 1:
 		_milky_way(img, spots)
 	for spot in spots: # cracks, pen strokes and inner stars only on the whole sky: closer in they
@@ -936,71 +951,13 @@ static func _hashf(x: int, y: int, salt: int) -> float:
 	return float(hash(x * 7919 + y * 104729 + salt * 31) & 0xffff) / 65535.0
 
 
-static func _segment_distance(p: Vector2, a: Vector2, b: Vector2) -> float:
-	var t := clampf((p - a).dot(b - a) / maxf((b - a).length_squared(), 0.0001), 0.0, 1.0)
-	return p.distance_to(a + (b - a) * t)
-
-
-const TREE := [[Vector2(0, 0.9), Vector2(0, -0.1)], [Vector2(0, 0.2), Vector2(-0.6, -0.5)], [Vector2(0, 0.0), Vector2(0.55, -0.6)],
-		[Vector2(-0.35, -0.3), Vector2(-0.5, -0.9)], [Vector2(0.3, -0.35), Vector2(0.75, -0.2)], [Vector2(0, -0.1), Vector2(0.05, -0.85)]]
-
-## A region's shape, by what it means (round 2 of D-088): [v, density, hole] for a point (dx, dy)
-## in units of the radius; v < 1 is inside, a hole stays bare paper.
-static func _shape(kind: String, dx: float, dy: float, salt: float) -> Array:
-	var d := Vector2(dx, dy).length()
-	var a := atan2(dy, dx)
-	match kind:
-		"breaking": # jagged, splintered edges (the cracks are drawn after)
-			var tri := absf(fposmod(a * 7.0 / TAU + salt, 1.0) - 0.5) * 2.0
-			return [d / (0.72 + 0.38 * tri), 1.0, false]
-		"holding": # a ring, not quite closed: a hand closing
-			return [9.0 if a > -2.0 and a < -1.15 else absf(d - 0.66) / 0.3, 1.0, false]
-		"seeing": # a wide eye, its white kept bare, a dark pupil
-			if Vector2(dx / 0.6, dy / 0.46).length() < 1.0:
-				return [0.0, 0.0, true]
-			return [Vector2(dx / 1.7, dy / 0.72).length(), 1.0, false]
-		"death": # a drop: narrow above, heavy and wide below
-			var width := 0.45 + 0.8 * clampf((dy + 1.0) / 1.6, 0.0, 1.0)
-			return [Vector2(dx / width, (dy - 0.1) / 1.05).length(), pow(clampf(0.25 + 0.8 * (dy + 1.0) / 2.0, 0.2, 1.0), 1.5), false]
-		"feeling": # the softest: no edge at all
-			var v := Vector2(dx / 1.35, dy).length() * 0.95
-			return [v, pow(maxf(0.0, 1.0 - v), 0.5) * 1.3, false]
-		"sound": # rings going out
-			return [d * 0.95, 1.0, sin(d * 9.5) < -0.1]
-		"light": # a bare core, long rays
-			if d < 0.28:
-				return [0.0, 0.0, true]
-			var ray := 1.0 if cos(7.0 * a + salt * TAU) > 0.7 else 0.0
-			return [d / (0.55 + 0.6 * ray), 1.0, false]
-		"nature": # branching like a tree
-			var near := 9.0
-			for s in TREE:
-				near = minf(near, _segment_distance(Vector2(dx, dy), s[0], s[1]))
-			return [near / 0.2, 1.1, false]
-		"places": # laid flat, like a piece of ground
-			return [9.0 if dy > 0.32 else Vector2(dx / 1.9, dy / 0.55).length(), 1.0, false]
-		"time": # two lobes and a narrow waist
-			return [minf(minf(Vector2(dx / 0.8, (dy + 0.55) / 0.5).length(), Vector2(dx / 0.8, (dy - 0.55) / 0.5).length()), Vector2(dx / 0.25, dy / 0.6).length()), 1.0, false]
-		"thinking": # a few small thoughts, touching
-			var t := 9.0
-			for c in [Vector2(-0.6, 0.2), Vector2(0.1, -0.4), Vector2(0.6, 0.3)]:
-				t = minf(t, Vector2(dx, dy).distance_to(c) / 0.42)
-			return [t, 1.0, false]
-		"people": # several, side by side
-			var p := 9.0
-			for c in [Vector2(-0.75, 0), Vector2(-0.25, 0.15), Vector2(0.25, -0.05), Vector2(0.75, 0.1)]:
-				p = minf(p, Vector2(dx, dy).distance_to(c) / 0.3)
-			return [p, 1.0, false]
-	return [Vector2(dx / 1.3, dy).length(), 1.0, false]
-
-
 ## One region (or cluster, or constellation) painted like ink on paper, as far as it is learned:
 ## state 0 one faint layer, 1 the ink settles at the edge, 2 more stars and a few pen strokes,
-## 3 a thin cyan rim. The edge is darker than the middle, as a wash dries.
+## 3 a thin cyan rim; -1 the faint backdrop of a region seen from inside. The edge is darker than the middle, as a wash dries.
 func _nebula(img: Image, centre: Vector2, radius: float, kind: String, state: int, salt: int, both: bool, details: bool) -> void:
-	var r: float = radius * [0.78, 0.92, 1.0, 1.0][state]
-	var base: float = [0.3, 0.5, 0.62, 0.62][state]
-	var rim: float = [0.0, 0.7, 0.85, 0.85][state]
+	var r: float = radius * [0.78, 0.92, 1.0, 1.0, 1.0][state if state >= 0 else 4]
+	var base: float = [0.3, 0.5, 0.62, 0.62, 0.15][state if state >= 0 else 4]
+	var rim: float = [0.0, 0.7, 0.85, 0.85, 0.3][state if state >= 0 else 4]
 	var soft := kind == "feeling"
 	var warp := FastNoiseLite.new()
 	warp.seed = salt
@@ -1015,7 +972,7 @@ func _nebula(img: Image, centre: Vector2, radius: float, kind: String, state: in
 			var paper := _paper_at(x, y, both)
 			if paper.a == 0.0:
 				continue
-			var shaped := _shape(kind, (x - centre.x) / r, (y - centre.y) / r, turn)
+			var shaped := SKY.shape(kind, (x - centre.x) / r, (y - centre.y) / r, turn)
 			if shaped[2]:
 				continue
 			var v: float = shaped[0] + warp.get_noise_2d(x, y) * 0.22 + grain.get_noise_2d(x, y) * 0.075
@@ -1051,7 +1008,7 @@ func _nebula(img: Image, centre: Vector2, radius: float, kind: String, state: in
 		for k in colours.size():
 			for tries in 20:
 				var p := Vector2i((centre + Vector2(rng.randf_range(-r, r), rng.randf_range(-r, r) * 0.8)).round())
-				var shaped := _shape(kind, (p.x - centre.x) / r, (p.y - centre.y) / r, turn)
+				var shaped := SKY.shape(kind, (p.x - centre.x) / r, (p.y - centre.y) / r, turn)
 				if shaped[0] < 0.85 and not shaped[2]:
 					put.call(p, colours[k])
 					break

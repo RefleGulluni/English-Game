@@ -1115,6 +1115,9 @@ func _capture_sky(dir: String) -> void:
 	await _shot(dir + "/s5b_turning.png")
 	await wait.call(1.0)
 	await _shot(dir + "/s5c_next_word.png")
+	_lexicon._go(2, [1, 0, 0, 0], 0) # Holding, from inside: its ring behind its clusters
+	await wait.call(2.5)
+	await _shot(dir + "/s6_holding.png")
 
 
 func _shot(path: String) -> void:
