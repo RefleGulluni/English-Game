@@ -69,7 +69,7 @@ const ROOMS := {
 	"bg_2": {
 		"id": "bg_2", "area": "BROKEN GRAVEYARD", "seed": 23,
 		"props": [
-			["fountain_dry_01", Vector2(480, 300), null],
+			["fountain_broken_wing_01", Vector2(480, 300), null], # the angel whose wing was shattered (character group, 2026-10-30)
 			["tombstone_upright_01", Vector2(160, 150), Rect2(-32, -15, 44, 15)],
 			["tombstone_tilted_01", Vector2(250, 330), Rect2(-32, -18, 48, 18)],
 			["tombstone_fragment_01", Vector2(700, 440), Rect2(-24, -28, 48, 28)],
@@ -568,6 +568,14 @@ func _load_room(id: String, entered_from: String, exit_zone := Rect2()) -> void:
 	exits.clear()
 	room_id = id
 	var layout: Dictionary = ROOMS[id]
+	if id.begins_with("vw_"): # trying a ground for the Veiled Walk: -- --vw_plate=<png> --vw_tint=r,g,b
+		layout = layout.duplicate()
+		for arg in OS.get_cmdline_user_args():
+			if str(arg).begins_with("--vw_plate="):
+				layout.plate_file = str(arg).get_slice("=", 1)
+			elif str(arg).begins_with("--vw_tint="):
+				var rgb := str(arg).get_slice("=", 1).split(",")
+				layout.tint = Color(float(rgb[0]), float(rgb[1]), float(rgb[2]))
 	room = CemeteryRoom.new(layout)
 	_viewport.add_child(room)
 	room.sorted.add_child(hero)
@@ -766,6 +774,15 @@ func _capture() -> void:
 	await _frames(20)
 	if "--route" in OS.get_cmdline_user_args(): # the SHATTER word route, one picture per step (D-078)
 		await _capture_route(dir)
+		get_tree().quit()
+		return
+	if "--look" in OS.get_cmdline_user_args(): # the rooms as they stand, no fights (art checks)
+		for id in ["bg_2", "vw_1", "vw_2"]:
+			cleared_rooms[id] = true
+			_load_room(id, "")
+			hero.position = Vector2(560, 400)
+			await get_tree().create_timer(1.2).timeout
+			await _shot(dir + "/look_%s.png" % id)
 		get_tree().quit()
 		return
 	if "--lexicon" in OS.get_cmdline_user_args(): # the book opening and closing, frame by frame (D-068)

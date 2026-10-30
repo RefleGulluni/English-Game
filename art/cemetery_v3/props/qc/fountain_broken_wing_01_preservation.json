@@ -1,0 +1,14 @@
+{
+  "preexisting_files_checked": 5916,
+  "changed_existing_files": [
+    "art/cemetery_v3/props/props_manifest.json"
+  ],
+  "missing_files": [],
+  "parent_fountain_unchanged": true,
+  "parent_base_unchanged": true,
+  "new_base_exact_parent_copy": true,
+  "all_old_manifest_entries_unchanged": true,
+  "outside_edit_masks_changes": 0,
+  "visible_pool_changes_outside_shards": 0,
+  "final_runtime_exact_staged_pixels": true
+}

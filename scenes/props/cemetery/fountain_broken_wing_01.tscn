@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://cxp6ae81iw2yl" path="res://scripts/world/v3/cemetery_prop.gd" id="1_1duuf"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/fountain_broken_wing_01_base.png" id="2_2bggi"]
+[ext_resource type="Texture2D" path="res://art/cemetery_v3/props/fountain_broken_wing_01.png" id="3_8jn5j"]
+
+[node name="FountainBrokenWing01" type="Node2D" unique_id=753070424]
+script = ExtResource("1_1duuf")
+ground_gap = 8
+
+[node name="Base" type="Sprite2D" parent="." unique_id=741614027]
+texture = ExtResource("2_2bggi")
+centered = false
+offset = Vector2(-128, -248)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=263334626]
+texture = ExtResource("3_8jn5j")
+centered = false
+offset = Vector2(-128, -248)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=799606510]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body" unique_id=1526435209]
+polygon = PackedVector2Array(-93, -30, -43, -1, 42, 1, 96, -31, 99, -52, 88, -87, 28, -104, -35, -104, -90, -84, -97, -61)
