@@ -50,10 +50,11 @@ const SLIP_SLIDE := 0.35 # seconds the pile takes to come up, and to go back dow
 const SLIP_FLY := 0.5 # seconds a page takes to fold and fly into the book
 const SLIP_FULL := 5 # page slips played in full before RECOGNIZED ones only write the word
 const SLIP_PILE_SPEED := 1.5 # a pile plays each page this much faster
-const PENCIL_WOOD := Color8(176, 132, 74)
-const PENCIL_LEAD := Color8(60, 56, 54)
-const PEN_BODY := Color8(38, 30, 26)
-const PEN_NIB := Color8(150, 146, 140)
+const SLIP_READ := 2.5 # seconds a page stays once written, to be read (user: it went too fast)
+const SLIP_READ_SHORT := 1.2 # a page with the word only
+const QUILL := Color8(206, 110, 76) # the quill's outline (user 2026-10-30: like Claude's feather)
+const QUILL_FILL := Color8(232, 214, 196)
+const PENCIL_LEAD := Color8(80, 74, 70)
 
 var progress # lexicon_progress.gd
 var hero: Node2D
@@ -371,7 +372,7 @@ func _lay_out(lemma: String, understood: bool, line: String, where: String) -> D
 			letters += str(r.text).length()
 		page.mean = [t + 0.1, t + 0.1 + letters / 60.0]
 		t = page.mean[1]
-	page.fly = t + (0.7 if not line.is_empty() or understood else 0.35)
+	page.fly = t + (SLIP_READ + (0.5 if understood else 0.0) if not line.is_empty() or understood else SLIP_READ_SHORT)
 	page.end = page.fly + SLIP_FLY
 	# The torn top edge: ragged in whole pixels, the same for the same word.
 	var rng := RandomNumberGenerator.new()
@@ -537,20 +538,34 @@ func _draw_pen_on(c: Control, u: float, tips: Array, dip_pen: bool, a: float) ->
 	_draw_pen(c, tip.round(), dip_pen, a * down * (1.0 - lift))
 
 
+## A quill: an outlined feather (after Claude's own, user 2026-10-30), the vane wide on one side
+## of the shaft; its nib leaves pencil grey for RECOGNIZED, ink for UNDERSTOOD.
 func _draw_pen(c: Control, tip: Vector2, dip_pen: bool, a: float) -> void:
-	var d := Vector2(0.45, -1.0).normalized()
+	var d := Vector2(0.5, -1.0).normalized()
 	var n := Vector2(-d.y, d.x)
-	c.draw_line(tip + d * 6 + Vector2(2, 2), tip + d * 26 + Vector2(2, 2), Color(0, 0, 0, 0.25 * a), 3.0)
-	if dip_pen:
-		c.draw_colored_polygon(PackedVector2Array([tip, tip + d * 7 + n * 1.8, tip + d * 7 - n * 1.8]), Color(PEN_NIB, a))
-		c.draw_line(tip + d * 2, tip + d * 6, Color(SLIP_INK, a), 1.0) # the slit, wet with ink
-		c.draw_line(tip + d * 7, tip + d * 27, Color(PEN_BODY, a), 3.0)
-	else:
-		c.draw_line(tip, tip + d * 2, Color(PENCIL_LEAD, a), 1.5)
-		c.draw_colored_polygon(PackedVector2Array([tip + d * 2, tip + d * 7 + n * 1.6, tip + d * 7 - n * 1.6]), Color(Color8(222, 192, 146), a))
-		c.draw_line(tip + d * 7, tip + d * 22, Color(PENCIL_WOOD, a), 3.2)
-		c.draw_line(tip + d * 22, tip + d * 24, Color(Color8(150, 148, 138), a), 3.2)
-		c.draw_line(tip + d * 24, tip + d * 27, Color(Color8(190, 118, 106), a), 3.2)
+	var outer := PackedVector2Array() # one side of the vane up, the other side back down
+	var inner := PackedVector2Array()
+	for i in 9:
+		var k := i / 8.0
+		var along := d * lerpf(9.0, 32.0, k)
+		var swell := sin(PI * pow(k, 0.7))
+		outer.append(tip + along + n * 6.0 * swell)
+		inner.append(tip + along - n * 2.5 * swell)
+	inner.reverse()
+	var vane := outer + inner
+	var shadow := PackedVector2Array()
+	for point in vane:
+		shadow.append(point + Vector2(2, 2))
+	c.draw_colored_polygon(shadow, Color(0, 0, 0, 0.2 * a))
+	c.draw_colored_polygon(vane, Color(QUILL_FILL, a))
+	vane.append(vane[0])
+	c.draw_polyline(vane, Color(QUILL, a), 1.0)
+	c.draw_line(tip + d * 3, tip + d * 30, Color(QUILL, a), 1.0) # the shaft
+	for k in [0.45, 0.7]: # two splits in the vane, as on a real feather
+		var at := tip + d * lerpf(9.0, 32.0, k)
+		c.draw_line(at + n * 6.0 * sin(PI * pow(k, 0.7)), at + n * 2.0 + d * -2.0, Color(QUILL, a), 1.0)
+	c.draw_line(tip, tip + d * 3, Color(SLIP_INK if dip_pen else PENCIL_LEAD, a), 1.5) # the nib
+
 
 # --- Event box -------------------------------------------------------------------------------
 
