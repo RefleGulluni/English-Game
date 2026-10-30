@@ -1,0 +1,50 @@
+{
+  "status": "SECTION4_NATIVE_SOIL_READY_FOR_USER_REVIEW",
+  "images": [
+    {
+      "mean_rgb": [
+        61.065220424107146,
+        64.11111886160714,
+        63.05702427455357
+      ],
+      "luma_std": 8.920305235054698,
+      "colors": 39,
+      "recolor_injective": true,
+      "recolored_unique_colors": 39,
+      "local_changed_pixels": 2474,
+      "local_changed_fraction": 0.08628627232142858,
+      "local_luma_delta_min_max": [
+        -4.0,
+        3.0
+      ],
+      "same_recolored_source_outer8px": true,
+      "horizontal_change": 63.89784192825112,
+      "sha256": "840b2e8c6544b00c304d177012fc3553dc8ba342b733eb847c8c9fcae7104b24"
+    },
+    {
+      "mean_rgb": [
+        60.792410714285715,
+        63.82240513392857,
+        62.76743861607143
+      ],
+      "luma_std": 8.882089329576988,
+      "colors": 39,
+      "recolor_injective": true,
+      "recolored_unique_colors": 39,
+      "local_changed_pixels": 3152,
+      "local_changed_fraction": 0.10993303571428571,
+      "local_luma_delta_min_max": [
+        -4.0,
+        3.0
+      ],
+      "same_recolored_source_outer8px": true,
+      "horizontal_change": 62.57357062780269,
+      "sha256": "e4b7fb3a7cb3005904b21cc21cb2470b427443a245b99f510e1e67d9a8003b87"
+    }
+  ],
+  "source_files": [
+    "ground_base_01.png",
+    "ground_base_02.png"
+  ],
+  "image_generation_used": false
+}

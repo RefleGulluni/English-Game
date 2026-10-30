@@ -39,6 +39,9 @@ const ENCOUNTER_DISTANCE := 110.0
 const STAND_OFF := 120.0 # how far apart, side to side, the two stand in a fight (about three strides)
 
 # Room layouts. Props: [file, origin, collision rect relative to the PNG origin, ellipse?]
+## Veiled Walk base ground (art group, D-084): wetter, darker, colder than the outer graveyard's
+## mud, so these rooms no longer need a blue tint over the old placeholder plate.
+const VEILED_GROUND := ["res://art/cemetery_v3/ground/base/veiled_base_01.png", "res://art/cemetery_v3/ground/base/veiled_base_02.png"]
 const ROOMS := {
 	# The first word route (D-078, docs/FIRST_WORD_ROUTE_SHATTER.md), fixed until the user says to
 	# connect the random route: a broken stone (seen) → the broken wing (recognised) → a fight where
@@ -98,7 +101,7 @@ const ROOMS := {
 		],
 	},
 	"vw_1": {
-		"id": "vw_1", "area": "VEILED WALK", "seed": 31, "tint": Color(0.56, 0.62, 0.78), "dead_grass": 6,
+		"id": "vw_1", "area": "VEILED WALK", "seed": 31, "ground_tiles": VEILED_GROUND, "dead_grass": 6,
 		"props": [
 			["grave_slab_01", Vector2(480, 300), null],
 			["tombstone_fragment_01", Vector2(260, 200), Rect2(-24, -28, 48, 28)],
@@ -113,7 +116,7 @@ const ROOMS := {
 		],
 	},
 	"vw_2": {
-		"id": "vw_2", "area": "VEILED WALK", "seed": 37, "tint": Color(0.56, 0.62, 0.78), "dead_grass": 6,
+		"id": "vw_2", "area": "VEILED WALK", "seed": 37, "ground_tiles": VEILED_GROUND, "dead_grass": 6,
 		"props": [
 			["tombstone_upright_01", Vector2(240, 180), Rect2(-32, -15, 44, 15)],
 			["open_grave_01", Vector2(760, 330), Rect2(-40, -64, 96, 64)],

@@ -1,0 +1,79 @@
+{
+  "task": "VEILED_WALK_BASE_GROUND_REQUEST",
+  "status": "VEILED_BASE_STOPPED_VISIBLE_MIX_REPETITION",
+  "tool": "built-in image_gen;no CLI/API fallback",
+  "candidates": [
+    "../../veiled_base_01.png",
+    "../../veiled_base_02.png"
+  ],
+  "sources": [
+    {
+      "prompt": "01_material.prompt.txt",
+      "raw": "01_material_generated.png",
+      "grid": "01_material_grid.json",
+      "restored": "01_material_restored_cells.png",
+      "restored_size": [
+        250,
+        146
+      ],
+      "observed_pitch": [
+        6.64,
+        6.49
+      ],
+      "crop": [
+        13,
+        9,
+        237,
+        137
+      ]
+    },
+    {
+      "prompt": "04_cross_repair.prompt.txt",
+      "reference": "03_half_offset_6x.png",
+      "raw": "04_cross_repair_generated.png",
+      "grid": "04_cross_repair_grid.json",
+      "restored": "04_cross_repair_restored_cells.png",
+      "observed_pitch": [
+        7.40625,
+        7.40625
+      ],
+      "restored_size": [
+        224,
+        128
+      ],
+      "selected_pixels": 10288
+    },
+    {
+      "prompt": "06_variant.prompt.txt",
+      "reference": "05_main_6x.png",
+      "raw": "06_variant_generated.png",
+      "grid": "06_variant_grid.json",
+      "restored": "06_variant_restored_cells.png",
+      "observed_pitch": [
+        7.40625,
+        7.40625
+      ],
+      "restored_size": [
+        224,
+        128
+      ],
+      "selected_pixels": 20092,
+      "changed_pixels": 17098
+    }
+  ],
+  "processing": [
+    "material_ops.py",
+    "prepare_material.py",
+    "02_cleanup_metadata.json",
+    "assemble_main.py",
+    "05_main_assembly.json",
+    "05_final_palette.json",
+    "assemble_variant_review.py",
+    "07_variant_assembly.json"
+  ],
+  "method": "Observed native source-cell center sampling,integer crop,no art resize;36-color no-dither reduction,same-material adjacent near-shade cleanup,palette-only calibration. Main half-offset112,64 with AI center-cross repair and min-error native cuts,paired1px textured profiles. Variant AI redraw selected through irregular native interior cuts while retaining all outer8px and sharing same palette. No random pixel art synthesis,blur,blend,flips or rotations. Random placement only switches full01/02tiles.",
+  "qc": "../../qc/veiled_base_QA.md",
+  "verification": "../../qc/veiled_base_verification.json",
+  "visual_stop_reason": "Visible smoother-center block rhythm remains in bare mixed fill,despite exact edges and acceptable color/std;no engine grading/fog/world shading used to conceal it.",
+  "runtime_integrated": false
+}

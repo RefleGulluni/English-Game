@@ -34,7 +34,22 @@ func _init(room_layout: Dictionary) -> void:
 	# plate_file: any PNG path (res:// or on disk), for trying ground candidates before they land;
 	# "" means the scene draws its own ground (tile layers) underneath the room.
 	var plate_file := str(layout.get("plate_file", ART + str(layout.get("plate", "plates/ground_plate_960x540")) + ".png"))
-	if plate_file != "":
+	if layout.has("ground_tiles") and not layout.has("plate_file"):
+		# Real base ground (GROUND_TERRAIN_METHOD): seamless 224x128 tiles, mixed by the room's seed.
+		var tiles: Array[Texture2D] = []
+		for file in layout.ground_tiles:
+			tiles.append(PixelArt.texture(str(file)))
+		var w := tiles[0].get_width()
+		var h := tiles[0].get_height()
+		for y in range(top, size.y, h):
+			for x in range(0, size.x, w):
+				var tile := Sprite2D.new()
+				tile.centered = false
+				tile.texture = tiles[_rng.randi_range(0, tiles.size() - 1)]
+				tile.position = Vector2(x, y)
+				tile.z_index = -10
+				add_child(tile)
+	elif plate_file != "":
 		var plate := PixelArt.texture(plate_file)
 		for y in range(top, size.y, plate.get_height()): # a taller room stacks the plate until real ground exists
 			var ground := Sprite2D.new()

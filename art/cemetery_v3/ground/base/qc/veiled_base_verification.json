@@ -1,0 +1,102 @@
+{
+  "status": "SECTION4_NATIVE_SOIL_READY_FOR_USER_REVIEW",
+  "source_method": "Approved39-color ground_base01/02 injective shared recolor plus manually authored low-contrast interior swatch edits,no image generation",
+  "images": {
+    "veiled_base_01.png": {
+      "mean_rgb": [
+        61.065220424107146,
+        64.11111886160714,
+        63.05702427455357
+      ],
+      "luma_std": 8.920305235054698,
+      "colors": 39,
+      "recolor_injective": true,
+      "recolored_unique_colors": 39,
+      "local_changed_pixels": 2474,
+      "local_changed_fraction": 0.08628627232142858,
+      "local_luma_delta_min_max": [
+        -4.0,
+        3.0
+      ],
+      "same_recolored_source_outer8px": true,
+      "horizontal_change": 63.89784192825112,
+      "sha256": "840b2e8c6544b00c304d177012fc3553dc8ba342b733eb847c8c9fcae7104b24",
+      "size": [
+        224,
+        128
+      ],
+      "all_alpha_255": true,
+      "pure_recolor_matches_exact_39color_lookup": true,
+      "outer8px_match_recolored_source": true,
+      "opposite_edges_exact": true
+    },
+    "veiled_base_02.png": {
+      "mean_rgb": [
+        60.792410714285715,
+        63.82240513392857,
+        62.76743861607143
+      ],
+      "luma_std": 8.882089329576988,
+      "colors": 39,
+      "recolor_injective": true,
+      "recolored_unique_colors": 39,
+      "local_changed_pixels": 3152,
+      "local_changed_fraction": 0.10993303571428571,
+      "local_luma_delta_min_max": [
+        -4.0,
+        3.0
+      ],
+      "same_recolored_source_outer8px": true,
+      "horizontal_change": 62.57357062780269,
+      "sha256": "e4b7fb3a7cb3005904b21cc21cb2470b427443a245b99f510e1e67d9a8003b87",
+      "size": [
+        224,
+        128
+      ],
+      "all_alpha_255": true,
+      "pure_recolor_matches_exact_39color_lookup": true,
+      "outer8px_match_recolored_source": true,
+      "opposite_edges_exact": true
+    }
+  },
+  "common_palette_color_count": 39,
+  "same_outer8px": true,
+  "all_ordered_adjacencies_exact": true,
+  "random_seed": 20261030,
+  "mixed_ids": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  "bare_native_size": [
+    480,
+    270
+  ],
+  "repeat_native_size": [
+    672,
+    384
+  ],
+  "half_screen_comparison": "Left240px original,right240px new,same native positions and same01/02mix,no grading,2x nearest",
+  "approved_images_unchanged": true,
+  "protected_image_count": 113,
+  "runtime_integrated": false,
+  "world_position_shading_used": false,
+  "visual_review": {
+    "same_mud_family": "Half-screen comparison retains approved soft soil structure,now darker/cooler,not regenerated.",
+    "mixed_3x3": "No obvious previous diagonal fragment motif or rectangular smooth-center boundary in this self-review. Retained source low-frequency pattern can still be traced with deliberate searching;not a claim of impossible-to-detect repetition.",
+    "moss_separation": "Gray-cool soil and approved gray-green moss distinguishable in ungraded comparison.",
+    "wetness_limit": "Very subtle sheen and added damp regions;degree of waterlogged feel remains subjective for in-game review."
+  }
+}

@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+lish-Game/art/cemetery_v3/ground/base/veiled_base_01.png   224x128   OK   39    64    0   127
+lish-Game/art/cemetery_v3/ground/base/veiled_base_02.png   224x128   OK   39    63    0   127
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95

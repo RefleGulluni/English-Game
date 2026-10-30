@@ -1,0 +1,36 @@
+{
+  "task": "VEILED_WALK_BASE_GROUND_REQUEST section4 revision2",
+  "status": "SECTION4_NATIVE_SOIL_READY_FOR_USER_REVIEW",
+  "method": "Approved source pixels only:exact injective39-to39 shared palette replacement,then manually specified low-contrast interior shade regions and2–4pixel leaf fragments using only the same39swatches. No image generation,no source texture reconstruction,noise,art blur,resize or new fine grain.",
+  "sources": [
+    "../../../ground_base_01.png",
+    "../../../ground_base_02.png"
+  ],
+  "source_repository_paths": [
+    "art/cemetery_v3/ground/base/ground_base_01.png",
+    "art/cemetery_v3/ground/base/ground_base_02.png"
+  ],
+  "outputs": [
+    "../../../veiled_base_01.png",
+    "../../../veiled_base_02.png"
+  ],
+  "code": [
+    "revise_native.py",
+    "build_review.py"
+  ],
+  "palette": "01_common_palette.json",
+  "pure_recolored_sources": [
+    "01_recolored_01_native.png",
+    "01_recolored_02_native.png"
+  ],
+  "authored_features": "02_authored_features.json",
+  "metrics": "03_revision_metrics.json",
+  "qa": "../../../qc/veiled_base_QA.md",
+  "public_verification": "../../../qc/veiled_base_verification.json",
+  "half_screen_comparison": "../../../qc/veiled_base_vs_outer_2x.png",
+  "preservation": "Original approved images unchanged;outer8pixels of outputs exactly match the recolored corresponding sources. Bothvariants share identical margins and all ordered neighbor profiles.",
+  "historical_rejected_images": "../manifest_round1.json and qc/backups/veiled_before_visual_stop.zip;not inputs to this revision",
+  "runtime_integrated": false,
+  "image_generation_used": false,
+  "visual_limit": "No claim of completely undetectable source repetition;wetness amount and in-game readability await user."
+}
