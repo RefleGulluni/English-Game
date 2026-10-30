@@ -124,9 +124,10 @@ func advance(lemma: String, kind: String, encounter := "") -> String:
 	return step[1]
 
 
-## Keeps the sentence a word reached `stage` in (D-086); nothing without a sentence.
+## Keeps the sentence a word reached `stage` in (D-086), and where; a word only seen in passing
+## has a place and no sentence. Nothing when there is neither.
 func remember(lemma: String, stage_reached: String, line: String, where: String) -> void:
-	if line.is_empty() or stage_reached.is_empty():
+	if (line.is_empty() and where.is_empty()) or stage_reached.is_empty():
 		return
 	var id := lemma.to_lower()
 	var met: Dictionary = meetings.get(id, {})

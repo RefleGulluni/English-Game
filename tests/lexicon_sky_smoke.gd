@@ -39,6 +39,14 @@ func _initialize() -> void:
 	check(progress.touched["grave"] == progress.clock, "a word never goes back, and that is not a move")
 	progress.reset_to_start()
 	check(not progress.touched.has("decay") and progress.touched.size() == 5, "a reset forgets when words moved")
+	progress.remember("decay", "ENCOUNTERED", "", "In passing · Broken Graveyard")
+	check(progress.meetings["decay"]["ENCOUNTERED"].where == "In passing · Broken Graveyard", "a word seen in passing keeps where")
+	progress.remember("decay", "RECOGNIZED", "", "")
+	check(not progress.meetings["decay"].has("RECOGNIZED"), "nothing is kept without a sentence or a place")
+	var overlay := preload("res://scripts/prototypes/graveyard_room/lexicon_overlay.gd")
+	for lemma in ["strike", "shatter", "observe", "bind", "anchor", "stabilize", "restore", "deflect", "toxic"]:
+		check(not overlay.invocation(lemma).is_empty(), "%s says what it does in a fight" % lemma)
+	check("8 structure" in overlay.invocation("shatter"), "shatter's invocation reads its effect: %s" % overlay.invocation("shatter"))
 	if failures.is_empty():
 		print("LEXICON_SKY_SMOKE: PASS")
 	else:

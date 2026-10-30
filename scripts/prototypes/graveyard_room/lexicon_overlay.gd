@@ -147,7 +147,7 @@ var _open_img: Image
 var _hits: Array = [] # [Rect2 on screen, index]: what a click on the left page picks
 var _twinkles: Array = [] # [book pixel, speed, phase]: milky way stars that twinkle
 var _rite_from := Vector2.ZERO # where the ceremony's card lifts off (the big word)
-var _sounds := SystemFont.new() # the phonetic line: the book's font has no IPA letters
+var _sounds := SystemFont.new() # the phonetic line: the book's font has no IPA letters (a serif that has them)
 var _ci: CanvasItem = self # where the helpers draw: this overlay, or one of the hidden spreads
 var _sigil: Array[Vector2i] = [] # cyan pixels of the cover, in closed-book pixels
 var _sigil_core: Array[Vector2i] = [] # the triangle and the dot inside it
@@ -168,6 +168,7 @@ var _hold := 0.0 # seconds Space / Esc has been held towards a skip
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_sounds.font_names = PackedStringArray(["Times New Roman", "Charis SIL", "Gentium Plus", "Noto Serif", "DejaVu Serif", "Georgia", "serif"])
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	var sheet := Image.load_from_file(ProjectSettings.globalize_path(SHEET))
 	var closed := sheet.get_region(CLOSED_BOOK)
@@ -370,8 +371,18 @@ func _entries(state: Dictionary) -> Array:
 			var q := str(state.query).to_lower()
 			if q.is_empty():
 				return []
+			# The word itself first, then its forms (typing "decayed" finds decay), then anywhere inside.
 			var starts := words.filter(func(w): return w.lemma.begins_with(q))
-			return starts + words.filter(func(w): return not w.lemma.begins_with(q) and q in w.lemma)
+			var forms := []
+			for w in words:
+				if w.lemma.begins_with(q):
+					continue
+				for form in WORDS.dictionary(w.lemma).get("forms", {}).values():
+					if str(form).begins_with(q):
+						w.form = str(form)
+						forms.append(w)
+						break
+			return starts + forms + words.filter(func(w): return not w.has("form") and not w.lemma.begins_with(q) and q in w.lemma)
 		"recent": # newest first
 			words.sort_custom(func(a, b): return a.t > b.t or (a.t == b.t and a.i > b.i))
 			return words.slice(0, RECENT_MAX)
@@ -1066,6 +1077,8 @@ func _draw_list(origin: Vector2, unit: float, state: Dictionary, page: int, cloc
 		var aside := str(met.get("where", "")).get_slice(" · ", 0)
 		if which in ["review", "find"] or (aside.is_empty() and which != "stage"):
 			aside = STAGE_NAMES[word.stage]
+		if word.has("form"): # found by one of its forms: say which
+			aside = "%s  ·  %s" % [word.form, aside]
 		var word_w := FONT.get_string_size(word.lemma, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(5.0, unit)).x / unit
 		var room := 82.0 - word_w - 6.0
 		if room > 10.0:
@@ -1116,8 +1129,9 @@ func _draw_preview(origin: Vector2, unit: float, word: Dictionary, at: Vector2, 
 	_text(origin, unit, Vector2(at.x, 99), hint, 3.8, PENCIL, a * 0.8)
 
 
-## One word, its own spread: the word as far as it is known, how it sounds, what it means, how far
-## along it is; on the right, every sentence it was met in (the page slips, D-086) and its neighbours.
+## One word, its own spread. Left: the word as far as it is known, how it sounds, what it means,
+## what it does in a fight (once usable), its line. Right: how it was learned (the Memory Trace,
+## D-090: each stage, where, and the sentence it was met in) and its neighbours.
 func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e: float, a: float) -> void:
 	var word := sky.node(SKY.WORD_PAGE, path)
 	var lemma := str(word.lemma)
@@ -1144,16 +1158,21 @@ func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e:
 		for row in _wrap(WORDS.sense(lemma), 5.0, unit, 80):
 			_text(origin, unit, Vector2(at.x, y), row, 5.0, INK, a)
 			y += 6.5
-	var track := SKY.STAGES.find(stage)
-	var x := at.x
-	for k in range(1, 5): # seen · recognized · understood · usable, the reached ones in ink
-		var name: String = STAGE_NAMES[SKY.STAGES[k]]
-		_text(origin, unit, Vector2(x, 82), name, 3.6, INK if k <= track else PENCIL, a * (1.0 if k <= track else 0.45))
-		x += FONT.get_string_size(name + "  ·  ", HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(3.6, unit)).x / unit
+	var does := invocation(lemma) if stage == "USABLE" else ""
+	if not does.is_empty(): # what it does when spoken in a fight (the Invocation)
+		y += 1.5
+		_text(origin, unit, Vector2(at.x, y), "in a fight", 3.4, PENCIL, a)
+		y += 5.5
+		for row in _wrap(does, 4.2, unit, 80):
+			_text(origin, unit, Vector2(at.x, y), row, 4.2, INK, a)
+			y += 5.5
 	if known:
-		y = 90
-		for row in _wrap(WORDS.page_line(lemma), 4.2, unit, 80):
-			_text(origin, unit, Vector2(at.x, y), row, 4.2, INK, a * 0.9)
+		y = maxf(y + 3.0, 88.0)
+		var rows := _wrap(WORDS.page_line(lemma), 4.2, unit, 80)
+		if y + (rows.size() - 1) * 5.5 > 104.0: # a long line moves up rather than off the page
+			y = 104.0 - (rows.size() - 1) * 5.5
+		for row in rows:
+			_text(origin, unit, Vector2(at.x, y), row, 4.2, Color(INK, 0.75) if not does.is_empty() else INK, a * 0.9)
 			y += 5.5
 	# Its star, small, in the corner: where it is in the sky. In a ceremony it is the last to light.
 	var star_stage := stage
@@ -1164,20 +1183,8 @@ func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e:
 	_star(origin, unit, Vector2(110, 25), star_stage, star_age, e)
 
 	var right := Vector2(RIGHT_PAGE.position.x + 6, 24)
-	_text(origin, unit, right, "Where you met it", 6.0, INK, a)
-	y = right.y + 8
-	var met: Dictionary = progress.meetings.get(lemma, {}) if progress else {}
-	if met.is_empty():
-		_text(origin, unit, Vector2(right.x, y), "Not written down yet.", 4.2, PENCIL, a)
-		y += 7
-	for s in SKY.STAGES:
-		if not met.has(s) or y > 72:
-			continue
-		for row in _wrap("“%s”" % str(met[s].line).replace("[", "").replace("]", ""), 4.2, unit, 84):
-			_text(origin, unit, Vector2(right.x, y), row, 4.2, INK, a * 0.9)
-			y += 5.5
-		_text(origin, unit, Vector2(right.x, y), "— " + str(met[s].where), 3.4, PENCIL, a)
-		y += 7.5
+	_text(origin, unit, right, "How you learned it", 6.0, INK, a)
+	_draw_trace(origin, unit, lemma, stage, Vector2(right.x, right.y + 9), 78.0, a)
 	var near: Array = sky.node(4, path).words.filter(func(w): return w.lemma != lemma).map(func(w): return str(w.lemma))
 	if not near.is_empty():
 		_text(origin, unit, Vector2(right.x, 84), "Near it", 5.0, INK, a)
@@ -1186,6 +1193,79 @@ func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e:
 	if known and not confused.is_empty():
 		var names: Array = confused.map(func(c): return str(c).get_slice("（", 0).strip_edges())
 		_text(origin, unit, Vector2(right.x, 99), "easily confused: " + ", ".join(names), 3.4, PENCIL, a * 0.85)
+
+
+## The Memory Trace: seen · recognized · understood · usable, one under the other, each reached one
+## with where it happened and, room allowing, the sentence (the newest sentences first to get room).
+## The stages still ahead are written faintly: the road the word has left to go.
+func _draw_trace(origin: Vector2, unit: float, lemma: String, stage: String, at: Vector2, bottom: float, a: float) -> void:
+	var met: Dictionary = progress.meetings.get(lemma, {}) if progress else {}
+	var reached := SKY.STAGES.find(stage)
+	var quotes := {} # stage -> wrapped rows, given out newest first while they fit
+	var room := bottom - at.y - 4 * 6.0
+	for k in range(reached, 0, -1):
+		var s: String = SKY.STAGES[k]
+		var said := str(met.get(s, {}).get("line", ""))
+		if said.is_empty():
+			continue
+		var rows := _wrap("“%s”" % said.replace("[", "").replace("]", ""), 4.0, unit, 82)
+		rows = rows.slice(0, 2)
+		if rows.size() * 5.0 + 1.5 <= room:
+			quotes[s] = rows
+			room -= rows.size() * 5.0 + 1.5
+	var y := at.y
+	for k in range(1, 5):
+		var s: String = SKY.STAGES[k]
+		var name: String = STAGE_NAMES[s]
+		if k > reached:
+			_text(origin, unit, Vector2(at.x, y), name, 3.8, PENCIL, a * 0.45)
+			y += 6.0
+			continue
+		_text(origin, unit, Vector2(at.x, y), name, 3.8, INK, a)
+		var where := str(met.get(s, {}).get("where", ""))
+		if where.is_empty() and k == reached: # said once, on the last stage reached, not four times over
+			where = "before the graveyard" if progress and lemma in progress.STARTING_WORDS else "not written down"
+		var w := FONT.get_string_size(name + "  ", HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(3.8, unit)).x / unit
+		if not where.is_empty():
+			_text(origin, unit, Vector2(at.x + w, y), _fit("— " + where, _font_px(3.4, unit), (84 - w) * unit), 3.4, PENCIL, a)
+		y += 6.0
+		for row in quotes.get(s, []):
+			_text(origin, unit, Vector2(at.x + 3, y - 0.5), row, 4.0, INK, a * 0.85)
+			y += 5.0
+		if quotes.has(s):
+			y += 1.5
+
+
+## What a usable word does in a fight, in plain words, from its effect in the word library.
+static func invocation(lemma: String) -> String:
+	var fx: Dictionary = WORDS.effect(lemma)
+	var text := ""
+	match str(fx.get("type", "")):
+		"damage":
+			text = "Deals %d damage (%d to structure)" % [int(fx.amount), int(fx.get("structure", 0))]
+			if int(fx.get("exposed_bonus", 0)) > 0:
+				text += ", %d more to an exposed foe" % int(fx.exposed_bonus)
+			text += "."
+		"structure_damage":
+			var none: Dictionary = fx.get("no_structure", {})
+			text = "Breaks %d structure; where none is left, takes %d armour and deals %d." % [int(fx.amount), -int(none.get("armor", 0)), int(none.get("damage", 0))]
+		"reveal_intent": text = "Shows what the foe means to do, one level clearer."
+		"delay_intent": text = "Holds the foe's next move back %s." % _count(int(fx.get("turns", 1)), "turn")
+		"prevent_next_erosion": text = "Stops the next erosion before it lands."
+		"reduce_corruption": text = "Clears %d of the strongest corruption." % int(fx.get("amount", 0))
+		"reduce_physical": text = "The next physical blow lands %d%% lighter." % int(fx.get("percent", 0))
+		"choose":
+			var options: Array = fx.get("options", [])
+			text = " or ".join(options.map(func(o): return ("heal %d" % int(o.heal)) if o.has("heal") else ("gain %d armour" % int(o.get("armor", 0))))) + ", your choice."
+			text = text.left(1).to_upper() + text.substr(1)
+		"poison": text = "Poisons for %d turns, %d each turn, past structure and armour." % [int(fx.get("turns", 0)), int(fx.get("damage_per_turn", 0))]
+		"heal_and_cleanse": text = "Heals %d and clears %d affliction." % [int(fx.get("heal", 0)), int(fx.get("cleanse", 0))]
+		"remove_concealment": text = "Strips away what hides the foe, then shows all it means to do."
+		"pause_reassembly": text = "Keeps fallen bones from rising for %s." % _count(int(fx.get("turns", 1)), "turn")
+		_: return ""
+	if fx.has("cost"):
+		text += "  Costs %d focus." % int(fx.cost)
+	return text
 
 
 ## Top left of the left page: where in the sky you are.

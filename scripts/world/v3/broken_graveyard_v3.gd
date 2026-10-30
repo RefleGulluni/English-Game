@@ -234,7 +234,7 @@ func _ready() -> void:
 	hud.combat_panel.add_theme_stylebox_override("panel", panel_style)
 	for node in hud.ui_root.find_children("*", "Label", true, false):
 		if (node as Label).text.begins_with("WASD"):
-			node.text = "WASD move · E interact · TAB Lexicon book · L word list · B Run Bag · F fullscreen"
+			node.text = "WASD move · E interact · TAB or L Lexicon book · B Run Bag · F fullscreen"
 	for node in hud.ui_root.find_children("*", "Button", true, false):
 		if (node as Button).text == "RUN BAG [TAB]": # Tab opens the Lexicon book in this scene
 			node.text = "RUN BAG [B]"
@@ -596,6 +596,7 @@ func _load_room(id: String, entered_from: String, exit_zone := Rect2()) -> void:
 	rewards.bind(manager.state, events, hero, room.sorted, interactions)
 	encounter_started = false
 	encounter_cleared = cleared_rooms.has(id)
+	words.place = str(ROOMS[id].area).capitalize()
 	words.set_room_words(layout.get("words", []))
 	if layout.has("event"):
 		var spot: Node2D = EVENT_SPOT.new()
@@ -741,7 +742,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	var key: Key = event.physical_keycode
 	if _lexicon.in_ceremony(): # keys do nothing: only holding Space / Esc skips it (the book polls)
 		get_viewport().set_input_as_handled()
-	elif key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open and not _lexicon.typing()): # in find, Esc leaves find
+	elif key == KEY_TAB or (key == KEY_L and not _lexicon.typing()) or (key == KEY_ESCAPE and _lexicon.is_open and not _lexicon.typing()): # in find, Esc leaves find; L is the book too (the old word list is retired)
 		# The book opens only while exploring; it can always be closed.
 		if _lexicon.is_open or (turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open and not words.is_busy() and hero.book_phase == ""):
 			_lexicon.toggle()
@@ -1086,6 +1087,11 @@ func _capture_sky(dir: String) -> void:
 		progress.set_stage(pair[0], pair[1])
 	progress.remember("decay", "RECOGNIZED", "Everything here is slowly [decaying].", "The Sunken Grave · Broken Graveyard")
 	progress.remember("decay", "UNDERSTOOD", "The wood of the cross has [decayed] to dust.", "A skeleton fight · Veiled Walk")
+	progress.remember("decay", "ENCOUNTERED", "", "In passing · Broken Graveyard")
+	progress.remember("shatter", "ENCOUNTERED", "", "In passing · Broken Graveyard")
+	progress.remember("shatter", "RECOGNIZED", "One wing lies [shattered] in the dry basin.", "The broken-winged angel · Broken Graveyard")
+	progress.remember("shatter", "UNDERSTOOD", "The fallen bones [shattered] at your word.", "A skeleton fight · Broken Graveyard")
+	progress.remember("shatter", "USABLE", "The slab gives way along the [shattered] line.", "The cracked slab · Broken Graveyard")
 	_lexicon.set_progress(progress.known_words())
 	_lexicon.set_open_now(true)
 	_lexicon._go(1, [0, 0, 0, 0], 0, false)
@@ -1162,6 +1168,28 @@ func _capture_sky(dir: String) -> void:
 	press.call(KEY_ESCAPE)
 	await wait.call(2.5)
 	await _shot(dir + "/m7_back_to_sky.png")
+	press.call(KEY_F)
+	await wait.call(1.2)
+	for letter in "decayed":
+		press.call(KEY_A + (letter.unicode_at(0) - 97), letter)
+	await wait.call(0.4)
+	await _shot(dir + "/m8_find_a_form.png")
+	_lexicon.show_word("shatter") # the word pages: how it was learned, what it does
+	_lexicon._sky = 0.0
+	await wait.call(2.0)
+	await _shot(dir + "/w1_shatter.png")
+	_lexicon.show_word("strike")
+	_lexicon._sky = 0.0
+	await wait.call(2.0)
+	await _shot(dir + "/w2_strike.png")
+	_lexicon.show_word("decay")
+	_lexicon._sky = 0.0
+	await wait.call(2.0)
+	await _shot(dir + "/w3_decay.png")
+	_lexicon.show_word("bell")
+	_lexicon._sky = 0.0
+	await wait.call(2.0)
+	await _shot(dir + "/w4_bell_seen.png")
 
 
 func _shot(path: String) -> void:

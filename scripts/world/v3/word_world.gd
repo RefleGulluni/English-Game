@@ -67,6 +67,7 @@ var _note_t := 99.0
 ## their words are), high during a fight (the bottom belongs to the word bar).
 var note_y := 400.0
 var holding := false # in a fight: page slips wait until it is over
+var place := "" # the area the hero is in: where a word was first seen (the book's "how you learned it")
 var _slips: Array[Dictionary] = [] # {lemma, stage} waiting their turn
 var _slip := {} # the page on show, laid out (_lay_out)
 var _slip_t := 0.0
@@ -160,7 +161,7 @@ func _process(delta: float) -> void:
 		var d: float = hero.global_position.distance_to(f.near) if near else 9999.0
 		if d <= MEET and progress.stage(f.lemma) == "UNKNOWN":
 			f.born = _clock
-			_moved(f.lemma, progress.advance(f.lemma, "ambient"))
+			_moved(f.lemma, progress.advance(f.lemma, "ambient"), "", "In passing · " + place if place else "")
 		# Never seen: the glint, from anywhere in the room. Known: the word, once close enough.
 		var target := 1.0 if near else 0.0
 		if progress.stage(f.lemma) != "UNKNOWN":
