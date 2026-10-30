@@ -802,9 +802,8 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 		match entry.stage:
 			"ENCOUNTERED": # only a reserved place: corner brackets around an empty line
 				_brackets(Rect2(Vector2(left, y + unit), Vector2(56, 9) * unit), Color(PENCIL, 0.8 * e), unit)
-				if not str(entry.word).is_empty(): # a real word met in the world: its first letters, then a gap
-					var shown := str(entry.word).left(3) + "_".repeat(maxi(2, str(entry.word).length() - 3))
-					_ci.draw_string(FONT, Vector2(left + 4 * unit, y + 8 * unit), shown, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(PENCIL, 0.45 * e))
+				if not str(entry.word).is_empty(): # a real word met in the world: whole, but half rubbed out
+					_rubbed_out(Vector2(left + 4 * unit, y + 8 * unit), str(entry.word), word_size, e, unit)
 			"RECOGNIZED": # pencil: still, but not yet sure of itself (user 2026-10-29: no wobbling)
 				_pencil(Vector2(left, y + 8 * unit), entry.word, word_size, e, unit)
 			"UNDERSTOOD": # ink, settled
@@ -865,6 +864,28 @@ func _draw_rite_card(origin: Vector2, unit: float) -> void:
 	var font_size := int(11 * pixel)
 	var w := FONT.get_string_size(word, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
 	_ci.draw_string(FONT, Vector2(r.get_center().x - w / 2.0, r.get_center().y + 4 * pixel).round(), word, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color(CYAN, a))
+
+
+## ENCOUNTERED on the page: the whole word, faint, its strokes thinning out after the first three
+## letters (the paper shows through more and more towards the end). Seeded by the word: it holds still.
+func _rubbed_out(at: Vector2, word: String, size: int, e: float, unit: float) -> void:
+	_ci.draw_string(FONT, at, word, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(PENCIL, 0.55 * e))
+	var from := at.x + FONT.get_string_size(word.left(3), HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+	var to := at.x + FONT.get_string_size(word, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+	var cell := maxf(1.0, roundf(unit * 0.5))
+	var top := at.y - size * 0.8
+	var salt := word.hash()
+	var x := from
+	while x < to:
+		var k := (x - from) / maxf(1.0, to - from)
+		var y := top
+		while y < at.y + size * 0.15:
+			var clump := float(hash(salt + int(x / (cell * 3)) * 31 + int(y / (cell * 3)) * 977) & 0xffff) / 65535.0
+			var grain := float(hash(salt + int(x / cell) * 131 + int(y / cell) * 7919) & 0xffff) / 65535.0
+			if lerpf(grain, clump, 0.65) < 0.2 + 0.62 * k:
+				_ci.draw_rect(Rect2(Vector2(x, y), Vector2(cell, cell)), Color(PAPER, e))
+			y += cell
+		x += cell
 
 
 ## A word written in pencil by someone not yet sure of it. Nothing moves: the doubt is in the

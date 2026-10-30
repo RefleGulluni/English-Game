@@ -145,6 +145,12 @@ var cleared_rooms := {} # room id -> true once its fight is won
 var words: WordWorld # words met in the world: floating words, event boxes, notes (D-078)
 var _logic: Node # the skeleton logic of the fight in progress
 var transitioning := false
+# Words that just became USABLE wait here for their ceremony. The hero stands still meanwhile, and
+# the ceremony plays once nothing else is going on: never dropped (user 2026-10-30: walking on
+# after the slab, the book never opened).
+var _rites: Array[String] = []
+var _rite_wait := 0.0
+const RITE_PAUSE := 0.8 # seconds the hero stands still before the book opens
 var event_trace: Array[Dictionary] = []
 
 var _viewport: SubViewport
@@ -544,13 +550,11 @@ func _break_prop(file: String, at: Vector2) -> void:
 func _word_advanced(lemma: String, stage: String) -> void:
 	_lexicon.set_progress(progress.known_words())
 	events.publish(&"knowledge_stage_changed", {"word_id": lemma, "stage": stage, "message": "world"})
-	if stage == "USABLE" and turns.phase == TURNS.Phase.EXPLORATION:
+	if stage == "USABLE":
 		# Only for a new ability: the book opens by itself at its page and the word lights up,
-		# letter by letter, then leaves the book as a card (D-078 §5; 2026-10-30). Any key skips.
-		await get_tree().create_timer(1.6).timeout
-		_lexicon.show_word(lemma)
-		if not _lexicon.is_open and hero.book_phase == "" and not words.is_busy():
-			_lexicon.ceremony(lemma)
+		# letter by letter, then leaves the book as a card (D-078 §5; D-081). Any key skips.
+		_rites.append(lemma)
+		_rite_wait = RITE_PAUSE
 
 
 # --- Rooms, exits and transitions (D-022, D-023) --------------------------------------------
@@ -684,7 +688,13 @@ func _take_exit(exit: Node2D) -> void:
 
 # --- Per-frame -------------------------------------------------------------------------
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if not _rites.is_empty():
+		_rite_wait -= delta
+		if _rite_wait <= 0.0 and turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open \
+				and not words.is_busy() and not _lexicon.is_open and hero.book_phase == "":
+			_lexicon.ceremony(_rites.pop_front())
+			_rite_wait = RITE_PAUSE
 	_update_lock()
 	if is_instance_valid(skeleton) and not encounter_started and not hud.overlay_open and not transitioning \
 			and hero.global_position.distance_to(skeleton.global_position) <= ENCOUNTER_DISTANCE:
@@ -697,7 +707,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _update_lock() -> void:
-	var locked: bool = turns.phase != TURNS.Phase.EXPLORATION or hud.overlay_open or transitioning or words.is_busy()
+	var locked: bool = turns.phase != TURNS.Phase.EXPLORATION or hud.overlay_open or transitioning or words.is_busy() or not _rites.is_empty()
 	hero.set_input_locked(locked)
 	interactions.enabled = not locked and hero.book_phase == ""
 	interactions.refresh()
@@ -898,6 +908,12 @@ func _capture_route(dir: String) -> void:
 	await _shot(dir + "/r02a_writing.png")
 	await wait.call(1.2)
 	await _shot(dir + "/r02_seen.png")
+	_lexicon.set_progress(progress.known_words())
+	_lexicon.show_word("shatter")
+	_lexicon.set_open_now(true)
+	await wait.call(0.3)
+	await _shot(dir + "/r02b_book_seen.png")
+	_lexicon.set_open_now(false)
 	cleared_rooms["bg_1"] = true
 	_load_room("bg_2", "")
 	hero.position = Vector2(200, 480)
@@ -935,10 +951,19 @@ func _capture_route(dir: String) -> void:
 	await wait.call(1.4)
 	await _shot(dir + "/r08_lent.png")
 	var lent: Dictionary = combat.deck.hand.filter(func(c): return bool(c.get("borrowed", false))).front()
+	combat.focus = 4 # one carried over: four nodes by HP
+	view.refresh()
 	view.forced_hover = int(lent.instance_id)
 	view._show_word_tip(lent, view._words.get_child(combat.deck.hand.find(lent)))
 	await wait.call(0.5)
 	await _shot(dir + "/r09_lent_tip.png")
+	var binds: Array = combat.deck.hand.filter(func(c): return str(c.card_id) == "BIND")
+	if not binds.is_empty():
+		view._hide_tip()
+		view.forced_hover = int(binds[0].instance_id)
+		view._show_word_tip(binds[0], view._words.get_child(combat.deck.hand.find(binds[0])))
+		await wait.call(0.5)
+		await _shot(dir + "/r09b_bind_tip.png")
 	view._hide_tip()
 	view.forced_hover = -1
 	combat.focus = maxi(combat.focus, 3)

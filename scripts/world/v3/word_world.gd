@@ -35,6 +35,7 @@ const WRITE_IN := 0.9 # seconds for a first-seen word to write itself in and coo
 const BOX_W := 520.0
 const NATIVE := Vector2(960, 540)
 const WORDS := preload("res://scripts/run/word_library.gd")
+const ERASED := preload("res://scripts/world/v3/word_erased.gdshader")
 const SLIP_PAPER := Color8(205, 189, 172) # the book's paper and writing (lexicon_overlay)
 const SLIP_PENCIL := Color8(128, 116, 104)
 const SLIP_INK := Color8(44, 31, 24)
@@ -107,6 +108,10 @@ func set_room_words(words: Array) -> void:
 		var c := Control.new()
 		c.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		c.size = Vector2(160, 28)
+		var erased := ShaderMaterial.new() # ENCOUNTERED: the letters after the first few half rubbed out
+		erased.shader = ERASED
+		erased.set_shader_parameter("seed", float(hash(str(w.lemma)) % 997))
+		c.material = erased
 		var f := {"lemma": str(w.lemma), "at": w.at, "near": w.get("near", w.at), "alpha": 0.0, "control": c, "born": -99.0}
 		c.draw.connect(_draw_float.bind(f))
 		add_child(c)
@@ -178,8 +183,7 @@ func _draw_float(f: Dictionary) -> void:
 	var shown := word
 	var color := CYAN
 	match stage:
-		"ENCOUNTERED": # its first letters and a gap, and a crack through it: seen, not yet read
-			shown = word.left(3).to_lower() + "_".repeat(maxi(2, word.length() - 3))
+		"ENCOUNTERED": # the whole word, its strokes thinning out after the first letters: seen, not yet read
 			color = Color(PENCIL, 0.9)
 		"RECOGNIZED":
 			color = PENCIL
@@ -187,6 +191,10 @@ func _draw_float(f: Dictionary) -> void:
 			color = INK
 	var w := FONT.get_string_size(shown, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
 	var at := Vector2(roundf(80 - w / 2.0), 16)
+	var erased := c.material as ShaderMaterial
+	erased.set_shader_parameter("strength", 1.0 if stage == "ENCOUNTERED" else 0.0)
+	erased.set_shader_parameter("erase_from", at.x + FONT.get_string_size(word.left(3), HORIZONTAL_ALIGNMENT_LEFT, -1, size).x)
+	erased.set_shader_parameter("erase_to", at.x + w)
 	if since < WRITE_IN: # just seen: lit like language, written in as you watch
 		shown = shown.left(ceili(writing * shown.length()))
 		color = Color(CYAN.lerp(color, cooling), lerpf(1.0, color.a, cooling))
@@ -196,9 +204,6 @@ func _draw_float(f: Dictionary) -> void:
 	if stage == "USABLE": # language: a steady glow
 		c.draw_string_outline(FONT, at, shown, HORIZONTAL_ALIGNMENT_LEFT, -1, size, 8, Color(CYAN, 0.12 * a))
 	c.draw_string(FONT, at, shown, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(color, color.a * a))
-	if stage == "ENCOUNTERED" and since >= WRITE_IN * 0.6:
-		var crack := PackedVector2Array([at + Vector2(-3, -12), at + Vector2(w * 0.3, -7), at + Vector2(w * 0.45, -10), at + Vector2(w * 0.7, -3), at + Vector2(w + 4, -6)])
-		c.draw_polyline(crack, Color(PENCIL, 0.55 * a), 1.0)
 	# a hairline down to the thing it belongs to
 	c.draw_line(Vector2(80, 21), Vector2(80, 26), Color(color, 0.35 * a), 1.0)
 
@@ -211,7 +216,7 @@ func _moved(lemma: String, stage: String) -> void:
 	var word := lemma.to_upper()
 	match stage:
 		"ENCOUNTERED":
-			note("A NEW WORD  ·  %s" % (word.left(3).to_lower() + "_".repeat(word.length() - 3)), PENCIL)
+			note("A NEW WORD  ·  %s…" % word.left(3).to_lower(), PENCIL)
 			_book_t = 0.0
 		"RECOGNIZED", "UNDERSTOOD": _slips.append({"lemma": lemma, "stage": stage})
 		"USABLE": note("%s  ·  USABLE  ·  it is yours now" % word, CYAN)

@@ -77,6 +77,7 @@ var active := false
 var busy := false
 var selected_mulligan: Array[int] = []
 var forced_hover := -1 # capture mode: show this word as if the mouse were on it
+var _hover_cost := 0 # Focus the word under the mouse would spend: those nodes blink by HP
 
 var _viewport: SubViewport
 var _world_screen: Control
@@ -548,9 +549,18 @@ func _draw_vitals() -> void:
 	_vitals.draw_string(font, Vector2(24, 12), "%d / %d" % [combat.hp, CombatState.MAX_HP], HORIZONTAL_ALIGNMENT_LEFT, -1, 15, INK)
 	_bar_line(_vitals, Vector2(0, 18), 150, float(combat.hp) / CombatState.MAX_HP, INK)
 	_vitals.draw_string(font, Vector2(98, 12), "ARMOR %d" % combat.armor, HORIZONTAL_ALIGNMENT_LEFT, -1, 12, DIM)
-	# Focus: language nodes, not a blue bar.
-	for i in CombatState.BASE_FOCUS:
-		_diamond(_vitals, Vector2(6 + i * 18, 34), 5.0, CYAN, i < combat.focus)
+	# Focus: language nodes, not a blue bar. Focus carried over from last turn adds nodes past the
+	# usual three, each with a thin ring (user 2026-10-30: a fourth point was there but not drawn).
+	# Hovering a word, the nodes it would spend blink: no numbers to read.
+	var blink := 0.35 + 0.65 * (0.5 + 0.5 * cos(_clock * 7.0))
+	for i in maxi(CombatState.BASE_FOCUS, combat.focus):
+		var at := Vector2(6 + i * 18, 34)
+		var spent := _hover_cost > 0 and i >= combat.focus - _hover_cost and i < combat.focus
+		_diamond(_vitals, at, 5.0, Color(CYAN, blink if spent else 1.0), i < combat.focus)
+		if spent:
+			_diamond(_vitals, at, 5.0, CYAN, false)
+		if i >= CombatState.BASE_FOCUS:
+			_diamond(_vitals, at, 7.5, Color(CYAN, 0.45), false)
 	# Corruption shows only when it is there.
 	var parts: Array[String] = []
 	for family in ["Decay", "Obscurity", "Inattention"]:
@@ -670,6 +680,7 @@ func _draw_tip() -> void:
 
 
 var _tip_above := true
+var _tip_pips: Array[Control] = [] # node rows inside the tip: redrawn every frame so they blink
 var _tip_anchor_x := 0.0
 
 
@@ -679,6 +690,7 @@ func _show_tip(rows: Array, anchor: Rect2, above := true) -> void:
 	for child in _tip_rows.get_children():
 		_tip_rows.remove_child(child)
 		child.queue_free()
+	_tip_pips.clear()
 	for row in rows:
 		_tip_rows.add_child(_tip_row(row))
 	_tip.reset_size()
@@ -718,8 +730,15 @@ func _tip_row(row: Dictionary) -> Control:
 			word.add_theme_color_override("font_color", CYAN)
 			word.add_theme_color_override("font_outline_color", Color(CYAN, 0.16))
 			word.add_theme_constant_override("outline_size", 4)
-			word.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			line.add_child(word)
+			var cost := int(row.get("cost", 0))
+			var nodes := Control.new() # its price, in the same nodes as Focus by HP
+			nodes.custom_minimum_size = Vector2(cost * 11 + 2, 22)
+			nodes.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			nodes.draw.connect(func():
+				for i in cost:
+					_diamond(nodes, Vector2(6 + i * 11, 12), 3.5, CYAN, true))
+			line.add_child(nodes)
 			var family := _label(str(row.get("family", "")), 10, DIM)
 			family.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			line.add_child(family)
@@ -749,9 +768,32 @@ func _tip_row(row: Dictionary) -> Control:
 			key.custom_minimum_size.x = 84
 			key.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			line.add_child(key)
-			var value := _label(str(row.value), 15, INK)
-			value.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			line.add_child(value)
+			if row.has("pips"): # now → after as nodes: kept ones in ink, gained ones blink cyan, lost ones hollow
+				var pips := Control.new()
+				var before := int(row.pips[0])
+				var after := int(row.pips[1])
+				pips.custom_minimum_size = Vector2(maxi(before, after) * 12 + 4, 18)
+				pips.draw.connect(func():
+					var blink := 0.35 + 0.65 * (0.5 + 0.5 * cos(_clock * 7.0))
+					for i in maxi(before, after):
+						var at := Vector2(6 + i * 12, 9)
+						if i < mini(before, after):
+							_diamond(pips, at, 4.0, INK, true)
+						elif after > before:
+							_diamond(pips, at, 4.0, Color(CYAN, blink), true)
+							_diamond(pips, at, 4.0, CYAN, false)
+						else:
+							_diamond(pips, at, 4.0, Color(INK, blink), false))
+				_tip_pips.append(pips)
+				line.add_child(pips)
+				var unit := _label(str(row.get("unit", "")), 12, DIM)
+				unit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				unit.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+				line.add_child(unit)
+			else:
+				var value := _label(str(row.value), 15, INK)
+				value.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				line.add_child(value)
 			if not str(row.get("extra", "")).is_empty():
 				var extra := _label(str(row.extra), 13, CYAN)
 				extra.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -770,13 +812,17 @@ func _tip_row(row: Dictionary) -> Control:
 
 func _hide_tip() -> void:
 	_tip.hide()
+	if _hover_cost > 0:
+		_hover_cost = 0
+		_vitals.queue_redraw()
 
 
 func _show_word_tip(card: Dictionary, button: Control) -> void:
 	var word := str(card.name)
 	var skill: Dictionary = CombatContent.SKILLS.get(str(card.card_id), {})
 	var family := str(skill.get("family", ""))
-	var rows: Array = [{"kind": "title", "word": word, "family": family.replace("SEMANTIC ", "").replace("DIRECT HP", "DIRECT"), "mark": FAMILY_MARKS.get(family, FAMILY_MARKS[""])}]
+	_hover_cost = combat.card_cost(card) if word != "DEFLECT" else 0
+	var rows: Array = [{"kind": "title", "word": word, "family": family.replace("SEMANTIC ", "").replace("DIRECT HP", "DIRECT"), "mark": FAMILY_MARKS.get(family, FAMILY_MARKS[""]), "cost": _hover_cost}]
 	rows.append({"kind": "rule"})
 	if skill.has("sense"):
 		rows.append({"kind": "sense", "text": str(skill.sense)})
@@ -806,7 +852,14 @@ func _stat_row(line: String) -> Dictionary:
 	var extra := " · ".join(parts.slice(1)) if parts.size() > 1 else ""
 	if cut < 0:
 		return {"kind": "text", "text": line}
-	return {"kind": "stat", "key": head.substr(0, cut).strip_edges(), "value": head.substr(cut), "extra": extra}
+	var row := {"kind": "stat", "key": head.substr(0, cut).strip_edges(), "value": head.substr(cut), "extra": extra}
+	# Small counts (rounds, turns) read better as nodes than as "1 → 2" (user 2026-10-30).
+	var numbers := head.substr(cut).split(" ", false)
+	if numbers.size() >= 3 and numbers[1] == "→" and numbers[0].is_valid_int() and numbers[2].is_valid_int() \
+			and maxi(int(numbers[0]), int(numbers[2])) <= 6 and mini(int(numbers[0]), int(numbers[2])) >= 0:
+		row.pips = [int(numbers[0]), int(numbers[2])]
+		row.unit = " ".join(numbers.slice(3))
+	return row
 
 
 func _show_intent_tip() -> void:
@@ -820,7 +873,6 @@ func _show_intent_tip() -> void:
 func preview(card: Dictionary) -> Array[String]:
 	var word := str(card.card_id)
 	var lines: Array[String] = []
-	var cost := combat.card_cost(card)
 	var e := combat.enemy
 	if combat.bone_remains and word in ["SHATTER", "STRIKE"]:
 		var hit := 8 if word == "SHATTER" else 3
@@ -861,9 +913,7 @@ func preview(card: Dictionary) -> Array[String]:
 				lines.append("Next wearing-away (Decay, Armor loss) prevented")
 			"DEFLECT":
 				lines.append("Answers an attack as it comes")
-	if word != "DEFLECT":
-		lines.append("FOCUS %d → %d" % [combat.focus, combat.focus - cost])
-	return lines
+	return lines # the Focus it spends shows as nodes: in the tip's title and blinking by HP
 
 
 # --- Casting -------------------------------------------------------------------------------
@@ -1094,6 +1144,11 @@ func _process(delta: float) -> void:
 		_gap.custom_minimum_size.x = maxf(0.0, _gap_w - 12.0)
 	for sigil in _words.get_children():
 		sigil.queue_redraw()
+	if _hover_cost > 0:
+		_vitals.queue_redraw()
+	if _tip.visible:
+		for pips in _tip_pips:
+			pips.queue_redraw()
 	for ghost in _floats.get_children():
 		if ghost.has_meta("t0"):
 			ghost.queue_redraw()
