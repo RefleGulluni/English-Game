@@ -69,6 +69,13 @@ const P_SIGIL := 0.48 # the sigil wakes: triangle and dot, then the ring drawn c
 const P_TIP := 0.60
 const P_FALL := 0.83
 const RISE := 24 # native pixels the book travels up while rising
+# A word becoming USABLE (2026-10-30): once the book lies open at its page, its letters light
+# one by one, the meaning settles, the word leaves the book as a card for the word bar, and the
+# book closes by itself. Seconds, counted from the book lying open.
+const RITE_START := 0.5
+const RITE_LETTER := 0.2
+const RITE_CARD := 1.1 # the card's flight
+const RITE_HOLD := 0.7 # after the card, before the book closes
 # One entry per learning stage (World Bible §10). Encountered and recognized words never show
 # their meaning: the book must not leak answers that have not been learned.
 const ENTRIES := [
@@ -115,6 +122,8 @@ var _seam_y := Vector2i(BOOK_TOP + 3, BOOK_BOTTOM - 3) # its lit stretch, inside
 var _glow: Texture2D # soft elliptical halo for the seam light
 var _sky := 0.0 # seconds since the book lay fully open (the constellation's own clock)
 var _time := 0.0
+var _rite_lemma := "" # the word whose ceremony is running
+var _rite := -1.0 # seconds of ceremony since the book lay open; -1: none
 
 
 func _ready() -> void:
@@ -404,7 +413,36 @@ func _clean(file: String, derived: Image) -> Texture2D:
 
 func toggle() -> void:
 	is_open = not is_open
+	if not is_open:
+		_rite = -1.0
+		_rite_lemma = ""
 	open_changed.emit(is_open)
+
+
+## A word just became USABLE: open at its page and play its ceremony (see RITE_START).
+func ceremony(lemma: String) -> void:
+	show_word(lemma)
+	_rite_lemma = lemma
+	_rite = 0.0
+	if not is_open:
+		toggle()
+
+
+func in_ceremony() -> bool:
+	return _rite >= 0.0
+
+
+func skip_ceremony() -> void:
+	if is_open:
+		toggle()
+
+
+func _rite_letters() -> float:
+	return RITE_START + _rite_lemma.length() * RITE_LETTER + 0.4
+
+
+func _rite_end() -> float:
+	return _rite_letters() + RITE_CARD + RITE_HOLD
 
 
 ## A / D: turn to the next or the previous spread (none before the first).
@@ -461,6 +499,10 @@ func _process(delta: float) -> void:
 		queue_redraw()
 	if is_open and _t >= 1.0 and _turn < 0.0:
 		_sky += delta
+		if _rite >= 0.0:
+			_rite += delta
+			if _rite >= _rite_end():
+				toggle() # the word is in the bar: the book closes by itself
 	elif _t < P_FALL:
 		_sky = 0.0
 	var was := _t
@@ -568,7 +610,14 @@ func _draw() -> void:
 		return
 	var page := _turn_from if _turn >= 0.0 else _page # still warming up: the old spread
 	_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
-	_draw_caption(origin, unit, _stage(0.88, 1.0))
+	if _rite >= 0.0:
+		_draw_rite_card(origin, unit)
+		var hint := "ANY KEY  ·  SKIP"
+		var hint_size := int(8 * pixel)
+		var hw := FONT.get_string_size(hint, HORIZONTAL_ALIGNMENT_LEFT, -1, hint_size).x
+		_ci.draw_string(FONT, screen_rect.end - Vector2(hw + 16 * pixel, 12 * pixel), hint, HORIZONTAL_ALIGNMENT_LEFT, -1, hint_size, Color(INK.lightened(0.6), 0.6))
+	else:
+		_draw_caption(origin, unit, _stage(0.88, 1.0))
 
 
 ## Everything printed on a spread: the right page's paper, the constellation (on its own clock),
@@ -761,6 +810,8 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 			"UNDERSTOOD": # ink, settled
 				_ci.draw_string(FONT, Vector2(left, y + 8 * unit), entry.word, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(INK, e))
 				_ci.draw_string(FONT, Vector2(left, y + 14 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
+			"USABLE" when str(entry.get("lemma", "")) == _rite_lemma and _rite >= 0.0:
+				_draw_lighting(Vector2(left, y + 8 * unit), entry, word_size, note_size, note_width, unit, e)
 			"USABLE": # cyan, steady glow: language
 				var glow := 0.18 + 0.06 * sin(_time * 1.6)
 				for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
@@ -769,6 +820,51 @@ func _draw_entries(origin: Vector2, unit: float, e: float, page: int) -> void:
 				_ci.draw_string(FONT, Vector2(left, y + 14 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e))
 
 
+
+
+## The ceremony's word: written in ink, its letters catch one by one (each flares white, then
+## settles to cyan), the meaning comes once the whole word is lit, and the word leaves as a card.
+func _draw_lighting(at: Vector2, entry: Dictionary, word_size: int, note_size: int, note_width: float, unit: float, e: float) -> void:
+	var word := str(entry.word)
+	var x := at.x
+	for i in word.length():
+		var since := _rite - (RITE_START + i * RITE_LETTER)
+		var letter := word[i]
+		if since < 0.0:
+			_ci.draw_string(FONT, Vector2(x, at.y), letter, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(INK, e))
+		else:
+			var flare := clampf(1.0 - since / 0.35, 0.0, 1.0)
+			var halo := 0.18 + 0.4 * flare
+			for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
+				_ci.draw_string(FONT, Vector2(x, at.y) + o * unit * (0.6 + flare), letter, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(CYAN, halo * e))
+			_ci.draw_string(FONT, Vector2(x, at.y), letter, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size, Color(CYAN.darkened(0.25).lerp(Color.WHITE, flare * 0.8), e))
+		x += FONT.get_string_size(letter, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size).x
+	var meaning := clampf((_rite - _rite_letters() + 0.3) / 0.5, 0.0, 1.0)
+	_ci.draw_string(FONT, at + Vector2(0, 6 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e * meaning))
+
+
+## The ceremony's card: it lifts off the word and flies down to where the word bar sits in a fight.
+func _draw_rite_card(origin: Vector2, unit: float) -> void:
+	var k := clampf((_rite - _rite_letters()) / RITE_CARD, 0.0, 1.0)
+	if _rite < _rite_letters() or k >= 1.0:
+		return
+	var from := origin + Vector2(RIGHT_PAGE.position.x + 8 + 22, RIGHT_PAGE.position.y + 6 + selected * 20 + 5) * unit
+	var to := screen_rect.position + Vector2(screen_rect.size.x / 2.0, screen_rect.size.y - 34 * pixel)
+	var fly := ease(k, 2.2)
+	var at := Vector2(lerpf(from.x, to.x, fly), lerpf(from.y, to.y, fly) - sin(k * PI) * 30 * pixel)
+	var a := clampf((1.0 - k) / 0.3, 0.0, 1.0) * clampf(k / 0.1, 0.0, 1.0)
+	var size := Vector2(64, 24) * pixel
+	var r := Rect2((at - size / 2.0).round(), size)
+	for i in 4: # a short trail of cyan behind it
+		var back := clampf(k - (i + 1) * 0.04, 0.0, 1.0)
+		var tb := Vector2(lerpf(from.x, to.x, ease(back, 2.2)), lerpf(from.y, to.y, ease(back, 2.2)) - sin(back * PI) * 30 * pixel)
+		_ci.draw_rect(Rect2(tb.round(), Vector2(2, 2) * pixel), Color(CYAN, a * (0.5 - i * 0.1)))
+	_ci.draw_rect(r, Color(0.04, 0.07, 0.09, 0.92 * a))
+	_ci.draw_rect(r, Color(CYAN, a), false, pixel)
+	var word := _rite_lemma.to_upper()
+	var font_size := int(11 * pixel)
+	var w := FONT.get_string_size(word, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+	_ci.draw_string(FONT, Vector2(r.get_center().x - w / 2.0, r.get_center().y + 4 * pixel).round(), word, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color(CYAN, a))
 
 
 ## A word written in pencil by someone not yet sure of it. Nothing moves: the doubt is in the

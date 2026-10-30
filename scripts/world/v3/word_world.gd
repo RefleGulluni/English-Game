@@ -12,7 +12,11 @@ extends CanvasLayer
 ## - Event box: an event room's script card (data/events/<biome>/<id>.json) in a framed box low
 ##   on the screen: a few lines, a question, numbered answers (keys 1-9 or the mouse), then the
 ##   scene's reply. Correct answers are evidence for the card's word.
-## - Notes: a word moving a stage writes one glowing line at the top of the screen.
+## - Learning moments, lighter for early stages, heavier later (2026-10-30): a first sighting is a
+##   glint at the hero's book and one faint line; RECOGNIZED and UNDERSTOOD slide a corner of a
+##   page up from the bottom right, where the word is pencilled in (and, understood, gone over in
+##   ink with its meaning), without stopping the player. Slips wait for the event box to close and
+##   for a fight to end (`holding`). USABLE is the book's own ceremony (lexicon_overlay.ceremony).
 ##
 ## Lives at window resolution above the world (text stays sharp), in native 960x540 units.
 
@@ -30,6 +34,13 @@ const MEET := 80.0 # and counts as seen
 const WRITE_IN := 0.9 # seconds for a first-seen word to write itself in and cool
 const BOX_W := 520.0
 const NATIVE := Vector2(960, 540)
+const WORDS := preload("res://scripts/run/word_library.gd")
+const SLIP_PAPER := Color8(205, 189, 172) # the book's paper and writing (lexicon_overlay)
+const SLIP_PENCIL := Color8(128, 116, 104)
+const SLIP_INK := Color8(44, 31, 24)
+const SLIP_TIME := {"RECOGNIZED": 2.2, "UNDERSTOOD": 3.2}
+const SLIP_SIZE := Vector2(230, 90)
+const SLIP_SLIDE := 0.35 # seconds the slip takes to come up, and to go back down
 
 var progress # lexicon_progress.gd
 var hero: Node2D
@@ -41,6 +52,12 @@ var _note_t := 99.0
 ## Where the note line sits: low in the room while exploring (the top is where tall things and
 ## their words are), high during a fight (the bottom belongs to the word bar).
 var note_y := 400.0
+var holding := false # in a fight: page slips wait until it is over
+var _slips: Array[Dictionary] = [] # {lemma, stage} waiting their turn
+var _slip := {} # the one on show
+var _slip_t := 0.0
+var _slip_c: Control
+var _book_t := 99.0 # seconds since the hero's book last glinted (a first sighting)
 var _clock := 0.0
 var _box: PanelContainer
 var _box_rows: VBoxContainer
@@ -60,6 +77,11 @@ func _ready() -> void:
 	_note.size = NATIVE
 	_note.draw.connect(_draw_note)
 	add_child(_note)
+	_slip_c = Control.new()
+	_slip_c.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_slip_c.size = NATIVE
+	_slip_c.draw.connect(_draw_slip)
+	add_child(_slip_c)
 	_box = PanelContainer.new()
 	var style := StyleBoxFlat.new()
 	style.draw_center = false
@@ -103,7 +125,16 @@ func remove_near(at: Vector2, radius := 60.0) -> void:
 func _process(delta: float) -> void:
 	_clock += delta
 	_note_t += delta
+	_book_t += delta
 	_note.queue_redraw()
+	if _slip.is_empty() and not _slips.is_empty() and not holding and not _box.visible:
+		_slip = _slips.pop_front()
+		_slip_t = 0.0
+	elif not _slip.is_empty():
+		_slip_t += delta
+		if _slip_t >= SLIP_TIME[_slip.stage]:
+			_slip = {}
+	_slip_c.queue_redraw()
 	for f in _floats:
 		var near := is_instance_valid(hero) and hero.visible and _box.visible == false
 		var d: float = hero.global_position.distance_to(f.near) if near else 9999.0
@@ -179,9 +210,10 @@ func _moved(lemma: String, stage: String) -> void:
 		return
 	var word := lemma.to_upper()
 	match stage:
-		"ENCOUNTERED": note("A NEW WORD  ·  %s" % (word.left(3).to_lower() + "_".repeat(word.length() - 3)), PENCIL)
-		"RECOGNIZED": note("%s  ·  RECOGNIZED  ·  pencilled into the book" % word, PENCIL)
-		"UNDERSTOOD": note("%s  ·  UNDERSTOOD  ·  written in ink" % word, INK)
+		"ENCOUNTERED":
+			note("A NEW WORD  ·  %s" % (word.left(3).to_lower() + "_".repeat(word.length() - 3)), PENCIL)
+			_book_t = 0.0
+		"RECOGNIZED", "UNDERSTOOD": _slips.append({"lemma": lemma, "stage": stage})
 		"USABLE": note("%s  ·  USABLE  ·  it is yours now" % word, CYAN)
 	advanced.emit(lemma, stage)
 
@@ -200,6 +232,13 @@ func note(text: String, color := CYAN) -> void:
 
 
 func _draw_note() -> void:
+	if _book_t < 0.8 and is_instance_valid(hero) and hero.visible: # the book at the hero's hip glints once
+		var k := 1.0 - _book_t / 0.8
+		var at := (hero.global_position + Vector2(9, -40)).round()
+		for i in range(1, 2 + roundi(3.0 * k)):
+			for dir in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
+				_note.draw_rect(Rect2(at + dir * i, Vector2.ONE), Color(CYAN, k * (1.0 - float(i - 1) / 4.0)))
+		_note.draw_rect(Rect2(at, Vector2.ONE), Color(Color.WHITE, k))
 	if _note_text.is_empty() or _note_t > 4.0:
 		return
 	var a := clampf(_note_t / 0.4, 0.0, 1.0) * clampf((4.0 - _note_t) / 0.8, 0.0, 1.0)
@@ -215,6 +254,43 @@ func _draw_note() -> void:
 	for side in [-1.0, 1.0]: # a short rule either side of a node, under the line
 		_note.draw_line(Vector2(mid + side * 6, at.y + 8), Vector2(mid + side * minf(w / 2.0, 90.0), at.y + 8), Color(_note_color, 0.35 * a), 1.0)
 	_note.draw_rect(Rect2(Vector2(mid - 1, at.y + 7), Vector2(3, 3)), Color(_note_color, a))
+
+
+# --- Page slips (RECOGNIZED, UNDERSTOOD) ------------------------------------------------------
+
+## A corner of a page comes up from the bottom right: the word is pencilled in letter by letter;
+## understood, ink goes over the pencil from left to right and the meaning appears underneath.
+func _draw_slip() -> void:
+	if _slip.is_empty():
+		return
+	var t := _slip_t
+	var total: float = SLIP_TIME[_slip.stage]
+	var up := ease(clampf(t / SLIP_SLIDE, 0.0, 1.0), 0.4) * ease(clampf((total - t) / SLIP_SLIDE, 0.0, 1.0), 0.4)
+	var rest := NATIVE - SLIP_SIZE - Vector2(24, 18)
+	var at := Vector2(rest.x, roundf(lerpf(NATIVE.y + 4, rest.y, up)))
+	var c := _slip_c
+	c.draw_rect(Rect2(at + Vector2(3, 3), SLIP_SIZE), Color(0, 0, 0, 0.35))
+	c.draw_rect(Rect2(at, SLIP_SIZE), SLIP_PAPER)
+	c.draw_rect(Rect2(at, SLIP_SIZE), SLIP_PAPER.darkened(0.3), false, 1.0)
+	var fold := PackedVector2Array([at + Vector2(SLIP_SIZE.x - 14, 0), at + Vector2(SLIP_SIZE.x, 14), at + Vector2(SLIP_SIZE.x - 14, 14)])
+	c.draw_colored_polygon(fold, SLIP_PAPER.darkened(0.18)) # a dog-eared corner: it is a page of the book
+	c.draw_line(at + Vector2(SLIP_SIZE.x - 14, 0), at + Vector2(SLIP_SIZE.x, 14), SLIP_PAPER.darkened(0.35), 1.0)
+	var word := str(_slip.lemma).to_upper()
+	var size := 26
+	var pen := clampf((t - SLIP_SLIDE) / 0.8, 0.0, 1.0) # the pencil writes the letters in
+	var ink := clampf((t - SLIP_SLIDE - 0.4) / 1.0, 0.0, 1.0) * word.length() if _slip.stage == "UNDERSTOOD" else 0.0
+	var x := at.x + 16
+	for i in ceili(pen * word.length()):
+		var color := Color(SLIP_PENCIL, 0.85).lerp(SLIP_INK, clampf(ink - i, 0.0, 1.0))
+		c.draw_string(FONT, Vector2(x, at.y + 38), word[i], HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
+		x += FONT.get_string_size(word[i], HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+	var small := 12
+	if _slip.stage == "RECOGNIZED":
+		c.draw_string(FONT, at + Vector2(16, 62), "recognized  ·  pencilled in", HORIZONTAL_ALIGNMENT_LEFT, -1, small, Color(SLIP_PENCIL, clampf((t - 1.2) / 0.4, 0.0, 1.0)))
+	else:
+		var meaning := str(WORDS.sense(str(_slip.lemma)))
+		c.draw_multiline_string(FONT, at + Vector2(16, 60), meaning, HORIZONTAL_ALIGNMENT_LEFT, SLIP_SIZE.x - 28, small, 2, Color(SLIP_INK, 0.85 * clampf((t - 1.7) / 0.5, 0.0, 1.0)))
+		c.draw_string(FONT, at + Vector2(SLIP_SIZE.x - 82, 16), "understood", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color(SLIP_INK, 0.6 * clampf((t - 1.9) / 0.4, 0.0, 1.0)))
 
 
 # --- Event box -------------------------------------------------------------------------------

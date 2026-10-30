@@ -363,6 +363,7 @@ func start_encounter() -> void:
 		part.hide()
 	view.open(hero, skeleton, SKELETON_DATA.display_name)
 	words.note_y = 132.0
+	words.holding = true # learning moments wait for the fight to end
 	events.publish(&"combat_started", {"enemy_id": SKELETON_DATA.id, "scene_id": manager.state.current_node_id})
 	# The fight starts where they stand: no black screen, no separate battle page (0.9 spec §10).
 	get_tree().create_timer(0.4).timeout.connect(func():
@@ -416,6 +417,7 @@ func _battle_finished(victory: bool) -> void:
 	get_tree().create_timer(0.9).timeout.connect(func(): # let the last word land first
 		view.close()
 		words.note_y = 400.0
+		words.holding = false
 		for part in _hud_header:
 			part.show())
 	if not victory:
@@ -543,11 +545,12 @@ func _word_advanced(lemma: String, stage: String) -> void:
 	_lexicon.set_progress(progress.known_words())
 	events.publish(&"knowledge_stage_changed", {"word_id": lemma, "stage": stage, "message": "world"})
 	if stage == "USABLE" and turns.phase == TURNS.Phase.EXPLORATION:
-		# Only for a new ability: the book opens by itself at its page (D-078 §5).
+		# Only for a new ability: the book opens by itself at its page and the word lights up,
+		# letter by letter, then leaves the book as a card (D-078 §5; 2026-10-30). Any key skips.
 		await get_tree().create_timer(1.6).timeout
 		_lexicon.show_word(lemma)
 		if not _lexicon.is_open and hero.book_phase == "" and not words.is_busy():
-			_lexicon.toggle()
+			_lexicon.ceremony(lemma)
 
 
 # --- Rooms, exits and transitions (D-022, D-023) --------------------------------------------
@@ -704,7 +707,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
 	var key: Key = event.physical_keycode
-	if key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open):
+	if _lexicon.in_ceremony(): # any key: the word is already yours, the book just closes
+		_lexicon.skip_ceremony()
+		get_viewport().set_input_as_handled()
+	elif key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open):
 		# The book opens only while exploring; it can always be closed.
 		if _lexicon.is_open or (turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open and not words.is_busy() and hero.book_phase == ""):
 			_lexicon.toggle()
@@ -916,6 +922,8 @@ func _capture_route(dir: String) -> void:
 	words._close()
 	await wait.call(0.8)
 	await _shot(dir + "/r07_recognized.png")
+	await wait.call(0.9)
+	await _shot(dir + "/r07b_slip_pencil.png")
 	_load_room("bg_3", "")
 	hero.position = skeleton.position + Vector2(-100, 30)
 	await wait.call(2.8)
@@ -938,7 +946,11 @@ func _capture_route(dir: String) -> void:
 	await wait.call(1.0)
 	await _shot(dir + "/r10_understood.png")
 	combat._finish_battle(true)
-	await wait.call(1.5)
+	await wait.call(1.9)
+	await _shot(dir + "/r10b_slip_writing.png")
+	await wait.call(1.4)
+	await _shot(dir + "/r10c_slip_ink.png")
+	await wait.call(1.6)
 	_load_room("vw_1", "")
 	hero.position = Vector2(480, 340)
 	await wait.call(1.0)
@@ -954,7 +966,14 @@ func _capture_route(dir: String) -> void:
 	await _shot(dir + "/r14_usable.png")
 	await wait.call(4.0)
 	await _shot(dir + "/r15_book.png")
-	_lexicon.toggle()
+	await wait.call(0.8)
+	await _shot(dir + "/r15b_lighting.png")
+	await wait.call(1.5)
+	await _shot(dir + "/r15c_card.png")
+	await wait.call(2.0)
+	await _shot(dir + "/r15d_closing.png")
+	if _lexicon.is_open:
+		_lexicon.toggle()
 	await wait.call(2.5)
 	_load_room("vw_2", "") # a heap of bones that rises when the hero comes near (D-079)
 	hero.position = Vector2(400, 380)
