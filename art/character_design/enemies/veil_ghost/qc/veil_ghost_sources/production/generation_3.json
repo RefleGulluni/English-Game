@@ -1,0 +1,7 @@
+[
+  {
+    "name": "A_final",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-a8a10c36-f85f-4416-9bd5-e127235b5847.png",
+    "prompt": "Use case: stylized-concept. Redraw the referenced Veil Ghost A as ONE game pixel sprite, same identity and narrow proportions: a tall slim funeral mourner, long mourning veil with two hanging strips, folded stole, clasped thin hands, small mourning clasp. Front facing in a slightly overhead 3/4 game world. Only a fragment of nose/cheek exists; half the face and some wrist/waist matter are missing, not a skull. Cold low saturation ash-gray linen and slate-gray inner robe, no warm cream dominance. REVEALED is solid real pixel art, opaque cells. Important pixel grid: character exactly 110 LOGICAL PIXELS HIGH and approximately 33 pixels wide, draw each logical pixel as an 11 by 11 source-pixel square. It should occupy about 1210 source pixels in height on a 1254 square magenta background. This is not fine-detail illustration. Hard square pixels with meaningful single-cell highlights, 40-48 colors and rich weathered material detail, no antialiasing, no outlines around the whole body, no semitransparency, no glow, no blue/cyan accents, no floor/shadow, no text. Generate bigger block pixels than a normal detailed pixel illustration. Detached scraps remain near robe, only one character. The upper left is lit. Use reference only as design identity; REDRAW onto an approximately 110-cell-high grid, not smaller or larger."
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "A_extra",
+    "path": "/Users/mac/.codex/generated_images/01a16768-6cb4-7a02-aee2-ae3ac8b12896/exec-c8777800-dad8-44d8-9aa6-ca4ae476b9fe.png",
+    "prompt": "Use case stylized-concept. NEW native-pixel drawing of same funeral veil ghost, with SMALLER SQUARE PIXELS than reference: put exactly 125 pixel-art cells from headtop to hem, each square pixel-cell about 10 source pixels wide and tall on 1254x1254 magenta canvas. Do NOT use 13-source-pixel cells. Make the logical sprite taller and more detailed, 125 logical pixels tall, about 36 wide. Reference is design only, not its cell-size. Tall very thin front-facing mourning presence, face half missing with a fragment of cheek and nose, two narrow long veil ends, clasped thin hands, small mourning clasp, folded linen stole, dress falling away in different tapering strands; no visible feet. Head and body incomplete but cloth clear. Color muted coldgray/silverygray, dark slate inner dress, palegray linen, upperleft lighting. High detail single-pixel meaningful folds/stains in 40-48 colors, never random noise. Hard opaque square cells, no antialiasing, no smooth painted strokes, no semitransparency, no glow, no saturated blue/cyan, no floor, shadow, text or border. Single frontal character, full head and hem in frame with narrow magenta margins. REVEALED state, no dither. Use an approximately 125-pixel-tall pixel grid with visibly 10x10 source square cells, not 13x13. Keep shoulders only about 32 logicalpixels wide. Face is not a skull and not a whole living face."
+  }
+]

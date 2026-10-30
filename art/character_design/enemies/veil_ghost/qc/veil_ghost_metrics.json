@@ -1,0 +1,149 @@
+{
+  "A": {
+    "size": "96x128",
+    "alpha_ok": true,
+    "colors": 48,
+    "change": 93,
+    "cyan": 0,
+    "lowest": 126,
+    "source_selected": "A_match",
+    "visible_bbox": [
+      19,
+      7,
+      77,
+      127
+    ],
+    "visible_height": 120,
+    "placement": [
+      19,
+      7
+    ],
+    "anchor": [
+      48,
+      127
+    ],
+    "opaque_pixels": 4456,
+    "faded": {
+      "size": "96x128",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 95,
+      "cyan": 0,
+      "lowest": 126
+    },
+    "faded_retained_pixels": 2566,
+    "faded_retained_percent": 57.59,
+    "faded_added_pixels": 0,
+    "faded_rgb_mismatches": 0,
+    "opacity_values": [
+      0,
+      255
+    ],
+    "source_spill_pixels_removed": 10,
+    "native_hem_pixels_trimmed": 426,
+    "horizontal_change_percent_exact": 93.004,
+    "mean_rgb": [
+      117.46,
+      120.78,
+      118.08
+    ]
+  },
+  "B": {
+    "size": "96x128",
+    "alpha_ok": true,
+    "colors": 48,
+    "change": 90,
+    "cyan": 0,
+    "lowest": 126,
+    "source_selected": "B_regen",
+    "visible_bbox": [
+      20,
+      19,
+      76,
+      127
+    ],
+    "visible_height": 108,
+    "placement": [
+      20,
+      19
+    ],
+    "anchor": [
+      48,
+      127
+    ],
+    "opaque_pixels": 3692,
+    "faded": {
+      "size": "96x128",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 90,
+      "cyan": 0,
+      "lowest": 126
+    },
+    "faded_retained_pixels": 2101,
+    "faded_retained_percent": 56.91,
+    "faded_added_pixels": 0,
+    "faded_rgb_mismatches": 0,
+    "opacity_values": [
+      0,
+      255
+    ],
+    "source_spill_pixels_removed": 7,
+    "native_hem_pixels_trimmed": 0,
+    "horizontal_change_percent_exact": 89.567,
+    "mean_rgb": [
+      93.57,
+      98.83,
+      86.06
+    ]
+  },
+  "C": {
+    "size": "96x128",
+    "alpha_ok": true,
+    "colors": 48,
+    "change": 93,
+    "cyan": 0,
+    "lowest": 126,
+    "source_selected": "C_regen",
+    "visible_bbox": [
+      26,
+      27,
+      70,
+      127
+    ],
+    "visible_height": 100,
+    "placement": [
+      26,
+      27
+    ],
+    "anchor": [
+      48,
+      127
+    ],
+    "opaque_pixels": 2957,
+    "faded": {
+      "size": "96x128",
+      "alpha_ok": true,
+      "colors": 48,
+      "change": 92,
+      "cyan": 0,
+      "lowest": 124
+    },
+    "faded_retained_pixels": 1387,
+    "faded_retained_percent": 46.91,
+    "faded_added_pixels": 0,
+    "faded_rgb_mismatches": 0,
+    "opacity_values": [
+      0,
+      255
+    ],
+    "source_spill_pixels_removed": 4,
+    "native_hem_pixels_trimmed": 0,
+    "horizontal_change_percent_exact": 92.51,
+    "mean_rgb": [
+      100.87,
+      106.33,
+      108.89
+    ]
+  }
+}

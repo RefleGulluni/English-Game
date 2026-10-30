@@ -1,0 +1,98 @@
+from pathlib import Path
+from PIL import Image
+import json,shutil
+W=Path('/Users/mac/.codex/work/veil-ghost-20261030');O=W/'staged';Q=O/'qc';S=Q/'veil_ghost_sources';m=json.loads((Q/'veil_ghost_metrics.json').read_text());prod=S/'production';prod.mkdir(exist_ok=True)
+for n in ['recover.py','finish.py','write_qa.py']:shutil.copy2(W/n,prod/n)
+for f in W.glob('generation_*.json'):shutil.copy2(f,prod/f.name)
+for k in 'ABC':
+ im=Image.open(O/f'veil_ghost_{k}.png');im.resize((768,1024),Image.Resampling.NEAREST).save(O/'reference'/f'veil_ghost_{k}_native_identity_8x.png')
+rows=[]
+for k in 'ABC':
+ d=m[k];rows.append(f"| {k} | 96×128 | {d['visible_height']} | {d['colors']} | {d['horizontal_change_percent_exact']:.3f}% | {d['opaque_pixels']} | {d['faded_retained_pixels']} ({d['faded_retained_percent']:.2f}%) | {d['faded_rgb_mismatches']} / {d['faded_added_pixels']} |")
+text='''# Veil Ghost 第一轮设计 QA
+
+日期：2026-10-30。只做 A / B / C 正面设计探索，每案 REVEALED + FADED；没有动画、四方向或游戏接入。
+
+## 三个方向
+
+- **A「覆面的送葬者」**：下垂的面纱与窄长内裙留下送葬人的轮廓，面容只剩一侧鼻颊，双手仍保持着生前的合拢姿势。冷灰白布面上的小色块对应折痕、磨旧和反光，不增加发光器官。
+- **B「空领的守路人」**：扁帽、横向肩披、空衣领和两片分离的长衣摆构成上宽下开的轮廓；衣领下残留一串旧铁钥匙，空袖口里没有完整手臂。色调是低饱和灰绿，脸没有完整下颌或骷髅牙齿。
+- **C「捧花的未别者」**：低头的人影仍托着一束枯花，收拢的双臂形成中段的弧线，右侧披巾比左侧更长。灰蓝旧布、枯白花瓣与缺失的半张脸共同表达“人已经离开，姿势还留着”。
+
+三案都保留人形与衣物的实体部分；身体的缺失不以屏幕横切、错位或 glitch 表现。
+
+## 隐去方式
+
+隐去稿全部由对应最终显形稿派生；只把选中的像素改为 `(0,0,0,0)`，没有换色、位移或半透明处理。
+
+- **A**：脸、交叠的手、腹部与最下方裙摆先散；面纱两侧和衣领更实。玩家先认出“有人蒙着面纱”，但触不到面纱里的人。
+- **B**：中空的胸腹、袖口和身体中轴先散；帽子、肩披、衣领及钥匙更稳定，衣摆边缘仍提供位置线索。
+- **C**：脸和身体右侧、下摆先散；捧花的双手与枯花保留得最多。遗物比持有它的人更“在场”。
+
+以局部保留密度配合固定 4×4 有序抖动，仅用于 FADED。每案密度区和最终保留遮罩均保存在 `veil_ghost_sources/`，不是给显形稿添加随机噪点。
+
+## 规格与逐像素检查
+
+三案原点均为 **(48,127)**。整张画布固定，FADED 的包围盒变化不会重新居中或重新贴底。显形稿最低不透明行均为 y=126，锚点在其下一行；隐去后末端可能提前消失，但锚点不变。
+
+| 案 | 画布 | 显形可见高 px | 显形颜色数 | 显形水平相邻换色率 | 显形不透明像素 | 隐去保留 | 隐去换色 / 新增像素 |
+|---|---|---:|---:|---:|---:|---:|---:|
+'''+ '\n'.join(rows)+'''
+
+- 六张运行时图的 Alpha 集合都为 **{0,255}**；无抗锯齿、渐变透明度、光晕或地面投影。
+- 六张运行时图的饱和青蓝像素均为 **0**，按项目 `pixel_check.py` 的 HSV 判定。QC 对照里的主角保留其本来合法的 Lexicon 青蓝，不计入 Ghost。
+- 所有隐去稿的不透明像素均逐坐标对照显形稿：**RGB 不一致 0，新增不透明像素 0**。
+- 换色率只计水平相邻且两边均不透明的像素对，和项目工具一致；上表保留三位小数，工具输出四舍五入为 A 93%、B 90%、C 93%。主角对照为 44 色 / 88%。
+- 没有给整圈加描边；原稿材质自身的暗边和衣物内部阴影保留。光源为左上。
+
+完整数值：`veil_ghost_metrics.json`。项目工具原样输出：`veil_ghost_sources/pixel_check.txt`。
+
+## 原图、逐格还原与整理记录
+
+使用内置 image_gen 单件生成大方块像素稿。选用原图和边界证据：
+
+| 最终案 | 选用生成记录 | 源像素格约宽×高 | 初次还原尺寸 | 最终可见尺寸 |
+|---|---|---|---|---|
+| A | A_match | 8×9（实际边界允许相邻格宽差异） | 58×134 | 58×120 |
+| B | B_regen | 10×11 | 56×109 | 56×108 |
+| C | C_regen | 12×12 | 44×100 | 44×100 |
+
+依据实际阶梯边界和周期找到每格中心，一格取一个原生像素，**不是整张缩小**；没有平均取色、平滑、旋转或镜像。各目录的 `grid.json` 保留全部源边界、中心采样的裁剪范围和周期证据，`grid_check_1x.png` 是源图局部上的格线检查。
+
+整理包括：清掉洋红底残留的 10 / 7 / 4 个采样点；把原稿材质色压到低饱和冷灰体系；用不透明区域建立 48 色调色板，不加噪点或纹理；整数位移到统一画布。B 清掉孤立背景残留后，可见高从 109 变成 108。
+
+**A 的下摆另作原生轮廓修整**：选用原图原生高 134，过长的裙摆末端在原生网格上删去 426 个像素，留下错落的三个布尾，最终高 120。没有删整行、拼接上下身、拉伸或缩放；头、手、领口及上身纹理沿用选用原稿。删减的具体边界保存在制作记录中，可与 `02_restored_cells.png` 和 `03_native_cleaned.png` 逐像素对照。
+
+其他尝试也保留原图及还原证据。早期有的原稿还原后超过 180 px，另有 A 稿只有 95 px，这些都**没有作为运行时图交付**。所有提示词及选用状态见 `veil_ghost_design_prompts.json`。
+
+每个选用目录中：
+
+- `01_generated_original.png`：未经修改的生成原图。
+- `02_restored_cells.png`：一格一像素的初次还原。
+- `03_native_cleaned.png`：原生整理后图。
+- `04_canvas_aligned.png`：96×128 显形交付图。
+- `grid.json` / `grid_check_1x.png`：还原证据。
+
+## 参考与实景对比
+
+- `reference/veil_ghost_X_concept_hires.png`：选用的大尺寸生成设计原稿，只清掉洋红底，供观察设计来源；**不是另画的高清立绘**。原稿色调、A 的较长裙摆不作为运行时像素标准。
+- `reference/veil_ghost_X_native_identity_8x.png`：最终运行时稿的 nearest 8 倍参考，今后检查配色、长度、身份细节以此及原生图为准。
+- `veil_ghost_compare.png`：实际 `veiled_base_01.png` 平铺，三案双状态、主角、骷髅和三件墓碑同地面，nearest 2 倍。
+- `veil_ghost_moss_compare.png`：相同排列，补充在实际 `moss_texture_01.png` 上的可读性检查，nearest 2 倍。
+- `veil_ghost_vs_hero_6x.png`：每案显形、隐去与主角并排，nearest 6 倍。
+- `veil_ghost_silhouette.png`：纯黑剪影，包含主角、骷髅和三案双状态，nearest 2 倍。
+- `veil_ghost_X_8x.png` / `_faded_8x.png`：单案放大。
+
+肉眼检查：两种地面上，显形均能读到人形；隐去仍可由面纱 / 帽领 / 捧花姿势定位。A 是纵长、B 上宽下开、C 收拢且不对称，与主角的外套和骷髅的肢骨轮廓有区别。是否达到用户希望的“存在感”，仍需游戏里看过后选择。
+
+## 限制与交付边界
+
+- 这是设计探索，不是四方向或动作定稿。没有验证战斗遮挡、移动时的抖动观感或 FADED 过渡着色器；本轮只检查静态图和项目实际地面合成。
+- FADED 使用固定网格删像素，局部密度界限在 8 倍图上会比游戏 2 倍更明显；没有用模糊隐藏它。
+- 生成器没有稳定输出指定原生网格，保留了不合尺寸的尝试和最终 A 的原生下摆修整记录，不声称每次生成都直接合规格。
+- 所有文件只新增在 `art/character_design/enemies/veil_ghost/`。交付前对任务开始记录的 8347 个已有 art 文件核对 SHA-256，变化 0、缺失 0；不修改现有主角、骷髅、墓园素材、场景或任何 timing 文件。
+
+**完成后停止，等待用户在游戏中选择方向。**
+'''
+(Q/'veil_ghost_design_QA.md').write_text(text)
+(prod/'README.md').write_text('制作脚本与生成记录归档。脚本保存了本次操作时的绝对工作路径，不会由游戏调用。复跑请先在独立目录重新配置路径，避免覆盖已验收文件。逐格边界、原图和完成图已完整保留，核验不需要复跑生成器。\n')

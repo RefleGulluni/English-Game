@@ -1,0 +1,50 @@
+{
+  "status": "WATER_STOPPED_REFLECTION_REPETITION",
+  "size": [
+    224,
+    128
+  ],
+  "colors": 21,
+  "mean_rgb": [
+    47.000418526785715,
+    51.000418526785715,
+    55.000418526785715
+  ],
+  "luma_std": 4.609242563842278,
+  "horizontal_change": 57.304512331838566,
+  "max_rgb": [
+    57,
+    61,
+    65
+  ],
+  "min_rgb": [
+    37,
+    41,
+    45
+  ],
+  "alpha_values": [
+    255
+  ],
+  "opposite_left_right_exact": true,
+  "opposite_top_bottom_exact": true,
+  "bare_native_size": [
+    480,
+    270
+  ],
+  "three_by_three_native_size": [
+    672,
+    384
+  ],
+  "sha256": "af280dc16de6f66e20561dd3de7f9002151b6eefc99303933dfc581dc0f25eec",
+  "runtime_integrated": false,
+  "image_generation_used": false,
+  "approved_assets_unchanged": true,
+  "protected_image_count": 117,
+  "horizontal_luma_difference_p95": 2.999999999999993,
+  "visual_review": {
+    "surface": "Flat and darker than soil;does not retain the prior busy mud/asphalt texture.",
+    "reflection_repetition": "Three-by-three repeat reveals matching fog regions and a diagonal light/dark rhythm;stopping condition triggered.",
+    "submerged_details": "Very weak,not strongly recognizable from the normal preview;not a claim of fully achieved underwater debris readability.",
+    "candidate_only": true
+  }
+}

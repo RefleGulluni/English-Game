@@ -1,0 +1,42 @@
+{
+  "task": "VEILED_WALK_WATER_GROUND_REQUEST",
+  "status": "WATER_STOPPED_REFLECTION_REPETITION",
+  "candidate": "../../water_texture_01.png",
+  "image_generation_used": false,
+  "inputs": [
+    {
+      "file": "decal_puddle_01.png",
+      "source": "art/cemetery_v3/ground/decals/decal_puddle_01.png",
+      "water_mask": "decal_puddle_01_material_labels.png",
+      "selected_label": 3
+    },
+    {
+      "file": "decal_puddle_02.png",
+      "source": "art/cemetery_v3/ground/decals/decal_puddle_02.png",
+      "water_mask": "decal_puddle_02_material_labels.png",
+      "selected_label": 3
+    },
+    {
+      "file": "decal_puddle_03.png",
+      "source": "art/cemetery_v3/ground/decals/decal_puddle_03.png",
+      "water_mask": "decal_puddle_03_material_labels.png",
+      "selected_label": 3
+    },
+    {
+      "file": "veiled_base_01_source.png",
+      "source": "art/cemetery_v3/ground/base/veiled_base_01.png",
+      "use": "Source native pixels compressed into five faint submerged mud levels."
+    }
+  ],
+  "color_sources": "01_surface_color_sources.json",
+  "underwater_mapping": "02_substrate_mapping.json",
+  "reflection_and_debris_regions": "03_authored_surface.json",
+  "mockup_placement": "04_preview_placement.json",
+  "script": "build_water.py",
+  "source_sampling": "Existing approved native PNGs,exact stored material masks. No generation,pixel-grid restoration,resizing or averaging needed. Palette derives from measured puddle surface,excludes highlights/rim.",
+  "method": "Water mean58,62,66 darkened by11;21swatch same-hue ramp for subdued fog tones. Existing mud compressed into weak submerged levels;hand-authored wrap-aware fog/debris regions select native swatches. No random texture,noise,art blur,mirroring,rotating or added waves/glints. Opposite1px profiles paired.",
+  "qa": "../../qc/water_texture_QA.md",
+  "verification": "../../qc/water_texture_verification.json",
+  "runtime_integrated": false,
+  "stopping_reason": "Fog reflection regions form an identifiable diagonal light/dark recurrence on3x3repeat,despite flat surface and hard-spec compliance."
+}

@@ -1,0 +1,14 @@
+{
+  "existing_art_files_checked": 8347,
+  "changed": [],
+  "missing": [],
+  "new_folder_only": "art/character_design/enemies/veil_ghost",
+  "files_sha256": {
+    "veil_ghost_A.png": "8c2dcf614b84c2b96b41a440902de6a9b4d329c6f436cae598dbc126ca61cb34",
+    "veil_ghost_A_faded.png": "585dac73f052148f4f7f0fc2ecd79cb03636534a443e3bb4c3ffa3fa458ff909",
+    "veil_ghost_B.png": "11a6426f4ecb6d55e5053c2f53f3ba079a00629b5b4b107f93a9fd78d36502d2",
+    "veil_ghost_B_faded.png": "9923b726d760387437a950c311cfcdbd068ab7fa03f7900172684caef9bb7e8a",
+    "veil_ghost_C.png": "7ef3798b6b26e978f67444f461b985273a7e1908d4d3eab1ad4529372358257b",
+    "veil_ghost_C_faded.png": "8af1f84153717f520cf32a6c881118902b7a8e7e2e82f1e3b5cd1ab51bf95f01"
+  }
+}

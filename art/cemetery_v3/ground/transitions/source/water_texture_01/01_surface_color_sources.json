@@ -1,0 +1,232 @@
+{
+  "sources": [
+    {
+      "file": "art/cemetery_v3/ground/decals/decal_puddle_01.png",
+      "material_label_source": "art/cemetery_v3/ground/decals/source/round3/decal_puddle_01_material_labels.png",
+      "selected_label": 3,
+      "water_pixel_count": 145,
+      "water_mean_rgb": [
+        57.97931034482759,
+        61.97931034482759,
+        65.97931034482758
+      ],
+      "colors_counts": [
+        [
+          [
+            56,
+            60,
+            64
+          ],
+          1
+        ],
+        [
+          [
+            57,
+            61,
+            65
+          ],
+          24
+        ],
+        [
+          [
+            58,
+            62,
+            66
+          ],
+          99
+        ],
+        [
+          [
+            59,
+            63,
+            67
+          ],
+          19
+        ],
+        [
+          [
+            60,
+            64,
+            68
+          ],
+          2
+        ]
+      ],
+      "excluded": "labels1/2 mud/rim and4 high glint,0transparent"
+    },
+    {
+      "file": "art/cemetery_v3/ground/decals/decal_puddle_02.png",
+      "material_label_source": "art/cemetery_v3/ground/decals/source/round3/decal_puddle_02_material_labels.png",
+      "selected_label": 3,
+      "water_pixel_count": 430,
+      "water_mean_rgb": [
+        58.020930232558136,
+        62.020930232558136,
+        66.02093023255814
+      ],
+      "colors_counts": [
+        [
+          [
+            57,
+            61,
+            65
+          ],
+          36
+        ],
+        [
+          [
+            58,
+            62,
+            66
+          ],
+          351
+        ],
+        [
+          [
+            59,
+            63,
+            67
+          ],
+          42
+        ],
+        [
+          [
+            61,
+            65,
+            69
+          ],
+          1
+        ]
+      ],
+      "excluded": "labels1/2 mud/rim and4 high glint,0transparent"
+    },
+    {
+      "file": "art/cemetery_v3/ground/decals/decal_puddle_03.png",
+      "material_label_source": "art/cemetery_v3/ground/decals/source/round3/decal_puddle_03_material_labels.png",
+      "selected_label": 3,
+      "water_pixel_count": 198,
+      "water_mean_rgb": [
+        57.88383838383838,
+        61.88383838383838,
+        65.88383838383838
+      ],
+      "colors_counts": [
+        [
+          [
+            54,
+            58,
+            62
+          ],
+          37
+        ],
+        [
+          [
+            55,
+            59,
+            63
+          ],
+          1
+        ],
+        [
+          [
+            56,
+            60,
+            64
+          ],
+          1
+        ],
+        [
+          [
+            57,
+            61,
+            65
+          ],
+          14
+        ],
+        [
+          [
+            58,
+            62,
+            66
+          ],
+          44
+        ],
+        [
+          [
+            59,
+            63,
+            67
+          ],
+          58
+        ],
+        [
+          [
+            60,
+            64,
+            68
+          ],
+          43
+        ]
+      ],
+      "excluded": "labels1/2 mud/rim and4 high glint,0transparent"
+    }
+  ],
+  "combined_surface_mean_rgb": [
+    57.97800776196637,
+    61.97800776196637,
+    65.97800776196637
+  ],
+  "surface_colors": [
+    [
+      54,
+      58,
+      62
+    ],
+    [
+      55,
+      59,
+      63
+    ],
+    [
+      56,
+      60,
+      64
+    ],
+    [
+      57,
+      61,
+      65
+    ],
+    [
+      58,
+      62,
+      66
+    ],
+    [
+      59,
+      63,
+      67
+    ],
+    [
+      60,
+      64,
+      68
+    ],
+    [
+      61,
+      65,
+      69
+    ]
+  ],
+  "target_center_offset": [
+    -11,
+    -11,
+    -11
+  ],
+  "water_texture_center_rgb": [
+    46.97800776196637,
+    50.97800776196637,
+    54.97800776196637
+  ],
+  "method": "Read actual approved native pixels selected by stored material label3;exclude glints,rim andoutside soil. No screenshot color sampling or regeneration."
+}
