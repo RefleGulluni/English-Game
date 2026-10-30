@@ -811,7 +811,8 @@ func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e:
 	var pos := str(WORDS.main_sense(lemma).get("pos", ""))
 	var px := _font_px(4.0, unit)
 	var line := ("/%s/   " % sound if sound else "") + pos
-	_ci.draw_string(_sounds, origin + (at + Vector2(0, 8)) * unit, line, HORIZONTAL_ALIGNMENT_LEFT, -1, px, Color(PENCIL, a))
+	if stage != "ENCOUNTERED": # only seen: nothing about it is known yet, not even how it sounds
+		_ci.draw_string(_sounds, origin + (at + Vector2(0, 8)) * unit, line, HORIZONTAL_ALIGNMENT_LEFT, -1, px, Color(PENCIL, a))
 	var y := at.y + 16
 	if known:
 		for row in _wrap(WORDS.sense(lemma), 5.0, unit, 80):
