@@ -1050,13 +1050,29 @@
       "visible_height_px": 177,
       "family": "stone",
       "variant_of": "fountain_dry_01",
-      "source_record": "qc/fountain_broken_wing_01_sources/edit_metrics.json",
+      "source_record": "qc/fountain_broken_wing_01_v2_sources/edit_metrics.json",
       "qa": "qc/fountain_broken_wing_01_QA.md",
       "status": "pending_user_review",
       "flat_base_only": false,
       "no_auto_trim": true,
       "shattered_wing": true,
-      "fallen_fragments": 7
+      "fallen_fragments": 5,
+      "revision": 2,
+      "major_wing_fragment_bbox": [
+        92,
+        178,
+        119,
+        204
+      ],
+      "major_wing_fragment_size": [
+        27,
+        26
+      ],
+      "rim_fragments": 2,
+      "retained_wing_height_px": [
+        20,
+        25
+      ]
     }
   },
   "wall_families": {

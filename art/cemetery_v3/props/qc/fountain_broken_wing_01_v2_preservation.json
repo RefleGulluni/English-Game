@@ -1,0 +1,17 @@
+{
+  "preexisting_files_checked": 5981,
+  "changed_existing_files": [
+    "art/cemetery_v3/props/props_manifest.json",
+    "art/cemetery_v3/props/fountain_broken_wing_01.png",
+    "art/cemetery_v3/props/qc/fountain_broken_wing_01_QA.md",
+    "art/cemetery_v3/props/qc/fountain_broken_wing_01_compare_6x.png",
+    "art/cemetery_v3/props/qc/fountain_broken_wing_01_pixel_check.txt",
+    "art/cemetery_v3/props/qc/fountain_broken_wing_01_vs_hero_2x.png"
+  ],
+  "missing_files": [],
+  "original_fountain_and_base_unchanged": true,
+  "variant_base_unchanged": true,
+  "other_manifest_items_unchanged": true,
+  "outside_allowed_masks_changed": 0,
+  "final_sprite_exact_measured_bytes": true
+}

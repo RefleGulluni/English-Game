@@ -1,0 +1,4 @@
+文件                                                              尺寸   透明   颜色   换色%   青蓝   最低行
+n-wing-angel-20261030/staged/fountain_broken_wing_01.png   256x256   OK   48    91    0   247
+g-angel-20261030/staged/fountain_broken_wing_01_base.png   256x256   OK    4    23    0   245
+对照：art/character_design/hero_B1_front_straight.png           96x96   OK   44    88   13    95
