@@ -25,7 +25,7 @@ func _initialize() -> void:
 	check(sky.children(2, path).size() == 2, "Breaking shows the two clusters met in")
 	for level in range(1, 5):
 		for p in sky.layout(level, path):
-			check(SKY.PAGE.grow(12).has_point(p), "level %d: %s is on the left page" % [level, p])
+			check((SKY.SPREAD if level == 1 else SKY.PAGE).grow(12).has_point(p), "level %d: %s is on its page" % [level, p])
 	check(SKY.light(sky.node(5, path)) == 1.0 and SKY.light(sky.regions[1]) == 0.75, "light follows the stages")
 	check(SKY.figure("BREAK", 5, Vector2(70, 60), 30) == SKY.figure("BREAK", 5, Vector2(70, 60), 30), "a figure is the same every time")
 	if failures.is_empty():

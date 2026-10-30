@@ -74,7 +74,15 @@ const STAR_FLASH := 0.35 # a new star flares, then settles
 const LINE_TIME := 0.3 # one line drawing itself from star to star
 const WASH_SHADE := 0.89 # how much darker than the paper a wash pixel is
 const STAGE_NAMES := {"ENCOUNTERED": "seen", "RECOGNIZED": "recognized", "UNDERSTOOD": "understood", "USABLE": "usable"}
-const TABS := [["find", Color8(120, 46, 40)], ["recent", Color8(58, 74, 62)], ["review", Color8(150, 118, 60)], ["stage", Color8(64, 70, 96)]]
+const PEN := Color8(78, 58, 44) # fine pen strokes in a well-learned region
+const GRAPHITE := Color8(118, 124, 134) # the milky way: cool, so it never reads as the regions' ink
+## The quick ways in (D-073), hand-drawn marks at the top right of the right page (round 2: cloth
+## tabs were too loud): find, recent, review, stage. 7x7 book pixels each.
+const MARKS := [["find", ["..###..", ".#...#.", ".#...#.", ".#...#.", "..###..", "....##.", ".....##"]],
+	["recent", [".#####.", "..#.#..", "...#...", "...#...", "..#.#..", ".#.#.#.", ".#####."]],
+	["review", ["..###..", ".#...#.", "#.....#", "#...#.#", ".#..###", "..#..#.", "......."]],
+	["stage", [".......", ".......", "a.b.c.d", ".......", ".......", ".......", "......."]]]
+const MARKS_AT := Vector2i(198, 14)
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
 const P_RISE := 0.15
@@ -125,6 +133,7 @@ var _prev := {} # the level being wiped off while the next is drawn in: {level, 
 var _washes := {} # the ink washes of a view, one texture each, made once
 var _open_img: Image
 var _hits: Array = [] # [Rect2 on screen, index]: what a click on the left page picks
+var _twinkles: Array = [] # [book pixel, speed, phase]: milky way stars that twinkle
 var _rite_from := Vector2.ZERO # where the ceremony's card lifts off (the big word)
 var _sounds := SystemFont.new() # the phonetic line: the book's font has no IPA letters
 var _ci: CanvasItem = self # where the helpers draw: this overlay, or one of the hidden spreads
@@ -583,7 +592,7 @@ func _draw() -> void:
 		_seam(origin, unit, 1.0 - fall, fall)
 	elif _turn >= 0.0 and live_turn and _warm == 0:
 		_draw_leaf(origin, unit)
-		_draw_tabs(origin, unit, 1.0)
+		_draw_marks(origin, unit, 1.0)
 		_draw_caption(origin, unit, 1.0)
 		return
 	elif _turn >= 0.0 and not live_turn and _turn_frames:
@@ -596,7 +605,7 @@ func _draw() -> void:
 		return
 	var page := _turn_from if _turn >= 0.0 else _page # still warming up: the old spread
 	_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
-	_draw_tabs(origin, unit, _stage(0.88, 1.0))
+	_draw_marks(origin, unit, _stage(0.88, 1.0))
 	if _rite >= 0.0:
 		_draw_rite_card(origin, unit)
 	else:
@@ -717,6 +726,17 @@ func _draw_view(origin: Vector2, unit: float, level: int, path: Array, choice: i
 		for i in items.size():
 			_star(origin, unit, points[i], str(items[i].stage), clock - 0.3 - i * STAR_GAP, e)
 			_word_label(origin, unit, points[i] + Vector2(3, 2), str(items[i].lemma), str(items[i].stage), 4.6, shown, i == choice)
+	elif level == 1: # the whole sky over both pages: the regions' names, the chosen one larger
+		_draw_twinkles(origin, unit, clampf(clock / WASH_IN, 0.0, 1.0) * e)
+		for i in items.size():
+			var region: Dictionary = items[i]
+			var under := points[i] + Vector2(0, region.r * 0.85 + 5)
+			if i == choice:
+				_text(origin, unit, under, str(region.name), 4.8, INK, shown, true)
+				var how: String = ["just found", "some", "many", "all usable"][SKY.state(region)]
+				_text(origin, unit, under + Vector2(0, 5), "%s  ·  %s" % [_count(SKY.words_in(region).size(), "word"), how], 3.2, PENCIL, shown, true)
+			else:
+				_text(origin, unit, under, str(region.name), 3.8, PENCIL, shown * 0.85, true)
 	else: # each thing as a small figure (its best-known constellation) with its name under it
 		for i in items.size():
 			var best := SKY.brightest(items[i])
@@ -731,9 +751,11 @@ func _draw_view(origin: Vector2, unit: float, level: int, path: Array, choice: i
 			_text(origin, unit, points[i] + Vector2(0, 9), name, 4.2, INK if i == choice else PENCIL, shown * (1.0 if i == choice else 0.85), true, i == choice)
 	if _ci == self:
 		for i in points.size():
-			var box := Rect2(points[i] - Vector2(10, 8), Vector2(20, 20)) if level < 4 else Rect2(points[i] - Vector2(3, 5), Vector2(30, 9))
+			var reach: float = items[i].r + 3 if level == 1 else 10.0
+			var box := Rect2(points[i] - Vector2(reach, reach), Vector2(reach, reach) * 2) if level < 4 else Rect2(points[i] - Vector2(3, 5), Vector2(30, 9))
 			_hits.append([Rect2(origin + box.position * unit, box.size * unit), i])
-	_draw_about(origin, unit, level, path, items, choice, right, shown)
+	if level > 1: # on the whole sky the right page is sky too
+		_draw_about(origin, unit, level, path, items, choice, right, shown)
 
 
 ## The right page: what is being looked at, and what is in it.
@@ -871,44 +893,237 @@ func _draw_crumbs(origin: Vector2, unit: float, level: int, path: Array, a: floa
 	_text(origin, unit, Vector2(32, 19), "  ›  ".join(parts), 3.4, PENCIL, a * 0.9)
 
 
-## The ink washes of a view: one pale stain of ink per thing on the page, darker the better it is
-## known, in the book's own pixels and only on paper. Made once per view.
+## The ink washes of a view, made once: on the whole sky the milky way and one region each; closer
+## in, one wash per cluster or constellation (in its region's shape), or a large pale one behind a
+## constellation's words.
 func _wash(level: int, path: Array, points: Array[Vector2]) -> Texture2D:
 	var key := "%d %s" % [level, str(path.slice(0, level - 1))]
 	if _washes.has(key):
 		return _washes[key]
 	var img := Image.create(OPEN_BOOK.size.x, OPEN_BOOK.size.y, false, Image.FORMAT_RGBA8)
-	var spots := [] # [centre, radius, density, seed]
 	var items := sky.children(level, path)
+	var spots := [] # [centre, radius, kind, state, seed]
 	if level == 4:
 		var here := sky.node(4, path)
-		spots.append([SKY.PAGE.get_center(), 34.0, 0.12 + 0.3 * SKY.light(here), hash(str(here.id))])
+		spots.append([SKY.PAGE.get_center(), 30.0, str(here.kind), mini(SKY.state(here), 1), hash(str(here.id)) % 100000])
 	else:
 		for i in items.size():
-			spots.append([points[i] + Vector2(0, -2), 11.0 if level == 1 else 10.0, 0.12 + 0.55 * SKY.light(items[i]), hash(str(items[i].get("name", ""))) % 100000])
-	for spot in spots:
-		var c: Vector2 = spot[0]
-		var r: float = spot[1]
-		var rng := RandomNumberGenerator.new()
-		rng.seed = spot[3]
-		var k := [rng.randf() * TAU, rng.randf() * TAU]
-		for y in range(int(c.y - r * 1.3), int(c.y + r * 1.3) + 1):
-			for x in range(int(c.x - r * 1.5), int(c.x + r * 1.5) + 1):
-				if x < 1 or y < 1 or x >= OPEN_SPINE - 2 or y >= img.get_height():
-					continue
-				var paper := _open_img.get_pixel(x, y)
-				if paper.a < 0.5 or paper.get_luminance() < PAPER_MIN_LUMA:
-					continue
-				var angle := atan2(y - c.y, x - c.x)
-				var d := Vector2((x - c.x) / 1.3, y - c.y).length()
-				var edge: float = r * (1.0 + 0.18 * sin(3.0 * angle + k[0]) + 0.1 * sin(5.0 * angle + k[1]))
-				if d > edge:
-					continue
-				var density: float = spot[2] * minf(1.0, (1.0 - d / edge) * 2.2)
-				if float(hash(x * 7919 + y * 104729 + spot[3]) & 0xffff) / 65535.0 < density * 0.9:
-					img.set_pixel(x, y, Color(paper.r * WASH_SHADE, paper.g * WASH_SHADE, paper.b * WASH_SHADE * 0.98))
+			var r: float = items[i].r if level == 1 else (10.0 if level == 2 else 9.0)
+			spots.append([points[i], r, str(items[i].kind), SKY.state(items[i]), hash(str(items[i].get("name", items[i].get("id", "")))) % 100000])
+	if level == 1:
+		_milky_way(img, spots)
+	for spot in spots: # cracks, pen strokes and inner stars only on the whole sky: closer in they
+		# would read as the constellations' own lines
+		_nebula(img, spot[0], spot[1], spot[2], spot[3], spot[4], level == 1, level == 1)
 	_washes[key] = ImageTexture.create_from_image(img)
 	return _washes[key]
+
+
+## The paper under a book pixel, or a transparent colour where there is no paper (leather, spine).
+## `both`: the right page too (the whole sky), else the left page only.
+func _paper_at(x: int, y: int, both: bool) -> Color:
+	if x < 1 or y < 1 or x >= OPEN_BOOK.size.x - 1 or y >= OPEN_BOOK.size.y - 1:
+		return Color(0, 0, 0, 0)
+	if not both and x >= OPEN_SPINE - 2:
+		return Color(0, 0, 0, 0)
+	var c := _open_img.get_pixel(x, y)
+	if c.a < 0.5 or c.get_luminance() < PAPER_MIN_LUMA or absi(x - OPEN_SPINE) < 4:
+		return Color(0, 0, 0, 0)
+	return PAPER if RIGHT_PAGE.has_point(Vector2i(x, y)) else c
+
+
+static func _hashf(x: int, y: int, salt: int) -> float:
+	return float(hash(x * 7919 + y * 104729 + salt * 31) & 0xffff) / 65535.0
+
+
+static func _segment_distance(p: Vector2, a: Vector2, b: Vector2) -> float:
+	var t := clampf((p - a).dot(b - a) / maxf((b - a).length_squared(), 0.0001), 0.0, 1.0)
+	return p.distance_to(a + (b - a) * t)
+
+
+const TREE := [[Vector2(0, 0.9), Vector2(0, -0.1)], [Vector2(0, 0.2), Vector2(-0.6, -0.5)], [Vector2(0, 0.0), Vector2(0.55, -0.6)],
+		[Vector2(-0.35, -0.3), Vector2(-0.5, -0.9)], [Vector2(0.3, -0.35), Vector2(0.75, -0.2)], [Vector2(0, -0.1), Vector2(0.05, -0.85)]]
+
+## A region's shape, by what it means (round 2 of D-088): [v, density, hole] for a point (dx, dy)
+## in units of the radius; v < 1 is inside, a hole stays bare paper.
+static func _shape(kind: String, dx: float, dy: float, salt: float) -> Array:
+	var d := Vector2(dx, dy).length()
+	var a := atan2(dy, dx)
+	match kind:
+		"breaking": # jagged, splintered edges (the cracks are drawn after)
+			var tri := absf(fposmod(a * 7.0 / TAU + salt, 1.0) - 0.5) * 2.0
+			return [d / (0.72 + 0.38 * tri), 1.0, false]
+		"holding": # a ring, not quite closed: a hand closing
+			return [9.0 if a > -2.0 and a < -1.15 else absf(d - 0.66) / 0.3, 1.0, false]
+		"seeing": # a wide eye, its white kept bare, a dark pupil
+			if Vector2(dx / 0.6, dy / 0.46).length() < 1.0:
+				return [0.0, 0.0, true]
+			return [Vector2(dx / 1.7, dy / 0.72).length(), 1.0, false]
+		"death": # a drop: narrow above, heavy and wide below
+			var width := 0.45 + 0.8 * clampf((dy + 1.0) / 1.6, 0.0, 1.0)
+			return [Vector2(dx / width, (dy - 0.1) / 1.05).length(), pow(clampf(0.25 + 0.8 * (dy + 1.0) / 2.0, 0.2, 1.0), 1.5), false]
+		"feeling": # the softest: no edge at all
+			var v := Vector2(dx / 1.35, dy).length() * 0.95
+			return [v, pow(maxf(0.0, 1.0 - v), 0.5) * 1.3, false]
+		"sound": # rings going out
+			return [d * 0.95, 1.0, sin(d * 9.5) < -0.1]
+		"light": # a bare core, long rays
+			if d < 0.28:
+				return [0.0, 0.0, true]
+			var ray := 1.0 if cos(7.0 * a + salt * TAU) > 0.7 else 0.0
+			return [d / (0.55 + 0.6 * ray), 1.0, false]
+		"nature": # branching like a tree
+			var near := 9.0
+			for s in TREE:
+				near = minf(near, _segment_distance(Vector2(dx, dy), s[0], s[1]))
+			return [near / 0.2, 1.1, false]
+		"places": # laid flat, like a piece of ground
+			return [9.0 if dy > 0.32 else Vector2(dx / 1.9, dy / 0.55).length(), 1.0, false]
+		"time": # two lobes and a narrow waist
+			return [minf(minf(Vector2(dx / 0.8, (dy + 0.55) / 0.5).length(), Vector2(dx / 0.8, (dy - 0.55) / 0.5).length()), Vector2(dx / 0.25, dy / 0.6).length()), 1.0, false]
+		"thinking": # a few small thoughts, touching
+			var t := 9.0
+			for c in [Vector2(-0.6, 0.2), Vector2(0.1, -0.4), Vector2(0.6, 0.3)]:
+				t = minf(t, Vector2(dx, dy).distance_to(c) / 0.42)
+			return [t, 1.0, false]
+		"people": # several, side by side
+			var p := 9.0
+			for c in [Vector2(-0.75, 0), Vector2(-0.25, 0.15), Vector2(0.25, -0.05), Vector2(0.75, 0.1)]:
+				p = minf(p, Vector2(dx, dy).distance_to(c) / 0.3)
+			return [p, 1.0, false]
+	return [Vector2(dx / 1.3, dy).length(), 1.0, false]
+
+
+## One region (or cluster, or constellation) painted like ink on paper, as far as it is learned:
+## state 0 one faint layer, 1 the ink settles at the edge, 2 more stars and a few pen strokes,
+## 3 a thin cyan rim. The edge is darker than the middle, as a wash dries.
+func _nebula(img: Image, centre: Vector2, radius: float, kind: String, state: int, salt: int, both: bool, details: bool) -> void:
+	var r: float = radius * [0.78, 0.92, 1.0, 1.0][state]
+	var base: float = [0.3, 0.5, 0.62, 0.62][state]
+	var rim: float = [0.0, 0.7, 0.85, 0.85][state]
+	var soft := kind == "feeling"
+	var warp := FastNoiseLite.new()
+	warp.seed = salt
+	warp.frequency = 0.25
+	var grain := FastNoiseLite.new()
+	grain.seed = salt + 9
+	grain.frequency = 0.6
+	var turn := float(salt % 1000) / 1000.0
+	var edge: Array[Vector2i] = []
+	for y in range(int(centre.y - r * 2.2), int(centre.y + r * 2.2) + 1):
+		for x in range(int(centre.x - r * 2.4), int(centre.x + r * 2.4) + 1):
+			var paper := _paper_at(x, y, both)
+			if paper.a == 0.0:
+				continue
+			var shaped := _shape(kind, (x - centre.x) / r, (y - centre.y) / r, turn)
+			if shaped[2]:
+				continue
+			var v: float = shaped[0] + warp.get_noise_2d(x, y) * 0.22 + grain.get_noise_2d(x, y) * 0.075
+			if v > 1.0:
+				continue
+			var roll := _hashf(x, y, salt)
+			var under := img.get_pixel(x, y)
+			var c := under if under.a > 0.0 else paper
+			if not soft and v > 0.78 and roll < rim:
+				img.set_pixel(x, y, Color(c.r * 0.8, c.g * 0.8, c.b * 0.8))
+				edge.append(Vector2i(x, y))
+			elif roll < base * float(shaped[1]) * minf(1.0, (1.0 - v) * (1.6 if soft else 2.6) + 0.25):
+				img.set_pixel(x, y, Color(c.r * 0.885, c.g * 0.885, c.b * 0.885 * 0.99))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = salt
+	var put := func(p: Vector2i, color: Color) -> void:
+		if _paper_at(p.x, p.y, both).a > 0.0:
+			img.set_pixelv(p, color)
+	if not details:
+		return
+	if kind == "breaking" and state >= 1: # fine cracks out from the middle
+		for k in 3:
+			var a := rng.randf() * TAU
+			var at := centre
+			for s in int(r * (0.5 + 0.4 * state / 3.0)):
+				a += rng.randf_range(-0.5, 0.5)
+				at += Vector2(cos(a), sin(a))
+				put.call(Vector2i(at.round()), PEN)
+	if kind == "seeing" and state >= 1:
+		put.call(Vector2i(centre.round()), INK)
+	if state >= 2: # more of its stars show, and a few pen strokes describe it
+		var colours := [PENCIL, INK, INK, PENCIL, CYAN.darkened(0.3), INK, PENCIL]
+		for k in colours.size():
+			for tries in 20:
+				var p := Vector2i((centre + Vector2(rng.randf_range(-r, r), rng.randf_range(-r, r) * 0.8)).round())
+				var shaped := _shape(kind, (p.x - centre.x) / r, (p.y - centre.y) / r, turn)
+				if shaped[0] < 0.85 and not shaped[2]:
+					put.call(p, colours[k])
+					break
+		for k in 3:
+			var p := Vector2i((centre + Vector2(rng.randf_range(-0.6, 0.6), rng.randf_range(-0.5, 0.5)) * r).round())
+			for s in 4:
+				put.call(p + Vector2i(s, -s / 2), Color8(150, 132, 116))
+	if state == 3: # every word in it usable: a thin cyan rim, the book's highest honour
+		for i in range(0, edge.size(), 3):
+			img.set_pixelv(edge[i], Color8(132, 196, 210))
+
+
+## The milky way across the whole sky: stippled like an old star atlas, in cool graphite, so it
+## reads as a band of faint stars and never as ink. It splits into two streams and joins again,
+## has a dark rift, a few engraved cross stars, and stays out of the regions' way. Some of its
+## stars are kept aside to twinkle (drawn live, _draw_twinkles).
+func _milky_way(img: Image, spots: Array) -> void:
+	_twinkles.clear()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 4242
+	var from := Vector2(24, 104)
+	var to := Vector2(234, 14)
+	var along := (to - from).normalized()
+	var across := Vector2(-along.y, along.x)
+	var length := from.distance_to(to)
+	var marks := Rect2(Vector2(MARKS_AT) - Vector2(4, 4), Vector2(MARKS.size() * 9 + 6, 18))
+	var clear := func(p: Vector2) -> bool:
+		if marks.has_point(p): # the marks at the top right keep their corner
+			return false
+		for s in spots:
+			if p.distance_to(s[0]) < s[1] * 1.5:
+				return false
+		return true
+	var put := func(p: Vector2i, color: Color, mix: float) -> void:
+		var paper := _paper_at(p.x, p.y, true)
+		if paper.a > 0.0:
+			var under := img.get_pixelv(p)
+			img.set_pixelv(p, (under if under.a > 0.0 else paper).lerp(color, mix))
+	for step in int(length * 2.0):
+		var t := step / (length * 2.0)
+		var middle := from + along * t * length + across * sin(t * TAU * 1.3) * 5.0
+		var split := 6.0 * sin(PI * clampf((t - 0.3) / 0.45, 0.0, 1.0))
+		for stream in [-1.0, 1.0]:
+			var centre: Vector2 = middle + across * split * stream
+			for k in 2:
+				var off := rng.randfn(0.0, 4.5)
+				if absf(off - 1.0) < 0.9 and t > 0.15 and t < 0.6: # the dark rift
+					continue
+				var p := centre + across * off + along * rng.randf_range(-0.5, 0.5)
+				if rng.randf() > 0.55 * exp(-off * off / 40.0) or not clear.call(p):
+					continue
+				put.call(Vector2i(p.round()), GRAPHITE, 0.45)
+				if rng.randf() < 0.012 and _twinkles.size() < 16:
+					_twinkles.append([Vector2i(p.round()), rng.randf_range(0.25, 0.6), rng.randf() * TAU])
+	for k in 9: # a few engraved cross stars along the band
+		var t := (k + 0.5) / 9.0
+		var p := Vector2i((from + along * t * length + across * rng.randf_range(-6, 6)).round())
+		if clear.call(Vector2(p)):
+			for o in [Vector2i.ZERO, Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+				put.call(p + o, GRAPHITE.darkened(0.2), 0.75 if o == Vector2i.ZERO else 0.4)
+
+
+## The milky way's twinkling stars: very slowly brighter and fainter, one now and then flaring
+## into a tiny cross. Almost too slow to notice; it makes the page feel like a window on the sky.
+func _draw_twinkles(origin: Vector2, unit: float, e: float) -> void:
+	for t in _twinkles:
+		var glow := 0.5 + 0.5 * sin(_time * float(t[1]) + float(t[2]))
+		var at := origin + Vector2(t[0]) * unit
+		_ci.draw_rect(Rect2(at, Vector2(unit, unit)), Color(GRAPHITE.darkened(0.35), e * glow * 0.9))
+		if glow > 0.93:
+			for o in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
+				_ci.draw_rect(Rect2(at + o * unit, Vector2(unit, unit)), Color(GRAPHITE, e * (glow - 0.93) * 8.0))
 
 
 ## A star: one book pixel, as far as its word is known (seen faint pencil, recognized pencil,
@@ -1002,19 +1217,26 @@ func _wrap(text: String, size: float, unit: float, width: float) -> Array[String
 	return rows
 
 
-## Cloth bookmarks tucked in at the top of the right page: find, recent, review, stage
-## (D-073 quick ways in; drawn, not working yet).
-func _draw_tabs(origin: Vector2, unit: float, e: float) -> void:
+## The quick ways in, top right of the right page: pencil marks; the one under the mouse goes over
+## in ink and says its name (drawn, not working yet).
+func _draw_marks(origin: Vector2, unit: float, e: float) -> void:
 	if e <= 0.0:
 		return
-	for i in TABS.size():
-		var x := 146 + i * 17
-		var color: Color = TABS[i][1]
-		_ci.draw_rect(Rect2(origin + Vector2(x, -5) * unit, Vector2(14, 20) * unit), Color(color, e))
-		for side in [0, 13]:
-			_ci.draw_rect(Rect2(origin + Vector2(x + side, -5) * unit, Vector2(1, 20) * unit), Color(color.darkened(0.25), e))
-		_ci.draw_rect(Rect2(origin + Vector2(x + 6, -5) * unit, Vector2(2, 1) * unit), Color(0, 0, 0, 0.35 * e)) # the notch
-		_text(origin, unit, Vector2(x + 7, 3), TABS[i][0], 3.2, Color8(235, 224, 206), e * 0.9, true)
+	var mouse := (get_local_mouse_position() - origin) / unit
+	for i in MARKS.size():
+		var at := MARKS_AT + Vector2i(i * 9, 0)
+		var over := Rect2(Vector2(at) - Vector2.ONE, Vector2(9, 9)).has_point(mouse) and _ci == self
+		var rows: Array = MARKS[i][1]
+		for y in rows.size():
+			for x in rows[y].length():
+				var ch: String = rows[y][x]
+				if ch == ".":
+					continue
+				var color: Color = {"a": Color8(176, 162, 146), "b": PENCIL, "c": INK, "d": CYAN.darkened(0.3)}.get(ch, INK if over else Color8(150, 136, 120))
+				_ci.draw_rect(Rect2(origin + Vector2(at + Vector2i(x, y)) * unit, Vector2(unit, unit)), Color(color, e))
+		if over:
+			_ci.draw_rect(Rect2(origin + Vector2(at + Vector2i(0, 8)) * unit, Vector2(7, 0.5) * unit), Color(INK, e))
+			_text(origin, unit, Vector2(at) + Vector2(3.5, 13), MARKS[i][0], 3.2, INK, e, true)
 
 
 ## One cell of a 256x128 strip, picked by 0..1 progress.

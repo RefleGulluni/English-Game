@@ -14,12 +14,14 @@ extends RefCounted
 const WORDS := preload("res://scripts/run/word_library.gd")
 const FILE := "res://data/words/sky.json"
 const STAGES := ["UNKNOWN", "ENCOUNTERED", "RECOGNIZED", "UNDERSTOOD", "USABLE"]
-const PAGE := Rect2(32, 24, 80, 70) # where the picture goes on the left page
+const PAGE := Rect2(32, 24, 80, 70) # where the picture goes on the left page (levels 2 to 4)
+const SPREAD := Rect2(30, 16, 200, 86) # the whole sky: both pages
 const WORD_PAGE := 5
 
 static var _definition := {}
 
-var regions: Array = [] # [{name, at, total, clusters: [{name, total, constellations: [{id, words: [{lemma, stage}]}]}]}]
+var regions: Array = [] # [{id, name, at, r, total, clusters: [{name, kind, total, constellations: [{id, kind, words: [{lemma, stage}]}]}]}]
+## `kind`: the region a cluster or constellation belongs to; its ink wash takes that region's shape.
 
 
 static func definition() -> Dictionary:
@@ -63,11 +65,12 @@ func build(known: Array) -> void:
 			var constellations := []
 			for id in c.constellations:
 				if by_constellation.has(id):
-					constellations.append({"id": str(id), "words": by_constellation[id]})
+					constellations.append({"id": str(id), "kind": str(r.id), "words": by_constellation[id]})
 			if not constellations.is_empty():
-				clusters.append({"name": str(c.name), "total": c.constellations.size(), "constellations": constellations})
+				clusters.append({"name": str(c.name), "kind": str(r.id), "total": c.constellations.size(), "constellations": constellations})
 		if not clusters.is_empty():
-			regions.append({"name": str(r.name), "at": Vector2(r.at[0], r.at[1]), "total": r.clusters.size(), "clusters": clusters})
+			regions.append({"id": str(r.id), "kind": str(r.id), "name": str(r.name), "at": Vector2(r.at[0], r.at[1]),
+				"r": float(r.get("r", 8)), "total": r.clusters.size(), "clusters": clusters})
 
 
 func total_regions() -> int:
@@ -129,6 +132,21 @@ static func light(item: Dictionary) -> float:
 	return sum / words.size()
 
 
+## How far a region, cluster or constellation's picture has been painted (round 2 of D-088):
+## 0 just found (one faint layer), 1 some (the ink settles at the edge), 2 many (more of its stars,
+## a few pen strokes), 3 every word in it usable (a thin cyan rim).
+static func state(item: Dictionary) -> int:
+	var words := words_in(item)
+	var known := light(item)
+	if words.size() >= 3 and known >= 1.0:
+		return 3
+	if words.size() >= 8 or (words.size() >= 4 and known >= 0.7):
+		return 2
+	if words.size() >= 3 or known >= 0.5:
+		return 1
+	return 0
+
+
 ## The constellation that stands for a region or cluster in its small picture: the best known.
 static func brightest(item: Dictionary) -> Dictionary:
 	if item.has("words"):
@@ -158,7 +176,7 @@ func find(lemma: String) -> Array:
 func layout(level: int, path: Array) -> Array[Vector2]:
 	var items := children(level, path)
 	var points: Array[Vector2] = []
-	if level == 1:
+	if level == 1: # the whole sky spreads over both pages, each region where it was placed by hand
 		for r in items:
 			points.append(r.at)
 	elif level == 4:
