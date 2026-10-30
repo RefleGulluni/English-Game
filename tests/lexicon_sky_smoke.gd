@@ -1,0 +1,35 @@
+extends SceneTree
+## The Lexicon sky's data (D-088, scripts/prototypes/graveyard_room/lexicon_sky.gd): every
+## constellation in the word library has a place in data/words/sky.json, only met words show,
+## paths find words, and everything sits on the left page.
+
+const SKY := preload("res://scripts/prototypes/graveyard_room/lexicon_sky.gd")
+
+var failures: Array[String] = []
+
+
+func check(value: bool, message: String) -> void:
+	if not value: failures.append(message)
+
+
+func _initialize() -> void:
+	check(SKY.unplaced().is_empty(), "constellations without a place in sky.json: %s" % [SKY.unplaced()])
+	var sky := SKY.new()
+	sky.build([])
+	check(sky.regions.is_empty(), "no words, no sky")
+	sky.build([{"lemma": "shatter", "stage": "USABLE"}, {"lemma": "scatter", "stage": "RECOGNIZED"}, {"lemma": "decay", "stage": "ENCOUNTERED"}, {"lemma": "grave", "stage": "UNDERSTOOD"}])
+	check(sky.regions.size() == 2, "two regions found (Breaking, Death): %d" % sky.regions.size())
+	var path := sky.find("shatter")
+	check(path.size() == 4 and sky.node(5, path).lemma == "shatter", "a path leads to its word")
+	check(sky.find("bind").is_empty(), "an unmet word is not in the sky")
+	check(sky.children(2, path).size() == 2, "Breaking shows the two clusters met in")
+	for level in range(1, 5):
+		for p in sky.layout(level, path):
+			check(SKY.PAGE.grow(12).has_point(p), "level %d: %s is on the left page" % [level, p])
+	check(SKY.light(sky.node(5, path)) == 1.0 and SKY.light(sky.regions[1]) == 0.75, "light follows the stages")
+	check(SKY.figure("BREAK", 5, Vector2(70, 60), 30) == SKY.figure("BREAK", 5, Vector2(70, 60), 30), "a figure is the same every time")
+	if failures.is_empty():
+		print("LEXICON_SKY_SMOKE: PASS")
+	else:
+		for f in failures: print("FAIL: ", f)
+	quit(0 if failures.is_empty() else 1)

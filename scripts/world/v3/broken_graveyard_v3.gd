@@ -297,6 +297,7 @@ func _bind_rules() -> void:
 		progress.save_path = ""
 	progress.load_or_start()
 	words.progress = progress
+	_lexicon.progress = progress # a word's page shows the sentences it was met in
 	_lexicon.set_progress(progress.known_words())
 	manager.start_cemetery_run(seed_value)
 	manager.state.current_node_id = "scene.cemetery.broken_graveyard"
@@ -787,6 +788,10 @@ func _capture() -> void:
 		await _capture_route(dir)
 		get_tree().quit()
 		return
+	if "--sky" in OS.get_cmdline_user_args(): # the Lexicon sky, one picture per level (D-088)
+		await _capture_sky(dir)
+		get_tree().quit()
+		return
 	if "--look" in OS.get_cmdline_user_args(): # the rooms as they stand, no fights (art checks)
 		for id in ["bg_2", "vw_1", "vw_2"]:
 			cleared_rooms[id] = true
@@ -1069,6 +1074,47 @@ func _capture_route(dir: String) -> void:
 func _frames(n: int) -> void:
 	for i in n:
 		await get_tree().process_frame
+
+
+## A player some way in: words at every stage, then the book from the whole sky down to one word,
+## and one redraw caught halfway.
+func _capture_sky(dir: String) -> void:
+	var wait := func(t: float): await get_tree().create_timer(t).timeout
+	for pair in [["shatter", "USABLE"], ["scatter", "RECOGNIZED"], ["crumble", "ENCOUNTERED"], ["decay", "UNDERSTOOD"],
+			["erode", "RECOGNIZED"], ["wither", "USABLE"], ["grave", "UNDERSTOOD"], ["bury", "ENCOUNTERED"], ["bone", "RECOGNIZED"],
+			["grief", "UNDERSTOOD"], ["memory", "ENCOUNTERED"], ["fog", "RECOGNIZED"], ["lantern", "UNDERSTOOD"], ["bell", "ENCOUNTERED"]]:
+		progress.set_stage(pair[0], pair[1])
+	progress.remember("decay", "RECOGNIZED", "Everything here is slowly [decaying].", "The Sunken Grave · Broken Graveyard")
+	progress.remember("decay", "UNDERSTOOD", "The wood of the cross has [decayed] to dust.", "A skeleton fight · Veiled Walk")
+	_lexicon.set_progress(progress.known_words())
+	_lexicon.set_open_now(true)
+	_lexicon._go(1, [0, 0, 0, 0], 0, false)
+	_lexicon._sky = 0.0
+	await wait.call(2.5)
+	await _shot(dir + "/s1_sky.png")
+	_lexicon.zoom_in(0) # Breaking
+	await wait.call(0.35)
+	await _shot(dir + "/s1b_redrawing.png")
+	await wait.call(2.2)
+	await _shot(dir + "/s2_region.png")
+	_lexicon.zoom_in(1) # Wearing away
+	await wait.call(2.5)
+	await _shot(dir + "/s3_cluster.png")
+	_lexicon.zoom_in(0) # DECAY
+	await wait.call(2.5)
+	await _shot(dir + "/s4_constellation.png")
+	_lexicon.selected = 1
+	_lexicon.queue_redraw()
+	await wait.call(0.3)
+	await _shot(dir + "/s4b_chosen.png")
+	_lexicon.zoom_in(1) # decay
+	await wait.call(2.5)
+	await _shot(dir + "/s5_word.png")
+	_lexicon.turn_page(true)
+	await wait.call(0.4)
+	await _shot(dir + "/s5b_turning.png")
+	await wait.call(1.0)
+	await _shot(dir + "/s5c_next_word.png")
 
 
 func _shot(path: String) -> void:

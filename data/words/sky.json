@@ -1,0 +1,46 @@
+{
+	"_note": "Lexicon 星空（D-080 / D-088）：全天 12 个天区（手工定，名单是暂定的）→ 星群 → 星座 → 词。星座 = 词条里 senses[].constellation。at = 天区在全天那一页上的位置（书的像素，左页）。没有词的天区 / 星群在书里不画。新星座先加到某个星群里，检查工具（tests/lexicon_sky_smoke.gd）会列出没归属的星座。",
+	"regions": [
+		{"id": "breaking", "name": "Breaking", "at": [42, 30], "clusters": [
+			{"name": "Breaking apart", "constellations": ["BREAK", "PARTS"]},
+			{"name": "Wearing away", "constellations": ["DECAY", "TOXIN"]},
+			{"name": "Striking", "constellations": ["FORCE"]}
+		]},
+		{"id": "holding", "name": "Holding", "at": [72, 28], "clusters": [
+			{"name": "Binding", "constellations": ["CONTROL", "SEAL"]},
+			{"name": "Steadying", "constellations": ["STABLE", "REACTION"]},
+			{"name": "Mending", "constellations": ["REPAIR"]}
+		]},
+		{"id": "seeing", "name": "Seeing", "at": [102, 32], "clusters": [
+			{"name": "Perceiving", "constellations": ["PERCEPTION"]},
+			{"name": "Hiding", "constellations": ["HIDDEN"]}
+		]},
+		{"id": "death", "name": "Death", "at": [40, 50], "clusters": [
+			{"name": "Burial", "constellations": ["BURIAL"]},
+			{"name": "Remains", "constellations": ["REMAINS", "SPACE"]},
+			{"name": "The dead", "constellations": ["DEATH"]}
+		]},
+		{"id": "feeling", "name": "Feeling", "at": [70, 48], "clusters": [
+			{"name": "Grief", "constellations": ["GRIEF"]},
+			{"name": "Remembering", "constellations": ["MEMORY", "CONTINUITY"]}
+		]},
+		{"id": "sound", "name": "Sound", "at": [100, 52], "clusters": [
+			{"name": "Sound and silence", "constellations": ["SOUND", "SILENCE"]}
+		]},
+		{"id": "light", "name": "Light", "at": [44, 68], "clusters": [
+			{"name": "Light and dark", "constellations": ["LIGHT"]}
+		]},
+		{"id": "nature", "name": "Nature", "at": [74, 66], "clusters": [
+			{"name": "Living things", "constellations": ["PLANT", "ANIMAL"]},
+			{"name": "Weather and water", "constellations": ["WEATHER", "WATER"]},
+			{"name": "Stone", "constellations": ["STONE"]}
+		]},
+		{"id": "places", "name": "Places", "at": [102, 70], "clusters": [
+			{"name": "Holy places", "constellations": ["SACRED"]},
+			{"name": "Ways through", "constellations": ["PASSAGE"]}
+		]},
+		{"id": "time", "name": "Time", "at": [40, 86], "clusters": []},
+		{"id": "thinking", "name": "Thinking", "at": [70, 88], "clusters": []},
+		{"id": "people", "name": "People", "at": [100, 86], "clusters": []}
+	]
+}
