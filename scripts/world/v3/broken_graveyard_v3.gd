@@ -398,7 +398,10 @@ func _invoke(uid: int, restore_target: String) -> bool:
 		if bool(card.get("borrowed", false)):
 			# Using the lent word where it matters is the proof (D-078 step 3): context evidence.
 			if on_remains:
-				words.evidence(str(card.card_id).to_lower(), "context", "fight:" + room_id)
+				var lemma := str(card.card_id).to_lower()
+				var past := str(WordWorld.WORDS.dictionary(lemma).get("forms", {}).get("past", lemma))
+				words.evidence(lemma, "context", "fight:" + room_id, "The fallen bones [%s] at your word." % past,
+					"A skeleton fight · " + str(ROOMS[room_id].area).capitalize())
 			else:
 				hud.announce("It works, a little. A word like this is meant for what has already fallen apart.")
 		events.publish(&"word_sigil_invoked", {"word_id": card.name, "instance_id": uid, "position": hero.global_position})
@@ -426,7 +429,7 @@ func _battle_finished(victory: bool) -> void:
 	get_tree().create_timer(0.9).timeout.connect(func(): # let the last word land first
 		view.close()
 		words.note_y = 400.0
-		words.holding = false
+		get_tree().create_timer(0.6).timeout.connect(func(): words.holding = false) # once the bar has faded
 		for part in _hud_header:
 			part.show())
 	if not victory:
@@ -527,7 +530,12 @@ func _open_event(spot: Node2D) -> void:
 		if bool(result.correct):
 			spot.solved = true
 			interactions.refresh()
-			words.evidence(lemma, str(card.evidence), "event:" + str(card.id))
+			var line := ""
+			for text in card.get("text", []): # the line that carries the word, in [brackets]
+				if "[" in str(text):
+					line = str(text)
+			words.evidence(lemma, str(card.evidence), "event:" + str(card.id), line,
+				str(card.get("title", "")).capitalize() + " · " + str(ROOMS[room_id].area).capitalize())
 			if card.has("breaks"):
 				_break_prop(str(card.breaks), spot.position)
 				words.remove_near(spot.position)
@@ -961,8 +969,12 @@ func _capture_route(dir: String) -> void:
 	words._close()
 	await wait.call(0.8)
 	await _shot(dir + "/r07_recognized.png")
-	await wait.call(0.9)
+	await wait.call(0.5)
+	await _shot(dir + "/r07a_slip_underline.png")
+	await wait.call(0.5)
 	await _shot(dir + "/r07b_slip_pencil.png")
+	await wait.call(1.05)
+	await _shot(dir + "/r07c_slip_flying.png")
 	_load_room("bg_3", "")
 	hero.position = skeleton.position + Vector2(-100, 30)
 	await wait.call(2.8)
@@ -994,9 +1006,9 @@ func _capture_route(dir: String) -> void:
 	await wait.call(1.0)
 	await _shot(dir + "/r10_understood.png")
 	combat._finish_battle(true)
-	await wait.call(1.9)
+	await wait.call(2.0)
 	await _shot(dir + "/r10b_slip_writing.png")
-	await wait.call(1.4)
+	await wait.call(1.0)
 	await _shot(dir + "/r10c_slip_ink.png")
 	await wait.call(1.6)
 	_load_room("vw_1", "")
@@ -1042,6 +1054,15 @@ func _capture_route(dir: String) -> void:
 	await _shot(dir + "/r19b_skip_holding.png")
 	_lexicon.skip_ceremony()
 	await wait.call(2.0)
+	# Several words at once (D-086): a pile, peeled off one page at a time.
+	for lemma in ["bind", "scatter", "shatter"]:
+		words.show_slip(lemma, "UNDERSTOOD" if lemma == "shatter" else "RECOGNIZED")
+	await wait.call(0.6)
+	await _shot(dir + "/r20_pile.png")
+	await wait.call(0.75)
+	await _shot(dir + "/r20b_pile_next.png")
+	await wait.call(1.1)
+	await _shot(dir + "/r20c_pile_last.png")
 	print("ROUTE shatter=%s deck=%s" % [progress.stage("shatter"), progress.deck_cards(manager.learning)])
 
 

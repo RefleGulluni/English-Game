@@ -19,6 +19,11 @@ const SCHEDULED := ["erode", "toxic"]
 var save_path := "user://lexicon_progress.json" # empty: nothing is saved (QA and tests)
 var stages := {} # lemma -> stage
 var ceremonies_seen := 0 # how many times a word became USABLE in play (the first can't be skipped)
+var slips_seen := 0 # page slips shown so far: the first few are played in full (D-086)
+## Where each stage was learned (D-086): lemma -> {stage: {"line", "where"}}. `line` is the
+## sentence the word was met in, the word itself in [brackets]; the page slip copies it out and
+## the word's page in the book keeps it.
+var meetings := {}
 
 
 ## Reads the save; a player with no save starts as if they had just come through the prologue.
@@ -29,6 +34,8 @@ func load_or_start() -> void:
 		if data is Dictionary:
 			stages = data.get("stages", {})
 			ceremonies_seen = int(data.get("ceremonies_seen", 0))
+			slips_seen = int(data.get("slips_seen", 0))
+			meetings = data.get("meetings", {})
 	if stages.is_empty():
 		grant_starting_words()
 
@@ -55,7 +62,8 @@ func save() -> void:
 		return
 	var file := FileAccess.open(save_path, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify({"version": 1, "stages": stages, "ceremonies_seen": ceremonies_seen}, "\t"))
+		file.store_string(JSON.stringify({"version": 1, "stages": stages, "ceremonies_seen": ceremonies_seen,
+			"slips_seen": slips_seen, "meetings": meetings}, "\t"))
 
 
 ## The ability words this player can use, in library order.
@@ -109,6 +117,26 @@ func advance(lemma: String, kind: String, encounter := "") -> String:
 	return step[1]
 
 
+## Keeps the sentence a word reached `stage` in (D-086); nothing without a sentence.
+func remember(lemma: String, stage_reached: String, line: String, where: String) -> void:
+	if line.is_empty() or stage_reached.is_empty():
+		return
+	var id := lemma.to_lower()
+	var met: Dictionary = meetings.get(id, {})
+	met[stage_reached] = {"line": line, "where": where}
+	meetings[id] = met
+	save()
+
+
+## The sentence a word reached `stage_reached` in, or the nearest earlier one; {} if none.
+func met_at(lemma: String, stage_reached: String) -> Dictionary:
+	var met: Dictionary = meetings.get(lemma.to_lower(), {})
+	for i in range(STAGES.find(stage_reached), 0, -1):
+		if met.has(STAGES[i]):
+			return met[STAGES[i]]
+	return {}
+
+
 ## Every word the player has met, in library order, with its stage (for the Lexicon pages).
 func known_words() -> Array:
 	var result := []
@@ -121,7 +149,9 @@ func known_words() -> Array:
 ## Dev: back to the five starting words.
 func reset_to_start() -> void:
 	stages.clear()
+	meetings.clear()
 	ceremonies_seen = 0
+	slips_seen = 0
 	grant_starting_words()
 
 

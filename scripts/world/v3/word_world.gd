@@ -17,6 +17,12 @@ extends CanvasLayer
 ##   page up from the bottom right, where the word is pencilled in (and, understood, gone over in
 ##   ink with its meaning), without stopping the player. Slips wait for the event box to close and
 ##   for a fight to end (`holding`). USABLE is the book's own ceremony (lexicon_overlay.ceremony).
+## - Page slips (D-086): a page torn from the hero's book, with the sentence the word was met in
+##   copied out; a pen tip writes (a pencil for RECOGNIZED: it underlines the word in the sentence,
+##   then writes it; a dip pen for UNDERSTOOD: it goes over the pencil, then writes the meaning).
+##   Done, the page folds and flies into the book at the hero's hip, which glints. The first few
+##   are played in full, later RECOGNIZED ones only write the word (UNDERSTOOD stays in full).
+##   Several at once come up as a pile and peel off one by one, each played, a little faster.
 ##
 ## Lives at window resolution above the world (text stays sharp), in native 960x540 units.
 
@@ -39,9 +45,15 @@ const ERASED := preload("res://scripts/world/v3/word_erased.gdshader")
 const SLIP_PAPER := Color8(205, 189, 172) # the book's paper and writing (lexicon_overlay)
 const SLIP_PENCIL := Color8(128, 116, 104)
 const SLIP_INK := Color8(44, 31, 24)
-const SLIP_TIME := {"RECOGNIZED": 2.2, "UNDERSTOOD": 3.2}
-const SLIP_SIZE := Vector2(230, 90)
-const SLIP_SLIDE := 0.35 # seconds the slip takes to come up, and to go back down
+const SLIP_WIDTH := 250.0
+const SLIP_SLIDE := 0.35 # seconds the pile takes to come up, and to go back down
+const SLIP_FLY := 0.5 # seconds a page takes to fold and fly into the book
+const SLIP_FULL := 5 # page slips played in full before RECOGNIZED ones only write the word
+const SLIP_PILE_SPEED := 1.5 # a pile plays each page this much faster
+const PENCIL_WOOD := Color8(176, 132, 74)
+const PENCIL_LEAD := Color8(60, 56, 54)
+const PEN_BODY := Color8(38, 30, 26)
+const PEN_NIB := Color8(150, 146, 140)
 
 var progress # lexicon_progress.gd
 var hero: Node2D
@@ -55,8 +67,9 @@ var _note_t := 99.0
 var note_y := 400.0
 var holding := false # in a fight: page slips wait until it is over
 var _slips: Array[Dictionary] = [] # {lemma, stage} waiting their turn
-var _slip := {} # the one on show
+var _slip := {} # the page on show, laid out (_lay_out)
 var _slip_t := 0.0
+var _pile_up := 0.0 # 0..1: the pile at the bottom right, down or up
 var _slip_c: Control
 var _book_t := 99.0 # seconds since the hero's book last glinted (a first sighting)
 var _clock := 0.0
@@ -133,12 +146,13 @@ func _process(delta: float) -> void:
 	_book_t += delta
 	_note.queue_redraw()
 	if _slip.is_empty() and not _slips.is_empty() and not holding and not _box.visible:
-		_slip = _slips.pop_front()
-		_slip_t = 0.0
+		_start_slip(_slips.pop_front())
 	elif not _slip.is_empty():
 		_slip_t += delta
-		if _slip_t >= SLIP_TIME[_slip.stage]:
+		if _slip_t >= _slip.lead + _slip.end / _slip.speed:
 			_slip = {}
+			_book_t = 0.0 # it has gone into the book
+	_pile_up = move_toward(_pile_up, 1.0 if not _slip.is_empty() else 0.0, delta / SLIP_SLIDE)
 	_slip_c.queue_redraw()
 	for f in _floats:
 		var near := is_instance_valid(hero) and hero.visible and _box.visible == false
@@ -212,9 +226,10 @@ func _draw_float(f: Dictionary) -> void:
 
 # --- Notes -----------------------------------------------------------------------------------
 
-func _moved(lemma: String, stage: String) -> void:
+func _moved(lemma: String, stage: String, line := "", where := "") -> void:
 	if stage.is_empty():
 		return
+	progress.remember(lemma, stage, line, where)
 	var word := lemma.to_upper()
 	match stage:
 		"ENCOUNTERED":
@@ -225,10 +240,11 @@ func _moved(lemma: String, stage: String) -> void:
 	advanced.emit(lemma, stage)
 
 
-## Evidence from outside this layer (a fight); same notes, same rules.
-func evidence(lemma: String, kind: String, encounter: String) -> String:
+## Evidence from outside this layer (a fight, an event); same notes, same rules. `line` is the
+## sentence it happened in, the word in [brackets]; `where`, a few words on the place (D-086).
+func evidence(lemma: String, kind: String, encounter: String, line := "", where := "") -> String:
 	var stage: String = progress.advance(lemma, kind, encounter)
-	_moved(lemma, stage)
+	_moved(lemma, stage, line, where)
 	return stage
 
 
@@ -265,40 +281,276 @@ func _draw_note() -> void:
 
 # --- Page slips (RECOGNIZED, UNDERSTOOD) ------------------------------------------------------
 
-## A corner of a page comes up from the bottom right: the word is pencilled in letter by letter;
-## understood, ink goes over the pencil from left to right and the meaning appears underneath.
+const SLIP_SENTENCE := 12 # font sizes on the page
+const SLIP_WHERE := 10
+const SLIP_WORD := 24
+const SLIP_MEANING := 12
+
+
+## Dev and capture: puts a page in the queue as if the word had just moved.
+func show_slip(lemma: String, stage: String) -> void:
+	_slips.append({"lemma": lemma, "stage": stage})
+
+
+func _start_slip(entry: Dictionary) -> void:
+	var lemma := str(entry.lemma)
+	var understood: bool = entry.stage == "UNDERSTOOD"
+	var met: Dictionary = progress.met_at(lemma, str(entry.stage))
+	var full: bool = not met.is_empty() and (understood or progress.slips_seen < SLIP_FULL)
+	progress.slips_seen += 1
+	progress.save()
+	_slip = _lay_out(lemma, understood, str(met.get("line", "")) if full else "", str(met.get("where", "")))
+	var pile_up := _pile_up >= 0.5 # the page before has just gone: this one was under it
+	_slip.lead = 0.15 if pile_up else SLIP_SLIDE
+	_slip.speed = SLIP_PILE_SPEED if pile_up or not _slips.is_empty() else 1.0
+	_slip_t = 0.0
+
+
+## Where everything on the page goes, and when it is written (seconds, before `speed`).
+func _lay_out(lemma: String, understood: bool, line: String, where: String) -> Dictionary:
+	var inner := SLIP_WIDTH - 28.0
+	var page := {"lemma": lemma, "understood": understood, "sentence": [], "mark": {}, "meaning": []}
+	var y := 10.0 # below the torn edge
+	if not line.is_empty():
+		var start_mark := line.find("[")
+		var end_mark := line.find("]") - 1 # in the sentence without its brackets
+		var plain := line.replace("[", "").replace("]", "")
+		var rows := [] # [text, index of its first letter]
+		var row := ""
+		var row_start := 0
+		var index := 0
+		for word in plain.split(" "):
+			var trial: String = word if row.is_empty() else row + " " + word
+			if not row.is_empty() and FONT.get_string_size(trial, HORIZONTAL_ALIGNMENT_LEFT, -1, SLIP_SENTENCE).x > inner:
+				rows.append([row, row_start])
+				row = word
+				row_start = index
+			else:
+				row = trial
+			index += word.length() + 1
+		rows.append([row, row_start])
+		for r in rows:
+			y += 15.0
+			page.sentence.append({"text": r[0], "y": y})
+			var from: int = start_mark - r[1]
+			if start_mark >= 0 and from >= 0 and from < str(r[0]).length():
+				page.mark = {"x0": _width(str(r[0]).left(from), SLIP_SENTENCE),
+					"x1": _width(str(r[0]).left(end_mark - r[1]), SLIP_SENTENCE), "y": y + 3.0}
+		y += 13.0
+		page.where = {"text": "— " + where, "y": y}
+		y += 30.0
+	else:
+		y += 24.0
+	page.word_y = y
+	page.word_w = _width(lemma, SLIP_WORD)
+	if understood:
+		var meaning := str(WORDS.sense(lemma))
+		var row := ""
+		for word in meaning.split(" "):
+			var trial: String = word if row.is_empty() else row + " " + word
+			if not row.is_empty() and _width(trial, SLIP_MEANING) > inner:
+				y += 15.0
+				page.meaning.append({"text": row, "y": y})
+				row = word
+			else:
+				row = trial
+		y += 15.0
+		page.meaning.append({"text": row, "y": y})
+	page.size = Vector2(SLIP_WIDTH, y + 12.0)
+	# When: the sentence comes, the pen underlines the word in it, then writes the word (in ink
+	# over the pencil, if understood), then the meaning; it lifts, the page waits, then flies.
+	var t := 0.0
+	if not line.is_empty():
+		page.under = [0.35, 0.65 if understood else 0.75]
+		t = page.under[1] + 0.05
+	page.write = [t + 0.05, t + 0.65]
+	t = page.write[1]
+	if understood:
+		var letters := 0
+		for r in page.meaning:
+			letters += str(r.text).length()
+		page.mean = [t + 0.1, t + 0.1 + letters / 60.0]
+		t = page.mean[1]
+	page.fly = t + (0.7 if not line.is_empty() or understood else 0.35)
+	page.end = page.fly + SLIP_FLY
+	# The torn top edge: ragged in whole pixels, the same for the same word.
+	var rng := RandomNumberGenerator.new()
+	rng.seed = hash(lemma)
+	var edge := PackedVector2Array()
+	var x := 0.0
+	while x < SLIP_WIDTH:
+		edge.append(Vector2(x, rng.randi_range(0, 3)))
+		x += rng.randi_range(4, 8)
+	edge.append(Vector2(SLIP_WIDTH, rng.randi_range(0, 3)))
+	page.edge = edge
+	return page
+
+
+func _width(text: String, size: int) -> float:
+	return FONT.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+
+
 func _draw_slip() -> void:
 	if _slip.is_empty():
 		return
-	var t := _slip_t
-	var total: float = SLIP_TIME[_slip.stage]
-	var up := ease(clampf(t / SLIP_SLIDE, 0.0, 1.0), 0.4) * ease(clampf((total - t) / SLIP_SLIDE, 0.0, 1.0), 0.4)
-	var rest := NATIVE - SLIP_SIZE - Vector2(24, 18)
-	var at := Vector2(rest.x, roundf(lerpf(NATIVE.y + 4, rest.y, up)))
 	var c := _slip_c
-	c.draw_rect(Rect2(at + Vector2(3, 3), SLIP_SIZE), Color(0, 0, 0, 0.35))
-	c.draw_rect(Rect2(at, SLIP_SIZE), SLIP_PAPER)
-	c.draw_rect(Rect2(at, SLIP_SIZE), SLIP_PAPER.darkened(0.3), false, 1.0)
-	var fold := PackedVector2Array([at + Vector2(SLIP_SIZE.x - 14, 0), at + Vector2(SLIP_SIZE.x, 14), at + Vector2(SLIP_SIZE.x - 14, 14)])
-	c.draw_colored_polygon(fold, SLIP_PAPER.darkened(0.18)) # a dog-eared corner: it is a page of the book
-	c.draw_line(at + Vector2(SLIP_SIZE.x - 14, 0), at + Vector2(SLIP_SIZE.x, 14), SLIP_PAPER.darkened(0.35), 1.0)
-	var word := str(_slip.lemma).to_upper()
-	var size := 26
-	var pen := clampf((t - SLIP_SLIDE) / 0.8, 0.0, 1.0) # the pencil writes the letters in
-	var ink := clampf((t - SLIP_SLIDE - 0.4) / 1.0, 0.0, 1.0) * word.length() if _slip.stage == "UNDERSTOOD" else 0.0
-	var x := at.x + 16
-	for i in ceili(pen * word.length()):
-		var color := Color(SLIP_PENCIL, 0.85).lerp(SLIP_INK, clampf(ink - i, 0.0, 1.0))
-		c.draw_string(FONT, Vector2(x, at.y + 38), word[i], HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
-		x += FONT.get_string_size(word[i], HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
-	var small := 12
-	if _slip.stage == "RECOGNIZED":
-		c.draw_string(FONT, at + Vector2(16, 62), "recognized  ·  pencilled in", HORIZONTAL_ALIGNMENT_LEFT, -1, small, Color(SLIP_PENCIL, clampf((t - 1.2) / 0.4, 0.0, 1.0)))
-	else:
-		var meaning := str(WORDS.sense(str(_slip.lemma)))
-		c.draw_multiline_string(FONT, at + Vector2(16, 60), meaning, HORIZONTAL_ALIGNMENT_LEFT, SLIP_SIZE.x - 28, small, 2, Color(SLIP_INK, 0.85 * clampf((t - 1.7) / 0.5, 0.0, 1.0)))
-		c.draw_string(FONT, at + Vector2(SLIP_SIZE.x - 82, 16), "understood", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color(SLIP_INK, 0.6 * clampf((t - 1.9) / 0.4, 0.0, 1.0)))
+	var size: Vector2 = _slip.size
+	var rest := Vector2(NATIVE.x - SLIP_WIDTH - 24, NATIVE.y - size.y - 18)
+	var at := (rest + Vector2(0, (1.0 - ease(_pile_up, 0.4)) * (size.y + 30))).round()
+	for k in range(mini(_slips.size(), 2), 0, -1): # the rest of the pile, under this page
+		c.draw_set_transform(at + Vector2(3 * k, -4 * k))
+		_draw_paper(c, Vector2.ZERO, size, 1.0, SLIP_PAPER.darkened(0.08 * k))
+	c.draw_set_transform(Vector2.ZERO)
+	if not _slips.is_empty():
+		var more := "%d more page%s" % [_slips.size(), "" if _slips.size() == 1 else "s"]
+		var spot := at + Vector2(SLIP_WIDTH - _width(more, 11), -8 - 4 * mini(_slips.size(), 2))
+		c.draw_string_outline(FONT, spot, more, HORIZONTAL_ALIGNMENT_LEFT, -1, 11, 3, Color(0, 0, 0, 0.5))
+		c.draw_string(FONT, spot, more, HORIZONTAL_ALIGNMENT_LEFT, -1, 11, PENCIL)
+	var u: float = maxf(_slip_t - _slip.lead, 0.0) * _slip.speed
+	var f: float = clampf((u - _slip.fly) / SLIP_FLY, 0.0, 1.0)
+	if f <= 0.0:
+		c.draw_set_transform(at)
+		_draw_page(c, u, Vector2.ZERO, 1.0)
+	else: # folds in half the long way, then flies on an arc into the book at the hero's hip
+		var pivot := size / 2.0
+		var from := at + pivot
+		var to := Vector2(at.x, NATIVE.y + 40)
+		if is_instance_valid(hero) and hero.visible:
+			to = hero.global_position + Vector2(9, -40)
+		var bend := (from + to) / 2.0 + Vector2(0, -90)
+		var e := ease(f, -1.8)
+		var p := from.lerp(bend, e).lerp(bend.lerp(to, e), e)
+		var fold := Vector2(lerpf(1.0, 0.05, ease(f, 0.7)), lerpf(1.0, 0.1, clampf(f * 2.0, 0.0, 1.0)))
+		c.draw_set_transform(p, -0.35 * e, fold)
+		_draw_page(c, u, -pivot, 1.0 - clampf((f - 0.8) / 0.2, 0.0, 1.0))
+	c.draw_set_transform(Vector2.ZERO)
 
+
+func _draw_paper(c: Control, o: Vector2, size: Vector2, a: float, paper := SLIP_PAPER) -> void:
+	var outline := PackedVector2Array()
+	for point in _slip.edge:
+		outline.append(o + point)
+	outline.append(o + size)
+	outline.append(o + Vector2(0, size.y))
+	var shadow := PackedVector2Array()
+	for point in outline:
+		shadow.append(point + Vector2(3, 3))
+	c.draw_colored_polygon(shadow, Color(0, 0, 0, 0.35 * a))
+	c.draw_colored_polygon(outline, Color(paper, a))
+	var torn := outline.slice(0, _slip.edge.size())
+	c.draw_polyline(torn, Color(paper.lightened(0.25), a), 1.0) # torn fibres catch the light
+	c.draw_polyline(PackedVector2Array([o + Vector2(size.x, _slip.edge[-1].y), o + size, o + Vector2(0, size.y), o + Vector2(0, _slip.edge[0].y)]),
+		Color(paper.darkened(0.3), a), 1.0)
+
+
+func _draw_page(c: Control, u: float, o: Vector2, a: float) -> void:
+	var page := _slip
+	_draw_paper(c, o, page.size, a)
+	var left := o.x + 14.0
+	var ink := Color(SLIP_INK, 0.9 * a)
+	var pencil := Color(SLIP_PENCIL, 0.9 * a)
+	var shown := clampf(u / 0.3, 0.0, 1.0)
+	for row in page.sentence:
+		c.draw_string(FONT, Vector2(left, o.y + row.y), row.text, HORIZONTAL_ALIGNMENT_LEFT, -1, SLIP_SENTENCE, Color(pencil, pencil.a * shown))
+	if page.has("where"):
+		c.draw_string(FONT, Vector2(left, o.y + page.where.y), page.where.text, HORIZONTAL_ALIGNMENT_LEFT, -1, SLIP_WHERE, Color(pencil, 0.7 * a * shown))
+	var tips := [] # [start, end, from, to]: where the pen goes, and when
+	if not page.mark.is_empty():
+		var y: float = o.y + page.mark.y
+		var x0: float = left + page.mark.x0
+		var x1: float = left + page.mark.x1
+		var p := _progress(u, page.under)
+		if page.understood: # pencil underneath, ink drawn over it
+			c.draw_line(Vector2(x0, y), Vector2(x1, y), pencil, 1.0)
+			if p > 0.0:
+				c.draw_line(Vector2(x0, y), Vector2(lerpf(x0, x1, p), y), ink, 1.0)
+		elif p > 0.0:
+			c.draw_line(Vector2(x0, y), Vector2(lerpf(x0, x1, p), y), pencil, 1.0)
+		tips.append([page.under[0], page.under[1], Vector2(x0, y), Vector2(x1, y)])
+	var word := str(page.lemma)
+	var w := _progress(u, page.write)
+	var x := left
+	for i in word.length():
+		var letter := word[i]
+		if page.understood:
+			c.draw_string(FONT, Vector2(x, o.y + page.word_y), letter, HORIZONTAL_ALIGNMENT_LEFT, -1, SLIP_WORD, pencil.lerp(ink, clampf(w * word.length() - i, 0.0, 1.0)))
+		elif i < ceili(w * word.length()):
+			c.draw_string(FONT, Vector2(x, o.y + page.word_y), letter, HORIZONTAL_ALIGNMENT_LEFT, -1, SLIP_WORD, pencil)
+		x += _width(letter, SLIP_WORD)
+	tips.append([page.write[0], page.write[1], Vector2(left, o.y + page.word_y - 5), Vector2(left + page.word_w, o.y + page.word_y - 5)])
+	if page.understood:
+		var letters := ceili(_progress(u, page.mean) * _meaning_letters(page))
+		for row in page.meaning:
+			var text := str(row.text).left(letters)
+			letters -= str(row.text).length()
+			if not text.is_empty():
+				c.draw_string(FONT, Vector2(left, o.y + row.y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, SLIP_MEANING, ink)
+			tips.append([0.0, 0.0, Vector2(left, o.y + row.y - 4), Vector2(left + _width(row.text, SLIP_MEANING), o.y + row.y - 4)])
+		_split_meaning_tips(tips, page)
+	_draw_pen_on(c, u, tips, page.understood, a)
+
+
+func _meaning_letters(page: Dictionary) -> int:
+	var n := 0
+	for row in page.meaning:
+		n += str(row.text).length()
+	return n
+
+
+## The meaning's rows share its time, by how many letters each has.
+func _split_meaning_tips(tips: Array, page: Dictionary) -> void:
+	var total := float(maxi(_meaning_letters(page), 1))
+	var t: float = page.mean[0]
+	var rows: int = page.meaning.size()
+	for i in rows:
+		var tip: Array = tips[tips.size() - rows + i]
+		var span: float = (page.mean[1] - page.mean[0]) * str(page.meaning[i].text).length() / total
+		tip[0] = t
+		tip[1] = t + span
+		t += span
+
+
+func _progress(u: float, span) -> float:
+	if span == null:
+		return 0.0
+	return clampf((u - span[0]) / maxf(span[1] - span[0], 0.01), 0.0, 1.0)
+
+
+## The pen tip follows the writing: it comes down just before, moves along while it writes, and
+## lifts away after the last stroke.
+func _draw_pen_on(c: Control, u: float, tips: Array, dip_pen: bool, a: float) -> void:
+	if tips.is_empty():
+		return
+	var first: float = tips[0][0]
+	var last: float = tips[-1][1]
+	var down := clampf((u - first + 0.25) / 0.15, 0.0, 1.0)
+	var lift := clampf((u - last) / 0.3, 0.0, 1.0)
+	if down <= 0.0 or lift >= 1.0:
+		return
+	var tip: Vector2 = tips[0][2]
+	for t in tips:
+		if u >= t[0] - 0.05:
+			tip = Vector2(t[2]).lerp(t[3], clampf((u - t[0]) / maxf(t[1] - t[0], 0.01), 0.0, 1.0))
+			if u <= t[1]:
+				tip.y += roundf(sin(u * 38.0)) # the small up-and-down of a hand writing
+	tip += Vector2(4, -10) * (1.0 - down) + Vector2(5, -12) * lift
+	_draw_pen(c, tip.round(), dip_pen, a * down * (1.0 - lift))
+
+
+func _draw_pen(c: Control, tip: Vector2, dip_pen: bool, a: float) -> void:
+	var d := Vector2(0.45, -1.0).normalized()
+	var n := Vector2(-d.y, d.x)
+	c.draw_line(tip + d * 6 + Vector2(2, 2), tip + d * 26 + Vector2(2, 2), Color(0, 0, 0, 0.25 * a), 3.0)
+	if dip_pen:
+		c.draw_colored_polygon(PackedVector2Array([tip, tip + d * 7 + n * 1.8, tip + d * 7 - n * 1.8]), Color(PEN_NIB, a))
+		c.draw_line(tip + d * 2, tip + d * 6, Color(SLIP_INK, a), 1.0) # the slit, wet with ink
+		c.draw_line(tip + d * 7, tip + d * 27, Color(PEN_BODY, a), 3.0)
+	else:
+		c.draw_line(tip, tip + d * 2, Color(PENCIL_LEAD, a), 1.5)
+		c.draw_colored_polygon(PackedVector2Array([tip + d * 2, tip + d * 7 + n * 1.6, tip + d * 7 - n * 1.6]), Color(Color8(222, 192, 146), a))
+		c.draw_line(tip + d * 7, tip + d * 22, Color(PENCIL_WOOD, a), 3.2)
+		c.draw_line(tip + d * 22, tip + d * 24, Color(Color8(150, 148, 138), a), 3.2)
+		c.draw_line(tip + d * 24, tip + d * 27, Color(Color8(190, 118, 106), a), 3.2)
 
 # --- Event box -------------------------------------------------------------------------------
 
