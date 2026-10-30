@@ -76,6 +76,11 @@ const RITE_START := 0.5
 const RITE_LETTER := 0.2
 const RITE_CARD := 1.1 # the card's flight
 const RITE_HOLD := 0.7 # after the card, before the book closes
+# It can't be interrupted, only skipped on purpose (user 2026-10-30): holding Space (or Esc) fills a
+# small ring; other keys do nothing. The hint waits a second, and the very first ceremony in a
+# player's game has none: it is where they learn the book answers them.
+const SKIP_HOLD := 0.6
+const SKIP_HINT_AFTER := 1.0
 # One entry per learning stage (World Bible §10). Encountered and recognized words never show
 # their meaning: the book must not leak answers that have not been learned.
 const ENTRIES := [
@@ -124,6 +129,9 @@ var _sky := 0.0 # seconds since the book lay fully open (the constellation's own
 var _time := 0.0
 var _rite_lemma := "" # the word whose ceremony is running
 var _rite := -1.0 # seconds of ceremony since the book lay open; -1: none
+var _rite_clock := 0.0 # seconds since the ceremony began (the book still opening included)
+var _skippable := true
+var _hold := 0.0 # seconds Space / Esc has been held towards a skip
 
 
 func _ready() -> void:
@@ -420,10 +428,13 @@ func toggle() -> void:
 
 
 ## A word just became USABLE: open at its page and play its ceremony (see RITE_START).
-func ceremony(lemma: String) -> void:
+func ceremony(lemma: String, skippable := true) -> void:
 	show_word(lemma)
 	_rite_lemma = lemma
 	_rite = 0.0
+	_rite_clock = 0.0
+	_hold = 0.0
+	_skippable = skippable
 	if not is_open:
 		toggle()
 
@@ -479,6 +490,13 @@ func set_open_now(open: bool) -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
+	if _rite >= 0.0:
+		_rite_clock += delta
+		var holding := _skippable and _rite_clock > SKIP_HINT_AFTER \
+				and (Input.is_physical_key_pressed(KEY_SPACE) or Input.is_physical_key_pressed(KEY_ESCAPE))
+		_hold = _hold + delta if holding else maxf(0.0, _hold - delta * 2.0)
+		if _hold >= SKIP_HOLD:
+			skip_ceremony()
 	# The rise stage and the rest run at their own speeds, so either can be tuned alone.
 	var in_rise := _t < P_RISE or (_t == P_RISE and not is_open)
 	var seconds: float = ((OPEN_RISE if is_open else CLOSE_RISE) if in_rise else (OPEN_REST if is_open else CLOSE_REST)) * PACE[speed]
@@ -545,6 +563,8 @@ func _draw() -> void:
 		return
 	var rise_t := ease(_stage(0.0, P_RISE), -2.0)
 	_ci.draw_rect(screen_rect, Color(0.02, 0.02, 0.04, 0.62 * ease(_stage(0.0, P_SIGIL), -2.0)))
+	if _rite >= 0.0 and _skippable:
+		_draw_skip_hint()
 
 	var unit := pixel * book_scale # window pixels per book pixel
 	var size := Vector2(OPEN_BOOK.size) * unit
@@ -612,10 +632,6 @@ func _draw() -> void:
 	_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
 	if _rite >= 0.0:
 		_draw_rite_card(origin, unit)
-		var hint := "ANY KEY  ·  SKIP"
-		var hint_size := int(8 * pixel)
-		var hw := FONT.get_string_size(hint, HORIZONTAL_ALIGNMENT_LEFT, -1, hint_size).x
-		_ci.draw_string(FONT, screen_rect.end - Vector2(hw + 16 * pixel, 12 * pixel), hint, HORIZONTAL_ALIGNMENT_LEFT, -1, hint_size, Color(INK.lightened(0.6), 0.6))
 	else:
 		_draw_caption(origin, unit, _stage(0.88, 1.0))
 
@@ -840,6 +856,24 @@ func _draw_lighting(at: Vector2, entry: Dictionary, word_size: int, note_size: i
 		x += FONT.get_string_size(letter, HORIZONTAL_ALIGNMENT_LEFT, -1, word_size).x
 	var meaning := clampf((_rite - _rite_letters() + 0.3) / 0.5, 0.0, 1.0)
 	_ci.draw_string(FONT, at + Vector2(0, 6 * unit), _fit(entry.note, note_size, note_width), HORIZONTAL_ALIGNMENT_LEFT, -1, note_size, Color(INK, 0.8 * e * meaning))
+
+
+## Bottom right, after a second: "HOLD SPACE · SKIP" and a ring that fills while it is held.
+func _draw_skip_hint() -> void:
+	var a := clampf((_rite_clock - SKIP_HINT_AFTER) / 0.5, 0.0, 1.0) * 0.7
+	if a <= 0.0:
+		return
+	var hint := "HOLD SPACE  ·  SKIP"
+	var hint_size := int(8 * pixel)
+	var hw := FONT.get_string_size(hint, HORIZONTAL_ALIGNMENT_LEFT, -1, hint_size).x
+	var at := screen_rect.end - Vector2(hw + 16 * pixel, 12 * pixel)
+	var color := Color(INK.lightened(0.6), a)
+	_ci.draw_string(FONT, at, hint, HORIZONTAL_ALIGNMENT_LEFT, -1, hint_size, color)
+	var ring := at + Vector2(-10, -3) * pixel
+	_ci.draw_arc(ring, 5 * pixel, 0, TAU, 24, Color(color, a * 0.4), pixel)
+	if _hold > 0.0:
+		_ci.draw_arc(ring, 5 * pixel, -PI / 2.0, -PI / 2.0 + TAU * _hold / SKIP_HOLD, 24, Color(CYAN, 0.9), pixel)
+	queue_redraw()
 
 
 ## The ceremony's card: it lifts off the word and flies down to where the word bar sits in a fight.

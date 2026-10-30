@@ -693,7 +693,9 @@ func _physics_process(delta: float) -> void:
 		_rite_wait -= delta
 		if _rite_wait <= 0.0 and turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open \
 				and not words.is_busy() and not _lexicon.is_open and hero.book_phase == "":
-			_lexicon.ceremony(_rites.pop_front())
+			_lexicon.ceremony(_rites.pop_front(), progress.ceremonies_seen > 0)
+			progress.ceremonies_seen += 1
+			progress.save()
 			_rite_wait = RITE_PAUSE
 	_update_lock()
 	if is_instance_valid(skeleton) and not encounter_started and not hud.overlay_open and not transitioning \
@@ -717,8 +719,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
 	var key: Key = event.physical_keycode
-	if _lexicon.in_ceremony(): # any key: the word is already yours, the book just closes
-		_lexicon.skip_ceremony()
+	if _lexicon.in_ceremony(): # keys do nothing: only holding Space / Esc skips it (the book polls)
 		get_viewport().set_input_as_handled()
 	elif key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open):
 		# The book opens only while exploring; it can always be closed.
@@ -895,6 +896,8 @@ func _capture() -> void:
 
 ## Walks the word route without playing the fights out: each fight is cut short (the bones fall at
 ## once, then it is won), so only the learning moments are pictured.
+const SKIP_DEMO := 0.35 # capture: a hold part-way to a skip
+
 func _capture_route(dir: String) -> void:
 	var wait := func(t: float): await get_tree().create_timer(t).timeout
 	hero.position = Vector2(560, 240)
@@ -1009,6 +1012,16 @@ func _capture_route(dir: String) -> void:
 	await _shot(dir + "/r17_rising.png")
 	await wait.call(3.0)
 	await _shot(dir + "/r18_fight.png")
+	combat._finish_battle(true) # a second ceremony: this one can be skipped by holding Space
+	await wait.call(1.5)
+	_lexicon.ceremony("shatter", true)
+	await wait.call(2.6)
+	await _shot(dir + "/r19_skip_hint.png")
+	_lexicon._hold = SKIP_DEMO
+	await wait.call(0.05)
+	await _shot(dir + "/r19b_skip_holding.png")
+	_lexicon.skip_ceremony()
+	await wait.call(2.0)
 	print("ROUTE shatter=%s deck=%s" % [progress.stage("shatter"), progress.deck_cards(manager.learning)])
 
 

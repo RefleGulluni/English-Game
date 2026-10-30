@@ -162,6 +162,9 @@ func _draw_float(f: Dictionary) -> void:
 	var a: float = f.alpha
 	var word := str(f.lemma).to_upper()
 	var stage: String = progress.stage(f.lemma)
+	# The rubbing out is only for a word seen once; a word unknown again (dev reset) must not keep
+	# it, or the glint loses its right half (user 2026-10-30).
+	(c.material as ShaderMaterial).set_shader_parameter("strength", 1.0 if stage == "ENCOUNTERED" else 0.0)
 	if stage == "UNKNOWN": # a four-pointed glint, breathing, flaring every few seconds
 		var breath := 0.6 + 0.4 * sin(_clock * 2.2)
 		var flare := clampf(1.0 - fmod(_clock, 3.2) / 0.5, 0.0, 1.0) # a quick flare, then 2.7 s of calm
@@ -192,7 +195,6 @@ func _draw_float(f: Dictionary) -> void:
 	var w := FONT.get_string_size(shown, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
 	var at := Vector2(roundf(80 - w / 2.0), 16)
 	var erased := c.material as ShaderMaterial
-	erased.set_shader_parameter("strength", 1.0 if stage == "ENCOUNTERED" else 0.0)
 	erased.set_shader_parameter("erase_from", at.x + FONT.get_string_size(word.left(3), HORIZONTAL_ALIGNMENT_LEFT, -1, size).x)
 	erased.set_shader_parameter("erase_to", at.x + w)
 	if since < WRITE_IN: # just seen: lit like language, written in as you watch

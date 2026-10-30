@@ -18,6 +18,7 @@ const SCHEDULED := ["erode", "toxic"]
 
 var save_path := "user://lexicon_progress.json" # empty: nothing is saved (QA and tests)
 var stages := {} # lemma -> stage
+var ceremonies_seen := 0 # how many times a word became USABLE in play (the first can't be skipped)
 
 
 ## Reads the save; a player with no save starts as if they had just come through the prologue.
@@ -27,6 +28,7 @@ func load_or_start() -> void:
 		var data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
 		if data is Dictionary:
 			stages = data.get("stages", {})
+			ceremonies_seen = int(data.get("ceremonies_seen", 0))
 	if stages.is_empty():
 		grant_starting_words()
 
@@ -53,7 +55,7 @@ func save() -> void:
 		return
 	var file := FileAccess.open(save_path, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify({"version": 1, "stages": stages}, "\t"))
+		file.store_string(JSON.stringify({"version": 1, "stages": stages, "ceremonies_seen": ceremonies_seen}, "\t"))
 
 
 ## The ability words this player can use, in library order.
@@ -119,6 +121,7 @@ func known_words() -> Array:
 ## Dev: back to the five starting words.
 func reset_to_start() -> void:
 	stages.clear()
+	ceremonies_seen = 0
 	grant_starting_words()
 
 
