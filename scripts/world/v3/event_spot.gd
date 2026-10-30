@@ -2,14 +2,13 @@ extends Node2D
 ## The thing in an event room the player walks up to (E): it carries the room's script card
 ## (data/events/<biome>/<id>.json) and asks the scene to open it. Solved, it stays quiet.
 ##
-## D-079: a faint language-layer mark (the exit glyph for "event") breathes over it, so the player
-## sees from across the room that something here can be looked into; it softens once they are
-## close (the thing's own word takes over) and goes out when the event is done.
+## D-079: a language-layer mark breathes over it, so the player sees from across the room that
+## something here can be looked into; it softens once they are close (the thing's own word takes
+## over) and goes out when the event is done. Since 2026-10-30 the mark is the glint the user
+## likes from the first room (WordWorld.draw_glint), not the exit glyph for "event".
 
 signal opened(spot: Node2D)
 
-const ROOM_EXIT := preload("res://scripts/world/v3/room_exit.gd")
-const CYAN := Color(0.42, 0.86, 0.95)
 
 var card := {}
 var solved := false
@@ -60,18 +59,5 @@ func _process(delta: float) -> void:
 	_mark.queue_redraw()
 
 
-## Like the exit glyphs: whole pixels, a slow breath, a 1 px bob; a little fainter than an exit.
 func _draw_mark() -> void:
-	var rows: Array = ROOM_EXIT.glyph_rows("event")
-	var breath := 0.55 + 0.45 * (0.5 + 0.5 * sin(_time * 1.8))
-	var a := _alpha * breath
-	var origin := Vector2(-7, -7 + (-1 if fmod(_time, 2.0) < 1.0 else 0))
-	for y in rows.size():
-		for x in rows[y].length():
-			if rows[y][x] == "X":
-				for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
-					_mark.draw_rect(Rect2(origin + Vector2(x, y) + o, Vector2.ONE), Color(CYAN, 0.22 * a))
-	for y in rows.size():
-		for x in rows[y].length():
-			if rows[y][x] == "X":
-				_mark.draw_rect(Rect2(origin + Vector2(x, y), Vector2.ONE), Color(CYAN, 0.85 * a))
+	WordWorld.draw_glint(_mark, Vector2(-1, -1), _alpha, _time)

@@ -180,19 +180,8 @@ func _draw_float(f: Dictionary) -> void:
 	# The rubbing out is only for a word seen once; a word unknown again (dev reset) must not keep
 	# it, or the glint loses its right half (user 2026-10-30).
 	(c.material as ShaderMaterial).set_shader_parameter("strength", 1.0 if stage == "ENCOUNTERED" else 0.0)
-	if stage == "UNKNOWN": # a four-pointed glint, breathing, flaring every few seconds
-		var breath := 0.6 + 0.4 * sin(_clock * 2.2)
-		var flare := clampf(1.0 - fmod(_clock, 3.2) / 0.5, 0.0, 1.0) # a quick flare, then 2.7 s of calm
-		var mid := Vector2(79, 13)
-		var px := 2.0 # one glint pixel: two world pixels, so it reads from across the room
-		var reach := 3 + int(round(3.0 * flare))
-		for r in range(16, 0, -2): # soft halo
-			c.draw_circle(mid + Vector2(px, px) / 2.0, r, Color(CYAN, 0.03 * a * (breath + flare)))
-		for i in range(1, reach + 1): # the four arms, fading out along their length
-			var arm_a := a * (breath * 0.8 + flare * 0.6) * (1.0 - float(i - 1) / reach)
-			for dir in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
-				c.draw_rect(Rect2(mid + dir * i * px, Vector2(px, px)), Color(CYAN, clampf(arm_a, 0.0, 1.0)))
-		c.draw_rect(Rect2(mid, Vector2(px, px)), Color(Color.WHITE.lerp(CYAN, 0.3), a))
+	if stage == "UNKNOWN":
+		draw_glint(c, Vector2(79, 13), a, _clock)
 		return
 	var since: float = _clock - float(f.born)
 	var writing := clampf(since / (WRITE_IN * 0.6), 0.0, 1.0) # letters appear one by one
@@ -223,6 +212,22 @@ func _draw_float(f: Dictionary) -> void:
 	c.draw_string(FONT, at, shown, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(color, color.a * a))
 	# a hairline down to the thing it belongs to
 	c.draw_line(Vector2(80, 21), Vector2(80, 26), Color(color, 0.35 * a), 1.0)
+
+
+## The glint (user's favourite, 2026-10-29): a four-pointed star breathing, flaring every few
+## seconds. Marks a word never seen, and a thing that can be looked into (event_spot).
+static func draw_glint(c: CanvasItem, mid: Vector2, a: float, clock: float) -> void:
+	var breath := 0.6 + 0.4 * sin(clock * 2.2)
+	var flare := clampf(1.0 - fmod(clock, 3.2) / 0.5, 0.0, 1.0) # a quick flare, then 2.7 s of calm
+	var px := 2.0 # one glint pixel: two world pixels, so it reads from across the room
+	var reach := 3 + int(round(3.0 * flare))
+	for r in range(16, 0, -2): # soft halo
+		c.draw_circle(mid + Vector2(px, px) / 2.0, r, Color(CYAN, 0.03 * a * (breath + flare)))
+	for i in range(1, reach + 1): # the four arms, fading out along their length
+		var arm_a := a * (breath * 0.8 + flare * 0.6) * (1.0 - float(i - 1) / reach)
+		for dir in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
+			c.draw_rect(Rect2(mid + dir * i * px, Vector2(px, px)), Color(CYAN, clampf(arm_a, 0.0, 1.0)))
+	c.draw_rect(Rect2(mid, Vector2(px, px)), Color(Color.WHITE.lerp(CYAN, 0.3), a))
 
 
 # --- Notes -----------------------------------------------------------------------------------
