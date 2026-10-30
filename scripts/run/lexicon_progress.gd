@@ -24,6 +24,9 @@ var slips_seen := 0 # page slips shown so far: the first few are played in full 
 ## sentence the word was met in, the word itself in [brackets]; the page slip copies it out and
 ## the word's page in the book keeps it.
 var meetings := {}
+## When each word last moved on (a running count, not a date): the Lexicon's recent and review lists.
+var touched := {}
+var clock := 0
 
 
 ## Reads the save; a player with no save starts as if they had just come through the prologue.
@@ -36,6 +39,8 @@ func load_or_start() -> void:
 			ceremonies_seen = int(data.get("ceremonies_seen", 0))
 			slips_seen = int(data.get("slips_seen", 0))
 			meetings = data.get("meetings", {})
+			touched = data.get("touched", {})
+			clock = int(data.get("clock", 0))
 	if stages.is_empty():
 		grant_starting_words()
 
@@ -54,6 +59,8 @@ func set_stage(lemma: String, value: String, force := false) -> void:
 	var id := lemma.to_lower()
 	if force or STAGES.find(value) > STAGES.find(stage(id)):
 		stages[id] = value
+		clock += 1
+		touched[id] = clock
 		save()
 
 
@@ -63,7 +70,7 @@ func save() -> void:
 	var file := FileAccess.open(save_path, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify({"version": 1, "stages": stages, "ceremonies_seen": ceremonies_seen,
-			"slips_seen": slips_seen, "meetings": meetings}, "\t"))
+			"slips_seen": slips_seen, "meetings": meetings, "touched": touched, "clock": clock}, "\t"))
 
 
 ## The ability words this player can use, in library order.
@@ -150,6 +157,8 @@ func known_words() -> Array:
 func reset_to_start() -> void:
 	stages.clear()
 	meetings.clear()
+	touched.clear()
+	clock = 0
 	ceremonies_seen = 0
 	slips_seen = 0
 	grant_starting_words()

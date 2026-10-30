@@ -741,7 +741,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	var key: Key = event.physical_keycode
 	if _lexicon.in_ceremony(): # keys do nothing: only holding Space / Esc skips it (the book polls)
 		get_viewport().set_input_as_handled()
-	elif key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open):
+	elif key == KEY_TAB or (key == KEY_ESCAPE and _lexicon.is_open and not _lexicon.typing()): # in find, Esc leaves find
 		# The book opens only while exploring; it can always be closed.
 		if _lexicon.is_open or (turns.phase == TURNS.Phase.EXPLORATION and not transitioning and not hud.overlay_open and not words.is_busy() and hero.book_phase == ""):
 			_lexicon.toggle()
@@ -1118,6 +1118,50 @@ func _capture_sky(dir: String) -> void:
 	_lexicon._go(2, [1, 0, 0, 0], 0) # Holding, from inside: its ring behind its clusters
 	await wait.call(2.5)
 	await _shot(dir + "/s6_holding.png")
+	# The four marks (D-073 quick ways in): each a list on the left page, the chosen word on the right.
+	var press := func(key: Key, letter := ""):
+		var ev := InputEventKey.new()
+		ev.pressed = true
+		ev.keycode = key
+		ev.physical_keycode = key
+		ev.unicode = letter.unicode_at(0) if letter else 0
+		_unhandled_key_input(ev)
+	press.call(KEY_R)
+	await wait.call(1.8)
+	await _shot(dir + "/m1_recent.png")
+	press.call(KEY_S)
+	press.call(KEY_S)
+	await wait.call(0.3)
+	await _shot(dir + "/m1b_recent_chosen.png")
+	press.call(KEY_V)
+	await wait.call(1.8)
+	await _shot(dir + "/m2_review.png")
+	press.call(KEY_G)
+	await wait.call(1.8)
+	await _shot(dir + "/m3_stage.png")
+	press.call(KEY_G)
+	await wait.call(1.8)
+	await _shot(dir + "/m3b_stage_next.png")
+	press.call(KEY_F)
+	await wait.call(1.2)
+	await _shot(dir + "/m4_find_empty.png")
+	for letter in "de":
+		press.call(KEY_A + (letter.unicode_at(0) - 97), letter)
+	await wait.call(0.4)
+	await _shot(dir + "/m4b_find_de.png")
+	press.call(KEY_X, "x")
+	await wait.call(0.3)
+	await _shot(dir + "/m4c_find_nothing.png")
+	press.call(KEY_BACKSPACE)
+	press.call(KEY_ENTER)
+	await wait.call(2.5)
+	await _shot(dir + "/m5_word_from_find.png")
+	press.call(KEY_Q)
+	await wait.call(1.8)
+	await _shot(dir + "/m6_back_to_find.png")
+	press.call(KEY_ESCAPE)
+	await wait.call(2.5)
+	await _shot(dir + "/m7_back_to_sky.png")
 
 
 func _shot(path: String) -> void:

@@ -28,6 +28,17 @@ func _initialize() -> void:
 			check((SKY.SPREAD if level == 1 else SKY.PAGE).grow(12).has_point(p), "level %d: %s is on its page" % [level, p])
 	check(SKY.light(sky.node(5, path)) == 1.0 and SKY.light(sky.regions[1]) == 0.75, "light follows the stages")
 	check(SKY.figure("BREAK", 5, Vector2(70, 60), 30) == SKY.figure("BREAK", 5, Vector2(70, 60), 30), "a figure is the same every time")
+	# Recent / review (the quick ways in) read when each word last moved on.
+	var progress = preload("res://scripts/run/lexicon_progress.gd").new()
+	progress.save_path = ""
+	progress.load_or_start()
+	progress.set_stage("decay", "ENCOUNTERED")
+	progress.set_stage("grave", "RECOGNIZED")
+	check(progress.touched["grave"] > progress.touched["decay"] and progress.touched["decay"] > progress.touched["strike"], "touched counts up as words move on")
+	progress.set_stage("grave", "ENCOUNTERED")
+	check(progress.touched["grave"] == progress.clock, "a word never goes back, and that is not a move")
+	progress.reset_to_start()
+	check(not progress.touched.has("decay") and progress.touched.size() == 5, "a reset forgets when words moved")
 	if failures.is_empty():
 		print("LEXICON_SKY_SMOKE: PASS")
 	else:

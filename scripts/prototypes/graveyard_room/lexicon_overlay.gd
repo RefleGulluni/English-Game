@@ -77,12 +77,18 @@ const STAGE_NAMES := {"ENCOUNTERED": "seen", "RECOGNIZED": "recognized", "UNDERS
 const PEN := Color8(78, 58, 44) # fine pen strokes in a well-learned region
 const GRAPHITE := Color8(118, 124, 134) # the milky way: cool, so it never reads as the regions' ink
 ## The quick ways in (D-073), hand-drawn marks at the top right of the right page (round 2: cloth
-## tabs were too loud): find, recent, review, stage. 7x7 book pixels each.
+## tabs were too loud): find, recent, review, stage. 7x7 book pixels each. Each opens a list of
+## met words on the left page (keys F / R / V / G); the chosen one shows on the right, E opens it.
 const MARKS := [["find", ["..###..", ".#...#.", ".#...#.", ".#...#.", "..###..", "....##.", ".....##"]],
 	["recent", [".#####.", "..#.#..", "...#...", "...#...", "..#.#..", ".#.#.#.", ".#####."]],
 	["review", ["..###..", ".#...#.", "#.....#", "#...#.#", ".#..###", "..#..#.", "......."]],
 	["stage", [".......", ".......", "a.b.c.d", ".......", ".......", ".......", "......."]]]
 const MARKS_AT := Vector2i(198, 14)
+const MARK_KEYS := {KEY_F: "find", KEY_R: "recent", KEY_V: "review", KEY_G: "stage"}
+const LIST_ROWS := 8 # words on one page of a list
+const FIND_ROWS := 6 # find has one page: typing more narrows it
+const RECENT_MAX := 32 # recent is the last few, not the whole book
+const LIST_STAGES := ["USABLE", "UNDERSTOOD", "RECOGNIZED", "ENCOUNTERED"] # G steps through them
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
 const P_RISE := 0.15
@@ -116,7 +122,7 @@ var _fall_frames: Texture2D # standing -> both covers fallen open; null until de
 var _turn_frames: Texture2D # one page turning right to left; null until delivered
 var _turn := -1.0 # 0..1 while a page turns
 var _turn_back := false # A: the page comes back from the left (the strip played backwards)
-var live_turn := true # V: false plays the six drawn frames instead
+var live_turn := true # B: false plays the six drawn frames instead
 var _page := 0 # which spread is open
 var _turn_from := 0 # the spread a turn started from
 var _warm := 0 # frames left for the viewports to paint before a turn starts moving
@@ -129,7 +135,13 @@ var sky: SKY = SKY.new()
 var progress # lexicon_progress.gd, for the sentences on a word's page (optional)
 var _level := 1 # 1 the sky ... 5 a word's spread
 var _path := [0, 0, 0, 0] # what is looked at: region, cluster, constellation, word (lexicon_sky.gd)
-var _prev := {} # the level being wiped off while the next is drawn in: {level, path, selected}
+var _prev := {} # the view being wiped off while the next is drawn in (_state())
+var _list := "" # a quick way in that is open: "find", "recent", "review", "stage"; "" the sky
+var _query := "" # what has been typed into find
+var _stage_pick := 0 # the stage list shows LIST_STAGES[_stage_pick]
+var _known: Array = [] # every met word, [{lemma, stage}] in library order
+var _from := {} # where in the sky a list was opened from: Q goes back there
+var _back_to_list := {} # a word's page opened from a list: Q goes back to the list
 var _washes := {} # the ink washes of a view, one texture each, made once
 var _open_img: Image
 var _hits: Array = [] # [Rect2 on screen, index]: what a click on the left page picks
@@ -222,12 +234,14 @@ func _load_pages() -> void:
 	for lemma in WORDS.lemmas():
 		demo.append({"lemma": lemma, "stage": PAGE_STAGES[demo.size() % PAGE_STAGES.size()]})
 	sky.build(demo)
+	_known = demo
 
 
 ## The player's real words (D-078): `known` is lexicon_progress.known_words(), in library order.
 ## Only met words appear (D-073 rule 2). The view stays where it was if it still exists.
 func set_progress(known: Array) -> void:
 	sky.build(known)
+	_known = known
 	_washes.clear()
 	if sky.regions.is_empty() or (_level > 1 and sky.node(_level, _path).is_empty()):
 		_go(1, [0, 0, 0, 0], 0)
@@ -242,13 +256,15 @@ func set_progress(known: Array) -> void:
 func show_word(lemma: String) -> void:
 	var path := sky.find(lemma)
 	if not path.is_empty():
+		_back_to_list = {}
 		_go(SKY.WORD_PAGE, path, 0, false)
 
 
 ## Moves the view. `redraw`: the page is redrawn in front of the player (going closer or back);
 ## otherwise it is simply there (opening the book at a word).
 func _go(level: int, path: Array, choose: int, redraw := true) -> void:
-	_prev = {"level": _level, "path": _path.duplicate(), "selected": selected} if redraw else {}
+	_prev = _state() if redraw else {}
+	_list = ""
 	_level = level
 	_path = path.duplicate()
 	selected = choose
@@ -259,6 +275,9 @@ func _go(level: int, path: Array, choose: int, redraw := true) -> void:
 
 
 func zoom_in(choice := -1) -> void:
+	if not _list.is_empty():
+		_open_entry(choice)
+		return
 	if not (is_open and _t >= 1.0 and _turn < 0.0) or _level >= SKY.WORD_PAGE:
 		return
 	var items := sky.children(_level, _path)
@@ -272,9 +291,141 @@ func zoom_in(choice := -1) -> void:
 
 
 func zoom_out() -> void:
-	if not (is_open and _t >= 1.0 and _turn < 0.0) or _level <= 1:
+	if not (is_open and _t >= 1.0 and _turn < 0.0):
+		return
+	if not _list.is_empty(): # out of the list, back where the sky was left
+		_go(_from.level, _from.path, _from.selected)
+		return
+	if _level == SKY.WORD_PAGE and not _back_to_list.is_empty(): # back to the list it came from
+		_redraw_into(_back_to_list)
+		_back_to_list = {}
+		return
+	if _level <= 1:
 		return
 	_go(_level - 1, _path, _path[_level - 2])
+
+
+# --- The quick ways in (D-073): find, recent, review, stage --------------------------------------
+
+## Everything that says what is on the pages, so a view can be wiped off and come back.
+func _state() -> Dictionary:
+	return {"level": _level, "path": _path.duplicate(), "selected": selected, "list": _list,
+		"query": _query, "stage_pick": _stage_pick, "page": _page}
+
+
+## Redraws the pages as `state` (the old view fades first, as when going closer).
+func _redraw_into(state: Dictionary) -> void:
+	_prev = _state()
+	_level = state.level
+	_path = state.path.duplicate()
+	selected = state.selected
+	_list = state.list
+	_query = state.query
+	_stage_pick = state.stage_pick
+	_page = state.page
+	_sky = 0.0
+	queue_redraw()
+
+
+## True while find takes the letters typed (Esc then leaves find, not the book).
+func typing() -> bool:
+	return is_open and _list == "find"
+
+
+## Opens one of the quick ways in. The stage list opened again steps on to the next stage.
+func open_list(which: String) -> void:
+	if not (is_open and _t >= 1.0 and _turn < 0.0 and _rite < 0.0):
+		return
+	var state := _state()
+	if _list.is_empty():
+		_from = {"level": _level, "path": _path.duplicate(), "selected": selected}
+		if _level == SKY.WORD_PAGE and not _back_to_list.is_empty():
+			_from = {"level": _back_to_list.level, "path": _back_to_list.path, "selected": _back_to_list.selected}
+	if which == "stage":
+		var start := (_stage_pick + 1) % LIST_STAGES.size() if _list == "stage" else 0
+		for k in LIST_STAGES.size(): # the next stage that has words
+			var pick := (start + k) % LIST_STAGES.size()
+			if _known.any(func(w): return w.stage == LIST_STAGES[pick]):
+				start = pick
+				break
+		state.stage_pick = start
+	elif which == _list:
+		return
+	state.list = which
+	state.query = ""
+	state.page = 0
+	state.selected = 0
+	_back_to_list = {}
+	_redraw_into(state)
+
+
+## The words a list shows, [{lemma, stage}]. Only met words are ever in it (D-073: find keeps to
+## what the player has reached; a word's meaning shows only once it is understood).
+func _entries(state: Dictionary) -> Array:
+	var words := []
+	for i in _known.size():
+		words.append({"lemma": str(_known[i].lemma), "stage": str(_known[i].stage), "i": i, "t": _touched(str(_known[i].lemma))})
+	match str(state.list):
+		"find":
+			var q := str(state.query).to_lower()
+			if q.is_empty():
+				return []
+			var starts := words.filter(func(w): return w.lemma.begins_with(q))
+			return starts + words.filter(func(w): return not w.lemma.begins_with(q) and q in w.lemma)
+		"recent": # newest first
+			words.sort_custom(func(a, b): return a.t > b.t or (a.t == b.t and a.i > b.i))
+			return words.slice(0, RECENT_MAX)
+		"review": # still on their way, the longest untouched first
+			words = words.filter(func(w): return w.stage != "USABLE")
+			words.sort_custom(func(a, b): return a.t < b.t or (a.t == b.t and a.i < b.i))
+			return words
+		"stage":
+			return words.filter(func(w): return w.stage == LIST_STAGES[int(state.stage_pick)])
+	return []
+
+
+func _touched(lemma: String) -> int:
+	return int(progress.touched.get(lemma, 0)) if progress else 0
+
+
+func _list_pages(state: Dictionary) -> int:
+	if state.list == "find":
+		return 1
+	return maxi(1, ceili(_entries(state).size() / float(LIST_ROWS)))
+
+
+## E / Enter / a click: the chosen word's own spread. Q comes back to the list.
+func _open_entry(choice := -1) -> void:
+	if not (is_open and _t >= 1.0 and _turn < 0.0):
+		return
+	var entries := _entries(_state())
+	var shown := _rows_on(_state(), _page, entries)
+	var index := selected if choice < 0 else choice
+	if shown.is_empty() or index < 0 or index >= entries.size():
+		return
+	var path := sky.find(str(entries[index].lemma))
+	if path.is_empty():
+		return
+	var back := _state()
+	back.selected = index
+	_go(SKY.WORD_PAGE, path, 0)
+	_back_to_list = back
+
+
+## The entries on one page of a list: [index into entries].
+func _rows_on(state: Dictionary, page: int, entries: Array) -> Array:
+	var rows := FIND_ROWS if state.list == "find" else LIST_ROWS
+	var first := 0 if state.list == "find" else page * rows
+	return range(first, mini(entries.size(), first + rows))
+
+
+## W / S in a list: the next word on this page, round and round.
+func _choose_in_list(step: int) -> void:
+	var rows := _rows_on(_state(), _page, _entries(_state()))
+	if rows.is_empty():
+		return
+	var at := rows.find(selected)
+	selected = rows[posmod((at if at >= 0 else 0) + step, rows.size())]
 
 
 ## Takes the cyan (language) pixels off a piece of the sheet, filling them with `fill`; returns
@@ -404,8 +555,8 @@ func _rite_end() -> float:
 
 ## A / D: turn to the next or the previous spread (none before the first).
 func turn_page(forward: bool) -> void:
-	if not (is_open and _t >= 1.0 and _turn < 0.0) or _level < 2 or (not forward and _page == 0) \
-			or (forward and _page >= sky.siblings(_level, _path) - 1):
+	var pages := _list_pages(_state()) if not _list.is_empty() else (sky.siblings(_level, _path) if _level >= 2 else 1)
+	if not (is_open and _t >= 1.0 and _turn < 0.0) or (not forward and _page == 0) or (forward and _page >= pages - 1):
 		return
 	_turn_from = _page
 	_page += 1 if forward else -1
@@ -459,8 +610,11 @@ func _process(delta: float) -> void:
 			_turn += delta / ((LIVE_TURN_TIME * PACE[speed]) if live_turn else TURN_TIME)
 		if _turn >= 1.0:
 			_turn = -1.0
-			_path = _path_at(_page) # the page has landed: it is what is looked at now
-			selected = 0
+			if _list.is_empty():
+				_path = _path_at(_page) # the page has landed: it is what is looked at now
+				selected = 0
+			else:
+				selected = _page * LIST_ROWS
 			_prev = {}
 			for spread in _spreads:
 				spread.render_target_update_mode = SubViewport.UPDATE_DISABLED
@@ -483,7 +637,13 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not (event is InputEventKey and event.pressed and not event.echo):
+	if not (event is InputEventKey and event.pressed):
+		return
+	if typing() and _type(event):
+		get_viewport().set_input_as_handled()
+		queue_redraw()
+		return
+	if event.echo:
 		return
 	if event.keycode == KEY_TAB or (is_open and event.keycode == KEY_ESCAPE):
 		toggle()
@@ -491,8 +651,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		speed = event.keycode - KEY_1
 	elif event.keycode == KEY_Z:
 		book_scale = 5 - book_scale
-	elif event.keycode == KEY_V:
+	elif event.keycode == KEY_B: # dev: the six drawn page-turn frames instead of the computed leaf
 		live_turn = not live_turn
+	elif is_open and MARK_KEYS.has(event.keycode):
+		open_list(MARK_KEYS[event.keycode])
+	elif is_open and not _list.is_empty() and event.keycode in [KEY_W, KEY_UP, KEY_S, KEY_DOWN]:
+		_choose_in_list(-1 if event.keycode in [KEY_W, KEY_UP] else 1)
 	elif is_open and event.keycode in [KEY_W, KEY_UP, KEY_S, KEY_DOWN]:
 		var count := maxi(1, sky.children(_level, _path).size())
 		selected = (selected + (count - 1 if event.keycode in [KEY_W, KEY_UP] else 1)) % count
@@ -508,7 +672,37 @@ func _unhandled_input(event: InputEvent) -> void:
 	queue_redraw()
 
 
-## The mouse: a click on something on the left page goes closer to it, a right click goes back.
+## Find takes the letters: a-z, ' and - type, Backspace rubs out (on nothing it leaves find),
+## Up / Down choose, Enter opens, Esc leaves. Returns false for keys find leaves alone (Tab).
+func _type(event: InputEventKey) -> bool:
+	match event.keycode:
+		KEY_BACKSPACE:
+			if _query.is_empty():
+				if not event.echo:
+					zoom_out()
+			else:
+				_query = _query.left(-1)
+				selected = 0
+		KEY_ESCAPE:
+			if not event.echo:
+				zoom_out()
+		KEY_ENTER, KEY_KP_ENTER:
+			if not event.echo:
+				_open_entry()
+		KEY_UP, KEY_DOWN:
+			_choose_in_list(-1 if event.keycode == KEY_UP else 1)
+		_:
+			var ch := char(event.unicode).to_lower() if event.unicode > 0 else ""
+			if ch.is_empty() or not (ch in "abcdefghijklmnopqrstuvwxyz'-"):
+				return false
+			if _query.length() < 20:
+				_query += ch
+				selected = 0
+	return true
+
+
+## The mouse: a click on something on the left page goes closer to it, a right click goes back;
+## a click on a mark opens that list.
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.pressed and is_open and _t >= 1.0 and _rite < 0.0):
 		return
@@ -516,6 +710,11 @@ func _input(event: InputEvent) -> void:
 		zoom_out()
 	elif event.button_index == MOUSE_BUTTON_LEFT:
 		var at := get_local_mouse_position()
+		var mark := _mark_under(at)
+		if not mark.is_empty():
+			open_list(mark)
+			get_viewport().set_input_as_handled()
+			return
 		for hit in _hits:
 			if hit[0].has_point(at):
 				selected = hit[1]
@@ -620,9 +819,17 @@ func _paint_pages(origin: Vector2, unit: float, page: int, sky_clock: float, sky
 		_hits.clear()
 	var wiping: bool = not _prev.is_empty() and sky_clock < WIPE * PACE[speed]
 	if wiping:
-		_draw_view(origin, unit, _prev.level, _prev.path, _prev.selected, 99.0, e * (1.0 - sky_clock / (WIPE * PACE[speed])))
+		_show(origin, unit, _prev, _prev.path, int(_prev.page), 99.0, e * (1.0 - sky_clock / (WIPE * PACE[speed])))
 	var clock: float = sky_clock - (WIPE * 0.6 * PACE[speed] if not _prev.is_empty() else 0.0)
-	_draw_view(origin, unit, _level, _path_at(page), selected, clock / PACE[speed], e * sky_fade)
+	_show(origin, unit, _state(), _path_at(page), page, clock / PACE[speed], e * sky_fade)
+
+
+## A view on the spread: a list, or the sky at `path`.
+func _show(origin: Vector2, unit: float, state: Dictionary, path: Array, page: int, clock: float, e: float) -> void:
+	if str(state.get("list", "")).is_empty():
+		_draw_view(origin, unit, int(state.level), path, int(state.selected), clock, e)
+	else:
+		_draw_list(origin, unit, state, page, clock, e)
 
 
 ## One hidden spread, painted at the size it shows on screen: [0] the spread turned from, [1] the
@@ -805,8 +1012,92 @@ func _draw_about(origin: Vector2, unit: float, level: int, path: Array, items: A
 		_text(origin, unit, Vector2(at.x, 99), "the ink is darker where you know more", 3.6, PENCIL, a * 0.8)
 
 
+## A list on the left page, written in like the sky: a title, the words in their own hands (rubbed
+## out, pencil, ink, cyan), each with where it was last met; the chosen one on the right page.
+func _draw_list(origin: Vector2, unit: float, state: Dictionary, page: int, clock: float, e: float) -> void:
+	if e <= 0.0:
+		return
+	var a := clampf((clock - 0.15) / 0.5, 0.0, 1.0) * e
+	var which := str(state.list)
+	var entries := _entries(state)
+	var left := 34.0
+	var title: String = {"find": "Find", "recent": "Recent", "review": "To review"}.get(which, "")
+	var note: String = {"find": "Only words you have met.", "recent": "The words you met last, the newest first.",
+		"review": "Still on their way: the longest unseen first."}.get(which, "")
+	if which == "stage":
+		title = STAGE_NAMES[LIST_STAGES[int(state.stage_pick)]].capitalize()
+	_text(origin, unit, Vector2(32, 19), "lexicon  ›  " + which, 3.4, PENCIL, a * 0.9)
+	_text(origin, unit, Vector2(left, 31), title, 7.5, INK, a)
+	var y := 38.0
+	if which == "stage": # the four stages, this one in ink: G (or the mark again) steps on
+		var x := left
+		for k in LIST_STAGES.size():
+			var count := _known.filter(func(w): return w.stage == LIST_STAGES[k]).size()
+			var label := "%s %d" % [STAGE_NAMES[LIST_STAGES[k]], count]
+			var on := k == int(state.stage_pick)
+			_text(origin, unit, Vector2(x, y), label, 3.4, INK if on else PENCIL, a * (1.0 if on else 0.7), false, on)
+			x += FONT.get_string_size(label + "   ", HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(3.4, unit)).x / unit
+	else:
+		_text(origin, unit, Vector2(left, y), note, 3.6, PENCIL, a)
+	y = 49.0
+	if which == "find": # the line being written on, the pen's tip blinking at its end
+		var px := _font_px(6.0, unit)
+		var typed := origin + Vector2(left, y) * unit
+		_ci.draw_string(FONT, typed, str(state.query), HORIZONTAL_ALIGNMENT_LEFT, -1, px, Color(INK, a))
+		var w := FONT.get_string_size(str(state.query), HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
+		if fmod(_time, 1.0) < 0.6 and state.list == _list:
+			_ci.draw_rect(Rect2(typed + Vector2(w + unit * 0.5, -5 * unit), Vector2(unit * 0.5, 6 * unit)), Color(INK, a))
+		_ci.draw_rect(Rect2(origin + Vector2(left, y + 1.5) * unit, Vector2(80, 0.5) * unit), Color(PENCIL, 0.6 * a))
+		y = 58.0
+	var rows := _rows_on(state, page, entries)
+	if rows.is_empty():
+		var empty: String = {"find": "Nothing in your book begins like that." if not str(state.query).is_empty() else "Type the first letters of a word.",
+			"review": "Nothing waits: every word you met is usable."}.get(which, "No words here yet.")
+		_text(origin, unit, Vector2(left, y + 4), empty, 4.2, PENCIL, a)
+	var choice := int(state.selected)
+	for k in rows.size():
+		var i: int = rows[k]
+		var word: Dictionary = entries[i]
+		var shown := clampf((clock - 0.25 - k * 0.06) / 0.3, 0.0, 1.0) * e # written in one by one
+		var row_y := y + 2 + k * 6.0
+		_word_label(origin, unit, Vector2(left + 2, row_y), word.lemma, word.stage, 5.0, shown, i == choice)
+		var met: Dictionary = progress.met_at(word.lemma, word.stage) if progress else {}
+		# Where it was last met (the place, not the room); review and find say how far along it is.
+		var aside := str(met.get("where", "")).get_slice(" · ", 0)
+		if which in ["review", "find"] or (aside.is_empty() and which != "stage"):
+			aside = STAGE_NAMES[word.stage]
+		var word_w := FONT.get_string_size(word.lemma, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(5.0, unit)).x / unit
+		var room := 82.0 - word_w - 6.0
+		if room > 10.0:
+			var fitted := _fit(aside, _font_px(3.4, unit), room * unit)
+			var aside_w := FONT.get_string_size(fitted, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(3.4, unit)).x / unit
+			_text(origin, unit, Vector2(left + 82 - aside_w, row_y), fitted, 3.4, PENCIL, shown * 0.85)
+		if _ci == self:
+			_hits.append([Rect2(origin + Vector2(left, row_y - 5) * unit, Vector2(82, 6) * unit), i])
+	var below := y + 2 + rows.size() * 6.0 + 3
+	if which == "find" and entries.size() > rows.size():
+		_text(origin, unit, Vector2(left + 2, below), "and %d more: keep typing" % (entries.size() - rows.size()), 3.4, PENCIL, a)
+	var pages := _list_pages(state)
+	if pages > 1:
+		_text(origin, unit, Vector2(left, 104), "page %d of %d" % [page + 1, pages], 3.4, PENCIL, a * 0.8)
+	var right := Vector2(RIGHT_PAGE.position.x + 6, 30)
+	if choice >= 0 and choice < entries.size() and choice in rows:
+		_draw_preview(origin, unit, entries[choice], right, a, "Enter  open the page" if which == "find" else "E  open the page")
+
+
+## Which mark is under a point on screen, or "".
+func _mark_under(at: Vector2) -> String:
+	var unit := pixel * book_scale
+	var origin := (screen_rect.position + (screen_rect.size - Vector2(OPEN_BOOK.size) * unit) / 2.0).snapped(Vector2(pixel, pixel))
+	var book := (at - origin) / unit
+	for i in MARKS.size():
+		if Rect2(Vector2(MARKS_AT + Vector2i(i * 9, 0)) - Vector2.ONE, Vector2(9, 9)).has_point(book):
+			return MARKS[i][0]
+	return ""
+
+
 ## A constellation's chosen word, on the right page: as far as the player knows it.
-func _draw_preview(origin: Vector2, unit: float, word: Dictionary, at: Vector2, a: float) -> void:
+func _draw_preview(origin: Vector2, unit: float, word: Dictionary, at: Vector2, a: float, hint := "E  open the page") -> void:
 	var lemma := str(word.lemma)
 	var stage := str(word.stage)
 	_word_label(origin, unit, at + Vector2(0, 6), lemma, stage, 8.0, a)
@@ -822,7 +1113,7 @@ func _draw_preview(origin: Vector2, unit: float, word: Dictionary, at: Vector2, 
 		for row in _wrap("“%s”" % str(met.line).replace("[", "").replace("]", ""), 4.2, unit, 84):
 			_text(origin, unit, Vector2(at.x, y), row, 4.2, PENCIL, a)
 			y += 5.5
-	_text(origin, unit, Vector2(at.x, 99), "E  open the page", 3.8, PENCIL, a * 0.8)
+	_text(origin, unit, Vector2(at.x, 99), hint, 3.8, PENCIL, a * 0.8)
 
 
 ## One word, its own spread: the word as far as it is known, how it sounds, what it means, how far
@@ -1174,15 +1465,15 @@ func _wrap(text: String, size: float, unit: float, width: float) -> Array[String
 	return rows
 
 
-## The quick ways in, top right of the right page: pencil marks; the one under the mouse goes over
-## in ink and says its name (drawn, not working yet).
+## The quick ways in, top right of the right page: pencil marks; the one under the mouse, or the
+## one open, goes over in ink and says its name.
 func _draw_marks(origin: Vector2, unit: float, e: float) -> void:
 	if e <= 0.0:
 		return
 	var mouse := (get_local_mouse_position() - origin) / unit
 	for i in MARKS.size():
 		var at := MARKS_AT + Vector2i(i * 9, 0)
-		var over := Rect2(Vector2(at) - Vector2.ONE, Vector2(9, 9)).has_point(mouse) and _ci == self
+		var over: bool = (Rect2(Vector2(at) - Vector2.ONE, Vector2(9, 9)).has_point(mouse) and _ci == self) or MARKS[i][0] == _list
 		var rows: Array = MARKS[i][1]
 		for y in rows.size():
 			for x in rows[y].length():
@@ -1360,8 +1651,15 @@ func _pencil(at: Vector2, word: String, size: int, e: float, unit: float) -> voi
 func _draw_caption(origin: Vector2, unit: float, e: float) -> void:
 	var where: String = ["THE SKY", "A REGION", "A CLUSTER", "A CONSTELLATION", "A WORD"][_level - 1]
 	var keys := "W/S choose   E closer   " if _level < SKY.WORD_PAGE else ""
-	keys += "Q back   " if _level > 1 else ""
+	keys += "Q back   " if _level > 1 or not _back_to_list.is_empty() else ""
 	keys += "A/D turn   " if _level > 1 else ""
+	keys += "F R V G  marks   "
+	if _list == "find":
+		where = "FIND"
+		keys = "type a word   ↑/↓ choose   Enter open   Esc back   "
+	elif not _list.is_empty():
+		where = _list.to_upper()
+		keys = "W/S choose   E open   " + ("A/D turn   " if _list_pages(_state()) > 1 else "") + "Q back   " + ("G next stage   " if _list == "stage" else "")
 	var caption := "%s   ·   %sTab close   1/2/3 speed" % [where, keys]
 	var caption_size := int(8 * pixel)
 	var w := FONT.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size).x
