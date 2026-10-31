@@ -148,6 +148,31 @@
         "mind（形近）",
         "restore（近义，范围更大）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "restore",
+            "note": "brings the whole back, not one break"
+          },
+          {
+            "word": "repair",
+            "note": "plainer, everyday"
+          }
+        ],
+        "opposite": [
+          "break"
+        ],
+        "mixup": [
+          {
+            "word": "mind",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "mender"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "repair",

@@ -15,6 +15,7 @@ static var _order: Array[String] = [] # word_list.txt order
 static var _tags := {} # tag -> what it means
 static var _regions := {} # region -> the tags it likes
 static var _loaded := false
+static var _related := {} # lemma -> its page's neighbours, both ways (related())
 
 
 static func _load() -> void:
@@ -107,3 +108,35 @@ static func region_overlap(lemma: String, region: String) -> int:
 	if shared == 0 and main_sense(lemma).get("region_override", {}).has(region):
 		shared = 1
 	return shared
+
+
+## A word's neighbours on its page (D-092): {"close": [{word, note}], "opposite": [{word}],
+## "mixup": [{word, why}], "family": [{word}], "also": [{pos, sense}]}. Every relation but "also"
+## runs both ways: an entry names the other word once and the other word's page shows it too,
+## its own entry's items first, then the ones mirrored from other entries.
+static func related(lemma: String) -> Dictionary:
+	_load()
+	if _related.is_empty():
+		_build_related()
+	return _related.get(lemma.to_lower(), {"close": [], "opposite": [], "mixup": [], "family": [], "also": []})
+
+
+
+static func _build_related() -> void:
+	for lemma in _order:
+		var own: Dictionary = main_sense(lemma).get("related", {})
+		var page := {"close": [], "opposite": [], "mixup": [], "family": [], "also": own.get("also", []).duplicate()}
+		for kind in ["close", "opposite", "mixup", "family"]:
+			for item in own.get(kind, []):
+				page[kind].append(item.duplicate() if item is Dictionary else {"word": str(item)})
+		_related[lemma] = page
+	for lemma in _order:
+		for kind in ["close", "opposite", "mixup", "family"]:
+			for item in _related[lemma][kind]:
+				var other := str(item.word)
+				if not _related.has(other) or _related[other][kind].any(func(i): return i.word == lemma):
+					continue
+				var back := {"word": lemma}
+				if item.has("why"):
+					back.why = item.why
+				_related[other][kind].append(back) # no note: a note says how *that* word differs

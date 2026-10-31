@@ -76,6 +76,29 @@
         "status（形近）",
         "statute（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "sculpture",
+            "note": "any carved or shaped work"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "status",
+            "why": "looks"
+          },
+          {
+            "word": "statute",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "statuette"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

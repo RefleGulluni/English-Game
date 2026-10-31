@@ -182,6 +182,27 @@
         "silent（同一家人，形容词）",
         "science（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "quiet",
+            "note": "softer: a little sound may stay"
+          }
+        ],
+        "opposite": [
+          "noise"
+        ],
+        "mixup": [
+          {
+            "word": "science",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "silent"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "quiet"

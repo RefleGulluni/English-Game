@@ -202,6 +202,37 @@
         "preserve（形近）",
         "reveal（observe 是你去看，reveal 是让东西显出来）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "watch",
+            "note": "plainer, and for longer"
+          },
+          {
+            "word": "notice",
+            "note": "by chance, not on purpose"
+          },
+          {
+            "word": "reveal",
+            "note": "makes a thing show itself"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "obscure",
+            "why": "looks"
+          },
+          {
+            "word": "preserve",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "observation"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

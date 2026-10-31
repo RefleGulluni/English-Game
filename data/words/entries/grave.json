@@ -221,6 +221,34 @@
         "grave（形容词：严肃的，另一个词义）",
         "brave（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "tomb",
+            "note": "larger, often built above the ground"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "gravel",
+            "why": "looks"
+          },
+          {
+            "word": "brave",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "gravestone"
+        ],
+        "also": [
+          {
+            "pos": "adjective",
+            "sense": "serious and worrying"
+          }
+        ]
+      },
       "relations": {
         "synonyms": [
           "tomb"

@@ -175,6 +175,29 @@
         "bond（形近）",
         "born（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "skeleton",
+            "note": "all the bones together"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "bond",
+            "why": "looks"
+          },
+          {
+            "word": "born",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "bony"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "os"

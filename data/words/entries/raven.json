@@ -143,6 +143,27 @@
         "haven（形近）",
         "ravine（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "crow",
+            "note": "smaller and commoner"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "haven",
+            "why": "looks"
+          },
+          {
+            "word": "ravine",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "Corvus corax"

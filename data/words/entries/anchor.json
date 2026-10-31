@@ -158,6 +158,29 @@
         "anger（形近）",
         "ankle（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "stabilize",
+            "note": "keeps a state from changing, not a place"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "anger",
+            "why": "looks"
+          },
+          {
+            "word": "ankle",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "anchorage"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "ground"

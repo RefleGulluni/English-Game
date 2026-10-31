@@ -177,6 +177,27 @@
         "burial（同一家人，名词）",
         "marry（形近的拼写规律：buried / married）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "entomb",
+            "note": "inside a tomb; more formal"
+          }
+        ],
+        "opposite": [
+          "unearth"
+        ],
+        "mixup": [
+          {
+            "word": "berry",
+            "why": "sounds"
+          }
+        ],
+        "family": [
+          "burial"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "entomb",

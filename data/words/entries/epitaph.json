@@ -84,6 +84,27 @@
         "epithet（形近，“绰号”）",
         "epigraph（形近，“题词”）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "inscription",
+            "note": "any words cut into stone"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "epithet",
+            "why": "looks"
+          },
+          {
+            "word": "epigraph",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

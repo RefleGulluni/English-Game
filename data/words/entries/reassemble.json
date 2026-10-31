@@ -71,6 +71,27 @@
         "resemble（形近，“像”）",
         "assemble（原词）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "rebuild",
+            "note": "made again, maybe not the same"
+          }
+        ],
+        "opposite": [
+          "scatter"
+        ],
+        "mixup": [
+          {
+            "word": "resemble",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "assemble"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

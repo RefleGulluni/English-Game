@@ -125,6 +125,23 @@
       "confusable": [
         "mountain（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "spring",
+            "note": "where water comes out of the ground"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "mountain",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

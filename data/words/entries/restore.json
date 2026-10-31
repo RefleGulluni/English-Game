@@ -178,6 +178,29 @@
         "store（形近）",
         "restrain（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "mend",
+            "note": "fixes one break, a small thing"
+          },
+          {
+            "word": "repair",
+            "note": "plainer, everyday"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "restrain",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "restoration"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "reconstruct"

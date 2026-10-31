@@ -75,6 +75,29 @@
         "mess（形近）",
         "moth（形近；雾里的飞蛾）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "lichen",
+            "note": "a dry crust on stone, not soft"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "mess",
+            "why": "looks"
+          },
+          {
+            "word": "moth",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "mossy"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

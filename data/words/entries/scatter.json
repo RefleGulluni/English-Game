@@ -223,6 +223,29 @@
         "shatter（形近）",
         "splatter（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "spread",
+            "note": "wider, and gentler"
+          }
+        ],
+        "opposite": [
+          "gather"
+        ],
+        "mixup": [
+          {
+            "word": "shatter",
+            "why": "looks"
+          },
+          {
+            "word": "splatter",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "spread",

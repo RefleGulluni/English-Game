@@ -132,6 +132,31 @@
         "conceal（反义）",
         "observe（见 observe）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "uncover",
+            "note": "by lifting what lies over it"
+          },
+          {
+            "word": "observe",
+            "note": "you look; nothing is made to show"
+          }
+        ],
+        "opposite": [
+          "conceal"
+        ],
+        "mixup": [
+          {
+            "word": "revel",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "revelation"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "bring out",

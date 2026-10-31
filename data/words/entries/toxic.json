@@ -78,6 +78,27 @@
         "toxin（同一家人，名词“毒素”）",
         "tonic（形近，意思几乎相反）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "poisonous",
+            "note": "plainer"
+          }
+        ],
+        "opposite": [
+          "harmless"
+        ],
+        "mixup": [
+          {
+            "word": "tonic",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "toxin"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [

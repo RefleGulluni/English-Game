@@ -164,6 +164,29 @@
         "reflect（形近，“反射”）",
         "defect（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "block",
+            "note": "stops it, rather than turning it aside"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "reflect",
+            "why": "looks"
+          },
+          {
+            "word": "defect",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "deflection"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

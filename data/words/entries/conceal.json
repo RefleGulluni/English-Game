@@ -105,6 +105,27 @@
         "cancel（形近）",
         "reveal（反义）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "hide",
+            "note": "plainer, everyday"
+          }
+        ],
+        "opposite": [
+          "reveal"
+        ],
+        "mixup": [
+          {
+            "word": "cancel",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "concealment"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "hide"

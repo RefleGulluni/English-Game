@@ -163,6 +163,31 @@
         "shrub（形近）",
         "cloud（形近，且 shroud of fog 像云）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "veil",
+            "note": "thin, over the face"
+          },
+          {
+            "word": "pall",
+            "note": "the cloth over a coffin"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "shrub",
+            "why": "looks"
+          },
+          {
+            "word": "cloud",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "pall",

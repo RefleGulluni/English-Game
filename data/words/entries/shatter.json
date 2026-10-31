@@ -113,6 +113,35 @@
         "scatter（形近，且常一起出现）",
         "shutter（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "crumble",
+            "note": "bit by bit, not all at once"
+          },
+          {
+            "word": "break",
+            "note": "plainer: any way of breaking"
+          }
+        ],
+        "opposite": [
+          "mend"
+        ],
+        "mixup": [
+          {
+            "word": "scatter",
+            "why": "looks"
+          },
+          {
+            "word": "shutter",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "shatterproof"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

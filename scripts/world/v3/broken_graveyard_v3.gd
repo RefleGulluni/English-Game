@@ -1190,6 +1190,21 @@ func _capture_sky(dir: String) -> void:
 	_lexicon._sky = 0.0
 	await wait.call(2.0)
 	await _shot(dir + "/w4_bell_seen.png")
+	_lexicon.show_word("grave") # D-092: another meaning ("also"), family
+	_lexicon._sky = 0.0
+	await wait.call(2.0)
+	await _shot(dir + "/w5_grave.png")
+	_lexicon.show_word("shatter") # a click on a neighbour riffles to its page; Q riffles back
+	_lexicon._sky = 0.0
+	await wait.call(2.0)
+	_lexicon.jump_to("scatter")
+	await wait.call(0.12)
+	await _shot(dir + "/w6_riffling.png")
+	await wait.call(1.6)
+	await _shot(dir + "/w7_jumped_to_scatter.png")
+	press.call(KEY_Q)
+	await wait.call(1.8)
+	await _shot(dir + "/w8_back_to_shatter.png")
 
 
 func _shot(path: String) -> void:

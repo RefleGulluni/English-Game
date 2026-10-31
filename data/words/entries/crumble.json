@@ -119,6 +119,29 @@
         "crumple（形近，“揉皱”）",
         "shatter（近义，但是一下子碎）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "shatter",
+            "note": "all at once, not bit by bit"
+          },
+          {
+            "word": "erode",
+            "note": "worn away slowly from outside"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "crumple",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "crumb"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "fall apart"

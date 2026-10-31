@@ -145,6 +145,25 @@
         "frog（形近）",
         "mist（近义，更薄）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "mist",
+            "note": "thinner, lighter"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "frog",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "foggy"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

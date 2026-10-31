@@ -47,6 +47,22 @@ func _initialize() -> void:
 	for lemma in ["strike", "shatter", "observe", "bind", "anchor", "stabilize", "restore", "deflect", "toxic"]:
 		check(not overlay.invocation(lemma).is_empty(), "%s says what it does in a fight" % lemma)
 	check("8 structure" in overlay.invocation("shatter"), "shatter's invocation reads its effect: %s" % overlay.invocation("shatter"))
+	check(not "Costs" in overlay.invocation("shatter", false), "the fight box shows the cost apart")
+	# D-092: a word's neighbours, both ways
+	var words := preload("res://scripts/run/word_library.gd")
+	var names := func(list: Array) -> Array: return list.map(func(i): return str(i.word))
+	check("crumble" in names.call(words.related("shatter").close), "shatter is close to crumble")
+	check("shatter" in names.call(words.related("crumble").close), "and crumble to shatter (both ways)")
+	check("mend" in names.call(words.related("shatter").opposite) and "shatter" in names.call(words.related("mend").opposite), "opposites run both ways")
+	check("silent" in names.call(words.related("silence").family), "silence's family has silent")
+	check(words.related("grave").also.size() == 1, "grave has another meaning (serious)")
+	for lemma in words.lemmas():
+		var rel := words.related(lemma)
+		for kind in ["close", "opposite", "mixup", "family"]:
+			check(not names.call(rel[kind]).has(lemma), "%s is not its own %s" % [lemma, kind])
+			for other in names.call(rel[kind]):
+				if words.has(other):
+					check(names.call(words.related(other)[kind]).has(lemma), "%s -> %s (%s) runs both ways" % [lemma, other, kind])
 	if failures.is_empty():
 		print("LEXICON_SKY_SMOKE: PASS")
 	else:

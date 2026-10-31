@@ -162,6 +162,26 @@
         "memorial（同一家人，“纪念物”）",
         "memo（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "remembrance",
+            "note": "remembering kept on purpose"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "memo",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "memorial",
+          "memorize"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

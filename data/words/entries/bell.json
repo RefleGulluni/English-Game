@@ -176,6 +176,27 @@
         "ball（形近）",
         "belly（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "chime",
+            "note": "the ringing itself, or a small bell"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "ball",
+            "why": "looks"
+          },
+          {
+            "word": "belly",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

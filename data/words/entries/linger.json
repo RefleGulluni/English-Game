@@ -162,6 +162,31 @@
         "finger（形近）",
         "haunt（近义，haunt 会反复回来）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "haunt",
+            "note": "keeps coming back"
+          },
+          {
+            "word": "echo",
+            "note": "comes back, a sound returned"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "longer",
+            "why": "looks"
+          },
+          {
+            "word": "finger",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

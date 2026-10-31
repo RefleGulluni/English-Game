@@ -163,6 +163,29 @@
         "date（形近）",
         "door（近义，gate 在户外的墙或栏上）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "door",
+            "note": "in a building, not a wall or a fence"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "gait",
+            "why": "sounds"
+          },
+          {
+            "word": "date",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "gateway"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

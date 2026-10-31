@@ -105,6 +105,31 @@
         "weather（形近）",
         "erode（同家族，用于石头）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "fade",
+            "note": "loses its colour, not its life"
+          },
+          {
+            "word": "decay",
+            "note": "rots, rather than dries"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "whither",
+            "why": "sounds"
+          },
+          {
+            "word": "weather",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "shrivel",

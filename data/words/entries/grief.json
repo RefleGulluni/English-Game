@@ -94,6 +94,29 @@
         "sorrow（近义）",
         "greed（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "sorrow",
+            "note": "a quieter, longer sadness"
+          },
+          {
+            "word": "mourn",
+            "note": "showing grief, often in a set way"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "greed",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "grieve"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "heartache",

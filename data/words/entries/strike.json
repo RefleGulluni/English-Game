@@ -288,6 +288,28 @@
         "stroke（形近）",
         "hit（近义，更口语）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "hit",
+            "note": "plainer, everyday"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "stroke",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": [
+          {
+            "pos": "noun",
+            "sense": "a stop to work, made in protest"
+          }
+        ]
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

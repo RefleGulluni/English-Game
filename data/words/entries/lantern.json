@@ -73,6 +73,22 @@
         "lamp（近义）",
         "candle（同场景）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "lamp",
+            "note": "fixed in one place, not carried"
+          },
+          {
+            "word": "torch",
+            "note": "a flame on a stick"
+          }
+        ],
+        "opposite": [],
+        "mixup": [],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

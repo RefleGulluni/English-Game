@@ -202,6 +202,23 @@
         "linger（近义：linger 是还在，echo 是又回来）",
         "ego（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "linger",
+            "note": "stays on, rather than coming back"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "ego",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "reverberation",

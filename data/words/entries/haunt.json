@@ -139,6 +139,25 @@
         "hunt（形近）",
         "linger（近义）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "linger",
+            "note": "stays on, but does not keep returning"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "hunt",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "haunted"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "obsess",

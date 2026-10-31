@@ -274,6 +274,34 @@
         "zeal（形近）",
         "steal（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "shut",
+            "note": "may open again easily"
+          }
+        ],
+        "opposite": [
+          "open"
+        ],
+        "mixup": [
+          {
+            "word": "zeal",
+            "why": "looks"
+          },
+          {
+            "word": "steal",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": [
+          {
+            "pos": "noun",
+            "sense": "a sea animal with flippers"
+          }
+        ]
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [

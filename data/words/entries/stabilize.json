@@ -127,6 +127,26 @@
         "anchor（近义：anchor 是定住位置，stabilize 是让状态不再变）",
         "stable（同一家人，形容词）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "anchor",
+            "note": "holds a thing in its place"
+          },
+          {
+            "word": "steady",
+            "note": "plainer"
+          }
+        ],
+        "opposite": [
+          "unsettle"
+        ],
+        "mixup": [],
+        "family": [
+          "stable"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "stabilise"

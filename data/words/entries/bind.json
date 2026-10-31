@@ -203,6 +203,35 @@
         "find（形近）",
         "hold（近义但更弱）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "tie",
+            "note": "with a knot; plainer"
+          },
+          {
+            "word": "hold",
+            "note": "only keeps it, does not fasten it"
+          }
+        ],
+        "opposite": [
+          "release"
+        ],
+        "mixup": [
+          {
+            "word": "bend",
+            "why": "looks"
+          },
+          {
+            "word": "find",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "binding"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [

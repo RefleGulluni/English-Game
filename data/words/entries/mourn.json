@@ -99,6 +99,33 @@
         "moan（形近）",
         "grief（同家族，名词）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "grieve",
+            "note": "the feeling, rather than its showing"
+          },
+          {
+            "word": "grief",
+            "note": "the sadness itself"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "morn",
+            "why": "sounds"
+          },
+          {
+            "word": "moan",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "mourner"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

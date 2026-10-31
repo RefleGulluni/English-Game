@@ -216,6 +216,33 @@
         "follow（形近）",
         "shallow（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "empty",
+            "note": "nothing inside, whatever its shape"
+          }
+        ],
+        "opposite": [
+          "solid"
+        ],
+        "mixup": [
+          {
+            "word": "hallow",
+            "why": "looks"
+          },
+          {
+            "word": "shallow",
+            "why": "looks"
+          },
+          {
+            "word": "follow",
+            "why": "looks"
+          }
+        ],
+        "family": [],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [

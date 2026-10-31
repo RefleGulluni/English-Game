@@ -89,6 +89,25 @@
         "chapter（形近）",
         "church（近义，更大）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "church",
+            "note": "larger, for a whole parish"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "chapter",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "chaplain"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [],
         "antonyms": [],

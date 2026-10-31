@@ -106,6 +106,28 @@
         "corrode（近义，化学的）",
         "wither（同家族，但用于生命）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "corrode",
+            "note": "eaten by chemicals, like rust"
+          },
+          {
+            "word": "decay",
+            "note": "rots from within"
+          },
+          {
+            "word": "crumble",
+            "note": "falls apart in small pieces"
+          }
+        ],
+        "opposite": [],
+        "mixup": [],
+        "family": [
+          "erosion"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "gnaw",

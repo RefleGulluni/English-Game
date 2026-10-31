@@ -43,6 +43,7 @@ const COVER_W := 98 # width of the closed cover
 # as they exist.
 const CLEAN_DIR := "res://art/character_design/lexicon/"
 const RIGHT_PAGE := Rect2i(140, 14, 92, 88) # blanked area of the right page, in book pixels
+const LEFT_PAGE := Rect2i(26, 14, 92, 90) # the left page, blanked under a word page (its stains are for the sky)
 const PAPER := Color8(205, 189, 172)
 const ENGRAVED := Color8(38, 29, 24) # the sigil pressed into the leather while it sleeps
 const LEATHER := Color8(70, 50, 36) # grey-box covers until the frames arrive
@@ -88,6 +89,12 @@ const MARK_KEYS := {KEY_F: "find", KEY_R: "recent", KEY_V: "review", KEY_G: "sta
 const LIST_ROWS := 8 # words on one page of a list
 const FIND_ROWS := 6 # find has one page: typing more narrows it
 const RECENT_MAX := 32 # recent is the last few, not the whole book
+const JUMP_PAGES := 3 # pages passed on the way when a neighbour's name is clicked (then its own)
+const JUMP_LEAF := 0.22 # seconds for each page passed
+const JUMP_LAST := 0.5 # the last leaf, slower, so the page lands
+const RIBBON_X := 188 # book column of the bookmark ribbon (left edge)
+const RIBBON := Color8(91, 67, 45) # the book's own cord colours
+const RIBBON_EDGE := Color8(55, 41, 26)
 const LIST_STAGES := ["USABLE", "UNDERSTOOD", "RECOGNIZED", "ENCOUNTERED"] # G steps through them
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
@@ -140,11 +147,20 @@ var _list := "" # a quick way in that is open: "find", "recent", "review", "stag
 var _query := "" # what has been typed into find
 var _stage_pick := 0 # the stage list shows LIST_STAGES[_stage_pick]
 var _known: Array = [] # every met word, [{lemma, stage}] in library order
+var _met := {} # lemma -> its place in _known: has it been met, and where it is in the book
 var _from := {} # where in the sky a list was opened from: Q goes back there
 var _back_to_list := {} # a word's page opened from a list: Q goes back to the list
 var _washes := {} # the ink washes of a view, one texture each, made once
 var _open_img: Image
 var _hits: Array = [] # [Rect2 on screen, index]: what a click on the left page picks
+var _links: Array = [] # [Rect2 on screen, lemma]: a word page's met neighbours (a click turns to them)
+var _figure_hit := Rect2() # a word page's little constellation (a click goes back to it in the sky)
+var _ribbon_hit := Rect2()
+var _bookmark := {} # {path, back}: the page the first jump left; Q riffles back there (D-092)
+var _jump: Array = [] # paths still to turn through on the way to a jumped-to word
+var _jump_forward := true
+var _turn_paths := [[], []] # a jump's two word pages, painted instead of this level's siblings
+var _turn_time := 0.0 # seconds for the leaf now turning; 0: the usual
 var _twinkles: Array = [] # [book pixel, speed, phase]: milky way stars that twinkle
 var _rite_from := Vector2.ZERO # where the ceremony's card lifts off (the big word)
 var _sounds := SystemFont.new() # the phonetic line: the book's font has no IPA letters (a serif that has them)
@@ -235,14 +251,21 @@ func _load_pages() -> void:
 	for lemma in WORDS.lemmas():
 		demo.append({"lemma": lemma, "stage": PAGE_STAGES[demo.size() % PAGE_STAGES.size()]})
 	sky.build(demo)
-	_known = demo
+	_set_known(demo)
+
+
+func _set_known(known: Array) -> void:
+	_known = known
+	_met.clear()
+	for i in known.size():
+		_met[str(known[i].lemma)] = i
 
 
 ## The player's real words (D-078): `known` is lexicon_progress.known_words(), in library order.
 ## Only met words appear (D-073 rule 2). The view stays where it was if it still exists.
 func set_progress(known: Array) -> void:
 	sky.build(known)
-	_known = known
+	_set_known(known)
 	_washes.clear()
 	if sky.regions.is_empty() or (_level > 1 and sky.node(_level, _path).is_empty()):
 		_go(1, [0, 0, 0, 0], 0)
@@ -266,6 +289,7 @@ func show_word(lemma: String) -> void:
 func _go(level: int, path: Array, choose: int, redraw := true) -> void:
 	_prev = _state() if redraw else {}
 	_list = ""
+	_bookmark = {}
 	_level = level
 	_path = path.duplicate()
 	selected = choose
@@ -296,6 +320,13 @@ func zoom_out() -> void:
 		return
 	if not _list.is_empty(): # out of the list, back where the sky was left
 		_go(_from.level, _from.path, _from.selected)
+		return
+	if _level == SKY.WORD_PAGE and not _bookmark.is_empty(): # back to the page the jumping began on
+		var mark := _bookmark
+		_bookmark = {}
+		_back_to_list = mark.back
+		if mark.path != _path:
+			_riffle(mark.path)
 		return
 	if _level == SKY.WORD_PAGE and not _back_to_list.is_empty(): # back to the list it came from
 		_redraw_into(_back_to_list)
@@ -338,6 +369,7 @@ func open_list(which: String) -> void:
 	if not (is_open and _t >= 1.0 and _turn < 0.0 and _rite < 0.0):
 		return
 	var state := _state()
+	_bookmark = {}
 	if _list.is_empty():
 		_from = {"level": _level, "path": _path.duplicate(), "selected": selected}
 		if _level == SKY.WORD_PAGE and not _back_to_list.is_empty():
@@ -571,6 +603,11 @@ func turn_page(forward: bool) -> void:
 		return
 	_turn_from = _page
 	_page += 1 if forward else -1
+	_start_turn(forward)
+
+
+## Sets a leaf turning (the spreads it shows: this level's siblings, or _turn_paths in a jump).
+func _start_turn(forward: bool) -> void:
 	_turn_back = not forward
 	_turn = 0.0
 	if live_turn:
@@ -585,6 +622,46 @@ func turn_page(forward: bool) -> void:
 			spread.get_child(0).queue_redraw()
 		_warm = 2
 	queue_redraw()
+
+
+## A click on a met neighbour on a word page: the pages riffle over to its page (D-092). The
+## bookmark stays in the page the first jump left; Q, or a click on the ribbon, riffles back.
+func jump_to(lemma: String) -> void:
+	var to := sky.find(lemma)
+	if to.is_empty() or _level != SKY.WORD_PAGE or not (is_open and _t >= 1.0 and _turn < 0.0 and _rite < 0.0):
+		return
+	if _bookmark.is_empty():
+		_bookmark = {"path": _path.duplicate(), "back": _back_to_list}
+	_back_to_list = {}
+	_riffle(to)
+
+
+## Turns through a few of the met words between here and `to` (not every page: the feeling of a
+## long way, not its length), quickly, then the last leaf at ease.
+func _riffle(to: Array) -> void:
+	var here: int = _met.get(str(sky.node(SKY.WORD_PAGE, _path).lemma), 0)
+	var there: int = _met.get(str(sky.node(SKY.WORD_PAGE, to).lemma), 0)
+	_jump_forward = there >= here
+	var between := []
+	var step := 1 if _jump_forward else -1
+	for i in range(here + step, there, step):
+		var path := sky.find(str(_known[i].lemma))
+		if not path.is_empty():
+			between.append(path)
+	_jump = []
+	var count := mini(JUMP_PAGES, between.size())
+	for k in count:
+		_jump.append(between[int((k + 0.5) * between.size() / count)])
+	_jump.append(to)
+	_next_leaf()
+
+
+func _next_leaf() -> void:
+	var to: Array = _jump.pop_front()
+	_turn_paths = [_path.duplicate(), to]
+	_turn_from = _page
+	_turn_time = (JUMP_LAST if _jump.is_empty() else JUMP_LEAF) * PACE[speed]
+	_start_turn(_jump_forward)
 
 
 ## The path shown on spread `page` of the current level: the same, with the last step turned.
@@ -618,10 +695,16 @@ func _process(delta: float) -> void:
 		if _warm > 0:
 			_warm -= 1 # the hidden spreads paint first, so the leaf never shows an empty frame
 		else:
-			_turn += delta / ((LIVE_TURN_TIME * PACE[speed]) if live_turn else TURN_TIME)
+			_turn += delta / (_turn_time if _turn_time > 0.0 else ((LIVE_TURN_TIME * PACE[speed]) if live_turn else TURN_TIME))
 		if _turn >= 1.0:
 			_turn = -1.0
-			if _list.is_empty():
+			_turn_time = 0.0
+			if not _turn_paths[1].is_empty(): # a jump: this word's page now (perhaps not the last)
+				_path = _turn_paths[1].duplicate()
+				_page = _path[_level - 2]
+				selected = 0
+				_turn_paths = [[], []]
+			elif _list.is_empty():
 				_path = _path_at(_page) # the page has landed: it is what is looked at now
 				selected = 0
 			else:
@@ -629,6 +712,8 @@ func _process(delta: float) -> void:
 			_prev = {}
 			for spread in _spreads:
 				spread.render_target_update_mode = SubViewport.UPDATE_DISABLED
+			if not _jump.is_empty():
+				_next_leaf()
 		else:
 			for spread in _spreads:
 				spread.get_child(0).queue_redraw()
@@ -726,6 +811,23 @@ func _input(event: InputEvent) -> void:
 			open_list(mark)
 			get_viewport().set_input_as_handled()
 			return
+		if _turn >= 0.0:
+			return
+		if _ribbon_hit.has_point(at) and not _bookmark.is_empty():
+			zoom_out()
+			get_viewport().set_input_as_handled()
+			return
+		if _level == SKY.WORD_PAGE and _list.is_empty():
+			if _figure_hit.has_point(at): # back to the word's constellation in the sky
+				_go(4, _path, _path[3])
+				_back_to_list = {}
+				get_viewport().set_input_as_handled()
+				return
+			for link in _links:
+				if link[0].has_point(at):
+					jump_to(link[1])
+					get_viewport().set_input_as_handled()
+					return
 		for hit in _hits:
 			if hit[0].has_point(at):
 				selected = hit[1]
@@ -803,6 +905,7 @@ func _draw() -> void:
 	elif _turn >= 0.0 and live_turn and _warm == 0:
 		_draw_leaf(origin, unit)
 		_draw_marks(origin, unit, 1.0)
+		_draw_ribbon(origin, unit)
 		_draw_caption(origin, unit, 1.0)
 		return
 	elif _turn >= 0.0 and not live_turn and _turn_frames:
@@ -816,6 +919,7 @@ func _draw() -> void:
 	var page := _turn_from if _turn >= 0.0 else _page # still warming up: the old spread
 	_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
 	_draw_marks(origin, unit, _stage(0.88, 1.0))
+	_draw_ribbon(origin, unit)
 	if _rite >= 0.0:
 		_draw_rite_card(origin, unit)
 	else:
@@ -828,6 +932,8 @@ func _paint_pages(origin: Vector2, unit: float, page: int, sky_clock: float, sky
 	_ci.draw_rect(Rect2(origin + Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
 	if _ci == self:
 		_hits.clear()
+		_links.clear()
+		_figure_hit = Rect2()
 	var wiping: bool = not _prev.is_empty() and sky_clock < WIPE * PACE[speed]
 	if wiping:
 		_show(origin, unit, _prev, _prev.path, int(_prev.page), 99.0, e * (1.0 - sky_clock / (WIPE * PACE[speed])))
@@ -849,7 +955,11 @@ func _paint_spread(canvas: Control, which: int) -> void:
 	_ci = canvas
 	var unit := _spread_unit
 	_ci.draw_texture_rect(_open, Rect2(Vector2.ZERO, Vector2(OPEN_BOOK.size) * unit), false)
-	_paint_pages(Vector2.ZERO, unit, _spread_page[which], 99.0, 1.0, 1.0) # a turned page is already written
+	if not _turn_paths[which].is_empty(): # a jump: word pages from anywhere in the book
+		_ci.draw_rect(Rect2(Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
+		_draw_view(Vector2.ZERO, unit, SKY.WORD_PAGE, _turn_paths[which], 0, 99.0, 1.0)
+	else:
+		_paint_pages(Vector2.ZERO, unit, _spread_page[which], 99.0, 1.0, 1.0) # a turned page is already written
 	_ci = self
 
 
@@ -929,6 +1039,8 @@ func _draw_view(origin: Vector2, unit: float, level: int, path: Array, choice: i
 		_text(origin, unit, right, "The sky", 7.5, INK, shown)
 		_text(origin, unit, right + Vector2(0, 9), "No words yet.", 4.2, PENCIL, shown)
 		return
+	if level == SKY.WORD_PAGE: # a clean left page: its stains are for the sky
+		_ci.draw_rect(Rect2(origin + Vector2(LEFT_PAGE.position) * unit, Vector2(LEFT_PAGE.size) * unit), Color(PAPER, shown))
 	_draw_crumbs(origin, unit, level, path, shown)
 	if level == SKY.WORD_PAGE:
 		_draw_word_page(origin, unit, path, clock, e, shown)
@@ -1129,16 +1241,19 @@ func _draw_preview(origin: Vector2, unit: float, word: Dictionary, at: Vector2, 
 	_text(origin, unit, Vector2(at.x, 99), hint, 3.8, PENCIL, a * 0.8)
 
 
-## One word, its own spread. Left: the word as far as it is known, how it sounds, what it means,
-## what it does in a fight (once usable), its line. Right: how it was learned (the Memory Trace,
-## D-090: each stage, where, and the sentence it was met in) and its neighbours.
+## One word, its own spread (D-092). The left page is the word: as far as it is known, its little
+## constellation, how it sounds and its forms, what it means and its line, then its neighbours
+## (close in meaning or opposite, easily mixed up, family). The right page is you and the word:
+## how it was learned (the Memory Trace) and, once usable, what it does in a fight.
+## Not yet reached is drawn as dotted pencil slots, never as a hole.
 func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e: float, a: float) -> void:
 	var word := sky.node(SKY.WORD_PAGE, path)
 	var lemma := str(word.lemma)
 	var stage := str(word.stage)
-	var known := stage in ["UNDERSTOOD", "USABLE"]
-	var size := 13.0
-	var at := Vector2(34, 46)
+	var reached := SKY.STAGES.find(stage)
+	var known := reached >= 3
+	var size := 12.0
+	var at := Vector2(34, 31)
 	if _rite >= 0.0 and lemma == _rite_lemma:
 		var px := _font_px(size, unit)
 		_draw_lighting(origin + at * unit, {"word": lemma, "note": ""}, px, px, 0.0, unit, a)
@@ -1146,53 +1261,165 @@ func _draw_word_page(origin: Vector2, unit: float, path: Array, clock: float, e:
 			_rite_from = origin + (at + Vector2(FONT.get_string_size(lemma, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x / unit / 2.0, -4)) * unit
 	else:
 		_word_label(origin, unit, at, lemma, stage, size, a)
-	var dictionary := WORDS.dictionary(lemma)
-	var sound := str(dictionary.get("phonetic", {}).get("uk", ""))
-	var pos := str(WORDS.main_sense(lemma).get("pos", ""))
-	var px := _font_px(4.0, unit)
-	var line := ("/%s/   " % sound if sound else "") + pos
-	if stage != "ENCOUNTERED": # only seen: nothing about it is known yet, not even how it sounds
-		_ci.draw_string(_sounds, origin + (at + Vector2(0, 8)) * unit, line, HORIZONTAL_ALIGNMENT_LEFT, -1, px, Color(PENCIL, a))
-	var y := at.y + 16
+	_draw_figure(origin, unit, path, lemma, clock, e, a)
+	if reached >= 2: # only seen: nothing about it is known yet, not even how it sounds
+		var dictionary := WORDS.dictionary(lemma)
+		var sound := str(dictionary.get("phonetic", {}).get("uk", ""))
+		var pos := str(WORDS.main_sense(lemma).get("pos", ""))
+		_ci.draw_string(_sounds, origin + Vector2(at.x, 38) * unit, ("/%s/   " % sound if sound else "") + pos, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(3.8, unit), Color(PENCIL, a))
+		_text(origin, unit, Vector2(at.x, 43), "  ·  ".join(_forms(lemma)), 2.9, PENCIL, a * 0.8)
+	_ci.draw_rect(Rect2(origin + Vector2(at.x, 45) * unit, Vector2(80, 0.5) * unit), Color(PENCIL, 0.45 * a))
+	var y := 51.5
 	if known:
-		for row in _wrap(WORDS.sense(lemma), 5.0, unit, 80):
-			_text(origin, unit, Vector2(at.x, y), row, 5.0, INK, a)
-			y += 6.5
-	var does := invocation(lemma) if stage == "USABLE" else ""
-	if not does.is_empty(): # what it does when spoken in a fight (the Invocation)
-		y += 1.5
-		_text(origin, unit, Vector2(at.x, y), "in a fight", 3.4, PENCIL, a)
-		y += 5.5
-		for row in _wrap(does, 4.2, unit, 80):
-			_text(origin, unit, Vector2(at.x, y), row, 4.2, INK, a)
-			y += 5.5
-	if known:
-		y = maxf(y + 3.0, 88.0)
-		var rows := _wrap(WORDS.page_line(lemma), 4.2, unit, 80)
-		if y + (rows.size() - 1) * 5.5 > 104.0: # a long line moves up rather than off the page
-			y = 104.0 - (rows.size() - 1) * 5.5
-		for row in rows:
-			_text(origin, unit, Vector2(at.x, y), row, 4.2, Color(INK, 0.75) if not does.is_empty() else INK, a * 0.9)
-			y += 5.5
-	# Its star, small, in the corner: where it is in the sky. In a ceremony it is the last to light.
-	var star_stage := stage
-	var star_age := clock - 0.4
-	if _rite >= 0.0 and lemma == _rite_lemma:
-		star_age = _rite - _rite_letters() - RITE_CARD * 0.6
-		star_stage = "USABLE" if star_age >= 0.0 else "UNDERSTOOD"
-	_star(origin, unit, Vector2(110, 25), star_stage, star_age, e)
+		for row in _wrap(WORDS.sense(lemma), 4.6, unit, 80):
+			_text(origin, unit, Vector2(at.x, y), row, 4.6, INK, a)
+			y += 5.6
+		for other in WORDS.related(lemma).also.slice(0, 2): # another meaning altogether, smaller
+			_text(origin, unit, Vector2(at.x, y), _fit("also, %s:  %s" % [_short_pos(str(other.pos)), other.sense], _font_px(3.4, unit), 80 * unit), 3.4, PENCIL, a)
+			y += 4.8
+		y += 0.5
+		for row in _wrap(WORDS.page_line(lemma), 3.8, unit, 76).slice(0, 3): # the line right under its meaning
+			_text(origin, unit, Vector2(at.x + 2, y), row, 3.8, INK, a * 0.75)
+			y += 4.8
+	else:
+		_dotted(origin, unit, Vector2(at.x, y), 78, a)
+		_dotted(origin, unit, Vector2(at.x, y + 5.5), 52, a)
+		_text(origin, unit, Vector2(at.x, y + 10), "the meaning, once you understand it", 2.8, PENCIL, a * 0.55)
+		y += 15.0
+	_draw_related(origin, unit, lemma, reached, y + 1.5, a)
 
 	var right := Vector2(RIGHT_PAGE.position.x + 6, 24)
 	_text(origin, unit, right, "How you learned it", 6.0, INK, a)
-	_draw_trace(origin, unit, lemma, stage, Vector2(right.x, right.y + 9), 78.0, a)
-	var near: Array = sky.node(4, path).words.filter(func(w): return w.lemma != lemma).map(func(w): return str(w.lemma))
-	if not near.is_empty():
-		_text(origin, unit, Vector2(right.x, 84), "Near it", 5.0, INK, a)
-		_text(origin, unit, Vector2(right.x, 91), _fit("  ·  ".join(near), _font_px(4.0, unit), 84 * unit), 4.0, PENCIL, a)
-	var confused: Array = WORDS.main_sense(lemma).get("confusable", [])
-	if known and not confused.is_empty():
-		var names: Array = confused.map(func(c): return str(c).get_slice("（", 0).strip_edges())
-		_text(origin, unit, Vector2(right.x, 99), "easily confused: " + ", ".join(names), 3.4, PENCIL, a * 0.85)
+	var does := invocation(lemma, false) if stage == "USABLE" else ""
+	var rows := _wrap(does, 3.8, unit, 82).slice(0, 3)
+	var box_top := 101.0 - 7.0 - rows.size() * 4.6
+	_draw_trace(origin, unit, lemma, stage, Vector2(right.x, right.y + 9), box_top - 4.0 if not does.is_empty() else 100.0, a)
+	if not does.is_empty(): # what it does when spoken in a fight (the Invocation), always here
+		var box := Rect2(origin + Vector2(145, box_top) * unit, Vector2(88, 101 - box_top) * unit)
+		_brackets(box, Color(INK, 0.75 * a), unit * 0.5)
+		_text(origin, unit, Vector2(148, box_top + 5), "IN A FIGHT", 2.8, PENCIL, a)
+		var cost := "costs %s" % _count(int(WORDS.effect(lemma).get("cost", 0)), "focus").replace("focuss", "focus")
+		var w := FONT.get_string_size(cost, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(2.8, unit)).x / unit
+		_text(origin, unit, Vector2(230 - w, box_top + 5), cost, 2.8, PENCIL, a)
+		var ry := box_top + 10.5
+		for row in rows:
+			_text(origin, unit, Vector2(148, ry), row, 3.8, INK, a)
+			ry += 4.6
+
+
+## The word's constellation, small, top right of the left page: its own star, its met neighbours,
+## joined as in the sky. A click goes back to it in the sky. In a ceremony its star lights last.
+func _draw_figure(origin: Vector2, unit: float, path: Array, lemma: String, clock: float, e: float, a: float) -> void:
+	var constellation := sky.node(4, path)
+	var words: Array = constellation.get("words", [])
+	if words.is_empty():
+		return
+	var centre := Vector2(100, 26)
+	var points := SKY.figure(str(constellation.id), words.size(), centre, 10.0)
+	for k in range(1, words.size()):
+		_link(origin, unit, points[k - 1], points[k], words[k - 1].stage, words[k].stage, (clock - 0.6 - k * 0.1) / LINE_TIME, e)
+	for k in words.size():
+		var star_stage := str(words[k].stage)
+		var age := clock - 0.4 - k * STAR_GAP
+		if words[k].lemma == lemma:
+			if _rite >= 0.0 and lemma == _rite_lemma:
+				age = _rite - _rite_letters() - RITE_CARD * 0.6
+				star_stage = "USABLE" if age >= 0.0 else "UNDERSTOOD"
+			if star_stage != "USABLE": # its own star ringed, so it can be told from the others
+				for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
+					_ci.draw_rect(Rect2(origin + (points[k].floor() + o) * unit, Vector2(unit, unit)), Color(PENCIL, 0.35 * a))
+		_star(origin, unit, points[k], star_stage, age, e)
+	_text(origin, unit, Vector2(centre.x, centre.y + 15), str(constellation.id), 2.6, PENCIL, a * 0.7, true)
+	if _ci == self:
+		_figure_hit = Rect2(origin + (centre - Vector2(12, 11)) * unit, Vector2(24, 26) * unit)
+
+
+## Close in meaning (and opposite), don't mix up, family: from recognized on; before that, slots.
+## Met words are ink and open their page; words not met are faint pencil. At most 3 / 3 / 4,
+## the met ones first; a row that would run off the page is left out.
+func _draw_related(origin: Vector2, unit: float, lemma: String, reached: int, top: float, a: float) -> void:
+	var y := top
+	var items := 66.0 # where the words start, right of the labels
+	if reached < 2:
+		for label in ["CLOSE IN MEANING", "DON'T MIX UP", "FAMILY"]:
+			_text(origin, unit, Vector2(34, y), label, 2.6, PENCIL, a * 0.7)
+			_dotted(origin, unit, Vector2(items, y), 46, a)
+			y += 6.5
+		_text(origin, unit, Vector2(74, y + 2), "written in once you recognise it", 2.8, PENCIL, a * 0.55, true)
+		return
+	var rel := WORDS.related(lemma)
+	var met_first := func(list: Array, most: int) -> Array:
+		var sorted := list.duplicate()
+		sorted.sort_custom(func(p, q): return _met.has(str(p.word)) and not _met.has(str(q.word)))
+		return sorted.slice(0, most)
+	var close: Array = met_first.call(rel.close, 3).map(func(i): return [i, "close"]) + met_first.call(rel.opposite, 3).map(func(i): return [i, "opposite"])
+	if not close.is_empty():
+		_text(origin, unit, Vector2(34, y), "CLOSE IN MEANING", 2.6, PENCIL, a * 0.8)
+		y += 4.5
+		for pair in close:
+			if y > 103.0:
+				return
+			_relation_mark(origin, unit, Vector2(35, y - 1.5), pair[1], a)
+			var x := _related_word(origin, unit, Vector2(42, y), str(pair[0].word), 3.6, a)
+			var note := str(pair[0].get("note", ""))
+			if not note.is_empty():
+				_text(origin, unit, Vector2(x + 2.5, y), _fit(note, _font_px(3.0, unit), (114 - x - 2.5) * unit), 3.0, PENCIL, a * 0.85)
+			y += 4.6
+		y += 1.2
+	for row in [["DON'T MIX UP", rel.mixup, 3], ["FAMILY", rel.family, 4]]:
+		var words: Array = met_first.call(row[1], row[2])
+		if words.is_empty() or y > 103.0:
+			continue
+		_text(origin, unit, Vector2(34, y), row[0], 2.6, PENCIL, a * 0.8)
+		var x := items
+		for item in words:
+			if x > 104.0:
+				break
+			x = _related_word(origin, unit, Vector2(x, y), str(item.word), 3.4, a) + 4.0
+		y += 5.5
+
+
+## A neighbour's name: ink if met (a click turns to its page), faint pencil if not. Returns where
+## it ends, in book pixels.
+func _related_word(origin: Vector2, unit: float, at: Vector2, word: String, size: float, a: float) -> float:
+	var met := _met.has(word)
+	_text(origin, unit, at, word, size, INK if met else PENCIL, a if met else a * 0.6)
+	var w := FONT.get_string_size(word, HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(size, unit)).x / unit
+	if met and _ci == self:
+		_links.append([Rect2(origin + Vector2(at.x - 1, at.y - size) * unit, Vector2(w + 2, size + 2) * unit), word])
+	return at.x + w
+
+
+## Two stars drawn as in the sky: joined by a line (close in meaning), or with a bar standing
+## between them (opposite).
+func _relation_mark(origin: Vector2, unit: float, at: Vector2, kind: String, a: float) -> void:
+	var between: Array = [Vector2i(2, -1), Vector2i(2, 0), Vector2i(2, 1)] if kind == "opposite" else [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+	for p in between:
+		_ci.draw_rect(Rect2(origin + (at.floor() + Vector2(p)) * unit, Vector2(unit, unit)), Color(PENCIL, 0.5 * a))
+	for p in [Vector2i(0, 0), Vector2i(4, 0)]:
+		_ci.draw_rect(Rect2(origin + (at.floor() + Vector2(p)) * unit, Vector2(unit, unit)), Color(INK, a))
+
+
+## A dotted pencil rule: something will be written here.
+func _dotted(origin: Vector2, unit: float, at: Vector2, width: float, a: float) -> void:
+	for x in range(0, int(width), 3):
+		_ci.draw_rect(Rect2(origin + Vector2(at.x + x, at.y) * unit, Vector2(1, 0.5) * unit), Color(PENCIL, 0.4 * a))
+
+
+## Its other forms, as a dictionary prints them under the headword.
+func _forms(lemma: String) -> Array:
+	var forms: Dictionary = WORDS.dictionary(lemma).get("forms", {})
+	var keys := ["third_person", "past", "past_participle", "ing"] if WORDS.main_sense(lemma).get("pos", "") == "verb" else ["plural"]
+	var out := []
+	for k in keys:
+		var f := str(forms.get(k, ""))
+		if not f.is_empty() and f != lemma and not f in out:
+			out.append(f)
+	return out
+
+
+static func _short_pos(pos: String) -> String:
+	return {"adjective": "adj.", "noun": "n.", "verb": "v.", "adverb": "adv."}.get(pos, pos)
 
 
 ## The Memory Trace: seen · recognized · understood · usable, one under the other, each reached one
@@ -1237,7 +1464,7 @@ func _draw_trace(origin: Vector2, unit: float, lemma: String, stage: String, at:
 
 
 ## What a usable word does in a fight, in plain words, from its effect in the word library.
-static func invocation(lemma: String) -> String:
+static func invocation(lemma: String, with_cost := true) -> String:
 	var fx: Dictionary = WORDS.effect(lemma)
 	var text := ""
 	match str(fx.get("type", "")):
@@ -1263,7 +1490,7 @@ static func invocation(lemma: String) -> String:
 		"remove_concealment": text = "Strips away what hides the foe, then shows all it means to do."
 		"pause_reassembly": text = "Keeps fallen bones from rising for %s." % _count(int(fx.get("turns", 1)), "turn")
 		_: return ""
-	if fx.has("cost"):
+	if fx.has("cost") and with_cost:
 		text += "  Costs %d focus." % int(fx.cost)
 	return text
 
@@ -1727,11 +1954,30 @@ func _pencil(at: Vector2, word: String, size: int, e: float, unit: float) -> voi
 		var gap := Vector2(at.x + pick.call(200 + k) * width, at.y - pick.call(300 + k) * cap)
 		_ci.draw_rect(Rect2(gap, Vector2(lerpf(1.0, 2.5, pick.call(400 + k)), 0.55) * unit), Color(PAPER, 0.95 * e))
 
+## The bookmark ribbon, out over the top of the right page while a jump can be undone: the page
+## it marks is where Q goes back to.
+func _draw_ribbon(origin: Vector2, unit: float) -> void:
+	_ribbon_hit = Rect2()
+	if _bookmark.is_empty():
+		return
+	var x := RIBBON_X
+	var top: int = _paper_rows.get(x, Vector2i(14, 0)).x
+	for y in range(top - 6, top + 9):
+		for dx in 3:
+			if y == top - 6 and dx == 1: # the cut end's notch
+				continue
+			_ci.draw_rect(Rect2(origin + Vector2(x + dx, y) * unit, Vector2(unit, unit)), RIBBON if dx == 1 else RIBBON_EDGE)
+	_ribbon_hit = Rect2(origin + Vector2(x - 2, top - 7) * unit, Vector2(7, 17) * unit)
+
+
 ## The line under the book: where you are and the keys.
 func _draw_caption(origin: Vector2, unit: float, e: float) -> void:
 	var where: String = ["THE SKY", "A REGION", "A CLUSTER", "A CONSTELLATION", "A WORD"][_level - 1]
 	var keys := "W/S choose   E closer   " if _level < SKY.WORD_PAGE else ""
-	keys += "Q back   " if _level > 1 or not _back_to_list.is_empty() else ""
+	if not _bookmark.is_empty():
+		keys += "Q back to %s   " % str(sky.node(SKY.WORD_PAGE, _bookmark.path).get("lemma", ""))
+	else:
+		keys += "Q back   " if _level > 1 or not _back_to_list.is_empty() else ""
 	keys += "A/D turn   " if _level > 1 else ""
 	keys += "F R V G  marks   "
 	if _list == "find":

@@ -111,6 +111,29 @@
         "remain（同形的动词，“留下”）",
         "reminds（形近）"
       ],
+      "related": {
+        "close": [
+          {
+            "word": "corpse",
+            "note": "a whole dead body"
+          },
+          {
+            "word": "ruins",
+            "note": "of buildings, not bodies"
+          }
+        ],
+        "opposite": [],
+        "mixup": [
+          {
+            "word": "reminds",
+            "why": "looks"
+          }
+        ],
+        "family": [
+          "remain"
+        ],
+        "also": []
+      },
       "relations": {
         "synonyms": [
           "cadaver",
