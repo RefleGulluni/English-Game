@@ -1200,10 +1200,14 @@ func _capture_sky(dir: String) -> void:
 	_lexicon.jump_to("scatter")
 	await wait.call(0.12)
 	await _shot(dir + "/w6_riffling.png")
-	await wait.call(1.6)
+	await wait.call(0.25)
+	await _shot(dir + "/w6b_riffling.png")
+	await wait.call(0.55)
+	await _shot(dir + "/w6c_last_pages.png")
+	await wait.call(0.8)
 	await _shot(dir + "/w7_jumped_to_scatter.png")
 	press.call(KEY_Q)
-	await wait.call(1.8)
+	await wait.call(2.6)
 	await _shot(dir + "/w8_back_to_shatter.png")
 
 

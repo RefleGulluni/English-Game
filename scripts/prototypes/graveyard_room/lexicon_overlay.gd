@@ -89,12 +89,13 @@ const MARK_KEYS := {KEY_F: "find", KEY_R: "recent", KEY_V: "review", KEY_G: "sta
 const LIST_ROWS := 8 # words on one page of a list
 const FIND_ROWS := 6 # find has one page: typing more narrows it
 const RECENT_MAX := 32 # recent is the last few, not the whole book
-const JUMP_PAGES := 3 # pages passed on the way when a neighbour's name is clicked (then its own)
-const JUMP_LEAF := 0.22 # seconds for each page passed
-const JUMP_LAST := 0.5 # the last leaf, slower, so the page lands
-const RIBBON_X := 188 # book column of the bookmark ribbon (left edge)
-const RIBBON := Color8(91, 67, 45) # the book's own cord colours
-const RIBBON_EDGE := Color8(55, 41, 26)
+const JUMP_LEAF := 0.32 # after the rush, the page before the word, turned at ease ...
+const JUMP_LAST := 0.5 # ... and the word's own page, slower, so it lands
+const RIBBON_COLUMNS := Vector2i(129, 137) # where the ribbon lies down the spine, in book pixels
+const TASSEL_SHIFT := 26 # how far from the spine its end hangs once it stays behind in a page
+const BURST_GAP := 0.045 # a jump's rush of pages: one leaf lifting after another ...
+const BURST_LEAF := 0.3 # ... each this long in the air, so several fly at once
+const GHOST := [-1] # a turned path meaning "some page rushed past": paper and the shadow of writing
 const LIST_STAGES := ["USABLE", "UNDERSTOOD", "RECOGNIZED", "ENCOUNTERED"] # G steps through them
 const PACE := [0.7, 1.0, 1.4] # keys 1 / 2 / 3: quicker, as designed, slower (to judge the timing)
 # Where each stage ends, as a share of the opening.
@@ -156,6 +157,13 @@ var _hits: Array = [] # [Rect2 on screen, index]: what a click on the left page 
 var _links: Array = [] # [Rect2 on screen, lemma]: a word page's met neighbours (a click turns to them)
 var _figure_hit := Rect2() # a word page's little constellation (a click goes back to it in the sky)
 var _ribbon_hit := Rect2()
+var _open_bare: Texture2D # the open book without its ribbon (it stays in the page a jump left)
+var _tassel: Array = [] # [book pixel, colour]: the ribbon's end, below the book, as drawn
+var _ribbon_side := 0 # 0 in the spine; -1 / 1 hanging from under the left / right block of pages
+var _burst := -1.0 # seconds into a jump's first rush of pages; -1: none
+var _burst_count := 0
+var _from_ghost := false # the next leaf turns from the rushed-past pages, not a word's
+var _ribbon_lemma := "" # the word whose page the ribbon stays in while it is out of the spine
 var _bookmark := {} # {path, back}: the page the first jump left; Q riffles back there (D-092)
 var _jump: Array = [] # paths still to turn through on the way to a jumped-to word
 var _jump_forward := true
@@ -216,6 +224,7 @@ func _ready() -> void:
 					_sigil.append(Vector2i(x, y))
 	_split_sigil()
 	_open_img = _open.get_image()
+	_take_ribbon()
 	_find_paper(_open_img)
 	_load_pages()
 	for i in 2:
@@ -290,6 +299,8 @@ func _go(level: int, path: Array, choose: int, redraw := true) -> void:
 	_prev = _state() if redraw else {}
 	_list = ""
 	_bookmark = {}
+	_ribbon_side = 0
+	_ribbon_lemma = ""
 	_level = level
 	_path = path.duplicate()
 	selected = choose
@@ -327,6 +338,9 @@ func zoom_out() -> void:
 		_back_to_list = mark.back
 		if mark.path != _path:
 			_riffle(mark.path)
+		else:
+			_ribbon_side = 0
+			_ribbon_lemma = ""
 		return
 	if _level == SKY.WORD_PAGE and not _back_to_list.is_empty(): # back to the list it came from
 		_redraw_into(_back_to_list)
@@ -370,6 +384,8 @@ func open_list(which: String) -> void:
 		return
 	var state := _state()
 	_bookmark = {}
+	_ribbon_side = 0
+	_ribbon_lemma = ""
 	if _list.is_empty():
 		_from = {"level": _level, "path": _path.duplicate(), "selected": selected}
 		if _level == SKY.WORD_PAGE and not _back_to_list.is_empty():
@@ -469,6 +485,52 @@ func _choose_in_list(step: int) -> void:
 		return
 	var at := rows.find(selected)
 	selected = rows[posmod((at if at >= 0 else 0) + step, rows.size())]
+
+
+## The open book with its ribbon lifted out of the spine (by its darkness, filled from the paper
+## either side) and its end below the book kept apart, to hang where the marked page is (D-092).
+func _take_ribbon() -> void:
+	var img: Image = _open_img.duplicate()
+	var luma := func(c: Color) -> float: return c.get_luminance()
+	var paper: Array[Color] = [] # the gutter's own colours, to fill with
+	for y in range(14, 112):
+		for x in range(RIBBON_COLUMNS.x - 2, RIBBON_COLUMNS.y + 3):
+			var c: Color = img.get_pixel(x, y)
+			if luma.call(c) > 0.45 and not c in paper:
+				paper.append(c)
+	var nearest := func(c: Color) -> Color:
+		var best := paper[0]
+		for p in paper:
+			if Vector3(p.r - c.r, p.g - c.g, p.b - c.b).length() < Vector3(best.r - c.r, best.g - c.g, best.b - c.b).length():
+				best = p
+		return best
+	for y in range(13, 113): # down the page: the dark cord, filled across from either side
+		var dark := range(RIBBON_COLUMNS.x, RIBBON_COLUMNS.y).filter(func(x): return luma.call(img.get_pixel(x, y)) < 0.45)
+		if dark.is_empty():
+			continue
+		var a: int = dark.min() - 1
+		var b: int = dark.max() + 1
+		for x in range(a + 1, b):
+			img.set_pixel(x, y, nearest.call(img.get_pixel(a, y).lerp(img.get_pixel(b, y), float(x - a) / (b - a))))
+	for y in range(113, 119): # across the cover's edge: leather from beside the spine
+		for x in range(132, 139):
+			if img.get_pixel(x, y).a > 0.0:
+				img.set_pixel(x, y, img.get_pixel(x - 8, y))
+	for y in range(119, OPEN_BOOK.size.y): # its end, hanging below
+		for x in range(126, 146):
+			img.set_pixel(x, y, Color(0, 0, 0, 0))
+	_tassel.clear()
+	for y in range(113, OPEN_BOOK.size.y):
+		for x in range(126, 146):
+			var c := _open_img.get_pixel(x, y)
+			if c.a > 0.0 and c != img.get_pixel(x, y):
+				_tassel.append([Vector2i(x, y), c])
+	_open_bare = ImageTexture.create_from_image(img)
+
+
+## The open book as it lies now: the ribbon in the spine, or away in a page a jump left.
+func _book() -> Texture2D:
+	return _open if _ribbon_side == 0 else _open_bare
 
 
 ## Takes the cyan (language) pixels off a piece of the sheet, filling them with `fill`; returns
@@ -625,40 +687,46 @@ func _start_turn(forward: bool) -> void:
 
 
 ## A click on a met neighbour on a word page: the pages riffle over to its page (D-092). The
-## bookmark stays in the page the first jump left; Q, or a click on the ribbon, riffles back.
+## ribbon stays in the page the first jump left and hangs from under that block of pages; Q, or a
+## click on it, riffles back.
 func jump_to(lemma: String) -> void:
 	var to := sky.find(lemma)
 	if to.is_empty() or _level != SKY.WORD_PAGE or not (is_open and _t >= 1.0 and _turn < 0.0 and _rite < 0.0):
 		return
 	if _bookmark.is_empty():
-		_bookmark = {"path": _path.duplicate(), "back": _back_to_list}
+		_bookmark = {"path": _path.duplicate(), "back": _back_to_list, "lemma": str(sky.node(SKY.WORD_PAGE, _path).lemma)}
 	_back_to_list = {}
 	_riffle(to)
 
 
-## Turns through a few of the met words between here and `to` (not every page: the feeling of a
-## long way, not its length), quickly, then the last leaf at ease.
+## As a thumb lets a thick wad go: many leaves rush over at once (more the further the word is,
+## the feeling of the way, not its length), then the page before the word and the word's own
+## turn at ease and land.
 func _riffle(to: Array) -> void:
 	var here: int = _met.get(str(sky.node(SKY.WORD_PAGE, _path).lemma), 0)
 	var there: int = _met.get(str(sky.node(SKY.WORD_PAGE, to).lemma), 0)
 	_jump_forward = there >= here
-	var between := []
-	var step := 1 if _jump_forward else -1
-	for i in range(here + step, there, step):
-		var path := sky.find(str(_known[i].lemma))
-		if not path.is_empty():
-			between.append(path)
 	_jump = []
-	var count := mini(JUMP_PAGES, between.size())
-	for k in count:
-		_jump.append(between[int((k + 0.5) * between.size() / count)])
+	if absi(there - here) > 1: # the met word just before it on the way
+		var before := sky.find(str(_known[there - (1 if _jump_forward else -1)].lemma))
+		if not before.is_empty():
+			_jump.append(before)
 	_jump.append(to)
-	_next_leaf()
+	var mark: int = _met.get(str(_bookmark.get("lemma", _ribbon_lemma)), there)
+	_ribbon_lemma = str(_bookmark.get("lemma", _ribbon_lemma))
+	if mark != there: # the marked page is left behind on one side; going back, it stays put till it lands
+		_ribbon_side = -1 if mark < there else 1
+	_burst_count = clampi(5 + absi(there - here), 6, 16)
+	_burst = 0.0
+	_turn_paths = [_path.duplicate(), GHOST]
+	_turn_from = _page
+	_start_turn(_jump_forward)
 
 
 func _next_leaf() -> void:
 	var to: Array = _jump.pop_front()
-	_turn_paths = [_path.duplicate(), to]
+	_turn_paths = [GHOST if _from_ghost else _path.duplicate(), to]
+	_from_ghost = false
 	_turn_from = _page
 	_turn_time = (JUMP_LAST if _jump.is_empty() else JUMP_LEAF) * PACE[speed]
 	_start_turn(_jump_forward)
@@ -694,9 +762,16 @@ func _process(delta: float) -> void:
 	if _turn >= 0.0:
 		if _warm > 0:
 			_warm -= 1 # the hidden spreads paint first, so the leaf never shows an empty frame
+		elif _burst >= 0.0:
+			_burst += delta / PACE[speed]
 		else:
 			_turn += delta / (_turn_time if _turn_time > 0.0 else ((LIVE_TURN_TIME * PACE[speed]) if live_turn else TURN_TIME))
-		if _turn >= 1.0:
+		if _burst >= 0.0:
+			if _burst >= (_burst_count - 1) * BURST_GAP + BURST_LEAF: # the rush is over: the last pages at ease
+				_burst = -1.0
+				_from_ghost = true
+				_next_leaf()
+		elif _turn >= 1.0:
 			_turn = -1.0
 			_turn_time = 0.0
 			if not _turn_paths[1].is_empty(): # a jump: this word's page now (perhaps not the last)
@@ -714,6 +789,9 @@ func _process(delta: float) -> void:
 				spread.render_target_update_mode = SubViewport.UPDATE_DISABLED
 			if not _jump.is_empty():
 				_next_leaf()
+			elif _level == SKY.WORD_PAGE and str(sky.node(SKY.WORD_PAGE, _path).get("lemma", "")) == _ribbon_lemma:
+				_ribbon_side = 0 # back on the marked page: the ribbon lies in the spine again
+				_ribbon_lemma = ""
 		else:
 			for spread in _spreads:
 				spread.get_child(0).queue_redraw()
@@ -903,23 +981,29 @@ func _draw() -> void:
 				_box(origin, unit, OPEN_SPINE, w - 4, PAPER)
 		_seam(origin, unit, 1.0 - fall, fall)
 	elif _turn >= 0.0 and live_turn and _warm == 0:
-		_draw_leaf(origin, unit)
+		if _burst >= 0.0:
+			_draw_burst(origin, unit)
+		else:
+			_draw_leaf(origin, unit)
+		_draw_tassel(origin, unit)
 		_draw_marks(origin, unit, 1.0)
-		_draw_ribbon(origin, unit)
 		_draw_caption(origin, unit, 1.0)
 		return
 	elif _turn >= 0.0 and not live_turn and _turn_frames:
 		_draw_frame(_turn_frames, 1.0 - _turn if _turn_back else _turn, origin, size)
 		return
 	else:
-		_ci.draw_texture_rect(_open, Rect2(origin, size), false)
+		_ci.draw_texture_rect(_book(), Rect2(origin, size), false)
+		_draw_tassel(origin, unit)
 
 	if fall < 1.0:
 		return
 	var page := _turn_from if _turn >= 0.0 else _page # still warming up: the old spread
-	_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
+	if _turn >= 0.0 and _turn_paths[0] == GHOST: # between the rush and the last pages
+		_paint_ghost(origin, unit)
+	else:
+		_paint_pages(origin, unit, page, _sky, _stage(P_FALL, 1.0), _stage(0.88, 1.0))
 	_draw_marks(origin, unit, _stage(0.88, 1.0))
-	_draw_ribbon(origin, unit)
 	if _rite >= 0.0:
 		_draw_rite_card(origin, unit)
 	else:
@@ -954,13 +1038,37 @@ func _show(origin: Vector2, unit: float, state: Dictionary, path: Array, page: i
 func _paint_spread(canvas: Control, which: int) -> void:
 	_ci = canvas
 	var unit := _spread_unit
-	_ci.draw_texture_rect(_open, Rect2(Vector2.ZERO, Vector2(OPEN_BOOK.size) * unit), false)
-	if not _turn_paths[which].is_empty(): # a jump: word pages from anywhere in the book
+	_ci.draw_texture_rect(_book(), Rect2(Vector2.ZERO, Vector2(OPEN_BOOK.size) * unit), false)
+	if _turn_paths[which] == GHOST:
+		_paint_ghost(Vector2.ZERO, unit)
+	elif not _turn_paths[which].is_empty(): # a jump: word pages from anywhere in the book
 		_ci.draw_rect(Rect2(Vector2(RIGHT_PAGE.position) * unit, Vector2(RIGHT_PAGE.size) * unit), PAPER)
 		_draw_view(Vector2.ZERO, unit, SKY.WORD_PAGE, _turn_paths[which], 0, 99.0, 1.0)
 	else:
 		_paint_pages(Vector2.ZERO, unit, _spread_page[which], 99.0, 1.0, 1.0) # a turned page is already written
 	_ci = self
+
+
+## Pages rushed past: too quick to read, only the shadow of writing.
+func _paint_ghost(origin: Vector2, unit: float) -> void:
+	for r in [LEFT_PAGE, RIGHT_PAGE]:
+		_ci.draw_rect(Rect2(origin + Vector2(r.position) * unit, Vector2(r.size) * unit), PAPER)
+		for row in range(r.position.y + 10, r.end.y - 4, 5):
+			var length := 30 + int(_hashf(r.position.x, row, 7) * 50)
+			_ci.draw_rect(Rect2(origin + Vector2(r.position.x + 8, row) * unit, Vector2(mini(length, r.size.x - 14), 0.6) * unit), Color(PENCIL, 0.16))
+
+
+## A jump's rush: leaf after leaf lifting before the last has landed, several in the air at once.
+## The first is the page being left; the rest are pages rushed past. Only the newest casts a shadow.
+func _draw_burst(origin: Vector2, unit: float) -> void:
+	var a := _spreads[0].get_texture()
+	var g := _spreads[1].get_texture()
+	var from := 1 if _jump_forward else -1
+	_draw_halves(origin, unit, g, g if _burst >= BURST_LEAF else a, from)
+	for i in _burst_count:
+		var p := (_burst - i * BURST_GAP) / BURST_LEAF
+		if p > 0.0 and p < 1.0:
+			_draw_turning(origin, unit, p, a if i == 0 else g, g, from, i == _burst_count - 1 or (_burst - (i + 1) * BURST_GAP) <= 0.0)
 
 
 ## The leaf turning, from the spread turned from (A) to the spread turned to (B). On the side it
@@ -972,18 +1080,28 @@ func _draw_leaf(origin: Vector2, unit: float) -> void:
 	var a := _spreads[0].get_texture()
 	var b := _spreads[1].get_texture()
 	var from := -1 if _turn_back else 1 # the side the leaf leaves: +1 right (D), -1 left (A)
-	var pivot := OPEN_SPINE + 0.5
+	_draw_halves(origin, unit, b, a, from)
+	_draw_turning(origin, unit, _turn, a, b, from, true)
+
+
+## The spread under a turning leaf: `leaving` on the side the leaf lifts from, `other` beyond.
+func _draw_halves(origin: Vector2, unit: float, leaving: Texture2D, other: Texture2D, from: int) -> void:
 	var split := OPEN_SPINE if from > 0 else OPEN_SPINE + 1
 	var w := OPEN_BOOK.size.x
 	var h := OPEN_BOOK.size.y
-	var b_part := Rect2i(split, 0, w - split, h) if from > 0 else Rect2i(0, 0, split, h)
-	var a_part := Rect2i(0, 0, split, h) if from > 0 else Rect2i(split, 0, w - split, h)
-	for part in [[b, b_part], [a, a_part]]:
+	var leaving_part := Rect2i(split, 0, w - split, h) if from > 0 else Rect2i(0, 0, split, h)
+	var other_part := Rect2i(0, 0, split, h) if from > 0 else Rect2i(split, 0, w - split, h)
+	for part in [[leaving, leaving_part], [other, other_part]]:
 		var r: Rect2i = part[1]
 		_ci.draw_texture_rect_region(part[0], Rect2(origin + Vector2(r.position) * unit, Vector2(r.size) * unit), Rect2(Vector2(r.position) * _spread_unit, Vector2(r.size) * _spread_unit))
 
-	var edge := PI * smoothstep(0.0, 1.0 - LEAF_LAG, _turn) # angle of the free edge
-	var root := PI * smoothstep(LEAF_LAG, 1.0, _turn) # angle at the spine
+
+## One leaf `turn` (0..1) of the way over: its front is `front`'s page on the side it leaves, its
+## back is `back`'s page on the other side.
+func _draw_turning(origin: Vector2, unit: float, turn: float, front_tex: Texture2D, back_tex: Texture2D, from: int, shadow: bool) -> void:
+	var pivot := OPEN_SPINE + 0.5
+	var edge := PI * smoothstep(0.0, 1.0 - LEAF_LAG, turn) # angle of the free edge
+	var root := PI * smoothstep(LEAF_LAG, 1.0, turn) # angle at the spine
 	var angle := func(u: float) -> float: return lerpf(root, edge, pow(u / _leaf_len, 1.3))
 	# Where each column boundary lands (distance from the spine along the book) and how high it is.
 	var along: Array[float] = [0.5 * cos(angle.call(0.25))]
@@ -1003,14 +1121,14 @@ func _draw_leaf(origin: Vector2, unit: float) -> void:
 			continue
 		var rows: Vector2i = _paper_rows[source]
 		var shade := 1.0 - LEAF_SHADE * absf(sin(angle.call(d)))
-		columns.append([(height[d - 1] + height[d]) / 2.0, mini(x0, x1), absi(x1 - x0), source, rows, a if front else b, shade])
+		columns.append([(height[d - 1] + height[d]) / 2.0, mini(x0, x1), absi(x1 - x0), source, rows, front_tex if front else back_tex, shade])
 	columns.sort_custom(func(p, q): return p[0] < q[0])
 
 	# The leaf's shadow on the page beyond its free edge, deepest while it stands highest.
 	var edge_x := roundi(pivot + from * along[_leaf_len])
 	var side := signi(edge_x - OPEN_SPINE) if edge_x != OPEN_SPINE else from
-	var depth := sin(edge)
-	for band in 3:
+	var depth := sin(edge) if shadow else 0.0
+	for band in (3 if shadow else 0):
 		var reach := roundi((2.0 + 7.0 * depth) * (band + 1) / 3.0)
 		for x in range(edge_x, edge_x + side * reach, side):
 			if _paper_rows.has(x):
@@ -1422,45 +1540,71 @@ static func _short_pos(pos: String) -> String:
 	return {"adjective": "adj.", "noun": "n.", "verb": "v.", "adverb": "adv."}.get(pos, pos)
 
 
-## The Memory Trace: seen · recognized · understood · usable, one under the other, each reached one
-## with where it happened and, room allowing, the sentence (the newest sentences first to get room).
-## The stages still ahead are written faintly: the road the word has left to go.
+## The Memory Trace: seen · recognized · understood · usable, a thread down the page with a knot
+## for each stage (D-091, drawn as agreed in D-092). A reached stage is a solid ink knot with where
+## it happened and, room allowing, the sentence (the newest sentences first to get room); usable
+## is the cyan knot. The stages still ahead are hollow knots on a dotted thread, written faintly:
+## the road the word has left to go.
 func _draw_trace(origin: Vector2, unit: float, lemma: String, stage: String, at: Vector2, bottom: float, a: float) -> void:
 	var met: Dictionary = progress.meetings.get(lemma, {}) if progress else {}
 	var reached := SKY.STAGES.find(stage)
 	var quotes := {} # stage -> wrapped rows, given out newest first while they fit
 	var room := bottom - at.y - 4 * 6.0
+	var text_x := at.x + 6.0
 	for k in range(reached, 0, -1):
 		var s: String = SKY.STAGES[k]
 		var said := str(met.get(s, {}).get("line", ""))
 		if said.is_empty():
 			continue
-		var rows := _wrap("“%s”" % said.replace("[", "").replace("]", ""), 4.0, unit, 82)
+		var rows := _wrap("“%s”" % said.replace("[", "").replace("]", ""), 4.0, unit, 78)
 		rows = rows.slice(0, 2)
 		if rows.size() * 5.0 + 1.5 <= room:
 			quotes[s] = rows
 			room -= rows.size() * 5.0 + 1.5
+	var knots: Array[float] = [] # the row of each stage's knot
 	var y := at.y
 	for k in range(1, 5):
 		var s: String = SKY.STAGES[k]
 		var name: String = STAGE_NAMES[s]
+		knots.append(floorf(y - 2.0))
 		if k > reached:
-			_text(origin, unit, Vector2(at.x, y), name, 3.8, PENCIL, a * 0.45)
+			_text(origin, unit, Vector2(text_x, y), name, 3.8, PENCIL, a * 0.45)
 			y += 6.0
 			continue
-		_text(origin, unit, Vector2(at.x, y), name, 3.8, INK, a)
+		_text(origin, unit, Vector2(text_x, y), name, 3.8, INK, a)
 		var where := str(met.get(s, {}).get("where", ""))
 		if where.is_empty() and k == reached: # said once, on the last stage reached, not four times over
 			where = "before the graveyard" if progress and lemma in progress.STARTING_WORDS else "not written down"
 		var w := FONT.get_string_size(name + "  ", HORIZONTAL_ALIGNMENT_LEFT, -1, _font_px(3.8, unit)).x / unit
 		if not where.is_empty():
-			_text(origin, unit, Vector2(at.x + w, y), _fit("— " + where, _font_px(3.4, unit), (84 - w) * unit), 3.4, PENCIL, a)
+			_text(origin, unit, Vector2(text_x + w, y), _fit("— " + where, _font_px(3.4, unit), (80 - w) * unit), 3.4, PENCIL, a)
 		y += 6.0
 		for row in quotes.get(s, []):
-			_text(origin, unit, Vector2(at.x + 3, y - 0.5), row, 4.0, INK, a * 0.85)
+			_text(origin, unit, Vector2(text_x, y - 0.5), row, 4.0, INK, a * 0.85)
 			y += 5.0
 		if quotes.has(s):
 			y += 1.5
+	var x := floorf(at.x + 1.0)
+	for k in range(3): # the thread between knots: ink where walked, dotted pencil ahead
+		var walked := k + 2 <= reached
+		for row in range(int(knots[k]) + 2, int(knots[k + 1]) - 1):
+			if walked or row % 2 == 0:
+				_ci.draw_rect(Rect2(origin + Vector2(x, row) * unit, Vector2(unit, unit)), Color(INK if walked else PENCIL, a * (0.85 if walked else 0.4)))
+	for k in range(4):
+		var c := Vector2(x, knots[k])
+		var arms: Array[Vector2i] = [Vector2i(0, -1), Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, 1)]
+		if k + 1 > reached: # a hollow knot: the ring without its middle
+			for o in arms:
+				_ci.draw_rect(Rect2(origin + (c + Vector2(o)) * unit, Vector2(unit, unit)), Color(PENCIL, a * 0.45))
+			continue
+		var knot: Array[Vector2i] = [Vector2i(c)]
+		for o in arms:
+			knot.append(Vector2i(c) + o)
+		if SKY.STAGES[k + 1] == "USABLE":
+			_draw_pixels(knot, origin, unit, CYAN.darkened(0.15), a, 0.2)
+		else:
+			for p in knot:
+				_ci.draw_rect(Rect2(origin + Vector2(p) * unit, Vector2(unit, unit)), Color(INK, a))
 
 
 ## What a usable word does in a fight, in plain words, from its effect in the word library.
@@ -1954,20 +2098,16 @@ func _pencil(at: Vector2, word: String, size: int, e: float, unit: float) -> voi
 		var gap := Vector2(at.x + pick.call(200 + k) * width, at.y - pick.call(300 + k) * cap)
 		_ci.draw_rect(Rect2(gap, Vector2(lerpf(1.0, 2.5, pick.call(400 + k)), 0.55) * unit), Color(PAPER, 0.95 * e))
 
-## The bookmark ribbon, out over the top of the right page while a jump can be undone: the page
-## it marks is where Q goes back to.
-func _draw_ribbon(origin: Vector2, unit: float) -> void:
+## The ribbon's end once it stays behind in a page: hanging from under the block of pages that
+## page is in (D-092). A click on it, or Q, turns back there.
+func _draw_tassel(origin: Vector2, unit: float) -> void:
 	_ribbon_hit = Rect2()
-	if _bookmark.is_empty():
+	if _ribbon_side == 0:
 		return
-	var x := RIBBON_X
-	var top: int = _paper_rows.get(x, Vector2i(14, 0)).x
-	for y in range(top - 6, top + 9):
-		for dx in 3:
-			if y == top - 6 and dx == 1: # the cut end's notch
-				continue
-			_ci.draw_rect(Rect2(origin + Vector2(x + dx, y) * unit, Vector2(unit, unit)), RIBBON if dx == 1 else RIBBON_EDGE)
-	_ribbon_hit = Rect2(origin + Vector2(x - 2, top - 7) * unit, Vector2(7, 17) * unit)
+	var shift := Vector2(_ribbon_side * TASSEL_SHIFT, 0)
+	for p in _tassel:
+		_ci.draw_rect(Rect2(origin + (Vector2(p[0]) + shift) * unit, Vector2(unit, unit)), p[1])
+	_ribbon_hit = Rect2(origin + (Vector2(129, 110) + shift) * unit, Vector2(16, 16) * unit)
 
 
 ## The line under the book: where you are and the keys.
